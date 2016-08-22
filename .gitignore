@@ -1,0 +1,7 @@
+bundle.js*
+node_modules
+*.swp
+*.swo
+*.map
+.tags*
+assets/models/renders/*.png

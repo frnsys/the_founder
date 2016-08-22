@@ -1,0 +1,50 @@
+[
+  {
+    "name": "walking",
+    "speed": 1,
+    "model": null,
+    "requires": null,
+    "state": "walking",
+    "agentYOffset": 0,
+    "types": ["employee", "pet", "custodial"]
+  }, {
+    "name": "biking",
+    "speed": 1.4,
+    "model": {
+      "name": "bike_share",
+      "position": [0,-0.9,0.65],
+      "rotation": [0,1.47,0],
+      "scale": [2.2,2.2,2.2]
+    },
+    "agentYOffset": 0.07,
+    "state": "intransit",
+    "requires": "Bike Share",
+    "types": ["employee"]
+  }, {
+    "name": "sugweying",
+    "speed": 1.8,
+    "model": {
+      "name": "sugwey",
+      "position": [0,-0.02,0.75],
+      "rotation": [0,0,0],
+      "scale": [1,1,1]
+    },
+    "agentYOffset": 0.02,
+    "state": "intransit",
+    "requires": "Sugweyz",
+    "types": ["employee"]
+  }, {
+    "name": "hovercarting",
+    "speed": 2.2,
+    "model": {
+      "name": "hovercart",
+      "position": [-1.2,0,0.3],
+      "rotation": [0,1.47,0],
+      "scale": [2,2,2]
+    },
+    "agentYOffset": 0,
+    "state": "intransit",
+    "requires": "Hovercarts",
+    "types": ["employee"]
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "name": "the_founder",
+  "version": "0.0.0",
+  "homepage": "https://github.com/frnsys/the_founder",
+  "license": "MIT",
+  "description": "a dystopian business simulator",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/frnsys/the_founder"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack-dev-server --colors --progress",
+    "test": "karma start karma.config.js"
+  },
+  "dependencies": {
+    "d3": "^4.2.2",
+    "datamaps": "^0.5.7",
+    "jquery": "^3.1.0",
+    "patroljs": "git+https://github.com/frnsys/PatrolJS.git",
+    "phaser": "^2.6.1",
+    "three": "^0.79.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "dat-gui": "^0.5.0",
+    "expose-loader": "^0.7.1",
+    "jasmine-core": "^2.4.1",
+    "json-loader": "^0.5.4",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.8.0",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

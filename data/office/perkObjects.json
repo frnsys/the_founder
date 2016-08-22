@@ -1,0 +1,5031 @@
+{
+  "Bike Share": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              -3.75,
+              -0.21,
+              -3.47
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              -3.78,
+              -0.21,
+              -3.34
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              -3.81,
+              -0.21,
+              -3.21
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              -3.84,
+              -0.21,
+              -3.08
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              3.74,
+              -0.18999999999999997,
+              -2.42
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              3.74,
+              -0.18999999999999997,
+              -2.2
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              3.8,
+              -0.18999999999999997,
+              -1.99
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              6.71,
+              -0.21,
+              8.26
+            ],
+            "rotation": [
+              0,
+              0.75,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              6.53,
+              -0.21,
+              8.26
+            ],
+            "rotation": [
+              0,
+              0.75,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              6.35,
+              -0.21,
+              8.22
+            ],
+            "rotation": [
+              0,
+              0.75,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              -0.75,
+              -0.21,
+              11.53
+            ],
+            "rotation": [
+              0,
+              0.6,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "bike_share",
+            "position": [
+              -0.82,
+              -0.21,
+              11.36
+            ],
+            "rotation": [
+              0,
+              0.6,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "bike_share",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Butter Coffee": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "butter_coffee2",
+            "position": [
+              4.119999999999999,
+              0.2,
+              4.2
+            ],
+            "rotation": [
+              0,
+              2.13,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "butter_coffee",
+            "position": [
+              2.5,
+              0.81,
+              -0.58
+            ],
+            "rotation": [
+              0,
+              -0.06,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "butter_coffee3",
+            "position": [
+              -2.83,
+              0.33,
+              -1.93
+            ],
+            "rotation": [
+              0,
+              -1.3,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "butter_coffee2",
+            "position": [
+              -5.65,
+              0.32,
+              3.6799999999999997
+            ],
+            "rotation": [
+              0,
+              -1.3,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "butter_coffee3",
+            "position": [
+              -4.529999999999999,
+              0.32,
+              7.82
+            ],
+            "rotation": [
+              0,
+              -5.16,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "butter_coffee",
+            "position": [
+              4.22,
+              1.1099999999999999,
+              12.57
+            ],
+            "rotation": [
+              0,
+              0.7,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "butter_coffee3",
+            "position": [
+              -4.6,
+              0.32,
+              11.5
+            ],
+            "rotation": [
+              0,
+              0.23,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "butter_coffee2",
+            "position": [
+              2.77,
+              0.43,
+              6.72
+            ],
+            "rotation": [
+              0,
+              0.23,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "cafe",
+            "position": [
+              1.14,
+              -0.18,
+              7.84
+            ],
+            "rotation": [
+              0,
+              1.8,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [{
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [-0.79,-0.12,-0.49],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0,-0.12,-0.49],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.34,-0.12,-0.49],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.68,-0.12,-0.49],
+              "rotation": [0,-1.39,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [-0.45,-0.12,-0.49],
+              "rotation": [0,-1.61,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [-0.62,-0.12,-0.65],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.17,-0.12,-0.65],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.5,-0.12,-0.65],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.97,-0.12,-0.31],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.97,-0.12,0.01],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.97,-0.12,0.34],
+              "rotation": [0,-3.23,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.81,-0.12,0.17],
+              "rotation": [0,1.52,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.81,-0.12,-0.15],
+              "rotation": [0,1.52,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [1.14,-0.12,-0.15],
+              "rotation": [0,-1.65,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [1.14,-0.12,0.17],
+              "rotation": [0,-1.65,0]
+            }
+          }],
+          "state": "chatting",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "butter_coffee",
+            "position": [
+              1.24,
+              0.19000000000000006,
+              7.82
+            ],
+            "rotation": [
+              -0.54,
+              -0.95,
+              -0.16
+            ],
+            "scale": [
+              0.4,
+              0.4,
+              0.4
+            ]
+          },
+          "name": "butter_coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Catering": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "catering",
+            "position": [
+              5.109999999999999,
+              0.31,
+              0.79
+            ],
+            "rotation": [
+              0,
+              1.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "catering",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "catering2",
+            "position": [
+              5.109999999999999,
+              0.31,
+              1.12
+            ],
+            "rotation": [
+              0,
+              1.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "catering",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "catering",
+            "position": [
+              2.14,
+              0.3,
+              12.08
+            ],
+            "rotation": [
+              0,
+              1.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "catering",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "catering2",
+            "position": [
+              2.14,
+              0.3,
+              12.35
+            ],
+            "rotation": [
+              0,
+              1.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "catering",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "catering3",
+            "position": [
+              2.14,
+              0.3,
+              12.62
+            ],
+            "rotation": [
+              0,
+              1.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "catering",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "cafeteria",
+            "position": [
+              3.5,
+              -0.18,
+              8.2
+            ],
+            "rotation": [
+              0,
+              3.7,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "catering",
+          "positions": [{
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [-0.47,-0.12,-0.72],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [-0.14,-0.12,-0.72],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.79,-0.12,-0.72],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.1,-0.12,-0.72],
+              "rotation": [0,-1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.19,-0.12,-0.72],
+              "rotation": [0,-1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [-0.3,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.02,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.62,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.95,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.4,-0.12,-0.54],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.4,-0.12,-0.22],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.4,-0.12,0.11],
+              "rotation": [0,-2.99,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.26,-0.12,-0.05],
+              "rotation": [0,1.5,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.26,-0.12,-0.37],
+              "rotation": [0,1.5,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.6,-0.12,-0.37],
+              "rotation": [0,-1.58,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.6,-0.12,-0.05],
+              "rotation": [0,-1.58,0]
+            }
+          }],
+          "state": "chatting",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "catering",
+            "position": [
+              3.4,
+              0.13,
+              8.52
+            ],
+            "rotation": [
+              -1.8,
+              0.9,
+              -4.5
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "catering",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Cocktail Lounge": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "bar",
+            "position": [
+              2.53,
+              -0.15,
+              6.1
+            ],
+            "rotation": [
+              0,
+              -0.3,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "cocktail_lounge",
+          "positions": [{
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [-0.41,-0.12,-0.75],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [0.08,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [-0.24,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [0.68,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.19,-0.12,-0.76],
+              "rotation": [0,-1.68,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [0.51,-0.12,-0.77],
+              "rotation": [0,1.41,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.5,-0.12,0.07],
+              "rotation": [0,3.09,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.32,-0.12,-0.42],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.32,-0.12,-0.11],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.65,-0.12,-0.11],
+              "rotation": [0,-1.63,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.65,-0.12,-0.43],
+              "rotation": [0,-1.63,0]
+            }
+          }],
+          "state": "chatting",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "cocktail",
+            "position": [
+              2.15,
+              0.24,
+              5.61
+            ],
+            "rotation": [
+              -0.54,
+              -0.95,
+              -0.16
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "cocktail_lounge",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Coffee": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "coffee",
+            "position": [
+              4.96,
+              0.33,
+              2.3
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee2",
+            "position": [
+              4.54,
+              0.2,
+              3.88
+            ],
+            "rotation": [
+              0,
+              2.13,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee",
+            "position": [
+              0.36,
+              0.05499999999999999,
+              2.81
+            ],
+            "rotation": [
+              0,
+              -0.77,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee3",
+            "position": [
+              -4.33,
+              0.33,
+              -0.6
+            ],
+            "rotation": [
+              0,
+              -1.3,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "coffee2",
+            "position": [
+              -5.39,
+              0.32,
+              1.3199999999999998
+            ],
+            "rotation": [
+              0,
+              -1.3,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee3",
+            "position": [
+              -9.84,
+              0.32,
+              3.88
+            ],
+            "rotation": [
+              0,
+              -1.3,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee2",
+            "position": [
+              -9.83,
+              0.32,
+              6.109999999999999
+            ],
+            "rotation": [
+              0,
+              0.7,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee2",
+            "position": [
+              1.2999999999999998,
+              0.044999999999999984,
+              19.189999999999998
+            ],
+            "rotation": [
+              0,
+              0.23,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee3",
+            "position": [
+              1.71,
+              0.43,
+              9.280000000000001
+            ],
+            "rotation": [
+              0,
+              0.23,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "cafe",
+            "position": [
+              1.14,
+              -0.18,
+              7.84
+            ],
+            "rotation": [
+              0,
+              1.8,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "coffee",
+          "positions": [{
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [-0.79,-0.12,-0.49],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0,-0.12,-0.49],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.34,-0.12,-0.49],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.68,-0.12,-0.49],
+              "rotation": [0,-1.39,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [-0.45,-0.12,-0.49],
+              "rotation": [0,-1.61,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [-0.62,-0.12,-0.65],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.17,-0.12,-0.65],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.5,-0.12,-0.65],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.97,-0.12,-0.31],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.97,-0.12,0.01],
+              "rotation": [0,0.05,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.97,-0.12,0.34],
+              "rotation": [0,-3.23,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.81,-0.12,0.17],
+              "rotation": [0,1.52,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [0.81,-0.12,-0.15],
+              "rotation": [0,1.52,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [1.14,-0.12,-0.15],
+              "rotation": [0,-1.65,0]
+            }
+          }, {
+            "x": 0.74,
+            "z": 8.21,
+            "orientation": 1.84,
+            "interactive": {
+              "position": [1.14,-0.12,0.17],
+              "rotation": [0,-1.65,0]
+            }
+          }],
+          "state": "chatting",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "coffee",
+            "position": [
+              1.24,
+              0.19000000000000006,
+              7.82
+            ],
+            "rotation": [
+              -0.54,
+              -0.95,
+              -0.16
+            ],
+            "scale": [
+              0.4,
+              0.4,
+              0.4
+            ]
+          },
+          "name": "coffee",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Couches": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "perk_couch",
+            "position": [
+              0.06,
+              -0.08999999999999997,
+              3.9299999999999997
+            ],
+            "rotation": [
+              0,
+              -3.14,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "couches",
+          "positions": [{
+            "x": -0.8,
+            "z": 2.94,
+            "orientation": 0.88,
+            "interactive": {
+              "position": [0.15,0.05,0.2],
+              "rotation": [1.57,0,1.57]
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "perk_couch",
+            "position": [
+              -8.030000000000001,
+              -0.09999999999999998,
+              18.03
+            ],
+            "rotation": [
+              0,
+              -3.14,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "couches",
+          "positions": [{
+            "x": -8.3,
+            "z": 16.99,
+            "orientation": 0.07,
+            "interactive": {
+              "position": [0.15,0.05,0.2],
+              "rotation": [1.57,0,1.57]
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "perk_couch",
+            "position": [
+              -6.45,
+              -0.09999999999999998,
+              16.619999999999997
+            ],
+            "rotation": [
+              0,
+              -1.57,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "couches",
+          "positions": [{
+            "x": -7.34,
+            "z": 16.48,
+            "orientation": 1.4,
+            "interactive": {
+              "position": [0.15,0.05,0.2],
+              "rotation": [1.57,0,1.57]
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "rug",
+            "position": [
+              -7.94,
+              -0.29,
+              16.560000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.8,
+              0.8,
+              0.8
+            ]
+          },
+          "name": "couches",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Dream Workstations": [
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "dreampod",
+            "position": [-11.62,-0.14,17.98],
+            "rotation": [0.01,-0.39,-0.01],
+            "scale": [0.5,0.5,0.5]
+          },
+          "name": "dream_workstations",
+          "positions": [{
+            "x": -10.9,
+            "z": 17.95,
+            "orientation": -1.56,
+            "interactive": {
+              "invisible": true,
+              "model": {
+                "name": "dreampod_inuse",
+                "position": [-11.62,-0.14,17.98],
+                "rotation": [0.01,-0.39,-0.01],
+                "scale": [0.5,0.5,0.5]
+              }
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "dreampod",
+            "position": [-13.0,-0.14,17.98],
+            "rotation": [0.01,-0.39,-0.01],
+            "scale": [0.5,0.5,0.5]
+          },
+          "name": "dream_workstations",
+          "positions": [{
+            "x": -12.33,
+            "z": 17.95,
+            "orientation": -1.56,
+            "interactive": {
+              "invisible": true,
+              "model": {
+                "name": "dreampod_inuse",
+                "position": [-13.0,-0.14,17.98],
+                "rotation": [0.01,-0.39,-0.01],
+                "scale": [0.5,0.5,0.5]
+              }
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "dreampod",
+            "position": [-11.62,-0.14,20.11],
+            "rotation": [0.01,-0.39,-0.01],
+            "scale": [0.5,0.5,0.5]
+          },
+          "name": "dream_workstations",
+          "positions": [{
+            "x": -10.9,
+            "z": 20.1,
+            "orientation": -1.56,
+            "interactive": {
+              "invisible": true,
+              "model": {
+                "name": "dreampod_inuse",
+                "position": [-11.62,-0.14,20.11],
+                "rotation": [0.01,-0.39,-0.01],
+                "scale": [0.5,0.5,0.5]
+              }
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "dreampod",
+            "position": [-13.0,-0.14,20.11],
+            "rotation": [0.01,-0.39,-0.01],
+            "scale": [0.5,0.5,0.5]
+          },
+          "name": "dream_workstations",
+          "positions": [{
+            "x": -12.33,
+            "z": 20.1,
+            "orientation": -1.56,
+            "interactive": {
+              "invisible": true,
+              "model": {
+                "name": "dreampod_inuse",
+                "position": [-13.0,-0.14,20.11],
+                "rotation": [0.01,-0.39,-0.01],
+                "scale": [0.5,0.5,0.5]
+              }
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "dreampod",
+            "position": [-11.62,-0.14,22.17],
+            "rotation": [0.01,-0.39,-0.01],
+            "scale": [0.5,0.5,0.5]
+          },
+          "name": "dream_workstations",
+          "positions": [{
+            "x": -10.9,
+            "z": 22.16,
+            "orientation": -1.56,
+            "interactive": {
+              "invisible": true,
+              "model": {
+                "name": "dreampod_inuse",
+                "position": [-11.62,-0.14,22.17],
+                "rotation": [0.01,-0.39,-0.01],
+                "scale": [0.5,0.5,0.5]
+              }
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "dreampod",
+            "position": [-13.0,-0.14,22.17],
+            "rotation": [0.01,-0.39,-0.01],
+            "scale": [0.5,0.5,0.5]
+          },
+          "name": "dream_workstations",
+          "positions": [{
+            "x": -12.33,
+            "z": 22.16,
+            "orientation": -1.56,
+            "interactive": {
+              "invisible": true,
+              "model": {
+                "name": "dreampod_inuse",
+                "position": [-13.0,-0.14,22.17],
+                "rotation": [0.01,-0.39,-0.01],
+                "scale": [0.5,0.5,0.5]
+              }
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Employee Buses": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "employee_buses",
+            "position": [
+              3.88,
+              -0.03999999999999998,
+              16.72
+            ],
+            "rotation": [
+              0,
+              0.62,
+              0
+            ],
+            "scale": [
+              0.8,
+              0.8,
+              0.8
+            ]
+          },
+          "name": "employee_buses",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "employee_buses",
+            "position": [
+              3.95,
+              -0.03999999999999998,
+              17.46
+            ],
+            "rotation": [
+              0,
+              0.62,
+              0
+            ],
+            "scale": [
+              0.8,
+              0.8,
+              0.8
+            ]
+          },
+          "name": "employee_buses",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Fitness Trackers": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "fitness_tracker",
+            "position": [
+              -2.07,
+              0.3,
+              -1.04
+            ],
+            "rotation": [
+              0.41,
+              0.38,
+              0.67
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "fitness_trackers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "fitness_tracker",
+            "position": [
+              -4.44,
+              0.2700000000000001,
+              -1.8
+            ],
+            "rotation": [
+              0.6,
+              0.36,
+              0.4
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "fitness_trackers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "fitness_tracker",
+            "position": [
+              -5.79,
+              0.26000000000000006,
+              6.140000000000001
+            ],
+            "rotation": [
+              0.76,
+              0.65,
+              0.1
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "fitness_trackers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Gene Therapy Lounges": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "no_max": true,
+          "model": {
+            "name": "clinic",
+            "position": [
+              1.88,
+              -0.21,
+              0.25
+            ],
+            "rotation": [
+              0,
+              -2.54,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "gene_therapy_lounges",
+          "positions": [{
+            "x": 1.59,
+            "z": 1.36,
+            "orientation": -2.56,
+            "interactive": {
+              "invisible": true
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "gene_therapy",
+            "position": [
+              2.38,
+              0.20000000000000007,
+              0.25
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "gene_therapy_lounges",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Gourmet": [
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "gourmet",
+            "position": [
+              2.02,
+              0.26999999999999996,
+              13.99
+            ],
+            "rotation": [
+              0,
+              1.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "gourmet",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "gourmet",
+            "position": [
+              -9.79,
+              0.26999999999999996,
+              12.89
+            ],
+            "rotation": [
+              0,
+              -0.28,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "gourmet",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "gourmet",
+            "position": [
+              -8.77,
+              0.26999999999999996,
+              6.64
+            ],
+            "rotation": [
+              0,
+              -3.35,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "gourmet",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "gourmet",
+            "position": [
+              2.23,
+              -0.010000000000000009,
+              19.17
+            ],
+            "rotation": [
+              0,
+              -7.04,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "gourmet",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "cafeteria",
+            "position": [
+              3.5,
+              -0.18,
+              8.2
+            ],
+            "rotation": [
+              0,
+              3.7,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "gourmet",
+          "positions": [{
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [-0.47,-0.12,-0.72],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [-0.14,-0.12,-0.72],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.79,-0.12,-0.72],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.1,-0.12,-0.72],
+              "rotation": [0,-1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.19,-0.12,-0.72],
+              "rotation": [0,-1.47,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [-0.3,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.02,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.62,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [0.95,-0.12,-0.88],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.4,-0.12,-0.54],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.4,-0.12,-0.22],
+              "rotation": [0,0.07,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.4,-0.12,0.11],
+              "rotation": [0,-2.99,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.26,-0.12,-0.05],
+              "rotation": [0,1.5,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.26,-0.12,-0.37],
+              "rotation": [0,1.5,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.6,-0.12,-0.37],
+              "rotation": [0,-1.58,0]
+            }
+          }, {
+            "x": 3.57,
+            "z": 9,
+            "orientation": 3.64,
+            "interactive": {
+              "position": [1.6,-0.12,-0.05],
+              "rotation": [0,-1.58,0]
+            }
+          }],
+          "state": "chatting",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "gourmet",
+            "position": [
+              3.4,
+              0.13,
+              8.52
+            ],
+            "rotation": [
+              -1.8,
+              0.9,
+              -4.5
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "gourmet",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Gym": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "no_max": true,
+          "model": {
+            "name": "gym",
+            "position": [
+              2.74,
+              -0.21,
+              2.3
+            ],
+            "rotation": [
+              0,
+              -5.66,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "gym",
+          "positions": [{
+            "x": 2.89,
+            "z": 1.36,
+            "orientation": 0.62,
+            "interactive": {
+              "invisible": true
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "dumbbell",
+            "position": [
+              2.19,
+              0.20000000000000007,
+              2.58
+            ],
+            "rotation": [
+              0,
+              0,
+              0.38
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "gym",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Gym Memberships": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "gym_membership",
+            "position": [
+              -1.96,
+              0.27999999999999997,
+              -0.85
+            ],
+            "rotation": [
+              1.7,
+              3.52,
+              2.08
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "gym_memberships",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "gym_membership",
+            "position": [
+              1.57,
+              0.17000000000000004,
+              -0.54
+            ],
+            "rotation": [
+              1.57,
+              3.29,
+              2.67
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "gym_memberships",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "gym_membership",
+            "position": [
+              -4.970000000000001,
+              0.27999999999999997,
+              4.08
+            ],
+            "rotation": [
+              1.69,
+              3.55,
+              1.71
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "gym_memberships",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "gym_membership",
+            "position": [
+              -9.12,
+              0.27999999999999997,
+              7.16
+            ],
+            "rotation": [
+              1.69,
+              3.55,
+              1.71
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "gym_memberships",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Holiday Parties": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "party_hat",
+            "position": [
+              -3.31,
+              0.81,
+              -1.71
+            ],
+            "rotation": [
+              0,
+              -1.9,
+              -0.21
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "holiday_parties",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "party_hat",
+            "position": [
+              -9.43,
+              0.8,
+              8.370000000000001
+            ],
+            "rotation": [
+              0,
+              -1.9,
+              -0.21
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "holiday_parties",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Hovercarts": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              6.26,
+              -0.25,
+              4.48
+            ],
+            "rotation": [
+              0,
+              -11.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              5.85,
+              -0.25,
+              5.26
+            ],
+            "rotation": [
+              0,
+              -11.57,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              -0.56,
+              -0.25,
+              10.63
+            ],
+            "rotation": [
+              0,
+              -12.07,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              -1.08,
+              -0.25,
+              10.91
+            ],
+            "rotation": [
+              0,
+              -12.07,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              3.49,
+              -0.25,
+              -1.24
+            ],
+            "rotation": [
+              0,
+              -10.64,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              3.69,
+              -0.25,
+              -0.66
+            ],
+            "rotation": [
+              0,
+              -10.64,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              -3.8,
+              -0.25,
+              -2
+            ],
+            "rotation": [
+              0,
+              -9.73,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "hovercart",
+            "position": [
+              -3.21,
+              -0.25,
+              -1.81
+            ],
+            "rotation": [
+              0,
+              -9.73,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "hovercarts",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Microbrew Beers": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              0.33,
+              0.15000000000000002,
+              1.98
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              -1.7,
+              0.43,
+              -0.62
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              2.61,
+              0.33,
+              -0.61
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              5.25,
+              1.22,
+              2.2
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              1.9300000000000002,
+              0.41,
+              14.34
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              2.16,
+              0.41,
+              14.25
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              3.87,
+              0.41,
+              14.38
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              -5.73,
+              0.41,
+              12.52
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              2.5,
+              0.14,
+              19.32
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              2.93,
+              -0.13999999999999999,
+              21.560000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "bar",
+            "position": [
+              2.53,
+              -0.15,
+              6.1
+            ],
+            "rotation": [
+              0,
+              -0.3,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [{
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [-0.41,-0.12,-0.75],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [0.08,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [-0.24,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [0.68,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1,-0.12,-0.93],
+              "rotation": [0,0.06,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.19,-0.12,-0.76],
+              "rotation": [0,-1.68,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [0.51,-0.12,-0.77],
+              "rotation": [0,1.41,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.5,-0.12,0.07],
+              "rotation": [0,3.09,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.32,-0.12,-0.42],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.32,-0.12,-0.11],
+              "rotation": [0,1.47,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.65,-0.12,-0.11],
+              "rotation": [0,-1.63,0]
+            }
+          }, {
+            "x": 3.07,
+            "z": 5.48,
+            "orientation": -0.35,
+            "interactive": {
+              "position": [1.65,-0.12,-0.43],
+              "rotation": [0,-1.63,0]
+            }
+          }],
+          "state": "chatting",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "microbrew_beers",
+            "position": [
+              2.15,
+              0.24,
+              5.61
+            ],
+            "rotation": [
+              -0.54,
+              -0.95,
+              -0.16
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "microbrew_beers",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Modafinil": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              -2.92,
+              0.32,
+              -0.62
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              -3.64,
+              0.32,
+              -1.4
+            ],
+            "rotation": [
+              0,
+              0.89,
+              -1.22
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              1.52,
+              0.22000000000000003,
+              -0.65
+            ],
+            "rotation": [
+              0,
+              -0.52,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              0.22,
+              0.040000000000000036,
+              2.91
+            ],
+            "rotation": [
+              0,
+              -1.46,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              1.2400000000000002,
+              0.030000000000000027,
+              19.020000000000003
+            ],
+            "rotation": [
+              0,
+              -1.46,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              -4.970000000000001,
+              0.31,
+              2.5
+            ],
+            "rotation": [
+              0,
+              0.89,
+              -1.22
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              -9.7,
+              0.31,
+              11.92
+            ],
+            "rotation": [
+              0,
+              0.89,
+              -1.22
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              -9.73,
+              0.31,
+              8.780000000000001
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "modafinil",
+            "position": [
+              -5.76,
+              0.31,
+              7.66
+            ],
+            "rotation": [
+              0,
+              -2.9,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "modafinil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Office Keg": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "keg",
+            "position": [
+              5.1899999999999995,
+              0.030000000000000027,
+              2.95
+            ],
+            "rotation": [
+              0,
+              -1.52,
+              0
+            ],
+            "scale": [
+              0.7,
+              0.7,
+              0.7
+            ]
+          },
+          "name": "office_keg",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "keg",
+            "position": [
+              4.13,
+              0.020000000000000018,
+              14.82
+            ],
+            "rotation": [
+              0,
+              -1.52,
+              0
+            ],
+            "scale": [
+              0.7,
+              0.7,
+              0.7
+            ]
+          },
+          "name": "office_keg",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "On-Site Medical Facilities": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "no_max": true,
+          "model": {
+            "name": "clinic",
+            "position": [
+              1.88,
+              -0.21,
+              0.25
+            ],
+            "rotation": [
+              0,
+              -2.54,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "on-site_medical_facilities",
+          "positions": [{
+            "x": 1.59,
+            "z": 1.36,
+            "orientation": -2.56,
+            "interactive": {
+              "invisible": true
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "medical",
+            "position": [
+              2.38,
+              0.20000000000000007,
+              0.25
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.4,
+              0.4,
+              0.4
+            ]
+          },
+          "name": "on-site_medical_facilities",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Ping Pong": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "paddle_with_ball",
+            "position": [
+              -5.3100000000000005,
+              0.17000000000000004,
+              3.42
+            ],
+            "rotation": [
+              -0.6,
+              0.17,
+              -0.82
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "paddle",
+            "position": [
+              -4.94,
+              0.16000000000000003,
+              1.5499999999999998
+            ],
+            "rotation": [
+              -0.7,
+              -0.39,
+              -1.3
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "ping_pong_table",
+            "position": [
+              -5.170000000000001,
+              0.13,
+              2.49
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.8,
+              0.8,
+              0.8
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "paddle_with_ball",
+            "position": [
+              -2.6799999999999997,
+              0.16999999999999998,
+              21.049999999999997
+            ],
+            "rotation": [
+              -0.6,
+              0.17,
+              -0.82
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "paddle",
+            "position": [
+              -2.12,
+              0.15000000000000002,
+              19.15
+            ],
+            "rotation": [
+              -0.7,
+              -0.39,
+              -1.3
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "ping_pong_table",
+            "position": [
+              -2.4,
+              0.12,
+              20.119999999999997
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.8,
+              0.8,
+              0.8
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "paddle_with_ball",
+            "position": [
+              -4.720000000000001,
+              0.16999999999999998,
+              21.1
+            ],
+            "rotation": [
+              -2.5,
+              0.23,
+              -4.2
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "paddle",
+            "position": [
+              -4.85,
+              0.15000000000000002,
+              19.1
+            ],
+            "rotation": [
+              0.76,
+              -2.4,
+              -0.43
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "ping_pong_table",
+            "position": [
+              -4.6,
+              0.12,
+              20.119999999999997
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              0.8,
+              0.8,
+              0.8
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "no_max": true,
+          "model": {
+            "name": "gym",
+            "position": [
+              4.09,
+              -0.21,
+              10.77
+            ],
+            "rotation": [
+              0,
+              -7.3,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [{
+            "x": 3.17,
+            "z": 10.09,
+            "orientation": 0.62,
+            "interactive": {
+              "invisible": true
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "paddle_with_ball",
+            "position": [
+              3.9,
+              0.20000000000000007,
+              10.26
+            ],
+            "rotation": [
+              0,
+              -0.8,
+              -0.7
+            ],
+            "scale": [
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "name": "ping_pong",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Sleep Pods": [
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "sleep_pods",
+            "position": [
+              -8.0,
+              0.54,
+              21.590000000000003
+            ],
+            "rotation": [
+              0,
+              -1.58,
+              0
+            ],
+            "scale": [
+              1.4,
+              1.4,
+              1.4
+            ]
+          },
+          "name": "sleep_pods",
+          "positions": [{
+            "x": -9.5,
+            "z": 22.04,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [0.25,0.25,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }, {
+            "x": -9.5,
+            "z": 22.04,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [0.25,-0.35,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }, {
+            "x": -9.5,
+            "z": 21.2,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [-0.28,0.25,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }, {
+            "x": -9.5,
+            "z": 21.2,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [-0.28,-0.35,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sleep_pods",
+            "position": [
+              -8.0,
+              0.54,
+              19.6
+            ],
+            "rotation": [
+              0,
+              -1.58,
+              0
+            ],
+            "scale": [
+              1.4,
+              1.4,
+              1.4
+            ]
+          },
+          "name": "sleep_pods",
+          "positions": [{
+            "x": -9.5,
+            "z": 20,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [0.26,0.25,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }, {
+            "x": -9.5,
+            "z": 20,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [0.26,-0.35,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }, {
+            "x": -9.5,
+            "z": 19.25,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [-0.27,0.25,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }, {
+            "x": -9.5,
+            "z": 19.25,
+            "orientation": 1.68,
+            "interactive": {
+              "position": [-0.27,-0.35,0.5],
+              "rotation": [1.57,0,3.14],
+              "scale": [0.15,0.15,0.15]
+            }
+          }],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Snacks": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "snacks",
+            "position": [
+              5.25,
+              0.37000000000000005,
+              2.45
+            ],
+            "rotation": [
+              0,
+              -1.52,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "snacks",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "snacks",
+            "position": [
+              0.24,
+              0.09000000000000002,
+              1.67
+            ],
+            "rotation": [
+              0,
+              -5.47,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "snacks",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "snacks",
+            "position": [
+              -4.19,
+              0.37000000000000005,
+              -0.8400000000000001
+            ],
+            "rotation": [
+              0,
+              -6.19,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "snacks",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "snacks",
+            "position": [
+              3.9800000000000004,
+              0.36000000000000004,
+              14.08
+            ],
+            "rotation": [
+              0,
+              -1,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "snacks",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "snacks",
+            "position": [
+              -4.890000000000001,
+              0.36000000000000004,
+              12.8
+            ],
+            "rotation": [
+              0,
+              0.7,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "snacks",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "snacks",
+            "position": [
+              -4.52,
+              0.36000000000000004,
+              7.02
+            ],
+            "rotation": [
+              0,
+              2.38,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "snacks",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "snacks",
+            "position": [
+              -8.98,
+              0.36000000000000004,
+              3.35
+            ],
+            "rotation": [
+              0,
+              0.33,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "snacks",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Sugweyz": [
+    {},
+    {},
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              1.03,
+              -0.25,
+              11.29
+            ],
+            "rotation": [
+              0,
+              -5.5,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              1.15,
+              -0.25,
+              11.17
+            ],
+            "rotation": [
+              0,
+              -5.5,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              1.27,
+              -0.25,
+              11.05
+            ],
+            "rotation": [
+              0,
+              -5.5,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              -4.04,
+              -0.25,
+              -2.9
+            ],
+            "rotation": [
+              0,
+              -7.9,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              -4.09,
+              -0.25,
+              -2.76
+            ],
+            "rotation": [
+              0,
+              -7.9,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              -4.12,
+              -0.25,
+              -2.6
+            ],
+            "rotation": [
+              0,
+              -7.9,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              3.62,
+              -0.25,
+              -2.71
+            ],
+            "rotation": [
+              0,
+              -7.9,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              3.67,
+              -0.25,
+              -2.84
+            ],
+            "rotation": [
+              0,
+              -7.9,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              3.73,
+              -0.25,
+              -2.98
+            ],
+            "rotation": [
+              0,
+              -7.9,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              8.1,
+              -0.25,
+              4.2
+            ],
+            "rotation": [
+              0,
+              -11.1,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              8.01,
+              -0.25,
+              4.39
+            ],
+            "rotation": [
+              0,
+              -11.1,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "sugwey",
+            "position": [
+              7.97,
+              -0.25,
+              4.6
+            ],
+            "rotation": [
+              0,
+              -11.1,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "sugweyz",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    }
+  ],
+  "Transit Stipends": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "metro_card",
+            "position": [
+              -1.76,
+              0.2700000000000001,
+              -1.94
+            ],
+            "rotation": [
+              -1.7,
+              0.34,
+              0.26
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "transit_stipends",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "metro_card",
+            "position": [
+              -4.54,
+              0.2700000000000001,
+              -0.9099999999999999
+            ],
+            "rotation": [
+              -1.2,
+              -0.02,
+              -1.64
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "transit_stipends",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "metro_card",
+            "position": [
+              -5.6,
+              0.26000000000000006,
+              2.1399999999999997
+            ],
+            "rotation": [
+              -1.2,
+              -0.02,
+              -1.64
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "transit_stipends",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "metro_card",
+            "position": [
+              -5.74,
+              0.26000000000000006,
+              12.08
+            ],
+            "rotation": [
+              -1.57,
+              0.32,
+              0.2
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "transit_stipends",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "metro_card",
+            "position": [
+              -9.94,
+              0.26000000000000006,
+              10.91
+            ],
+            "rotation": [
+              -1.28,
+              0.21,
+              -0.95
+            ],
+            "scale": [
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "name": "transit_stipends",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "VR Experience Veil": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "vr_headset",
+            "position": [
+              -2.88,
+              0.33,
+              -1.06
+            ],
+            "rotation": [
+              0,
+              2.11,
+              -0.06
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "vr_experience_veil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "vr_headset",
+            "position": [
+              -2.2399999999999998,
+              0.71,
+              -1.51
+            ],
+            "rotation": [
+              0,
+              -0.18,
+              0.63
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "vr_experience_veil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "vr_headset",
+            "position": [
+              -0.1,
+              0.040000000000000036,
+              2.9
+            ],
+            "rotation": [
+              0,
+              2.1,
+              -0.06
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "vr_experience_veil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "vr_headset",
+            "position": [
+              -4.5,
+              0.31,
+              3.01
+            ],
+            "rotation": [
+              0,
+              2.1,
+              -0.09
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "vr_experience_veil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "vr_headset",
+            "position": [
+              -9.75,
+              0.31,
+              11.1
+            ],
+            "rotation": [
+              0,
+              0.65,
+              -0.09
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "vr_experience_veil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "vr_headset",
+            "position": [
+              -5.5,
+              0.32,
+              8.82
+            ],
+            "rotation": [
+              0,
+              51,
+              0.04
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "vr_experience_veil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "vr_headset",
+            "position": [
+              -9.83,
+              0.6699999999999999,
+              4.109999999999999
+            ],
+            "rotation": [
+              0,
+              51,
+              0.88
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "vr_experience_veil",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ],
+  "Video Conferencing": [
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -2.0,
+              0.81,
+              -0.88
+            ],
+            "rotation": [
+              0,
+              -0.77,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -3.69,
+              0.81,
+              -0.89
+            ],
+            "rotation": [
+              0,
+              -0.77,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -3.54,
+              0.81,
+              -1.62
+            ],
+            "rotation": [
+              0,
+              -2.66,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -1.98,
+              0.81,
+              -1.62
+            ],
+            "rotation": [
+              0,
+              -2.66,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -5.52,
+              0.8,
+              2.17
+            ],
+            "rotation": [
+              0,
+              -2.34,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -5.52,
+              0.8,
+              3.87
+            ],
+            "rotation": [
+              0,
+              -2.34,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -8.91,
+              0.8,
+              3.87
+            ],
+            "rotation": [
+              0,
+              -4.19,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -4.76,
+              0.8,
+              2.28
+            ],
+            "rotation": [
+              0,
+              -4.19,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -9.65,
+              0.8,
+              6.84
+            ],
+            "rotation": [
+              0,
+              -2.34,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -5.52,
+              0.8,
+              8.54
+            ],
+            "rotation": [
+              0,
+              -2.34,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -4.76,
+              0.8,
+              6.95
+            ],
+            "rotation": [
+              0,
+              -4.19,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -9.65,
+              0.8,
+              13.4
+            ],
+            "rotation": [
+              0,
+              -2.34,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              4.28,
+              1.49,
+              7.84
+            ],
+            "rotation": [
+              0,
+              -7.85,
+              0
+            ],
+            "scale": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        },
+        {
+          "model": {
+            "name": "webcam",
+            "position": [
+              -4.76,
+              0.8,
+              11.81
+            ],
+            "rotation": [
+              0,
+              -4.19,
+              0
+            ],
+            "scale": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "name": "video_conferencing",
+          "positions": [],
+          "state": "idle",
+          "type": "employee"
+        }
+      ]
+    },
+    {}
+  ]
+}

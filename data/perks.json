@@ -1,0 +1,917 @@
+[
+  {
+    "name": "Alcohol",
+    "upgrades": [
+      {
+        "name": "Office Keg",
+        "description": "Some people work better with a buzz",
+        "cost": 5000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 1
+          },
+          {
+            "type": "productivity",
+            "value": 1
+          }
+        ],
+        "stats": {
+          "Cups served": [0, 1]
+        }
+      },
+      {
+        "name": "Microbrew Beers",
+        "description": "Fancier beers",
+        "cost": 1000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 2
+          }
+        ],
+        "stats": {
+          "Buzzes caused": [0, 2]
+        }
+      },
+      {
+        "name": "Cocktail Lounge",
+        "description": "",
+        "cost": 10000,
+        "requiredOffice": 2,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 10
+          },
+          {
+            "type": "productivity",
+            "value": 8
+          }
+        ],
+        "stats": {
+          "Bondings made": [0, 3]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Campus Transit",
+    "upgrades": [
+      {
+        "name": "Bike Share",
+        "description": "Minimize transit time on our campus",
+        "cost": 10000,
+        "requiredOffice": 2,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 4
+          }
+        ],
+        "stats": {
+          "Trips made": [0, 10]
+        }
+      },
+      {
+        "name": "Sugweyz",
+        "description": "Move even more quickly around campus",
+        "cost": 20000,
+        "requiredOffice": 2,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 3
+          },
+          {
+            "type": "productivity",
+            "value": 8
+          }
+        ],
+        "stats": {
+          "Trips made": [0, 12]
+        }
+      },
+      {
+        "name": "Hovercarts",
+        "description": "The smoothest and fastest ride around campus",
+        "cost": 50000,
+        "requiredOffice": 2,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 14
+          }
+        ],
+        "stats": {
+          "Workers transported": [0, 14]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Catering",
+    "upgrades": [
+      {
+        "name": "Snacks",
+        "description": "Snacks to keep people energized",
+        "cost": 5000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 1
+          },
+          {
+            "type": "productivity",
+            "value": 2
+          }
+        ],
+        "stats": {
+          "Crumbs produced": [0, 20]
+        }
+      },
+      {
+        "name": "Catering",
+        "description": "Feed employees at the office so they don't waste time going out to eat",
+        "cost": 15000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 5
+          }
+        ],
+        "stats": {
+          "Stomachs filled": [0, 1]
+        }
+      },
+      {
+        "name": "Gourmet Chef",
+        "description": "With the highest-quality food, employees not only stay through lunch, but breakfast and dinner as well",
+        "cost": 25000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 5
+          },
+          {
+            "type": "productivity",
+            "value": 15
+          }
+        ],
+        "stats": {
+          "Stomachs filled": [0, 1]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Stimulants",
+    "upgrades": [
+      {
+        "name": "Coffee",
+        "description": "Drink coffee, do stuff faster",
+        "cost": 5000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 1
+          },
+          {
+            "type": "productivity",
+            "value": 3
+          }
+        ],
+        "stats": {
+          "Nerves stimulated": [0, 50]
+        }
+      },
+      {
+        "name": "Butter Coffee",
+        "description": "Brain-optimized coffee concoction",
+        "cost": 10000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 7
+          }
+        ],
+        "stats": {
+          "Brains greased": [0, 1],
+          "Stools loosened": [0, 1]
+        }
+      },
+      {
+        "name": "Modafinil",
+        "description": "The Airforce-grade stimulant, now powering workers",
+        "cost": 20000,
+        "requiredOffice": 0,
+        "requiredTechs": [
+          "Advanced Psychotropics"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 16
+          }
+        ],
+        "stats": {
+          "Sleep avoided (hours)": [1, 5]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Company Events",
+    "upgrades": [
+      {
+        "name": "Holiday Parties",
+        "description": "Organize and sponsor office parties",
+        "cost": 20000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "Company Retreats",
+        "description": "Oragnize retreats for employees to work away from work",
+        "cost": 50000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 6
+          },
+          {
+            "type": "productivity",
+            "value": 12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Counselors",
+    "upgrades": [
+      {
+        "name": "Text-a-Therapist",
+        "description": "Sometimes the stress of non-stop work gets to people",
+        "cost": 20000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 6
+          }
+        ]
+      },
+      {
+        "name": "Life Coaches",
+        "description": "Help employees navigate their careers successfully",
+        "cost": 40000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 6
+          },
+          {
+            "type": "productivity",
+            "value": 12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Custodial Services",
+    "upgrades": [
+      {
+        "name": "Custodial Staff",
+        "description": "They'll do the chores, we'll do the working",
+        "cost": 50000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 1
+          },
+          {
+            "type": "productivity",
+            "value": 8
+          }
+        ],
+        "stats": {
+          "Times acknowledged": [0, 1],
+          "Garbage cleaned (lbs)": [10, 50]
+        }
+      },
+      {
+        "name": "Caretaker Automatons",
+        "description": "These Caretakers will tend to every one of our employee's needs",
+        "cost": 100000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 24
+          }
+        ],
+        "stats": {
+          "Garbage cleaned (lbs)": [20, 60]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Daycare",
+    "upgrades": [
+      {
+        "name": "Daycare",
+        "description": "Employees with children shouldn't have to spend precious time taking care of them",
+        "cost": 25000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "name": "Egg Freezing",
+        "description": "Employees should't have to choose between their career and having children",
+        "cost": 50000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 5
+          },
+          {
+            "type": "productivity",
+            "value": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Augmentations",
+    "upgrades": [
+      {
+        "name": "Fitness Trackers",
+        "description": "Give employees the tool to optimize themselves",
+        "cost": 15000,
+        "requiredOffice": 0,
+        "requiredTechs": [
+          "Wearables"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 1
+          },
+          {
+            "type": "productivity",
+            "value": 3
+          }
+        ],
+        "stats": {
+          "Selves quantified": [0, 1]
+        }
+      },
+      {
+        "name": "Psychic Pacemakers",
+        "description": "Peak physical health is not enough, employees should be at their mental best as well",
+        "cost": 35000,
+        "requiredOffice": 0,
+        "requiredTechs": [
+          "Integrated Implants"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 20
+          },
+          {
+            "type": "productivity",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "name": "Neuromorphic Implants",
+        "description": "Employees should not be limited by their human minds",
+        "cost": 70000,
+        "requiredOffice": 0,
+        "requiredTechs": [
+          "Neuromorphic Chips"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 20
+          },
+          {
+            "type": "productivity",
+            "value": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gyms",
+    "upgrades": [
+      {
+        "name": "Gym Memberships",
+        "description": "Subsidizing gym memberships will save us money on health insurance",
+        "cost": 10000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 1
+          }
+        ],
+        "stats": {
+          "Iron pumped": [0, 1],
+          "Pecs juiced": [0, 1]
+        }
+      },
+      {
+        "name": "Gym",
+        "description": "If gyms are on-site, employees waste less time",
+        "cost": 80000,
+        "requiredOffice": 2,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 4
+          }
+        ],
+        "stats": {
+          "Iron pumped": [0, 2],
+          "Pecs juiced": [0, 2]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Medical Facilities",
+    "upgrades": [
+      {
+        "name": "On-Site Medical Facilities",
+        "description": "Employees should always be in their most productive condition",
+        "cost": 80000,
+        "requiredOffice": 2,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 20
+          }
+        ],
+        "stats": {
+          "Anxieties reduced": [0, 6],
+          "Shots administered": [0, 4],
+          "Drugs prescribed": [0, 7]
+        }
+      },
+      {
+        "name": "Gene Therapy Lounges",
+        "description": "Complimentary gene reconfigurations so employees can be their best",
+        "cost": 120000,
+        "requiredOffice": 2,
+        "requiredTechs": [
+          "Genetic Engineering"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 10
+          },
+          {
+            "type": "productivity",
+            "value": 28
+          }
+        ],
+        "stats": {
+          "Employees improved": [0, 1],
+          "Genes resequenced": [0, 52]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Entertainment",
+    "upgrades": [
+      {
+        "name": "Ping-Pong",
+        "description": "Some game time helps employees unwind and think through problems",
+        "cost": 10000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 1
+          }
+        ],
+        "stats": {
+          "Games played": [0, 0],
+          "Times used as a table": [0, 1]
+        }
+      },
+      {
+        "name": "VR Experience Veil",
+        "description": "With the VREV, employees can feel like they're painting a masterpiece when they're working on a spreadsheet",
+        "cost": 100000,
+        "requiredOffice": 0,
+        "requiredTechs": [
+          "Virtual Reality"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 28
+          },
+          {
+            "type": "productivity",
+            "value": 40
+          }
+        ],
+        "stats": {
+          "Employees deceived": [0, 1],
+          "Locales simulated": [0, 1]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Resting",
+    "upgrades": [
+      {
+        "name": "Couches",
+        "description": "Give employees a place to crash after all-nighters",
+        "cost": 1000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 3
+          }
+        ],
+        "stats": {
+          "Hours napped": [0,3]
+        }
+      },
+      {
+        "name": "Sleep Pods",
+        "description": "On-site rejuvenation pods for employees to rest in, cutting down on commuting time",
+        "cost": 100000,
+        "requiredOffice": 1,
+        "requiredTechs": [
+          "Cryonics"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 24
+          }
+        ],
+        "stats": {
+          "Hours napped": [0,3],
+          "Extra time spent at office": [0,3]
+        }
+      },
+      {
+        "name": "Dream Workstations",
+        "description": "Dream workstations allow employees to work while they dream",
+        "cost": 150000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 6
+          },
+          {
+            "type": "productivity",
+            "value": 48
+          }
+        ],
+        "stats": {
+          "Hours napped": [0,3],
+          "Extra time spent at office": [0,5],
+          "Work dreams produced": [0,2]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Telepresence",
+    "upgrades": [
+      {
+        "name": "Video Conferencing",
+        "description": "Employees can meet, even if they're not together",
+        "cost": 10000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 1
+          },
+          {
+            "type": "productivity",
+            "value": 4
+          }
+        ],
+        "stats": {
+          "Conferences had": [0,3],
+          "Dropped calls": [0,3],
+          "People interrupted": [0,2]
+        }
+      },
+      {
+        "name": "Hivemind",
+        "description": "Employees can join into a single aggregate consciousness from anywhere for optimal meetings",
+        "cost": 100000,
+        "requiredOffice": 1,
+        "requiredTechs": [
+          "Brain-Computer Interfaces"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 1
+          },
+          {
+            "type": "productivity",
+            "value": 48
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Commuting",
+    "upgrades": [
+      {
+        "name": "Transit Stipends",
+        "description": "Help employees get to the office with less hassle",
+        "cost": 10000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          },
+          {
+            "type": "productivity",
+            "value": 2
+          }
+        ],
+        "stats": {
+          "Turnstiles turned": [0,2],
+          "Tranfers made": [0,3]
+        }
+      },
+      {
+        "name": "Employee Buses",
+        "description": "Get employees to work as efficiently and conveniently as possible",
+        "cost": 50000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 8
+          },
+          {
+            "type": "event",
+            "value": "Bus Protests"
+          }
+        ],
+        "stats": {
+          "Protests caused": [0,3],
+          "Employees shuttled": [0,1],
+          "Wifi used (GB)": [0,3]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Vacation",
+    "upgrades": [
+      {
+        "name": "Unlimited Vacation",
+        "description": "Attractive to employees, though office culture will keep them from taking advantage",
+        "cost": 5000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          },
+          {
+            "type": "productivity",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Vacation Implants",
+        "description": "Implant memories of wonderful vacations without employees using any real time",
+        "cost": 50000,
+        "requiredOffice": 0,
+        "requiredTechs": [
+          "Memory Emulation"
+        ],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 28
+          },
+          {
+            "type": "productivity",
+            "value": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Office Dog",
+    "upgrades": [
+      {
+        "name": "Yapper",
+        "description": "A small yapper to lighten the mood",
+        "cost": 10000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 2
+          }
+        ],
+        "stats": {
+          "Times pet": [0, 3]
+        }
+      },
+      {
+        "name": "Pupper",
+        "description": "A nice yapper to inspire the office",
+        "cost": 20000,
+        "requiredOffice": 0,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 4
+          }
+        ],
+        "stats": {
+          "Times pet": [0, 3]
+        }
+      },
+      {
+        "name": "Doggo",
+        "description": "A cool doggo to liven things up",
+        "cost": 40000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 8
+          }
+        ],
+        "stats": {
+          "Times pet": [0, 3]
+        }
+      },
+      {
+        "name": "Woofer",
+        "description": "A big woofer to shake it up",
+        "cost": 60000,
+        "requiredOffice": 1,
+        "requiredTechs": [],
+        "effects": [
+          {
+            "type": "happiness",
+            "value": 10
+          }
+        ],
+        "stats": {
+          "Times pet": [0, 3]
+        }
+      }
+    ]
+  }
+]

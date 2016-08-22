@@ -1,0 +1,46 @@
+@import "https://fonts.googleapis.com/css?family=Work+Sans:400,700";
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/assets/fonts/FantasqueSansMono-Italic.eot'); /* IE 9 Compatibility Mode */
+  src: url('/assets/fonts/FantasqueSansMono-Italic.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+       url('/assets/fonts/FantasqueSansMono-Italic.woff2') format('woff2'),
+       url('/assets/fonts/FantasqueSansMono-Italic.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+       url('/assets/fonts/FantasqueSansMono-Italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/FantasqueSansMono-Italic.svg#FantasqueSansMono-Italic') format('svg'); /* Chrome < 4, Legacy iOS */
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/assets/fonts/FantasqueSansMono-Regular.eot'); /* IE 9 Compatibility Mode */
+  src: url('/assets/fonts/FantasqueSansMono-Regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+       url('/assets/fonts/FantasqueSansMono-Regular.woff2') format('woff2'),
+       url('/assets/fonts/FantasqueSansMono-Regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+       url('/assets/fonts/FantasqueSansMono-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/FantasqueSansMono-Regular.svg#FantasqueSansMono-Regular') format('svg'); /* Chrome < 4, Legacy iOS */
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/assets/fonts/FantasqueSansMono-BoldItalic.eot'); /* IE 9 Compatibility Mode */
+  src: url('/assets/fonts/FantasqueSansMono-BoldItalic.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+       url('/assets/fonts/FantasqueSansMono-BoldItalic.woff2') format('woff2'),
+       url('/assets/fonts/FantasqueSansMono-BoldItalic.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+       url('/assets/fonts/FantasqueSansMono-BoldItalic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/FantasqueSansMono-BoldItalic.svg#FantasqueSansMono-BoldItalic') format('svg'); /* Chrome < 4, Legacy iOS */
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/assets/fonts/FantasqueSansMono-Bold.eot'); /* IE 9 Compatibility Mode */
+  src: url('/assets/fonts/FantasqueSansMono-Bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+       url('/assets/fonts/FantasqueSansMono-Bold.woff2') format('woff2'),
+       url('/assets/fonts/FantasqueSansMono-Bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+       url('/assets/fonts/FantasqueSansMono-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/FantasqueSansMono-Bold.svg#FantasqueSansMono-Bold') format('svg'); /* Chrome < 4, Legacy iOS */
+  font-weight: 700;
+  font-style: normal;
+}

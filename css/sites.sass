@@ -1,0 +1,312 @@
+.computer
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4)
+
+.viewport
+  background: #fff
+  height: 420px
+  overflow-y: scroll
+
+.site
+  overflow: hidden
+  display: none
+  &:first-child
+    display: block
+
+.statusbar
+  font-size: 0.8em
+  background: #eaeaea
+  padding: 0.3em 0.4em 0.4em 0.4em
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2)
+  position: relative
+  overflow: hidden
+  cursor: default
+  img
+    height: 0.8em
+
+.statusbar-left
+  float: left
+  span
+    margin-left: 0.3em
+
+.statusbar-right
+  float: right
+
+.site-body
+  padding: 2em
+
+.cherublist
+  background: #f0f0f0
+  .header
+    text-align: center
+    margin: 0 0 2em 0
+    h1
+      margin: 0
+    h6
+      color: #aaa
+      font-weight: normal
+  .site-header
+    padding: 0em 2em
+    background: #C4CBFF
+    overflow: hidden
+    h1
+      font-size: 1em
+      font-family: "Fantasque Sans Mono", monospace
+      font-style: italic
+      font-weight: normal
+      float: left
+      margin: 1.1em 0 0 0
+    .meta
+      color: rgba(0, 0, 0, 0.5)
+      margin: 1.5em 0
+  section
+    padding: 1em
+    margin: 0 0 1em 0
+    background: #fff
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.05)
+  .site-body
+    h2
+      font-weight: normal
+      font-size: 0.8em
+      color: #aaa
+      margin: 0 0 1em 0
+      float: left
+    h5
+      display: inline
+    h4
+      font-weight: normal
+      color: #515F78
+  .section-header
+    overflow: hidden
+
+.cherublist-left
+  width: 70%
+  float: left
+
+.cherublist-right
+  width: 30%
+  float: right
+  padding-left: 2em
+
+.cherublist .grid
+  font-family: "Helvetica", sans-serif
+  font-size: 0.8em
+  li
+    height: auto
+  h6
+    color: #aaa
+  ul
+    color: #7E8798
+
+.founders
+  .grid li
+    width: 49%
+    margin: 0
+  img
+    height: 6em
+    vertical-align: middle
+
+.team
+  img
+    vertical-align: middle
+  .grid li
+    width: 16%
+    margin: 0em 4% 2em 4%
+  h1
+    font-size: 3em
+    font-weight: bold
+    text-align: right
+
+.cherublist .meta
+  font-size: 0.8em
+  color: #ccc
+  font-style: italic
+  text-align: right
+
+.map
+  position: relative
+  width: 100%
+  height: 18em
+  margin: 0 0 1em 0
+
+.news
+  font-family: 'Georgia', serif
+  .site-header
+    text-align: center
+    padding: 1em
+    h1
+      font-size: 1.4em
+      font-weight: normal
+      text-transform: uppercase
+    h5
+      font-style: italic
+      font-weight: normal
+  .site-body
+    max-width: 760px
+    margin: 0 auto
+  img
+    width: 100%
+    margin-bottom: 0.5em
+  article
+    margin-bottom: 2em
+
+.news-header
+  overflow: hidden
+
+.news-main-article
+  width: 60%
+  float: left
+  padding-right: 2em
+
+.news-header-right
+  width: 40%
+  float: right
+  font-size: 0.9em
+
+.news-other-articles
+  article
+    width: 30%
+    float: left
+    margin-right: 3%
+    font-size: 0.8em
+    height: 20em
+  h3
+    margin-bottom: 1em
+
+.start-year-prompt
+  text-align: center
+  padding: 4em 0
+  background: #0000ff
+  height: 100%
+  color: #fff
+
+.mail
+  .site-body
+    padding: 0em
+    overflow: hidden
+  .site-header
+    background: #65C1EF
+    color: #fff
+    padding: 1em
+    overflow: hidden
+    h1
+      float: left
+
+.mail-nav
+  float: right
+  font-size: 0.8em
+  cursor: default
+  li
+    display: inline-block
+    margin: 0.8em 0 0.8em 1.2em
+
+.mail-menu
+  float: left
+  width: 18%
+  padding: 1em
+  cursor: default
+  background: #eee
+  height: 410px
+
+.mail-boxes, .mail-chat
+  margin: 1em 0
+
+.mail-boxes li
+  margin: 0.2em 0
+
+.mail-chat
+  li
+    margin: 0.2em 0
+    &:first-child
+      font-weight: bold
+      color: #aaa
+  font-size: 0.9em
+
+.mail-chat-offline
+  color: #FB3F3F
+
+.email, .inbox
+  float: right
+  width: 82%
+  padding: 1em 1.5em
+  line-height: 1.3
+
+.email-meta
+  margin: 0 0 1em 0
+  font-size: 0.7em
+  color: #777
+  li:first-child
+    font-weight: bold
+    font-size: 1.8em
+    color: #222
+
+.email-menu
+  border: 1px solid #eee
+  font-size: 0.7em
+  margin: 0 0 2em 0
+  cursor: default
+  li
+    &:last-child
+      float: right
+      margin-right: 1.2em
+    color: #aaa
+    display: inline-block
+    margin: 1.2em 0 1.2em 1.2em
+
+.email-body
+  max-width: 480px
+
+.inbox
+  li
+    padding: 0.5em 1em
+    border: 1px solid #e0e0e0
+    border-bottom: none
+    font-size: 0.85em
+    cursor: pointer
+    &:last-child
+      border-bottom: 1px solid #e0e0e0
+  .sender
+    float: right
+    color: #888
+
+.email
+  display: none
+
+.show-inbox
+  cursor: pointer
+  font-weight: bold
+
+.appbar
+  background: #d2d2d2
+  overflow: hidden
+  border-bottom: 1px solid rgba(200, 200, 200, 0.1)
+
+.tabbar
+  font-size: 0.8em
+  float: left
+  li
+    cursor: pointer
+    float: left
+    padding: 0.4em 1em
+    width: 12em
+    color: #888
+    background: #aaa
+    border-radius: 0.4em 0.4em 0 0
+    margin: 0.4em 0 0 0.2em
+    background: #eaeaea
+    color: #222
+    opacity: 0.3
+    &.selected, &:hover
+      opacity: 1
+
+.appmenu
+  float: right
+  font-size: 1.1em
+  cursor: default
+  padding: 0.2em 0.5em 0 0.5em
+  span
+    &:nth-child(1)
+      color: #14C758
+    &:nth-child(2)
+      color: #FF8445
+    &:nth-child(3)
+      color: #fd1c1c

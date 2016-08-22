@@ -1,0 +1,824 @@
+[
+  {
+    "name": "Ad.Analytics",
+    "productTypes": [
+      "Analytics",
+      "Ad"
+    ],
+    "description": "Hyper-taragted ad networks",
+    "effects": [
+      {
+        "type": "spendingMultiplier",
+        "value": 0.01
+      }
+    ],
+    "feature": 1,
+    "names": [
+      "HyperAd"
+    ]
+  },
+  {
+    "name": "Ad.Genetics",
+    "productTypes": [
+      "Ad",
+      "Genetics"
+    ],
+    "description": "Genetics ad profiling network",
+    "effects": [],
+    "feature": 1,
+    "names": [
+      "GeneAd"
+    ]
+  },
+  {
+    "name": "Ad.Implant",
+    "productTypes": [
+      "Ad",
+      "Implant"
+    ],
+    "description": "Thrifty consumers can rent out thoughtspace for thought-ads and save on their favorite brands!",
+    "effects": [],
+    "feature": 2,
+    "names": [
+      "BrainShare"
+    ]
+  },
+  {
+    "name": "Ad.Social Network",
+    "description": "A social networking site - where people can be people!",
+    "productTypes": [
+      "Ad",
+      "Social Network"
+    ],
+    "effects": [{
+      "type": "specialEffect",
+      "value": "Worker Insight"
+    }],
+    "feature": 0,
+    "names": [
+      "PalHub",
+      "FaceSpace"
+    ]
+  },
+  {
+    "name": "Ad.Virtual Reality",
+    "productTypes": [
+      "Ad",
+      "Virtual Reality"
+    ],
+    "description": "VR ad network",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "VirtuAd"
+    ]
+  },
+  {
+    "name": "AI.Robot",
+    "description": "Automated labor and service",
+    "effects": [],
+    "productTypes": [
+      "AI",
+      "Robot"
+    ],
+    "feature": 0,
+    "names": [
+      "Servo",
+      "Alfred",
+      "Handy"
+    ]
+  },
+  {
+    "name": "AI.Defense",
+    "description": "National automated defense and threat-detection system",
+    "productTypes": [
+      "AI",
+      "Defense"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "EagleEye",
+      "DefenseWatch"
+    ]
+  },
+  {
+    "name": "AI.Gadget",
+    "description": "Driverless cars",
+    "productTypes": [
+      "AI",
+      "Gadget"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "DriveIt",
+      "Chaffeur"
+    ]
+  },
+  {
+    "name": "AI.Implant",
+    "description": "Bad at making tough decisions? Not sure what the morally correct course of action is? An artificial conscience may be what you need!",
+    "productTypes": [
+      "AI",
+      "Implant"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Think4Me",
+      "WWID"
+    ]
+  },
+  {
+    "name": "AI.Mobile",
+    "description": "AI companionship in a mobile device",
+    "productTypes": [
+      "AI",
+      "Mobile"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Her&Him",
+      "PhoneFriend"
+    ]
+  },
+  {
+    "name": "Analytics.Credit",
+    "productTypes": [
+      "Analytics",
+      "Credit"
+    ],
+    "description": "High-frequency trading algorithms",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Trade2000"
+    ]
+  },
+  {
+    "name": "Analytics.Defense",
+    "productTypes": [
+      "Analytics",
+      "Defense"
+    ],
+    "description": "PreCrime systems",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "PreCrime"
+    ]
+  },
+  {
+    "name": "Analytics.E-Commerce",
+    "productTypes": [
+      "Analytics",
+      "E-Commerce"
+    ],
+    "description": "Personalized shopping platform",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "BuyMe"
+    ]
+  },
+  {
+    "name": "Analytics.Entertainment",
+    "productTypes": [
+      "Analytics",
+      "Entertainment"
+    ],
+    "description": "Personalized streaming media services.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Entertainalytics"
+    ]
+  },
+  {
+    "name": "Analytics.Gadget",
+    "productTypes": [
+      "Analytics",
+      "Gadget"
+    ],
+    "description": "Home automation devices",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "SmartHome"
+    ]
+  },
+  {
+    "name": "Analytics.Genetics",
+    "productTypes": [
+      "Analytics",
+      "Genetics"
+    ],
+    "description": "Gene therapy treatments",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "TheraGene"
+    ]
+  },
+  {
+    "name": "Analytics.Implant",
+    "productTypes": [
+      "Analytics",
+      "Implant"
+    ],
+    "description": "The next level of quantified self - quantified psychological tracking and analysis.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "ThoughtChip"
+    ]
+  },
+  {
+    "name": "Analytics.Social Network",
+    "description": "A finely-detailed metric of your intrinsic social value, based on your online activity and purchasing habits. This will change the way hiring works!",
+    "productTypes": [
+      "Analytics",
+      "Social Network"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "UScore",
+      "WhatImWorth"
+    ]
+  },
+  {
+    "name": "Analytics.Wearable",
+    "description": "Fitness trackers and quantified self devices",
+    "productTypes": [
+      "Analytics",
+      "Wearable"
+    ],
+    "effects": [{
+      "type": "specialEffect",
+      "value": "Worker Quant"
+    }],
+    "feature": 0,
+    "names": [
+      "Wearalytics",
+      "FitNis"
+    ]
+  },
+  {
+    "name": "Robot.Celebrity",
+    "productTypes": [
+      "Robot",
+      "Celebrity"
+    ],
+    "description": "Robo pop star",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "RoboPopStar"
+    ]
+  },
+  {
+    "name": "Robot.Credit",
+    "productTypes": [
+      "Robot",
+      "Credit"
+    ],
+    "description": "What do we even need *people* to buy our products for anyways? We can just build robots to work and spend their cash on us.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "BuyBot"
+    ]
+  },
+  {
+    "name": "Robot.Defense",
+    "productTypes": [
+      "Robot",
+      "Defense"
+    ],
+    "description": "Robotic soldiers and law enforcement",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "RoboWarrior"
+    ]
+  },
+  {
+    "name": "Celebrity.Entertainment",
+    "productTypes": [
+      "Celebrity",
+      "Entertainment"
+    ],
+    "description": "Blockbuster film",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "CheesyMovieName"
+    ]
+  },
+  {
+    "name": "Celebrity.Genetics",
+    "productTypes": [
+      "Celebrity",
+      "Genetics"
+    ],
+    "description": "Licensed genetic sequences from your favorite celebrities, ready to incorporate into your own DNA.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "CelebGenes"
+    ]
+  },
+  {
+    "name": "Celebrity.Synthetic Organism",
+    "productTypes": [
+      "Celebrity",
+      "Synthetic Organism"
+    ],
+    "description": "Vat-grown celebrities - perfect down to their DNA.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "DNACelebs"
+    ]
+  },
+  {
+    "name": "Celebrity.Virtual Reality",
+    "description": "Perfectly-personalized holographic celebrities for every demographic and taste!",
+    "productTypes": [
+      "Celebrity",
+      "Virtual Reality"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Hayuke Minu",
+      "HoloPac"
+    ]
+  },
+  {
+    "name": "Cognitive.Drug",
+    "productTypes": [
+      "Cognitive",
+      "Drug"
+    ],
+    "description": "Cognitive emotional control and enhancement drugs",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Xany"
+    ]
+  },
+  {
+    "name": "Cognitive.Entertainment",
+    "productTypes": [
+      "Cognitive",
+      "Entertainment"
+    ],
+    "description": "Simulated memory experiences",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "TotalMemory"
+    ]
+  },
+  {
+    "name": "Cognitive.Social Network",
+    "description": "A social cognitive experience - merge thoughts and become a collective consciousness.",
+    "effects": [],
+    "productTypes": [
+      "Cognitive",
+      "Social Network"
+    ],
+    "feature": 0,
+    "names": [
+      "HiveMind",
+      "GroupThink",
+      "MindMeld"
+    ]
+  },
+  {
+    "name": "Cognitive.Virtual Reality",
+    "productTypes": [
+      "Cognitive",
+      "Virtual Reality"
+    ],
+    "description": "A virtual world for your mind",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "MindWorld"
+    ]
+  },
+  {
+    "name": "Credit.E-Commerce",
+    "description": "People want to buy stuff, but can't because they don't have money. With our new credit card we can extend them credit so they can keep buying our stuff.",
+    "effects": [],
+    "productTypes": [
+      "Credit",
+      "E-Commerce"
+    ],
+    "feature": 0,
+    "names": [
+      "UberCard",
+      "Pisa",
+      "USA Express"
+    ]
+  },
+  {
+    "name": "Credit.Implant",
+    "productTypes": [
+      "Credit",
+      "Implant"
+    ],
+    "description": "Keep detailed track of risky loaners with these neural loan monitoring devices.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "LoanNeural"
+    ]
+  },
+  {
+    "name": "Credit.Mobile",
+    "description": "We can empower many small businesses and inviduals that need to process payments but don't want to pay credit card companies and their ilk. They can pay us instead.",
+    "effects": [],
+    "feature": 0,
+    "productTypes": [
+      "Credit",
+      "Mobile"
+    ],
+    "names": [
+      "PayBack",
+      "Tipper",
+      "CashPal",
+      "Cube"
+    ]
+  },
+  {
+    "name": "Credit.Social Network",
+    "description": "A microfinancing platform makes sure credit is available for everyone.",
+    "effects": [],
+    "productTypes": [
+      "Credit",
+      "Social Network"
+    ],
+    "feature": 0,
+    "names": [
+      "SpareChange",
+      "LendAHand",
+      "GimmeMoney"
+    ]
+  },
+  {
+    "name": "Default",
+    "description": "This combination was a failure.",
+    "effects": [],
+    "feature": -1,
+    "names": ["Junk"]
+  },
+  {
+    "name": "Defense.Drug",
+    "description": "Enhancement-performing and aggression drugs for soldiers.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Furinol"
+    ],
+    "productTypes": [
+      "Defense",
+      "Drug"
+    ]
+  },
+  {
+    "name": "Defense.Entertainment",
+    "productTypes": [
+      "Defense",
+      "Entertainment"
+    ],
+    "description": "The thrill of cinema not enough? Tour conflict zones under the safety of our highly-trained security personnel and get right up to the action!",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "WarTour"
+    ]
+  },
+  {
+    "name": "Defense.Genetics",
+    "productTypes": [
+      "Defense",
+      "Genetics"
+    ],
+    "description": "Bioweapons with genetic-targeting systems.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "GeneKill"
+    ]
+  },
+  {
+    "name": "Defense.Space",
+    "description": "Orbital weaponry",
+    "productTypes": [
+      "Defense",
+      "Space"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "SpaceStrike",
+      "Zeus"
+    ]
+  },
+  {
+    "name": "Defense.Synthetic Organism",
+    "description": "Custom-designed supersoldiers",
+    "productTypes": [
+      "Defense",
+      "Synthetic Organism"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "SuperSoldier",
+      "DNArmy"
+    ]
+  },
+  {
+    "name": "Defense.Wearable",
+    "description": "Exoskeletons",
+    "effects": [],
+    "productTypes": [
+      "Defense",
+      "Wearable"
+    ],
+    "feature": 0,
+    "names": [
+      "exMan",
+      "eXo",
+      "Skeltor"
+    ]
+  },
+  {
+    "name": "Drug.Entertainment",
+    "productTypes": [
+      "Drug",
+      "Entertainment"
+    ],
+    "description": "Recreational drugs",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Happi"
+    ]
+  },
+  {
+    "name": "Drug.Genetics",
+    "productTypes": [
+      "Drug",
+      "Genetics"
+    ],
+    "description": "Genetic therapy treatments",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "GeneTherapy"
+    ]
+  },
+  {
+    "name": "Drug.Implant",
+    "productTypes": [
+      "Drug",
+      "Implant"
+    ],
+    "description": "Mood pacemakers",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Moody"
+    ]
+  },
+  {
+    "name": "E-Commerce.Entertainment",
+    "description": "DRM'd entertainment products",
+    "productTypes": [
+      "E-Commerce",
+      "Entertainment"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "TuneStore",
+      "BuyMeDia"
+    ]
+  },
+  {
+    "name": "E-Commerce.Genetics",
+    "productTypes": [
+      "E-Commerce",
+      "Genetics"
+    ],
+    "description": "Online marketplace for designer babies and other genetics-based products.",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "BabyStop"
+    ]
+  },
+  {
+    "name": "E-Commerce.Mobile",
+    "description": "A marketplace where aspiring companies can sell their software.",
+    "productTypes": [
+      "E-Commerce",
+      "Mobile"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "AppShop",
+      "SoftStore"
+    ]
+  },
+  {
+    "name": "E-Commerce.Social Network",
+    "description": "A social network where people can 'share' goods and services by getting paid for them.",
+    "effects": [],
+    "productTypes": [
+      "E-Commerce",
+      "Social Network"
+    ],
+    "feature": 0,
+    "names": [
+      "AirShare",
+      "Suber",
+      "HireMe"
+    ]
+  },
+  {
+    "name": "Entertainment.Mobile",
+    "productTypes": [
+      "Entertainment",
+      "Mobile"
+    ],
+    "description": "Tablets",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "yPad"
+    ]
+  },
+  {
+    "name": "Entertainment.Social Network",
+    "description": "TV is dead - people don't want to have to leave their computers to watch something. With recent advances in streaming technology, we can support that behavior.",
+    "effects": [],
+    "productTypes": [
+      "Entertainment",
+      "Social Network"
+    ],
+    "feature": 0,
+    "names": [
+      "Flixspot",
+      "InstaVids",
+      "StreamIt"
+    ]
+  },
+  {
+    "name": "Entertainment.Space",
+    "productTypes": [
+      "Entertainment",
+      "Space"
+    ],
+    "description": "Space trips",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "galactica"
+    ]
+  },
+  {
+    "name": "Gadget.Mobile",
+    "productTypes": [
+      "Gadget",
+      "Mobile"
+    ],
+    "description": "Smartphones",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "yPhone"
+    ]
+  },
+  {
+    "name": "Gadget.Space",
+    "productTypes": [
+      "Gadget",
+      "Space"
+    ],
+    "description": "Satellites",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Sats"
+    ]
+  },
+  {
+    "name": "Genetics.Social Network",
+    "description": "Genetics-based dating social network",
+    "productTypes": [
+      "Genetics",
+      "Social Network"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Genee",
+      "DTFDNA"
+    ]
+  },
+  {
+    "name": "Genetics.Synthetic Organism",
+    "productTypes": [
+      "Genetics",
+      "Synthetic Organism"
+    ],
+    "description": "Genetically-engineered pets",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Pocket Creatures",
+      "DNAnimals"
+    ]
+  },
+  {
+    "name": "Implant.Mobile",
+    "productTypes": [
+      "Implant",
+      "Mobile"
+    ],
+    "description": "Retinal displays",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "yOptics"
+    ]
+  },
+  {
+    "name": "Mobile.Social Network",
+    "description": "People have phones and use social networks. Seems like a natural combination.",
+    "effects": [],
+    "feature": 0,
+    "productTypes": [
+      "Mobile",
+      "Social Network"
+    ],
+    "names": [
+      "LetsChat",
+      "SupApp",
+      "FaceTalk",
+      "Blabber"
+    ]
+  },
+  {
+    "name": "Mobile.Wearable",
+    "productTypes": [
+      "Mobile",
+      "Wearable"
+    ],
+    "description": "Smartwatches",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "yWatch"
+    ]
+  },
+  {
+    "name": "Social Network.Virtual Reality",
+    "description": "Our virtual reality social network will give us unprecedented direct access to our consumers. They'll be spending all their time in a world of our creation!",
+    "effects": [],
+    "productTypes": [
+      "Social Network",
+      "Virtual Reality"
+    ],
+    "feature": 0,
+    "names": [
+      "Matrix",
+      "OZ",
+      "The Network"
+    ]
+  },
+  {
+    "name": "Virtual Reality.Wearable",
+    "description": "VR headset",
+    "productTypes": [
+      "Virtual Reality",
+      "Wearable"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "VRT",
+      "RetinalVR"
+    ]
+  }
+]

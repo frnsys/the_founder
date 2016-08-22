@@ -1,0 +1,142 @@
+[
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "Protesters have begun targeting the buses of <PLAYERCOMPANY>, whose presence has contributed to escalating rent and increasing financial troubles for residents of <PLAYERHQ>.",
+    "effects": [
+      {
+        "type": "productivity",
+        "value": -5
+      }
+    ],
+    "from": "Punda Daily",
+    "name": "Bus Protests",
+    "repeatable": true,
+    "type": 1
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "some internet vigilantes with nothing better to do have started DDoSing some of our services...",
+    "effects": [
+      {
+        "type": "productivity",
+        "value": -5
+      }
+    ],
+    "from": null,
+    "name": "DDoS Attack",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "Those internet vigilantes broke into our network and leaked a bunch of emails. We look like assholes. What should we do?",
+    "effects": [],
+    "from": "",
+    "name": "Emails Leaked",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "A factory in Shenzhen, which handles production for many major hardware companies, including <PLAYERCOMPANY>, is the subject of much controversy after a worker committed suicide during work hours. One worker commented: \"We must work long hours and very quickly. If we get injured, we cannot stop until our shift is over.\"",
+    "effects": [],
+    "from": "The Times",
+    "name": "Factory Suicides",
+    "repeatable": true,
+    "type": 1
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "ah shit - workers at several of our overseas locations have been organizing and sabotaging equipment. it's killing our productivity. if you take care of it, our productivity will return to normal. otherwise, it won't.",
+    "effects": [],
+    "from": "<COFOUNDER>@<PLAYERCOMPANY>.com",
+    "name": "Labor sabotage",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "a learn-to-code initiative is asking us to sponsor one of their classes. this could be a good opportunity to create more skilled workers for our company. they're looking for $5,000 -- what do you think?",
+    "effects": [],
+    "from": "<COFOUNDER>@<PLAYERCOMPANY>.com",
+    "name": "Learn-to-code sponsorship opportunity",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "Hey - look, we're paying our employees a lot here and this competitive hiring is getting a little pricey. What do you say we just agree to ease up? Future hires will be cheaper. It'll be win-win for all of us.",
+    "effects": [],
+    "from": "ceo@<AICOMPANY>.com",
+    "name": "No-hire agreement",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "We've detected some intruders trying to steal our trade secrets.",
+    "effects": [],
+    "from": "",
+    "name": "North Korean Hackers",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "Shit - our user database has been hacked! User information and passwords were stolen, and our developers were storing them in plaintext!",
+    "effects": [],
+    "from": "",
+    "name": "Passwords Hacked",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "Shit - our user database has been hacked. User information and passwords were stolen, but luckily they were salted and encrypted.",
+    "effects": [],
+    "from": "",
+    "name": "Passwords Stolen",
+    "repeatable": true,
+    "type": 0
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "We have obtained exclusive documents from an anonymous whistleblower detailing a massive government surveillance initiative led by the NSA. A number of companies were complicit, including <AICOMPANY> and <PLAYERCOMPANY>, providing the NSA unfettered access to users' private information.",
+    "effects": [],
+    "from": "The Protector",
+    "name": "Secret NSA Program Unveiled",
+    "repeatable": true,
+    "type": 1
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "You've denied our request for data access, but we are legally allowed to force compliance. All your data are belong to us.",
+    "effects": [],
+    "from": "classified@classified.classified",
+    "name": "The NSA insists",
+    "repeatable": false,
+    "type": 1
+  },
+  {
+    "actions": [],
+    "conditions": [],
+    "description": "A leaked email exchange between the CEOs of<AICOMPANY> and <PLAYERCOMPANY> revealed a conspiracy to lower employee salaries through illegal no-compete agreements.",
+    "effects": [],
+    "from": "The Times",
+    "name": "Wage Conspiracy Revealed",
+    "repeatable": true,
+    "type": 1
+  }
+]

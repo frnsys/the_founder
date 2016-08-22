@@ -1,0 +1,76 @@
+{
+  "intro": [
+    "Welcome! I'm your incubator mentor. Running a successful startup is not easy, but I'll give you guidance.",
+    "You're just starting out, so you'll work from your apartment for now.",
+    "Right now it's just your cofounder in the office, but eventually you'll have a buzzing hive of talented employees.",
+    "Anyways, here's how things work. At the start of each year, you'll be able to manage all aspects of your company via the <em>Manage Company</em> tab - hiring, R&D, and so on.",
+    "Once you feel ready to take on the year, you can head over to the <em>Start the Year</em> tab in your browser.",
+    "When you start the year, you will enter <em>The Market</em> and have to compete with other companies for market share.",
+    "But I'll explain more of that when the time is right.",
+    "For now, I recommend clicking on <em>Manage Company</em> tab and hiring an employee or two.",
+    "You'll need them to build more and better products, which will help in <em>The Market</em>.",
+    "But it's your company so do w/e"
+  ],
+  "manage": [
+    "This is where you can manage all aspects of your company."
+  ],
+  "verticals": [
+    "As your company grows, you'll want to expand its operations into new verticals.",
+    "New verticals give access to new product types to innovate with!"
+  ],
+  "productTypes": [
+    "Here you can view the product types you have available."
+  ],
+  "products": [
+    "Here you can view the products you've innovated."
+  ],
+  "specialProjects": [
+    "Special projects are expensive undertakings but can lead to massive Market advantages and open up totally new revenue streams.",
+    "Each special project has a few prerequisite products that must be innovated before the special project is available."
+  ],
+  "acquisitions": [
+    "The frustrating part of the Market is all the competition, but you can eat up other companies."
+  ],
+  "lobbying": [
+    "The government is not an enemy to the Market; it can be a strong ally."
+  ],
+  "research": [
+    "To most effectively innovate, you need an Innovation Labs - here is where all your bleeding edge research is carried out."
+  ],
+  "employees": [
+    "Your employees are the lifeblood of your company, at least until they can be replaced."
+  ],
+  "recruiting": [
+    "Here you can recruit candidates for employment. Fancier methods attract higher quality candidates!"
+  ],
+  "hiring": [
+    "Now you've got a few candidates to choose from - pick as many as you'd like to hire!",
+    "Unfortunately, we don't get much detailed info about candidates. But their job title should give some hint about their proficiency.",
+    "Maybe if we built a platform where they voluntarily shared personal information, this would be easier..."
+  ],
+  "perks": [
+    "Happy employees are better employees - <em>perks</em> attract and retain the best talent and keep them at the office for longer.",
+    "Most perks can be upgraded too!"
+  ],
+  "locations": [
+    "In order to keep growing, you'll have to expand to other cities and eventually countries.",
+    "Expanding to new locations gives access to new markets, and some places even provide nice bonuses!"
+  ],
+
+  "market_start": [
+    "Welcome to <em>The Market</em>! Here you'll battle competitors for <em>Market share</em>.",
+    "<em>Market share</em> tiles have money on them. Each turn those Market shares will be harvested for revenue.",
+    "<em>Market share</em> tiles can be captured with <em>products</em>.",
+    "Products can be developed at an <em>office</em> you own (a blue title with an 'o')."
+  ],
+  "market_createProduct": [
+    "<em>Products</em> are created by combining two product types. <em>Innovate</em> with novel combinations and see if you can create a breakthrough!",
+    "When a product is created, it can be used to capture market share, office, or resource tiles.",
+    "Products can also directly battle one another for dominance.",
+    "Note that products have a resource requirement - if that requirement is not fulfilled, that product won't develop."
+  ],
+  "market_createPromo": [
+    "<em>Promos</em> are special pieces that can't capture tiles, but they can add bonuses to them, temporarily making them easier to capture or increasing their revenue.",
+    "Use them to strategically weaken competitors' grips on market shares or to strengthen your own."
+  ]
+}

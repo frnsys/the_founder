@@ -1,0 +1,96 @@
+[
+  {
+    "name": "Delphi",
+    "cost": 10000,
+    "description": "State-of-the-art market prediction algorithms.",
+    "effects": [
+      {
+        "type": "specialEffect",
+        "value": "Prescient"
+      }
+    ],
+    "requiredProducts": ["Analytics.Credit", "Analytics.Defense", "Analytics.Social Network"]
+  },
+  {
+    "name": "Cloning Facility",
+    "cost": 10000,
+    "description": "",
+    "effects": [
+      {
+        "type": "specialEffect",
+        "value": "Cloneable"
+      }
+    ],
+    "requiredProducts": ["Analytics.Genetics", "Genetics.Synthetic Organism", "Genetics.Social Network"]
+  },
+  {
+    "name": "Interstellar Ship",
+    "cost": 10000,
+    "description": "",
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "locations",
+          "value": "Gliese 832c"
+        }
+      },
+      {
+        "type": "event",
+        "value": "Aliens"
+      }
+    ],
+    "requiredProducts": ["Defense.Space", "AI.Robot", "Gadget.Space"]
+  },
+  {
+    "name": "Mars Colony",
+    "cost": 10000,
+    "description": "Establish the first off-planet colony and develop a brand new market.",
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "locations",
+          "value": "Mars Colony"
+        }
+      }
+    ],
+    "requiredProducts": ["Gadget.Space", "Entertainment.Space"]
+  },
+  {
+    "name": "Robotics Facility",
+    "cost": 10000,
+    "description": "A robotics facility gives access to new heights of automated labor.",
+    "effects": [
+      {
+        "type": "specialEffect",
+        "value": "Automation"
+      }
+    ],
+    "requiredProducts": ["AI.Robot", "AI.Gadget", "AI.Mobile"]
+  },
+  {
+    "name": "Telomere Therapy",
+    "cost": 10000,
+    "description": "Dying is for the poor.",
+    "effects": [
+      {
+        "type": "specialEffect",
+        "value": "Immortal"
+      }
+    ],
+    "requiredProducts": ["Analytics.Genetics", "Drug.Genetics"]
+  },
+  {
+    "name": "The Founder AI",
+    "cost": 10000,
+    "description": "",
+    "effects": [
+      {
+        "type": "specialEffect",
+        "value": "Founder AI"
+      }
+    ],
+    "requiredProducts": ["AI.Mobile", "AI.Gadget", "Cognitive.Virtual Reality", "AI.Implant", "Analytics.Implant"]
+  }
+]

@@ -1,0 +1,311 @@
+[
+  {
+    "name": "Bangalore",
+    "cost": 300000,
+    "effects": [
+      {
+        "type": "wageMultiplier",
+        "value": -0.1
+      }
+    ],
+    "market": "Asia",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Berlin",
+    "cost": 300000,
+    "effects": [],
+    "market": "Europe",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Boston",
+    "cost": 300000,
+    "effects": [],
+    "market": "North America",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Buenos Aires",
+    "cost": 300000,
+    "effects": [],
+    "market": "South America",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Dubai",
+    "cost": 300000,
+    "effects": [],
+    "market": "Middle East",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Dublin",
+    "cost": 300000,
+    "effects": [],
+    "market": "Europe",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Gliese 832c",
+    "cost": 300000,
+    "effects": [],
+    "market": "Alien",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Hong Kong",
+    "cost": 300000,
+    "effects": [],
+    "market": "Asia",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "London",
+    "cost": 300000,
+    "effects": [],
+    "market": "Europe",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Mars Colony",
+    "cost": 300000,
+    "effects": [],
+    "market": "Extra Terra",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "New Antarctic Colonies",
+    "cost": 300000,
+    "effects": [],
+    "market": "Antarctica",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "New York",
+    "cost": 300000,
+    "effects": [],
+    "market": "North America",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "San Francisco",
+    "cost": 300000,
+    "effects": [],
+    "market": "North America",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Seasteading State",
+    "cost": 300000,
+    "effects": [
+      {
+        "type": "wageMultiplier",
+        "value": -0.1
+      }
+    ],
+    "market": "Antarctica",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Shenzhen",
+    "cost": 300000,
+    "effects": [
+      {
+        "type": "costMultiplier",
+        "value": -0.1
+      }
+    ],
+    "market": "Asia",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Singapore",
+    "cost": 300000,
+    "effects": [],
+    "market": "Asia",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Sydney",
+    "cost": 300000,
+    "effects": [],
+    "market": "Oceania",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Tel Aviv",
+    "cost": 300000,
+    "effects": [],
+    "market": "Middle East",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Tokyo",
+    "cost": 300000,
+    "effects": [],
+    "market": "Asia",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Toronto",
+    "cost": 300000,
+    "effects": [],
+    "market": "North America",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  },
+  {
+    "name": "Lagos",
+    "cost": 300000,
+    "effects": [],
+    "market": "Africa",
+    "size": 1,
+    "skills": {
+      "productivity": 10,
+      "happiness": 10,
+      "design": 10,
+      "marketing": 10,
+      "engineering": 10
+    }
+  }
+]

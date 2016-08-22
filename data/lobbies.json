@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Foreign Intervention",
+    "cost": 100000,
+    "description": "Have the government lend a helping hand in making sovereign nations more receptive to our presence.",
+    "effects": [
+      {
+        "type": "expansionCostMultiplier",
+        "value": -0.05
+      }
+    ]
+  },
+  {
+    "name": "Lower Min. Wage",
+    "cost": 100000,
+    "description": "It's too high as it is.",
+    "effects": [
+      {
+        "type": "wageMultiplier",
+        "value": -0.05
+      }
+    ]
+  },
+  {
+    "name": "DARPA Grants",
+    "cost": 100000,
+    "description": "Special funds for special research",
+    "effects": []
+  },
+  {
+    "name": "Tax Breaks",
+    "cost": 100000,
+    "description": "Is a man not entitled to the sweat of his brow?",
+    "effects": [
+      {
+        "type": "taxRate",
+        "value": -0.05
+      }
+    ]
+  },
+  {
+    "name": "Worker Visas",
+    "cost": 100000,
+    "description": "Allow more worker visas for companies like ours.",
+    "effects": [
+      {
+        "type": "wageMultiplier",
+        "value": -0.05
+      }
+    ]
+  }
+]

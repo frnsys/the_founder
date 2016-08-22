@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Word-of-Mouth",
+    "description": "Ask friends and family",
+    "cost": 15000,
+    "targetScore": 4,
+    "robots": false
+  },
+  {
+    "name": "Referrals",
+    "description": "Have employees refer friends",
+    "cost": 30000,
+    "targetScore": 8,
+    "robots": false
+  },
+  {
+    "name": "Job Listing",
+    "description": "Post job listings on some popular sites",
+    "cost": 45000,
+    "targetScore": 12,
+    "robots": false
+  },
+  {
+    "name": "Job Fair",
+    "description": "Participate in a job fair",
+    "cost": 80000,
+    "targetScore": 18,
+    "robots": false
+  },
+  {
+    "name": "Recruiting Firm",
+    "description": "Hunt down the best candidates",
+    "cost": 120000,
+    "targetScore": 24,
+    "robots": false
+  },
+  {
+    "name": "Conference",
+    "description": "Host a conference to attract the cream of the crop",
+    "cost": 200000,
+    "targetScore": 36,
+    "robots": false
+  },
+  {
+    "name": "Develop Robots",
+    "description": "Buy some automated workers",
+    "cost": 20000,
+    "targetScore": 36,
+    "robots": true
+  }
+]

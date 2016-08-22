@@ -1,0 +1,60 @@
+{
+  "Passionate": {
+    "worker": {
+      "minSalary": 0.9
+    }
+  },
+  "Thought Leader": {
+    "worker": {
+      "marketing": 10
+    }
+  },
+  "Detail Oriented": {
+    "worker": {
+      "design": 10
+    }
+  },
+  "Hard Worker": {
+    "worker": {
+      "productivity": 5,
+      "burnoutRate": 0.01
+    }
+  },
+  "Team Player": {
+    "company": {
+      "productivity": 1
+    }
+  },
+  "Chill": {
+    "worker": {
+      "productivity": -5
+    },
+    "company": {
+      "burnoutRate": -0.001
+    }
+  },
+  "Privileged": {
+    "worker": {
+      "design": 2,
+      "marketing": 2,
+      "engineering": 2,
+      "happiness": 2,
+      "burnoutRate": -0.01,
+      "minSalary": 0.9
+    }
+  },
+  "Go-Getter": {
+    "worker": {
+      "productivity": 5
+    }
+  },
+  "Driven": {
+    "worker": {
+      "productivity": 2,
+      "design_growth": 0.005,
+      "engineering_growth": 0.005,
+      "marketing_growth": 0.005
+    }
+  }
+}
+

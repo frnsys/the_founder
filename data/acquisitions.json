@@ -1,0 +1,86 @@
+[
+  {
+    "name": "The Times Journal",
+    "description": "The golden standard of journalism",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "B&C",
+    "description": "Don't worry",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "Carrot, Inc",
+    "description": "We'll change your life",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "Coralzon",
+    "description": "All the products you could want",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "FaceSpace",
+    "description": "The space for your digital face",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "GenoMe",
+    "description": "Biotechnology as unique as you",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "HyperReal",
+    "description": "Shape your own reality",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "Kougle",
+    "description": "Your information at everyone's fingertips",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "Paladin",
+    "description": "Don't think, we've got it covered",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "Praeta Industries",
+    "description": "Desire is infinite, and so is our selection",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "Goldwin Brothers",
+    "description": "Investing in our future",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  },
+  {
+    "name": "Volta",
+    "description": "Taking you away",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
+  }
+]

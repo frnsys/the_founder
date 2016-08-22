@@ -1,0 +1,146 @@
+[
+  {
+    "name": "B&C",
+    "description": "Don't worry",
+    "disabled": false,
+    "founder": "June Val",
+    "skills": {
+      "design": 1.1,
+      "marketing": 1.3,
+      "engineering": 0.8
+    },
+    "productTypes": ["Ad", "Celebrity", "Entertainment", "E-Commerce", "Drug", "Virtual Reality"]
+  },
+  {
+    "name": "Carrot, Inc",
+    "description": "We'll change your life",
+    "disabled": false,
+    "founder": "Steven Lobst",
+    "skills": {
+      "design": 1.2,
+      "marketing": 1.2,
+      "engineering": 1
+    },
+    "productTypes": ["E-Commerce", "Virtual Reality", "Gadget", "Mobile", "Wearable"]
+  },
+  {
+    "name": "Coralzon",
+    "description": "All the products you could want",
+    "disabled": false,
+    "founder": "Geoff Mesos",
+    "skills": {
+      "design": 0.8,
+      "marketing": 0.8,
+      "engineering": 1.5
+    },
+    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Gadget"]
+  },
+  {
+    "name": "FaceSpace",
+    "description": "The space for your digital face",
+    "disabled": true,
+    "founder": "Mike Jukerburg",
+    "skills": {
+      "design": 1,
+      "marketing": 0.9,
+      "engineering": 1.1
+    },
+    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Ad", "Social Network", "AI"]
+  },
+  {
+    "name": "GenoMe",
+    "description": "Biotechnology as unique as you",
+    "disabled": false,
+    "founder": "Megan Moore",
+    "skills": {
+      "design": 0.8,
+      "marketing": 1.2,
+      "engineering": 1.3
+    },
+    "productTypes": ["Genetics", "Synthetic Organism", "Implant", "Drug", "Cognitive"]
+  },
+  {
+    "name": "HyperReal",
+    "description": "Shape your own reality",
+    "disabled": false,
+    "founder": "Bill Drud",
+    "skills": {
+      "design": 0.9,
+      "marketing": 1.5,
+      "engineering": 1.1
+    },
+    "productTypes": ["Virtual Reality", "Entertainment", "Implant", "Drug", "Cognitive"]
+  },
+  {
+    "name": "Kougle",
+    "description": "Your information at everyone's fingertips",
+    "disabled": false,
+    "founder": "Sergey Paj",
+    "skills": {
+      "design": 1,
+      "marketing": 0.8,
+      "engineering": 1.3
+    },
+    "productTypes": ["Virtual Reality", "Social Network", "Ad", "Analytics", "AI"]
+  },
+  {
+    "name": "Paladin",
+    "description": "Don't think, we've got it covered",
+    "disabled": false,
+    "founder": "Aaron Koi",
+    "skills": {
+      "design": 1,
+      "marketing": 0.6,
+      "engineering": 1.8
+    },
+    "productTypes": ["Analytics", "Defense", "AI", "Robot", "Space"]
+  },
+  {
+    "name": "Praeta Industries",
+    "description": "Desire is infinite, and so is our selection",
+    "disabled": false,
+    "founder": "Michael Manehl",
+    "skills": {
+      "design": 1.1,
+      "marketing": 1.4,
+      "engineering": 1.1
+    },
+    "productTypes": ["Gadget", "Mobile", "Sensor", "Ad", "Implant", "Wearable"]
+  },
+  {
+    "name": "Goldwin Brothers",
+    "description": "Investing in our future",
+    "disabled": false,
+    "founder": "Ed Goldwin",
+    "skills": {
+      "design": 1,
+      "marketing": 1.6,
+      "engineering": 0.8
+    },
+    "productTypes": ["Credit", "Analytics", "AI", "Ad", "Sensors"]
+  },
+  {
+    "name": "Volta",
+    "description": "Taking you away",
+    "disabled": false,
+    "founder": "Eleanor Tusk",
+    "skills": {
+      "design": 1.2,
+      "marketing": 1.4,
+      "engineering": 1.4
+    },
+    "productTypes": ["AI", "Gadget", "Defense", "Space", "Sensors"]
+  },
+  {
+    "name": "Dark Industries",
+    "description": "We're a thinktank",
+    "disabled": false,
+    "founder": "Morgane",
+    "skills": {
+      "design": 1.4,
+      "marketing": 1.4,
+      "engineering": 1.4
+    },
+    "productTypes": ["AI", "Sharing", "Drug", "Social Network", "Entertainment"]
+  }
+]

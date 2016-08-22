@@ -1,0 +1,611 @@
+{
+    "ABW": {
+        "fillKey": "north_america"
+    }, 
+    "AFG": {
+        "fillKey": "asia"
+    }, 
+    "AGO": {
+        "fillKey": "africa"
+    }, 
+    "AIA": {
+        "fillKey": "north_america"
+    }, 
+    "ALB": {
+        "fillKey": "europe"
+    }, 
+    "AND": {
+        "fillKey": "europe"
+    }, 
+    "ARE": {
+        "fillKey": "middle_east"
+    }, 
+    "ARG": {
+        "fillKey": "south_america"
+    }, 
+    "ARM": {
+        "fillKey": "asia"
+    }, 
+    "ATA": {
+        "fillKey": "antarctica"
+    }, 
+    "ATG": {
+        "fillKey": "north_america"
+    }, 
+    "AUS": {
+        "fillKey": "oceania"
+    }, 
+    "AUT": {
+        "fillKey": "europe"
+    }, 
+    "AZE": {
+        "fillKey": "asia"
+    }, 
+    "BDI": {
+        "fillKey": "africa"
+    }, 
+    "BEL": {
+        "fillKey": "europe"
+    }, 
+    "BEN": {
+        "fillKey": "africa"
+    }, 
+    "BFA": {
+        "fillKey": "africa"
+    }, 
+    "BGD": {
+        "fillKey": "asia"
+    }, 
+    "BGR": {
+        "fillKey": "europe"
+    }, 
+    "BHR": {
+        "fillKey": "middle_east"
+    }, 
+    "BHS": {
+        "fillKey": "north_america"
+    }, 
+    "BIH": {
+        "fillKey": "europe"
+    }, 
+    "BLR": {
+        "fillKey": "europe"
+    }, 
+    "BLZ": {
+        "fillKey": "north_america"
+    }, 
+    "BOL": {
+        "fillKey": "south_america"
+    }, 
+    "BRA": {
+        "fillKey": "south_america"
+    }, 
+    "BRB": {
+        "fillKey": "north_america"
+    }, 
+    "BRN": {
+        "fillKey": "asia"
+    }, 
+    "BTN": {
+        "fillKey": "asia"
+    }, 
+    "BWA": {
+        "fillKey": "africa"
+    }, 
+    "CAF": {
+        "fillKey": "africa"
+    }, 
+    "CAN": {
+        "fillKey": "north_america"
+    }, 
+    "CHE": {
+        "fillKey": "europe"
+    }, 
+    "CHL": {
+        "fillKey": "south_america"
+    }, 
+    "CHN": {
+        "fillKey": "asia"
+    }, 
+    "CIV": {
+        "fillKey": "africa"
+    }, 
+    "CMR": {
+        "fillKey": "africa"
+    }, 
+    "COG": {
+        "fillKey": "africa"
+    }, 
+    "COK": {
+        "fillKey": "oceania"
+    }, 
+    "COL": {
+        "fillKey": "south_america"
+    }, 
+    "COM": {
+        "fillKey": "africa"
+    }, 
+    "CPV": {
+        "fillKey": "africa"
+    }, 
+    "CRI": {
+        "fillKey": "north_america"
+    }, 
+    "CUB": {
+        "fillKey": "north_america"
+    }, 
+    "CYM": {
+        "fillKey": "north_america"
+    }, 
+    "CYP": {
+        "fillKey": "europe"
+    }, 
+    "CZE": {
+        "fillKey": "europe"
+    }, 
+    "DEU": {
+        "fillKey": "europe"
+    }, 
+    "DJI": {
+        "fillKey": "africa"
+    }, 
+    "DMA": {
+        "fillKey": "north_america"
+    }, 
+    "DNK": {
+        "fillKey": "europe"
+    }, 
+    "DOM": {
+        "fillKey": "north_america"
+    }, 
+    "DZA": {
+        "fillKey": "africa"
+    }, 
+    "ECU": {
+        "fillKey": "south_america"
+    }, 
+    "EGY": {
+        "fillKey": "africa"
+    }, 
+    "ERI": {
+        "fillKey": "africa"
+    }, 
+    "ESH": {
+        "fillKey": "africa"
+    }, 
+    "ESP": {
+        "fillKey": "europe"
+    }, 
+    "EST": {
+        "fillKey": "europe"
+    }, 
+    "ETH": {
+        "fillKey": "africa"
+    }, 
+    "FIN": {
+        "fillKey": "europe"
+    }, 
+    "FJI": {
+        "fillKey": "oceania"
+    }, 
+    "FLK": {
+        "fillKey": "south_america"
+    }, 
+    "FRA": {
+        "fillKey": "europe"
+    }, 
+    "FRO": {
+        "fillKey": "europe"
+    }, 
+    "FSM": {
+        "fillKey": "oceania"
+    }, 
+    "GAB": {
+        "fillKey": "africa"
+    }, 
+    "GBR": {
+        "fillKey": "europe"
+    }, 
+    "GEO": {
+        "fillKey": "asia"
+    }, 
+    "GHA": {
+        "fillKey": "africa"
+    }, 
+    "GIB": {
+        "fillKey": "europe"
+    }, 
+    "GIN": {
+        "fillKey": "africa"
+    }, 
+    "GLP": {
+        "fillKey": "north_america"
+    }, 
+    "GMB": {
+        "fillKey": "africa"
+    }, 
+    "GNB": {
+        "fillKey": "africa"
+    }, 
+    "GNQ": {
+        "fillKey": "africa"
+    }, 
+    "GRC": {
+        "fillKey": "europe"
+    }, 
+    "GRD": {
+        "fillKey": "south_america"
+    }, 
+    "GTM": {
+        "fillKey": "north_america"
+    }, 
+    "GUF": {
+        "fillKey": "south_america"
+    }, 
+    "GUY": {
+        "fillKey": "south_america"
+    }, 
+    "HKG": {
+        "fillKey": "asia"
+    }, 
+    "HND": {
+        "fillKey": "north_america"
+    }, 
+    "HRV": {
+        "fillKey": "europe"
+    }, 
+    "HTI": {
+        "fillKey": "north_america"
+    }, 
+    "HUN": {
+        "fillKey": "europe"
+    }, 
+    "IDN": {
+        "fillKey": "asia"
+    }, 
+    "IND": {
+        "fillKey": "asia"
+    }, 
+    "IRL": {
+        "fillKey": "europe"
+    }, 
+    "IRN": {
+        "fillKey": "middle_east"
+    }, 
+    "IRQ": {
+        "fillKey": "middle_east"
+    }, 
+    "ISL": {
+        "fillKey": "europe"
+    }, 
+    "ISR": {
+        "fillKey": "middle_east"
+    }, 
+    "ITA": {
+        "fillKey": "europe"
+    }, 
+    "JAM": {
+        "fillKey": "north_america"
+    }, 
+    "JOR": {
+        "fillKey": "middle_east"
+    }, 
+    "JPN": {
+        "fillKey": "asia"
+    }, 
+    "KAZ": {
+        "fillKey": "asia"
+    }, 
+    "KEN": {
+        "fillKey": "africa"
+    }, 
+    "KGZ": {
+        "fillKey": "asia"
+    }, 
+    "KHM": {
+        "fillKey": "asia"
+    }, 
+    "KIR": {
+        "fillKey": "oceania"
+    }, 
+    "KOR": {
+        "fillKey": "asia"
+    }, 
+    "KWT": {
+        "fillKey": "middle_east"
+    }, 
+    "LAO": {
+        "fillKey": "asia"
+    }, 
+    "LBN": {
+        "fillKey": "middle_east"
+    }, 
+    "LBR": {
+        "fillKey": "africa"
+    }, 
+    "LBY": {
+        "fillKey": "africa"
+    }, 
+    "LKA": {
+        "fillKey": "asia"
+    }, 
+    "LSO": {
+        "fillKey": "africa"
+    }, 
+    "LTU": {
+        "fillKey": "europe"
+    }, 
+    "LUX": {
+        "fillKey": "europe"
+    }, 
+    "LVA": {
+        "fillKey": "europe"
+    }, 
+    "MAC": {
+        "fillKey": "asia"
+    }, 
+    "MAR": {
+        "fillKey": "africa"
+    }, 
+    "MCO": {
+        "fillKey": "europe"
+    }, 
+    "MDG": {
+        "fillKey": "africa"
+    }, 
+    "MDV": {
+        "fillKey": "asia"
+    }, 
+    "MEX": {
+        "fillKey": "north_america"
+    }, 
+    "MHL": {
+        "fillKey": "oceania"
+    }, 
+    "MKD": {
+        "fillKey": "europe"
+    }, 
+    "MLI": {
+        "fillKey": "africa"
+    }, 
+    "MLT": {
+        "fillKey": "europe"
+    }, 
+    "MMR": {
+        "fillKey": "asia"
+    }, 
+    "MNG": {
+        "fillKey": "asia"
+    }, 
+    "MOZ": {
+        "fillKey": "africa"
+    }, 
+    "MRT": {
+        "fillKey": "africa"
+    }, 
+    "MSR": {
+        "fillKey": "north_america"
+    }, 
+    "MTQ": {
+        "fillKey": "north_america"
+    }, 
+    "MUS": {
+        "fillKey": "africa"
+    }, 
+    "MWI": {
+        "fillKey": "africa"
+    }, 
+    "MYS": {
+        "fillKey": "asia"
+    }, 
+    "NAM": {
+        "fillKey": "africa"
+    }, 
+    "NER": {
+        "fillKey": "africa"
+    }, 
+    "NGA": {
+        "fillKey": "africa"
+    }, 
+    "NIC": {
+        "fillKey": "north_america"
+    }, 
+    "NIU": {
+        "fillKey": "oceania"
+    }, 
+    "NLD": {
+        "fillKey": "europe"
+    }, 
+    "NOR": {
+        "fillKey": "europe"
+    }, 
+    "NPL": {
+        "fillKey": "asia"
+    }, 
+    "NZL": {
+        "fillKey": "oceania"
+    }, 
+    "OMN": {
+        "fillKey": "middle_east"
+    }, 
+    "PAK": {
+        "fillKey": "asia"
+    }, 
+    "PAN": {
+        "fillKey": "north_america"
+    }, 
+    "PER": {
+        "fillKey": "south_america"
+    }, 
+    "PHL": {
+        "fillKey": "asia"
+    }, 
+    "PLW": {
+        "fillKey": "oceania"
+    }, 
+    "PNG": {
+        "fillKey": "asia"
+    }, 
+    "POL": {
+        "fillKey": "europe"
+    }, 
+    "PRI": {
+        "fillKey": "north_america"
+    }, 
+    "PRT": {
+        "fillKey": "europe"
+    }, 
+    "PRY": {
+        "fillKey": "south_america"
+    }, 
+    "QAT": {
+        "fillKey": "middle_east"
+    }, 
+    "ROU": {
+        "fillKey": "europe"
+    }, 
+    "RUS": {
+        "fillKey": "asia"
+    }, 
+    "RWA": {
+        "fillKey": "africa"
+    }, 
+    "SAU": {
+        "fillKey": "middle_east"
+    }, 
+    "SDN": {
+        "fillKey": "africa"
+    }, 
+    "SEN": {
+        "fillKey": "africa"
+    }, 
+    "SGP": {
+        "fillKey": "asia"
+    }, 
+    "SLB": {
+        "fillKey": "oceania"
+    }, 
+    "SLE": {
+        "fillKey": "africa"
+    }, 
+    "SLV": {
+        "fillKey": "north_america"
+    }, 
+    "SMR": {
+        "fillKey": "europe"
+    }, 
+    "SOM": {
+        "fillKey": "africa"
+    }, 
+    "STP": {
+        "fillKey": "africa"
+    }, 
+    "SUR": {
+        "fillKey": "south_america"
+    }, 
+    "SVK": {
+        "fillKey": "europe"
+    }, 
+    "SVN": {
+        "fillKey": "europe"
+    }, 
+    "SWE": {
+        "fillKey": "europe"
+    }, 
+    "SWZ": {
+        "fillKey": "africa"
+    }, 
+    "SXM": {
+        "fillKey": "north_america"
+    }, 
+    "SYC": {
+        "fillKey": "africa"
+    }, 
+    "SYR": {
+        "fillKey": "middle_east"
+    }, 
+    "TCD": {
+        "fillKey": "africa"
+    }, 
+    "TGO": {
+        "fillKey": "africa"
+    }, 
+    "THA": {
+        "fillKey": "asia"
+    }, 
+    "TJK": {
+        "fillKey": "asia"
+    }, 
+    "TKM": {
+        "fillKey": "asia"
+    }, 
+    "TON": {
+        "fillKey": "oceania"
+    }, 
+    "TTO": {
+        "fillKey": "north_america"
+    }, 
+    "TUN": {
+        "fillKey": "africa"
+    }, 
+    "TUR": {
+        "fillKey": "asia"
+    }, 
+    "TUV": {
+        "fillKey": "oceania"
+    }, 
+    "TWN": {
+        "fillKey": "asia"
+    }, 
+    "TZA": {
+        "fillKey": "africa"
+    }, 
+    "UGA": {
+        "fillKey": "africa"
+    }, 
+    "UKR": {
+        "fillKey": "asia"
+    }, 
+    "URY": {
+        "fillKey": "south_america"
+    }, 
+    "USA": {
+        "fillKey": "north_america"
+    }, 
+    "UZB": {
+        "fillKey": "asia"
+    }, 
+    "VAT": {
+        "fillKey": "europe"
+    }, 
+    "VEN": {
+        "fillKey": "south_america"
+    }, 
+    "VGB": {
+        "fillKey": "north_america"
+    }, 
+    "VIR": {
+        "fillKey": "north_america"
+    }, 
+    "VNM": {
+        "fillKey": "asia"
+    }, 
+    "VUT": {
+        "fillKey": "oceania"
+    }, 
+    "WSM": {
+        "fillKey": "oceania"
+    }, 
+    "YEM": {
+        "fillKey": "middle_east"
+    }, 
+    "ZAF": {
+        "fillKey": "africa"
+    }, 
+    "ZMB": {
+        "fillKey": "africa"
+    }, 
+    "ZWE": {
+        "fillKey": "africa"
+    }
+}

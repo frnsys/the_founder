@@ -1,0 +1,140 @@
+[
+  {
+    "name": "Ad",
+    "difficulty": 1,
+    "requiredVertical": "Information",
+    "cost": 10000
+  },
+  {
+    "name": "AI",
+    "difficulty": 3,
+    "requiredVertical": "Information",
+    "cost": 100000
+  },
+  {
+    "name": "Analytics",
+    "difficulty": 1,
+    "requiredVertical": "Information",
+    "cost": 10000
+  },
+  {
+    "name": "Robot",
+    "difficulty": 4,
+    "requiredVertical": "Hardware",
+    "cost": 150000
+  },
+  {
+    "name": "Blockchain",
+    "difficulty": 3,
+    "requiredVertical": "Information",
+    "cost": 150000
+  },
+  {
+    "name": "Celebrity",
+    "difficulty": 1,
+    "requiredVertical": "Entertainment",
+    "cost": 10000
+  },
+  {
+    "name": "Cognitive",
+    "difficulty": 4,
+    "requiredVertical": "Biotech",
+    "cost": 150000
+  },
+  {
+    "name": "Credit",
+    "difficulty": 1,
+    "requiredVertical": "Finance",
+    "cost": 10000
+  },
+  {
+    "name": "Defense",
+    "difficulty": 2,
+    "requiredVertical": "Defense",
+    "cost": 10000
+  },
+  {
+    "name": "Drug",
+    "difficulty": 2,
+    "requiredVertical": "Biotech",
+    "cost": 100000
+  },
+  {
+    "name": "E-Commerce",
+    "difficulty": 1,
+    "requiredVertical": "Information",
+    "cost": 100000
+  },
+  {
+    "name": "Entertainment",
+    "difficulty": 1,
+    "requiredVertical": "Entertainment",
+    "cost": 100000
+  },
+  {
+    "name": "Gadget",
+    "difficulty": 1,
+    "requiredVertical": "Hardware",
+    "cost": 100000
+  },
+  {
+    "name": "Genetics",
+    "difficulty": 3,
+    "requiredVertical": "Biotech",
+    "cost": 100000
+  },
+  {
+    "name": "Implant",
+    "difficulty": 3,
+    "requiredVertical": "Biotech",
+    "cost": 100000
+  },
+  {
+    "name": "Mobile",
+    "difficulty": 1,
+    "requiredVertical": "Hardware",
+    "cost": 100000
+  },
+  {
+    "name": "Sensors",
+    "difficulty": 1,
+    "requiredVertical": "Hardware",
+    "cost": 100000
+  },
+  {
+    "name": "Sharing",
+    "difficulty": 1,
+    "requiredVertical": "Information",
+    "cost": 100000
+  },
+  {
+    "name": "Social Network",
+    "difficulty": 1,
+    "requiredVertical": "Information",
+    "cost": 100000
+  },
+  {
+    "name": "Space",
+    "difficulty": 5,
+    "requiredVertical": "Hardware",
+    "cost": 100000
+  },
+  {
+    "name": "Synthetic Organism",
+    "difficulty": 5,
+    "requiredVertical": "Biotech",
+    "cost": 100000
+  },
+  {
+    "name": "Virtual Reality",
+    "difficulty": 2,
+    "requiredVertical": "Hardware",
+    "cost": 100000
+  },
+  {
+    "name": "Wearable",
+    "difficulty": 2,
+    "requiredVertical": "Hardware",
+    "cost": 100000
+  }
+]

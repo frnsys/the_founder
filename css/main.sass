@@ -1,0 +1,489 @@
+@import "fonts.css"
+
+*
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+html, body
+  background: #CEF5FE
+  font-family: "Work Sans", "Helvetica", sans-serif
+  margin: 0
+  padding: 0
+
+main
+  min-width: 1280px
+  position: relative
+  height: 100vh
+  overflow: hidden
+
+ul, li
+  list-style-type: none
+  padding: 0
+  margin: 0
+
+h1, h2, h3, h4, h5, h6
+  margin: 0
+
+button
+  padding: 1em
+  font-family: "Fantasque Sans Mono", monospace
+  color: #222
+  cursor: pointer
+  background: #fafafa
+  border: 1px solid #3F84FB
+  min-width: 10em
+  &:disabled
+    opacity: 0.5
+    border: 1px solid #3F84FB !important
+    cursor: default
+  &:hover
+    border: 1px solid #FB3F3F
+
+.ui-wrapper, .background, .alert-wrapper, .market-wrapper
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  display: none
+
+.ui-wrapper
+  pointer-events: none
+
+.alert-wrapper
+  position: absolute
+  z-index: 20
+  background: rgba(0, 0, 0, 0.6)
+
+.background
+  position: fixed
+  background-position: center center !important
+  background-size: cover !important
+  background-repeat: no-repeat !important
+
+.ui, .market-ui
+  margin: 0 auto
+  width: 960px
+  padding: 10vh 0 0 0
+  position: relative
+  pointer-events: all
+  z-index: 2
+
+.popups
+  display: none
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 2
+  background: rgba(0,0,0,0.4)
+  padding: 10vh 0 0 0
+  pointer-events: all
+
+.menu, .hud, .selection
+  pointer-events: all
+
+.alert
+  padding: 0
+  margin: 8em auto 0 auto
+  text-align: center
+  width: 360px
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2)
+  background: #fefefe
+  overflow: hidden
+
+.alert-message
+  padding: 2em
+
+.alert button
+  display: block
+
+.mentor-message, .event
+  text-align: left
+  line-height: 1.4
+
+.mentor-message
+  font-size: 1.2em
+  padding: 3.5em 2em 3.5em 3em
+  height: 14em
+  em
+    color: #fff
+    background: #3f84fb
+    padding: 0.1em 0.3em
+
+.alert-actions, .confirm-actions, .mentor-actions
+  border-top: 1px solid #3F84FB
+
+.alert-actions button
+  border: none !important
+  padding: 1.2em 1em
+
+.confirm-actions button, .mentor-actions button
+  width: 50%
+  float: left
+
+.alert-actions button:hover, .confirm-actions button:hover, .mentor-actions button:hover
+  color: #3F84FB
+
+.confirm-actions button:disabled, .mentor-actions button:disabled
+  color: #222 !important
+
+.confirm-actions .no, .mentor-actions .prev
+
+canvas
+  margin: 0 auto
+#market
+  display: none !important
+
+.popup
+  margin: 0 auto
+  width: 960px
+  overflow: hidden
+  height: 480px
+  font-size: 0.8em
+  position: relative
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4)
+  header
+    padding: 1em
+    height: 60px
+    border-bottom: 1px solid rgba(0,0,0,0.2)
+
+header h1
+  font-weight: normal
+  margin: 0
+
+.popup .close-popup
+  font-size: 3em
+  position: absolute
+  right: 0.4em
+  top: 0.4em
+  line-height: 0.7
+  font-weight: bold
+  color: rgba(0,0,0,0.2)
+
+.close-popup
+  cursor: pointer
+
+.grid
+  > li
+    display: inline-block
+    vertical-align: top
+  font-family: "Fantasque Sans Mono", monospace
+  padding: 0 0.6em
+  h1, h2, h3, h4, h5, h6
+    font-weight: normal
+  > li
+    width: 10em
+    height: 6em
+    margin: 0 1em 1em 0
+  h5
+    font-size: 1.2em
+    color: #8DA1C3
+  h1
+    color: #515F78
+
+.accounting h5
+  color: #65C1EF
+
+.manage-menu
+  img
+    width: 48px
+    height: 48px
+  font-family: "Fantasque Sans Mono", monospace
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  text-align: center
+  padding: 1em 1em 1em 0
+  background: #acc4ff
+  h4
+    color: #333
+  li
+    width: 5.2em
+    height: 4em
+    cursor: pointer
+    margin: 0
+    padding-top: 0.5em
+    position: relative
+    &:hover
+      background: #ffb9fc
+  .selected
+    background: #ffb9fc
+  .tip
+    position: absolute
+    top: -3em
+    background: #ffb9fc
+    font-size: 0.8em
+    padding: 0.5em
+    width: 100%
+    height: 3em
+    display: none
+  .selected .tip
+    display: block !important
+
+.cash
+  color: #17B051 !important
+  font-family: "Fantasque Sans Mono", monospace
+  font-weight: normal
+
+.detail .cash
+  background: #29DC6D
+  color: #fff !important
+  padding: 0 0.5em
+
+.list, .detail, .popup-body
+  height: 420px
+  overflow-y: scroll
+
+.list li
+  padding: 1em
+  font-size: 1.4em
+  background: rgba(0, 0, 0, 0.1)
+  cursor: pointer
+  &:hover
+    background: rgba(0, 0, 0, 0.15)
+  &.selected
+    background: rgba(0, 0, 0, 0.2)
+
+.detail
+  padding: 2em 2em 2em 4em
+  img
+    width: 200px
+    height: 200px
+    display: block
+    margin: 0 auto
+  button
+    display: block
+    margin: 2em auto 0 auto
+  .title
+    overflow: hidden
+    h1
+      float: left
+    h4
+      float: right
+      font-size: 1.2em
+      line-height: 2
+    .subtitle
+      clear: both
+  .effects, .revenue
+    margin: 1em 0
+
+.popup-body .actions
+  text-align: center
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  padding: 1em
+
+.effects, .revenue
+  font-weight: normal
+  font-size: 1.1em
+  color: #fff11c
+  text-shadow: 1px 1px rgba(0,0,0,0.2)
+  font-family: "Fantasque Sans Mono", monospace
+
+.prereqs
+  margin-top: 1em
+  h6
+    font-size: 1em
+    color: rgba(0,0,0,0.4)
+.required li
+  margin: 0 0 0.2em
+
+.revenue
+  color: #29dc6d
+
+.locations .effects
+  color: #515f78
+
+.split-pane
+  .list
+    float: left
+    width: 50%
+  .owned
+    opacity: 0.9
+  .detail
+    float: right
+    width: 50%
+
+.productTypes img
+  width: 70px
+  height: 70px
+.promos img
+  width: 120px
+  height: 120px
+
+.productTypes li,
+.promos li,
+  margin: 0 0.5em 2em
+  text-align: center
+  cursor: pointer
+  width: auto
+  height: auto
+
+.productTypes .productType
+  background: #B9E0EC
+  padding: 1em
+  width: 8.6em
+  height: 8.6em
+  &.selected
+    background: #FF2C2C
+
+.promos .promo
+  background: #8dd1e6
+  padding: 1em
+  width: 11.6em
+  height: 13.6em
+  &.selected
+    background: #FF2C2C
+
+.productTypes
+  button:hover
+    background: #17b051
+  .owned
+    .productType
+      background: #A8FFA8
+    button
+      background: #17b051
+  button
+    font-size: 0.8em
+    padding: 0.5em 1em
+    width: 100%
+    background: #FF3535
+    border: none !important
+
+.products
+  > li
+    margin: 0 1em 2em 0
+    text-align: center
+    background: #B9E0EC
+    padding: 1em 0
+    width: 13.8em
+    height: 12em
+  .effects
+    font-family: "Work Sans", "Helvetica", sans-serif
+    font-size: 0.8em
+    padding: 0 1em
+  img
+    width: 70px
+    height: 70px
+
+.products, .productTypes
+  margin: 2em 0
+
+.locked
+  opacity: 0.5
+
+.ok
+  color: #17B051 !important
+
+.owned-perk
+  overflow: hidden
+  padding: 1.5em
+  background: rgba(0, 0, 0, 0.2)
+  color: #A4ABB7
+  img
+    width: 80px
+    height: 80px
+    float: left
+  info
+    float: left
+    width: 20em
+  h1
+    font-size: 1.4em
+  h3
+    margin: 0 0 1em 0
+  p
+    margin: 0.4em 0
+
+.perks
+  .detail
+    padding: 0
+  .next-perk
+    padding: 2em 2em 2em 4em
+
+.office
+  display: none
+  margin: 1em 0
+  img
+    width: 120px
+    height: 120px
+
+.developing-product, .developing-promo
+  text-align: center
+  background: #65C1EF
+  margin: 0 0 1em 0
+
+.developing-product img
+  width: 70px
+  height: 70px
+
+.developing-progress
+  float: right
+
+.developing-insufficient
+  color: #ff0000
+  opacity: 0.6
+
+.office button
+  font-size: 0.9em
+  width: 100%
+  margin-bottom: 2px
+
+.office-develop
+  margin: 1em 0 0 0
+
+.office-popup
+  background: #DEDEDE
+  padding: 2em
+  z-index: 10
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2)
+  .close-popup
+    right: 0.5em
+    top: 0.5em
+
+.friendly
+  color: #0039FF
+
+.hostile
+  color: #fd1c1c
+
+.mentor
+  width: 200px
+  position: absolute
+  margin-left: -18em
+  margin-top: -3em
+
+.event-action
+  width: 100%
+
+.bonus
+  color: #17B051
+
+.penalty
+  color: #FD1C1C
+
+.special_projects
+  color: #fff
+.special_projects .close-popup
+  color: rgba(255,255,255,0.15)
+
+.tooltip
+  display: none
+  position: fixed
+  pointer-events: none
+  background: #fafafa
+  padding: 0.5em 1em
+  z-index: 100
+
+
+@import "splash"
+@import "sites"
+@import "hud"
+@import "selection"
+@import "onboarding"
+@import "market"

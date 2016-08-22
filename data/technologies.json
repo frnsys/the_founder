@@ -1,0 +1,666 @@
+[
+  {
+    "name": "3D Printing",
+    "description": "Print endless plastic trinkets",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [],
+    "effects": []
+  },
+  {
+    "name": "Advanced Psychotropics",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Drug"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Alcubierre Drive",
+    "description": "A powerful interstellar space engine which makes it possible to go to the furthest reaches of our galaxy",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Metamaterials",
+      "Closed Ecologies"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "specialProjects",
+          "value": "Interstellar Ship"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Artificial Gravity",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Field Manipulation"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Atmospheric Manipulation",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "locations",
+          "value": "New Antarctic Colonies"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Atomic Assembly",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Nanorobotics"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Big Data",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [
+      "Cloud Computing"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Analytics"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Bioprinting",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "Synthetic Biology"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Brain-Computer Interfaces",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Cognitive"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Cloning",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "In-Vitro Cultivation"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "specialProjects",
+          "value": "Cloning Facility"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Closed Ecologies",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "Nutritive Engineering",
+      "Atmospheric Manipulation",
+      "Artificial Gravity"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "specialProjects",
+          "value": "Mars Colony"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Cloud Computing",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [],
+    "effects": []
+  },
+  {
+    "name": "Computational Cognition",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [
+      "Quantum Computing",
+      "Neuromorphic Chips"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Information",
+          "attribute": "engineering",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Cryonics",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [],
+    "effects": []
+  },
+  {
+    "name": "Deep Learning",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [
+      "Big Data"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Drones",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "3D Printing",
+      "Internet of Things"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Defense",
+          "attribute": "marketing",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Dynamic Content Generation",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Entertainment",
+    "requiredTechs": [
+      "Predictive Analytics"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Entertainment",
+          "attribute": "design",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Enhanced Lasers",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Defense",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Defense",
+          "attribute": "engineering",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Field Manipulation",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Defense",
+    "requiredTechs": [
+      "Enhanced Lasers"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Defense",
+          "attribute": "engineering",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Genetic Engineering",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Genetic"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Gestural Interfaces",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Entertainment",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Entertainment",
+          "attribute": "design",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Improved Robotics",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Metamaterials",
+      "Computational Cognition"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productType",
+          "value": "Robot"
+        }
+      },
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "specialProjects",
+          "value": "Robotics Facility"
+        }
+      }
+    ]
+  },
+  {
+    "name": "In-Vitro Cultivation",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "Bioprinting"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Biotech",
+          "attribute": "marketing",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Integrated Implants",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "Nanorobotics",
+      "Bioprinting"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Implant"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Internet of Things",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Wearables"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Machine Translation",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [
+      "Deep Learning"
+    ],
+    "effects": [
+      {
+        "type": "expansionCostMultiplier",
+        "value": -0.1
+      }
+    ]
+  },
+  {
+    "name": "Memory Emulation",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "Virtual Reality",
+      "Memory Retrieval"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Entertainment",
+          "attribute": "engineering",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Memory Retrieval",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [
+      "Brain-Computer Interfaces"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Metamaterials",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Atomic Assembly"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "locations",
+          "value": "Seasteading State"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Nanorobotics",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Drones"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Neuromarketing",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Entertainment",
+    "requiredTechs": [
+      "Big Data"
+    ],
+    "effects": [
+      {
+        "type": "forgettingRate",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "name": "Neuromorphic Chips",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Deep Learning",
+      "Integrated Implants",
+      "Brain-Computer Interfaces"
+    ],
+    "effects": []
+  },
+  {
+    "name": "Nutritive Engineering",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "productivity",
+        "value": 6
+      }
+    ]
+  },
+  {
+    "name": "Predictive Analytics",
+    "description": "With so much data and sophisticated machine learning algorithms, we can start to predict emergent phenomena some time in advance to their actual occurrence",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [
+      "Deep Learning"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "specialProjects",
+          "value": "Delphi"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Quantum Computing",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Atomic Assembly"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Information",
+          "attribute": "engineering",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Synthetic Biology",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "Genetic Engineering"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Synthetic Organism"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Telomere Restoration",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Biotech",
+    "requiredTechs": [
+      "Genetic Engineering",
+      "Cryonics"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "specialProjects",
+          "value": "Telomere Therapy"
+        }
+      }
+    ]
+  },
+  {
+    "name": "The Blockchain",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Finance",
+          "attribute": "engineering",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Virtual Reality",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Gestural Interfaces"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Virtual Reality"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Volumetric Displays",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Virtual Reality"
+    ],
+    "effects": [
+      {
+        "type": "product",
+        "value": {
+          "vertical": "Entertainment",
+          "attribute": "marketing",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Wearables",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Hardware",
+    "requiredTechs": [],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "productTypes",
+          "value": "Wearable"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Whole-Brain Emulation",
+    "description": "",
+    "cost": 1000,
+    "requiredVertical": "Information",
+    "requiredTechs": [
+      "Computational Cognition",
+      "Memory Emulation"
+    ],
+    "effects": [
+      {
+        "type": "unlocks",
+        "value": {
+          "type": "specialProjects",
+          "value": "The Founder AI"
+        }
+      }
+    ]
+  }
+]

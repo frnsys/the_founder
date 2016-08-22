@@ -1,0 +1,31 @@
+[{
+  "name": "Beth Poush",
+  "avatar": 7,
+  "description": "A very hardworker, and very charismatic - could sell you anything",
+  "effects": [{
+    "type": "marketing",
+    "value": 5
+  }, {
+    "type": "productivity",
+    "value": 5
+  }]
+}, {
+  "name": "Jeffrey Zhou",
+  "avatar": 2,
+  "description": "A brilliant product engineer.",
+  "effects": [{
+    "type": "design",
+    "value": 5
+  }, {
+    "type": "engineering",
+    "value": 5
+  }]
+}, {
+  "name": "Mark Stanley",
+  "avatar": 8,
+  "description": "Can't do much, but he'll throw in some of his inheritance.",
+  "effects": [{
+    "type": "cash",
+    "value": 50000
+  }]
+}]

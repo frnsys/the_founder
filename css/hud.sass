@@ -1,0 +1,103 @@
+.hud
+  padding: 1em
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+
+.hud-center
+  margin: 0 auto
+  text-align: center
+  width: 16em
+
+.hud-left
+  position: absolute
+  left: 1em
+  top: 1em
+
+.hud-right
+  position: absolute
+  right: 0
+  top: 1.6em
+  z-index: 2
+
+.hud-date
+  color: rgb(94, 113, 255)
+
+.hud-left .cash
+  margin-top: 0.2em
+
+.hud-stats
+  > li
+    width: auto
+    height: auto
+    position: relative
+    z-index: 10
+    cursor: help
+  img
+    width: 18px
+
+.progress-bar-outer
+  width: 12em
+  height: 1em
+  background: rgba(0, 0, 0, 0.08)
+  position: relative
+
+.progress-bar-inner
+  height: 100%
+  position: absolute
+  background: rgb(17, 17, 248)
+  max-width: 100%
+
+.hud-profit-progress .progress-bar-outer
+  margin: 0 auto
+
+.hud-profit-progress-target
+  position: absolute
+  left: 100%
+  padding-left: 0.4em
+
+.hud-profit-progress-ytd
+  position: absolute
+  right: 100%
+  padding-right: 0.4em
+
+.hud-actions
+  width: 21em
+  float: right
+
+.hud-product-dev,
+.hud-promo-dev
+  background: rgba(118, 118, 224, 0.16)
+  padding: 1em 1em 0.4em 1em
+  .progress-bar-outer
+    margin: 0.4em 0 0.5em 0
+    width: 19em
+  .grid
+    padding: 0
+  button
+    width: 100%
+    margin: 0 0 1em 0
+
+.hud-active-products
+  width: 12em
+  .cash
+    float: right
+
+.weeks
+  margin: 0.25em 0 0 0.6em
+  float: right
+
+.weeks li
+  float: left
+  margin: 0 0.1em
+
+.week-on, .week-off
+  width: 12px
+  height: 12px
+
+.week-on
+  background: rgb(94, 113, 255)
+
+.week-off
+  background: rgba(94, 113, 255, 0.2)

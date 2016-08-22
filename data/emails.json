@@ -1,0 +1,109 @@
+{
+  "cash": [{
+    "comparator": "<",
+    "value": 0,
+    "subject": "Bailout",
+    "from": "mentor@{{slug name}}.com",
+    "body": "Your burn rate is too fast - you need to keep some cash on hand to expand your operations. This time I've managed to get you some emergency funds to keep you going - but this can't happen again.",
+    "effects": [{
+      "type": "cash",
+      "cash": 50000
+    }]
+  }],
+  "boardStatus": [{
+    "comparator": "==",
+    "value": "Pleased",
+    "subject": "Bonus Investment",
+    "from": "{{slug cofounder}}@{{slug name}}.com",
+    "body": "We did great this quarter! Some other investors are keen to get in on the deal, so I raised another round of funding for us to fund our expansion.",
+    "effects": [{
+      "type": "cash",
+      "cash": 50000
+    }]
+  }],
+  "year": [{
+    "comparator": "==",
+    "value": 2005,
+    "subject": "New vertical: finance",
+    "from": "{{slug cofounder}}@{{slug name}}.com",
+    "body": "We've been very successful at manufacturing the desire for our products - but people are having a hard time affording our prices. You know, I bet if we found ways to lend them the money, it would be win-win. We would win twice.",
+    "effects": [{
+      "type": "unlocks",
+      "value": {
+        "type": "vertical",
+        "value": "Finance"
+      }
+    }]
+  }],
+  "n_technologies": [{
+    "comparator": ">",
+    "value": 10,
+    "subject": "Defense contracts",
+    "from": "defender@dod.gov",
+    "body": "To the CEO of {{name}}:\n\nYour advanced research and development department has caught our eye at the Department of Defense. We are writing to inform you that we are adding you to our list of government defense contractors, so you may now develop defense-related products. Thank you for your national contributions.",
+    "effects": [{
+      "type": "unlocks",
+      "value": {
+        "type": "vertical",
+        "value": "Defense"
+      }
+    }]
+  }, {
+    "comparator": ">",
+    "value": 15,
+    "subject": "Our own state?",
+    "from": "{{slug cofounder}}@{{slug name}}.com",
+    "body": "we've accomplished quite a bit of innovative research, but we could go a lot faster if we were away from ethics boards and other government regulations. you know - we could try establishing our own state offshore, where those regulations can't reach us.",
+    "effects": [{
+      "type": "unlocks",
+      "value": {
+        "type": "locations",
+        "value": "Seasteading State"
+      }
+    }]
+  }],
+  "pollution": [{
+    "comparator": ">",
+    "value": 10000,
+    "subject": "Climate change = new business opportunity?",
+    "from": "{{slug cofounder}}@{{slug name}}.com",
+    "body": "the earth is not doing so well. people want choice. let's give them that choice. we should start developing space products.",
+    "effects": [{
+      "type": "unlocks",
+      "value": {
+        "type": "productTypes",
+        "value": "Space"
+      }
+    }]
+  }],
+  "lifetimeRevenue": [{
+    "comparator": ">",
+    "value": 1000000000,
+    "subject": "Expansion opportunities",
+    "from": "{{slug cofounder}}@{{slug name}}.com",
+    "body": "We are making money hand-over-fist, and we've already expanded to most of the globe. But we need to keep growing. I bet if we research the Closed Ecologies, we'll be able to terraform nearby planets and develop new market-colonies there!",
+    "effects": []
+  }],
+  "technologies": [{
+    "comparator": "contains",
+    "value": "Alcubierre Drive",
+    "subject": "One of our ships found aliens!",
+    "from": "{{slug cofounder}}@{{slug name}}.com",
+    "body": "holy shit - one of our convoy ships encountered extraterrestrial life. do you know what this means? an entire untapped market!",
+    "effects": [{
+      "type": "unlocks",
+      "value": {
+        "type": "locations",
+        "value": "Gliese 832c"
+      }
+    }]
+  }],
+  "locations": [{
+    "comparator": "contains",
+    "value": "Mars Colony",
+    "subject": "Further Expansion Opportunities",
+    "from": "{{slug cofounder}}@{{slug name}}.com",
+    "body": "our nearby colonies have allowed us to sustain growth, but even this is not enough. I bet if we research the Alcubierre Drive, we'll be able to colonize new markets in the distant stars!",
+    "effects": []
+  }]
+}

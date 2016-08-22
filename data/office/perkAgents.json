@@ -1,0 +1,99 @@
+{
+  "Custodial Staff": {
+    "type": "custodial",
+    "model": {
+      "name": "custodial_staff",
+      "scale": 1,
+      "yOffset": 0
+    },
+    "speed": 1,
+    "offices": [{
+      "spawn": [0,0]
+    }, {
+      "spawn": [-1.8,-0.1]
+    }, {
+      "spawn": [-1.31,3.5]
+    }]
+  },
+  "Caretaker Automatons": {
+    "type": "custodial",
+    "model": {
+      "name": "caretaker_automaton",
+      "scale": 1,
+      "yOffset": 0
+    },
+    "speed": 1,
+    "offices": [{
+      "spawn": [0,0]
+    }, {
+      "spawn": [-2.88,-0.1]
+    }, {
+      "spawn": [-1.31,3.5]
+    }]
+  },
+  "Yapper": {
+    "type": "pet",
+    "model": {
+      "name": "yapper",
+      "scale": 0.25,
+      "yOffset": -0.18
+    },
+    "speed": 0.1,
+    "offices": [{
+      "spawn": [0,0]
+    }, {
+      "spawn": [-1.13,12.96]
+    }, {
+      "spawn": [-0.92, 3.36]
+    }]
+  },
+  "Pupper": {
+    "type": "pet",
+    "model": {
+      "name": "pupper",
+      "scale": 0.3,
+      "yOffset": -0.15
+    },
+    "speed": 0.1,
+    "offices": [{
+      "spawn": [0,0]
+    }, {
+      "spawn": [-1.13,12.96]
+    }, {
+      "spawn": [-0.92, 3.36]
+    }]
+  },
+  "Doggo": {
+    "type": "pet",
+    "model": {
+      "name": "doggo",
+      "scale": 0.4,
+      "yOffset": -0.11
+    },
+    "speed": 0.1,
+    "offices": [{
+      "spawn": [0,0]
+    }, {
+      "spawn": [-1.13,12.96]
+    }, {
+      "spawn": [-0.92, 3.36]
+    }]
+  },
+  "Woofer": {
+    "type": "pet",
+    "model": {
+      "name": "woofer",
+      "scale": 0.6,
+      "yOffset": -0.01
+    },
+    "speed": 0.2,
+    "offices": [{
+      "spawn": [0,0]
+    }, {
+      "spawn": [-1.13,12.96]
+    }, {
+      "spawn": [-0.92, 3.36]
+    }]
+  }
+
+}

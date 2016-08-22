@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Press Release",
+    "cost": 10000,
+    "description": "Email a few publications",
+    "hype": 1
+  },
+  {
+    "name": "Ad Campaign",
+    "cost": 25000,
+    "description": "Cover every surface of major cities with our messages",
+    "hype": 2
+  },
+  {
+    "name": "Commercial",
+    "cost": 35000,
+    "description": "Insert our brand between spats of media and entertainment",
+    "hype": 3
+  },
+  {
+    "name": "Astroturfing",
+    "cost": 45000,
+    "description": "Hire a large group to simulate our popularity",
+    "hype": 4
+  },
+  {
+    "name": "Brand Partnership",
+    "cost": 65000,
+    "description": "Join forces with another brand and synergize",
+    "hype": 5
+  },
+  {
+    "name": "Causewashing",
+    "cost": 85000,
+    "description": "Capitalize on a hot social issue",
+    "hype": 6
+  },
+  {
+    "name": "Product Placement",
+    "cost": 105000,
+    "description": "Surreptitiously weave our products and services into popular media",
+    "hype": 7
+  },
+  {
+    "name": "DENT Talk",
+    "cost": 125000,
+    "description": "Spread good vibes and inspire the intellectual elite",
+    "hype": 8
+  },
+  {
+    "name": "Media Event",
+    "cost": 145000,
+    "description": "Put on a massive spectacle to dazzle and astound",
+    "hype": 9
+  },
+  {
+    "name": "Music Festival",
+    "cost": 200000,
+    "description": "Unthreateningly align our lifestyle with hip young people",
+    "hype": 10
+  }
+]

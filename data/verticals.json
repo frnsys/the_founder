@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Defense",
+    "cost": 1000000,
+    "description": "The best inventions are _military_ inventions"
+  },
+  {
+    "name": "Biotech",
+    "cost": 1000000,
+    "description": "Hack your body"
+  },
+  {
+    "name": "Entertainment",
+    "cost": 1000000,
+    "description": "Stay happy"
+  },
+  {
+    "name": "Finance",
+    "cost": 1000000,
+    "description": "Make money"
+  },
+  {
+    "name": "Hardware",
+    "cost": 1000000,
+    "description": "Produce widgets, throw them away next year"
+  },
+  {
+    "name": "Information",
+    "cost": 1000000,
+    "description": "Information is good"
+  }
+]

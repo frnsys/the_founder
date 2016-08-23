@@ -92,8 +92,9 @@ class TheMarket extends Phaser.State {
     });
     this.renderUI();
 
-    // re-render the UI whenever a tile is selected
+    // re-render the UI whenever a tile is selected or captured
     Tile.onSingleClick.add(this.renderUI, this);
+    Tile.onCapture.add(this.renderUI, this);
   }
 
   update() {
@@ -121,10 +122,29 @@ class TheMarket extends Phaser.State {
     this.view.render({
       competitor: this.aiPlayer.company,
       tile: t,
+      marketShares: this.percentMarketShare(),
       turnsLeft: this.turnsLeft,
       totalTurns: this.totalTurns,
       turnsPercent: (this.totalTurns - this.turnsLeft)/this.totalTurns * 100
     });
+  }
+
+  percentMarketShare() {
+    var shares = {human: 0, ai: 0},
+        total = 0,
+        self = this;
+    _.each(this.board.incomeTiles, function(tile) {
+      var income = tile.income + 1;
+      total += income;
+      if (tile.owner == self.humanPlayer) {
+        shares.human += income;
+      } else if (tile.owner == self.aiPlayer) {
+        shares.ai += income;
+      }
+    });
+    shares.human = (shares.human/total) * 100;
+    shares.ai = (shares.ai/total) * 100;
+    return shares;
   }
 
   endTurn() {

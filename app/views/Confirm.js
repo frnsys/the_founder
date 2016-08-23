@@ -2,7 +2,7 @@ import Alert from './Alert';
 
 const template = data => `
 <div class="alert-message">
-  ${ message }
+  ${data.message}
 </div>
 <div class="alert-actions confirm-actions">
   <button class="no">No</button>

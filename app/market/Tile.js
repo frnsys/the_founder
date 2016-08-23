@@ -7,6 +7,7 @@ import Piece from './Piece';
 const BASE_CAPTURE_COST = 2;
 const onSingleClick = new Phaser.Signal();
 const onDoubleClick = new Phaser.Signal();
+const onCapture = new Phaser.Signal();
 const incomeDistribution = [0.65, 0.2, 0.125, 0.025];
 
 class Tile {
@@ -58,6 +59,7 @@ class OwnedTile extends Tile {
         this.sprite.tint = this.owner.color;
         this.text.text = '';
         this.postCapture();
+        onCapture.dispatch(this);
         return true;
       }
     }
@@ -148,6 +150,7 @@ class IncomeTile extends OwnedTile {
 export default {
   onSingleClick: onSingleClick,
   onDoubleClick: onDoubleClick,
+  onCapture: onCapture,
   Empty: Tile,
   Influencer: InfluencerTile,
   Income: IncomeTile

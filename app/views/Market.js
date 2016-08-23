@@ -36,7 +36,7 @@ const tileInfoTemplate = tile => `
 const template = data => `
 <div class="market">
   <div class="player-info">
-    <h4 class="turns-left">${data.turnsLeft}/${data.totalTurns}</h4>
+    <h4 class="turns-left">${data.totalTurns - data.turnsLeft}/${data.totalTurns}</h4>
     <div class="progress-bar">
       <div class="progress-bar-fill" style="width:${data.turnsPercent}%"></div>
     </div>
@@ -46,6 +46,10 @@ const template = data => `
   <button class="end-turn">End Turn</button>
 </div>
 <h1 class="market-title">The Market</h1>
+<div class="market-share">
+  <div class="human-market-share" style="width:${data.marketShares.human}%">Your market share: ${data.marketShares.human.toFixed(1)}%</div>
+  <div class="ai-market-share" style="width:${data.marketShares.ai}%">${data.competitor.name}'s market share: ${data.marketShares.ai.toFixed(1)}%</div>
+</div>
 `;
 
 class Market extends View {

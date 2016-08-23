@@ -39,11 +39,8 @@ class AI {
           if (threatValue > 0) {
             tasks.push(new Task.Defend(tile) * threatValue);
           }
-          tasks.push(new Task.Improve(tile));
         } else if (tile.owner) {
           tasks.push(new Task.Capture(tile));
-          tasks.push(new Task.Weaken(tile));
-        //} else if (_.isFunction(tile.capture)) {
         } else {
           tasks.push(new Task.Capture(tile));
         }

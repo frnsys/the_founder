@@ -457,6 +457,12 @@ class Board {
       return (tile instanceof Tile.Income) && !(tile.owner);
     });
   }
+
+  get incomeTiles() {
+    return _.filter(this.tiles, function(tile) {
+      return tile instanceof Tile.Income;
+    });
+  }
 }
 
 Board.manhattanDistance = manhattanDistance;

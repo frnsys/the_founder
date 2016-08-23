@@ -46,7 +46,6 @@ class View extends DetailList {
 
   render() {
     var player = this.player;
-    player.onboard('recruiting'); // TODO this should be handled by the manager not the view
     super.render({
       items: _.filter(recruitments, function(i) {
         return !i.robots || i.robots == player.specialEffects['Automation'];

@@ -42,6 +42,17 @@ class MentorView extends Alert {
       message: this.messages[this.idx]
     });
   }
+
+  postRender() {
+    super.postRender();
+    MentorView.exists = true;
+  }
+
+  postRemove() {
+    super.postRemove();
+    MentorView.exists = false;
+  }
 }
 
+MentorView.exists = false;
 export default MentorView;

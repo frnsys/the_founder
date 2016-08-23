@@ -20,14 +20,11 @@ const Debug = {
     player.company.workers[0].productivity = 80000;
     player.company.discoveredProducts = ['Ad.Analytics'];
     player.company.productTypes = util.byNames(productTypes, ['Ad', 'AI', 'Gadget', 'Analytics']);
-    player.company.activeProducts = [{
-      name: 'TEST',
-      revenue: 1000000,
-      earnedRevenue: 0
-    }];
-    player.onboarding = _.mapObject(onboarding, function(val) {
-      return true;
-    });
+    // player.company.activeProducts = [{
+    //   name: 'TEST',
+    //   revenue: 1000000,
+    //   earnedRevenue: 0
+    // }];
     player.events.pool = [{
       probability: 1,
       countdown: 1,

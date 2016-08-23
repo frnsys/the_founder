@@ -21,7 +21,6 @@ const template = data => `
 
 class View extends Popup {
   constructor(player) {
-    //player.onboard('create_product'); // TODO move elsewhere
     var selected = [];
     super({
       title: 'Start a Product',

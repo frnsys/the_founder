@@ -15,6 +15,7 @@ import specialNews from 'data/specialNews.json';
 import competitors from 'data/competitors.json';
 import technologies from 'data/technologies.json';
 import productTypes from 'data/productTypes.json';
+import onboarding from 'data/onboarding.json';
 
 
 class Player {
@@ -38,6 +39,7 @@ class Player {
         'The Founder AI':   false,
         'Automation':       false
       },
+
 
       month: 0,
       week: 0,
@@ -99,8 +101,7 @@ class Player {
       },
       growth: 0,
 
-      // onboarding
-      onboarding: {}
+      onboarding: onboarding
     }, data);
   }
 
@@ -167,8 +168,19 @@ class Player {
 
       product: company.product,
       activeProducts: company.activeProducts,
-      promo: company.promo
+      promo: company.promo,
+
+      onboarding: _.reduce(this.onboarding, function(obj, v) {
+        obj[v.name] = v.finished;
+        return obj;
+      }, {})
     };
+  }
+
+  skipOnboarding() {
+    this.onboarding = _.each(this.onboarding, function(v, k) {
+      onboarding[k].finished = true;
+    });
   }
 }
 

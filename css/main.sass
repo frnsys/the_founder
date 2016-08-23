@@ -480,6 +480,18 @@ header h1
   padding: 0.5em 1em
   z-index: 100
 
+@keyframes pulse
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.02)
+  100%
+    transform: scale(1)
+
+.pulse
+  animation-name: pulse
+  animation-duration: 0.6s
+  animation-iteration-count: infinite
 
 @import "splash"
 @import "sites"

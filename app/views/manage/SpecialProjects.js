@@ -79,7 +79,6 @@ class View extends DetailList {
 
   render() {
     var player = this.player;
-    player.onboard('specialProjects'); // TODO this should be handled by the manager not the view
     super.render({
       items: _.map(specialProjects, function(i) {
         return _.extend({

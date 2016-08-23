@@ -36,8 +36,7 @@ const tileInfoTemplate = tile => `
 const template = data => `
 <div class="market">
   <div class="player-info">
-    <h3>The Market</h3>
-    <h4 class="turns-left">${data.turnsLeft} turns remaining</h4>
+    <h4 class="turns-left">${data.turnsLeft}/${data.totalTurns}</h4>
     <div class="progress-bar">
       <div class="progress-bar-fill" style="width:${data.turnsPercent}%"></div>
     </div>
@@ -46,6 +45,7 @@ const template = data => `
   ${data.tile.piece ? pieceInfoTemplate(data.tile) : ''}
   <button class="end-turn">End Turn</button>
 </div>
+<h1 class="market-title">The Market</h1>
 `;
 
 class Market extends View {

@@ -48,7 +48,6 @@ class View extends Popup {
 
   render() {
     var player = this.player;
-    player.onboard('products'); // TODO should be handled by the manager
     super.render({
       items: _.map(productRecipes, function(pr) {
         return _.extend({

@@ -23,7 +23,6 @@ const template = data => `
 
 class View extends Popup {
   constructor(player) {
-    //player.onboard('create_promo'); // TODO move elsewhere
     var selected;
     super({
       title: 'Start a Promo Campaign',

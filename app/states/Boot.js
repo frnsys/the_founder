@@ -39,7 +39,8 @@ class Boot extends Phaser.State {
     var view = new MainMenu();
     view.render({
       savedGame: Manager.hasSave(),
-      newGamePlus: Manager.hasNewGamePlus()
+      newGamePlus: Manager.hasNewGamePlus(),
+      highScore: Manager.highScore()
     });
   }
 }

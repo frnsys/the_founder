@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import _ from 'underscore';
 import util from 'util';
 import View from 'views/View';
 import Confirm from 'views/Confirm';
@@ -16,6 +17,20 @@ import ProductTypes from './ProductTypes';
 import Browser from '../browser/Browser.js';
 import Settings from './Settings';
 
+const menuItems = [
+  ['locations', 'Locations'],
+  ['verticals', 'Verticals'],
+  ['products', 'Products'],
+  ['productTypes', 'Product Types'],
+  ['specialProjects', 'Special Projects'],
+  ['acquisitions', 'Acquire'],
+  ['lobbying', 'Lobbying'],
+  ['recruiting', 'Recruiting'],
+  ['employees', 'Employees'],
+  ['perks', 'Perks'],
+  ['research', 'Research']
+];
+
 function template(data) {
   var office = '';
   if (data.nextOffice) {
@@ -27,49 +42,17 @@ function template(data) {
   }
   return `
   <ul class="grid manage-menu">
-    <li class="manage-locations">
-      <img src="assets/manage/locations.gif">
-      <div class="tip">Locations</div>
-    </li>
-    <li class="manage-verticals">
-      <img src="assets/manage/verticals.gif">
-      <div class="tip">Verticals</div>
-    </li>
-    <li class="manage-products">
-      <img src="assets/manage/products.gif">
-      <div class="tip">Products</div>
-    </li>
-    <li class="manage-productTypes" data-name="Product Types">
-      <img src="assets/manage/productTypes.gif">
-      <div class="tip">Product Types</div>
-    </li>
-    <li class="manage-specialProjects">
-      <img src="assets/manage/specialProjects.gif">
-      <div class="tip">Special Projects</div>
-    </li>
-    <li class="manage-acquisitions">
-      <img src="assets/manage/acquisitions.gif">
-      <div class="tip">Acquire</div>
-    </li>
-    <li class="manage-lobbying">
-      <img src="assets/manage/lobbying.gif">
-      <div class="tip">Lobbying</div>
-    </li>
-    <li class="manage-recruiting">
-      <img src="assets/manage/recruiting.gif">
-      <div class="tip">Recruiting</div>
-    </li>
-    <li class="manage-employees">
-      <img src="assets/manage/employees.gif">
-      <div class="tip">Employees</div>
-    </li>
-    <li class="manage-perks">
-      <img src="assets/manage/perks.gif">
-      <div class="tip">Perks</div>
-    </li>
-    <li class="manage-research">
-      <img src="assets/manage/research.gif">
-      <div class="tip">Research</div>
+    ${_.map(menuItems, function(v) {
+      if (data.onboarding[v[0]]) {
+        return `
+          <li class="manage-${v[0]}">
+            <img src="assets/manage/${v[0]}.gif">
+            <div class="tip">${v[1]}</div>
+          </li>`
+      } else {
+        return '';
+      }
+    }).join('')}
     </li>
     <li class="manage-browser">
       <img src="assets/manage/internet.gif">
@@ -156,7 +139,8 @@ class Menu extends View {
 
   render() {
     super.render({
-      nextOffice: this.player.nextOffice
+      nextOffice: this.player.nextOffice,
+      onboarding: this.player.snapshot.onboarding
     });
   }
 }

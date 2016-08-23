@@ -39,6 +39,7 @@ class Company {
       pollution: 0,
 
       lifetimeRevenue: 0,
+      lifetimeCosts: 0,
       annualRevenue: 0,
       annualCosts: 0,
       lastAnnualRevenue: 0,
@@ -54,6 +55,7 @@ class Company {
       acquisitions: [],
       discoveredProducts: [],
       activeProducts: [],
+      productsLauched: 0,
 
       hype: 0,
       outrage: 0,
@@ -136,6 +138,7 @@ class Company {
     if (this.cash - cost >= 0) {
       this.cash -= cost;
       this.annualCosts += cost;
+      this.lifetimeCosts += cost;
       return true;
     }
     return false;
@@ -298,6 +301,7 @@ class Company {
       }
     }
 
+    this.productsLaunched++;
     this.product = null;
     Product.launch(product, this);
   }

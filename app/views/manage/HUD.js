@@ -77,8 +77,8 @@ const activeProductTemplate = function(data) {
 };
 
 const statsTemplate = data => `
-<li data-tip="Hype"><img src="/assets/company/hype.png"> <span class="hype-val">${util.abbreviateNumber(data.hype, 0)}</span></li>
-<li data-tip="Outrage"><img src="/assets/company/outrage.png"> ${util.abbreviateNumber(data.outrage, 0)}</li>
+${data.onboarding.hype ? `<li data-tip="Hype"><img src="/assets/company/hype.png"> <span class="hype-val">${util.abbreviateNumber(data.hype, 0)}</span></li>` : ''}
+${data.onboarding.outrage ? `<li data-tip="Outrage"><img src="/assets/company/outrage.png"> ${util.abbreviateNumber(data.outrage, 0)}</li>` : ''}
 <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(data.design, 0)}</li>
 <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(data.marketing, 0)}</li>
 <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(data.engineering, 0)}</li>
@@ -161,7 +161,7 @@ class HUD extends View {
         el: $('.hud-stats'),
         template: statsTemplate
       });
-    this.subviews = [
+      this.subviews = [
         new View({
           el: $('.hud-date'),
           template: timeTemplate

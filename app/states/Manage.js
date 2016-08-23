@@ -25,9 +25,6 @@ class Manage extends Phaser.State {
   }
 
   create() {
-    this.player.onboard('intro');
-    this.player.onboard('manage'); // TODO this should be separate?
-
     var office = this.showOffice();
     this.clock = new Clock(this, this.player, office);
     this.hud = new HUD(this.player);
@@ -54,6 +51,7 @@ class Manage extends Phaser.State {
     if (this.selectionView && this.selectedObject) {
       this.selectionView.update(this.selectedObject);
     }
+    this.player.onboarder.resolve();
   }
 
   showOffice() {

@@ -50,7 +50,6 @@ class View extends DetailList {
 
   render() {
     var player = this.player;
-    player.onboard('acquisitions'); // TODO this should be handled by the manager not the view
     super.render({
       items: _.map(acquisitions, function(i) {
         return _.extend({

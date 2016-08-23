@@ -1,76 +1,223 @@
-{
-  "intro": [
-    "Welcome! I'm your incubator mentor. Running a successful startup is not easy, but I'll give you guidance.",
-    "You're just starting out, so you'll work from your apartment for now.",
-    "Right now it's just your cofounder in the office, but eventually you'll have a buzzing hive of talented employees.",
-    "Anyways, here's how things work. At the start of each year, you'll be able to manage all aspects of your company via the <em>Manage Company</em> tab - hiring, R&D, and so on.",
-    "Once you feel ready to take on the year, you can head over to the <em>Start the Year</em> tab in your browser.",
-    "When you start the year, you will enter <em>The Market</em> and have to compete with other companies for market share.",
-    "But I'll explain more of that when the time is right.",
-    "For now, I recommend clicking on <em>Manage Company</em> tab and hiring an employee or two.",
-    "You'll need them to build more and better products, which will help in <em>The Market</em>.",
-    "But it's your company so do w/e"
-  ],
-  "manage": [
-    "This is where you can manage all aspects of your company."
-  ],
-  "verticals": [
-    "As your company grows, you'll want to expand its operations into new verticals.",
-    "New verticals give access to new product types to innovate with!"
-  ],
-  "productTypes": [
-    "Here you can view the product types you have available."
-  ],
-  "products": [
-    "Here you can view the products you've innovated."
-  ],
-  "specialProjects": [
-    "Special projects are expensive undertakings but can lead to massive Market advantages and open up totally new revenue streams.",
-    "Each special project has a few prerequisite products that must be innovated before the special project is available."
-  ],
-  "acquisitions": [
-    "The frustrating part of the Market is all the competition, but you can eat up other companies."
-  ],
-  "lobbying": [
-    "The government is not an enemy to the Market; it can be a strong ally."
-  ],
-  "research": [
-    "To most effectively innovate, you need an Innovation Labs - here is where all your bleeding edge research is carried out."
-  ],
-  "employees": [
-    "Your employees are the lifeblood of your company, at least until they can be replaced."
-  ],
-  "recruiting": [
-    "Here you can recruit candidates for employment. Fancier methods attract higher quality candidates!"
-  ],
-  "hiring": [
-    "Now you've got a few candidates to choose from - pick as many as you'd like to hire!",
-    "Unfortunately, we don't get much detailed info about candidates. But their job title should give some hint about their proficiency.",
-    "Maybe if we built a platform where they voluntarily shared personal information, this would be easier..."
-  ],
-  "perks": [
-    "Happy employees are better employees - <em>perks</em> attract and retain the best talent and keep them at the office for longer.",
-    "Most perks can be upgraded too!"
-  ],
-  "locations": [
-    "In order to keep growing, you'll have to expand to other cities and eventually countries.",
-    "Expanding to new locations gives access to new markets, and some places even provide nice bonuses!"
-  ],
-
-  "market_start": [
-    "Welcome to <em>The Market</em>! Here you'll battle competitors for <em>Market share</em>.",
-    "<em>Market share</em> tiles have money on them. Each turn those Market shares will be harvested for revenue.",
-    "<em>Market share</em> tiles can be captured with <em>products</em>.",
-    "Products can be developed at an <em>office</em> you own (a blue title with an 'o')."
-  ],
-  "market_createProduct": [
-    "<em>Products</em> are created by combining two product types. <em>Innovate</em> with novel combinations and see if you can create a breakthrough!",
-    "When a product is created, it can be used to capture market share, office, or resource tiles.",
-    "Products can also directly battle one another for dominance.",
-    "Note that products have a resource requirement - if that requirement is not fulfilled, that product won't develop."
-  ],
-  "market_createPromo": [
-    "<em>Promos</em> are special pieces that can't capture tiles, but they can add bonuses to them, temporarily making them easier to capture or increasing their revenue.",
-    "Use them to strategically weaken competitors' grips on market shares or to strengthen your own."
-  ]
-}
+[
+  {
+    "name": "intro",
+    "messages": [
+      "Welcome! I'm your incubator mentor. Running a successful startup is not easy, but I'll give you guidance.",
+      "You're just starting out, so you'll work from your apartment for now.",
+      "This is the Office view. Here you can manage your company, create products, poke around the office, and more.",
+      "Right now it's just your cofounder in the office, but eventually you'll have a buzzing hive of talented employees.",
+      "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one."
+    ],
+    "uiSelector": ".start-product"
+  }, {
+    "name": "create_product",
+    "messages": [
+      "<em class='concept'>Products</em> are created by combining two different <em class='concept'>Product Types</em>.",
+      "You only have a couple to choose from now, but later you can unlock and purchase more.",
+      "Some combinations lead to wildly successful products and some end up in duds. You'll have to <em class='special'>innovate</em> by experimenting with different combinations.",
+      "For now just pick any two and get started."
+    ],
+    "popup": "Start a Product"
+  }, {
+    "name": "product_development",
+    "messages": [
+      "Products take time to develop, depending on the productivity of your employees. Some product types are more difficult than others, requiring longer to finish.",
+      "As your company develops a product, your employees contribute <em class='concept'>Design</em>, <em class='concept'>Engineering</em>, and <em class='concept'>Marketing</em> skills. These affect the final product in different ways.",
+      "We'll see what this means after the product is finished."
+    ],
+    "conditions": [{
+      "type": "productDeveloping",
+      "op": "eq",
+      "val": true
+    }]
+  }, {
+    "name": "product_finished",
+    "messages": [
+      "Your product is finished!",
+      "When a product is finished, it is launched into <em class='special'>The Market</em>, where you'll battle a competitor for market share."
+    ],
+    "conditions": [{
+      "type": "productsLaunched",
+      "op": "eq",
+      "val": 1
+    }]
+  }, {
+    "name": "the_market",
+    "messages": [
+      "Welcome to <em class='special'>The Market</em>! The tiles with dollar signs are different pieces of market share of varying income levels.",
+      "Your product's revenue depends on how much market share you can capture from The Market.",
+      "The blue cubes on the map represent your products. They have different stats which are affected by the Design, Engineering, and Marketing skill that went into the product.",
+      "Design influences the number of moves each product has.",
+      "Engineering influences the health each product has.",
+      "Marketing influences the strength each product has.",
+      "Products can capture market share tiles - the speed of capture depends on their strength - and they can fight head-to-head and destroy competitors products.",
+      "The Market battle ends when there are no more market shares left to capture, if one player is eliminated, or if the turns run out.",
+      "Good luck!"
+    ],
+    "market": true
+  }, {
+    "name": "recruiting",
+    "messages": [
+      "Now that you're finished with The Market, your product will start generating some revenue.",
+      "The revenue generated depends on some factors, most importantly how much of The Market you were able to capture.",
+      "To capture more of The Market you need to build better products.",
+      "And to build better products, you need the best talent.",
+      "Let's hire an employee through the <em class='ui-item'>Recruiting</em> button."
+    ],
+    "conditions": [{
+      "type": "activeProducts",
+      "op": "eq",
+      "val": 1
+    }],
+    "uiSelector": ".manage-recruiting"
+  }, {
+    "name": "recruiting_strategies",
+    "messages": [
+      "To recruit employees, you must first select a recruiting strategy.",
+      "Some recruiting strategies are more costly but are more likely to bring the cream of the crop. Others are cheaper but may reveal a diamond in the rough you can shape to be something great.",
+      "Why don't you pick one and see which candidates come through?"
+    ],
+    "popup": "Recruiting"
+  }, {
+    "name": "hiring",
+    "messages": [
+      "We've got a few candidates lined up. Take a look and see if there are any you like.",
+      "Candidates have different skill levels, typically specializing in one thing. Sometimes you'll find a <em class='special'>Unicorn</em> candidate that excels in everything.",
+      "Some candidates also have special attributes which can confer bonuses to themselves or to all employees at the company. Keep an eye out for these ones.",
+      "If there's a candidate you like, click <em class='ui-item'>Negotiate</em> to start the hiring process."
+    ],
+    "popup": "Hiring"
+  }, {
+    "name": "negotiation",
+    "messages": [
+      "Each candidate has some minimum salary they're willing to accept. You won't know what it is, but you can influence it through negotiations.",
+      "Negotiations consist of, for instance, trying to convince the candidate of intangible benefits of the workplace so that they are willing to accept a lower salary.",
+      "Of course, different candidates have different personalities, so they respond to things differently. What may convince one candidate to take a lower salary might cause another to demand more compensation.",
+      "It's up to you to get a feel for what a candidate responds to through this process.",
+      "When you feel ready, you can make an offer.",
+      "If the candidate refuses, you have one more chance to make a different offer.",
+      "Otherwise, the candidate accepts a competing offer and may be off the job market for some time."
+    ],
+    "popup": "Negotiation"
+  }, {
+    "name": "employees",
+    "messages": [
+      "Congratulations on your first employee!",
+      "Employees are the lifeblood of your company. Keep up with them by selecting them in the office or by opening the <em class='ui-item'>Employees</em> menu item."
+    ],
+    "conditions": [{
+      "type": "employees",
+      "op": "gt",
+      "val": 1
+    }],
+    "uiSelector": ".manage-employees"
+  }, {
+    "name": "productTypes",
+    "messages": [
+      "You might be feeling a little limited by the product types your company can develop. In the <em class='ui-item'>Product Types</em> menu you can purchase more to work with."
+    ],
+    "conditions": [{
+      "type": "productsLaunched",
+      "op": "gt",
+      "val": 1
+    }],
+    "uiSelector": ".manage-productTypes"
+  }, {
+    "name": "verticals",
+    "messages": [
+      "You can access even more product types by expanding into new <em class='concept'>Verticals</em>.",
+      "When you start cross-pollinating across different Verticals, you'll really start to see some <em class='special'>Innovation</em>!"
+    ],
+    "conditions": [{
+      "type": "productTypes",
+      "op": "gt",
+      "val": 4
+    }],
+    "uiSelector": ".manage-verticals"
+  }, {
+    "name": "specialProjects",
+    "messages": [
+      "Special projects are expensive undertakings but can lead to massive Market advantages and open up totally new revenue streams.",
+      "Each special project has a few prerequisite products that must be innovated before the special project is available."
+    ],
+    "conditions": [{
+      "type": "productsLaunched",
+      "op": "gt",
+      "val": 12
+    }],
+    "uiSelector": ".manage-specialProjects"
+  }, {
+    "name": "acquisitions",
+    "messages": ["Is another company getting in your way? You could always acquire them."],
+    "conditions": [{
+      "type": "annualRevenue",
+      "op": "gt",
+      "val": 5000000
+    }],
+    "uiSelector": ".manage-acquisitions"
+  }, {
+    "name": "lobbying",
+    "messages": ["The government does not have to be an enemy to the Market; it can be a strong ally."],
+    "conditions": [{
+      "type": "annualRevenue",
+      "op": "gt",
+      "val": 2000000
+    }],
+    "uiSelector": ".manage-lobbying"
+  }, {
+    "name": "research",
+    "messages": ["To most effectively innovate, you need an Innovation Labs - here is where all your bleeding edge research is carried out."],
+    "conditions": [{
+      "type": "productsLaunched",
+      "op": "gt",
+      "val": 4
+    }],
+    "uiSelector": ".manage-research"
+  }, {
+    "name": "perks",
+    "messages": [
+      "Happy employees are better employees - <em>perks</em> attract and retain the best talent and keep them at the office for longer.",
+      "Most perks can be upgraded too!"
+    ],
+    "conditions": [{
+      "type": "employees",
+      "op": "ge",
+      "val": 2
+    }],
+    "uiSelector": ".manage-perks"
+  }, {
+    "name": "locations",
+    "messages": [
+      "In order to keep growing, you'll have to expand to other cities and eventually countries.",
+      "Expanding to new locations gives access to new markets, and some places even provide nice bonuses!",
+      "Each new location will act as a remote office that will contribute Design, Engineering, and Marketing to your products."
+    ],
+    "conditions": [{
+      "type": "productsLaunched",
+      "op": "ge",
+      "val": 8
+    }],
+    "uiSelector": ".manage-locations"
+  }, {
+    "name": "promos",
+    "messages": [
+      "Promos etc"
+    ],
+    "conditions": [{
+      "type": "productsLaunched",
+      "op": "ge",
+      "val": 6
+    }],
+    "uiSelector": ".start-promo"
+  }, {
+    "name": "hype",
+    "messages": [
+      "Hype etc"
+    ]
+  }, {
+    "name": "outrage",
+    "messages": [
+      "Outrage etc"
+    ]
+  }
+]

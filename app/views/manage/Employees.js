@@ -59,7 +59,6 @@ class View extends DetailList {
 
   render() {
     var player = this.player;
-    player.onboard('employees'); // TODO this should be handled by the manager not the view
     super.render({
       items: player.company.workers
     });

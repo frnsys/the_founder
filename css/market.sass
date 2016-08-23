@@ -1,6 +1,9 @@
 .market-wrapper, .market-ui
   pointer-events: none
 
+#market.market-active
+  display: block !important
+
 .market
   width: 180px
   height: 400px
@@ -9,6 +12,7 @@
   position: relative
   font-family: "Fantasque Sans Mono", monospace
   font-size: 0.85em
+  background: #eee
 
 .end-turn
   position: absolute
@@ -16,7 +20,7 @@
   width: 100%
 
 .progress-bar
-  height: 1em
+  height: 1.5em
   width: 100%
   background: #8da1c3
 
@@ -31,6 +35,7 @@
 
 .tile-info
   margin: 1em 0
+  padding: 0.8em
 
 .tile-description
   color: #888
@@ -43,3 +48,12 @@
 
 .no-health
   color: #ccc
+
+.market-title
+  position: fixed
+  color: #fff
+  left: 0
+  bottom: 0
+  font-size: 7em
+  background: rgba(0,0,0,0.4)
+  padding: 0.2em

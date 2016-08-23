@@ -1,3 +1,4 @@
+import util from 'util';
 import View from './View';
 import Manager from 'app/Manager';
 
@@ -13,6 +14,7 @@ const template = data => `
     <li><button class="new-game">New Game</button></li>
     ${data.newGamePlus ? '<li><button class="new-game-plus">New Game+</button></li>' : ''}
     <li><button class="load-game" ${data.savedGame ? '': 'disabled'}>Load Game</button></li>
+    <li>${data.highScore ? `Highest Profit: ${util.formatCurrencyAbbrev(data.highScore)}` : ''}</li>
   </ul>
 </div>
 `

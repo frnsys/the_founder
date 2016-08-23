@@ -50,7 +50,8 @@ class TheMarket extends Phaser.State {
   }
 
   create() {
-    // this.player.onboard('market_start'); // TODO onboarding
+    $('#market').addClass('market-active');
+    $('body').css('background-image', 'url(assets/themarket/01.jpg)');
 
     var self = this;
     this.totalTurns = MAX_TURNS;
@@ -95,6 +96,10 @@ class TheMarket extends Phaser.State {
     Tile.onSingleClick.add(this.renderUI, this);
   }
 
+  update() {
+    this.player.onboarder.resolve();
+  }
+
   renderUI(tile) {
     var t = _.clone(tile) || {};
     t.owned = t.owner == this.humanPlayer;
@@ -117,6 +122,7 @@ class TheMarket extends Phaser.State {
       competitor: this.aiPlayer.company,
       tile: t,
       turnsLeft: this.turnsLeft,
+      totalTurns: this.totalTurns,
       turnsPercent: (this.totalTurns - this.turnsLeft)/this.totalTurns * 100
     });
   }
@@ -137,6 +143,8 @@ class TheMarket extends Phaser.State {
     Product.setRevenue(this.product, marketShares, this.player);
     this.view.remove();
     this.player.save();
+    $('body').css('background-image', 'none');
+    $('#market').removeClass('market-active');
     this.game.state.start('Manage');
   }
 

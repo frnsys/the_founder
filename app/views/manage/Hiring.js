@@ -77,7 +77,6 @@ class View extends DetailList {
   render() {
     var player = this.player;
     var candidates = Hiring.recruit(this.recruitment, player, player.company);
-    player.onboard('hiring'); // TODO this should be handled by the manager not the view
     super.render({
       items: candidates
     });

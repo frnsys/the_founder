@@ -1,0 +1,117 @@
+[{
+  "text": "Ho hum work work"
+}, {
+  "text": "Busy day today!"
+}, {
+  "text": "I'm glad we have all these nice perks so I can maximize my productivity :)",
+  "companyConditions": [{
+    "type": "nPerks",
+    "op": "ge",
+    "val": 5
+  }]
+}, {
+  "text": "I'm so tired...it's ruining my productivity.",
+  "workerConditions": [{
+    "type": "burnoutRisk",
+    "op": "ge",
+    "val": 0.6
+  }]
+}, {
+  "text": "I love having dogs in the office!",
+  "companyConditions": [{
+    "type": "perks",
+    "op": "has",
+    "val": "Office Pet"
+  }]
+}, {
+  "text": "Our sleep pods are so nice. I don't have to go home anymore.",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Sleep Pods"
+  }]
+}, {
+  "text": "Our sleep pods are so nice. I don't have to go home anymore.",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Sleep Pods"
+  }]
+}, {
+  "text": "I'm miserable here.",
+  "workerConditions": [{
+    "type": "happiness",
+    "op": "lt",
+    "val": 10
+  }]
+}, {
+  "text": "This job isn't fulfilling.",
+  "workerConditions": [{
+    "type": "happiness",
+    "op": "lt",
+    "val": 20
+  }]
+}, {
+  "text": "Am I doing more harm here than good?",
+  "workerConditions": [{
+    "type": "happiness",
+    "op": "lt",
+    "val": 20
+  }]
+}, {
+  "text": "We have some really comfy couches :)",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Couches"
+  }]
+}, {
+  "text": "Can't wait to booze up with our keg later",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Office Keg"
+  }]
+}, {
+  "text": "Glad we have catering, I can work through lunch!",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Catering"
+  }]
+}, {
+  "text": "Whew this coffee is really getting me through the day!",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Coffee"
+  }]
+}, {
+  "text": "This butter coffee has totally cleaned out my insides!",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Butter Coffee"
+  }]
+}, {
+  "text": "Something about this butter coffee...",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Butter Coffee"
+  }]
+}, {
+  "text": "I'm having doubts about this company...I should text our therapist",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Text-a-Therapist"
+  }]
+}, {
+  "text": "These cleaning bots are nice. I always felt bad about our cleaning staff.",
+  "companyConditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Caretaker Automatons"
+  }]
+}]

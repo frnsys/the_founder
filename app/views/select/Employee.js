@@ -16,7 +16,7 @@ const template = data => `
 <div class="selection-body">
   <div class="last-thought">
     <h6>Last Tweet</h6>
-    I'm glad we have all these nice perks so I can maximize my productivity!
+    <div class="tweet">${data.lastTweet}</div>
   </div>
   <div class="selection-info">
     <ul class="selection-stats">
@@ -58,10 +58,15 @@ class EmployeeView extends SelectView {
     this.statsView.render(obj);
     this.el.find('.employee-attributes').append(`<h5 class="employee-burnout"></h5>`);
     this.updateBurnout(obj);
+    this.updateLastTweet(obj);
   }
 
   updateBurnout(obj) {
     this.el.find('.employee-attributes .employee-burnout').html(`${obj.burnout > 0 ? 'BURNT OUT' : `Exhaustion: ${Math.round(obj.burnoutRisk * 100)}%`}`);
+  }
+
+  updateLastTweet(obj) {
+    this.el.find('.tweet').text(obj.lastTweet);
   }
 
   update(obj) {

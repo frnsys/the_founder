@@ -358,6 +358,16 @@ class Company {
     };
     return false;
   }
+
+  get perkUpgrades() {
+    return _.flatten(_.map(this.perks, function(p) {
+      return _.filter(perk.upgrades, function(u, i) {
+        console.log('perk index');
+        console.log(i);
+        return i <= p.upgradeLevel;
+      });
+    }));
+  }
 }
 
 export default Company;

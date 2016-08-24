@@ -1,4 +1,6 @@
 import _ from 'underscore';
+import Condition from './Condition';
+import thoughts from 'data/thoughts.json';
 import attributeBonuses from 'data/workerAttributes.json';
 
 const GROWTH_PROB = 0.04;
@@ -64,7 +66,7 @@ const Worker = {
       burnout: 0,
       burnoutRisk: 0,
       offMarketTime: 0,
-      lastTweet: '',
+      lastTweet: 'Getting situated...',
       robot: robot
     }, worker);
   },
@@ -165,7 +167,31 @@ const Worker = {
       });
     }
     return strs;
+  },
+
+  updateLastTweet: function(worker, player) {
+    var candidates = _.filter(thoughts, function(t) {
+      var companySatisfied = true,
+          workerSatisfied = true;
+      if (t.companyConditions) {
+        companySatisfied = _.every(t.companyConditions, function(c) {
+          return Condition.satisfied(c, player);
+        });
+      }
+      if (t.workerConditions) {
+        workerSatisfied = _.every(t.workerConditions, function(c) {
+          return Condition.operators[c.op](Worker.conditions[c.type](worker), c.val);
+        });
+      }
+      return companySatisfied && workerSatisfied;
+    });
+    worker.lastTweet = _.sample(candidates).text;
   }
+}
+
+Worker.conditions = {
+  burnoutRisk: (worker) => worker.burnoutRisk,
+  happiness: (worker) => worker.happiness
 }
 
 export default Worker;

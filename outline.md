@@ -115,8 +115,13 @@ some items are still marked as TODO and NEEDS TESTING
 [X] strategies have a range of scores that they return workers of
 [X] robots can be hired multiple times (they are hired as clones)
 [X] employees may be poached by competitors
-[ ] TODO hiring minigame consists of making an acceptable salary offer within a certain amount of tries
-[ ] TODO candidates for which these salary offers fail are off the market for a certain amount of time, during which they do not appear as candidates
+[X] hiring minigame
+    [X] various dialog options which decrease acceptable min salary, increase it, or keep it the same
+    [X] how a dialog option affects min salary depends on the candidate's personality
+    [X] you can make an offer at any time, which they have a probability of accepting (based on their min salary, which changes by the interview)
+    [X] you can make only one offer, otherwise they go off the market
+    [X] social media perk tells you their personality types
+    [X] negotiation options can include perk-based ones
 
 # Company
 [X] pays salaries, rent, and taxes

@@ -2,6 +2,7 @@ import _ from 'underscore';
 import Enums from './Enums';
 import Event from 'game/Event';
 import Board from 'game/Board';
+import Worker from 'game/Worker';
 import EmailsView from 'views/Email';
 
 const SECONDS_PER_WEEK = 10 * 30;
@@ -77,9 +78,16 @@ class Clock {
   }
 
   weekly() {
-    _.each(this.player.workers, function(w) {
+    var player = this.player;
+    _.each(player.workers, function(w) {
       if (w.offMarketTime > 0) {
         w.offMarketTime--;
+      }
+    });
+
+    _.each(player.company.workers, function(w) {
+      if (Math.random() <= 0.5) {
+        Worker.updateLastTweet(w, player);
       }
     });
 

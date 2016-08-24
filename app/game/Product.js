@@ -95,12 +95,19 @@ const Product = {
     return p;
   },
 
-  setRevenue: function(p, marketShares, player) {
+  setRevenue: function(p, marketShares, influencers, player) {
+    var hypeMultiplier = (1+player.company.hype/1000),
+        influencerMultiplier = 1 + (influencers.length*0.5);
     p.earnedRevenue = 0;
     p.revenue = _.reduce(marketShares, function(m,w) {
       return m + marketShareToRevenue(w.income);
-    }, 0) * player.spendingMultiplier;
-    // TODO show bonus report for spending multiplier?
+    }, 0) * player.spendingMultiplier * hypeMultiplier * influencerMultiplier;
+    return {
+      revenue: p.revenue,
+      spendingMultiplier: player.spendingMultiplier,
+      hypeMultiplier: hypeMultiplier,
+      influencerMultiplier: influencerMultiplier
+    }
   },
 
   getRevenue: function(p) {

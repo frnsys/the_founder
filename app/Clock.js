@@ -3,6 +3,7 @@ import Enums from './Enums';
 import Event from 'game/Event';
 import Board from 'game/Board';
 import Worker from 'game/Worker';
+import Condition from 'game/Condition';
 import EmailsView from 'views/Email';
 
 const SECONDS_PER_WEEK = 10 * 30;
@@ -44,6 +45,12 @@ class Clock {
           this.yearly();
         } else {
           this.player.month++;
+        }
+
+        if (player.current.emails) {
+          var emailPopup = new EmailsView(
+            this.player.current.emails, this.player.company);
+          emailPopup.render();
         }
       }
     }
@@ -97,8 +104,13 @@ class Clock {
   }
 
   monthly() {
-    this.player.company.payMonthly();
-    Event.tick(this.player);
+    var player = this.player;
+    player.current.emails = [];
+    player.company.payMonthly();
+    updateNews(player);
+    Event.tick(player, function(ev) {
+      // ev.
+    });
   }
 
   yearly() {
@@ -180,9 +192,6 @@ function checkDeath(player) {
         "body": `I hope you're getting settled in as our new CEO. Thanks for accepting the position. Your parent - the previous CEO - was pretty old (${age}!) so we have been preparing for this transition. As their progeny, I'm sure you'll continue their legacy. <br /><img src='assets/news/death.png'>`
       });
     }
-    var emailPopup = new EmailsView(emails, player.company);
-    emailPopup.render();
-    player.current.emails = emails;
   }
 }
 
@@ -197,8 +206,67 @@ function checkGameOver(player) {
         "value": {"value": "New Game+"}
       }]
     };
+    var emailPopup = new EmailsView([email], player.company);
+    emailPopup.render();
     this.manager.gameOver();
   }
+}
+
+function updateNews(player) {
+  var specialNews = _.shuffle(_.flatten(_.mapObject(player.specialNews, function(v, k) {
+    var comparison = data[k],
+        matches = _.where(v, function(obj) {
+          return Condition.satisfied(comparison, obj.comparator, obj.value);
+        });
+
+    // special news is non-repeatable
+    player.specialNews[k] = _.difference(player.specialNews[k], matches);
+
+    return _.map(matches, function(article) {
+      var article = _.clone(article);
+      article.title = renderTemplate(article.title, data);
+      article.body = renderTemplate(article.body, data);
+      return article;
+    });
+  })));
+
+  var news = _.shuffle(_.compact(_.mapObject(player.news, function(v, k) {
+    var comparison = data[k],
+        passed = _.find(v, function(obj) {
+          return Condition.satisfied(comparison, obj.comparator, obj.value);
+        });
+    if (!passed) {
+      return false;
+    }
+    var article = _.clone(_.sample(passed.articles));
+    article.title = renderTemplate(article.title, data);
+    article.body = renderTemplate(article.body, data);
+    return article;
+  })));
+
+  news = specialNews.concat(news);
+  player.current.news = {
+    mainArticle: news.pop(),
+    topArticles: _.compact([news.pop(), news.pop()]),
+    articles: news
+  };
+
+  var emails = _.compact(_.flatten(_.mapObject(player.emails, function(v, k) {
+    var comparison = data[k],
+        matches = _.where(v, function(obj) {
+          return Condition.satisfied(comparison, obj.comparator, obj.value);
+        });
+
+    // emails are non-repeatable
+    player.emails[k] = _.difference(player.emails[k], matches);
+    return matches;
+  })));
+
+  // apply email effects
+  _.each(emails, function(email) {
+    Effect.applies(email.effects, player);
+  });
+  this.player.current.emails.concat(emails);
 }
 
 export default Clock;

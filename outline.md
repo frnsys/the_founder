@@ -2,7 +2,6 @@ various systems of The Founder and their main functionalities
 
 some items are still marked as TODO and NEEDS TESTING
 
-
 # Events
 [ ] there are two types of events: news (articles) and emails
 [ ] events that can happen are kept in a pool
@@ -16,15 +15,6 @@ some items are still marked as TODO and NEEDS TESTING
 
 # Loading/saving
 [ ] saving the game requires saving the player which should recursively save all necessary data for everything else (needs clarification)
-
-# The Market
-[ ] when a product launches, the number of products, their strength and movement speed are influenced by the product's stats against its difficult and main stat
-[ ] the player places these products in their starting zone
-[ ] the competitor does the same
-[ ] the difficult of tile capture depends on opinion (this is only from the player's perspective; it can be easier or harder for a competitor to capture)
-[ ] capturing influencers makes surrounding tiles easier to capture and harder for the competitor to capture
-[ ] market tile income distribution is affected by economic stability
-[ ] board size is determined by locations
 
 
 ---
@@ -97,7 +87,7 @@ some items are still marked as TODO and NEEDS TESTING
 [X] have attributes which confer company bonuses, that scale with # employees/locations
 [X] employees gradually improve in their skills overtime
 [X] happiness is affected by negative player stats, but counteracted by forgetting rate
-[ ] TODO employees have a "last tweet" depending on their attributes, the available perks, their burnout rate, their happiness, etc, drawn uniformly from a collection of tweets that are relevant to their current state
+[X] employees have a "last tweet" depending on their attributes, the available perks, their burnout rate, their happiness, etc, drawn uniformly from a collection of tweets that are relevant to their current state
 
 # Promo Campaigns/Hype
 [X] are purchasable (repeatedly)
@@ -169,3 +159,9 @@ some items are still marked as TODO and NEEDS TESTING
 [X] at a certain year, the player dies (unless the Immortal special effect is on) NEEDS TESTING
 [X] when/if the player dies, their son inherits the company and play continues NEEDS TESTING
 [X] if the board forces you to resign, you "lose" the game, but a new game plus option is available where you start a new company with your buyout from the previous game NEEDS TESTING
+
+# The Market
+[X] when a product launches, the number of products, their strength and movement speed are influenced by the product's stats against its difficult and main stat
+[X] capturing influencers give bonuses to final revenue
+[X] market tile income distribution is affected by economic stability
+[X] board size is determined by locations

@@ -76,22 +76,6 @@ class InfluencerTile extends OwnedTile {
     this.name = 'Thought Leader';
     this.description = 'Inspires consumption and influence in surrounding tiles.';
   }
-  preCapture() {
-    // remove bonus from old owner's income tiles
-    _.each(this.owner.tiles, function(tile) {
-      if (tile instanceof IncomeTile) {
-        tile.permBonus -= 1;
-      }
-    });
-  }
-  postCapture() {
-    // add bonus to new owner's income tiles
-    _.each(this.owner.tiles, function(tile) {
-      if (tile instanceof IncomeTile) {
-        tile.permBonus += 1;
-      }
-    });
-  }
 }
 
 class IncomeTile extends OwnedTile {
@@ -108,7 +92,6 @@ class IncomeTile extends OwnedTile {
         break;
       }
     }
-    this.permBonus = 0; // non-decaying bonus, i.e. from influencers
     this.spriteName = 'income' + this.income.toString() + 'Tile';
     this.description = 'Yields $' + this.revenue() + ' revenue per week.';
 
@@ -127,20 +110,8 @@ class IncomeTile extends OwnedTile {
         break;
     }
   }
-  bonus() {
-    return this.permBonus;
-  }
   revenue() {
     return (Math.pow((this.income + 1), 2) * 1000) + (this.bonus() * 500);
-  }
-  postCapture() {
-    // apply new owner's influencer bonuses
-    this.permBonus = 0;
-    _.each(this.owner.tiles, function(tile) {
-      if (tile instanceof InfluencerTile) {
-        this.permBonus += 1;
-      }
-    });
   }
   onDoubleClick() {
     super.onDoubleClick();

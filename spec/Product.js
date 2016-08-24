@@ -188,29 +188,60 @@ describe('Product', function() {
   describe('revenue', function() {
     it('is based on market shares captured', function() {
       var p = createProduct(),
-          marketShares = [{income: 1}, {income: 2}];
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
       expect(p.revenue).toBe(undefined);
-      Product.setRevenue(p, marketShares, player);
+      Product.setRevenue(p, marketShares, influencers, player);
       expect(p.revenue).not.toBe(undefined);
     });
 
     it('is affected by spending multiplier', function() {
       var p = createProduct(),
-          marketShares = [{income: 1}, {income: 2}];
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
       player.spendingMultiplier = 1;
-      Product.setRevenue(p, marketShares, player);
+      Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
 
       p = createProduct();
       player.spendingMultiplier = 2;
-      Product.setRevenue(p, marketShares, player);
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeGreaterThan(val);
+    });
+
+    it('is affected by company hype', function() {
+      var p = createProduct(),
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
+      player.company.hype = 2;
+      Product.setRevenue(p, marketShares, influencers, player);
+      var val = p.revenue;
+
+      p = createProduct();
+      player.spendingMultiplier = 2;
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeGreaterThan(val);
+    });
+
+    it('is affected by influencers', function() {
+      var p = createProduct(),
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
+      player.company.hype = 2;
+      Product.setRevenue(p, marketShares, influencers, player);
+      var val = p.revenue;
+
+      p = createProduct();
+      influencers = [{}, {}];
+      Product.setRevenue(p, marketShares, influencers, player);
       expect(p.revenue).toBeGreaterThan(val);
     });
 
     it('decays over time', function() {
       var p = createProduct(),
-          marketShares = [{income: 1}, {income: 2}];
-      Product.setRevenue(p, marketShares, player);
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
+      Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
       Product.getRevenue(p);
       expect(p.revenue).toBeLessThan(val);

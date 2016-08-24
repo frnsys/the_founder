@@ -5,7 +5,6 @@ import _ from 'underscore';
 import Condition from './Condition';
 
 const Event = {
-  onEvent: new Phaser.Signal(),
   satisfied: function(event, player) {
     var self = this;
     return _.every(event.conditions, function(condition) {
@@ -14,7 +13,7 @@ const Event = {
   },
 };
 
-Event.tick = function(player) {
+Event.tick = function(player, onEvent) {
   var self = this,
       toResolve = [];
 
@@ -29,7 +28,7 @@ Event.tick = function(player) {
   for (var i=0; i < toResolve.length; i++) {
     var event = toResolve[i];
     if (!triggered && Math.random() < event.probability) {
-      self.onEvent.dispatch(event);
+      onEvent(event);
       triggered = true;
 
       // if not repeatable, remove

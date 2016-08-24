@@ -45,11 +45,19 @@ class ProductPiece extends Piece {
     this.product = product;
     this.name = this.product.name;
     this.spriteName = 'productPiece';
-    this.strength = strength;
+    this._strength = strength;
     this.health = health;
     this.moves = movement;
     this.movement = movement;
     this.maxHealth = health;
+  }
+
+  get strength() {
+    return this._strength + this.hypeBonus;
+  }
+
+  get hypeBonus() {
+    return Math.round(Math.sqrt(Math.abs(this.owner.hype)) * (this.owner.hype < 0 ? -1 : 1));
   }
 }
 

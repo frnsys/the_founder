@@ -22,14 +22,15 @@ const pieceInfoTemplate = tile => `
     ${tile.piece.name ? tile.piece.name : 'Generic Product'}
   </span> (moves: ${tile.piece.moves})
   <div>Health: ${healthBar(tile.piece.health, tile.piece.maxHealth)} (${tile.piece.health}/${tile.piece.maxHealth})</div>
+  <div>Strength: ${tile.piece._strength}</div>
 </div>`;
 
 const tileInfoTemplate = tile => `
 <div class="tile-info">
   <span class="${tile.tileClass}">${tile.owner ? tile.owner.company.name + ' ' : ''}${tile.name}</span>
   ${tile.capturing ? `<span>${tile.capturedCost}/${tile.baseCost} captured</span>` : ''}
-  ${tile.bonus ? `<span>${tile.bonus} hype</span>` : ''}
-    <p class="tile-description">${tile.description}</p>
+  ${tile.bonus ? `<span>+${tile.bonus}</span>` : ''}
+  <p class="tile-description">${tile.description}</p>
 </div>
 `;
 

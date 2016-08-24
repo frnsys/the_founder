@@ -5,13 +5,11 @@ import Board from 'game/Board';
 import Worker from 'game/Worker';
 import Company from 'game/Company';
 
-import perks from 'data/perks.json';
 import news from 'data/news.json';
+import perks from 'data/perks.json';
 import emails from 'data/emails.json';
-import events from 'data/events.json';
 import workers from 'data/workers.json';
 import locations from 'data/locations.json';
-import specialNews from 'data/specialNews.json';
 import competitors from 'data/competitors.json';
 import technologies from 'data/technologies.json';
 import productTypes from 'data/productTypes.json';
@@ -82,14 +80,12 @@ class Player {
       perks: perks,
 
       // event pools
-      events: { pool: [] },
-      allEvents: events,
       news: news,
-      specialNews: specialNews,
       emails: emails,
       current: {
-        news: [],
-        emails: []
+        news: {},
+        emails: [],
+        inbox: []
       },
 
       // board

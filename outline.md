@@ -2,16 +2,6 @@ various systems of The Founder and their main functionalities
 
 some items are still marked as TODO and NEEDS TESTING
 
-# Events
-[ ] there are two types of events: news (articles) and emails
-[ ] events that can happen are kept in a pool
-[ ] events may have conditions before they can be triggered
-[ ] events may have countdowns
-[ ] events may be repeatable
-[ ] emails may have actions that the player must choose from
-[ ] an event may have a probability of occurring
-[ ] at regular intervals, a random qualifying event is resolved
-[ ] events that are skipped during this resolution are randomly scheduled to occur later
 
 # Loading/saving
 [ ] saving the game requires saving the player which should recursively save all necessary data for everything else (needs clarification)
@@ -165,3 +155,9 @@ some items are still marked as TODO and NEEDS TESTING
 [X] capturing influencers give bonuses to final revenue
 [X] market tile income distribution is affected by economic stability
 [X] board size is determined by locations
+
+# Events
+[X] there are two types of events: news (articles) and emails
+[X] events may have conditions before they can be triggered
+[X] emails may have effects
+[X] special events and emails occur only once, others are repeatable

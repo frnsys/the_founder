@@ -27,20 +27,6 @@ const Debug = {
     // }];
     player.skipOnboarding();
     player.specialEffects['Worker Insight'] = true;
-    player.events.pool = [{
-      probability: 1,
-      countdown: 1,
-      actions: [],
-      description: "Protesters have begun targeting the buses of <PLAYERCOMPANY>, whose presence has contributed to escalating rent and increasing financial troubles for residents of <PLAYERHQ>.",
-      effects: [{
-        type: "productivity",
-        value: -5
-      }],
-      from: "Punda Daily",
-      name: "Bus Protests",
-      repeatable: true,
-      type: 1
-    }];
   },
 
   debugOffice: function(office) {

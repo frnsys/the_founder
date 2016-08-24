@@ -54,7 +54,7 @@ const template = data => `
         <p>This year you made ${util.formatCurrency(data.ytdProfit)} in profit, which is ${data.growth}% growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. The Board of Investors are ${data.boardStatus}. This year we want to see profit of at least ${util.formatCurrency(data.profitTarget)}.</p>
       </div>
     </div>
-    ${data.emails.map(i => `
+    ${data.emails.reverse().map(i => `
       <div class="email-content" data-mail="${util.slugify(i.subject)}">
         <ul class="email-meta">
           <li>${i.subject}</li>

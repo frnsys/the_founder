@@ -83,15 +83,6 @@ const Effect = {
       player.unlocked[value.type] = _.difference(player.unlocked[value.type], [value.value]);
     }
   },
-  event: function(player, value, remove) {
-    // this assumes a "regular" (i.e. not "notice" or "special") event
-    var event = util.byName(player.allEvents, value);
-    if (!remove) {
-      player.events.pool.push(event);
-    } else {
-      player.events.pool = _.without(player.events.pool, event);
-    }
-  },
 
   toString: function(effect) {
     if (_.isNumber(effect.value)) {

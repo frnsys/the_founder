@@ -1,151 +1,241 @@
-{
-  "economy": [{
-    "comparator": "==",
-    "value": "Depression",
-    "articles": [{
-      "image": "assets/news/depression.jpg",
-      "title": "Economy plummets from computerized trading",
-      "body": "A positive feedback loop involving high-frequency trading algorithms went uncaught for 32 seconds and has devastated markets worldwide. Millions have gone bankrupt and companies' share values are plummeting. Economists anticipate effects worsening with millions more expected to lose employment after companies seek to cut costs."
-    }]
-  }, {
-    "comparator": "==",
-    "value": "Recession",
-    "articles": [{
-      "image": "assets/news/recession.jpg",
-      "title": "Economic progress stutters",
-      "body": "Toxic financial assets have been stretched too far. Hundreds of thousands have lost life savings due to common but ethically-ambiguous practices."
-    }]
-  }, {
-    "comparator": "==",
-    "value": "Neutral",
-    "articles": [{
-      "image": "assets/news/neutral.jpg",
-      "title": "Economy is doing ok",
-      "body": "To the givers of this beautiful reward, my thanks, from the heart. My family, my agents, my editors, know that my being here is their doing as well as my own, and that the beautiful reward is theirs as much as mine."
-    }]
-  }, {
-    "comparator": "==",
-    "value": "Expansion",
-    "articles": [{
-      "image": "assets/news/expansion.jpg",
-      "title": "New growth records reached",
-      "body": "The economy has been experiencing unprecedented growth. Consumers feel more comfortable than ever borrowing money from credit lenders - expect consumer spending to go up, up, up!"
-    }]
+[{
+  "articles": [{
+    "image": "assets/news/depression.jpg",
+    "title": "Economy plummets from computerized trading",
+    "body": "A positive feedback loop involving high-frequency trading algorithms went uncaught for 32 seconds and has devastated markets worldwide. Millions have gone bankrupt and companies' share values are plummeting. Economists anticipate effects worsening with millions more expected to lose employment after companies seek to cut costs."
   }],
-  "taxesAvoided": [{
-    "comparator": ">",
-    "value": 100000000,
-    "articles": [{
-      "image": "assets/news/taxes_avoided.jpg",
-      "title": "Report: Tax avoidance",
-      "body": "Corporate tax avoidance is prevelant, but {{name}} is particularly egregious. Current estimates place their avoided taxes at {{formatCurrencyAbbrev taxesAvoided}}."
-    }]
-  }, {
-    "comparator": ">",
-    "value": 1000000,
-    "articles": [{
-      "image": "assets/news/taxes_avoided.jpg",
-      "title": "Report: Tax avoidance",
-      "body": "Corporate tax avoidance is prevelant, but {{name}} is particularly egregious. Current estimates place their avoided taxes at {{formatCurrencyAbbrev taxesAvoided}}."
-    }]
-  }],
-  "debtOwned": [{
-    "comparator": ">",
-    "value": 1000000,
-    "articles": [{
-      "image": "assets/news/debt.jpg",
-      "title": "Too much debt?",
-      "body": "New study finds that {{formatCurrencyAbbrev debtOwned}} of consumer debt is owned by {{name}}."
-    }]
-  }],
-  "pollution": [{
-    "comparator": ">",
-    "value": 1000000,
-    "articles": [{
-      "image": "assets/news/pollution_severe.jpg",
-      "title": "Pollution too high, EPA finds",
-      "body": "The EPA reports that {{pollution}} metric tons of pollution are due to {{name}}'s activities."
-    }, {
-      "image": "assets/news/pollution.jpg",
-      "title": "Earth in \"bad shape\", study shows",
-      "body": "Climate change is finally catching up with us. Freshwater supplies and other vital natural resources have decreased irreversibly, reports 20-year long study published today."
-    }]
-  }],
-  "deathToll": [{
-    "comparator": ">",
-    "value": 1000000,
-    "articles": [{
-      "image": "assets/locations/war.jpg",
-      "title": "Death is good business",
-      "body": "A UN commission investigating {{name}} estimates that its products are responsible for at least {{deathToll}} deaths around the world."
-    }, {
-      "image": "assets/news/protest.jpg",
-      "title": "Mass Protests Against Defense Contractor",
-      "body": "There were massive protests today outside the headquarters of {{name}}, a prominent defense contractor who's advanced weapons designed for state and private militaries alike have caused over an estimated {{deathToll}} deaths worldwide."
-    }]
-  }],
-  "globalAvgWage": [{
-    "comparator": "<",
-    "value": 5,
-    "articles": [{
-      "image": "assets/news/riot.jpg",
-      "title": "Wage protests spread",
-      "body": "Protests flare up internationally against the {{formatCurrency globalAvgWage}} minimum wage."
-    }]
-  }],
-  "consumerSpending": [{
-    "comparator": ">",
-    "value": 150,
-    "articles": [{
-      "image": "assets/news/shopping.jpg",
-      "title": "Consumer spending reaches records",
-      "body": "Consumer spending has reached {{consumerSpending}}% their previous levels. \"There are so many lifestyle brands that speak to me,\" chirped one consumer. \"I just can't help myself!\""
-    }]
-  }],
-  "forgettingRate": [{
-    "comparator": ">",
-    "value": 1.5,
-    "articles": [{
-      "image": "assets/news/distracted.jpg",
-      "title": "Journalism unimportant?",
-      "body": "A media study finds that {{forgettingRate}} of the population is disinterested in journalism."
-    }, {
-      "image": "assets/news/attention.jpg",
-      "title": "Decreasing attention spans, study finds",
-      "body": "A new report suggests that attention spans have plunged in the past decade. \"Most consumers forget what they were reading or talking about by the next day. Outrage is unsustainable nowadays,\" said one of the researchers."
-    }]
-  }],
-  "boardStatus": [{
-    "comparator": "==",
-    "value": "Raging",
-    "articles": [{
-      "image": "assets/news/slower_growth.jpg",
-      "title": "Dire growth for {{name}}",
-      "body": "{{name}} fell way behind expectations this quarter, with sales contracting by a dangerous amount. Investor confidence is at an all-time low as rumors about a change in leadership are abound."
-    }]
-  }, {
-    "comparator": "==",
-    "value": "Unhappy",
-    "articles": [{
-      "image": "assets/news/slow_growth.jpg",
-      "title": "Disappointing growth for {{name}}",
-      "body": "{{name}} disappointed shareholders this quarter, falling short of analysts' predictions this quarter. The share price took a tumble in the wake of the earnings announcement."
-    }]
-  }, {
-    "comparator": "==",
-    "value": "Ecstatic",
-    "articles": [{
-      "image": "assets/news/faster_growth.jpg",
-      "title": "Astounding growth for {{name}}",
-      "body": "{{name}} had an extraordinary quarter, expanding revenue well beyond expectations. Consumers are diehard about the brand - they can't get enough of {{name}}'s products."
-    }]
-  }, {
-    "comparator": "==",
-    "value": "Pleased",
-    "articles": [{
-      "image": "assets/news/fast_growth.jpg",
-      "title": "Excellent growth for {{name}}",
-      "body": "{{name}} beat analysts' predictions this quarter, expanding revenue more than expected. Investors, keep your eye on {{name}}."
-    }]
+  "conditions": [{
+    "type": "economy",
+    "op": "eq",
+    "val": 0
   }]
-}
+}, {
+  "articles": [{
+    "image": "assets/news/recession.jpg",
+    "title": "Economic progress stutters",
+    "body": "Toxic financial assets have been stretched too far. Hundreds of thousands have lost life savings due to common but ethically-ambiguous practices."
+  }],
+  "conditions": [{
+    "type": "economy",
+    "op": "eq",
+    "val": 1
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/neutral.jpg",
+    "title": "Economy is doing ok",
+    "body": "The economy is pretty ho-hum."
+  }],
+  "conditions": [{
+    "type": "economy",
+    "op": "eq",
+    "val": 2
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/expansion.jpg",
+    "title": "New growth records reached",
+    "body": "The economy has been experiencing unprecedented growth. Consumers feel more comfortable than ever borrowing money from credit lenders - expect consumer spending to go up, up, up!"
+  }],
+  "conditions": [{
+    "type": "economy",
+    "op": "eq",
+    "val": 4
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/taxes_avoided.jpg",
+    "title": "Report: Tax avoidance",
+    "body": "Corporate tax avoidance is prevelant, but {{=it.company.name}} is particularly egregious. Current estimates place their avoided taxes at {{=it.taxesAvoided}}."
+  }],
+  "conditions": [{
+    "type": "taxesAvoided",
+    "op": "gt",
+    "val": 1000000000
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/debt.jpg",
+    "title": "Too much debt?",
+    "body": "New study finds that {{=it.debtOwned}} of consumer debt is owned by {{=it.company.name}}."
+  }],
+  "conditions": [{
+    "type": "debtOwned",
+    "op": "gt",
+    "val": 1000000000
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/pollution_severe.jpg",
+    "title": "Pollution too high, EPA finds",
+    "body": "The EPA reports that {{=it.company.pollution}} metric tons of pollution are due to {{=it.company.name}}'s activities."
+  }, {
+    "image": "assets/news/pollution.jpg",
+    "title": "Earth in \"bad shape\", study shows",
+    "body": "Climate change is finally catching up with us. Freshwater supplies and other vital natural resources have decreased irreversibly, reports 20-year long study published today."
+  }],
+  "conditions": [{
+    "type": "pollution",
+    "op": "gt",
+    "val": 1000000
+  }]
+}, {
+  "articles": [{
+    "image": "assets/locations/war.jpg",
+    "title": "Death is good business",
+    "body": "A UN commission investigating {{=it.company.name}} estimates that its products are responsible for at least {{=it.company.deathToll}} deaths around the world."
+  }, {
+    "image": "assets/news/protest.jpg",
+    "title": "Mass Protests Against Defense Contractor",
+    "body": "There were massive protests today outside the headquarters of {{=it.company.name}}, a prominent defense contractor who's advanced weapons designed for state and private militaries alike have caused over an estimated {{=it.company.deathToll}} deaths worldwide."
+  }],
+  "conditions": [{
+    "type": "deathToll",
+    "op": "gt",
+    "val": 1000000
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/riot.jpg",
+    "title": "Wage protests spread",
+    "body": "Protests flare up internationally against the {{=it.globalAvgWage}} minimum wage."
+  }],
+  "conditions": [{
+    "type": "globalAvgWage",
+    "op": "lt",
+    "val": 5
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/shopping.jpg",
+    "title": "Consumer spending reaches records",
+    "body": "Consumer spending has reached {{=it.consumerSpending}}% their previous levels. \"There are so many lifestyle brands that speak to me,\" chirped one consumer. \"I just can't help myself!\""
+  }],
+  "conditions": [{
+    "type": "consumerSpending",
+    "op": "gt",
+    "val": 150
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/distracted.jpg",
+    "title": "Journalism unimportant?",
+    "body": "A media study finds that {{=it.forgettingRate}} of the population is disinterested in journalism."
+  }, {
+    "image": "assets/news/attention.jpg",
+    "title": "Decreasing attention spans, study finds",
+    "body": "A new report suggests that attention spans have plunged in the past decade. \"Most consumers forget what they were reading or talking about by the next day. Outrage is unsustainable nowadays,\" said one of the researchers."
+  }],
+  "conditions": [{
+    "type": "forgettingRate",
+    "op": "gt",
+    "val": 1.5
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/slower_growth.jpg",
+    "title": "Dire growth for {{=it.company.name}}",
+    "body": "{{=it.company.name}} fell way behind expectations this quarter, with sales contracting by a dangerous amount. Investor confidence is at an all-time low as rumors about a change in leadership are abound."
+  }],
+  "conditions": [{
+    "type": "board",
+    "op": "le",
+    "val": 0
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/slow_growth.jpg",
+    "title": "Disappointing growth for {{=it.company.name}}",
+    "body": "{{=it.company.name}} disappointed shareholders this quarter, falling short of analysts' predictions this quarter. The share price took a tumble in the wake of the earnings announcement."
+  }],
+  "conditions": [{
+    "type": "board",
+    "op": "lt",
+    "val": 10
+  }, {
+    "type": "board",
+    "op": "gt",
+    "val": 0
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/fast_growth.jpg",
+    "title": "Excellent growth for {{=it.company.name}}",
+    "body": "{{=it.company.name}} beat analysts' predictions this quarter, expanding revenue more than expected. Investors, keep your eye on {{=it.company.name}}."
+  }],
+  "conditions": [{
+    "type": "board",
+    "op": "ge",
+    "val": 35
+  }, {
+    "type": "board",
+    "op": "lt",
+    "val": 50
+  }]
+}, {
+  "articles": [{
+    "image": "assets/news/faster_growth.jpg",
+    "title": "Astounding growth for {{=it.company.name}}",
+    "body": "{{=it.company.name}} had an extraordinary quarter, expanding revenue well beyond expectations. Consumers are diehard about the brand - they can't get enough of {{=it.company.name}}'s products."
+  }],
+  "conditions": [{
+    "type": "board",
+    "op": "ge",
+    "val": 50
+  }]
+}, {
+  "article": {
+    "image": "assets/news/startup.jpg",
+    "title": "A new tech startup",
+    "body": "A promising new enterprise has made a splash. {{=it.company.name}} has high ambitions and expectations of growth. When interviewed, other major companies in the industry were unimpressed. \"They just built a dinky widget,\" said the CEO of {{=it.competitor.name}}. \"They won't last long.\""
+  },
+  "conditions": [{
+    "type": "lifetimeRevenue",
+    "op": "gt",
+    "val": 100000
+  }]
+}, {
+  "article": {
+    "image": "assets/news/facespace.png",
+    "title": "Will you be my friend?",
+    "body": "Facespace, founded in 2003, is changing the way people connect online. Surely this will usher in a great new era of personal relationship management and new modes of social interaction."
+  },
+  "conditions": [{
+    "type": "year",
+    "op": "gt",
+    "val": 2006
+  }]
+}, {
+  "article": {
+    "image": "assets/news/arab_spring.jpg",
+    "title": "Protests sweep across the Middle East",
+    "body": "Revolution swept across the Middle East last month, owing in large part to the power of social media. We are in the debt of bold companies like FaceSpace for providing the platforms necessary for this kind of change."
+  },
+  "conditions": [{
+    "type": "year",
+    "op": "gt",
+    "val": 2011
+  }]
+}, {
+  "article": {
+    "image": "assets/news/first_contact.jpg",
+    "title": "First Contact",
+    "body": "Perhaps one of the most significant events in human history has occurred - a {{=it.company.name}} convoy made first contact with an alien civilization. \"This feels like the discovery of the New World. Market research teams are enroute to the sector in order to learn more about the aliens' consumer preferences,\" the CEO of {{=it.competitor.name}} remarked.  \"{{=it.competitor.name}} will be the first to corner the New Market.\""
+  },
+  "conditions": [{
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Interstellar Ship"
+  }]
+}, {
+  "article": {
+    "image": "assets/news/planet_colonies.jpg",
+    "title": "Special Report: The New Frontier",
+    "body": "{{=it.company.name}} has successfully established the first extraterrestrial colony, located on Mars. They are the first organization to establish a permanent base on non-Earth soil."
+  },
+  "conditions": [{
+    "type": "locations",
+    "op": "has",
+    "val": "Mars Colony"
+  }]
+}]

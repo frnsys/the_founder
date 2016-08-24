@@ -2,7 +2,7 @@
   {
     "name": "Defense",
     "cost": 1000000,
-    "description": "The best inventions are _military_ inventions"
+    "description": "The American defense budget is huge and with the right products, we can get a piece of it."
   },
   {
     "name": "Biotech",
@@ -17,7 +17,7 @@
   {
     "name": "Finance",
     "cost": 1000000,
-    "description": "Make money"
+    "description": "Buying stuff is expensive, and people don't always have the money for it. Why don't we lend them some?"
   },
   {
     "name": "Hardware",

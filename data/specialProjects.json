@@ -34,10 +34,6 @@
           "type": "locations",
           "value": "Gliese 832c"
         }
-      },
-      {
-        "type": "event",
-        "value": "Aliens"
       }
     ],
     "requiredProducts": ["Defense.Space", "AI.Robot", "Gadget.Space"]

@@ -75,22 +75,6 @@ describe('Effect', function() {
     });
   });
 
-  it('affects events', function() {
-    var effect = {
-      type: 'event',
-      value: 'Alien'
-    };
-    player.events.pool = [];
-    player.allEvents = [{
-      name: 'Alien'
-    }];
-    Effect.apply(effect, player);
-    expect(player.events.pool.length).toEqual(1);
-    expect(player.events.pool[0].name).toEqual('Alien');
-    Effect.remove(effect, player);
-    expect(player.events.pool.length).toEqual(0);
-  });
-
   _.each(['design', 'marketing', 'engineering'], function(name) {
     if('affects ' + name, function() {
       var effect = {

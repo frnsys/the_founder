@@ -16,6 +16,8 @@
   "dependencies": {
     "d3": "^4.2.2",
     "datamaps": "^0.5.7",
+    "dot": "^1.0.3",
+    "fs": "0.0.2",
     "jquery": "^3.1.0",
     "patroljs": "git+https://github.com/frnsys/PatrolJS.git",
     "phaser": "^2.6.1",

@@ -59,6 +59,7 @@ describe('Event', function() {
     player = new Player();
     company = player.company;
     company.name = 'DEFAULTCORP';
+    company.cofounder = {name: 'foobar'};
     player.news = news;
     player.emails = emails;
   });

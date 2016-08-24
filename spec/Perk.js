@@ -1,11 +1,22 @@
 import _ from 'underscore';
 import Perk from 'game/Perk';
-import Company from 'game/Company';
+import Player from 'app/Player';
+
+var worker = {
+  "design": 1,
+  "engineering": 1,
+  "happiness": 1,
+  "marketing": 1,
+  "productivity": 1,
+  "attributes": []
+}
 
 describe('Perk', function() {
-  var company, perk;
+  var player, company, perk;
   beforeEach(function() {
-    company = new Company({cash: 10000});
+    player = new Player({}, {cash: 10000});
+    company = player.company;
+    company.workers = [worker];
     perk = {
       "name": "Simple Perk",
       "upgradeLevel": 0,
@@ -16,7 +27,7 @@ describe('Perk', function() {
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [{
-          "type": "happiness",
+          "type": "productivity",
           "value": 1
         }],
         "stats": {
@@ -29,7 +40,7 @@ describe('Perk', function() {
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [{
-          "type": "happiness",
+          "type": "productivity",
           "value": 2
         }]
       }]
@@ -107,11 +118,11 @@ describe('Perk', function() {
     });
 
     it('has company-wide effects', function() {
-      expect(company.happiness).toEqual(1);
+      var val = company.productivity;
       company.buyPerk(perk);
-      expect(company.happiness).toEqual(2);
+      expect(company.productivity).toEqual(val + 1);
       company.buyPerk(perk);
-      expect(company.happiness).toEqual(4);
+      expect(company.productivity).toEqual(val + 3);
     });
   });
 });

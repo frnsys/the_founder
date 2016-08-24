@@ -1,5 +1,6 @@
 import 'pixi';
 import 'p2';
+import _ from 'underscore';
 import * as Phaser from 'phaser';
 import Player from './Player';
 import Company from 'game/Company';
@@ -7,18 +8,33 @@ import Onboarding from './Onboarding';
 
 const width = 1280 * 2; // should be width of main element times 2
 const height = 1160;
+const ignoreKeys = ['company', 'onboarder', 'player'];
+
+function extractData(obj) {
+  return _.reduce(_.keys(obj), function(o, k) {
+    var val = obj[k];
+    if (!_.isFunction(val) && !_.contains(ignoreKeys, k)) {
+      o[k] = val;
+    }
+    return o;
+  }, {});
+}
 
 // singleton
 const Manager = {
-  States: {},
   game: new Phaser.Game(width, height, Phaser.AUTO, 'game', null, true),
   save: function() {
-    localStorage.setItem('saveGame', JSON.stringify(this.player));
+    // juggle some properties to avoid circular refs
+    var playerData = extractData(this.player),
+        companyData = extractData(this.player.company);
+    localStorage.setItem('saveGame', JSON.stringify({
+      player: playerData,
+      company: companyData
+    }));
   },
   load: function() {
-    var player = JSON.parse(localStorage.getItem('saveGame'));
-    player.company = Company.fromJSON(player.company, player);
-    this.player = Player.fromJSON(player);
+    var data = JSON.parse(localStorage.getItem('saveGame'));
+    this.player = new Player(data.player, data.company);
     this.player.save = this.save.bind(this);
     this.player.onboarder = new Onboarding(this);
   },

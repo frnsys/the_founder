@@ -1,10 +1,21 @@
 import _ from 'underscore';
-import Company from 'game/Company';
+import Player from 'app/Player';
+
+var worker = {
+  "design": 1,
+  "engineering": 1,
+  "happiness": 1,
+  "marketing": 1,
+  "productivity": 1,
+  "attributes": []
+}
 
 describe('Acquisition', function() {
-  var company, acquisition, competitor;
+  var player, company, acquisition, competitor;
   beforeEach(function() {
-    company = new Company({cash: 100000});
+    player = new Player({}, {cash: 100000});
+    company = player.company;
+    company.workers = [worker];
     acquisition = {
       "name": "Dark Industries",
       "description": "hello darkness",
@@ -34,10 +45,9 @@ describe('Acquisition', function() {
     });
 
     it('has company-wide effects', function() {
-      // worker bonuses all start at 1
-      expect(company.productivity).toEqual(1);
+      expect(company.productivity).toEqual(2);
       company.buyAcquisition(acquisition);
-      expect(company.productivity).toEqual(11);
+      expect(company.productivity).toEqual(2+10);
     });
 
     it('disabled associated competitor', function() {

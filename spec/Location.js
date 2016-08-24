@@ -9,7 +9,7 @@ describe('Location', function() {
       "name": "Bangalore",
       "cost": 10000,
       "effects": [{
-          "type": "happiness",
+          "type": "productivity",
           "value": 1
       }],
       "market": "Asia",
@@ -33,9 +33,9 @@ describe('Location', function() {
     });
 
     it('has company-wide effects', function() {
-      expect(company.happiness).toEqual(1);
+      expect(company.productivity).toEqual(0);
       company.buyLocation(location);
-      expect(company.happiness).toEqual(1 + 1 + location.skills.happiness);
+      expect(company.productivity).toEqual(1 + 1 + location.skills.productivity);
     });
 
     it('gives access to new markets', function() {
@@ -61,17 +61,17 @@ describe('Location', function() {
     });
 
     it('adds skills to the company', function() {
-      expect(company.design).toEqual(1);
-      expect(company.engineering).toEqual(1);
-      expect(company.marketing).toEqual(1);
-      expect(company.happiness).toEqual(1);
-      expect(company.productivity).toEqual(1);
+      expect(company.design).toEqual(0);
+      expect(company.engineering).toEqual(0);
+      expect(company.marketing).toEqual(0);
+      expect(company.happiness).toEqual(0);
+      expect(company.productivity).toEqual(0);
       company.buyLocation(location);
       expect(company.design).toEqual(11);
       expect(company.engineering).toEqual(11);
       expect(company.marketing).toEqual(11);
-      expect(company.happiness).toEqual(11 + 1); // +1 for bonus
-      expect(company.productivity).toEqual(11);
+      expect(company.productivity).toEqual(11 + 1); // +1 for bonus
+      expect(company.happiness).toEqual(11);
     });
   });
 

@@ -51,10 +51,10 @@ function getAttributeBonuses(worker, name, type) {
 }
 
 
-function getSkill(worker, name) {
+function getSkill(worker, player, name) {
   var val = worker[name] + Worker.selfBonus(worker, name);
-  if (worker.company) {
-    val += worker.company.getWorkerBonus(name);
+  if (player && player.company) {
+    val += player.company.getWorkerBonus(name);
   }
   return Math.floor(val);
 }
@@ -92,17 +92,17 @@ const Worker = {
     return worker.minSalary * player.economicStability * player.wageMultiplier * this.selfBonus(worker, 'minSalary') * modifier;
   },
 
-  design: function(worker) {
-    return getSkill(worker, 'design');
+  design: function(worker, player) {
+    return getSkill(worker, player, 'design');
   },
-  engineering: function(worker) {
-    return getSkill(worker, 'engineering');
+  engineering: function(worker, player) {
+    return getSkill(worker, player, 'engineering');
   },
-  marketing: function(worker) {
-    return getSkill(worker, 'marketing');
+  marketing: function(worker, player) {
+    return getSkill(worker, player, 'marketing');
   },
-  productivity: function(worker) {
-    return getSkill(worker, 'productivity');
+  productivity: function(worker, player) {
+    return getSkill(worker, player, 'productivity');
   },
   happiness: function(worker, player) {
     var happinessModifier = 1;
@@ -113,7 +113,7 @@ const Worker = {
       happinessModifier += player.forgettingRate;
       happinessModifier = sigmoid(happinessModifier);
     }
-    return Math.max(0, getSkill(worker, 'happiness') * happinessModifier);
+    return Math.max(0, getSkill(worker, player, 'happiness') * happinessModifier);
   },
 
   fire: function(worker) {
@@ -191,7 +191,7 @@ const Worker = {
 
 Worker.conditions = {
   burnoutRisk: (worker) => worker.burnoutRisk,
-  happiness: (worker) => worker.happiness
+  happiness: (worker) => worker.happiness // TODO this should use Worker.happiness
 }
 
 export default Worker;

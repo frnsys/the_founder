@@ -1,10 +1,21 @@
 import _ from 'underscore';
-import Company from 'game/Company';
+import Player from 'app/Player';
+
+var worker = {
+  "design": 1,
+  "engineering": 1,
+  "happiness": 1,
+  "marketing": 1,
+  "productivity": 1,
+  "attributes": []
+}
 
 describe('Research', function() {
-  var company, tech;
+  var player, company, tech;
   beforeEach(function() {
-    company = new Company({cash: 1000});
+    player = new Player({}, {cash: 1000});
+    company = player.company;
+    company.workers = [worker];
     tech = {
       "name": "3D Printing",
       "description": "Print endless plastic trinkets",
@@ -12,7 +23,7 @@ describe('Research', function() {
       "requiredVertical": "Hardware",
       "requiredTechs": ["Something Required"],
       "effects": [{
-        "type": "happiness",
+        "type": "productivity",
         "value": 1
       }]
     };
@@ -45,11 +56,11 @@ describe('Research', function() {
     });
 
     it('has company-wide effects', function() {
+      var val = company.productivity;
       company.verticals = [{name: "Hardware"}];
       company.technologies = _.map(tech.requiredTechs, i => ({name: i}));
-      expect(company.happiness).toEqual(1);
       company.buyResearch(tech);
-      expect(company.happiness).toEqual(2);
+      expect(company.productivity).toEqual(val+1);
     });
   });
 });

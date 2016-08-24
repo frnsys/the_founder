@@ -2,10 +2,20 @@ import _ from 'underscore';
 import Player from 'app/Player';
 import Effect from 'game/Effect';
 
+var worker = {
+  "design": 1,
+  "engineering": 1,
+  "happiness": 1,
+  "marketing": 1,
+  "productivity": 1,
+  "attributes": []
+}
+
 describe('Effect', function() {
   var player;
   beforeEach(function() {
     player = new Player();
+    player.company.workers = [worker];
   });
 
   it('affects cash', function() {
@@ -48,11 +58,12 @@ describe('Effect', function() {
         type: name,
         value: 1
       };
-      expect(player.company[name]).toEqual(1);
+      // happiness is not precise, so round
+      expect(Math.round(player.company[name])).toEqual(2);
       Effect.apply(effect, player);
-      expect(player.company[name]).toEqual(2);
+      expect(Math.round(player.company[name])).toEqual(3);
       Effect.remove(effect, player);
-      expect(player.company[name]).toEqual(1);
+      expect(Math.round(player.company[name])).toEqual(2);
     });
   });
 

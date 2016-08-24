@@ -83,9 +83,11 @@ class Company {
 
   _getSkill(name) {
     // company bonus from workers are applied for each worker
+    var self = this,
+        player = this.player;
     var companyBonusFromWorkers = _.reduce(this.workers, function(m, w) { return m + Worker.companyBonus(w, name) }, 0);
-    var fromWorkers = Math.max(0, _.reduce(this.workers, function(m, w) { return m + (w.burnout > 0 ? 0 : Worker[name](w)) }, this.workerBonuses[name]));
-    var fromLocations = Math.max(0, _.reduce(this.locations, function(m, l) { return m + l.skills[name] }, 0));
+    var fromWorkers = Math.max(0, _.reduce(this.workers, function(m, w) { return m + (w.burnout > 0 ? 0 : Worker[name](w, player)) }, 0));
+    var fromLocations = Math.max(0, _.reduce(this.locations, function(m, l) { return m + l.skills[name] + self.getWorkerBonus(name)}, 0));
     return fromWorkers + fromLocations + (companyBonusFromWorkers * (this.workers.length + this.locations.length));
   }
 

@@ -19,7 +19,7 @@ The license that came with the model has it under a different (non-existent) use
 
 ---
 
-for easier serialization, all data that needs to be un/serialized (i.e. loaded/saved) should be kept at the top-level of the `player` (which keeps track of the more general game world state) or `company`.
+For easier serialization, all data that needs to be un/serialized (i.e. loaded/saved) should be kept at the top-level of the `player` (which keeps track of the more general game world state) or `company`. No objects should save a reference to the `player` or `company` except for the `Manager` - references to either of these should be passed in as needed. This is to avoid circular references.
 
 ---
 

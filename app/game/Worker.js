@@ -58,13 +58,14 @@ function getSkill(worker, name) {
 }
 
 const Worker = {
-  init: function(worker) {
+  init: function(worker, robot) {
     return _.extend({
       salary: 0,
       burnout: 0,
       burnoutRisk: 0,
       offMarketTime: 0,
-      lastTweet: ''
+      lastTweet: '',
+      robot: robot
     }, worker);
   },
 
@@ -84,8 +85,9 @@ const Worker = {
     return getAttributeBonuses(worker, name, 'company');
   },
 
-  minSalary: function(worker, player) {
-    return worker.minSalary * player.economicStability * player.wageMultiplier * this.selfBonus(worker, 'minSalary');
+  minSalary: function(worker, player, modifiers) {
+    var modifier = _.reduce(modifiers || [], (m,v) => m * v, 1);
+    return worker.minSalary * player.economicStability * player.wageMultiplier * this.selfBonus(worker, 'minSalary') * modifier;
   },
 
   design: function(worker) {

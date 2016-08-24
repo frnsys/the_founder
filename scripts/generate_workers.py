@@ -25,6 +25,15 @@ with open('last_names.txt', 'r') as f:
 with open('../data/workerAttributes.json', 'r') as f:
     attribs = json.load(f).keys()
 
+# worker personalities
+personalities = set()
+with open('../data/negotiations.json', 'r') as f:
+    for n in json.load(f):
+        for personality in n['personalities'].keys():
+            personalities.add(personality)
+personalities = list(personalities)
+
+
 # a skill level just defines a classification of a worker's score.
 # e.g. workers with a score < X are categorized as some kind of worker.
 # the percent defines what percentage of this skill level we want in
@@ -41,7 +50,8 @@ class Worker():
              'marketing',
              'design',
              'engineering',
-             'attributes']
+             'attributes',
+             'personality']
 
     def __init__(self):
         for attr in self.attrs:
@@ -62,7 +72,7 @@ class Worker():
                               random.choice(last_names)])
 
         # The score is just the sum of attribute values.
-        self.score = sum([getattr(self, attr) for attr in self.attrs if attr != 'attributes'])
+        self.score = sum([getattr(self, attr) for attr in self.attrs if attr not in ['attributes', 'personality']])
 
         # Calculate the min salary for a given score.
         self.min_salary = (self.score - 2) * ((self.score % 10) * 1000 + 10000)
@@ -76,6 +86,8 @@ class Worker():
                 attrib_pool.remove(attrib)
             else:
                 done_attribs = True
+
+        self.personality = random.choice(personalities)
 
     def asJSON(self):
         data = {

@@ -1,0 +1,73 @@
+[{
+  "text": "We're building products that will change the world.",
+  "personalities": {
+    "Cynical": -1,
+    "Eager": 1,
+    "Narcissist": 1
+  }
+}, {
+  "text": "You'll have a huge impact on people's lives here.",
+  "personalities": {
+    "Cynical": -1,
+    "Eager": 1,
+    "Narcissist": 1
+  }
+}, {
+  "text": "We're set to take a big chunk of the market.",
+  "personalities": {
+    "Money-driven": 1,
+    "Eager": -1
+  }
+}, {
+  "text": "We've got opportunities to solve challenging problems.",
+  "personalities": {
+    "Product-driven": 1,
+    "Eager": -1
+  }
+}, {
+  "text": "We're the hottest company in tech right now.",
+  "personalities": {
+    "Narcissist": 1
+  }
+}, {
+  "text": "Our products are poised to disrupt legacy industries.",
+  "personalities": {
+    "Narcissist": 1
+  }
+}, {
+  "text": "We're really focusing on building good products.",
+  "personalities": {
+    "Product-driven": 1,
+    "Money-driven": 1
+  }
+}, {
+  "text": "You'll have the chance to work with the most talented people.",
+  "personalities": {
+    "Product-driven": 1,
+    "Social": 1
+  }
+}, {
+  "text": "Company culture is really important here.",
+  "personalities": {
+    "Social": 1
+  }
+}, {
+  "text": "This company is going to be huge.",
+  "personalities": {
+    "Narcissist": 1,
+    "Money-driven": 1
+  }
+}, {
+  "text": "People bring their pets to work, they're very cute.",
+  "personalities": {
+    "Narcissist": -1,
+    "Cynical": 1
+  },
+  "requiresPerk": "Office Pet"
+}, {
+  "text": "We have beer available for employees.",
+  "personalities": {
+    "Social": 1
+  },
+  "requiresPerk": "Alcohol"
+}]

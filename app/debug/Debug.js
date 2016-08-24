@@ -25,6 +25,8 @@ const Debug = {
     //   revenue: 1000000,
     //   earnedRevenue: 0
     // }];
+    player.skipOnboarding();
+    player.specialEffects['Worker Insight'] = true;
     player.events.pool = [{
       probability: 1,
       countdown: 1,

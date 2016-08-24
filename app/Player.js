@@ -75,7 +75,7 @@ class Player {
       }),
 
       workers: _.map(workers, function(w) {
-        return Worker.init(w);
+        return Worker.init(w, false);
       }),
 
       technologies: technologies,

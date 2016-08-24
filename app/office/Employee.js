@@ -51,7 +51,7 @@ class Employee extends Agent {
     this.schedule(function() {
       self.setState(STATE.walking);
       employee.setState(STATE.walking);
-    }, _.random(MIN_ACTIVITY_TIME, MAX_ACTIVITY_TIME));
+    }, _.random(Agent.MIN_ACTIVITY_TIME, Agent.MAX_ACTIVITY_TIME));
   }
 
   isNearby(employee) {

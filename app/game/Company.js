@@ -153,6 +153,11 @@ class Company {
     this.annualRevenue = 0;
   }
 
+  hireEmployee(worker, salary) {
+    worker.salary = salary;
+    this.workers.push(worker);
+  }
+
   hasPerk(perk) {
     return util.contains(this.perks, perk);
   }

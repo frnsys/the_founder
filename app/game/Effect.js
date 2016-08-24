@@ -133,7 +133,7 @@ const Effect = {
             case 'Prescient':
               return 'Predicts shifts in the economy';
             case 'Worker Insight':
-              return 'Provides detailed profiles on prospective employees';
+              return 'Learn about the personalities of prospective employees via social media';
             case 'Worker Quant':
               return 'Quantifies minutiae of prospective employees';
             case 'Automation':

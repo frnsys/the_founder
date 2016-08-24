@@ -1,7 +1,9 @@
 import _ from 'underscore';
 import util from 'util';
+import Worker from 'game/Worker';
 import Hiring from 'game/Hiring';
 import DetailList from 'views/DetailList';
+import NegotiationView from './Negotiation';
 
 const template = function(data) {
   var list;
@@ -26,70 +28,84 @@ function button(item) {
     return `<button disabled>Hired</button>`;
   } else if (item.noAvailableSpace) {
     return `<button disabled>Not enough space</button>`;
-  } else if (item.afford) {
-    return `<button class="buy">Hire</button>`;
   } else {
-    return `<button disabled>Not enough cash</button>`;
+    return `<button class="start-negotiation">Negotiation</button>`;
   }
 }
+
+const attributeTemplate = item => `
+  <h5>Attributes</h5>
+  <ul>
+    ${item.attributes.map(i => `
+      <li data-tip="<ul>${Worker.attributeToStrings(i).map(s => `<li>${s}</li>`).join('')}</ul>">${i}</li>
+    `).join('')}
+  </ul>
+`;
 
 const detailTemplate = item => `
 <img src="/assets/workers/gifs/${item.avatar}.gif">
 <div class="title">
   <h1>${item.name}</h1>
-  <h4 class="cash">${util.formatCurrencyAbbrev(item.salary)}/yr</h4>
+  <p class="subtitle">${item.title}</p>
 </div>
-<p>${item.title}</p>
 <ul>
-  <li>Productivity: ${item.productivity}</li>
-  <li>Design: ${item.design}</li>
-  <li>Engineering: ${item.engineering}</li>
-  <li>Marketing: ${item.marketing}</li>
+  <li>Productivity: ${Math.round(item.productivity)}</li>
+  <li>Design: ${Math.round(item.design)}</li>
+  <li>Engineering: ${Math.round(item.engineering)}</li>
+  <li>Marketing: ${Math.round(item.marketing)}</li>
 </ul>
+${item.attributes.length > 0 ? attributeTemplate(item) : ''}
 ${button(item)}
 `
 
 class View extends DetailList {
   constructor(player, office, recruitment) {
+    var candidates = Hiring.recruit(recruitment, player, player.company);
     super({
       title: 'Candidates',
       background: 'rgb(45, 89, 214)',
-      dataSrc: player.company.workers,
+      dataSrc: candidates,
       template: template,
-      detailTemplate: detailTemplate,
-      handlers: {
-        '.buy': function() {
-          var salary = Hiring.salary(this.selected, player);
-          if (player.company.pay(salary)) {
-            // TODO need to remove from existing employer, if any
-            this.selected.salary = salary;
-            player.company.workers.push(this.selected);
-            office.addEmployee(this.selected);
-            this.renderDetailView(this.selected);
-          }
-        }
-      }
+      detailTemplate: detailTemplate
     });
     this.player = player;
     this.recruitment = recruitment;
+    this.candidates = candidates;
+
+    this.registerHandlers({
+      '.start-negotiation': function() {
+        this.negotiationView = new NegotiationView(player, office, this.selected, this);
+        this.remove();
+      }
+    });
+  }
+
+  postRemove() {
+    super.postRemove();
+    if (this.negotiationView) {
+      this.negotiationView.render();
+    }
+  }
+
+  postRender() {
+    super.postRender();
+    this.negotiationView = null;
   }
 
   render() {
+    // re-filter candidates in case some have gone off the market
     var player = this.player;
-    var candidates = Hiring.recruit(this.recruitment, player, player.company);
+    this.candidates = _.filter(this.candidates, c => c.offMarketTime == 0);
+    this.dataSrc = this.candidates;
     super.render({
-      items: candidates
+      items: this.candidates
     });
   }
 
   renderDetailView(selected) {
     var player = this.player;
     this.detailView.render(_.extend({
-      salary: Hiring.salary(selected, player),
-      afford: player.company.cash >= salary,
       noAvailableSpace: player.company.remainingSpace == 0,
-      economicPressure: player.economicStability - 1,
-      wagePressure: player.wageMultiplier - 1,
       owned: util.contains(player.company.workers, selected)
     }, selected));
   }

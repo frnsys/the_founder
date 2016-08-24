@@ -38,6 +38,30 @@ const Hiring = {
       Worker.marketing(worker) +
       Worker.productivity(worker));
   },
+  acceptOfferProb: function(minSalary, offer) {
+    if (offer >= minSalary) {
+      return 1;
+    } else {
+      return 1 - Math.sqrt((minSalary - offer)/minSalary);
+    }
+  },
+  acceptOffer: function(minSalary, offer) {
+    var prob = this.acceptOfferProb(minSalary, offer);
+    return Math.random() <= prob;
+  },
+  negotiationEffect: function(worker, choice) {
+    var personality = worker.personality,
+        effect = choice.personalities[personality] || 0;
+
+    // positive effect, lower salary
+    if (effect > 0) {
+      return 0.9;
+    } else if (effect < 0) {
+      return 1.1;
+    } else {
+      return 1;
+    }
+  }
 };
 
 export default Hiring;

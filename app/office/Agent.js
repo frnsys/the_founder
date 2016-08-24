@@ -251,4 +251,6 @@ class Agent {
 }
 
 Agent.STATE = STATE;
+Agent.MIN_ACTIVITY_TIME = MIN_ACTIVITY_TIME;
+Agent.MAX_ACTIVITY_TIME = MAX_ACTIVITY_TIME;
 export default Agent;

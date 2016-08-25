@@ -118,23 +118,27 @@ const cashTemplate = data => `
 class HUD extends View {
   constructor(player) {
     super({
-      el: $('.hud'),
+      parent: '.hud',
       template: template,
       handlers: {
         '.start-product': function() {
           var self = this,
-              view = new SelectProductTypesView(player);
+              view = new SelectProductTypesView(player),
+              postRemove = view.postRemove.bind(view);
           view.render();
           view.postRemove = function() {
             self.productDevView.render(player.snapshot);
+            postRemove();
           }
         },
         '.start-promo': function() {
           var self = this,
-              view = new SelectPromosView(player);
+              view = new SelectPromosView(player),
+              postRemove = view.postRemove.bind(view);
           view.render();
           view.postRemove = function() {
             self.promoDevView.render(player.snapshot);
+            postRemove();
           }
         }
       }
@@ -147,35 +151,36 @@ class HUD extends View {
   }
 
   postRender() {
+    super.postRender();
     var data = this.player.snapshot;
     if (!this.subviews) {
       this.productDevView = new View({
-        el: $('.hud-product-dev'),
+        parent: '.hud-product-dev',
         template: productDevTemplate
       });
       this.promoDevView = new View({
-        el: $('.hud-promo-dev'),
+        parent: '.hud-promo-dev',
         template: promoDevTemplate
       });
       this.statsView = new View({
-        el: $('.hud-stats'),
+        parent: '.hud-stats',
         template: statsTemplate
       });
       this.subviews = [
         new View({
-          el: $('.hud-date'),
+          parent: '.hud-date',
           template: timeTemplate
         }),
         new View({
-          el: $('.hud-center'),
+          parent: '.hud-center',
           template: boardTemplate
         }),
         new View({
-          el: $('.hud-cash'),
+          parent: '.hud-cash',
           template: cashTemplate
         }),
         new View({
-          el: $('.hud-active-products'),
+          parent: '.hud-active-products',
           template: activeProductTemplate
         })
       ];

@@ -5,7 +5,7 @@ import View from 'views/View';
 class SelectView extends View {
   constructor(params) {
     super(_.extend({
-      el: $('.selection'),
+      parent: '.selection',
     }, params));
   }
 

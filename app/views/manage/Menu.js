@@ -71,10 +71,12 @@ function showView(view, player, office) {
   return function(e) {
     $('.manage-menu').find('.selected').removeClass('selected');
     $(e.target).closest('li').addClass('selected');
-    var v = new view(player, office);
+    var v = new view(player, office),
+        postRemove = v.postRemove.bind(v);
     v.render();
     v.postRemove = function() {
       $('.manage-menu').find('.selected').removeClass('selected');
+      postRemove();
     };
   }
 }
@@ -83,7 +85,7 @@ function showView(view, player, office) {
 class Menu extends View {
   constructor(player, office) {
     super({
-      el: $('.menu'),
+      parent: '.menu',
       template: template,
       handlers: {
         '.manage-locations': showView(Locations, player),

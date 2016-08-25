@@ -1,31 +1,28 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
-import Popup from 'views/Popup';
+import CardsList from 'views/CardsList';
 
-const template = data => `
-<div class="popup-body">
-  <ul class="grid productTypes">
-    ${data.items.map(i => `
-      <li class="productType">
-        <img src="assets/productTypes/${util.slugify(i.name)}.gif">
-        <h4>${i.name}</h4>
-      </li>
-    `).join('')}
-  </ul>
-  <div class="actions">
-    <button class="select" disabled>Confirm</button>
-  </div>
+const detailTemplate = item => `
+<div class="title">
+  <h1>${item.name}</h1>
 </div>
+<img src="assets/productTypes/${util.slugify(item.name)}.gif">
 `;
 
-class View extends Popup {
+const template = data => `
+<ul class="cards"></ul>
+<div class="actions">
+  <button class="select" disabled>Confirm</button>
+</div>`;
+
+class View extends CardsList {
   constructor(player) {
     var selected = [];
     super({
       title: 'Start a Product',
-      background: '#f0f0f0',
       template: template,
+      detailTemplate: detailTemplate,
       handlers: {
         '.select': function() {
           if (selected.length == 2) {

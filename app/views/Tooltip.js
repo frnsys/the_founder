@@ -1,15 +1,16 @@
 import $ from 'jquery';
 
 var mouse = {x:0,y:0},
-    offset = {x:-10, y:10};
+    offset = {x:-10, y:10},
+    timer;
 
 $('body').on('mouseenter', '[data-tip]', function() {
   var tip = $(this).data('tip');
   $('.tooltip').html(tip).show();
   offset.x = -$('.tooltip').width()/2;
-  clearTimeout(this.timer);
+  clearTimeout(timer);
 }).on('mouseleave', '[data-tip]', function() {
-  this.timer = setTimeout(function() {
+  timer = setTimeout(function() {
     $('.tooltip').hide();
   }, 10);
 });

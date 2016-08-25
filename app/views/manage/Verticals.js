@@ -42,12 +42,10 @@ class View extends CardsList {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(verticals, function(i) {
-        return _.extend({
-          owned: util.contains(player.company.verticals, i),
-          afford: player.company.cash >= i.cost
-        }, i);
-      })
+      items: _.map(verticals, i => _.extend({
+        owned: util.contains(player.company.verticals, i),
+        afford: player.company.cash >= i.cost
+      }, i))
     });
   }
 }

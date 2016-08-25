@@ -54,19 +54,17 @@ class AcquisitionsView extends CardsList {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(acquisitions, function(i) {
-        return _.extend({
-          owned: util.contains(player.company.acquisitions, i),
-          afford: player.company.cash >= i.cost
-        }, i);
-      })
+      items: _.map(acquisitions, i => _.extend({
+        owned: util.contains(player.company.acquisitions, i),
+        afford: player.company.cash >= i.cost
+      }, i))
     });
   }
 
   createListItem(item) {
     return new View({
       tag: 'li',
-      el: this.el.find('ul'),
+      parent: this.el.find('ul'),
       template: this.detailTemplate,
       method: 'append',
       attrs: {

@@ -48,12 +48,10 @@ class LobbyingView extends CardsList {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(lobbies, function(i) {
-        return _.extend({
-          owned: util.contains(player.company.lobbies, i),
-          afford: player.company.cash >= i.cost
-        }, i);
-      })
+      items: _.map(lobbies, i => _.extend({
+        owned: util.contains(player.company.lobbies, i),
+        afford: player.company.cash >= i.cost
+      }, i))
     });
   }
 
@@ -61,7 +59,7 @@ class LobbyingView extends CardsList {
     var img = `assets/lobbying/${util.slugify(item.name)}.jpg`;
     return new View({
       tag: 'li',
-      el: this.el.find('ul'),
+      parent: this.el.find('ul'),
       template: this.detailTemplate,
       method: 'append',
       attrs: {

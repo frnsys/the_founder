@@ -1,61 +1,47 @@
 import $ from 'jquery'
 import _ from 'underscore';
 import util from 'util';
-import Popup from 'views/Popup';
+import View from 'views/View';
+import CardsList from 'views/CardsList';
 import productTypes from 'data/productTypes.json';
 
-function template(data) {
-  var products = data.items.map(function(i) {
-    if (i.owned) {
-      return `
-        <li class="owned">
-          <div class="productType">
-            <img src="assets/productTypes/${util.slugify(i.name)}.gif">
-            <h4>${i.name}</h4>
-          </div>
-          <button disabled>Owned</button>
-        </li>
-      `;
-    } else if (i.available) {
-      var button;
-      if (i.afford) {
-        button = `<button class="buy">${util.formatCurrency(i.cost)}</button>`;
-      } else {
-        button = `<button disabled>${util.formatCurrency(i.cost)}</button>`;
-      }
-      return `<li class="available">
-        <div class="productType">
-          <img src="assets/productTypes/${util.slugify(i.name)}.gif">
-          <h4>${i.name}</h4>
-        </div>
-        ${button}
-      </li>`;
+function button(item) {
+  if (!item.available) {
+      return '<button disabled>Locked</button>';
+  } else {
+    if (item.owned) {
+      return '<button class="owned" disabled>Owned</button>';
+    } else if (item.afford) {
+      return `<button class="buy">${util.formatCurrency(item.cost)}</button>`;
     } else {
-      return `
-        <li class="locked">
-          <div class="productType">
-            <img src="assets/placeholder.gif">
-            <h4>???</h4>
-          </div>
-          <button disabled>Locked</button>
-        </li>
-      `;
+      return `<button disabled>${util.formatCurrency(item.cost)}</button>`;
     }
-  }).join('');
-  return `
-    <ul class="grid popup-body productTypes">
-      ${products}
-    </ul>
-  `;
+  }
 }
 
+function detailTemplate(item) {
+  if (item.available) {
+    return `
+      <div class="title">
+        <h1>${item.name}</h1>
+      </div>
+      <img src="assets/productTypes/${util.slugify(item.name)}.gif">
+      ${button(item)}`;
+  } else {
+    return `
+      <div class="title">
+        <h1>???</h1>
+      </div>
+      <img src="assets/placeholder.gif">
+      ${button(item)}`;
+  }
+}
 
-class View extends Popup {
+class ProductTypesView extends CardsList {
   constructor(player) {
     super({
       title: 'Product Types',
-      background: '#f0f0f0',
-      template: template,
+      detailTemplate: detailTemplate,
       handlers: {
         '.buy': function(ev) {
           var $el = $(ev.target),
@@ -72,15 +58,25 @@ class View extends Popup {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(productTypes, function(pt) {
-        return _.extend({
-          owned: util.contains(player.company.productTypes, pt),
-          available: player.company.productTypeIsAvailable(pt),
-          afford: player.company.cash >= pt.cost
-        }, pt)
-      })
+      items: _.map(productTypes, i => _.extend({
+        owned: util.contains(player.company.productTypes, i),
+        available: player.company.productTypeIsAvailable(i),
+        afford: player.company.cash >= i.cost
+      }, i))
+    });
+  }
+
+  createListItem(item) {
+    return new View({
+      tag: 'li',
+      parent: this.el.find('ul'),
+      template: this.detailTemplate,
+      method: 'append',
+      attrs: {
+        class: item.available ? '' : 'locked'
+      }
     });
   }
 }
 
-export default View;
+export default ProductTypesView;

@@ -74,6 +74,7 @@ class Browser extends View {
   }
 
   postRender() {
+    super.postRender();
     var player = this.player;
     this.el.find('.tabbar li:first').addClass('selected');
 

@@ -1,33 +1,32 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
-import Popup from 'views/Popup';
+import View from 'views/View';
+import CardsList from 'views/CardsList';
 import promos from 'data/promos.json';
 
 const template = data => `
-<div class="popup-body">
-  <ul class="grid promos">
-    ${data.items.map(i => `
-      <li class="promo ${i.afford ? '' : 'disabled'}">
-        <img src="assets/promos/${util.slugify(i.name)}.png">
-        <h4>${i.name}</h4>
-        <h4>${util.formatCurrency(i.cost)}</h4>
-      </li>
-    `).join('')}
-  </ul>
-  <div class="actions">
-    <button class="select" disabled>Confirm</button>
-  </div>
+<ul class="cards"></ul>
+<div class="actions">
+  <button class="select" disabled>Confirm</button>
+</div>`;
+
+const detailTemplate = item => `
+<div class="title">
+  <h1>${item.name}</h1>
+  <h4 class="cash">${util.formatCurrency(item.cost)}</h4>
 </div>
+<img src="assets/promos/${util.slugify(item.name)}.png">
 `;
 
-class View extends Popup {
+class SelectPromoView extends CardsList {
   constructor(player) {
     var selected;
     super({
       title: 'Start a Promo Campaign',
       background: '#f0f0f0',
       template: template,
+      detailTemplate: detailTemplate,
       handlers: {
         '.select': function() {
           if (selected && player.company.buyPromo(selected)) {
@@ -54,14 +53,23 @@ class View extends Popup {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(promos, function(p) {
-        return _.extend({
-          afford: player.company.cash >= p.cost
-        }, p);
-      })
+      items: _.map(promos, i => _.extend({
+        afford: player.company.cash >= i.cost
+      }, i))
+    });
+  }
+
+  createListItem(item) {
+    return new View({
+      tag: 'li',
+      parent: this.el.find('ul'),
+      template: this.detailTemplate,
+      method: 'append',
+      attrs: {
+        class: item.afford ? '' : 'locked'
+      }
     });
   }
 }
 
-export default View;
-
+export default SelectPromoView;

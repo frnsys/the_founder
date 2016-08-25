@@ -52,7 +52,7 @@ class EmployeeView extends SelectView {
   render(obj) {
     super.render(obj);
     this.statsView = new View({
-      el: $('.selection-stats'),
+      parent: '.selection-stats',
       template: statsTemplate
     });
     this.statsView.render(obj);

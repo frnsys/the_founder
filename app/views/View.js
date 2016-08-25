@@ -7,20 +7,20 @@ class View {
         handlers = this.handlers || {};
 
     // params
-    // el: jquery element to render inside
+    // parent: selector of element to render inside
     // template: the ES6 template to render
-    // data: default data passed to the handlebar template on render
+    // data: default data passed to the template on render
     // handlers: on click handlers for the rendered element
-    // parent: jquery element to show/hide on render/remove
+    // tag: tag to wrap contents with
+    // attrs: arbitrary attributes to be added to the wrapping element
     params = _.defaults(params, {
-      el: $('.ui'),
+      parent: '.ui',
       tag: 'div',
       template: undefined,
       data: {},
       handlers: {},
       attrs: {},
-      method: 'replace', // or append
-      parent: $('.ui-wrapper')
+      method: 'replace' // or append
     });
 
     _.each(Object.keys(params), function(prop) {
@@ -39,7 +39,6 @@ class View {
         html;
 
     this.preRender();
-    this.parent.show();
     data = _.extend(_.clone(this.data), data);
 
     // it must be wrapped so we can replace it on re-render
@@ -50,24 +49,23 @@ class View {
     _.each(this.attrs, function(v,k) {
       html.attr(k, v);
     });
-    if (this._rendered) {
-      this._rendered.replaceWith(html);
+    if (this.el) {
+      this.el.replaceWith(html);
     } else {
       if (this.method === 'append') {
-        this.el.append(html);
+        $(this.parent).append(html);
       } else {
-        this.el.html(html);
+        $(this.parent).html(html);
       }
     }
-    this._rendered = html;
+    this.el = html;
     this.postRender();
     return this;
   }
 
   remove() {
     this.preRemove();
-    this._rendered.remove();
-    this.parent.hide();
+    this.el.remove();
     this.postRemove();
   }
 

@@ -41,11 +41,9 @@ function template(data) {
       </div>`;
   }
   return `
-    <div class="onboarding">
       <h1>${data.name}</h1>
       <h4>${data.description}</h4>
-      ${body};
-    </div>`;
+      ${body}`;
 }
 
 
@@ -54,6 +52,7 @@ class Onboarding extends View {
   constructor(player, stages, onFinish) {
     super({
       template: template,
+      attrs: {class: 'onboarding'}
     });
     this.registerHandlers({
       'li': this.selectOption,
@@ -70,6 +69,7 @@ class Onboarding extends View {
   }
 
   postRender() {
+    super.postRender();
     var el = this.el;
     if (this.stage === 0) {
       // enable next button only if a company name is specified

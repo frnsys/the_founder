@@ -14,8 +14,7 @@ const template = data => `
 class Alert extends View {
   constructor(params) {
     super(_.extend({
-      el: $('.alert'),
-      parent: $('.alert-wrapper'),
+      parent: '.alert',
       template: template,
     }, params));
     this.registerHandlers({
@@ -23,6 +22,16 @@ class Alert extends View {
         this.remove();
       }
     });
+  }
+
+  postRender() {
+    super.postRender();
+    $('.alert-wrapper').show();
+  }
+
+  postRemove() {
+    super.preRemove();
+    $('.alert-wrapper').hide();
   }
 }
 

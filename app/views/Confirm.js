@@ -17,15 +17,11 @@ class Confirm extends Alert {
       handlers: {
         handlers: {
           '.yes': function() {
-            if (onYes) {
-              onYes();
-            }
+            if (onYes) { onYes(); }
             this.remove();
           },
           '.no': function() {
-            if (onNo) {
-              onNo();
-            }
+            if (onNo) { onNo(); }
             this.remove();
           }
         }

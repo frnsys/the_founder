@@ -1,48 +1,46 @@
 import _ from 'underscore';
 import util from 'util';
-import DetailList from 'views/DetailList';
+import Worker from 'game/Worker';
+import CardsList from 'views/CardsList';
 
-const template = function(data) {
-  var list;
-  if (data.items) {
-    list = `<ul class="list">
-      ${data.items.map(i => `
-        <li>${i.name}</li>
-      `).join('')}
-    </ul>`;
-  } else {
-    list = 'No employees';
-  }
-  return `
-    <div class="split-pane ${util.slugify(data.title)}">
-      ${list}
-      <div class="detail"></div>
-    </div>`;
-}
+const template = data =>
+  `${data.items.length > 0 ? '<ul class="cards"></ul>' : 'No employees'}`;
+
+const attributeTemplate = item => `
+  <ul class="worker-attributes">
+    ${item.attributes.map(i => `
+      <li data-tip="<ul>${Worker.attributeToStrings(i).map(s => `<li>${s}</li>`).join('')}</ul>">${i}</li>
+    `).join('')}
+  </ul>
+`;
 
 const detailTemplate = item => `
-<img src="/assets/workers/gifs/${item.avatar}.gif">
-<div class="title">
-  <h1>${item.name}</h1>
-  <h4 class="cash">${util.formatCurrencyAbbrev(item.salary)}/yr</h4>
+<div class="worker-avatar">
+  <img src="/assets/workers/gifs/${item.avatar}.gif">
 </div>
-<p>${item.title}</p>
-<ul>
-  <li>Productivity: ${item.productivity}</li>
-  <li>Design: ${item.design}</li>
-  <li>Engineering: ${item.engineering}</li>
-  <li>Marketing: ${item.marketing}</li>
-  <li>Happiness: ${item.happiness}</li>
-</ul>
-<button class="fire">Fire</button>
+<div class="worker-info">
+  <div class="worker-title">
+    <h1>${item.name}</h1>
+    <h3 class="subtitle">${item.title}, <span class="cash">${util.formatCurrencyAbbrev(item.salary)}/yr</span></h3>
+  </div>
+  <div class="worker-body">
+    <ul class="worker-stats">
+      <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(item.productivity, 0)}</li>
+      <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(item.design, 0)}</li>
+      <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(item.marketing, 0)}</li>
+      <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(item.engineering, 0)}</li>
+      <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(item.happiness, 0)}</li>
+    </ul>
+    ${item.attributes.length > 0 ? attributeTemplate(item) : ''}
+  </div>
+  <button class="fire">Fire</button>
+</div>
 `
 
-class View extends DetailList {
+class View extends CardsList {
   constructor(player) {
     super({
       title: 'Employees',
-      background: '#fb6754',
-      dataSrc: player.company.workers,
       template: template,
       detailTemplate: detailTemplate,
       handlers: {
@@ -62,10 +60,6 @@ class View extends DetailList {
     super.render({
       items: player.company.workers
     });
-  }
-
-  renderDetailView(selected) {
-    this.detailView.render(selected);
   }
 }
 

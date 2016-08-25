@@ -1,47 +1,43 @@
 import _ from 'underscore';
 import util from 'util';
-import Popup from 'views/Popup';
 import Effect from 'game/Effect';
+import View from 'views/View';
+import CardsList from 'views/CardsList';
 import productRecipes from 'data/productRecipes.json';
 
-function template(data) {
-  var products = data.items.map(function(i) {
-    if (i.discovered) {
-      return `
-        <li class="discovered">
-          ${i.productTypes.map(pt => `
-            <img src="assets/productTypes/${util.slugify(pt)}.gif">
-          `).join('')}
-          <h4>${i.name}</h4>
-          <ul class="effects">
-            ${i.effects.map(e => `
-              <li>${Effect.toString(e)}</li>
-            `).join('')}
-          </ul>
-      `;
-    } else {
-      return `
-        <li class="locked">
-          <img src="assets/placeholder.gif">
-          <h4>???</h4>
-        </li>
-      `;
-    }
-  }).join('');
-  return `
-    <ul class="grid popup-body products">
-      ${products}
-    </ul>
-  `;
+const effectsTemplate = item => `
+<ul class="effects">
+  ${item.effects.map(e => `
+    <li>${Effect.toString(e)}</li>
+  `).join('')}
+</ul>`;
+
+function detailTemplate(item) {
+  if (item.discovered) {
+    return `
+      <div class="title">
+        <h1>${item.name.replace('.', ' + ')}</h1>
+      </div>
+      ${item.productTypes.map(pt => `
+        <img src="assets/productTypes/${util.slugify(pt)}.gif">
+      `).join('')}
+      ${item.effects.length > 0 ? effectsTemplate(item) : ''}`;
+  } else {
+    return `
+      <div class="title">
+        <h1>???</h2>
+      </div>
+      <img src="assets/placeholder.gif">
+    `;
+  }
 }
 
 
-class View extends Popup {
+class ProductsView extends CardsList {
   constructor(player) {
     super({
       title: 'Discovered Products',
-      background: '#f0f0f0',
-      template: template
+      detailTemplate: detailTemplate
     });
     this.player = player;
   }
@@ -49,15 +45,23 @@ class View extends Popup {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(productRecipes, function(pr) {
-        return _.extend({
-          discovered: _.contains(player.company.discoveredProducts, pr.name),
-          name: pr.name.replace('.', ' + ')
-        }, pr)
-      })
+      items: _.map(productRecipes, i => _.extend({
+        discovered: _.contains(player.company.discoveredProducts, i.name)
+      }, i))
+    });
+  }
+
+  createListItem(item) {
+    return new View({
+      tag: 'li',
+      parent: this.el.find('ul'),
+      template: this.detailTemplate,
+      method: 'append',
+      attrs: {
+        class: item.discovered ? '' : 'locked'
+      }
     });
   }
 }
 
-export default View;
-
+export default ProductsView;

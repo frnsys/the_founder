@@ -23,19 +23,22 @@ class Popup extends View {
       },
     }, params.handlers);
     super(_.extend({
-      el: $('.popups'),
-      parent: $('.popups')
+      parent: '.popups',
     }, params));
   }
 
   postRender() {
     super.postRender();
+    $('.ui').hide();
+    $('.popups').show();
     Popup.current = this.title;
     console.log('popup rendered with title: ' + this.title);
   }
 
   postRemove() {
     super.postRemove();
+    $('.popups').hide();
+    $('.ui').show();
     Popup.current = null;
     console.log('popup removed with title: ' + this.title);
   }

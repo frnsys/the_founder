@@ -56,10 +56,19 @@ const template = data => `
 class Market extends View {
   constructor(params) {
     super(_.extend({
-      parent: $('.market-wrapper'),
-      el: $('.market-ui'),
-      template: template,
+      parent: '.market-ui',
+      template: template
     }, params));
+  }
+
+  postRender() {
+    super.postRender();
+    $('.market-wrapper').show();
+  }
+
+  postRemove() {
+    super.postRemove();
+    $('.market-wrapper').hide();
   }
 }
 

@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import util from 'util';
 import HiringView from './Hiring';
-import DetailList from 'views/DetailList';
+import CardsList from 'views/CardsList';
 import recruitments from 'data/recruitments.json';
 
 
@@ -16,21 +16,19 @@ function button(item) {
 }
 
 const detailTemplate = item => `
-<img src="assets/recruitments/${util.slugify(item.name)}.png">
 <div class="title">
   <h1>${item.name}</h1>
   <h4 class="cash">${util.formatCurrency(item.cost)}</h4>
 </div>
+<img src="assets/recruitments/${util.slugify(item.name)}.png">
 <p>${item.description}</p>
 ${button(item)}
 `
 
-class View extends DetailList {
+class View extends CardsList {
   constructor(player, office) {
     super({
       title: 'Recruiting',
-      background: 'rgb(45, 89, 214)',
-      dataSrc: recruitments,
       detailTemplate: detailTemplate,
       handlers: {
         '.buy': function() {
@@ -45,20 +43,16 @@ class View extends DetailList {
   }
 
   render() {
-    var player = this.player;
+    var player = this.player,
+        items = _.filter(recruitments, function(i) {
+          return !i.robots || i.robots == player.specialEffects['Automation'];
+        });
     super.render({
-      items: _.filter(recruitments, function(i) {
-        return !i.robots || i.robots == player.specialEffects['Automation'];
-      })
+      items: _.map(items, i => _.extend({
+        afford: player.company.cash >= i.cost,
+        noAvailableSpace: player.company.remainingSpace == 0
+      }, i))
     });
-  }
-
-  renderDetailView(selected) {
-    var player = this.player;
-    this.detailView.render(_.extend({
-      afford: player.company.cash >= selected.cost,
-      noAvailableSpace: player.company.remainingSpace == 0
-    }, selected));
   }
 }
 

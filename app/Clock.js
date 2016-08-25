@@ -47,11 +47,11 @@ class Clock {
           this.player.month++;
         }
 
-        if (player.current.emails) {
-          var emailPopup = new EmailsView(
-            this.player.current.emails, this.player.company);
-          emailPopup.render();
-        }
+        // if (this.player.current.emails.length > 0) {
+        //   var emailPopup = new EmailsView(
+        //     this.player.current.emails, this.player.company);
+        //   emailPopup.render();
+        // }
       }
     }
   }
@@ -106,9 +106,8 @@ class Clock {
   monthly() {
     var player = this.player;
     player.company.payMonthly();
-    updateNews(player);
-    Event.updateEmails(player);
-    Event.updateNews(player);
+    // Event.updateEmails(player);
+    // Event.updateNews(player);
   }
 
   yearly() {

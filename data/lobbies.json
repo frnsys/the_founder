@@ -25,7 +25,10 @@
     "name": "DARPA Grants",
     "cost": 100000,
     "description": "Special funds for special research",
-    "effects": []
+    "effects": [{
+      "type": "costMultiplier",
+      "value": -0.01
+    }]
   },
   {
     "name": "Tax Breaks",

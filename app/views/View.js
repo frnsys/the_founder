@@ -14,9 +14,12 @@ class View {
     // parent: jquery element to show/hide on render/remove
     params = _.defaults(params, {
       el: $('.ui'),
+      tag: 'div',
       template: undefined,
       data: {},
       handlers: {},
+      attrs: {},
+      method: 'replace', // or append
       parent: $('.ui-wrapper')
     });
 
@@ -35,18 +38,27 @@ class View {
     var self = this,
         html;
 
-    // cleanup if necessary
-    if (this._rendered !== undefined) {
-      this._rendered.remove();
-    }
     this.preRender();
     this.parent.show();
     data = _.extend(_.clone(this.data), data);
-    html = $(this.template(data));
+
+    // it must be wrapped so we can replace it on re-render
+    html = $(`<${this.tag}>`+this.template(data)+`</${this.tag}>`);
     _.each(this.handlers, function(handler, selector) {
       html.on('click', selector, _.bind(handler, self));
     });
-    this.el.html(html);
+    _.each(this.attrs, function(v,k) {
+      html.attr(k, v);
+    });
+    if (this._rendered) {
+      this._rendered.replaceWith(html);
+    } else {
+      if (this.method === 'append') {
+        this.el.append(html);
+      } else {
+        this.el.html(html);
+      }
+    }
     this._rendered = html;
     this.postRender();
     return this;

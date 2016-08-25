@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.2"
+   width="670.33124"
+   height="120.24"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-44.473465,-419.37762)"
+     id="layer1">
+    <g
+       transform="translate(-65.714285,171.42857)"
+       id="flowRoot2837"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans">
+      <path
+         d="m 157.85175,352.92505 c 21.74398,0 38.736,-12.24003 42.624,-33.408 l -4.752,0 c -3.744,18.14398 -18.14402,28.944 -37.728,28.944 -25.91997,0 -42.48,-18.86403 -42.48,-47.52 l 0,-1.152 c 0,-27.93598 18.14402,-47.52 42.336,-47.52 19.87198,0 32.544,9.79201 36.144,26.784 l 5.184,0 c -3.6,-20.15998 -20.30402,-31.104 -41.328,-31.104 -26.35197,0 -47.664,21.60003 -47.664,51.984 l 0,1.152 c 0,30.67196 18.72003,51.84 47.664,51.84"
+         id="path2846"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 240.7125,353.06905 c 13.53599,0 22.464,-6.48001 26.784,-13.968 l 0,12.816 4.896,0 0,-49.968 c 0,-17.85599 -9.07202,-26.496 -25.776,-26.496 -13.82399,0 -26.496,6.91201 -28.368,21.744 l 4.896,0 c 2.016,-12.23999 11.37601,-17.424 23.328,-17.424 14.54399,0 21.024,6.76801 21.024,22.176 l 0,7.344 -18.72,0 c -18.14398,0 -33.84,5.18401 -33.84,22.608 0,13.67998 10.22402,21.168 25.776,21.168 m 0.288,-4.176 c -13.67999,0 -21.168,-6.04802 -21.168,-16.992 0,-15.11999 12.96002,-18.576 28.944,-18.576 l 18.72,0 0,15.552 c 0,11.08798 -12.09601,20.016 -26.496,20.016"
+         id="path2848"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 295.07025,351.91705 4.896,0 0,-42.048 c 0,-20.87998 11.80801,-28.94401 26.064,-29.52 l 0,-4.464 c -13.96799,0.432 -22.32,8.496 -26.064,18 l 0,-17.28 -4.896,0 0,75.312"
+         id="path2850"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 342.6015,351.91705 4.896,0 0,-42.048 c 0,-20.87998 11.80801,-28.94401 26.064,-29.52 l 0,-4.464 c -13.96799,0.432 -22.32,8.496 -26.064,18 l 0,-17.28 -4.896,0 0,75.312"
+         id="path2852"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 416.8605,348.74905 c -16.99198,0 -30.96,-13.24803 -30.96,-33.84 l 0,-1.152 c 0,-21.02398 14.25602,-33.984 31.104,-33.984 16.55998,0 30.672,12.52802 30.672,33.84 l 0,1.152 c 0,21.02397 -13.96802,33.984 -30.816,33.984 m -0.144,4.32 c 19.72798,0 36,-15.55203 36,-38.304 l 0,-1.152 c 0,-23.03998 -16.12802,-38.016 -35.712,-38.016 -19.58398,0 -36.144,15.55202 -36.144,38.16 l 0,1.152 c 0,22.17597 16.12802,38.16 35.856,38.16"
+         id="path2854"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 490.73025,352.92505 c 4.608,0 7.344,-0.72001 9.792,-1.584 l 0,-4.32 c -2.592,1.00799 -5.472,1.584 -9.504,1.584 -7.48799,0 -12.528,-4.46401 -12.528,-14.688 l 0,-53.136 21.024,0 0,-4.176 -21.024,0 0,-17.136 -4.896,0 0,17.136 -11.376,0 0,4.176 11.376,0 0,53.424 c 0,12.38398 6.48001,18.72 17.136,18.72"
+         id="path2856"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 515.064,368.18905 10.8,-22.608 -5.04,-2.16 -9.36,23.04 3.6,1.728"
+         id="path2858"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 583.131,351.91705 5.184,0 0,-102.96 -5.184,0 0,102.96"
+         id="path2860"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 614.289,351.91705 4.896,0 0,-45.648 c 0,-17.27999 13.96801,-26.496 27.36,-26.496 14.25599,0 22.752,7.77601 22.752,25.488 l 0,46.656 4.896,0 0,-46.512 c 0,-21.02398 -10.65602,-29.952 -26.928,-29.952 -13.96799,0 -24.624,8.496 -28.08,17.568 l 0,-16.416 -4.896,0 0,75.312"
+         id="path2862"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 726.50325,353.06905 c 16.41598,0 29.376,-10.51202 31.68,-26.64 l -4.608,0 c -2.304,14.39998 -13.39201,22.32 -27.072,22.32 -16.84798,0 -30.384,-12.96003 -30.384,-33.84 l 0,-1.152 c 0,-21.02398 13.68002,-33.984 30.528,-33.984 12.67199,0 24.048,6.91201 25.776,20.016 l 4.896,0 c -2.016,-15.55199 -15.55202,-24.336 -30.672,-24.336 -19.58398,0 -35.568,15.40802 -35.568,38.304 l 0,1.152 c 0,22.75197 15.69602,38.16 35.424,38.16"
+         id="path2864"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+      <path
+         d="m 776.487,352.63705 c 2.304,0 4.032,-1.87201 4.032,-4.176 0,-2.304 -1.728,-4.176 -4.032,-4.176 -2.448,0 -4.176,1.872 -4.176,4.176 0,2.30399 1.728,4.176 4.176,4.176"
+         id="path2866"
+         style="font-size:144px;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Graphik;-inkscape-font-specification:Graphik Light" />
+    </g>
+  </g>
+</svg>

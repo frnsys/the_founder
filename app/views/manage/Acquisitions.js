@@ -1,7 +1,8 @@
 import _ from 'underscore';
 import util from 'util';
+import View from 'views/View';
 import Effect from 'game/Effect';
-import DetailList from 'views/DetailList';
+import CardsList from 'views/CardsList';
 import acquisitions from 'data/acquisitions.json';
 
 
@@ -15,28 +16,30 @@ function button(item) {
   }
 }
 
-const detailTemplate = item => `
-<img src="assets/placeholder.gif">
-<div class="title">
-  <h1>${item.name}</h1>
-  <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
-</div>
-<p>${item.description}</p>
-<h5 class="revenue">Generates ${util.formatCurrencyAbbrev(item.revenue)} per year</h5>
+const effectsTemplate = item => `
 <ul class="effects">
   ${item.effects.map(e => `
     <li>${Effect.toString(e)}</li>
   `).join('')}
-</ul>
-${button(item)}
-`
+</ul>`;
 
-class View extends DetailList {
+const detailTemplate = item => `
+<div class="title">
+  <h1>${item.name}</h1>
+  <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
+</div>
+<figure>
+  <img src="assets/competitors/${util.slugify(item.name)}.svg">
+</figure>
+<p>${item.description}</p>
+<h5 class="revenue">Generates ${util.formatCurrencyAbbrev(item.revenue)} per year</h5>
+${item.effects.length > 0 ? effectsTemplate(item) : ''}
+${button(item)}`;
+
+class AcquisitionsView extends CardsList {
   constructor(player) {
     super({
       title: 'Acquisitions',
-      background: '#515f78',
-      dataSrc: acquisitions,
       detailTemplate: detailTemplate,
       handlers: {
         '.buy': function() {
@@ -53,18 +56,24 @@ class View extends DetailList {
     super.render({
       items: _.map(acquisitions, function(i) {
         return _.extend({
-          owned: util.contains(player.company.acquisitions, i)
+          owned: util.contains(player.company.acquisitions, i),
+          afford: player.company.cash >= i.cost
         }, i);
       })
     });
   }
 
-  renderDetailView(selected) {
-    this.detailView.render(_.extend({
-      owned: util.contains(this.player.company.acquisitions, selected),
-      afford: this.player.company.cash >= selected.cost
-    }, selected));
+  createListItem(item) {
+    return new View({
+      tag: 'li',
+      el: this.el.find('ul'),
+      template: this.detailTemplate,
+      method: 'append',
+      attrs: {
+        class: `${util.slugify(item.name)}`
+      }
+    });
   }
 }
 
-export default View;
+export default AcquisitionsView;

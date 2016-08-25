@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import Enums from './Enums';
+import Enums from 'app/Enums';
 
 const Economy = {
   update: function(player) {

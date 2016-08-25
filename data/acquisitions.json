@@ -82,5 +82,12 @@
     "cost": 100000,
     "revenue": 100000,
     "effects": []
+  },
+  {
+    "name": "Dark Industries",
+    "description": "A thinktank",
+    "cost": 100000,
+    "revenue": 100000,
+    "effects": []
   }
 ]

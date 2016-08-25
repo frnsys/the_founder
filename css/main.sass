@@ -30,15 +30,14 @@ button
   font-family: "Fantasque Sans Mono", monospace
   color: #222
   cursor: pointer
-  background: #fafafa
-  border: 1px solid #3F84FB
+  border: none
+  background: #3F84FB
   min-width: 10em
   &:disabled
     opacity: 0.5
-    border: 1px solid #3F84FB !important
     cursor: default
   &:hover
-    border: 1px solid #FB3F3F
+    background: #1866ec
 
 .ui-wrapper, .background, .alert-wrapper, .market-wrapper
   position: absolute
@@ -69,18 +68,6 @@ button
   position: relative
   pointer-events: all
   z-index: 2
-
-.popups
-  display: none
-  position: fixed
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-  z-index: 2
-  background: rgba(0,0,0,0.4)
-  padding: 10vh 0 0 0
-  pointer-events: all
 
 .menu, .hud, .selection
   pointer-events: all
@@ -137,34 +124,9 @@ canvas
 #market
   display: none !important
 
-.popup
-  margin: 0 auto
-  width: 960px
-  overflow: hidden
-  height: 480px
-  font-size: 0.8em
-  position: relative
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4)
-  header
-    padding: 1em
-    height: 60px
-    border-bottom: 1px solid rgba(0,0,0,0.2)
-
 header h1
   font-weight: normal
   margin: 0
-
-.popup .close-popup
-  font-size: 3em
-  position: absolute
-  right: 0.4em
-  top: 0.4em
-  line-height: 0.7
-  font-weight: bold
-  color: rgba(0,0,0,0.2)
-
-.close-popup
-  cursor: pointer
 
 .grid
   > li
@@ -225,7 +187,7 @@ header h1
     display: block !important
 
 .cash
-  color: #17B051 !important
+  color: #17B051
   font-family: "Fantasque Sans Mono", monospace
   font-weight: normal
 
@@ -286,7 +248,6 @@ header h1
   font-weight: normal
   font-size: 1.1em
   color: #fff11c
-  text-shadow: 1px 1px rgba(0,0,0,0.2)
   font-family: "Fantasque Sans Mono", monospace
 
 .prereqs
@@ -470,11 +431,6 @@ header h1
 .penalty
   color: #FD1C1C
 
-.special_projects
-  color: #fff
-.special_projects .close-popup
-  color: rgba(255,255,255,0.15)
-
 .tooltip
   display: none
   position: fixed
@@ -544,3 +500,4 @@ header h1
 @import "selection"
 @import "onboarding"
 @import "market"
+@import "popups"

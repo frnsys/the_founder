@@ -1,13 +1,14 @@
 import _ from 'underscore';
 import util from 'util';
+import View from 'views/View';
 import Effect from 'game/Effect';
-import DetailList from 'views/DetailList';
+import CardsList from 'views/CardsList';
 import lobbies from 'data/lobbies.json';
 
 
 function button(item) {
   if (item.owned) {
-    return '<button disabled>Owned</button>';
+    return '<button disabled class="owned">Owned</button>';
   } else if (item.afford) {
     return '<button class="buy">Buy</button>';
   } else {
@@ -16,26 +17,23 @@ function button(item) {
 }
 
 const detailTemplate = item => `
-<img src="assets/placeholder.gif">
-<div class="title">
-  <h1>${item.name}</h1>
-  <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
-</div>
-<p>${item.description}</p>
-<ul class="effects">
-  ${item.effects.map(e => `
-    <li>${Effect.toString(e)}</li>
-  `).join('')}
-</ul>
-${button(item)}
+  <div class="title">
+    <h1>${item.name}</h1>
+    <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
+  </div>
+  <p>${item.description}</p>
+  <ul class="effects">
+    ${item.effects.map(e => `
+      <li>${Effect.toString(e)}</li>
+    `).join('')}
+  </ul>
+  ${button(item)}
 `
 
-class View extends DetailList {
+class LobbyingView extends CardsList {
   constructor(player) {
     super({
       title: 'Lobbying',
-      background: 'rgb(88, 136, 144)',
-      dataSrc: lobbies,
       detailTemplate: detailTemplate,
       handlers: {
         '.buy': function() {
@@ -52,18 +50,25 @@ class View extends DetailList {
     super.render({
       items: _.map(lobbies, function(i) {
         return _.extend({
-          owned: util.contains(player.company.lobbies, i)
+          owned: util.contains(player.company.lobbies, i),
+          afford: player.company.cash >= i.cost
         }, i);
       })
     });
   }
 
-  renderDetailView(selected) {
-    this.detailView.render(_.extend({
-      owned: util.contains(this.player.company.lobbies, selected),
-      afford: this.player.company.cash >= selected.cost
-    }, selected));
+  createListItem(item) {
+    var img = `assets/lobbying/${util.slugify(item.name)}.jpg`;
+    return new View({
+      tag: 'li',
+      el: this.el.find('ul'),
+      template: this.detailTemplate,
+      method: 'append',
+      attrs: {
+        style: `background-image:url(${img})`
+      }
+    });
   }
 }
 
-export default View;
+export default LobbyingView;

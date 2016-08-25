@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import util from 'util';
 import Effect from 'game/Effect';
 import Alert from './Alert';

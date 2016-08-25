@@ -1,19 +1,8 @@
 import _ from 'underscore';
 import util from 'util';
 import Effect from 'game/Effect';
-import DetailList from 'views/DetailList';
+import CardsList from 'views/CardsList';
 import specialProjects from 'data/specialProjects.json';
-
-const template = data => `
-<div class="split-pane ${util.slugify(data.title)}">
-  <ul class="list">
-    ${data.items.map(i => `
-      <li class="${i.owned ? 'owned' : ''}">${i.unlocked ? i.name : '???'}</li>
-    `).join('')}
-  </ul>
-  <div class="detail"></div>
-</div>
-`
 
 function detailTemplate(item) {
   if (item.unlocked) {
@@ -28,44 +17,39 @@ function detailTemplate(item) {
       button = '<button disabled>Not enough cash</button>';
     }
     return `
-      <img src="assets/specialProjects/${util.slugify(item.name)}.gif">
       <div class="title">
         <h1>${item.name}</h1>
         <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
       </div>
+      <img src="assets/specialProjects/${util.slugify(item.name)}.gif">
       <p>${item.description}</p>
       <ul class="effects">
         ${item.effects.map(e => `
           <li>${Effect.toString(e)}</li>
         `).join('')}
       </ul>
-      <h6>Prerequisites</h6>
-      <ul class="required">
+      <div class="prereqs">Requires:
         ${item.prereqs.map(i => `
-          <li class="${i.ok ? 'ok' : ''}">${i.name}</li>
-        `).join('')}
-      </ul>
+          <span class="prereq ${i.ok ? 'ok' : ''}">${i.name.replace('.','+')}</span>
+        `).join('')}</div>
       ${button}
     `;
   } else {
     return `
-      <img src="assets/placeholder.gif">
       <div class="title">
         <h1>???</h1>
       </div>
-      <p>This special project is yet to be discovered.</p>
+      <img src="assets/placeholder.gif">
+      <p class="undiscovered">This special project is yet to be discovered.</p>
     `;
   }
 }
 
 
-class View extends DetailList {
+class View extends CardsList {
   constructor(player) {
     super({
       title: 'Special Projects',
-      background: '#161616',
-      template: template,
-      dataSrc: specialProjects,
       detailTemplate: detailTemplate,
       handlers: {
         '.buy': function() {
@@ -83,26 +67,18 @@ class View extends DetailList {
       items: _.map(specialProjects, function(i) {
         return _.extend({
           owned: util.contains(player.company.specialProjects, i),
-          unlocked: util.contains(player.unlocked.specialProjects, i)
+          unlocked: util.contains(player.unlocked.specialProjects, i),
+          afford: player.company.cash >= i.cost,
+          not_available: !player.company.specialProjectIsAvailable(i),
+          prereqs: _.map(i.requiredProducts, function(p) {
+            return {
+              name: p,
+              ok: util.containsByName(player.company.discoveredProducts, p)
+            }
+          })
         }, i);
       })
     });
-  }
-
-  renderDetailView(selected) {
-    var player = this.player;
-    this.detailView.render(_.extend({
-      owned: util.contains(player.company.specialProjects, selected),
-      unlocked: util.contains(player.unlocked.specialProjects, selected),
-      afford: player.company.cash >= selected.cost,
-      not_available: !player.company.specialProjectIsAvailable(selected),
-      prereqs: _.map(selected.requiredProducts, function(p) {
-        return {
-          name: p,
-          ok: util.containsByName(player.company.discoveredProducts, p)
-        }
-      })
-    }, selected));
   }
 }
 

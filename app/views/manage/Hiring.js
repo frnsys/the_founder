@@ -62,8 +62,9 @@ class View extends CardsList {
     this.candidates = candidates;
 
     this.registerHandlers({
-      '.start-negotiation': function() {
-        this.negotiationView = new NegotiationView(player, office, this.selected, this);
+      '.start-negotiation': function(ev) {
+        var idx = this.itemIndex(ev.target);
+        this.negotiationView = new NegotiationView(player, office, this.candidates[idx], this);
         this.remove();
       }
     });

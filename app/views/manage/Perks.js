@@ -2,7 +2,7 @@ import _ from 'underscore';
 import util from 'util';
 import Perk from 'game/Perk';
 import Effect from 'game/Effect';
-import DetailList from 'views/DetailList';
+import CardsList from 'views/CardsList';
 import perks from 'data/perks.json';
 
 
@@ -12,18 +12,17 @@ function detailTemplate(item) {
     html.push(`
       <div class="owned-perk">
         <h5>Current Perk</h5>
+        <h1>${item.current.name}</h1>
         <img src="assets/perks/gifs/${util.slugify(item.current.name)}.gif">
-        <div class="info">
-          <h1>${item.current.name}</h1>
-          <p>${item.current.description}</p>
-          <ul class="effects">
-            ${item.current.effects.map(e => `
-              <li>${Effect.toString(e)}</li>
-            `).join('')}
-          </ul>
-        </div>
+        <ul class="effects">
+          ${item.current.effects.map(e => `
+            <li>${Effect.toString(e)}</li>
+          `).join('')}
+        </ul>
       </div>
     `);
+  } else {
+    html.push('<div class="owned-perk"><h1 class="unowned">You don\'t have this perk yet.</h1></div>');
   }
 
   if (item.nextAvailable) {
@@ -35,25 +34,27 @@ function detailTemplate(item) {
     }
     html.push(`
       <div class="next-perk">
-        <img src="assets/perks/gifs/${util.slugify(item.next.name)}.gif">
         <div class="title">
           <h1>${item.next.name}</h1>
-          <h4 class="cash">${util.formatCurrencyAbbrev(item.next.cost)}</h4>
+          <h4 class="cash">${util.formatCurrency(item.next.cost)}</h4>
         </div>
-        <p>${item.next.description}</p>
-        <ul class="effects">
-          ${item.next.effects.map(e => `
-            <li>${Effect.toString(e)}</li>
-          `).join('')}
-        </ul>
-        ${button}
+        <img src="assets/perks/gifs/${util.slugify(item.next.name)}.gif">
+        <div class="perk-info">
+          <p>${item.next.description}</p>
+          <ul class="effects">
+            ${item.next.effects.map(e => `
+              <li>${Effect.toString(e)}</li>
+            `).join('')}
+          </ul>
+          ${button}
+        </div>
       </div>
     `);
   }
   return html.join('');
 }
 
-class View extends DetailList {
+class View extends CardsList {
   constructor(player, office) {
     var availablePerks = _.filter(perks, function(p) {
       if (!player.company.hasPerk(p)) {
@@ -63,21 +64,20 @@ class View extends DetailList {
     });
     super({
       title: 'Perks',
-      background: 'rgb(88, 136, 144)',
-      dataSrc: availablePerks,
       detailTemplate: detailTemplate,
       handlers: {
-        '.buy': function() {
-          var perk,
-              owned = player.company.hasPerk(this.selected);
+        '.buy': function(ev) {
+          var idx = this.itemIndex(ev.target),
+              perk = this.availablePerks[idx],
+              owned = player.company.hasPerk(perk);
           if (!owned) {
-            perk = Perk.init(this.selected);
+            perk = Perk.init(perk);
           } else {
-            perk = util.byName(this.player.company.perks, this.selected.name);
+            perk = util.byName(this.player.company.perks, perk);
           }
           if (player.company.buyPerk(perk)) {
             office.addPerk(Perk.current(perk));
-            this.renderDetailView(perk);
+            this.subviews[idx].render(this.processItem(perk));
           }
         }
       }
@@ -89,37 +89,31 @@ class View extends DetailList {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(this.availablePerks, function(i) {
-        return _.extend({
-          owned: util.contains(player.company.perks, i)
-        }, i);
-      })
+      items: _.map(this.availablePerks, this.processItem.bind(this))
     });
   }
 
-  renderDetailView(selected) {
+  processItem(item) {
     var perk,
-        owned = this.player.company.hasPerk(selected)
+        player = this.player,
+        owned = player.company.hasPerk(item)
     if (!owned) {
-      perk = Perk.init(this.selected);
+      perk = Perk.init(item);
     } else {
-      perk = util.byName(this.player.company.perks, selected.name);
+      perk = util.byName(player.company.perks, item.name);
     }
 
     var current = Perk.current(perk),
         next = owned ? Perk.next(perk) : current,
-        hasNext = owned ? Perk.hasNext(perk) : true,
-        nextAvailable = Perk.isAvailable(next, this.player.company),
-        afford = hasNext && this.player.company.cash >= next.cost;
-
-    this.detailView.render(_.extend({
+        hasNext = owned ? Perk.hasNext(perk) : true;
+    return _.extend({
       owned: owned,
-      afford: afford,
-      hasNext: hasNext,
       current: current,
-      nextAvailable: nextAvailable,
-      next: next
-    }, perk));
+      next: next,
+      hasNext: hasNext,
+      nextAvailable: Perk.isAvailable(next, player.company),
+      afford: hasNext && player.company.cash >= next.cost
+    }, item);
   }
 }
 

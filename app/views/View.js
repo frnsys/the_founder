@@ -44,7 +44,9 @@ class View {
     // it must be wrapped so we can replace it on re-render
     html = $(`<${this.tag}>`+this.template(data)+`</${this.tag}>`);
     _.each(this.handlers, function(handler, selector) {
-      html.on('click', selector, _.bind(handler, self));
+      html.on('click', selector, function(ev) {
+        handler.bind(self)(ev);
+      });
     });
     _.each(this.attrs, function(v,k) {
       html.attr(k, v);

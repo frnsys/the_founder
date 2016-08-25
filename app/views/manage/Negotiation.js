@@ -7,8 +7,7 @@ import Popup from 'views/Popup';
 import negotiations from 'data/negotiations.json';
 
 const attributeTemplate = item => `
-  <h5>Attributes</h5>
-  <ul>
+  <ul class="worker-attributes">
     ${item.attributes.map(i => `
       <li data-tip="<ul>${Worker.attributeToStrings(i).map(s => `<li>${s}</li>`).join('')}</ul>">${i}</li>
     `).join('')}
@@ -42,33 +41,33 @@ const template = function(data) {
     </div>`;
   }
   return `
-  <div class="popup-body">
     <div class="negotiation-employee">
       <img src="/assets/workers/gifs/${data.avatar}.gif">
       <div class="title">
         <h1>${data.name}</h1>
         <p class="subtitle">${data.title}</p>
       </div>
-      <ul>
-        <li>Productivity: ${Math.round(data.productivity)}</li>
-        <li>Design: ${Math.round(data.design)}</li>
-        <li>Engineering: ${Math.round(data.engineering)}</li>
-        <li>Marketing: ${Math.round(data.marketing)}</li>
+      <ul class="worker-stats">
+        <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(Math.round(data.productivity), 0)}</li>
+        <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(Math.round(data.design), 0)}</li>
+        <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(Math.round(data.marketing), 0)}</li>
+        <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(Math.round(data.engineering), 0)}</li>
+        <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(Math.round(data.happiness), 0)}</li>
       </ul>
       ${data.attributes.length > 0 ? attributeTemplate(data) : ''}
     </div>
-    <div class="negotiation-dialogue">
-      ${result}
-    </div>
-  </div>`;
-}
+    <div class="negotiation-dialogue-wrapper">
+      <div class="negotiation-dialogue">
+        ${result}
+      </div>
+    </div>`;
+};
 
 
 class View extends Popup {
   constructor(player, office, worker, hiringView) {
     super({
       title: 'Negotiation',
-      background: 'rgb(45, 89, 214)',
       template: template
     });
     var self = this;

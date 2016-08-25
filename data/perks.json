@@ -154,7 +154,7 @@
       },
       {
         "name": "Catering",
-        "description": "Feed employees at the office so they don't waste time going out to eat",
+        "description": "Eating out is a waste of company time",
         "cost": 15000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -174,7 +174,7 @@
       },
       {
         "name": "Gourmet Chef",
-        "description": "With the highest-quality food, employees not only stay through lunch, but breakfast and dinner as well",
+        "description": "Employees have less a reason to leave",
         "cost": 25000,
         "requiredOffice": 1,
         "requiredTechs": [],
@@ -267,7 +267,7 @@
     "upgrades": [
       {
         "name": "Holiday Parties",
-        "description": "Organize and sponsor office parties",
+        "description": "Organize office parties",
         "cost": 20000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -284,7 +284,7 @@
       },
       {
         "name": "Company Retreats",
-        "description": "Oragnize retreats for employees to work away from work",
+        "description": "Oragnize team-building retreats",
         "cost": 50000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -306,7 +306,7 @@
     "upgrades": [
       {
         "name": "Text-a-Therapist",
-        "description": "Sometimes the stress of non-stop work gets to people",
+        "description": "Help employees cope",
         "cost": 20000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -495,7 +495,7 @@
     "upgrades": [
       {
         "name": "Gym Memberships",
-        "description": "Subsidizing gym memberships will save us money on health insurance",
+        "description": "Subsidizing gym memberships",
         "cost": 10000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -592,7 +592,7 @@
     "upgrades": [
       {
         "name": "Ping-Pong",
-        "description": "Some game time helps employees unwind and think through problems",
+        "description": "Support serendipity",
         "cost": 10000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -641,7 +641,7 @@
     "upgrades": [
       {
         "name": "Couches",
-        "description": "Give employees a place to crash after all-nighters",
+        "description": "A spot to crash",
         "cost": 1000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -711,7 +711,7 @@
     "upgrades": [
       {
         "name": "Video Conferencing",
-        "description": "Employees can meet, even if they're not together",
+        "description": "Meetings all over the world",
         "cost": 10000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -757,7 +757,7 @@
     "upgrades": [
       {
         "name": "Transit Stipends",
-        "description": "Help employees get to the office with less hassle",
+        "description": "Get to the office with less hassle",
         "cost": 10000,
         "requiredOffice": 0,
         "requiredTechs": [],
@@ -805,7 +805,7 @@
     "upgrades": [
       {
         "name": "Unlimited Vacation",
-        "description": "Attractive to employees, though office culture will keep them from taking advantage",
+        "description": "Social norms mean no one will use this",
         "cost": 5000,
         "requiredOffice": 0,
         "requiredTechs": [],

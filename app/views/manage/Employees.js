@@ -25,11 +25,11 @@ const detailTemplate = item => `
   </div>
   <div class="worker-body">
     <ul class="worker-stats">
-      <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(item.productivity, 0)}</li>
-      <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(item.design, 0)}</li>
-      <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(item.marketing, 0)}</li>
-      <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(item.engineering, 0)}</li>
-      <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(item.happiness, 0)}</li>
+      <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(Math.round(item.productivity), 0)}</li>
+      <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(Math.round(item.design), 0)}</li>
+      <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(Math.round(item.marketing), 0)}</li>
+      <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(Math.round(item.engineering), 0)}</li>
+      <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(Math.round(item.happiness), 0)}</li>
     </ul>
     ${item.attributes.length > 0 ? attributeTemplate(item) : ''}
   </div>

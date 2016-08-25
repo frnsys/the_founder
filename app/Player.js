@@ -23,7 +23,7 @@ class Player {
     this.company = new Company(companyData, this);
     _.extend(this, {
       unlocked: {
-        locations: util.byNames(locations, ['New York', 'Boston', 'San Francisco']),
+        locations: util.byNames(locations, ['New York', 'Boston', 'San Francisco', 'Dubai', 'Bangalore', 'Sydney', 'Tel Aviv']),
         specialProjects: [],
         productTypes: util.byNames(productTypes, ['Ad', 'Gadget', 'Mobile', 'Social Network', 'E-Commerce'])
       },

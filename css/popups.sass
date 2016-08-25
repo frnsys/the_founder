@@ -171,7 +171,8 @@ button.owned
     background: #7e0cb3
 
 
-.lobbying, .recruiting, .start_a_promo_campaign
+.lobbying, .recruiting,
+.start_a_promo_campaign, .locations
   .cash
     background: #57bb7d
     color: #fff
@@ -213,7 +214,7 @@ button.owned
       height: 164px
       margin: 2em auto
 
-.employees
+.employees, .candidates
   .cards > li
     padding: 0
     height: 22em
@@ -264,3 +265,32 @@ button.owned
 
 [data-tip]
   cursor: help
+
+.locations
+  .cards > .location-market
+    width: 65em
+    background: #3f84fb
+    color: #fff
+    padding: 0.5em
+.market-location
+  background: #3566d8
+  width: 20em
+  display: inline-block
+  padding: 1em
+  border-radius: 0.4em
+  vertical-align: top
+  height: 24em
+  margin: 0.6em
+  position: relative
+  &:first-child
+    background: none
+    img
+      margin-top: 2em
+  .worker-stats li
+    margin: 0.5em 0.5em 0em 0
+  button
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    border-radius: 0 0 0.4em 0.4em

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import View from 'views/View';

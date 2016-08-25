@@ -31,9 +31,11 @@ class View extends CardsList {
       title: 'Recruiting',
       detailTemplate: detailTemplate,
       handlers: {
-        '.buy': function() {
-          if (player.company.pay(this.selected.cost)) {
-            var hiring = new HiringView(player, office, this.selected);
+        '.buy': function(ev) {
+          var idx = this.itemIndex(ev.target),
+              selected = recruitments[idx];
+          if (player.company.pay(selected.cost)) {
+            var hiring = new HiringView(player, office, selected);
             hiring.render();
           }
         }

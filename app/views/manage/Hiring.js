@@ -2,26 +2,11 @@ import _ from 'underscore';
 import util from 'util';
 import Worker from 'game/Worker';
 import Hiring from 'game/Hiring';
-import DetailList from 'views/DetailList';
+import CardsList from 'views/CardsList';
 import NegotiationView from './Negotiation';
 
-const template = function(data) {
-  var list;
-  if (data.items) {
-    list = `<ul class="list">
-      ${data.items.map(i => `
-        <li>${i.name}</li>
-      `).join('')}
-    </ul>`;
-  } else {
-    list = 'No candidates found';
-  }
-  return `
-    <div class="split-pane ${util.slugify(data.title)}">
-      ${list}
-      <div class="detail"></div>
-    </div>`;
-}
+const template = data =>
+  `${data.items.length > 0 ? '<ul class="cards"></ul>' : 'No candidates'}`;
 
 function button(item) {
   if (item.owned) {
@@ -29,13 +14,12 @@ function button(item) {
   } else if (item.noAvailableSpace) {
     return `<button disabled>Not enough space</button>`;
   } else {
-    return `<button class="start-negotiation">Negotiation</button>`;
+    return `<button class="start-negotiation">Negotiate</button>`;
   }
 }
 
 const attributeTemplate = item => `
-  <h5>Attributes</h5>
-  <ul>
+  <ul class="worker-attributes">
     ${item.attributes.map(i => `
       <li data-tip="<ul>${Worker.attributeToStrings(i).map(s => `<li>${s}</li>`).join('')}</ul>">${i}</li>
     `).join('')}
@@ -43,28 +27,33 @@ const attributeTemplate = item => `
 `;
 
 const detailTemplate = item => `
-<img src="/assets/workers/gifs/${item.avatar}.gif">
-<div class="title">
-  <h1>${item.name}</h1>
-  <p class="subtitle">${item.title}</p>
+<div class="worker-avatar">
+  <img src="/assets/workers/gifs/${item.avatar}.gif">
 </div>
-<ul>
-  <li>Productivity: ${Math.round(item.productivity)}</li>
-  <li>Design: ${Math.round(item.design)}</li>
-  <li>Engineering: ${Math.round(item.engineering)}</li>
-  <li>Marketing: ${Math.round(item.marketing)}</li>
-</ul>
-${item.attributes.length > 0 ? attributeTemplate(item) : ''}
-${button(item)}
+<div class="worker-info">
+  <div class="worker-title">
+    <h1>${item.name}</h1>
+    <h3 class="subtitle">${item.title}</h3>
+  </div>
+  <div class="worker-body">
+    <ul class="worker-stats">
+      <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(Math.round(item.productivity), 0)}</li>
+      <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(Math.round(item.design), 0)}</li>
+      <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(Math.round(item.marketing), 0)}</li>
+      <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(Math.round(item.engineering), 0)}</li>
+      <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(Math.round(item.happiness), 0)}</li>
+    </ul>
+    ${item.attributes.length > 0 ? attributeTemplate(item) : ''}
+  </div>
+  ${button(item)}
+</div>
 `
 
-class View extends DetailList {
+class View extends CardsList {
   constructor(player, office, recruitment) {
     var candidates = Hiring.recruit(recruitment, player, player.company);
     super({
       title: 'Candidates',
-      background: 'rgb(45, 89, 214)',
-      dataSrc: candidates,
       template: template,
       detailTemplate: detailTemplate
     });
@@ -96,18 +85,9 @@ class View extends DetailList {
     // re-filter candidates in case some have gone off the market
     var player = this.player;
     this.candidates = _.filter(this.candidates, c => c.offMarketTime == 0);
-    this.dataSrc = this.candidates;
     super.render({
       items: this.candidates
     });
-  }
-
-  renderDetailView(selected) {
-    var player = this.player;
-    this.detailView.render(_.extend({
-      noAvailableSpace: player.company.remainingSpace == 0,
-      owned: util.contains(player.company.workers, selected)
-    }, selected));
   }
 }
 

@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import util from 'util';
+import templ from './Common';
 import Perk from 'game/Perk';
-import Effect from 'game/Effect';
 import CardsList from 'views/CardsList';
 import perks from 'data/perks.json';
 
@@ -14,11 +14,7 @@ function detailTemplate(item) {
         <h5>Current Perk</h5>
         <h1>${item.current.name}</h1>
         <img src="assets/perks/gifs/${util.slugify(item.current.name)}.gif">
-        <ul class="effects">
-          ${item.current.effects.map(e => `
-            <li>${Effect.toString(e)}</li>
-          `).join('')}
-        </ul>
+      ${templ.effects(item.current)}
       </div>
     `);
   } else {
@@ -41,11 +37,7 @@ function detailTemplate(item) {
         <img src="assets/perks/gifs/${util.slugify(item.next.name)}.gif">
         <div class="perk-info">
           <p>${item.next.description}</p>
-          <ul class="effects">
-            ${item.next.effects.map(e => `
-              <li>${Effect.toString(e)}</li>
-            `).join('')}
-          </ul>
+          ${templ.effects(item.next)}
           ${button}
         </div>
       </div>
@@ -87,7 +79,6 @@ class View extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
       items: _.map(this.availablePerks, this.processItem.bind(this))
     });

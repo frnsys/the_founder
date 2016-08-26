@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import util from 'util';
+import templ from './Common';
 import View from 'views/View';
-import Effect from 'game/Effect';
 import CardsList from 'views/CardsList';
 import acquisitions from 'data/acquisitions.json';
 
@@ -16,13 +16,6 @@ function button(item) {
   }
 }
 
-const effectsTemplate = item => `
-<ul class="effects">
-  ${item.effects.map(e => `
-    <li>${Effect.toString(e)}</li>
-  `).join('')}
-</ul>`;
-
 const detailTemplate = item => `
 <div class="title">
   <h1>${item.name}</h1>
@@ -33,7 +26,7 @@ const detailTemplate = item => `
 </figure>
 <p>${item.description}</p>
 <h5 class="revenue">Generates ${util.formatCurrencyAbbrev(item.revenue)} per year</h5>
-${item.effects.length > 0 ? effectsTemplate(item) : ''}
+${item.effects.length > 0 ? templ.effects(item) : ''}
 ${button(item)}`;
 
 class AcquisitionsView extends CardsList {
@@ -42,9 +35,11 @@ class AcquisitionsView extends CardsList {
       title: 'Acquisitions',
       detailTemplate: detailTemplate,
       handlers: {
-        '.buy': function() {
-          player.company.buyAcquisition(this.selected);
-          this.renderDetailView(this.selected);
+        '.buy': function(ev) {
+          var idx = this.itemIndex(ev.target),
+              sel = acquisitions[idx];
+          player.company.buyAcquisition(sel);
+          this.subviews[idx].render(this.processItem(sel));
         }
       }
     });
@@ -52,13 +47,17 @@ class AcquisitionsView extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
-      items: _.map(acquisitions, i => _.extend({
-        owned: util.contains(player.company.acquisitions, i),
-        afford: player.company.cash >= i.cost
-      }, i))
+      items: _.map(acquisitions, this.processItem.bind(this))
     });
+  }
+
+  processItem(item) {
+    var player = this.player;
+    return _.extend({
+      owned: util.contains(player.company.acquisitions, item),
+      afford: player.company.cash >= item.cost
+    }, item);
   }
 
   createListItem(item) {

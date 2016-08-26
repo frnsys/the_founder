@@ -48,7 +48,7 @@ class ProductTypesView extends CardsList {
               idx = $el.closest('li').index(),
               sel = productTypes[idx];
           player.company.buyProductType(sel);
-          this.render();
+          this.subviews[idx].render(this.processItem(sel));
         }
       }
     });
@@ -56,14 +56,18 @@ class ProductTypesView extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
-      items: _.map(productTypes, i => _.extend({
-        owned: util.contains(player.company.productTypes, i),
-        available: player.company.productTypeIsAvailable(i),
-        afford: player.company.cash >= i.cost
-      }, i))
+      items: _.map(productTypes, this.processItem.bind(this))
     });
+  }
+
+  processItem(item) {
+    var player = this.player;
+    return _.extend({
+      owned: util.contains(player.company.productTypes, item),
+      available: player.company.productTypeIsAvailable(item),
+      afford: player.company.cash >= item.cost
+    }, item);
   }
 
   createListItem(item) {

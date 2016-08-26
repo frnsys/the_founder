@@ -1,16 +1,10 @@
 import _ from 'underscore';
 import util from 'util';
-import Effect from 'game/Effect';
+import templ from './Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
 import productRecipes from 'data/productRecipes.json';
 
-const effectsTemplate = item => `
-<ul class="effects">
-  ${item.effects.map(e => `
-    <li>${Effect.toString(e)}</li>
-  `).join('')}
-</ul>`;
 
 function detailTemplate(item) {
   if (item.discovered) {
@@ -21,7 +15,7 @@ function detailTemplate(item) {
       ${item.productTypes.map(pt => `
         <img src="assets/productTypes/${util.slugify(pt)}.gif">
       `).join('')}
-      ${item.effects.length > 0 ? effectsTemplate(item) : ''}`;
+      ${item.effects.length > 0 ? templ.effects(item) : ''}`;
   } else {
     return `
       <div class="title">

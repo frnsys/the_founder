@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import Effect from 'game/Effect';
+import templ from './Common';
 import CardsList from 'views/CardsList';
 import technologies from 'data/technologies.json';
 
@@ -17,32 +17,17 @@ function button(item) {
   }
 }
 
-function detailTemplate(item) {
-var prereqs = '';
-if (item.prereqs.length) {
-  prereqs = `
-  <div class="prereqs">Requires:
-      ${item.prereqs.map(i => `
-        <span class="prereq ${i.ok ? 'ok' : ''}">${i.name}</span>
-      `).join('')}
-  </div>`;
-  }
-
-return `
+const detailTemplate = item => `
   <div class="title">
     <h1>${item.name}</h1>
     <h4 class="cash">${util.formatCurrency(item.cost)}</h4>
   </div>
   <img src="assets/techs/${util.slugify(item.name)}.png">
   <h5>Requires the ${item.requiredVertical} vertical</h5>
-  ${prereqs}
-  <ul class="effects">
-    ${item.effects.map(e => `
-      <li>${Effect.toString(e)}</li>
-    `).join('')}
-  </ul>
-  ${button(item)}`;
-}
+  ${item.prereqs.length > 0 ? templ.prereqs(item) : ''}
+  ${templ.effects(item)}
+  ${button(item)}
+`;
 
 class ResearchView extends CardsList {
   constructor(player) {
@@ -52,9 +37,9 @@ class ResearchView extends CardsList {
       handlers: {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
-              tech = technologies[idx];
-          player.company.buyResearch(tech);
-          this.subviews[idx].render(this.processItem(tech));
+              sel = technologies[idx];
+          player.company.buyResearch(sel);
+          this.subviews[idx].render(this.processItem(sel));
         }
       }
     });
@@ -62,7 +47,6 @@ class ResearchView extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
       items: _.map(technologies, this.processItem.bind(this))
     });

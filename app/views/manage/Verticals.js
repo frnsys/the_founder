@@ -30,9 +30,11 @@ class View extends CardsList {
       title: 'Verticals',
       detailTemplate: detailTemplate,
       handlers: {
-        '.buy': function() {
-          player.company.buyVertical(this.selected);
-          this.renderDetailView(this.selected);
+        '.buy': function(ev) {
+          var idx = this.itemIndex(ev.target),
+              sel = verticals[idx];
+          player.company.buyVertical(sel);
+          this.subviews[idx].render(this.processItem(sel));
         }
       }
     });
@@ -40,13 +42,17 @@ class View extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
-      items: _.map(verticals, i => _.extend({
-        owned: util.contains(player.company.verticals, i),
-        afford: player.company.cash >= i.cost
-      }, i))
+      items: _.map(verticals, this.processItem.bind(this))
     });
+  }
+
+  processItem(item) {
+    var player = this.player;
+    return _.extend({
+      owned: util.contains(player.company.verticals, item),
+      afford: player.company.cash >= item.cost
+    }, item);
   }
 }
 

@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import Effect from 'game/Effect';
+import templ from './Common';
 import CardsList from 'views/CardsList';
 import specialProjects from 'data/specialProjects.json';
 
@@ -23,15 +23,8 @@ function detailTemplate(item) {
       </div>
       <img src="assets/specialProjects/${util.slugify(item.name)}.gif">
       <p>${item.description}</p>
-      <ul class="effects">
-        ${item.effects.map(e => `
-          <li>${Effect.toString(e)}</li>
-        `).join('')}
-      </ul>
-      <div class="prereqs">Requires:
-        ${item.prereqs.map(i => `
-          <span class="prereq ${i.ok ? 'ok' : ''}">${i.name.replace('.','+')}</span>
-        `).join('')}</div>
+      ${templ.effects(item)}
+      ${item.prereqs.length > 0 ? templ.prereqs(item) : ''}
       ${button}
     `;
   } else {
@@ -52,9 +45,11 @@ class View extends CardsList {
       title: 'Special Projects',
       detailTemplate: detailTemplate,
       handlers: {
-        '.buy': function() {
-          player.company.buySpecialProject(this.selected);
-          this.renderDetailView(this.selected);
+        '.buy': function(ev) {
+          var idx = this.itemIndex(ev.target),
+              sel = specialProjects[idx];
+          player.company.buySpecialProject(sel);
+          this.subviews[idx].render(this.processItem(sel));
         }
       }
     });
@@ -62,23 +57,25 @@ class View extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
-      items: _.map(specialProjects, function(i) {
-        return _.extend({
-          owned: util.contains(player.company.specialProjects, i),
-          unlocked: util.contains(player.unlocked.specialProjects, i),
-          afford: player.company.cash >= i.cost,
-          not_available: !player.company.specialProjectIsAvailable(i),
-          prereqs: _.map(i.requiredProducts, function(p) {
-            return {
-              name: p,
-              ok: util.containsByName(player.company.discoveredProducts, p)
-            }
-          })
-        }, i);
-      })
+      items: _.map(specialProjects, this.processItem.bind(this))
     });
+  }
+
+  processItem(item) {
+    var player = this.player;
+    return _.extend({
+      owned: util.contains(player.company.specialProjects, item),
+      unlocked: util.contains(player.unlocked.specialProjects, item),
+      afford: player.company.cash >= item.cost,
+      not_available: !player.company.specialProjectIsAvailable(item),
+      prereqs: _.map(item.requiredProducts, function(p) {
+        return {
+          name: p,
+          ok: util.containsByName(player.company.discoveredProducts, p)
+        }
+      })
+    }, item);
   }
 }
 

@@ -1,18 +1,12 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
+import templ from './Common';
 import Worker from 'game/Worker';
 import Hiring from 'game/Hiring';
 import Popup from 'views/Popup';
 import negotiations from 'data/negotiations.json';
 
-const attributeTemplate = item => `
-  <ul class="worker-attributes">
-    ${item.attributes.map(i => `
-      <li data-tip="<ul>${Worker.attributeToStrings(i).map(s => `<li>${s}</li>`).join('')}</ul>">${i}</li>
-    `).join('')}
-  </ul>
-`;
 
 const template = function(data) {
   var result;
@@ -47,14 +41,8 @@ const template = function(data) {
         <h1>${data.name}</h1>
         <p class="subtitle">${data.title}</p>
       </div>
-      <ul class="worker-stats">
-        <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(Math.round(data.productivity), 0)}</li>
-        <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(Math.round(data.design), 0)}</li>
-        <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(Math.round(data.marketing), 0)}</li>
-        <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(Math.round(data.engineering), 0)}</li>
-        <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(Math.round(data.happiness), 0)}</li>
-      </ul>
-      ${data.attributes.length > 0 ? attributeTemplate(data) : ''}
+      ${templ.skills(item)}
+      ${item.attributes.length > 0 ? templ.attributes(item) : ''}
     </div>
     <div class="negotiation-dialogue-wrapper">
       <div class="negotiation-dialogue">

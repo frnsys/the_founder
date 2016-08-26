@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import Effect from 'game/Effect';
+import templ from './Common';
 import View from 'views/View';
 import Popup from 'views/Popup';
 import locations from 'data/locations.json';
@@ -15,13 +15,6 @@ function button(item) {
   }
 }
 
-const effectsTemplate = item => `
-<ul class="effects">
-  ${item.effects.map(e => `
-    <li>${Effect.toString(e)}</li>
-  `).join('')}
-</ul>`;
-
 const template = data => `<ul class="cards"></ul>`;
 
 const marketTemplate = item => `
@@ -33,21 +26,13 @@ const marketTemplate = item => `
   </ul>
 `;
 
-// TODO render skills
-
 const locationTemplate = item => `
 <div class="title">
   <h1>${item.name}</h1>
   <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
-  <ul class="worker-stats">
-    <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(Math.round(item.skills.productivity), 0)}</li>
-    <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(Math.round(item.skills.design), 0)}</li>
-    <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(Math.round(item.skills.marketing), 0)}</li>
-    <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(Math.round(item.skills.engineering), 0)}</li>
-    <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(Math.round(item.skills.happiness), 0)}</li>
-  </ul>
 </div>
-${item.effects.length > 0 ? effectsTemplate(item) : ''}
+${templ.skills(item.skills)}
+${item.effects.length > 0 ? templ.effects(item) : ''}
 ${button(item)}`;
 
 

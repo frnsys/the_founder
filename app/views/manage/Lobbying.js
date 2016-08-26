@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import util from 'util';
+import templ from './Common';
 import View from 'views/View';
-import Effect from 'game/Effect';
 import CardsList from 'views/CardsList';
 import lobbies from 'data/lobbies.json';
 
@@ -22,11 +22,7 @@ const detailTemplate = item => `
     <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
   </div>
   <p>${item.description}</p>
-  <ul class="effects">
-    ${item.effects.map(e => `
-      <li>${Effect.toString(e)}</li>
-    `).join('')}
-  </ul>
+  ${templ.effects(item)}
   ${button(item)}
 `
 
@@ -36,9 +32,11 @@ class LobbyingView extends CardsList {
       title: 'Lobbying',
       detailTemplate: detailTemplate,
       handlers: {
-        '.buy': function() {
-          player.company.buyLobby(this.selected);
-          this.renderDetailView(this.selected);
+        '.buy': function(ev) {
+          var idx = this.itemIndex(ev.target),
+              sel = lobbies[idx];
+          player.company.buyLobby(sel);
+          this.subviews[idx].render(this.processItem(sel));
         }
       }
     });
@@ -46,13 +44,17 @@ class LobbyingView extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
-      items: _.map(lobbies, i => _.extend({
-        owned: util.contains(player.company.lobbies, i),
-        afford: player.company.cash >= i.cost
-      }, i))
+      items: _.map(lobbies, this.processItem.bind(this))
     });
+  }
+
+  processItem(item) {
+    var player = this.player;
+    return _.extend({
+      owned: util.contains(player.company.lobbies, item),
+      afford: player.company.cash >= item.cost
+    }, item);
   }
 
   createListItem(item) {

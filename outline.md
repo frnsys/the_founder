@@ -6,6 +6,16 @@ some items are still marked as TODO and NEEDS TESTING
 # Loading/saving
 [ ] saving the game requires saving the player which should recursively save all necessary data for everything else (needs clarification)
 
+# Tasks
+[ ] product
+    [ ] design, engineering, and marketing all contribute equally
+[ ] promo
+    [ ] marketing contributes, design contributes scaled down
+[ ] research
+    [ ] engineering contributes, design contributes scaled down
+[ ] lobbying
+    [ ] only marketing contributes
+    [ ] takes a long time to develop, but very big payoffs
 
 ---
 

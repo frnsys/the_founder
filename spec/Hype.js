@@ -2,7 +2,9 @@ import _ from 'underscore';
 import Player from 'app/Player';
 
 var worker = {
+  "design": 10,
   "marketing": 10,
+  "engineering": 10,
   "productivity": 500,
   "attributes": []
 }
@@ -17,49 +19,77 @@ describe('Hype', function() {
       "name": "Press Release",
       "cost": 10000,
       "description": "Email a few publications",
-      "hype": 1
+      "power": 1
     };
   });
 
-  it('can be bought', function() {
-    expect(company.promo).toEqual(null);
-    company.buyPromo(promo);
-    expect(company.promo.name).toEqual(promo.name);
+  it('can be started', function() {
+    expect(company.tasks.length).toEqual(0);
+    company.startPromo(promo, company.workers, []);
+    expect(company.tasks.length).toEqual(1);
+    expect(company.tasks[0].obj.name).toEqual(promo.name);
+    expect(company.workers[0].task).toEqual(company.tasks[0].id);
   });
 
   it('is developed with productivity and marketing', function() {
-    company.buyPromo(promo);
-    expect(company.hype).toEqual(0);
-    expect(company.promo.progress).toEqual(0);
-    expect(company.promo.requiredProgress).toEqual(1000);
+    company.startPromo(promo, company.workers, []);
+    var task = company.tasks[0];
+    expect(task.obj.hype).toEqual(0);
+    expect(task.progress).toEqual(0);
+    expect(task.requiredProgress).toEqual(1000);
 
-    company.developPromo();
-    expect(company.promo.progress).toEqual(501);
-    expect(company.hype).toBeGreaterThan(0);
+    company.develop();
+    expect(task.progress).toEqual(501);
+    expect(task.obj.hype).toBeGreaterThan(0);
   });
 
   it('adds hype when finished', function() {
     var val = company.hype;
-    company.buyPromo(promo);
-
-    company.developPromo();
-    company.developPromo();
-    expect(company.promo).toEqual(null);
+    company.startPromo(promo, company.workers, []);
+    _.times(2, company.develop.bind(company));
+    expect(company.tasks.length).toEqual(0);
     expect(company.hype).toBeGreaterThan(val);
   });
 
   it('adds more hype with more marketing', function() {
     var diff, val = company.hype;
-    company.buyPromo(promo);
-    _.times(2, company.developPromo.bind(company));
-    company.developPromo();
+    company.startPromo(promo, company.workers, []);
+    _.times(2, company.develop.bind(company));
     diff = company.hype - val;
 
     company.cash = promo.cost;
     company.hype = val;
-    company.buyPromo(promo);
+    company.startPromo(promo, company.workers, []);
     company.workers[0].marketing = 100;
-    _.times(2, company.developPromo.bind(company));
+    _.times(2, company.develop.bind(company));
+    expect(company.hype - val).toBeGreaterThan(diff);
+  });
+
+  it('adds more hype with more design', function() {
+    var diff, val = company.hype;
+    company.startPromo(promo, company.workers, []);
+    _.times(2, company.develop.bind(company));
+    diff = company.hype - val;
+
+    company.cash = promo.cost;
+    company.hype = val;
+    company.startPromo(promo, company.workers, []);
+    company.workers[0].design = 100;
+    _.times(2, company.develop.bind(company));
+    expect(company.hype - val).toBeGreaterThan(diff);
+  });
+
+  it('adds more hype with more power', function() {
+    var diff, val = company.hype;
+    company.startPromo(promo, company.workers, []);
+    _.times(2, company.develop.bind(company));
+    diff = company.hype - val;
+
+    promo.power = 2;
+    company.cash = promo.cost;
+    company.hype = val;
+    company.startPromo(promo, company.workers, []);
+    _.times(4, company.develop.bind(company));
     expect(company.hype - val).toBeGreaterThan(diff);
   });
 

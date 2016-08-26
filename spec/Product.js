@@ -48,9 +48,11 @@ describe('Product', function() {
     company.workers.push(worker);
 
     createProduct = function() {
-      var product = company.startProduct(goodCombo);
-      company.workers[0].productivity = company.product.requiredProgress;
-      company.developProduct();
+      company.startProduct(goodCombo, company.workers, []);
+      var task = company.tasks[0],
+          product = task.obj;
+      company.workers[0].productivity = product.requiredProgress;
+      company.develop();
       return product;
     };
   });
@@ -86,24 +88,28 @@ describe('Product', function() {
 
   describe('development', function() {
     it('can be started', function() {
-      expect(company.product).toBe(null);
-      company.startProduct(goodCombo);
-      expect(company.product.recipeName).toBe('Ad.Analytics');
+      expect(company.tasks.length).toEqual(0);
+      company.startProduct(goodCombo, company.workers, []);
+      expect(company.tasks.length).toEqual(1);
+      expect(company.tasks[0].obj.recipeName).toEqual('Ad.Analytics');
+      expect(company.workers[0].task).toEqual(company.tasks[0].id);
     });
 
     it('is developed with productivity and skills', function() {
-      company.startProduct(goodCombo);
-      expect(company.product.progress).toEqual(0);
-      expect(company.product.design).toEqual(0);
-      expect(company.product.marketing).toEqual(0);
-      expect(company.product.engineering).toEqual(0);
+      company.startProduct(goodCombo, company.workers, []);
+      var task = company.tasks[0],
+          product = task.obj;
+      expect(task.progress).toEqual(0);
+      expect(product.design).toEqual(0);
+      expect(product.marketing).toEqual(0);
+      expect(product.engineering).toEqual(0);
 
-      company.developProduct();
+      company.develop();
 
-      expect(company.product.progress).toBeGreaterThan(0);
-      expect(company.product.design).toBeGreaterThan(0);
-      expect(company.product.marketing).toBeGreaterThan(0);
-      expect(company.product.engineering).toBeGreaterThan(0);
+      expect(task.progress).toBeGreaterThan(0);
+      expect(product.design).toBeGreaterThan(0);
+      expect(product.marketing).toBeGreaterThan(0);
+      expect(product.engineering).toBeGreaterThan(0);
     });
   });
 
@@ -156,10 +162,12 @@ describe('Product', function() {
       var product = createProduct(),
           val = product[name];
 
-        product = company.startProduct(goodCombo);
+        company.startProduct(goodCombo, company.workers, []);
+        var task = company.tasks[0];
+        product = task.obj;
         product.difficulty = 1000;
-        company.workers[0].productivity = company.product.requiredProgress;
-        company.developProduct();
+        company.workers[0].productivity = product.requiredProgress;
+        company.develop();
         expect(product[name]).toBeLessThan(val);
       });
     });
@@ -169,10 +177,13 @@ describe('Product', function() {
     _.each(['strength', 'movement', 'health'], function(name) {
       var product = createProduct(),
           val = product[name];
-      product = company.startProduct(goodCombo);
+
+      company.startProduct(goodCombo, company.workers, []);
+      var task = company.tasks[0];
+      product = task.obj;
       product[product.feature] = 1000;
-      company.workers[0].productivity = company.product.requiredProgress;
-      company.developProduct();
+      company.workers[0].productivity = product.requiredProgress;
+      company.develop();
       expect(product[name]).toBeGreaterThan(val);
     });
   });

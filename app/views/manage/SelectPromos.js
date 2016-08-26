@@ -17,6 +17,7 @@ const detailTemplate = item => `
   <h4 class="cash">${util.formatCurrency(item.cost)}</h4>
 </div>
 <img src="assets/promos/${util.slugify(item.name)}.png">
+<h3>Hype Power: ${item.power}</h3>
 `;
 
 class SelectPromoView extends CardsList {

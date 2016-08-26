@@ -29,11 +29,23 @@ class Manage extends Phaser.State {
     this.clock = new Clock(this, this.player, office);
     this.hud = new HUD(this.player);
     this.menu = new Menu(this.player, office);
+    this.menu.pause = this.pause.bind(this);
+    this.menu.resume = this.resume.bind(this);
     this.selectUI = new SelectUI(office, this.showSelection.bind(this));
     this.menu.render();
     this.hud.render();
 
     Product.onProductLaunch = this.enterTheMarket.bind(this);
+  }
+
+  pause() {
+    this.clock.pause();
+    this.office.pause();
+  }
+
+  resume() {
+    this.clock.resume();
+    this.office.resume();
   }
 
   enterTheMarket(p) {

@@ -22,6 +22,7 @@ class Office {
     this._setupScene();
     this.clock = new THREE.Clock();
     this.company = company;
+    this.paused = false;
 
     // TODO these should be preloaded elsewhere, not here
     _.each(transit, function(t) {
@@ -33,6 +34,14 @@ class Office {
     });
 
     this.setLevel(level, callback);
+  }
+
+  pause() {
+    this.paused = true;
+  }
+
+  resume() {
+    this.paused = false;
   }
 
   setLevel(level, callback) {
@@ -140,19 +149,21 @@ class Office {
 
   render() {
     requestAnimationFrame(this.render.bind(this));
-    var delta = this.clock.getDelta();
-    if (delta < 0.5) {
-      // if the delta is really large,
-      // (i.e. when the tab loses focus)
-      // agents will take very large steps
-      // and can end up off the map
-      // so just ignore large deltas
-      _.each(this.agents, function(agent) {
-        agent.update(delta);
-      });
+    if (!this.paused) {
+      var delta = this.clock.getDelta();
+      if (delta < 0.5) {
+        // if the delta is really large,
+        // (i.e. when the tab loses focus)
+        // agents will take very large steps
+        // and can end up off the map
+        // so just ignore large deltas
+        _.each(this.agents, function(agent) {
+          agent.update(delta);
+        });
+      }
+      this.renderer.render(this.scene, this.camera);
+      this.controls.update();
     }
-    this.renderer.render(this.scene, this.camera);
-    this.controls.update();
   }
 
   _setupScene() {

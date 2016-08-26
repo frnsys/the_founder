@@ -66,65 +66,50 @@ function template(data) {
   <ul>`;
 }
 
-
-function showView(view, player, office) {
-  return function(e) {
-    $('.manage-menu').find('.selected').removeClass('selected');
-    $(e.target).closest('li').addClass('selected');
-    var v = new view(player, office),
-        postRemove = v.postRemove.bind(v);
-    v.render();
-    v.postRemove = function() {
-      $('.manage-menu').find('.selected').removeClass('selected');
-      postRemove();
-    };
-  }
-}
-
-
 class Menu extends View {
   constructor(player, office) {
     super({
       parent: '.menu',
-      template: template,
-      handlers: {
-        '.manage-locations': showView(Locations, player),
-        '.manage-verticals': showView(Verticals, player),
-        '.manage-productTypes': showView(ProductTypes, player),
-        '.manage-specialProjects': showView(SpecialProjects, player),
-        '.manage-acquisitions': showView(Acquisitions, player),
-        '.manage-lobbying': showView(Lobbying, player),
-        '.manage-research': showView(Research, player),
-        '.manage-perks': showView(Perks, player, office),
-        '.manage-employees': showView(Employees, player),
-        '.manage-products': showView(Products, player),
-        '.manage-recruiting': showView(Recruiting, player, office),
-        '.manage-browser': showView(Browser, player),
-        '.manage-settings': showView(Settings, player),
-        '.selected': function() {
-          // unselect and hide view
-          $('.ui').empty();
-          $('.manage-menu .selected').removeClass('selected');
-        },
-        '.upgrade-office': function() {
-            var next = player.company.nextOffice;
-            var view = new Confirm(function() {
-              if (player.company.upgradeOffice()) {
-                office.setLevel(next.level, function() {
-                  _.each(player.company.perks, office.addPerk.bind(office));
-                  _.each(player.company.workers, office.addEmployee.bind(office));
-                });
-                render({nextOffice: player.company.nextOffice});
-              }
-              this.remove();
-            }, this.remove);
-            view.render({
-              message: 'This upgrade will cost you $' + abbreviateNumber(next.cost, 3) + '. Are you sure?'
-            });
-        }
+      template: template
+    });
+    this.office = office;
+    this.player = player;
+    this.registerHandlers({
+      '.manage-locations': this.showView(Locations),
+      '.manage-verticals': this.showView(Verticals),
+      '.manage-productTypes': this.showView(ProductTypes),
+      '.manage-specialProjects': this.showView(SpecialProjects),
+      '.manage-acquisitions': this.showView(Acquisitions),
+      '.manage-lobbying': this.showView(Lobbying),
+      '.manage-research': this.showView(Research),
+      '.manage-perks': this.showView(Perks, office),
+      '.manage-employees': this.showView(Employees),
+      '.manage-products': this.showView(Products),
+      '.manage-recruiting': this.showView(Recruiting),
+      '.manage-browser': this.showView(Browser),
+      '.manage-settings': this.showView(Settings),
+      '.selected': function() {
+        // unselect and hide view
+        $('.ui').empty();
+        $('.manage-menu .selected').removeClass('selected');
+      },
+      '.upgrade-office': function() {
+          var next = player.company.nextOffice;
+          var view = new Confirm(function() {
+            if (player.company.upgradeOffice()) {
+              office.setLevel(next.level, function() {
+                _.each(player.company.perks, office.addPerk.bind(office));
+                _.each(player.company.workers, office.addEmployee.bind(office));
+              });
+              render({nextOffice: player.company.nextOffice});
+            }
+            this.remove();
+          }, this.remove);
+          view.render({
+            message: 'This upgrade will cost you $' + abbreviateNumber(next.cost, 3) + '. Are you sure?'
+          });
       }
     });
-    this.player = player;
   }
 
   postRender() {
@@ -145,6 +130,27 @@ class Menu extends View {
       onboarding: this.player.snapshot.onboarding
     });
   }
+
+  showView(view) {
+    var self = this,
+        player = this.player,
+        office = this.office;
+    return function(e) {
+      $('.manage-menu').find('.selected').removeClass('selected');
+      $(e.target).closest('li').addClass('selected');
+      var v = new view(player, office),
+          postRemove = v.postRemove.bind(v);
+      self.pause();
+      v.render();
+      v.postRemove = function() {
+        $('.manage-menu').find('.selected').removeClass('selected');
+        postRemove();
+        self.resume();
+      };
+    }
+}
+
+
 }
 
 export default Menu;

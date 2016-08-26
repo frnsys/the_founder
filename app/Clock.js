@@ -17,6 +17,7 @@ class Clock {
     this.manager = manager;
     this.frames = 0;
     this.scheduled = [];
+    this.paused = false;
 
     this.randomSchedule(company.harvestCompanies.bind(company));
     this.randomSchedule(company.decayHype.bind(company));
@@ -27,31 +28,41 @@ class Clock {
     this.randomSchedule(company.growEmployees.bind(company));
   }
 
+  pause() {
+    this.paused = true;
+  }
+
+  resume() {
+    this.paused = false;
+  }
+
   update() {
-    this.frames++;
-    this.updateScheduled();
+    if (!this.paused) {
+      this.frames++;
+      this.updateScheduled();
 
-    if (this.frames % SECONDS_PER_WEEK === 0) {
-      this.player.week++;
-      this.weekly();
+      if (this.frames % SECONDS_PER_WEEK === 0) {
+        this.player.week++;
+        this.weekly();
 
-      if (this.player.week >= WEEKS_PER_MONTH) {
-        this.player.week = 0;
-        this.monthly();
+        if (this.player.week >= WEEKS_PER_MONTH) {
+          this.player.week = 0;
+          this.monthly();
 
-        if (this.player.month >= 11) {
-          this.player.month = 0;
-          this.player.year++;
-          this.yearly();
-        } else {
-          this.player.month++;
+          if (this.player.month >= 11) {
+            this.player.month = 0;
+            this.player.year++;
+            this.yearly();
+          } else {
+            this.player.month++;
+          }
+
+          // if (this.player.current.emails.length > 0) {
+          //   var emailPopup = new EmailsView(
+          //     this.player.current.emails, this.player.company);
+          //   emailPopup.render();
+          // }
         }
-
-        // if (this.player.current.emails.length > 0) {
-        //   var emailPopup = new EmailsView(
-        //     this.player.current.emails, this.player.company);
-        //   emailPopup.render();
-        // }
       }
     }
   }

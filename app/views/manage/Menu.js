@@ -3,16 +3,13 @@ import _ from 'underscore';
 import util from 'util';
 import View from 'views/View';
 import Confirm from 'views/Confirm';
-import Lobbying from './Lobbying';
 import Employees from './Employees';
 import Locations from './Locations';
 import Acquisitions from './Acquisitions';
 import Perks from './Perks';
 import Products from './Products';
 import Recruiting from './Recruiting';
-import SpecialProjects from './SpecialProjects';
 import Verticals from './Verticals';
-import Research from './Research';
 import ProductTypes from './ProductTypes';
 import Browser from '../browser/Browser.js';
 import Settings from './Settings';
@@ -22,13 +19,10 @@ const menuItems = [
   ['verticals', 'Verticals'],
   ['products', 'Products'],
   ['productTypes', 'Product Types'],
-  ['specialProjects', 'Special Projects'],
   ['acquisitions', 'Acquire'],
-  ['lobbying', 'Lobbying'],
   ['recruiting', 'Recruiting'],
   ['employees', 'Employees'],
-  ['perks', 'Perks'],
-  ['research', 'Research']
+  ['perks', 'Perks']
 ];
 
 function template(data) {
@@ -78,10 +72,7 @@ class Menu extends View {
       '.manage-locations': this.showView(Locations),
       '.manage-verticals': this.showView(Verticals),
       '.manage-productTypes': this.showView(ProductTypes),
-      '.manage-specialProjects': this.showView(SpecialProjects),
       '.manage-acquisitions': this.showView(Acquisitions),
-      '.manage-lobbying': this.showView(Lobbying),
-      '.manage-research': this.showView(Research),
       '.manage-perks': this.showView(Perks, office),
       '.manage-employees': this.showView(Employees),
       '.manage-products': this.showView(Products),

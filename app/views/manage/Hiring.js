@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import Hiring from 'game/Hiring';
 import CardsList from 'views/CardsList';
 import NegotiationView from './Negotiation';

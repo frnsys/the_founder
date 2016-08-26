@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import CardsList from 'views/CardsList';
 import specialProjects from 'data/specialProjects.json';
 

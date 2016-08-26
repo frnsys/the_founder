@@ -22,8 +22,7 @@ class Clock {
     this.randomSchedule(company.harvestCompanies.bind(company));
     this.randomSchedule(company.decayHype.bind(company));
     this.randomSchedule(company.harvestRevenue.bind(company));
-    this.randomSchedule(company.developPromo.bind(company));
-    this.randomSchedule(company.developProduct.bind(company));
+    this.randomSchedule(company.develop.bind(company));
     this.randomSchedule(company.updateBurnout.bind(company));
     this.randomSchedule(company.growEmployees.bind(company));
   }

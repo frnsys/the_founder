@@ -319,6 +319,10 @@ class Company {
     });
   }
 
+  task(id) {
+    return _.find(this.tasks, t => t.id == id);
+  }
+
   get nextOffice() {
     switch (this.office) {
       case 0:

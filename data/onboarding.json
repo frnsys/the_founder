@@ -135,7 +135,7 @@
     }],
     "uiSelector": ".manage-verticals"
   }, {
-    "name": "specialProjects",
+    "name": "specialProject",
     "messages": [
       "Special projects are expensive undertakings but can lead to massive Market advantages and open up totally new revenue streams.",
       "Each special project has a few prerequisite products that must be innovated before the special project is available."
@@ -199,7 +199,7 @@
     }],
     "uiSelector": ".manage-locations"
   }, {
-    "name": "promos",
+    "name": "promo",
     "messages": [
       "Promos etc"
     ],

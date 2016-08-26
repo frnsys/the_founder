@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import Perk from 'game/Perk';
 import CardsList from 'views/CardsList';
 import perks from 'data/perks.json';

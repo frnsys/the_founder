@@ -4,8 +4,7 @@ import util from 'util';
 import Enums from 'app/Enums';
 import View from 'views/View';
 import Tooltip from 'views/Tooltip';
-import SelectPromosView from './SelectPromos';
-import SelectProductTypesView from './SelectProductTypes';
+import NewTaskView from 'views/task/New';
 
 const template = data => `
 <div class="hud-left">
@@ -17,6 +16,7 @@ const template = data => `
 <div class="hud-right">
   <ul class="hud-stats grid"></ul>
   <div class="hud-actions">
+    <div class="start-new-task">New Task</div>
     <div class="hud-product-dev"></div>
     <div class="hud-promo-dev"></div>
   </div>
@@ -119,31 +119,15 @@ class HUD extends View {
   constructor(player) {
     super({
       parent: '.hud',
-      template: template,
-      handlers: {
-        '.start-product': function() {
-          var self = this,
-              view = new SelectProductTypesView(player),
-              postRemove = view.postRemove.bind(view);
-          view.render();
-          view.postRemove = function() {
-            self.productDevView.render(player.snapshot);
-            postRemove();
-          }
-        },
-        '.start-promo': function() {
-          var self = this,
-              view = new SelectPromosView(player),
-              postRemove = view.postRemove.bind(view);
-          view.render();
-          view.postRemove = function() {
-            self.promoDevView.render(player.snapshot);
-            postRemove();
-          }
-        }
-      }
+      template: template
     });
     this.player = player;
+    this.registerHandlers({
+      '.start-new-task': function() {
+        var view = new NewTaskView(player);
+        view.render();
+      }
+    });
   }
 
   render() {

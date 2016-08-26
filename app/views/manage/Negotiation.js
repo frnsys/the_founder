@@ -41,8 +41,8 @@ const template = function(data) {
         <h1>${data.name}</h1>
         <p class="subtitle">${data.title}</p>
       </div>
-      ${templ.skills(item)}
-      ${item.attributes.length > 0 ? templ.attributes(item) : ''}
+      ${templ.skills(data)}
+      ${data.attributes.length > 0 ? templ.attributes(data) : ''}
     </div>
     <div class="negotiation-dialogue-wrapper">
       <div class="negotiation-dialogue">

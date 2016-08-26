@@ -1,7 +1,7 @@
 [{
   "name": "Beth Poush",
   "avatar": 7,
-  "description": "A very hardworker, and very charismatic - could sell you anything",
+  "description": "A very hardworker, and very charismatic.",
   "effects": [{
     "type": "marketing",
     "value": 5

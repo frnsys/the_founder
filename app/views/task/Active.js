@@ -10,7 +10,7 @@ import CardsList from 'views/CardsList';
 const template = data => `
 ${data.items.length > 0 ? '<ul class="cards"></ul>' : '<h1 class="no-tasks">No active tasks. Wasting company time!</h1>'}`;
 
-const SHOW_N_ASSIGNEES = 1;
+const SHOW_N_ASSIGNEES = 5;
 const assignees = function(item) {
   var n_workers = item.workers.length,
       n_locations = item.locations.length;
@@ -23,7 +23,7 @@ const assignees = function(item) {
         <li data-tip="${i.name}"><img src="/assets/workers/pngs/${i.avatar}.png"></li>
       `).join('')}
       ${_.first(item.locations, take_locations).map(i => `
-        <li data-tip="${i.name}"><img src="/assets/company/location.png"></li>
+        <li data-tip="${i.name}"><img src="/assets/markets/${util.slugify(i.market)}.png"></li>
       `).join('')}
       ${extra_assignees > 0 ? `<span class="task-extra-assignees"> + ${extra_assignees} more</span>` : ''}
     </ul>`;

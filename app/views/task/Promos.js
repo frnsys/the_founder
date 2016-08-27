@@ -3,6 +3,7 @@ import _ from 'underscore';
 import util from 'util';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 import promos from 'data/promos.json';
 
 const template = data => `
@@ -30,8 +31,11 @@ class SelectPromoView extends CardsList {
       detailTemplate: detailTemplate,
       handlers: {
         '.select': function() {
-          if (selected && player.company.buyPromo(selected)) {
+          if (selected && player.company.startPromo(selected)) {
+            var task = _.last(player.company.tasks);
+            var view = new TaskAssignmentView(player, task);
             this.remove();
+            view.render();
           }
         },
         'li': function(ev) {

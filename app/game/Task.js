@@ -22,6 +22,8 @@ function uuid() {
 
 const Task = {
   init: function(type, obj, workers, locations) {
+    workers = workers || [];
+    locations = locations || [];
     var task = {
       id: uuid(),
       type: Type[type],

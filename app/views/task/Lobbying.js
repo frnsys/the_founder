@@ -3,14 +3,15 @@ import util from 'util';
 import templ from '../Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 import lobbies from 'data/lobbies.json';
 
 
 function button(item) {
   if (item.owned) {
-    return '<button disabled class="owned">Owned</button>';
+    return '<button disabled class="owned">Completed</button>';
   } else if (item.afford) {
-    return '<button class="buy">Buy</button>';
+    return '<button class="buy">Start</button>';
   } else {
     return '<button disabled>Not enough cash</button>';
   }
@@ -35,8 +36,12 @@ class LobbyingView extends CardsList {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
               sel = lobbies[idx];
-          player.company.buyLobby(sel);
-          this.subviews[idx].render(this.processItem(sel));
+          if (player.company.startLobby(sel)) {
+            var task = _.last(player.company.tasks);
+            var view = new TaskAssignmentView(player, task);
+            this.remove();
+            view.render();
+          }
         }
       }
     });

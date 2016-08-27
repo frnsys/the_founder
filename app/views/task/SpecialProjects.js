@@ -2,17 +2,18 @@ import _ from 'underscore';
 import util from 'util';
 import templ from '../Common';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 import specialProjects from 'data/specialProjects.json';
 
 function detailTemplate(item) {
   if (item.unlocked) {
     var button;
     if (item.owned) {
-      button = '<button disabled>Owned</button>';
+      button = '<button disabled>Completed</button>';
     } else if (item.not_available) {
       button = '<button disabled>Missing prerequisites</button>';
     } else if (item.afford) {
-      button = '<button class="buy">Buy</button>';
+      button = '<button class="buy">Start</button>';
     } else {
       button = '<button disabled>Not enough cash</button>';
     }
@@ -48,8 +49,12 @@ class View extends CardsList {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
               sel = specialProjects[idx];
-          player.company.buySpecialProject(sel);
-          this.subviews[idx].render(this.processItem(sel));
+          if (player.company.startSpecialProject(sel)) {
+            var task = _.last(player.company.tasks);
+            var view = new TaskAssignmentView(player, task);
+            this.remove();
+            view.render();
+          };
         }
       }
     });

@@ -2,16 +2,17 @@ import _ from 'underscore';
 import util from 'util';
 import templ from '../Common';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 import technologies from 'data/technologies.json';
 
 
 function button(item) {
   if (item.owned) {
-    return '<button disabled>Owned</button>';
+    return '<button disabled>Completed</button>';
   } else if (item.not_available) {
     return '<button disabled>Missing prerequisites</button>';
   } else if (item.afford) {
-    return '<button class="buy">Buy</button>';
+    return '<button class="buy">Start</button>';
   } else {
     return '<button disabled>Not enough cash</button>';
   }
@@ -38,8 +39,12 @@ class ResearchView extends CardsList {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
               sel = technologies[idx];
-          player.company.buyResearch(sel);
-          this.subviews[idx].render(this.processItem(sel));
+          if (player.company.startResearch(sel)) {
+            var task = _.last(player.company.tasks);
+            var view = new TaskAssignmentView(player, task);
+            this.remove();
+            view.render();
+          };
         }
       }
     });

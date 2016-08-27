@@ -47,7 +47,7 @@ class View extends CardsList {
   render() {
     var player = this.player;
     super.render({
-      items: _map(player.company.workers, w => _.extend({
+      items: _.map(player.company.workers, w => _.extend({
         task: player.company.task(w.task)
       }, w))
     });

@@ -6,7 +6,7 @@ const Promo = {
   init: function(promo) {
     return _.extend({
       progress: 0,
-      requiredProgress: promo.power * 1000,
+      requiredProgress: promo.power * 100,
       hype: 0
     }, promo);
   },

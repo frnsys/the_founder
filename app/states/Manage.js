@@ -7,6 +7,8 @@ import Clock from 'app/Clock';
 import Popup from 'views/Popup';
 import HUD from 'views/manage/HUD';
 import Menu from 'views/manage/Menu';
+import Alert from 'views/Alert';
+import Task from 'game/Task';
 import Product from 'game/Product';
 import Office from 'office/Office';
 import SelectUI from 'office/Select';
@@ -35,6 +37,7 @@ class Manage extends Phaser.State {
     this.hud.render();
 
     Product.onProductLaunch = this.enterTheMarket.bind(this);
+    Task.onFinish = this.finishedTask.bind(this);
   }
 
   pause() {
@@ -54,6 +57,11 @@ class Manage extends Phaser.State {
     if (this.selectionView) {
       this.selectionView.remove();
     }
+  }
+
+  finishedTask(task) {
+    var view = new Alert();
+    view.render({message: `The ${task.obj.name} task finished.`});
   }
 
   update() {

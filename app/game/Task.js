@@ -163,7 +163,11 @@ const Task = {
         // TODO
         break;
     }
-  }
+
+    if (_.isFunction(this.onFinish)) {
+      this.onFinish(task);
+    }
+  },
 };
 
 Task.Type = Type;

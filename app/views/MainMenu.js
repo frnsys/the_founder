@@ -25,7 +25,8 @@ class MainMenuView extends View {
       template: template,
       handlers: {
         '.new-game': function() {
-          Manager.player.company.cash = 100000;
+          // Manager.player.company.cash = 100000; // TEMP
+          Manager.player.company.cash = 1000000000;
           Manager.game.state.start('Manage');
           //Manager.game.state.start('Onboarding');
         },

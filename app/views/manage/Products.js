@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
 import productRecipes from 'data/productRecipes.json';
@@ -43,6 +43,10 @@ class ProductsView extends CardsList {
         discovered: _.contains(player.company.discoveredProducts, i.name)
       }, i))
     });
+  }
+
+  update() {
+    // TODO
   }
 
   createListItem(item) {

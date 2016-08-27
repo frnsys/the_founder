@@ -9,7 +9,12 @@
         "value": "Prescient"
       }
     ],
-    "requiredProducts": ["Analytics.Credit", "Analytics.Defense", "Analytics.Social Network"]
+    "requiredProducts": ["Analytics.Credit", "Analytics.Defense", "Analytics.Social Network"],
+    "required": {
+      "design": 100000,
+      "engineering": 100000,
+      "marketing": 100000
+    }
   },
   {
     "name": "Cloning Facility",
@@ -21,7 +26,12 @@
         "value": "Cloneable"
       }
     ],
-    "requiredProducts": ["Analytics.Genetics", "Genetics.Synthetic Organism", "Genetics.Social Network"]
+    "requiredProducts": ["Analytics.Genetics", "Genetics.Synthetic Organism", "Genetics.Social Network"],
+    "required": {
+      "design": 100000,
+      "engineering": 100000,
+      "marketing": 100000
+    }
   },
   {
     "name": "Interstellar Ship",
@@ -36,7 +46,12 @@
         }
       }
     ],
-    "requiredProducts": ["Defense.Space", "AI.Robot", "Gadget.Space"]
+    "requiredProducts": ["Defense.Space", "AI.Robot", "Gadget.Space"],
+    "required": {
+      "design": 100000,
+      "engineering": 100000,
+      "marketing": 100000
+    }
   },
   {
     "name": "Mars Colony",
@@ -51,7 +66,12 @@
         }
       }
     ],
-    "requiredProducts": ["Gadget.Space", "Entertainment.Space"]
+    "requiredProducts": ["Gadget.Space", "Entertainment.Space"],
+    "required": {
+      "design": 100000,
+      "engineering": 100000,
+      "marketing": 100000
+    }
   },
   {
     "name": "Robotics Facility",
@@ -63,7 +83,12 @@
         "value": "Automation"
       }
     ],
-    "requiredProducts": ["AI.Robot", "AI.Gadget", "AI.Mobile"]
+    "requiredProducts": ["AI.Robot", "AI.Gadget", "AI.Mobile"],
+    "required": {
+      "design": 100000,
+      "engineering": 100000,
+      "marketing": 100000
+    }
   },
   {
     "name": "Telomere Therapy",
@@ -75,7 +100,12 @@
         "value": "Immortal"
       }
     ],
-    "requiredProducts": ["Analytics.Genetics", "Drug.Genetics"]
+    "requiredProducts": ["Analytics.Genetics", "Drug.Genetics"],
+    "required": {
+      "design": 100000,
+      "engineering": 100000,
+      "marketing": 100000
+    }
   },
   {
     "name": "The Founder AI",
@@ -87,6 +117,11 @@
         "value": "Founder AI"
       }
     ],
-    "requiredProducts": ["AI.Mobile", "AI.Gadget", "Cognitive.Virtual Reality", "AI.Implant", "Analytics.Implant"]
+    "requiredProducts": ["AI.Mobile", "AI.Gadget", "Cognitive.Virtual Reality", "AI.Implant", "Analytics.Implant"],
+    "required": {
+      "design": 100000,
+      "engineering": 100000,
+      "marketing": 100000
+    }
   }
 ]

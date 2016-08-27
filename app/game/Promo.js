@@ -6,13 +6,9 @@ const Promo = {
   init: function(promo) {
     return _.extend({
       progress: 0,
-      requiredProgress: promo.hype * 1000,
-      hypeGenerated: 0
+      requiredProgress: promo.power * 100,
+      hype: 0
     }, promo);
-  },
-
-  hype: function(promo, marketing, devPoints) {
-    return Math.round((promo.hype * Math.sqrt(marketing)) * (devPoints/promo.requiredProgress));
   },
 
   decayHype: function(company) {

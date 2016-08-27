@@ -14,7 +14,7 @@ class CardsList extends Popup {
   }
 
   itemIndex(target) {
-    return $(target).closest('li').index();
+    return $(target).closest('.card').index();
   }
 
   render(data) {
@@ -25,6 +25,11 @@ class CardsList extends Popup {
     _.each(_.zip(this.subviews, data.items), function(si) {
       var subview = si[0],
           item = si[1];
+      if (!subview.attrs.class) {
+        subview.attrs.class = 'card';
+      } else if (!subview.attrs.class.includes('card')) {
+        subview.attrs.class += ' card';
+      }
       subview.render(item);
     });
   }
@@ -34,7 +39,7 @@ class CardsList extends Popup {
       tag: 'li',
       parent: this.el.find('ul'),
       template: this.detailTemplate,
-      method: 'append'
+      method: 'append',
     });
   }
 }

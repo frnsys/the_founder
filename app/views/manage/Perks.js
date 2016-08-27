@@ -1,10 +1,17 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import Perk from 'game/Perk';
 import CardsList from 'views/CardsList';
 import perks from 'data/perks.json';
 
+function button(item) {
+  if (item.afford) {
+    return '<button class="buy">Buy</button>';
+  } else {
+    return '<button disabled>Not enough cash</button>';
+  }
+}
 
 function detailTemplate(item) {
   var html = [];
@@ -22,12 +29,6 @@ function detailTemplate(item) {
   }
 
   if (item.nextAvailable) {
-    var button;
-    if (item.afford) {
-      button = '<button class="buy">Buy</button>';
-    } else {
-      button = '<button disabled>Not enough cash</button>';
-    }
     html.push(`
       <div class="next-perk">
         <div class="title">
@@ -38,7 +39,7 @@ function detailTemplate(item) {
         <div class="perk-info">
           <p>${item.next.description}</p>
           ${templ.effects(item.next)}
-          ${button}
+          ${button(item)}
         </div>
       </div>
     `);
@@ -81,6 +82,15 @@ class View extends CardsList {
   render() {
     super.render({
       items: _.map(this.availablePerks, this.processItem.bind(this))
+    });
+  }
+
+  update() {
+    // dont have to worry about available perks changing,
+    // that only happens when the office is upgraded
+    var self = this;
+    _.each(_.zip(this.availablePerks, this.subviews), function(v) {
+      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
     });
   }
 

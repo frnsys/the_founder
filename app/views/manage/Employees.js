@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import CardsList from 'views/CardsList';
 
 const template = data =>
@@ -47,7 +47,9 @@ class View extends CardsList {
   render() {
     var player = this.player;
     super.render({
-      items: player.company.workers
+      items: _.map(player.company.workers, w => _.extend({
+        task: player.company.task(w.task)
+      }, w))
     });
   }
 }

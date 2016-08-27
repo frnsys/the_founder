@@ -1,5 +1,6 @@
 import util from 'util';
 import _ from 'underscore';
+import Task from './Task';
 import Perk from './Perk';
 import Enums from '../Enums';
 import Promo from './Promo';
@@ -8,7 +9,6 @@ import Worker from './Worker';
 import Product from './Product';
 import offices from 'data/offices.json';
 
-const SKILL_SCALE = 16;
 const BASE_BURNOUT_RATE = 0.01;
 const BASE_TAX_RATE = 0.3;
 
@@ -59,8 +59,7 @@ class Company {
 
       hype: 0,
       outrage: 0,
-      promo: null,
-      product: null
+      tasks: []
     }, data);
   }
 
@@ -81,30 +80,43 @@ class Company {
     _.each(this.workers, w => Worker.updateBurnout(w, self));
   }
 
-  _getSkill(name) {
+  skill(name, workers, locations, scaleByProductivity) {
     // company bonus from workers are applied for each worker
     var self = this,
-        player = this.player;
-    var companyBonusFromWorkers = _.reduce(this.workers, function(m, w) { return m + Worker.companyBonus(w, name) }, 0);
-    var fromWorkers = Math.max(0, _.reduce(this.workers, function(m, w) { return m + (w.burnout > 0 ? 0 : Worker[name](w, player)) }, 0));
-    var fromLocations = Math.max(0, _.reduce(this.locations, function(m, l) { return m + l.skills[name] + self.getWorkerBonus(name)}, 0));
-    return fromWorkers + fromLocations + (companyBonusFromWorkers * (this.workers.length + this.locations.length));
+        player = this.player,
+        workers = workers || this.workers,
+        locations = locations || this.locations,
+        scaleByProductivity = scaleByProductivity || false;
+    var companyBonusFromWorkers = _.reduce(workers, function(m, w) {
+      return m + Worker.companyBonus(w, name);
+    }, 0);
+    var fromWorkers = Math.max(0, _.reduce(workers, function(m, w) {
+      if (w.burnout > 0) {
+        return m;
+      } else {
+        return m + ((Worker[name](w, player) + companyBonusFromWorkers) * (scaleByProductivity ? Worker.productivity(w, player) : 1));
+      }
+    }, 0));
+    var fromLocations = Math.max(0, _.reduce(locations, function(m, l) {
+      return m + ((l.skills[name] + self.getWorkerBonus(name) + companyBonusFromWorkers) * (scaleByProductivity ? l.skills.productivity : 1));
+    }, 0));
+    return fromWorkers + fromLocations;
   }
 
   get productivity() {
-    return this._getSkill('productivity');
+    return this.skill('productivity');
   }
   get happiness() {
-    return this._getSkill('happiness');
+    return this.skill('happiness');
   }
   get design() {
-    return this._getSkill('design');
+    return this.skill('design');
   }
   get engineering() {
-    return this._getSkill('engineering');
+    return this.skill('engineering');
   }
   get marketing() {
-    return this._getSkill('marketing');
+    return this.skill('marketing');
   }
 
   get sizeLimit() {
@@ -131,13 +143,16 @@ class Company {
     return this.annualRevenue * this.player.taxRate;
   }
 
+  canAfford(cost) {
+    return this.cash - cost >= 0;
+  }
   earn(cash) {
     this.cash += cash;
     this.annualRevenue += cash;
     this.lifetimeRevenue += cash;
   }
-  pay(cost) {
-    if (this.cash - cost >= 0) {
+  pay(cost, ignoreAfford) {
+    if (this.cash - cost >= 0 || ignoreAfford) {
       this.cash -= cost;
       this.annualCosts += cost;
       this.lifetimeCosts += cost;
@@ -189,27 +204,11 @@ class Company {
     }
     return false;
   }
-  buyLobby(lobby) {
-    if (this.pay(lobby.cost)) {
-      this.lobbies.push(lobby);
-      Effect.applies(lobby.effects, this.player);
-      return true;
-    }
-    return false;
-  }
   specialProjectIsAvailable(specialProject) {
     var self = this;
     return _.every(specialProject.requiredProducts, function(prod) {
       return _.contains(self.discoveredProducts, prod);
     });
-  }
-  buySpecialProject(specialProject) {
-    if (this.specialProjectIsAvailable(specialProject) && this.pay(specialProject.cost)) {
-      this.specialProjects.push(specialProject);
-      Effect.applies(specialProject.effects, this.player);
-      return true;
-    }
-    return false;
   }
   buyVertical(vertical) {
     if (this.pay(vertical.cost)) {
@@ -235,14 +234,6 @@ class Company {
         return util.containsByName(self.technologies, t);
       });
   }
-  buyResearch(tech) {
-    if (this.researchIsAvailable(tech) && this.pay(tech.cost)) {
-      this.technologies.push(tech);
-      Effect.applies(tech.effects, this.player);
-      return true;
-    }
-    return false;
-  }
   buyLocation(location) {
     if (this.pay(location.cost)) {
       this.locations.push(location);
@@ -255,62 +246,51 @@ class Company {
     return false;
   }
 
-  buyPromo(promo) {
-    if (this.pay(promo.cost)) {
-      this.promo = Promo.init(promo);
-      return true;
+  develop() {
+    _.each(this.tasks, t => Task.develop(t, this));
+  }
+
+  startResearch(tech) {
+    if (this.researchIsAvailable(tech) && this.canAfford(tech.cost)) {
+      return Task.init('Research', tech);
     }
     return false;
   }
-  developPromo() {
-    if (this.promo) {
-      var hype = Promo.hype(this.promo, this.marketing, this.productivity);
-      this.promo.progress += this.productivity;
-      this.promo.hypeGenerated += hype;
-      this.hype += hype;
-      if (this.promo.progress >= this.promo.requiredProgress) {
-        this.promo = null;
-      }
-    }
-  }
 
   startProduct(productTypes) {
-    this.product = Product.create(productTypes, this);
-    return this.product;
+    var product = Product.create(productTypes, this);
+    return Task.init('Product', product);
   }
-  developProduct() {
-    if (this.product) {
-      this.product.progress += this.productivity;
-      this.product.design += Math.round(this.design/SKILL_SCALE);
-      this.product.marketing += Math.round(this.marketing/SKILL_SCALE);
-      this.product.engineering += Math.round(this.engineering/SKILL_SCALE);
-      if (this.product.progress >= this.product.requiredProgress) {
-        this.finishProduct();
-      }
+
+  startPromo(promo) {
+    if (this.canAfford(promo.cost)) {
+      promo = Promo.init(promo);
+      return Task.init('Promo', promo);
     }
+    return false;
   }
-  finishProduct() {
-    var product = this.product;
-    if (product.killsPeople)
-        this.deathToll += _.random(0, 10);
 
-    if (product.debtsPeople)
-        this.debtOwned += _.random(0, 10);
+  startTask(task, workers, locations) {
+    Task.start(task, workers, locations);
+    this.tasks.push(task);
+  }
 
-    if (product.pollutes)
-        this.pollution += _.random(0, 10);
-
-    if (product.recipeName != 'Default' &&
-        !_.contains(this.discoveredProducts, product.recipeName)) {
-      this.discoveredProducts.push(product.recipeName);
-      if (product.effects) {
-        Effect.applies(product.effects, this.player);
-      }
+  startLobby(lobby) {
+    if (this.canAfford(lobby.cost)) {
+      return Task.init('Lobby', _.extend({persuasion:0}, lobby));
     }
+    return false;
+  }
 
-    this.productsLaunched++;
-    this.product = null;
-    Product.launch(product, this);
+  startSpecialProject(specialProject) {
+    if (this.specialProjectIsAvailable(specialProject) && this.canAfford(specialProject.cost)) {
+      return Task.init('SpecialProject', _.extend({
+        design: 0,
+        marketing: 0,
+        engineering: 0
+      }, specialProject));
+    }
+    return false;
   }
 
   harvestRevenue() {
@@ -342,6 +322,10 @@ class Company {
     });
   }
 
+  task(id) {
+    return _.find(this.tasks, t => t.id == id);
+  }
+
   get nextOffice() {
     switch (this.office) {
       case 0:
@@ -364,8 +348,6 @@ class Company {
   get perkUpgrades() {
     return _.flatten(_.map(this.perks, function(p) {
       return _.filter(perk.upgrades, function(u, i) {
-        console.log('perk index');
-        console.log(i);
         return i <= p.upgradeLevel;
       });
     }));

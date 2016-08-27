@@ -224,7 +224,7 @@ button.owned
       height: 164px
       margin: 2em auto
 
-.employees, .candidates
+.employees, .candidates, .assign_task
   .cards > li
     padding: 0
     height: 22em
@@ -272,6 +272,9 @@ button.owned
     font-size: 1.2em
     margin: 0
     display: inline-block
+.worker-task
+  margin-top: -3em
+  padding: 0 1em
 
 [data-tip]
   cursor: help
@@ -415,3 +418,232 @@ button.owned
     background: #333
   .prereqs h5
     font-size: 1em
+
+.new_task
+  width: 32em
+  margin-top: 8em
+  ul
+    font-size: 2em
+    color: #fff
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3)
+  li
+    cursor: pointer
+    &:hover
+      color: #29dc6d
+
+.assign_task
+  .cards > li
+    cursor: pointer
+    &.selected
+      background: #5e71ff
+      color: #fff
+
+.tabs
+  position: fixed
+  top: 0
+  left: 8em
+  right: 8em
+  text-align: center
+  color: #fff
+  font-size: 1.6em
+  > li
+    cursor: pointer
+    display: inline-block
+    margin: 0 1em
+    padding: 0.7em 0 0.2em 0
+    &.selected, &:hover
+      border-bottom: 4px solid #f5deb3
+.tab-page
+  display: none
+  &.selected
+    display: block
+
+.tasks
+  .cards
+    h1
+      font-size: 2.2em
+    .subtitle
+      color: rgba(0,0,0,0.4)
+    > li
+      width: 32em
+      padding: 2em
+      &:hover .task-actions
+        display: block
+      &.task-promo
+        background: #7e0cb3
+        color: #fff
+      &.task-research
+        background: #1b1b1b
+        color: #fff
+        .subtitle
+          color: rgba(255,255,255, 0.3)
+      &.task-lobby
+        background-size: cover
+        background-position: center center
+        color: #fff
+        .subtitle
+          color: rgba(255,255,255, 0.6)
+      &.task-product
+        background: #515f78
+        color: #fff
+        figure
+          float: left
+          margin: 1em 0
+          width: 20em
+          img
+            float: none
+            width: 100px
+            height: 100px
+            display: inline-block
+        .stats
+          img
+            width: 20px
+            height: 20px
+            margin-right: 0.3em
+          li
+            font-size: 1.5em
+            margin: 0.6em 0
+      &.task-specialproject
+        color: #fff
+        background: #111
+        .subtitle
+          color: rgba(255,255,255, 0.3)
+        .task-progresses
+          img
+            width: 20px
+            height: 20px
+            margin-right: 0.3em
+            display: inline-block
+          li
+            width: 9.1em
+            display: inline-block
+          .task-progress-outer
+            display: inline-block
+            width: 6.5em
+            background: rgba(100,100,100,0.1)
+  .task-body
+    height: 10em
+    img
+      width: 120px
+      height: 120px
+      float: left
+    p
+      height: auto
+    .effects
+      display: inline-block
+      margin: 0
+
+.task-assignees, .task-no-assignees
+  position: absolute
+  top: 2em
+  right: 2em
+  img
+    width: 20px
+    height: 20px
+  li
+    display: inline-block
+    cursor: pointer
+.task-assignees li, .task-extra-assignees
+  vertical-align: middle
+
+
+.task-progress-outer,
+.task-progress-inner
+  height: 1.2em
+  background: rgba(0,0,0,0.1)
+.task-progress-inner
+  background: #29dc6d
+
+.no-tasks
+  font-size: 3em
+  color: #fff
+  text-align: center
+  margin: 6em 0 0 0
+
+.task-no-assignees
+  padding: 0.2em 0.5em
+  border-radius: 0.25em
+  font-size: 1em
+  background: #ff2c2c
+
+.task-actions
+  display: none
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 2em
+  text-align: center
+  li
+    cursor: pointer
+    background: #3f84fb
+    color: #fff
+    font-size: 1.8em
+    padding: 0.5em 1em
+    display: inline-block
+    margin: 0 0.5em
+    border-radius: 0.1em
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2)
+    &:hover
+      background: #2968d4
+
+.assign_task
+  .the-task
+    .cards
+      padding: 0
+      > li
+        margin: 0
+        height: 17em
+  .tasks
+    position: fixed
+    top: 4em
+    right: 0
+    left: 0
+    z-index: 2
+  .tabs
+    right: 0
+    left: 0
+    top: 14em
+    z-index: 2
+  .tab-page
+    margin-top: 26em
+  .cards > li,
+  .worker-avatar
+    height: 19em
+  .worker-avatar img
+    margin-top: 2.5em
+
+
+// https://codepen.io/geedmo/pen/InFfd
+$barColor: #29dc6d
+$backColor: #222
+
+.progress-radial
+  position: relative
+  width: 48px
+  height: 48px
+  border-radius: 50%
+  background-color: $barColor
+
+.progress-radial .overlay
+  position: absolute
+  width: 32px
+  height: 32px
+  background-color: $backColor
+  border-radius: 50%
+  margin-left: 8px
+  margin-top: 8px
+
+// step of % for created classes
+$step: 1
+
+$loops: round(100 / $step)
+$increment: 360 / $loops
+$half: round($loops / 2)
+@for $i from 0 through $loops
+  .progress-#{$i*$step}
+    @if $i < $half
+      $nextdeg: 90deg + ( $increment * $i )
+      background-image: linear-gradient(90deg, $backColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $barColor 50%, $backColor 50%, $backColor)
+    @else
+      $nextdeg: -90deg + ( $increment * ( $i - $half ) )
+      background-image: linear-gradient($nextdeg, $barColor 50%, transparent 50%, transparent), linear-gradient(270deg, $barColor 50%, $backColor 50%, $backColor)

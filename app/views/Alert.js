@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import View from './View';
+import Manager from 'app/Manager';
 
 const template = data => `
 <div class="alert-message">
@@ -26,11 +27,13 @@ class Alert extends View {
 
   postRender() {
     super.postRender();
+    Manager.pause();
     $('.alert-wrapper').show();
   }
 
   postRemove() {
     super.preRemove();
+    Manager.resume();
     $('.alert-wrapper').hide();
   }
 }

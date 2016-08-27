@@ -4,8 +4,8 @@ import util from 'util';
 import Enums from 'app/Enums';
 import View from 'views/View';
 import Tooltip from 'views/Tooltip';
-import SelectPromosView from './SelectPromos';
-import SelectProductTypesView from './SelectProductTypes';
+import NewTaskView from 'views/task/New';
+import ActiveTasksView from 'views/task/Active';
 
 const template = data => `
 <div class="hud-left">
@@ -17,49 +17,22 @@ const template = data => `
 <div class="hud-right">
   <ul class="hud-stats grid"></ul>
   <div class="hud-actions">
-    <div class="hud-product-dev"></div>
-    <div class="hud-promo-dev"></div>
+    <div class="start-new-task">New Task</div>
+    <div class="view-tasks">View Tasks</div>
   </div>
+  <ul class="hud-tasks"></ul>
 </div>
 `
 
-const productDevTemplate = function(data) {
-  var product = data.product;
-  if (product) {
-    var progressPercent = product.progress/product.requiredProgress * 100;
-    return `
-      <span class="product-dev-combo">Developing: ${product.combo}</span>
-      <div class="progress-bar-outer">
-        <div class="progress-bar-inner" style="width:${progressPercent}%"></div>
+function hudTaskTemplate(task) {
+  var progress = Math.floor((task.progress/task.requiredProgress) * 100); // TODO diff for special projects
+  return `
+    <div class="hud-task" data-tip="${task.obj.name}">
+      <div class="progress-radial progress-${progress}">
+        <div class="overlay"></div>
       </div>
-      <ul class="hud-stats grid">
-        <li><img src="/assets/company/design.png"> ${product.design}</li>
-        <li><img src="/assets/company/marketing.png"> ${product.marketing}</li>
-        <li><img src="/assets/company/engineering.png"> ${product.engineering}</li>
-      </ul>
-    `;
-  } else {
-    return '<button class="start-product">Start Product</button>';
-  }
-};
-
-const promoDevTemplate = function(data) {
-  var promo = data.promo;
-  if (promo) {
-    var progressPercent = promo.progress/promo.requiredProgress * 100;
-    return `
-      <span class="product-dev-combo">Promo: ${promo.name}</span>
-      <div class="progress-bar-outer">
-        <div class="progress-bar-inner" style="width:${progressPercent}%"></div>
-      </div>
-      <ul class="hud-stats grid">
-        <li><img src="/assets/company/hype.png"> ${promo.hypeGenerated}</li>
-      </ul>
-    `;
-  } else {
-    return '<button class="start-promo">Start Promo</button>';
-  }
-};
+    </div>`;
+}
 
 const activeProductTemplate = function(data) {
   var products = data.activeProducts;
@@ -108,42 +81,28 @@ const boardTemplate = data => `
 </div>
 `;
 
-
 const cashTemplate = data => `
 <h2 class="cash">${util.formatCurrency(Math.floor(data.cash))}</h2>
 `;
-
 
 
 class HUD extends View {
   constructor(player) {
     super({
       parent: '.hud',
-      template: template,
-      handlers: {
-        '.start-product': function() {
-          var self = this,
-              view = new SelectProductTypesView(player),
-              postRemove = view.postRemove.bind(view);
-          view.render();
-          view.postRemove = function() {
-            self.productDevView.render(player.snapshot);
-            postRemove();
-          }
-        },
-        '.start-promo': function() {
-          var self = this,
-              view = new SelectPromosView(player),
-              postRemove = view.postRemove.bind(view);
-          view.render();
-          view.postRemove = function() {
-            self.promoDevView.render(player.snapshot);
-            postRemove();
-          }
-        }
-      }
+      template: template
     });
     this.player = player;
+    this.registerHandlers({
+      '.start-new-task': function() {
+        var view = new NewTaskView(player);
+        view.render();
+      },
+      '.view-tasks': function() {
+        var view = new ActiveTasksView(player);
+        view.render();
+      }
+    });
   }
 
   render() {
@@ -154,14 +113,6 @@ class HUD extends View {
     super.postRender();
     var data = this.player.snapshot;
     if (!this.subviews) {
-      this.productDevView = new View({
-        parent: '.hud-product-dev',
-        template: productDevTemplate
-      });
-      this.promoDevView = new View({
-        parent: '.hud-promo-dev',
-        template: promoDevTemplate
-      });
       this.statsView = new View({
         parent: '.hud-stats',
         template: statsTemplate
@@ -184,23 +135,51 @@ class HUD extends View {
           template: activeProductTemplate
         })
       ];
+      this.taskViews = {};
+      _.each(this.player.company.tasks, this.createTaskView.bind(this));
     }
     _.each(this.subviews, view => view.render(data));
     this.statsView.render(data);
-    this.productDevView.render(data);
-    this.promoDevView.render(data);
+  }
+
+  createTaskView(task) {
+    var view = new View({
+      tag: 'li',
+      parent: '.hud-tasks',
+      template: hudTaskTemplate,
+      method: 'append'
+    });
+    view.render(task);
+    this.taskViews[task.id] = view;
   }
 
   update() {
     var data = this.player.snapshot;
     _.each(this.subviews, view => view.render(data));
-    if (this.player.company.product) {
-      this.productDevView.render(data);
-    }
-    if (this.player.company.promo) {
-      this.promoDevView.render(data);
-    }
     this.statsView.el.find('.hype-val').text(util.abbreviateNumber(data.hype, 0));
+
+    // remove old task views and add new ones
+    var self = this,
+        tasks = _.reduce(this.player.company.tasks, function(m, t) {
+          m[t.id] = t;
+          return m;
+        }, {});
+    _.each(this.player.company.tasks, function(t) {
+      if (!(t.id in self.taskViews)) {
+        self.createTaskView(t);
+      }
+    });
+    this.taskViews = _.pick(this.taskViews, function(v, id) {
+      var exists = _.contains(_.keys(tasks), id);
+      if (!exists) {
+        v.remove();
+      } else {
+        var task = tasks[id],
+            progress = Math.floor((task.progress/task.requiredProgress) * 100); // TODO diff for special projects
+        v.el.find('.progress-radial').attr('class', `progress-radial progress-${progress}`);
+      }
+      return exists;
+    });
   }
 }
 

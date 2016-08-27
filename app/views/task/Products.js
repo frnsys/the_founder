@@ -2,6 +2,7 @@ import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 
 const detailTemplate = item => `
 <div class="title">
@@ -26,8 +27,12 @@ class View extends CardsList {
       handlers: {
         '.select': function() {
           if (selected.length == 2) {
-            player.company.startProduct(selected);
-            this.remove();
+            var task = player.company.startProduct(selected);
+            if (task) {
+              var view = new TaskAssignmentView(player, task);
+              this.remove();
+              view.render();
+            }
           }
         },
         'li': function(ev) {

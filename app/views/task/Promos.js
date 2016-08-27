@@ -3,6 +3,7 @@ import _ from 'underscore';
 import util from 'util';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 import promos from 'data/promos.json';
 
 const template = data => `
@@ -17,6 +18,7 @@ const detailTemplate = item => `
   <h4 class="cash">${util.formatCurrency(item.cost)}</h4>
 </div>
 <img src="assets/promos/${util.slugify(item.name)}.png">
+<h3>Hype Power: ${item.power}</h3>
 `;
 
 class SelectPromoView extends CardsList {
@@ -29,8 +31,11 @@ class SelectPromoView extends CardsList {
       detailTemplate: detailTemplate,
       handlers: {
         '.select': function() {
-          if (selected && player.company.buyPromo(selected)) {
+          var task = player.company.startPromo(selected);
+          if (task) {
+            var view = new TaskAssignmentView(player, task);
             this.remove();
+            view.render();
           }
         },
         'li': function(ev) {

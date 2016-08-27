@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import View from 'views/View';
 import Popup from 'views/Popup';
 import locations from 'data/locations.json';
@@ -80,6 +80,13 @@ class MarketView extends View {
     });
   }
 
+  update() {
+    var self = this;
+    _.each(_.zip(this.locations, this.subviews), function(v) {
+      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+    });
+  }
+
   createListItem(item) {
     return new View({
       tag: 'li',
@@ -119,6 +126,10 @@ class LocationsView extends Popup {
       mv.render();
       return mv;
     });
+  }
+
+  update() {
+    _.each(this.subviews, sv => sv.update());
   }
 }
 

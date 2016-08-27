@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
 import acquisitions from 'data/acquisitions.json';
@@ -49,6 +49,13 @@ class AcquisitionsView extends CardsList {
   render() {
     super.render({
       items: _.map(acquisitions, this.processItem.bind(this))
+    });
+  }
+
+  update() {
+    var self = this;
+    _.each(_.zip(acquisitions, this.subviews), function(v) {
+      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
     });
   }
 

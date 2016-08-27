@@ -1,16 +1,19 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 import lobbies from 'data/lobbies.json';
 
 
 function button(item) {
-  if (item.owned) {
-    return '<button disabled class="owned">Owned</button>';
+  if (item.in_progress) {
+    button = '<button disabled>In Progress</button>';
+  } else if (item.owned) {
+    return '<button disabled class="owned">Completed</button>';
   } else if (item.afford) {
-    return '<button class="buy">Buy</button>';
+    return '<button class="buy">Start</button>';
   } else {
     return '<button disabled>Not enough cash</button>';
   }
@@ -34,9 +37,13 @@ class LobbyingView extends CardsList {
       handlers: {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
-              sel = lobbies[idx];
-          player.company.buyLobby(sel);
-          this.subviews[idx].render(this.processItem(sel));
+              sel = lobbies[idx],
+              task = player.company.startLobby(sel);
+          if (task) {
+            var view = new TaskAssignmentView(player, task);
+            this.remove();
+            view.render();
+          }
         }
       }
     });
@@ -49,11 +56,21 @@ class LobbyingView extends CardsList {
     });
   }
 
+  update() {
+    var self = this;
+    _.each(_.zip(lobbies, this.subviews), function(v) {
+      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+    });
+  }
+
   processItem(item) {
     var player = this.player;
     return _.extend({
       owned: util.contains(player.company.lobbies, item),
-      afford: player.company.cash >= item.cost
+      afford: player.company.cash >= item.cost,
+      in_progress: _.some(player.company.tasks, function(t) {
+        return t.obj.name == item.name;
+      })
     }, item);
   }
 

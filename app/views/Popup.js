@@ -31,7 +31,7 @@ class Popup extends View {
     super.postRender();
     $('.ui').hide();
     $('.popups').show();
-    Popup.current = this.title;
+    Popup.current = this;
     console.log('popup rendered with title: ' + this.title);
   }
 

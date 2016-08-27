@@ -4,8 +4,11 @@ import * as Phaser from 'phaser';
 import $ from 'jquery';
 import _ from 'underscore';
 import Clock from 'app/Clock';
+import Popup from 'views/Popup';
 import HUD from 'views/manage/HUD';
 import Menu from 'views/manage/Menu';
+import Alert from 'views/Alert';
+import Task from 'game/Task';
 import Product from 'game/Product';
 import Office from 'office/Office';
 import SelectUI from 'office/Select';
@@ -29,13 +32,12 @@ class Manage extends Phaser.State {
     this.clock = new Clock(this, this.player, office);
     this.hud = new HUD(this.player);
     this.menu = new Menu(this.player, office);
-    this.menu.pause = this.pause.bind(this);
-    this.menu.resume = this.resume.bind(this);
     this.selectUI = new SelectUI(office, this.showSelection.bind(this));
     this.menu.render();
     this.hud.render();
 
     Product.onProductLaunch = this.enterTheMarket.bind(this);
+    Task.onFinish = this.finishedTask.bind(this);
   }
 
   pause() {
@@ -57,6 +59,11 @@ class Manage extends Phaser.State {
     }
   }
 
+  finishedTask(task) {
+    var view = new Alert();
+    view.render({message: `The ${task.obj.name} task finished.`});
+  }
+
   update() {
     this.hud.update();
     this.clock.update();
@@ -64,6 +71,9 @@ class Manage extends Phaser.State {
       this.selectionView.update(this.selectedObject);
     }
     this.player.onboarder.resolve();
+    if (Popup.current && _.isFunction(Popup.current.update)) {
+      Popup.current.update();
+    }
   }
 
   showOffice() {

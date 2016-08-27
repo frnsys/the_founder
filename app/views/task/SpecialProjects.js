@@ -1,18 +1,21 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import CardsList from 'views/CardsList';
+import TaskAssignmentView from './Assignment';
 import specialProjects from 'data/specialProjects.json';
 
 function detailTemplate(item) {
   if (item.unlocked) {
     var button;
-    if (item.owned) {
-      button = '<button disabled>Owned</button>';
+    if (item.in_progress) {
+      button = '<button disabled>In Progress</button>';
+    } else if (item.owned) {
+      button = '<button disabled>Completed</button>';
     } else if (item.not_available) {
       button = '<button disabled>Missing prerequisites</button>';
     } else if (item.afford) {
-      button = '<button class="buy">Buy</button>';
+      button = '<button class="buy">Start</button>';
     } else {
       button = '<button disabled>Not enough cash</button>';
     }
@@ -47,9 +50,13 @@ class View extends CardsList {
       handlers: {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
-              sel = specialProjects[idx];
-          player.company.buySpecialProject(sel);
-          this.subviews[idx].render(this.processItem(sel));
+              sel = specialProjects[idx],
+              task = player.company.startSpecialProject(sel);
+          if (task) {
+            var view = new TaskAssignmentView(player, task);
+            this.remove();
+            view.render();
+          };
         }
       }
     });
@@ -62,12 +69,22 @@ class View extends CardsList {
     });
   }
 
+  update() {
+    var self = this;
+    _.each(_.zip(specialProjects, this.subviews), function(v) {
+      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+    });
+  }
+
   processItem(item) {
     var player = this.player;
     return _.extend({
       owned: util.contains(player.company.specialProjects, item),
       unlocked: util.contains(player.unlocked.specialProjects, item),
       afford: player.company.cash >= item.cost,
+      in_progress: _.some(player.company.tasks, function(t) {
+        return t.obj.name == item.name;
+      }),
       not_available: !player.company.specialProjectIsAvailable(item),
       prereqs: _.map(item.requiredProducts, function(p) {
         return {

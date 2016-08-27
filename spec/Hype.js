@@ -37,7 +37,7 @@ describe('Hype', function() {
     company.startTask(task, company.workers, []);
     expect(task.obj.hype).toEqual(0);
     expect(task.progress).toEqual(0);
-    expect(task.requiredProgress).toEqual(1000);
+    expect(task.requiredProgress).toEqual(100);
 
     company.develop();
     expect(task.progress).toEqual(501);

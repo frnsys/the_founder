@@ -31,8 +31,8 @@ class SelectPromoView extends CardsList {
       detailTemplate: detailTemplate,
       handlers: {
         '.select': function() {
-          if (selected && player.company.startPromo(selected)) {
-            var task = _.last(player.company.tasks);
+          var task = player.company.startPromo(selected);
+          if (task) {
             var view = new TaskAssignmentView(player, task);
             this.remove();
             view.render();

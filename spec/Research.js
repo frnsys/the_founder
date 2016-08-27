@@ -54,14 +54,16 @@ describe('Research', function() {
 
     it('can be started', function() {
       expect(company.tasks.length).toEqual(0);
-      company.startResearch(tech, company.workers, []);
+      var task = company.startResearch(tech);
+      company.startTask(task, company.workers, []);
       expect(company.tasks.length).toEqual(1);
       expect(company.tasks[0].obj.name).toEqual(tech.name);
       expect(company.workers[0].task).toEqual(company.tasks[0].id);
     });
 
     it('increases progress when developed', function() {
-      company.startResearch(tech, company.workers, []);
+      var task = company.startResearch(tech);
+      company.startTask(task, company.workers, []);
       company.workers[0].productivity = 1; // so we don't finish developing it
       company.workers[0].engineering = 1; // so we don't finish developing it
       expect(company.tasks[0].progress).toEqual(0);
@@ -71,7 +73,8 @@ describe('Research', function() {
 
     it('is saved when developed', function() {
       expect(company.technologies.length).toEqual(tech.requiredTechs.length);
-      company.startResearch(tech, company.workers, []);
+      var task = company.startResearch(tech);
+      company.startTask(task, company.workers, []);
       company.develop();
       expect(company.technologies.length).toEqual(tech.requiredTechs.length + 1);
       expect(_.last(company.technologies).name).toEqual('3D Printing');
@@ -81,7 +84,8 @@ describe('Research', function() {
       var val = company.productivity;
       company.verticals = [{name: "Hardware"}];
       company.technologies = _.map(tech.requiredTechs, i => ({name: i}));
-      company.startResearch(tech, company.workers, []);
+      var task = company.startResearch(tech);
+      company.startTask(task, company.workers, []);
       company.develop();
       expect(company.productivity).toEqual(val+1);
     });

@@ -27,11 +27,12 @@ class View extends CardsList {
       handlers: {
         '.select': function() {
           if (selected.length == 2) {
-            player.company.startProduct(selected);
-            var task = _.last(player.company.tasks);
-            var view = new TaskAssignmentView(player, task);
-            this.remove();
-            view.render();
+            var task = player.company.startProduct(selected);
+            if (task) {
+              var view = new TaskAssignmentView(player, task);
+              this.remove();
+              view.render();
+            }
           }
         },
         'li': function(ev) {

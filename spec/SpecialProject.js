@@ -36,26 +36,26 @@ describe('SpecialProject', function() {
   it('requires required products', function() {
     company.discoveredProducts = [];
     expect(company.specialProjectIsAvailable(specialProject)).toEqual(false);
-    expect(company.startSpecialProject(specialProject, company.workers, [])).toEqual(false);
+    expect(company.startSpecialProject(specialProject)).toEqual(false);
     company.discoveredProducts = specialProject.requiredProducts;
     expect(company.specialProjectIsAvailable(specialProject)).toEqual(true);
-    expect(company.startSpecialProject(specialProject, company.workers, [])).toEqual(true);
+    expect(company.startSpecialProject(specialProject)).not.toEqual(false);
   });
 
   it('can be started', function() {
     expect(company.tasks.length).toEqual(0);
     company.discoveredProducts = specialProject.requiredProducts;
-    company.startSpecialProject(specialProject, company.workers, []);
+    var task = company.startSpecialProject(specialProject);
+    company.startTask(task, company.workers, []);
     expect(company.tasks.length).toEqual(1);
     expect(company.tasks[0].obj.name).toEqual(specialProject.name);
     expect(company.workers[0].task).toEqual(company.tasks[0].id);
   });
 
   it('increases stats when developed', function() {
-    var task;
     company.discoveredProducts = specialProject.requiredProducts;
-    company.startSpecialProject(specialProject, company.workers, []);
-    task = company.tasks[0];
+    var task = company.startSpecialProject(specialProject);
+    company.startTask(task, company.workers, []);
     _.each(['design', 'engineering', 'marketing'], function(n) {
       expect(task.obj[n]).toEqual(0);
     });
@@ -68,7 +68,8 @@ describe('SpecialProject', function() {
   it('is saved when developed', function() {
     expect(company.specialProjects.length).toEqual(0);
     company.discoveredProducts = specialProject.requiredProducts;
-    company.startSpecialProject(specialProject, company.workers, []);
+    var task = company.startSpecialProject(specialProject);
+    company.startTask(task, company.workers, []);
     company.develop();
     expect(company.specialProjects.length).toEqual(1);
     expect(company.specialProjects[0].name).toEqual("Delphi");
@@ -76,7 +77,8 @@ describe('SpecialProject', function() {
 
   it('has company-wide effects', function() {
     company.discoveredProducts = specialProject.requiredProducts;
-    company.startSpecialProject(specialProject, company.workers, []);
+    var task = company.startSpecialProject(specialProject);
+    company.startTask(task, company.workers, []);
     company.develop();
     expect(company.player.specialEffects['Prescient']).toEqual(true);
   });

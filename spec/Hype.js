@@ -25,15 +25,16 @@ describe('Hype', function() {
 
   it('can be started', function() {
     expect(company.tasks.length).toEqual(0);
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     expect(company.tasks.length).toEqual(1);
     expect(company.tasks[0].obj.name).toEqual(promo.name);
     expect(company.workers[0].task).toEqual(company.tasks[0].id);
   });
 
   it('is developed with productivity and marketing', function() {
-    company.startPromo(promo, company.workers, []);
-    var task = company.tasks[0];
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     expect(task.obj.hype).toEqual(0);
     expect(task.progress).toEqual(0);
     expect(task.requiredProgress).toEqual(1000);
@@ -45,7 +46,8 @@ describe('Hype', function() {
 
   it('adds hype when finished', function() {
     var val = company.hype;
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     _.times(2, company.develop.bind(company));
     expect(company.tasks.length).toEqual(0);
     expect(company.hype).toBeGreaterThan(val);
@@ -53,13 +55,15 @@ describe('Hype', function() {
 
   it('adds more hype with more marketing', function() {
     var diff, val = company.hype;
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     _.times(2, company.develop.bind(company));
     diff = company.hype - val;
 
     company.cash = promo.cost;
     company.hype = val;
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     company.workers[0].marketing = 100;
     _.times(2, company.develop.bind(company));
     expect(company.hype - val).toBeGreaterThan(diff);
@@ -67,13 +71,15 @@ describe('Hype', function() {
 
   it('adds more hype with more design', function() {
     var diff, val = company.hype;
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     _.times(2, company.develop.bind(company));
     diff = company.hype - val;
 
     company.cash = promo.cost;
     company.hype = val;
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     company.workers[0].design = 100;
     _.times(2, company.develop.bind(company));
     expect(company.hype - val).toBeGreaterThan(diff);
@@ -81,14 +87,16 @@ describe('Hype', function() {
 
   it('adds more hype with more power', function() {
     var diff, val = company.hype;
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     _.times(2, company.develop.bind(company));
     diff = company.hype - val;
 
     promo.power = 2;
     company.cash = promo.cost;
     company.hype = val;
-    company.startPromo(promo, company.workers, []);
+    var task = company.startPromo(promo);
+    company.startTask(task, company.workers, []);
     _.times(4, company.develop.bind(company));
     expect(company.hype - val).toBeGreaterThan(diff);
   });

@@ -21,9 +21,7 @@ function uuid() {
 }
 
 const Task = {
-  init: function(type, obj, workers, locations) {
-    workers = workers || [];
-    locations = locations || [];
+  init: function(type, obj) {
     var task = {
       id: uuid(),
       type: Type[type],
@@ -31,9 +29,12 @@ const Task = {
       requiredProgress: obj.requiredProgress,
       obj: obj
     };
+    return task;
+  },
+
+  start: function(task, workers, locations) {
     _.each(workers, w => this.assign(task, w));
     _.each(locations, l => this.assign(task, l));
-    return task;
   },
 
   assign: function(task, worker) {

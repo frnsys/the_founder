@@ -10,6 +10,10 @@ const template = data => `
 <ul class="cards assign-workers"></ul>
 <ul class="cards assign-locations"></ul>
 <div class="actions">
+  <div class="task-assign-info">
+    <h2>${data.task.obj.name}</h2>
+    ${data.task.obj.cost ? `Requires an investment of ${util.formatCurrency(data.task.obj.cost)}` : ''}
+  </div>
   <button class="select" disabled>Start</button>
 </div>`;
 
@@ -45,6 +49,7 @@ class AssignmentView extends CardsList {
       title: 'Assign Task',
       template: template
     });
+    this.task = task;
     this.player = player;
     this.workers = [];
     this.locations = [];
@@ -82,9 +87,10 @@ class AssignmentView extends CardsList {
         view.render(this.processItem(sel, false));
       },
       '.select': function() {
-        console.log(this.workers);
-        _.each(this.workers, w => Task.assign(task, w));
-        _.each(this.locations, l => Task.assign(task, l));
+        if (task.obj.cost) {
+          player.company.pay(task.obj.cost, true);
+        }
+        player.company.startTask(task, this.workers, this.locations);
         this.remove();
       }
     });
@@ -110,6 +116,7 @@ class AssignmentView extends CardsList {
         workers = _.map(player.company.workers, w => this.processItem(w, true)),
         locations = _.map(player.company.locations, l => this.processItem(l, false));
     super.render({
+      task: task,
       items: workers.concat(locations)
     });
   }

@@ -48,10 +48,10 @@ describe('Product', function() {
     company.workers.push(worker);
 
     createProduct = function() {
-      company.startProduct(goodCombo, company.workers, []);
-      var task = company.tasks[0],
-          product = task.obj;
+      var task = company.startProduct(goodCombo);
+      var product = task.obj;
       company.workers[0].productivity = product.requiredProgress;
+      company.startTask(task, company.workers, []);
       company.develop();
       return product;
     };
@@ -89,16 +89,17 @@ describe('Product', function() {
   describe('development', function() {
     it('can be started', function() {
       expect(company.tasks.length).toEqual(0);
-      company.startProduct(goodCombo, company.workers, []);
+      var task = company.startProduct(goodCombo);
+      company.startTask(task, company.workers, []);
       expect(company.tasks.length).toEqual(1);
       expect(company.tasks[0].obj.recipeName).toEqual('Ad.Analytics');
       expect(company.workers[0].task).toEqual(company.tasks[0].id);
     });
 
     it('is developed with productivity and skills', function() {
-      company.startProduct(goodCombo, company.workers, []);
-      var task = company.tasks[0],
-          product = task.obj;
+      var task = company.startProduct(goodCombo);
+      company.startTask(task, company.workers, []);
+      var product = task.obj;
       expect(task.progress).toEqual(0);
       expect(product.design).toEqual(0);
       expect(product.marketing).toEqual(0);
@@ -162,8 +163,8 @@ describe('Product', function() {
       var product = createProduct(),
           val = product[name];
 
-        company.startProduct(goodCombo, company.workers, []);
-        var task = company.tasks[0];
+        var task = company.startProduct(goodCombo);
+        company.startTask(task, company.workers, []);
         product = task.obj;
         product.difficulty = 1000;
         company.workers[0].productivity = product.requiredProgress;
@@ -178,8 +179,8 @@ describe('Product', function() {
       var product = createProduct(),
           val = product[name];
 
-      company.startProduct(goodCombo, company.workers, []);
-      var task = company.tasks[0];
+      var task = company.startProduct(goodCombo);
+      company.startTask(task, company.workers, []);
       product = task.obj;
       product[product.feature] = 1000;
       company.workers[0].productivity = product.requiredProgress;

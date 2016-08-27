@@ -143,13 +143,16 @@ class Company {
     return this.annualRevenue * this.player.taxRate;
   }
 
+  canAfford(cost) {
+    return this.cash - cost >= 0;
+  }
   earn(cash) {
     this.cash += cash;
     this.annualRevenue += cash;
     this.lifetimeRevenue += cash;
   }
-  pay(cost) {
-    if (this.cash - cost >= 0) {
+  pay(cost, ignoreAfford) {
+    if (this.cash - cost >= 0 || ignoreAfford) {
       this.cash -= cost;
       this.annualCosts += cost;
       this.lifetimeCosts += cost;
@@ -247,45 +250,45 @@ class Company {
     _.each(this.tasks, t => Task.develop(t, this));
   }
 
-  startResearch(tech, workers, locations) {
-    if (this.researchIsAvailable(tech) && this.pay(tech.cost)) {
-      this.tasks.push(Task.init('Research', tech, workers, locations));
-      return true;
+  startResearch(tech) {
+    if (this.researchIsAvailable(tech) && this.canAfford(tech.cost)) {
+      return Task.init('Research', tech);
     }
     return false;
   }
 
-  startProduct(productTypes, workers, locations) {
+  startProduct(productTypes) {
     var product = Product.create(productTypes, this);
-    this.tasks.push(Task.init('Product', product, workers, locations));
-    return product;
+    return Task.init('Product', product);
   }
 
-  startPromo(promo, workers, locations) {
-    if (this.pay(promo.cost)) {
+  startPromo(promo) {
+    if (this.canAfford(promo.cost)) {
       promo = Promo.init(promo);
-      this.tasks.push(Task.init('Promo', promo, workers, locations));
-      return true;
+      return Task.init('Promo', promo);
     }
     return false;
   }
 
-  startLobby(lobby, workers, locations) {
-    if (this.pay(lobby.cost)) {
-      this.tasks.push(Task.init('Lobby', _.extend({persuasion:0}, lobby), workers, locations));
-      return true;
+  startTask(task, workers, locations) {
+    Task.start(task, workers, locations);
+    this.tasks.push(task);
+  }
+
+  startLobby(lobby) {
+    if (this.canAfford(lobby.cost)) {
+      return Task.init('Lobby', _.extend({persuasion:0}, lobby));
     }
     return false;
   }
 
-  startSpecialProject(specialProject, workers, locations) {
-    if (this.specialProjectIsAvailable(specialProject) && this.pay(specialProject.cost)) {
-      this.tasks.push(Task.init('SpecialProject', _.extend({
+  startSpecialProject(specialProject) {
+    if (this.specialProjectIsAvailable(specialProject) && this.canAfford(specialProject.cost)) {
+      return Task.init('SpecialProject', _.extend({
         design: 0,
         marketing: 0,
         engineering: 0
-      }, specialProject), workers, locations));
-      return true;
+      }, specialProject));
     }
     return false;
   }

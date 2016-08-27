@@ -35,9 +35,9 @@ class LobbyingView extends CardsList {
       handlers: {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
-              sel = lobbies[idx];
-          if (player.company.startLobby(sel)) {
-            var task = _.last(player.company.tasks);
+              sel = lobbies[idx],
+              task = player.company.startLobby(sel);
+          if (task) {
             var view = new TaskAssignmentView(player, task);
             this.remove();
             view.render();

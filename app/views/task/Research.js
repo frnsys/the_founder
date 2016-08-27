@@ -38,9 +38,9 @@ class ResearchView extends CardsList {
       handlers: {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
-              sel = technologies[idx];
-          if (player.company.startResearch(sel)) {
-            var task = _.last(player.company.tasks);
+              sel = technologies[idx],
+              task = player.company.startResearch(sel);
+          if (task) {
             var view = new TaskAssignmentView(player, task);
             this.remove();
             view.render();

@@ -29,14 +29,16 @@ describe('Lobbying', function() {
 
   it('can be started', function() {
     expect(company.tasks.length).toEqual(0);
-    company.startLobby(lobby, company.workers, []);
+    var task = company.startLobby(lobby);
+    company.startTask(task, company.workers, []);
     expect(company.tasks.length).toEqual(1);
     expect(company.tasks[0].obj.name).toEqual(lobby.name);
     expect(company.workers[0].task).toEqual(company.tasks[0].id);
   });
 
   it('increases progress when developed', function() {
-    company.startLobby(lobby, company.workers, []);
+    var task = company.startLobby(lobby);
+    company.startTask(task, company.workers, []);
     company.workers[0].productivity = 1; // so we don't finish developing it
     expect(company.tasks[0].progress).toEqual(0);
     company.develop();
@@ -45,7 +47,8 @@ describe('Lobbying', function() {
 
   it('is saved when developed', function() {
     expect(company.lobbies.length).toEqual(0);
-    company.startLobby(lobby, company.workers, []);
+    var task = company.startLobby(lobby);
+    company.startTask(task, company.workers, []);
     company.develop();
     expect(company.lobbies.length).toEqual(1);
     expect(company.lobbies[0].name).toEqual("Foreign Intervention");
@@ -53,7 +56,8 @@ describe('Lobbying', function() {
 
   it('has company-wide effects', function() {
     company.player.expansionCostMultiplier = 1;
-    company.startLobby(lobby, company.workers, []);
+    var task = company.startLobby(lobby);
+    company.startTask(task, company.workers, []);
     company.develop();
     expect(company.player.expansionCostMultiplier).toEqual(0.95);
   });

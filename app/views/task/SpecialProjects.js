@@ -48,9 +48,9 @@ class View extends CardsList {
       handlers: {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
-              sel = specialProjects[idx];
-          if (player.company.startSpecialProject(sel)) {
-            var task = _.last(player.company.tasks);
+              sel = specialProjects[idx],
+              task = player.company.startSpecialProject(sel);
+          if (task) {
             var view = new TaskAssignmentView(player, task);
             this.remove();
             view.render();

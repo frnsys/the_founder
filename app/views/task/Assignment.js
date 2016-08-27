@@ -28,22 +28,7 @@ const template = data => `
   ${button(data.task)}
 </div>`;
 
-const workerTemplate = item => `
-<div class="worker-avatar">
-  <img src="/assets/workers/gifs/${item.avatar}.gif">
-  ${item.task ? `<div class="worker-task">Assigned: ${item.task.obj.name}</div>` : ''}
-</div>
-<div class="worker-info">
-  <div class="worker-title">
-    <h1>${item.name}</h1>
-    <h3 class="subtitle">${item.title}, <span class="cash">${util.formatCurrencyAbbrev(item.salary)}/yr</span></h3>
-  </div>
-  <div class="worker-body">
-    ${templ.skills(item)}
-    ${item.attributes.length > 0 ? templ.attributes(item) : ''}
-  </div>
-</div>
-`
+
 const locationTemplate = item => `
 <div class="title">
   <h1>${item.name}</h1>
@@ -185,7 +170,7 @@ class AssignmentView extends CardsList {
   }
 
   createListItem(item) {
-    var template = item.worker ? workerTemplate : locationTemplate,
+    var template = item.worker ? templ.worker : locationTemplate,
         parent = item.worker ? '.assign-workers' : '.assign-locations',
         cls = '';
     if (util.contains(this.workers, item) || util.contains(this.locations, item)) {

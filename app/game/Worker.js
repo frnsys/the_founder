@@ -147,7 +147,7 @@ const Worker = {
   attributeEffectToString: function(name, val) {
     switch(name) {
         case 'minSalary':
-          return `${Math.abs((1 - val) * 100)}% ${val < 1 ? 'lower' : 'higher'} min. salary`;
+          return `${Math.round(Math.abs((1 - val) * 100))}% ${val < 1 ? 'lower' : 'higher'} min. salary`;
         default:
           return `${val > 0 ? '+' : '-'}${Math.abs(val)} to ${name}`;
     }

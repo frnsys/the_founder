@@ -6,29 +6,13 @@ import CardsList from 'views/CardsList';
 const template = data =>
   `${data.items.length > 0 ? '<ul class="cards"></ul>' : 'No employees'}`;
 
-const detailTemplate = item => `
-<div class="worker-avatar">
-  <img src="/assets/workers/gifs/${item.avatar}.gif">
-</div>
-<div class="worker-info">
-  <div class="worker-title">
-    <h1>${item.name}</h1>
-    <h3 class="subtitle">${item.title}, <span class="cash">${util.formatCurrencyAbbrev(item.salary)}/yr</span></h3>
-  </div>
-  <div class="worker-body">
-    ${templ.skills(item)}
-    ${item.attributes.length > 0 ? templ.attributes(item) : ''}
-  </div>
-  <button class="fire">Fire</button>
-</div>
-`
 
 class View extends CardsList {
   constructor(player) {
     super({
       title: 'Employees',
       template: template,
-      detailTemplate: detailTemplate,
+      detailTemplate: templ.worker,
       handlers: {
         '.fire': function(ev) {
           var idx = this.itemIndex(ev.target),
@@ -44,12 +28,27 @@ class View extends CardsList {
     this.player = player;
   }
 
+  processItem(item) {
+    var item = _.clone(item);
+    item.task = this.player.company.task(item.task);
+    return _.extend({
+      fireable: true
+    }, item);
+  }
+
   render() {
     var player = this.player;
     super.render({
-      items: _.map(player.company.workers, w => _.extend({
-        task: player.company.task(w.task)
-      }, w))
+      items: _.map(player.company.workers, this.processItem.bind(this))
+    });
+  }
+
+  update() {
+    var self = this;
+    _.each(_.zip(self.player.company.workers, this.subviews), function(v) {
+      var item = self.processItem(v[0]),
+          task = item.task ? `Assigned:<br>${item.task.obj.name}` : '';
+      v[1].el.find('.worker-task').html(task);
     });
   }
 }

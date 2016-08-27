@@ -34,9 +34,28 @@ const prereqsTemplate = item => `
     `).join('')}</div>
 `;
 
+const workerTemplate = item => `
+<div class="worker-avatar">
+  <img src="/assets/workers/gifs/${item.avatar}.gif">
+  <div class="worker-task">${item.task ? `Assigned:<br>${item.task.obj.name}` : ''}</div>
+</div>
+<div class="worker-info">
+  <div class="worker-title">
+    <h1>${item.name}</h1>
+    <h3 class="subtitle">${item.title}, <span class="cash">${util.formatCurrencyAbbrev(item.salary)}/yr</span></h3>
+  </div>
+  <div class="worker-body">
+    ${skillsTemplate(item)}
+    ${item.attributes.length > 0 ? attributesTemplate(item) : ''}
+  </div>
+  ${item.fireable ? `<button class="fire">Fire</button>` : ''}
+</div>
+`
+
 export default {
   effects: effectsTemplate,
   attributes: attributesTemplate,
   skills: skillsTemplate,
-  prereqs: prereqsTemplate
+  prereqs: prereqsTemplate,
+  worker: workerTemplate
 };

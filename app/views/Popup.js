@@ -29,7 +29,6 @@ class Popup extends View {
 
   postRender() {
     super.postRender();
-    $('.ui').hide();
     $('.popups').show();
     Popup.current = this;
     console.log('popup rendered with title: ' + this.title);
@@ -38,7 +37,6 @@ class Popup extends View {
   postRemove() {
     super.postRemove();
     $('.popups').hide();
-    $('.ui').show();
     Popup.current = null;
     console.log('popup removed with title: ' + this.title);
   }

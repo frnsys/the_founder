@@ -14,7 +14,7 @@ class View {
     // tag: tag to wrap contents with
     // attrs: arbitrary attributes to be added to the wrapping element
     params = _.defaults(params, {
-      parent: '.ui',
+      parent: 'body',
       tag: 'div',
       template: undefined,
       data: {},

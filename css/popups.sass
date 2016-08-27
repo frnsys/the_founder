@@ -611,39 +611,3 @@ button.owned
     height: 19em
   .worker-avatar img
     margin-top: 2.5em
-
-
-// https://codepen.io/geedmo/pen/InFfd
-$barColor: #29dc6d
-$backColor: #222
-
-.progress-radial
-  position: relative
-  width: 48px
-  height: 48px
-  border-radius: 50%
-  background-color: $barColor
-
-.progress-radial .overlay
-  position: absolute
-  width: 32px
-  height: 32px
-  background-color: $backColor
-  border-radius: 50%
-  margin-left: 8px
-  margin-top: 8px
-
-// step of % for created classes
-$step: 1
-
-$loops: round(100 / $step)
-$increment: 360 / $loops
-$half: round($loops / 2)
-@for $i from 0 through $loops
-  .progress-#{$i*$step}
-    @if $i < $half
-      $nextdeg: 90deg + ( $increment * $i )
-      background-image: linear-gradient(90deg, $backColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $barColor 50%, $backColor 50%, $backColor)
-    @else
-      $nextdeg: -90deg + ( $increment * ( $i - $half ) )
-      background-image: linear-gradient($nextdeg, $barColor 50%, transparent 50%, transparent), linear-gradient(270deg, $barColor 50%, $backColor 50%, $backColor)

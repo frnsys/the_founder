@@ -28,7 +28,7 @@
   margin-top: 0.2em
 
 .hud-stats
-  > li
+  li
     width: auto
     height: auto
     position: relative
@@ -36,6 +36,25 @@
     cursor: help
   img
     width: 18px
+
+.hud-actions
+  li
+    cursor: pointer
+    display: inline-block
+    background: #239cff
+    color: #fff
+    border-radius: 0.2em
+    margin: 0.5em
+    padding: 0.5em 1em
+    &:hover
+      background: #3f84fb
+.hud-tasks
+  li
+    display: inline-block
+    margin: 0.5em
+.hud-actions, .hud-tasks
+  text-align: right
+  padding: 0 1em
 
 .progress-bar-outer
   width: 12em
@@ -97,3 +116,38 @@
 
 .week-off
   background: rgba(94, 113, 255, 0.2)
+
+// https://codepen.io/geedmo/pen/InFfd
+$barColor: #29dc6d
+$backColor: #515f78
+
+.progress-radial
+  position: relative
+  width: 48px
+  height: 48px
+  border-radius: 50%
+  background-color: $barColor
+
+.progress-radial .overlay
+  position: absolute
+  width: 32px
+  height: 32px
+  background-color: $backColor
+  border-radius: 50%
+  margin-left: 8px
+  margin-top: 8px
+
+// step of % for created classes
+$step: 1
+
+$loops: round(100 / $step)
+$increment: 360 / $loops
+$half: round($loops / 2)
+@for $i from 0 through $loops
+  .progress-#{$i*$step}
+    @if $i < $half
+      $nextdeg: 90deg + ( $increment * $i )
+      background-image: linear-gradient(90deg, $backColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $barColor 50%, $backColor 50%, $backColor)
+    @else
+      $nextdeg: -90deg + ( $increment * ( $i - $half ) )
+      background-image: linear-gradient($nextdeg, $barColor 50%, transparent 50%, transparent), linear-gradient(270deg, $barColor 50%, $backColor 50%, $backColor)

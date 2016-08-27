@@ -15,11 +15,11 @@ const template = data => `
 </div>
 <div class="hud-center"></div>
 <div class="hud-right">
-  <ul class="hud-stats grid"></ul>
-  <div class="hud-actions">
-    <div class="start-new-task">New Task</div>
-    <div class="view-tasks">View Tasks</div>
-  </div>
+  <div class="hud-stats"></div>
+  <ul class="hud-actions">
+    <li class="start-new-task">New Task</li>
+    <li class="view-tasks">View Tasks</li>
+  </ul>
   <ul class="hud-tasks"></ul>
 </div>
 `
@@ -50,12 +50,12 @@ const activeProductTemplate = function(data) {
 };
 
 const statsTemplate = data => `
-${data.onboarding.hype ? `<li data-tip="Hype"><img src="/assets/company/hype.png"> <span class="hype-val">${util.abbreviateNumber(data.hype, 0)}</span></li>` : ''}
-${data.onboarding.outrage ? `<li data-tip="Outrage"><img src="/assets/company/outrage.png"> ${util.abbreviateNumber(data.outrage, 0)}</li>` : ''}
-<li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(data.design, 0)}</li>
-<li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(data.marketing, 0)}</li>
-<li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(data.engineering, 0)}</li>
-<li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(data.productivity, 0)}</li>
+${data.onboarding.hype ? `<li data-tip="Hype"><img src="/assets/company/hype.png"> <span class="hype-stat">${util.abbreviateNumber(Math.floor(data.hype), 0)}</span></li>` : ''}
+${data.onboarding.outrage ? `<li data-tip="Outrage"><img src="/assets/company/outrage.png"> <span class="outrage-stat">${util.abbreviateNumber(data.outrage, 0)}</span></li>` : ''}
+<li data-tip="Design"><img src="/assets/company/design.png"> <span class="design-stat">${util.abbreviateNumber(data.design, 0)}</span></li>
+<li data-tip="Marketing"><img src="/assets/company/marketing.png"> <span class="marketing-stat">${util.abbreviateNumber(data.marketing, 0)}</span></li>
+<li data-tip="Engineering"><img src="/assets/company/engineering.png"> <span class="engineering-stat">${util.abbreviateNumber(data.engineering, 0)}</span></li>
+<li data-tip="Productivity"><img src="/assets/company/productivity.png"> <span class="productivity-stat">${util.abbreviateNumber(data.productivity, 0)}</span></li>
 `;
 
 const timeTemplate = data => `
@@ -114,8 +114,12 @@ class HUD extends View {
     var data = this.player.snapshot;
     if (!this.subviews) {
       this.statsView = new View({
+        tag: 'ul',
         parent: '.hud-stats',
-        template: statsTemplate
+        template: statsTemplate,
+        attrs: {
+          class: 'grid'
+        }
       });
       this.subviews = [
         new View({
@@ -156,7 +160,12 @@ class HUD extends View {
   update() {
     var data = this.player.snapshot;
     _.each(this.subviews, view => view.render(data));
-    this.statsView.el.find('.hype-val').text(util.abbreviateNumber(data.hype, 0));
+    this.statsView.el.find('.hype-stat').text(util.abbreviateNumber(Math.floor(data.hype), 0));
+    this.statsView.el.find('.outrage-stat').text(util.abbreviateNumber(Math.floor(data.outrage), 0));
+    this.statsView.el.find('.design-stat').text(util.abbreviateNumber(Math.floor(data.design)));
+    this.statsView.el.find('.marketing-stat').text(util.abbreviateNumber(Math.floor(data.marketing)));
+    this.statsView.el.find('.engineering-stat').text(util.abbreviateNumber(Math.floor(data.engineering)));
+    this.statsView.el.find('.productivity-stat').text(util.abbreviateNumber(Math.floor(data.productivity)));
 
     // remove old task views and add new ones
     var self = this,

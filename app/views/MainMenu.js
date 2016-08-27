@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import util from 'util';
 import View from './View';
 import Manager from 'app/Manager';
@@ -22,25 +23,39 @@ const template = data => `
 class MainMenuView extends View {
   constructor() {
     super({
+      parent: '.ui',
       template: template,
       handlers: {
         '.new-game': function() {
           // Manager.player.company.cash = 100000; // TEMP
           Manager.player.company.cash = 1000000000;
           Manager.game.state.start('Manage');
+          this.remove();
           //Manager.game.state.start('Onboarding');
         },
         '.new-game-plus': function() {
           Manager.player.company.cash = Manager.newGamePlusCash();
           Manager.game.state.start('Manage');
+          this.remove();
           //Manager.game.state.start('Onboarding');
         },
         '.load-game': function() {
           Manager.load();
           Manager.game.state.start('Manage');
+          this.remove();
         }
       }
     });
+  }
+
+  postRender() {
+    super.postRender();
+    $('.ui').show();
+  }
+
+  postRemove() {
+    super.postRemove();
+    $('.ui').hide();
   }
 }
 

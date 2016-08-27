@@ -134,6 +134,17 @@ class Onboarding extends View {
     stage++;
     this.render(stages[stage]);
   }
+
+  postRender() {
+    super.postRender();
+    $('.ui').show();
+  }
+
+  postRemove() {
+    super.postRemove();
+    $('.ui').hide();
+  }
+
 }
 
 export default Onboarding;

@@ -38,7 +38,7 @@ function actions(item) {
 
 function progressBar(item) {
   if (!item.hideProgress) {
-    return `<div class="task-progress-inner" style="width:${(item.progress/item.requiredProgress)*100}%"></div>`;
+    return `<div class="task-progress-outer"><div class="task-progress-inner" style="width:${(item.progress/item.requiredProgress)*100}%"></div></div>`;
   }
   return '';
 }

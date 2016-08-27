@@ -17,6 +17,10 @@ const Debug = {
     player.company.cofounder = cofounders[0];
     player.company.workers.push(player.workers[0]);
     player.company.workers.push(player.workers[1]);
+    player.company.workers.push(player.workers[2]);
+    player.company.workers.push(player.workers[3]);
+    player.company.workers.push(player.workers[4]);
+    player.company.workers.push(player.workers[5]);
     player.company.workers[0].salary = 80000;
     // player.company.workers[0].productivity = 80000;
     player.company.discoveredProducts = ['AI.Defense', 'Gadget.Space', 'Entertainment.Space'];

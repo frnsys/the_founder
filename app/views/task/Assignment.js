@@ -2,11 +2,13 @@ import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import Task from 'game/Task';
+import Tasks from './Tasks';
 import templ from '../Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
 
 const template = data => `
+<div class="tasks the-task"><ul class="cards"></ul></div>
 <ul class="tabs">
   <li class="selected" data-tab="assign-workers">Employees</li>
   <li data-tab="assign-locations">Locations</li>
@@ -14,11 +16,7 @@ const template = data => `
 <ul class="cards assign-workers tab-page selected"></ul>
 <ul class="cards assign-locations tab-page"></ul>
 <div class="actions">
-  <div class="task-assign-info">
-    <h2>${data.task.obj.name}</h2>
-    ${data.task.obj.cost ? `Requires an investment of ${util.formatCurrency(data.task.obj.cost)}` : ''}
-  </div>
-  <button class="select" disabled>Start</button>
+  <button class="select" disabled>Start${data.task.obj.cost ? ` for ${util.formatCurrency(data.task.obj.cost)}` : ''}</button>
 </div>`;
 
 const workerTemplate = item => `
@@ -55,8 +53,8 @@ class AssignmentView extends CardsList {
     });
     this.task = task;
     this.player = player;
-    this.workers = [];
-    this.locations = [];
+    this.workers = _.filter(player.company.workers, w => w.task == task.id);
+    this.locations = _.filter(player.company.locations, l => l.task == task.id);
     this.registerHandlers({
       '.tabs li': function(ev) {
         var target = $(ev.target).data('tab');
@@ -80,6 +78,7 @@ class AssignmentView extends CardsList {
         }
         this.el.find('.select').prop('disabled', this.workers.length + this.locations.length == 0);
         view.render(this.processItem(sel, true));
+        this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
       },
       '.assign-locations > li': function(ev) {
         var idx = this.itemIndex(ev.target),
@@ -96,6 +95,7 @@ class AssignmentView extends CardsList {
         }
         this.el.find('.select').prop('disabled', this.workers.length + this.locations.length == 0);
         view.render(this.processItem(sel, false));
+        this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
       },
       '.select': function() {
         if (task.obj.cost) {
@@ -123,6 +123,45 @@ class AssignmentView extends CardsList {
       task: this.task,
       items: workers.concat(locations)
     });
+
+    var task = this.task,
+        template = Tasks.Basic,
+        attrs = {
+          class: `task-${util.slugify(util.enumName(task.type, Task.Type))}`
+        };
+    switch(task.type) {
+        case Task.Type.Promo:
+          task.img = `assets/promos/${util.slugify(task.obj.name)}.png`;
+          break;
+        case Task.Type.Research:
+          task.img = `assets/techs/${util.slugify(task.obj.name)}.png`;
+          break;
+        case Task.Type.Lobby:
+          attrs.style = `background-image:url(assets/lobbying/${util.slugify(task.obj.name)}.jpg)`
+          break;
+        case Task.Type.Product:
+          template = Tasks.Product;
+          break;
+        case Task.Type.SpecialProject:
+          template = Tasks.SpecialProject;
+          break;
+    }
+    this.taskView = new View({
+      tag: 'li',
+      parent: '.tasks .cards',
+      template: template,
+      attrs: attrs
+    });
+    this.taskView.render(this.processTask(task));
+  }
+
+  processTask(task) {
+    return _.extend({
+      workers: this.workers,
+      locations: this.locations,
+      hideActions: true,
+      hideProgress: true
+    }, task);
   }
 
   createListItem(item) {

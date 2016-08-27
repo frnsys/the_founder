@@ -7,8 +7,12 @@ import View from 'views/View';
 import CardsList from 'views/CardsList';
 
 const template = data => `
-<ul class="cards assign-workers"></ul>
-<ul class="cards assign-locations"></ul>
+<ul class="tabs">
+  <li class="selected" data-tab="assign-workers">Employees</li>
+  <li data-tab="assign-locations">Locations</li>
+</ul>
+<ul class="cards assign-workers tab-page selected"></ul>
+<ul class="cards assign-locations tab-page"></ul>
 <div class="actions">
   <div class="task-assign-info">
     <h2>${data.task.obj.name}</h2>
@@ -54,6 +58,13 @@ class AssignmentView extends CardsList {
     this.workers = [];
     this.locations = [];
     this.registerHandlers({
+      '.tabs li': function(ev) {
+        var target = $(ev.target).data('tab');
+        $('.tabs .selected').removeClass('selected');
+        $(ev.target).addClass('selected');
+        $('.tab-page').hide();
+        $(`.tab-page.${target}`).show();
+      },
       '.assign-workers > li': function(ev) {
         var idx = this.itemIndex(ev.target),
             sel = player.company.workers[idx],
@@ -116,7 +127,7 @@ class AssignmentView extends CardsList {
         workers = _.map(player.company.workers, w => this.processItem(w, true)),
         locations = _.map(player.company.locations, l => this.processItem(l, false));
     super.render({
-      task: task,
+      task: this.task,
       items: workers.concat(locations)
     });
   }

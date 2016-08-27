@@ -428,9 +428,30 @@ button.owned
     &:hover
       color: #29dc6d
 
-.assign_employees
+.assign_task
   .cards > li
     cursor: pointer
     &.selected
       background: #5e71ff
       color: #fff
+
+.tabs
+  position: fixed
+  top: 0
+  left: 8em
+  right: 8em
+  text-align: center
+  color: #fff
+  font-size: 1.6em
+  > li
+    cursor: pointer
+    display: inline-block
+    margin: 0 1em
+    padding: 0.7em 0 0.2em 0
+    &.selected, &:hover
+      border-bottom: 4px solid #f5deb3
+.tab-page
+  display: none
+  &.selected
+    display: block
+

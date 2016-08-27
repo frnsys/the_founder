@@ -37,7 +37,7 @@ const prereqsTemplate = item => `
 const workerTemplate = item => `
 <div class="worker-avatar">
   <img src="/assets/workers/gifs/${item.avatar}.gif">
-  <div class="worker-task">${item.task ? `Assigned:<br>${item.task.obj.name}` : ''}</div>
+  <div class="assigned-task worker-task">${item.task ? `Assigned:<br>${item.task.obj.name}` : ''}</div>
 </div>
 <div class="worker-info">
   <div class="worker-title">

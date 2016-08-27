@@ -31,12 +31,11 @@ const template = data => `
 
 const locationTemplate = item => `
 <div class="title">
-  <h1>${item.name}</h1>
-  <h4 class="cash">${util.formatCurrencyAbbrev(item.cost)}</h4>
+  <h1><img src="/assets/markets/${util.slugify(item.market)}.png"> ${item.name}</h1>
 </div>
 ${templ.skills(item.skills)}
 ${item.effects.length > 0 ? templ.effects(item) : ''}
-${item.task ? `<div class="worker-task">Current task: ${item.task.obj.name}</div>` : ''}`;
+${item.task ? `<div class="assigned-task location-task">Assigned: ${item.task.obj.name}</div>` : ''}`;
 
 
 class AssignmentView extends CardsList {
@@ -157,6 +156,24 @@ class AssignmentView extends CardsList {
       attrs: attrs
     });
     this.taskView.render(this.processTask(task));
+  }
+
+  update() {
+    var self = this,
+        workers = _.map(this.player.company.workers, w => this.processItem(w, true)),
+        locations = _.map(this.player.company.locations, l => this.processItem(l, false));
+    _.each(_.zip(workers.concat(locations), this.subviews), function(v) {
+      var item = v[0],
+          task = '';
+      if (item.task) {
+        if (item.worker) {
+          task = `Assigned:<br>${item.task.obj.name}`;
+        } else {
+          task = `Assigned: ${item.task.obj.name}`;
+        }
+      }
+      v[1].el.find('.assigned-task').html(task);
+    });
   }
 
   processTask(task) {

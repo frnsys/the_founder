@@ -33,6 +33,7 @@ const locationTemplate = item => `
 </div>
 ${templ.skills(item.skills)}
 ${item.effects.length > 0 ? templ.effects(item) : ''}
+${item.task ? `<div class="assigned-task location-task">Assigned: ${item.task.obj.name}</div>` : ''}
 ${button(item)}`;
 
 
@@ -59,6 +60,8 @@ class MarketView extends View {
   }
 
   processItem(item) {
+    var item = _.clone(item);
+    item.task = this.player.company.task(item.task);
     return _.extend({
       owned: util.contains(this.player.company.locations, item),
       afford: this.player.company.cash >= item.cost
@@ -83,7 +86,10 @@ class MarketView extends View {
   update() {
     var self = this;
     _.each(_.zip(this.locations, this.subviews), function(v) {
-      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+      var item = self.processItem(v[0]),
+          task = item.task ? `Assigned: ${item.task.obj.name}` : '';
+      v[1].el.find('.location-task').html(task);
+      v[1].el.find('button').replaceWith(button(item));
     });
   }
 

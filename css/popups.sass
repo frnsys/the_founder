@@ -272,12 +272,14 @@ button.owned
     font-size: 1.2em
     margin: 0
     display: inline-block
-.worker-task
-  margin-top: -3em
-  padding: 0 1em
+.worker-task,
+.location-task
   color: #fff
-  text-align: center
   text-shadow: 1px 1px 1px rgba(0,0,0,0.1)
+.worker-task
+  text-align: center
+  padding: 0 1em
+  margin-top: -3em
 
 [data-tip]
   cursor: help
@@ -614,3 +616,17 @@ button.owned
     height: 19em
   .worker-avatar img
     margin-top: 2.5em
+.assign-locations
+  &.cards
+    > li
+      background: #3f84fb
+      padding: 2em 3em
+      color: #fff
+      width: 28em
+      height: 16em
+    .title img
+      width: 24px
+      height: 24px
+      display: inline
+      vertical-align: middle
+      margin-top: -5px

@@ -8,7 +8,9 @@ import specialProjects from 'data/specialProjects.json';
 function detailTemplate(item) {
   if (item.unlocked) {
     var button;
-    if (item.owned) {
+    if (item.in_progress) {
+      button = '<button disabled>In Progress</button>';
+    } else if (item.owned) {
       button = '<button disabled>Completed</button>';
     } else if (item.not_available) {
       button = '<button disabled>Missing prerequisites</button>';
@@ -73,6 +75,9 @@ class View extends CardsList {
       owned: util.contains(player.company.specialProjects, item),
       unlocked: util.contains(player.unlocked.specialProjects, item),
       afford: player.company.cash >= item.cost,
+      in_progress: _.some(player.company.tasks, function(t) {
+        return t.obj.name == item.name;
+      }),
       not_available: !player.company.specialProjectIsAvailable(item),
       prereqs: _.map(item.requiredProducts, function(p) {
         return {

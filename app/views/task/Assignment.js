@@ -34,7 +34,7 @@ const workerTemplate = item => `
     ${templ.skills(item)}
     ${item.attributes.length > 0 ? templ.attributes(item) : ''}
   </div>
-  ${item.task ? `<div class="worker-task">Current task: ${item.task.obj.name}</div>` : ''}
+  ${item.task ? `<div class="worker-task">Current task: ${item.task.obj.name} (TODO completion %)</div>` : ''}
 </div>
 `
 const locationTemplate = item => `
@@ -108,18 +108,11 @@ class AssignmentView extends CardsList {
   }
 
   processItem(item, worker) {
+    var item = _.clone(item);
+    item.task = this.player.company.task(item.task);
     return _.extend({
-      worker: worker,
-      task: this.player.company.task(worker.task)
+      worker: worker
     }, item);
-  }
-
-  showView(view) {
-    var player = this.player;
-    return function(e) {
-      var v = new view(player);
-      v.render();
-    }
   }
 
   render() {

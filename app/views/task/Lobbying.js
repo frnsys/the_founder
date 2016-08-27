@@ -8,7 +8,9 @@ import lobbies from 'data/lobbies.json';
 
 
 function button(item) {
-  if (item.owned) {
+  if (item.in_progress) {
+    button = '<button disabled>In Progress</button>';
+  } else if (item.owned) {
     return '<button disabled class="owned">Completed</button>';
   } else if (item.afford) {
     return '<button class="buy">Start</button>';
@@ -58,7 +60,10 @@ class LobbyingView extends CardsList {
     var player = this.player;
     return _.extend({
       owned: util.contains(player.company.lobbies, item),
-      afford: player.company.cash >= item.cost
+      afford: player.company.cash >= item.cost,
+      in_progress: _.some(player.company.tasks, function(t) {
+        return t.obj.name == item.name;
+      })
     }, item);
   }
 

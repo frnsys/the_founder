@@ -455,3 +455,130 @@ button.owned
   &.selected
     display: block
 
+.tasks
+  .cards
+    h1
+      font-size: 2.2em
+    .subtitle
+      color: rgba(0,0,0,0.4)
+    > li
+      width: 32em
+      padding: 2em
+      &:hover .task-actions
+        display: block
+      &.task-promo
+        background: #7e0cb3
+        color: #fff
+      &.task-research
+        background: #1b1b1b
+        color: #fff
+        .subtitle
+          color: rgba(255,255,255, 0.3)
+      &.task-lobby
+        background-size: cover
+        background-position: center center
+        color: #fff
+        .subtitle
+          color: rgba(255,255,255, 0.6)
+      &.task-product
+        background: #515f78
+        color: #fff
+        figure
+          float: left
+          margin: 1em 0
+          width: 20em
+          img
+            float: none
+            width: 100px
+            height: 100px
+            display: inline-block
+        .stats
+          img
+            width: 20px
+            height: 20px
+            margin-right: 0.3em
+          li
+            font-size: 1.5em
+            margin: 0.6em 0
+      &.task-specialproject
+        color: #fff
+        background: #111
+        .subtitle
+          color: rgba(255,255,255, 0.3)
+        .task-progresses
+          img
+            width: 20px
+            height: 20px
+            margin-right: 0.3em
+            display: inline-block
+          li
+            width: 9.1em
+            display: inline-block
+          .task-progress-outer
+            display: inline-block
+            width: 6.5em
+            background: rgba(100,100,100,0.1)
+  .task-body
+    height: 10em
+    img
+      width: 120px
+      height: 120px
+      float: left
+    p
+      height: auto
+    .effects
+      display: inline-block
+      margin: 0
+
+.task-assignees, .task-no-assignees
+  position: absolute
+  top: 2em
+  right: 2em
+  img
+    width: 20px
+    height: 20px
+  li
+    display: inline-block
+    cursor: pointer
+.task-assignees li, .task-extra-assignees
+  vertical-align: middle
+
+
+.task-progress-outer,
+.task-progress-inner
+  height: 1.2em
+  background: rgba(0,0,0,0.1)
+.task-progress-inner
+  background: #29dc6d
+
+.no-tasks
+  font-size: 3em
+  color: #fff
+  text-align: center
+  margin: 6em 0 0 0
+
+.task-no-assignees
+  padding: 0.2em 0.5em
+  border-radius: 0.25em
+  font-size: 1em
+  background: #ff2c2c
+
+.task-actions
+  display: none
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 2em
+  text-align: center
+  li
+    cursor: pointer
+    background: #3f84fb
+    color: #fff
+    font-size: 1.8em
+    padding: 0.5em 1em
+    display: inline-block
+    margin: 0 0.5em
+    border-radius: 0.1em
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2)
+    &:hover
+      background: #2968d4

@@ -15,15 +15,13 @@ class Confirm extends Alert {
     super({
       template: template,
       handlers: {
-        handlers: {
-          '.yes': function() {
-            if (onYes) { onYes(); }
-            this.remove();
-          },
-          '.no': function() {
-            if (onNo) { onNo(); }
-            this.remove();
-          }
+        '.yes': function() {
+          if (onYes) { onYes(); }
+          this.remove();
+        },
+        '.no': function() {
+          if (onNo) { onNo(); }
+          this.remove();
         }
       }
     });

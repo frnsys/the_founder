@@ -7,7 +7,9 @@ import technologies from 'data/technologies.json';
 
 
 function button(item) {
-  if (item.owned) {
+  if (item.in_progress) {
+    button = '<button disabled>In Progress</button>';
+  } else if (item.owned) {
     return '<button disabled>Completed</button>';
   } else if (item.not_available) {
     return '<button disabled>Missing prerequisites</button>';
@@ -63,6 +65,9 @@ class ResearchView extends CardsList {
       owned: util.contains(this.player.company.technologies, item),
       afford: player.company.cash >= item.cost,
       not_available: !player.company.researchIsAvailable(item),
+      in_progress: _.some(player.company.tasks, function(t) {
+        return t.obj.name == item.name;
+      }),
       prereqs: _.map(item.requiredTechs, function(t) {
         return {
           name: t,

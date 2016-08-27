@@ -5,14 +5,6 @@ const PROGRESS_PER_DIFFICULTY = 100;
 const MAIN_FEATURE_SCALE = 0.1;
 const PRODUCT_FEATURES = [null, 'design', 'engineering', 'marketing'];
 const REVENUE_DECAY = 0.8;
-const verticalToResource = {
-  Defense: 'Factory',
-  Hardware: 'Factory',
-  Information: 'Datacenter',
-  Finance: 'Datacenter',
-  Entertainment: 'Studio',
-  Biotech: 'Lab'
-};
 
 function requiredProgress(difficulty) {
   return Math.exp(difficulty/10) * PROGRESS_PER_DIFFICULTY
@@ -27,13 +19,6 @@ function marketShareToRevenue(incomeLevel) {
 }
 
 const Product = {
-  requiredResources: function(productTypes) {
-    return _.reduce(productTypes, function(mem, pt) {
-      var resource = verticalToResource[pt.requiredVertical];
-      mem[resource] += pt.difficulty;
-      return mem;
-    }, {Factory: 0,  Datacenter: 0, Studio: 0, Lab: 0});
-  },
   create: function(productTypes, company) {
     var recipeName = _.map(
       _.sortBy(productTypes, function(pt) { return pt.name }),
@@ -63,7 +48,6 @@ const Product = {
       owner: company,
       description: recipe.description,
       combo: _.pluck(productTypes, 'name').join(' + '),
-      requiredResources: this.requiredResources(productTypes),
       progress: 0,
       requiredProgress: requiredProgress(difficulty)
     };

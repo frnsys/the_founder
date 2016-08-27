@@ -5,6 +5,7 @@ import Enums from 'app/Enums';
 import View from 'views/View';
 import Tooltip from 'views/Tooltip';
 import NewTaskView from 'views/task/New';
+import ActiveTasksView from 'views/task/Active';
 
 const template = data => `
 <div class="hud-left">
@@ -17,6 +18,7 @@ const template = data => `
   <ul class="hud-stats grid"></ul>
   <div class="hud-actions">
     <div class="start-new-task">New Task</div>
+    <div class="view-tasks">View Tasks</div>
     <div class="hud-product-dev"></div>
     <div class="hud-promo-dev"></div>
   </div>
@@ -108,11 +110,9 @@ const boardTemplate = data => `
 </div>
 `;
 
-
 const cashTemplate = data => `
 <h2 class="cash">${util.formatCurrency(Math.floor(data.cash))}</h2>
 `;
-
 
 
 class HUD extends View {
@@ -125,6 +125,10 @@ class HUD extends View {
     this.registerHandlers({
       '.start-new-task': function() {
         var view = new NewTaskView(player);
+        view.render();
+      },
+      '.view-tasks': function() {
+        var view = new ActiveTasksView(player);
         view.render();
       }
     });

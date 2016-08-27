@@ -45,9 +45,16 @@ const Task = {
     worker.task = null;
   },
 
+  workersForTask: function(task, company) {
+    return _.filter(company.workers, w => w.task == task.id);
+  },
+  locationsForTask: function(task, company) {
+    return _.filter(company.locations, l => l.task == task.id);
+  },
+
   develop: function(task, company) {
-    var workers = _.filter(company.workers, w => w.task == task.id),
-        locations = _.filter(company.locations, l => l.task == task.id),
+    var workers = this.workersForTask(task, company),
+        locations = this.locationsForTask(task, company),
         scale = function(skill) {
           return skill/task.requiredProgress;
         };
@@ -91,12 +98,18 @@ const Task = {
 
     if (finished) {
       this.finish(task, company);
-      _.each(workers, w => this.unassign(w));
-      _.each(locations, l => this.unassign(l));
-      company.tasks = _.without(company.tasks, task);
+      this.remove(task, company);
       return true;
     }
     return false;
+  },
+
+  remove: function(task, company) {
+    var workers = this.workersForTask(task, company),
+        locations = this.locationsForTask(task, company);
+    _.each(workers, w => this.unassign(w));
+    _.each(locations, l => this.unassign(l));
+    company.tasks = _.without(company.tasks, task);
   },
 
   finish: function(task, company) {
@@ -153,4 +166,5 @@ const Task = {
   }
 };
 
+Task.Type = Type;
 export default Task;

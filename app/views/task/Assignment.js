@@ -7,6 +7,15 @@ import templ from '../Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
 
+
+function button(task) {
+  if (!task.existing) {
+    return `<button class="select" disabled>Start${task.obj.cost ? ` for ${util.formatCurrency(task.obj.cost)}` : ''}</button>`
+  } else {
+    return `<button class="select">Confirm</button>`
+  }
+}
+
 const template = data => `
 <div class="tasks the-task"><ul class="cards"></ul></div>
 <ul class="tabs">
@@ -16,12 +25,13 @@ const template = data => `
 <ul class="cards assign-workers tab-page selected"></ul>
 <ul class="cards assign-locations tab-page"></ul>
 <div class="actions">
-  <button class="select" disabled>Start${data.task.obj.cost ? ` for ${util.formatCurrency(data.task.obj.cost)}` : ''}</button>
+  ${button(data.task)}
 </div>`;
 
 const workerTemplate = item => `
 <div class="worker-avatar">
   <img src="/assets/workers/gifs/${item.avatar}.gif">
+  ${item.task ? `<div class="worker-task">Assigned: ${item.task.obj.name}</div>` : ''}
 </div>
 <div class="worker-info">
   <div class="worker-title">
@@ -32,7 +42,6 @@ const workerTemplate = item => `
     ${templ.skills(item)}
     ${item.attributes.length > 0 ? templ.attributes(item) : ''}
   </div>
-  ${item.task ? `<div class="worker-task">Current task: ${item.task.obj.name} (TODO completion %)</div>` : ''}
 </div>
 `
 const locationTemplate = item => `
@@ -46,15 +55,18 @@ ${item.task ? `<div class="worker-task">Current task: ${item.task.obj.name}</div
 
 
 class AssignmentView extends CardsList {
-  constructor(player, task) {
+  constructor(player, task, existing) {
     super({
       title: 'Assign Task',
       template: template
     });
+    this.existing = existing || false;
     this.task = task;
     this.player = player;
     this.workers = _.filter(player.company.workers, w => w.task == task.id);
     this.locations = _.filter(player.company.locations, l => l.task == task.id);
+    this.preassignedWorkers = this.workers.slice(0);
+    this.preassignedLocations = this.locations.slice(0);
     this.registerHandlers({
       '.tabs li': function(ev) {
         var target = $(ev.target).data('tab');
@@ -98,10 +110,17 @@ class AssignmentView extends CardsList {
         this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
       },
       '.select': function() {
-        if (task.obj.cost) {
-          player.company.pay(task.obj.cost, true);
+        if (!this.existing) {
+          if (task.obj.cost) {
+            player.company.pay(task.obj.cost, true);
+          }
+          player.company.startTask(task, this.workers, this.locations);
+        } else {
+          _.each(this.workers, w => Task.assign(task, w));
+          _.each(this.locations, l => Task.assign(task, l));
+          _.each(_.difference(this.preassignedWorkers, this.workers), w => Task.unassign(w));
+          _.each(_.difference(this.preassignedLocations, this.locations), l => Task.unassign(l));
         }
-        player.company.startTask(task, this.workers, this.locations);
         this.remove();
       }
     });
@@ -120,7 +139,7 @@ class AssignmentView extends CardsList {
         workers = _.map(player.company.workers, w => this.processItem(w, true)),
         locations = _.map(player.company.locations, l => this.processItem(l, false));
     super.render({
-      task: this.task,
+      task: this.processTask(this.task),
       items: workers.concat(locations)
     });
 
@@ -160,18 +179,26 @@ class AssignmentView extends CardsList {
       workers: this.workers,
       locations: this.locations,
       hideActions: true,
-      hideProgress: true
+      hideProgress: true,
+      existing: this.existing
     }, task);
   }
 
   createListItem(item) {
     var template = item.worker ? workerTemplate : locationTemplate,
-        parent = item.worker ? '.assign-workers' : '.assign-locations';
+        parent = item.worker ? '.assign-workers' : '.assign-locations',
+        cls = '';
+    if (util.contains(this.workers, item) || util.contains(this.locations, item)) {
+      cls = 'selected';
+    }
     return new View({
       tag: 'li',
       parent: parent,
       template: template,
-      method: 'append'
+      method: 'append',
+      attrs: {
+        class: cls
+      }
     })
   }
 }

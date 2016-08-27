@@ -33,7 +33,7 @@ class ActiveView extends CardsList {
       '.edit-task': function(ev) {
         var idx = this.itemIndex(ev.target),
             task = this.player.company.tasks[idx],
-            view = new TaskAssignmentView(player, task);
+            view = new TaskAssignmentView(player, task, true);
         this.remove();
         view.render();
       }

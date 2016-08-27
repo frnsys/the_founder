@@ -47,6 +47,13 @@ class View extends CardsList {
     });
   }
 
+  update() {
+    var self = this;
+    _.each(_.zip(verticals, this.subviews), function(v) {
+      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+    });
+  }
+
   processItem(item) {
     var player = this.player;
     return _.extend({

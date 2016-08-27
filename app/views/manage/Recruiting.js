@@ -42,18 +42,30 @@ class View extends CardsList {
       }
     });
     this.player = player;
+    this.items = _.filter(recruitments, function(i) {
+      return !i.robots || i.robots == player.specialEffects['Automation'];
+    });
   }
 
   render() {
-    var player = this.player,
-        items = _.filter(recruitments, function(i) {
-          return !i.robots || i.robots == player.specialEffects['Automation'];
-        });
     super.render({
-      items: _.map(items, i => _.extend({
-        afford: player.company.cash >= i.cost,
-        noAvailableSpace: player.company.remainingSpace == 0
-      }, i))
+      items: _.map(this.items, this.processItem.bind(this))
+    });
+  }
+
+  processItem(item) {
+    var player = this.player;
+    return _.extend({
+      afford: player.company.cash >= item.cost,
+      noAvailableSpace: player.company.remainingSpace == 0
+    }, item);
+  }
+
+  update() {
+    var self = this;
+    // TODO what if robots become available while viewing the popup?
+    _.each(_.zip(this.items, this.subviews), function(v) {
+      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
     });
   }
 }

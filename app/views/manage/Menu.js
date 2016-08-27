@@ -131,12 +131,10 @@ class Menu extends View {
       $(e.target).closest('li').addClass('selected');
       var v = new view(player, office),
           postRemove = v.postRemove.bind(v);
-      self.pause();
       v.render();
       v.postRemove = function() {
         $('.manage-menu').find('.selected').removeClass('selected');
         postRemove();
-        self.resume();
       };
     }
 }

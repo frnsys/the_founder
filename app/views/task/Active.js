@@ -67,9 +67,9 @@ const productTemplate = item => `
   </figure>
   <div class="task-body">
     <ul class="stats">
-      <li data-tip="Design"><img src="/assets/company/design.png"> ${Math.floor(item.obj.design)}</li>
-      <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${Math.floor(item.obj.marketing)}</li>
-      <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${Math.floor(item.obj.engineering)}</li>
+      <li data-tip="Design"><img src="/assets/company/design.png"> <span class="design-stat">${Math.floor(item.obj.design)}</span></li>
+      <li data-tip="Marketing"><img src="/assets/company/marketing.png"> <span class="marketing-stat">${Math.floor(item.obj.marketing)}</span></li>
+      <li data-tip="Engineering"><img src="/assets/company/engineering.png"> <span class="engineering-stat">${Math.floor(item.obj.engineering)}</span></li>
     </ul>
   </div>
   <div class="task-progress-outer">
@@ -98,19 +98,19 @@ const specialProjectTemplate = item => `
     <li data-tip="Design">
       <img src="/assets/company/design.png">
       <div class="task-progress-outer">
-        <div class="task-progress-inner" style="width:${(item.obj.design/item.obj.required.design)*100}%"></div>
+        <div class="task-progress-inner design-progress" style="width:${(item.obj.design/item.obj.required.design)*100}%"></div>
       </div>
     </li>
     <li data-tip="Marketing">
       <img src="/assets/company/marketing.png">
       <div class="task-progress-outer">
-        <div class="task-progress-inner" style="width:${(item.obj.marketing/item.obj.required.marketing)*100}%"></div>
+        <div class="task-progress-inner marketing-progress" style="width:${(item.obj.marketing/item.obj.required.marketing)*100}%"></div>
       </div>
     </li>
     <li data-tip="Engineering">
       <img src="/assets/company/engineering.png">
       <div class="task-progress-outer">
-        <div class="task-progress-inner" style="width:${(item.obj.engineering/item.obj.required.engineering)*100}%"></div>
+        <div class="task-progress-inner engineering-progress" style="width:${(item.obj.engineering/item.obj.required.engineering)*100}%"></div>
       </div>
     </li>
   </ul>
@@ -153,6 +153,25 @@ class ActiveView extends CardsList {
   render() {
     super.render({
       items: _.map(this.player.company.tasks, this.processItem.bind(this))
+    });
+  }
+
+  update() {
+    _.each(_.zip(this.player.company.tasks, this.subviews), function(v) {
+      var t = v[0],
+          sv = v[1];
+      if (_.contains([Task.Type.Promo, Task.Type.Research, Task.Type.Lobby], t.type)) {
+        sv.el.find('.task-progress-inner').css('width', `${(t.progress/t.requiredProgress)*100}%`);
+      } else if (t.type === Task.Type.Product) {
+        sv.el.find('.task-progress-inner').css('width', `${(t.progress/t.requiredProgress)*100}%`);
+        sv.el.find('.design-stat').text(Math.floor(t.obj.design));
+        sv.el.find('.marketing-stat').text(Math.floor(t.obj.marketing));
+        sv.el.find('.engineering-stat').text(Math.floor(t.obj.engineering));
+      } else if (t.type === Task.Type.SpecialProject) {
+        sv.el.find('.design-progress').css('width', `${(t.obj.design/t.obj.required.design)*100}%`);
+        sv.el.find('.marketing-progress').css('width', `${(t.obj.marketing/t.obj.required.marketing)*100}%`);
+        sv.el.find('.engineering-progress').css('width', `${(t.obj.engineering/t.obj.required.engineering)*100}%`);
+      }
     });
   }
 

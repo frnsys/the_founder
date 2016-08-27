@@ -45,6 +45,10 @@ class ProductsView extends CardsList {
     });
   }
 
+  update() {
+    // TODO
+  }
+
   createListItem(item) {
     return new View({
       tag: 'li',

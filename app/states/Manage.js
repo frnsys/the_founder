@@ -4,6 +4,7 @@ import * as Phaser from 'phaser';
 import $ from 'jquery';
 import _ from 'underscore';
 import Clock from 'app/Clock';
+import Popup from 'views/Popup';
 import HUD from 'views/manage/HUD';
 import Menu from 'views/manage/Menu';
 import Product from 'game/Product';
@@ -29,8 +30,6 @@ class Manage extends Phaser.State {
     this.clock = new Clock(this, this.player, office);
     this.hud = new HUD(this.player);
     this.menu = new Menu(this.player, office);
-    this.menu.pause = this.pause.bind(this);
-    this.menu.resume = this.resume.bind(this);
     this.selectUI = new SelectUI(office, this.showSelection.bind(this));
     this.menu.render();
     this.hud.render();
@@ -64,6 +63,9 @@ class Manage extends Phaser.State {
       this.selectionView.update(this.selectedObject);
     }
     this.player.onboarder.resolve();
+    if (Popup.current && _.isFunction(Popup.current.update)) {
+      Popup.current.update();
+    }
   }
 
   showOffice() {

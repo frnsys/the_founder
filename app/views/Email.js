@@ -13,7 +13,6 @@ function taskTemplate(data) {
     hideActions: true,
     preview: true
   }, data.task);
-  console.log(task);
   return `
     <div class="tasks">
       <ul class="cards">
@@ -52,7 +51,6 @@ function template(data) {
 
 class EmailsView extends Alert {
   constructor(messages, player) {
-    console.log('a new email view');
     super({
       template: template,
       handlers: {
@@ -83,6 +81,8 @@ class EmailsView extends Alert {
     this.messages = _.map(messages, function(m) {
       if (m.action) {
         m.task = Task.init('Event', m.action);
+        m.task.obj.skillVal = 0;
+        m.task.requiredProgress = m.action.due;
       }
       return _.extend({
         company: player.company

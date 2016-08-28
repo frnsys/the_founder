@@ -4,6 +4,9 @@ import util from 'util';
 import Effect from './Effect';
 import Condition from './Condition';
 
+const EMAIL_REPEAT_PROB = 0.001;
+const EMAIL_COUNTDOWN_MIN = 32;
+const EMAIL_COUNTDOWN_MAX = 64;
 
 function template(obj, keys, player) {
   var result = _.clone(obj),
@@ -19,8 +22,6 @@ function template(obj, keys, player) {
   _.each(keys, function(k) {
     result[k] = doT.template(obj[k])(data);
   });
-  console.log('result');
-  console.log(result);
   return result;
 }
 
@@ -31,23 +32,38 @@ const Event = {
     });
   },
 
-  updateEmails: function(player) {
-    console.log(player.emails);
-    var emails = _.filter(player.emails, email => Event.satisfied(email, player));
-    console.log(emails)
+  formatEmail: function(email, player) {
+    return template(email, ['subject', 'from', 'body'], player);
+  },
 
-    // emails are non-repeatable
-    player.emails = _.difference(player.emails, emails);
+  updateEmails: function(player) {
+    var emails = _.filter(player.emails, function(email) {
+      var satisfied = Event.satisfied(email, player);
+      if (email.repeatable) {
+        email.countdown = Math.max(0, email.countdown - 1);
+        return satisfied && email.countdown <= 0 && Math.random <= EMAIL_REPEAT_PROB;
+      } else {
+        return satisfied;
+      }
+    });
 
     // apply email effects
     _.each(emails, function(email) {
       if (email.effects) {
         Effect.applies(email.effects, player);
       }
+      if (email.repeatable) {
+        email.countdown = _.random(EMAIL_COUNTDOWN_MIN, EMAIL_COUNTDOWN_MAX);
+      }
     });
 
+    // some emails are non-repeatable
+    player.emails = _.difference(
+      player.emails,
+      _.filter(emails, e => !e.repeatable));
+
     // apply templates
-    emails = _.map(emails, e => template(e, ['subject', 'from', 'body'], player));
+    emails = _.map(emails, e => this.formatEmail(e, player));
 
     player.current.inbox = emails;
     player.current.emails = player.current.emails.concat(emails);

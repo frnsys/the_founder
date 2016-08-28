@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import Task from 'game/Task';
 import Event from 'game/Event';
 import Board from 'game/Board';
 import Economy from 'game/Economy';
@@ -113,6 +114,11 @@ class Clock {
     // TODO this can probably be combined into one func
     this.office.resetObjectStats();
     this.office.incrementObjectStats();
+
+    // increment event task progresses
+    _.each(
+      _.filter(player.company.tasks, t => t.type == Task.Type.Event),
+      t => Task.tickEvent(t, player.company));
 
     Event.updateEmails(player);
     // Event.updateNews(player);

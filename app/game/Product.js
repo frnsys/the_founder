@@ -5,6 +5,8 @@ const PROGRESS_PER_DIFFICULTY = 100;
 const MAIN_FEATURE_SCALE = 0.1;
 const PRODUCT_FEATURES = [null, 'design', 'engineering', 'marketing'];
 const REVENUE_DECAY = 0.8;
+const NEW_PRODUCT_MULTIPLIER = 1.5;
+
 
 function requiredProgress(difficulty) {
   return Math.exp(difficulty/10) * PROGRESS_PER_DIFFICULTY
@@ -37,7 +39,7 @@ const Product = {
       difficulty: difficulty,
       killsPeople: _.contains(recipe.productTypes, 'Defense'),
       debtsPeople: _.contains(recipe.productTypes, 'Credit'),
-      pollutes: _.intersection(recipe.productTypes, ['Gadget', 'Implant', 'Mobile', 'Wearable', 'Android', 'Defense']).length > 0,
+      pollutes: _.intersection(recipe.productTypes, ['Gadget', 'Implant', 'Mobile', 'Wearable', 'Robot', 'Defense']).length > 0,
       productTypes: _.pluck(productTypes, 'name'),
       verticals: _.uniq(_.pluck(productTypes, 'requiredVertical')),
       effects: recipe.effects,
@@ -54,16 +56,11 @@ const Product = {
   },
 
   launch: function(p, company) {
-    var skill = p.feature != null ? p[p.feature] : 0;
-    skill *= MAIN_FEATURE_SCALE;
-
-    _.each([['health', 'engineering'],
-            ['movement', 'design'],
-            ['strength', 'marketing']], function(v) {
-      p[v[0]] = (p[v[1]]+ skill + company.getProductBonus(v[1], p.vertical))/targetValue(p.difficulty);
-    });
-    p.quantity = Math.round(Math.sqrt(company.hype));
-
+    p.levels = {
+      quantity: 0,
+      strength: 0,
+      movement: 0
+    };
     if (this.onProductLaunch) {
       this.onProductLaunch(p);
     }
@@ -76,21 +73,29 @@ const Product = {
     _.each(['design', 'engineering', 'marketing'], function(name) {
       p[name] *= company.skills[name];
     });
+    // TODO generate dynamically depending on competitor
+    p.levels = {
+      quantity: 2,
+      strength: 2,
+      movement: 2
+    };
     return p;
   },
 
   setRevenue: function(p, marketShares, influencers, player) {
     var hypeMultiplier = (1+player.company.hype/1000),
-        influencerMultiplier = 1 + (influencers.length*0.5);
+        influencerMultiplier = 1 + (influencers.length*0.5),
+        newDiscoveryMuliplier = p.newDiscovery ? NEW_PRODUCT_MULTIPLIER : 1;
     p.earnedRevenue = 0;
     p.revenue = _.reduce(marketShares, function(m,w) {
-      return m + marketShareToRevenue(w.income);
-    }, 0) * player.spendingMultiplier * hypeMultiplier * influencerMultiplier;
+      return m + (marketShareToRevenue(w.income) * p.difficulty);
+    }, 0) * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier;
     return {
       revenue: p.revenue,
       spendingMultiplier: player.spendingMultiplier,
       hypeMultiplier: hypeMultiplier,
-      influencerMultiplier: influencerMultiplier
+      influencerMultiplier: influencerMultiplier,
+      newDiscoveryMuliplier: newDiscoveryMuliplier
     }
   },
 
@@ -100,6 +105,31 @@ const Product = {
     p.revenue *= REVENUE_DECAY;
     p.earnedRevenue += revenue;
     return revenue;
+  },
+
+  // for designing products
+  // TODO these values will need balancing
+  // maybe should depend on the other levels?
+  costs: {
+    quantity: function(product) {
+      return Math.round(Math.pow(product.levels.quantity+1, 2) * Math.sqrt(product.difficulty));
+    },
+    strength: function(product) {
+      return Math.round(Math.pow(product.levels.strength+1, 2) * Math.sqrt(product.difficulty));
+    },
+    movement: function(product) {
+      return Math.round(Math.pow(product.levels.movement+1, 2) * Math.sqrt(product.difficulty));
+    }
+  },
+  levels: {
+    quantity: _.map(_.range(1,11), i => [i,i+1]),
+    strength: _.map(_.range(1,11), i => [i,i+1]),
+    movement: _.map(_.range(1,11), i => [i,i+1])
+  },
+  requiredSkills: {
+    quantity: ['engineering', 'marketing'],
+    strength: ['engineering', 'design'],
+    movement: ['marketing', 'design']
   }
 };
 

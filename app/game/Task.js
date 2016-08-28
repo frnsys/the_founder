@@ -137,6 +137,7 @@ const Task = {
           if (product.effects) {
             Effect.applies(product.effects, company.player);
           }
+          product.newDiscovery = true;
         }
 
         company.productsLaunched++;

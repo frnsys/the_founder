@@ -55,8 +55,8 @@
     text-align: left
     position: relative
     &.selected
-      background: #1948e8
-      color: #fff
+      background: #1948e8 !important
+      color: #fff !important
   button
     width: 100%
   h1
@@ -203,6 +203,8 @@ button.owned
   .cards
     > li
       cursor: pointer
+      background: #515f78
+      color: #fff
       &:hover
         background: #a4b8fb
 
@@ -607,6 +609,7 @@ button.owned
     z-index: 2
   .tab-page
     margin-top: 26em
+    padding-bottom: 26em
   .cards > li,
   .worker-avatar
     height: 19em
@@ -659,3 +662,91 @@ button.owned
 .task-requires
   img
     vertical-align: middle
+
+.product-designer-view
+  background: #515f78
+  color: #fff
+  padding: 2em
+  border-radius: 0.4em
+  margin: 8em auto 0 auto
+  width: 36em
+  height: 30em
+  position: relative
+  .product-designer-combo
+    position: absolute
+    top: 1em
+    right: 1em
+    img
+      width: 72px
+  .subtitle
+    font-weight: normal
+    color: rgba(0,0,0,0.4)
+  .product-new-discovery
+    background: #ff2c2c
+    padding: 0.2em 0.4em
+    display: inline
+    border-radius: 0.2em
+    position: absolute
+    left: -1.5em
+    top: 1em
+  .effects
+    margin-top: 0.2em
+    margin-bottom: 0.4em
+    display: inline-block
+  .product-new-effects
+    margin-top: 1.6em
+  .product-skills
+    margin: 1em 0
+    li
+      display: inline-block
+      margin-right: 2em
+      width: 5em
+      &:first-child
+        width: auto
+    img
+      width: 18px
+      margin-top: -4px
+      vertical-align: middle
+  .product-point
+    width: 0.7em
+    height: 1.5em
+    display: inline-block
+    background: rgba(0,0,0,0.2)
+    &.filled
+      background: #3f84fb
+  .product-points
+    display: inline-block
+    vertical-align: middle
+    margin-top: -4px
+  .product-point-allocator
+    margin: 2em 0
+    h2
+      display: inline-block
+      width: 6em
+      font-weight: normal
+    li
+      margin: 0.5em 0
+  .quantity-stat
+    font-size: 1.4em
+    margin: 0 1.5em
+  .product-pointer-control
+    float: right
+    button
+      display: inline-block
+      padding: 0.2em 0.6em
+      font-weight: bold
+      font-size: 1.3em
+      background: rgba(0, 0, 0, 0.3)
+      color: #fff
+      min-width: auto
+      cursor: pointer !important
+      &:disabled
+        cursor: default !important
+      &:hover
+        background: rgba(0, 0, 0, 0.5)
+  .actions
+    position: static
+    margin-top: 1em
+    button
+      width: 100%
+      border-radius: 0.2em

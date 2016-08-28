@@ -32,6 +32,10 @@ const util = {
   },
 
   slugify: function(str) {
+    // this is so hacky, but ad blockers block the ad product type gif otherwise
+    if (str == 'Ad') {
+      return 'floop';
+    }
     return str.toLowerCase()
       .replace(/\s+/g, '_')           // replace spaces with _
       .replace(/[^\w\-]+/g, '')       // remove all non-word chars

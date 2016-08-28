@@ -3,6 +3,7 @@ import $ from 'jquery';
 import util from 'util';
 import Enums from 'app/Enums';
 import View from 'views/View';
+import Task from 'game/Task';
 import Tooltip from 'views/Tooltip';
 import NewTaskView from 'views/task/New';
 import ActiveTasksView from 'views/task/Active';
@@ -25,9 +26,10 @@ const template = data => `
 `
 
 function hudTaskTemplate(task) {
-  var progress = Math.floor((task.progress/task.requiredProgress) * 100); // TODO diff for special projects
+  var progress = Math.floor((task.progress/task.requiredProgress) * 100), // TODO diff for special projects
+      tip = task.type == Task.Type.Product ? task.obj.combo : task.obj.name;
   return `
-    <div class="hud-task" data-tip="${task.obj.name}">
+    <div class="hud-task" data-tip="${tip}">
       <div class="progress-radial progress-${progress}">
         <div class="overlay"></div>
       </div>

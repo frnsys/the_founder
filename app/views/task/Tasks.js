@@ -127,7 +127,7 @@ const specialProjectTemplate = item => `
   ${actions(item)}
 `;
 
-function emailTemplate(item) {
+function eventTemplate(item) {
   var obj = item.obj,
       success = '',
       failure = '',
@@ -194,6 +194,6 @@ export default {
   Basic: basicTemplate,
   Product: productTemplate,
   SpecialProject: specialProjectTemplate,
-  Email: emailTemplate,
+  Event: eventTemplate,
   Assignees: assignees
 };

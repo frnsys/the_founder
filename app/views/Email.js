@@ -4,19 +4,20 @@ import templ from './Common';
 import Alert from './Alert';
 import Task from 'game/Task';
 import Tasks from './task/Tasks';
+import TaskAssignmentView from './task/Assignment';
 
 function taskTemplate(data) {
-  var task = Task.init('Event', data.action);
-  task = _.extend({
-    workers: [],
-    locations: [],
+  var task = _.extend({
+    workers: _.filter(data.company.workers, w => w.task == data.task.id),
+    locations: _.filter(data.company.locations, l => l.task == data.task.id),
     hideActions: true,
     preview: true
-  }, task);
+  }, data.task);
+  console.log(task);
   return `
     <div class="tasks">
       <ul class="cards">
-        <li class="task-event">${Tasks.Email(task)}</li>
+        <li class="task-event">${Tasks.Event(task)}</li>
       </ul>
     </div>`;
 }
@@ -24,9 +25,10 @@ function taskTemplate(data) {
 function template(data) {
   var button = '<button class="dismiss-alert">OK</button>';
   if (data.action) {
+    var assigned = _.some(data.company.workers, w => w.task == data.task.id) || _.some(data.company.locations, l => l.task == data.task.id);
     button = `
       <button class="assign-email">Assign</button>
-      <button class="dismiss-alert">Dismiss</button>
+      <button class="dismiss-alert">${assigned ? 'OK' : 'Dismiss'}</button>
     `;
   }
   return `
@@ -49,7 +51,8 @@ function template(data) {
 }
 
 class EmailsView extends Alert {
-  constructor(messages, company) {
+  constructor(messages, player) {
+    console.log('a new email view');
     super({
       template: template,
       handlers: {
@@ -62,13 +65,28 @@ class EmailsView extends Alert {
           }
         },
         '.assign-email': function() {
-          // TODO assign
+          var task = this.messages[this.idx].task,
+              view = new TaskAssignmentView(player, task),
+              postRemove = view.postRemove,
+              self = this;
+          self.el.parent().hide();
+          view.postRemove = function() {
+            postRemove.bind(view)();
+            self.el.parent().show();
+            self.render();
+          }
+          view.render()
         }
       }
     });
     this.idx = 0;
     this.messages = _.map(messages, function(m) {
-      return _.extend({company: company}, m);
+      if (m.action) {
+        m.task = Task.init('Event', m.action);
+      }
+      return _.extend({
+        company: player.company
+      }, m);
     });
   }
 

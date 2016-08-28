@@ -58,8 +58,9 @@ class Clock {
         }
 
         if (this.player.current.emails.length > 0) {
+          console.log(this.player);
           var emailPopup = new EmailsView(
-            this.player.current.emails, this.player.company);
+            this.player.current.emails, this.player);
           emailPopup.render();
           this.player.current.emails = [];
         }
@@ -161,7 +162,7 @@ function checkGameOver(player) {
         "value": {"value": "New Game+"}
       }]
     };
-    var emailPopup = new EmailsView([email], player.company);
+    var emailPopup = new EmailsView([email], player);
     emailPopup.render();
     this.manager.gameOver();
   }

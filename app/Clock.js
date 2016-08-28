@@ -55,12 +55,13 @@ class Clock {
           } else {
             this.player.month++;
           }
+        }
 
-          // if (this.player.current.emails.length > 0) {
-          //   var emailPopup = new EmailsView(
-          //     this.player.current.emails, this.player.company);
-          //   emailPopup.render();
-          // }
+        if (this.player.current.emails.length > 0) {
+          var emailPopup = new EmailsView(
+            this.player.current.emails, this.player.company);
+          emailPopup.render();
+          this.player.current.emails = [];
         }
       }
     }
@@ -111,13 +112,14 @@ class Clock {
     // TODO this can probably be combined into one func
     this.office.resetObjectStats();
     this.office.incrementObjectStats();
+
+    Event.updateEmails(player);
+    // Event.updateNews(player);
   }
 
   monthly() {
     var player = this.player;
     player.company.payMonthly();
-    // Event.updateEmails(player);
-    // Event.updateNews(player);
   }
 
   yearly() {

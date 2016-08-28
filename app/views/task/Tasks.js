@@ -1,5 +1,6 @@
 import _ from 'underscore';
 import util from 'util';
+import templ from '../Common';
 import Task from 'game/Task';
 
 const SHOW_N_ASSIGNEES = 5;
@@ -47,25 +48,25 @@ function specialProjectProgress(item) {
   if (!item.hideProgress) {
     return `
     <ul class="task-progresses">
-    <li data-tip="Design">
-      <img src="/assets/company/design.png">
-      <div class="task-progress-outer">
-        <div class="task-progress-inner design-progress" style="width:${(item.obj.design/item.obj.required.design)*100}%"></div>
-      </div>
-    </li>
-    <li data-tip="Marketing">
-      <img src="/assets/company/marketing.png">
-      <div class="task-progress-outer">
-        <div class="task-progress-inner marketing-progress" style="width:${(item.obj.marketing/item.obj.required.marketing)*100}%"></div>
-      </div>
-    </li>
-    <li data-tip="Engineering">
-      <img src="/assets/company/engineering.png">
-      <div class="task-progress-outer">
-        <div class="task-progress-inner engineering-progress" style="width:${(item.obj.engineering/item.obj.required.engineering)*100}%"></div>
-      </div>
-    </li>
-  </ul>`;
+      <li data-tip="Design">
+        <img src="/assets/company/design.png">
+        <div class="task-progress-outer">
+          <div class="task-progress-inner design-progress" style="width:${(item.obj.design/item.obj.required.design)*100}%"></div>
+        </div>
+      </li>
+      <li data-tip="Marketing">
+        <img src="/assets/company/marketing.png">
+        <div class="task-progress-outer">
+          <div class="task-progress-inner marketing-progress" style="width:${(item.obj.marketing/item.obj.required.marketing)*100}%"></div>
+        </div>
+      </li>
+      <li data-tip="Engineering">
+        <img src="/assets/company/engineering.png">
+        <div class="task-progress-outer">
+          <div class="task-progress-inner engineering-progress" style="width:${(item.obj.engineering/item.obj.required.engineering)*100}%"></div>
+        </div>
+      </li>
+    </ul>`;
   }
   return '';
 }
@@ -126,9 +127,73 @@ const specialProjectTemplate = item => `
   ${actions(item)}
 `;
 
+function emailTemplate(item) {
+  var obj = item.obj,
+      success = '',
+      failure = '',
+      info = '';
+  if (obj.success && obj.success.effects) {
+    success = `
+      <div class="email-task-success">
+        <h4>Success</h4>
+        ${templ.effects(obj.success)}
+      </div>
+    `;
+  }
+  if (obj.failure && obj.failure.effects) {
+    failure = `
+      <div class="email-task-failure">
+        <h4>Failure</h4>
+        ${templ.effects(obj.failure)}
+      </div>
+    `;
+  }
+
+  if (item.preview) {
+    info = `
+      <ul class="task-requires">
+        <li class="task-due" data-tip="Time remaining"><img src="assets/company/time.png"> ${item.obj.due} weeks</li>
+        <li class="task-skill" data-tip="Required ${item.obj.required.skill}"><img src="assets/company/${item.obj.required.skill}.png"> ${item.obj.required.val}</li>
+      </ul>
+    `;
+  } else {
+    info = `
+      <ul class="task-progresses">
+        <li data-tip="Time Remaining">
+          <img src="/assets/company/time.png">
+          <div class="task-progress-outer">
+            <div class="task-progress-inner time-progress" style="width:${(item.progress/item.obj.due)*100}%"></div>
+          </div>
+        </li>
+        <li data-tip="Required ${item.obj.required.skill}">
+          <img src="/assets/company/${item.obj.required.skill}.png">
+          <div class="task-progress-outer">
+            <div class="task-progress-inner skill-progress" style="width:${(item.obj.required.val/item.obj.skillVal)*100}%"></div>
+          </div>
+        </li>
+      </ul>`;
+  }
+
+  return `
+    <div class="title">
+      <h3 class="subtitle">${util.enumName(item.type, Task.Type)}</h3>
+      <h1>${item.obj.name}</h1>
+      ${assignees(item)}
+    </div>
+    <div class="task-body">
+      <div class="task-info">
+        ${success}
+        ${failure}
+      </div>
+    </div>
+    ${info}
+    ${actions(item)}`;
+}
+
 export default {
   Basic: basicTemplate,
   Product: productTemplate,
   SpecialProject: specialProjectTemplate,
+  Email: emailTemplate,
   Assignees: assignees
 };

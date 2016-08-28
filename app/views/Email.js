@@ -1,37 +1,51 @@
 import _ from 'underscore';
 import util from 'util';
-import Effect from 'game/Effect';
+import templ from './Common';
 import Alert from './Alert';
+import Task from 'game/Task';
+import Tasks from './task/Tasks';
 
-const mailTemplate = `
-`;
+function taskTemplate(data) {
+  var task = Task.init('Event', data.action);
+  task = _.extend({
+    workers: [],
+    locations: [],
+    hideActions: true,
+    preview: true
+  }, task);
+  return `
+    <div class="tasks">
+      <ul class="cards">
+        <li class="task-event">${Tasks.Email(task)}</li>
+      </ul>
+    </div>`;
+}
 
 function template(data) {
-  var button = '<button>OK</button>';
-  if (data.n_messages > 1) {
+  var button = '<button class="dismiss-alert">OK</button>';
+  if (data.action) {
     button = `
-      <button class="prev" ${data.prev ? '': 'disabled'}>Previous Message</button>
-      <button class="next">Next Message</button>`;
+      <button class="assign-email">Assign</button>
+      <button class="dismiss-alert">Dismiss</button>
+    `;
   }
   return `
-    <div class="alert-message">
+    <div class="alert-message alert-email">
+      <img src="assets/company/mail.png" class="email-icon">
       <div class="email-content">
-        <ul class="email-meta">
-          <li>${data.subject}</li>
-          <li>From: ${data.sender}</li>
-          <li>To: thefounder@${util.slugify(data.company)}.com</li>
-        </ul>
-        </ul>
+        <h3>${data.subject}</h3>
+        <div class="email-from">From: <span class="email-sender">${data.from}</span></div>
+        <div class="email-to">To: <span class="email-recipient">thefounder@${util.slugify(data.company.name)}.com</span></div>
         <div class="email-body">
           ${data.body}
         </div>
-        ${data.effects ? `<ul class="email-effects">${data.effects.map(i => `<li>${Effect.toString(i)}</li>`).join('')}</ul>` : ''}
-        ${data.actions ? `<ul class="email-actions">${data.actions.map(i => `<li>${i.name}</li>`).join('')}</ul>` : ''}
+        ${data.effects.length > 0 ? templ.effects(data) : ''}
       </div>
-      <div class="alert-actions">
+      <div class="alert-actions ${data.action ? 'has-task' : ''}">
         ${button}
       </div>
-    </div>`;
+    </div>
+    ${data.action ? taskTemplate(data) : ''}`;
 }
 
 class EmailsView extends Alert {
@@ -39,7 +53,7 @@ class EmailsView extends Alert {
     super({
       template: template,
       handlers: {
-        '.next': function() {
+        '.dismiss-alert': function() {
           if (this.idx < this.messages.length - 1) {
             this.idx++;
             this.render();
@@ -47,11 +61,8 @@ class EmailsView extends Alert {
             this.remove();
           }
         },
-        '.prev': function() {
-          if (this.idx > 0) {
-            this.idx--;
-            this.render();
-          }
+        '.assign-email': function() {
+          // TODO assign
         }
       }
     });
@@ -62,10 +73,7 @@ class EmailsView extends Alert {
   }
 
   render() {
-    super.render(_.extend({
-      prev: this.idx > 0,
-      n_messages: this.messages.length
-    }, this.messages[this.idx]));
+    super.render(this.messages[this.idx]);
   }
 }
 

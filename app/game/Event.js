@@ -6,7 +6,7 @@ import Condition from './Condition';
 
 
 function template(obj, keys, player) {
-  var result = {},
+  var result = _.clone(obj),
       data = _.extend({
         cofounderSlug: util.slugify(player.company.cofounder.name),
         companySlug: util.slugify(player.company.name),
@@ -19,6 +19,8 @@ function template(obj, keys, player) {
   _.each(keys, function(k) {
     result[k] = doT.template(obj[k])(data);
   });
+  console.log('result');
+  console.log(result);
   return result;
 }
 
@@ -30,7 +32,9 @@ const Event = {
   },
 
   updateEmails: function(player) {
-    var emails = _.filter(player.emails, (email) => Event.satisfied(email, player));
+    console.log(player.emails);
+    var emails = _.filter(player.emails, email => Event.satisfied(email, player));
+    console.log(emails)
 
     // emails are non-repeatable
     player.emails = _.difference(player.emails, emails);
@@ -43,7 +47,7 @@ const Event = {
     });
 
     // apply templates
-    emails = _.map(emails, (e) => template(e, ['subject', 'from', 'body'], player));
+    emails = _.map(emails, e => template(e, ['subject', 'from', 'body'], player));
 
     player.current.inbox = emails;
     player.current.emails = player.current.emails.concat(emails);

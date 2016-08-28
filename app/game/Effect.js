@@ -115,6 +115,10 @@ const Effect = {
           return valueStr + ' to employee engineering skill';
         case 'marketing':
           return valueStr + ' to employee marketing skill';
+        case 'outrage':
+          return valueStr + ' outrage';
+        case 'cash':
+          return valueStr + ' cash';
       }
     } else if (_.isString(effect.value)) {
       switch (effect.type) {

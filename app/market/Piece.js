@@ -40,24 +40,15 @@ class Piece {
 }
 
 class ProductPiece extends Piece {
-  constructor(player, product, strength, health, movement) {
+  constructor(player, product, strength, movement) {
     super(player);
     this.product = product;
     this.name = this.product.name;
     this.spriteName = 'productPiece';
-    this._strength = strength;
-    this.health = health;
+    this.health = strength;
     this.moves = movement;
     this.movement = movement;
-    this.maxHealth = health;
-  }
-
-  get strength() {
-    return this._strength + this.hypeBonus;
-  }
-
-  get hypeBonus() {
-    return Math.round(Math.sqrt(Math.abs(this.owner.hype)) * (this.owner.hype < 0 ? -1 : 1));
+    this.maxHealth = strength;
   }
 }
 

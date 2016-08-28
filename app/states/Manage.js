@@ -14,6 +14,7 @@ import Office from 'office/Office';
 import SelectUI from 'office/Select';
 import ObjectSelectionView from 'views/select/Object';
 import EmployeeSelectionView from 'views/select/Employee';
+import ProductDesignerView from 'views/ProductDesigner';
 
 class Manage extends Phaser.State {
   constructor(game, player) {
@@ -51,17 +52,27 @@ class Manage extends Phaser.State {
   }
 
   enterTheMarket(p) {
-    this.game.state.start('Market', true, false, p);
-    $('#office, .hud, .menu').hide();
-    $('#market').show();
-    if (this.selectionView) {
-      this.selectionView.remove();
-    }
+    var self = this;
+    this.pause();
+    var view = new ProductDesignerView(p),
+      postRemove = view.postRemove.bind(view);
+    view.postRemove = function() {
+      postRemove();
+      $('#office, .hud, .menu').hide();
+      if (self.selectionView) {
+        self.selectionView.remove();
+      }
+      $('#market').show();
+      self.game.state.start('Market', true, false, p);
+    };
+    view.render();
   }
 
   finishedTask(task) {
-    var view = new Alert();
-    view.render({message: `The ${task.obj.name} task finished.`});
+    if (!_.contains([Task.Type.Product, Task.Type.Event], task.type)) {
+      var view = new Alert();
+      view.render({message: `The ${task.obj.name} task finished.`});
+    }
   }
 
   update() {

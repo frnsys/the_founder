@@ -60,6 +60,9 @@ const Effect = {
   marketing: function(player, value, remove) {
     player.company.workerBonuses.marketing += remove ? -value : value;
   },
+  outrage: function(player, value, remove) {
+    player.company.workerBonuses.marketing += remove ? -value : value;
+  },
   product: function(player, value, remove) {
     var bonuses = player.company.productBonuses,
         vertical = value.vertical,

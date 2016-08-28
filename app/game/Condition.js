@@ -31,6 +31,7 @@ const Condition = {
   nTechnologies: (player) => player.company.technologies.length,
   technologies: (player) => player.company.technologies,
   specialProjects: (player) => player.company.specialProjects,
+  verticals: (player) => player.company.verticals,
   economy: (player) => player.economy,
   deathToll: (player) => player.company.deathToll,
   pollution: (player) => player.company.pollution,

@@ -1,12 +1,13 @@
 import Alert from './Alert';
 
 const template = data => `
-<div class="alert-message">
-  ${data.message}
-</div>
-<div class="alert-actions confirm-actions">
-  <button class="no">No</button>
-  <button class="yes">Yes</button>
+<div class="alert-message alert-confirm">
+  <img src="assets/company/confirm.png" class="alert-icon">
+  <p>${data.message}</p>
+  <div class="alert-actions">
+    <button class="no">No</button>
+    <button class="yes">Yes</button>
+  </div>
 </div>
 `
 

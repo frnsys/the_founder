@@ -22,7 +22,6 @@ const pieceInfoTemplate = tile => `
     ${tile.piece.name ? tile.piece.name : 'Generic Product'}
   </span> (moves: ${tile.piece.moves})
   <div>Health: ${healthBar(tile.piece.health, tile.piece.maxHealth)} (${tile.piece.health}/${tile.piece.maxHealth})</div>
-  <div>Strength: ${tile.piece._strength}</div>
 </div>`;
 
 const tileInfoTemplate = tile => `
@@ -63,12 +62,12 @@ class Market extends View {
 
   postRender() {
     super.postRender();
-    $('.market-wrapper').show();
+    $('.market-wrapper, .market-ui').show();
   }
 
   postRemove() {
     super.postRemove();
-    $('.market-wrapper').hide();
+    $('.market-wrapper, .market-ui').hide();
   }
 }
 

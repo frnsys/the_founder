@@ -32,7 +32,7 @@ function template(data) {
   }
   return `
     <div class="alert-message alert-email">
-      <img src="assets/company/mail.png" class="email-icon">
+      <img src="assets/company/mail.png" class="alert-icon">
       <div class="email-content">
         <h3>${data.subject}</h3>
         <div class="email-from">From: <span class="email-sender">${data.from}</span></div>

@@ -114,11 +114,13 @@ class Board {
 
     // randomly distribute remaining player pieces
     // nearby their starting positions
+    console.log(players);
     _.each(players, function(player) {
       _.each(_.rest(player.pieces), function(p) {
         // get a random piece that has been placed
         var piece = _.sample(_.filter(player.pieces, pe => pe.position));
             pos = _.sample(self.adjacentUnoccupiedTilePositions(piece.position));
+        console.log(pos);
         self.placePieceAt(p, pos);
       });
     });

@@ -93,7 +93,7 @@ class IncomeTile extends OwnedTile {
       }
     }
     this.spriteName = 'income' + this.income.toString() + 'Tile';
-    this.description = 'Yields $' + this.revenue() + ' revenue per week.';
+    this.description = ''; // TODO?
 
     switch (this.income) {
       case 0:
@@ -109,9 +109,6 @@ class IncomeTile extends OwnedTile {
         this.name = 'Luxury market share';
         break;
     }
-  }
-  revenue() {
-    return (Math.pow((this.income + 1), 2) * 1000) + (this.bonus() * 500);
   }
   onDoubleClick() {
     super.onDoubleClick();

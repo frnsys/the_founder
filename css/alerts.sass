@@ -6,11 +6,11 @@
   position: relative
   margin: 8em auto 0 auto
   text-align: center
-  width: 360px
+  width: 26em
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2)
   background: #fefefe
   border-radius: 0.4em
-  padding: 2em
+  padding: 2em 2em 1em 2em
 
 .alert-actions button
   border: none !important
@@ -18,7 +18,6 @@
 
 .alert-email
   width: 32em
-  padding-bottom: 1em
   h3
     font-weight: normal
   .email-content
@@ -35,11 +34,12 @@
     border-radius: 0.2em
   .email-body
     margin: 1.5em 0
-  .email-icon
-    position: absolute
-    width: 48px
-    right: -12px
-    top: -18px
+
+.alert-icon
+  position: absolute
+  width: 48px
+  right: -12px
+  top: -18px
 
 .alert-actions
   button
@@ -50,12 +50,9 @@
 .dismiss-alert
   width: 100%
 
-.confirm-actions button, .mentor-actions button
-  width: 50%
-  float: left
-
-.alert-actions button:hover, .confirm-actions button:hover, .mentor-actions button:hover
+.alert-actions button:hover
   color: #3F84FB
 
-.confirm-actions button:disabled, .mentor-actions button:disabled
-  color: #222 !important
+.alert-confirm
+  p
+    margin: 2em 0 3em 0

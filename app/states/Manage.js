@@ -55,10 +55,9 @@ class Manage extends Phaser.State {
     var self = this;
     this.pause();
     var view = new ProductDesignerView(p),
-      postRemove = view.postRemove;
+      postRemove = view.postRemove.bind(view);
     view.postRemove = function() {
       postRemove();
-      console.log('launching into the market');
       $('#office, .hud, .menu').hide();
       if (self.selectionView) {
         self.selectionView.remove();

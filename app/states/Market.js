@@ -18,11 +18,11 @@ const MAX_TURNS = 32,
       PIECE_PROB = 0.2;
 
 function createPieces(player, product) {
-  var nPieces = _.random(Product.levels.quantity[product.levels.quantity]);
+  var nPieces = Product.samplePoint('quantity', product);
 
   return _.times(nPieces, function() {
-    var strength = _.random(Product.levels.strength[product.levels.strength]),
-        movement = _.random(Product.levels.movement[product.levels.movement]);
+    var strength = Product.samplePoint('strength', product),
+        movement = Product.samplePoint('movement', product);
     return new Piece.Product(player, product, strength, movement);
   });
 }

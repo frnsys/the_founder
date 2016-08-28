@@ -130,6 +130,10 @@ const Product = {
     quantity: ['engineering', 'marketing'],
     strength: ['engineering', 'design'],
     movement: ['marketing', 'design']
+  },
+  samplePoint: function(name, product) {
+    var range = this.levels[name][product.levels[name]];
+    return _.random(range[0], range[1]);
   }
 };
 

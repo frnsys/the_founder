@@ -1,0 +1,61 @@
+.alert
+  .tasks
+    font-size: 0.8em
+
+.alert-message
+  position: relative
+  margin: 8em auto 0 auto
+  text-align: center
+  width: 360px
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2)
+  background: #fefefe
+  border-radius: 0.4em
+  padding: 2em
+
+.alert-actions button
+  border: none !important
+  padding: 1.2em 1em
+
+.alert-email
+  width: 32em
+  padding-bottom: 1em
+  h3
+    font-weight: normal
+  .email-content
+    text-align: left
+  .email-from, .email-to
+    font-size: 0.9em
+    color: #555
+    margin: 0.4em 0
+  .email-sender, .email-recipient
+    background: #ddd
+    color: #404040
+    padding: 0.2em 0.3em
+    font-size: 0.85em
+    border-radius: 0.2em
+  .email-body
+    margin: 1.5em 0
+  .email-icon
+    position: absolute
+    width: 48px
+    right: -12px
+    top: -18px
+
+.alert-actions
+  button
+    border-radius: 0.4em
+  &.has-task
+    .dismiss-alert
+      width: auto
+.dismiss-alert
+  width: 100%
+
+.confirm-actions button, .mentor-actions button
+  width: 50%
+  float: left
+
+.alert-actions button:hover, .confirm-actions button:hover, .mentor-actions button:hover
+  color: #3F84FB
+
+.confirm-actions button:disabled, .mentor-actions button:disabled
+  color: #222 !important

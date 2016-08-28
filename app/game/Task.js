@@ -82,14 +82,12 @@ const Task = {
           task.obj.engineering += company.skill('engineering', workers, locations, true);
           break;
         case Type.Event:
-          task.obj.design += scale(company.skill('design', workers, locations));
-          task.obj.marketing += scale(company.skill('marketing', workers, locations));
-          task.obj.engineering += scale(company.skill('engineering', workers, locations));
+          // event progress is incremented separately, each week
+          task.obj.skillVal += scale(company.skill(task.obj.required.skill, workers, locations));
           break;
     }
 
     var finished = false;
-
     if (task.type === Type.SpecialProject) {
       finished = _.every(['design', 'marketing', 'engineering'], n => task.obj[n] >= task.obj.required[n]);
     } else {
@@ -102,6 +100,14 @@ const Task = {
       return true;
     }
     return false;
+  },
+
+  tickEvent: function(task, company) {
+    task.progress += 1;
+    if (task.progress >= task.requiredProgress) {
+      this.finish(task, company);
+      this.remove(task, company);
+    }
   },
 
   remove: function(task, company) {
@@ -160,7 +166,25 @@ const Task = {
         Effect.applies(specialProject.effects, company.player);
         break;
       case Type.Event:
-        // TODO
+        if (task.obj.skillVal >= task.obj.required.val) {
+          if (task.obj.success.effects) {
+            Effect.applies(task.obj.success.effects);
+          }
+          company.player.current.emails.push({
+            'subject': `${task.obj.name} success!`,
+            'from': '{{=it.cofounderSlug}}@{{=it.companySlug}}.com',
+            'body': task.obj.success.body
+          });
+        } else {
+          if (task.obj.failure.effects) {
+            Effect.applies(task.obj.failure.effects);
+          }
+          company.player.current.emails.push({
+            'subject': `${task.obj.name} failed...`,
+            'from': '{{=it.cofounderSlug}}@{{=it.companySlug}}.com',
+            'body': task.obj.failure.body
+          });
+        }
         break;
     }
 

@@ -22,15 +22,6 @@
     left: 0
     right: 0
     top: 0
-  .effects
-    background: #29dc6d
-    color: #222
-    margin: 2em 0
-    padding: 0.3em 0.5em
-    li:first-child
-      margin-top: 0
-    li
-      margin-top: 0.4em
   .close-popup
     font-size: 3em
     position: absolute
@@ -514,18 +505,23 @@ button.owned
         .subtitle
           color: rgba(255,255,255, 0.3)
         .task-progresses
-          img
-            width: 20px
-            height: 20px
-            margin-right: 0.3em
-            display: inline-block
           li
             width: 9.1em
-            display: inline-block
           .task-progress-outer
-            display: inline-block
             width: 6.5em
             background: rgba(100,100,100,0.1)
+      &.task-event
+        background: #f3eec2
+        height: 18em
+        .task-body
+          height: 8.5em
+          padding: 0.7em 0
+        .task-info
+          overflow: hidden
+        .task-progress-outer
+          width: 11em
+          &:first-child
+            margin-right: 1.2em
   .task-body
     height: 10em
     img
@@ -551,7 +547,6 @@ button.owned
 .task-assignees li, .task-extra-assignees
   vertical-align: middle
 
-
 .task-progress-outer,
 .task-progress-inner
   height: 1.2em
@@ -570,6 +565,7 @@ button.owned
   border-radius: 0.25em
   font-size: 1em
   background: #ff2c2c
+  color: #fff
 
 .task-actions
   display: none
@@ -630,3 +626,36 @@ button.owned
       display: inline
       vertical-align: middle
       margin-top: -5px
+
+.email-task-success
+  width: 49%
+  float: left
+  background: #29dc6d
+.email-task-failure
+  width: 50%
+  float: right
+  background: #fb3f3f
+  .effects
+    background: #fb3f3f
+    color: #111
+.email-task-success,
+.email-task-failure
+  height: 7em
+  border-radius: 0.2em
+  h4
+    padding: 0.2em 0.4em
+    color: rgba(0,0,0,0.5)
+
+.task-progresses, .task-requires
+  img
+    width: 20px
+    height: 20px
+    margin-right: 0.3em
+  img, li, .task-progress-outer
+    display: inline-block
+
+.task-due
+  margin-right: 2em
+.task-requires
+  img
+    vertical-align: middle

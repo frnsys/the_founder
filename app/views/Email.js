@@ -1,45 +1,60 @@
 import _ from 'underscore';
 import util from 'util';
-import Effect from 'game/Effect';
+import templ from './Common';
 import Alert from './Alert';
+import Task from 'game/Task';
+import Tasks from './task/Tasks';
+import TaskAssignmentView from './task/Assignment';
 
-const mailTemplate = `
-`;
-
-function template(data) {
-  var button = '<button>OK</button>';
-  if (data.n_messages > 1) {
-    button = `
-      <button class="prev" ${data.prev ? '': 'disabled'}>Previous Message</button>
-      <button class="next">Next Message</button>`;
-  }
+function taskTemplate(data) {
+  var task = _.extend({
+    workers: _.filter(data.company.workers, w => w.task == data.task.id),
+    locations: _.filter(data.company.locations, l => l.task == data.task.id),
+    hideActions: true,
+    preview: true
+  }, data.task);
   return `
-    <div class="alert-message">
-      <div class="email-content">
-        <ul class="email-meta">
-          <li>${data.subject}</li>
-          <li>From: ${data.sender}</li>
-          <li>To: thefounder@${util.slugify(data.company)}.com</li>
-        </ul>
-        </ul>
-        <div class="email-body">
-          ${data.body}
-        </div>
-        ${data.effects ? `<ul class="email-effects">${data.effects.map(i => `<li>${Effect.toString(i)}</li>`).join('')}</ul>` : ''}
-        ${data.actions ? `<ul class="email-actions">${data.actions.map(i => `<li>${i.name}</li>`).join('')}</ul>` : ''}
-      </div>
-      <div class="alert-actions">
-        ${button}
-      </div>
+    <div class="tasks">
+      <ul class="cards">
+        <li class="task-event">${Tasks.Event(task)}</li>
+      </ul>
     </div>`;
 }
 
+function template(data) {
+  var button = '<button class="dismiss-alert">OK</button>';
+  if (data.action) {
+    var assigned = _.some(data.company.workers, w => w.task == data.task.id) || _.some(data.company.locations, l => l.task == data.task.id);
+    button = `
+      <button class="assign-email">Assign</button>
+      <button class="dismiss-alert">${assigned ? 'OK' : 'Dismiss'}</button>
+    `;
+  }
+  return `
+    <div class="alert-message alert-email">
+      <img src="assets/company/mail.png" class="email-icon">
+      <div class="email-content">
+        <h3>${data.subject}</h3>
+        <div class="email-from">From: <span class="email-sender">${data.from}</span></div>
+        <div class="email-to">To: <span class="email-recipient">thefounder@${util.slugify(data.company.name)}.com</span></div>
+        <div class="email-body">
+          ${data.body}
+        </div>
+        ${data.effects.length > 0 ? templ.effects(data) : ''}
+      </div>
+      <div class="alert-actions ${data.action ? 'has-task' : ''}">
+        ${button}
+      </div>
+    </div>
+    ${data.action ? taskTemplate(data) : ''}`;
+}
+
 class EmailsView extends Alert {
-  constructor(messages, company) {
+  constructor(messages, player) {
     super({
       template: template,
       handlers: {
-        '.next': function() {
+        '.dismiss-alert': function() {
           if (this.idx < this.messages.length - 1) {
             this.idx++;
             this.render();
@@ -47,25 +62,36 @@ class EmailsView extends Alert {
             this.remove();
           }
         },
-        '.prev': function() {
-          if (this.idx > 0) {
-            this.idx--;
-            this.render();
+        '.assign-email': function() {
+          var task = this.messages[this.idx].task,
+              view = new TaskAssignmentView(player, task),
+              postRemove = view.postRemove,
+              self = this;
+          self.el.parent().hide();
+          view.postRemove = function() {
+            postRemove.bind(view)();
+            self.el.parent().show();
+            self.render();
           }
+          view.render()
         }
       }
     });
     this.idx = 0;
     this.messages = _.map(messages, function(m) {
-      return _.extend({company: company}, m);
+      if (m.action) {
+        m.task = Task.init('Event', m.action);
+        m.task.obj.skillVal = 0;
+        m.task.requiredProgress = m.action.due;
+      }
+      return _.extend({
+        company: player.company
+      }, m);
     });
   }
 
   render() {
-    super.render(_.extend({
-      prev: this.idx > 0,
-      n_messages: this.messages.length
-    }, this.messages[this.idx]));
+    super.render(this.messages[this.idx]);
   }
 }
 

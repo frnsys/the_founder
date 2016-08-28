@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import Task from 'game/Task';
 import Event from 'game/Event';
 import Board from 'game/Board';
 import Economy from 'game/Economy';
@@ -55,12 +56,14 @@ class Clock {
           } else {
             this.player.month++;
           }
+        }
 
-          // if (this.player.current.emails.length > 0) {
-          //   var emailPopup = new EmailsView(
-          //     this.player.current.emails, this.player.company);
-          //   emailPopup.render();
-          // }
+        if (this.player.current.emails.length > 0) {
+          console.log(this.player);
+          var emailPopup = new EmailsView(
+            this.player.current.emails, this.player);
+          emailPopup.render();
+          this.player.current.emails = [];
         }
       }
     }
@@ -111,13 +114,19 @@ class Clock {
     // TODO this can probably be combined into one func
     this.office.resetObjectStats();
     this.office.incrementObjectStats();
+
+    // increment event task progresses
+    _.each(
+      _.filter(player.company.tasks, t => t.type == Task.Type.Event),
+      t => Task.tickEvent(t, player.company));
+
+    Event.updateEmails(player);
+    // Event.updateNews(player);
   }
 
   monthly() {
     var player = this.player;
     player.company.payMonthly();
-    // Event.updateEmails(player);
-    // Event.updateNews(player);
   }
 
   yearly() {
@@ -159,7 +168,7 @@ function checkGameOver(player) {
         "value": {"value": "New Game+"}
       }]
     };
-    var emailPopup = new EmailsView([email], player.company);
+    var emailPopup = new EmailsView([email], player);
     emailPopup.render();
     this.manager.gameOver();
   }

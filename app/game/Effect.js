@@ -60,6 +60,9 @@ const Effect = {
   marketing: function(player, value, remove) {
     player.company.workerBonuses.marketing += remove ? -value : value;
   },
+  outrage: function(player, value, remove) {
+    player.company.workerBonuses.marketing += remove ? -value : value;
+  },
   product: function(player, value, remove) {
     var bonuses = player.company.productBonuses,
         vertical = value.vertical,
@@ -112,6 +115,10 @@ const Effect = {
           return valueStr + ' to employee engineering skill';
         case 'marketing':
           return valueStr + ' to employee marketing skill';
+        case 'outrage':
+          return valueStr + ' outrage';
+        case 'cash':
+          return valueStr + ' cash';
       }
     } else if (_.isString(effect.value)) {
       switch (effect.type) {

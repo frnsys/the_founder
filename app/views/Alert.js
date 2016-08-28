@@ -15,8 +15,9 @@ const template = data => `
 class Alert extends View {
   constructor(params) {
     super(_.extend({
-      parent: '.alert',
+      parent: '.alert-wrapper',
       template: template,
+      attrs: {class: 'alert'}
     }, params));
     this.registerHandlers({
       '.ok': function() {

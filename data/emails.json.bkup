@@ -1,0 +1,316 @@
+[{
+  "subject": "Bailout",
+  "from": "mentor@{{=it.companySlug}}.com",
+  "body": "Your burn rate is too fast - you need to keep some cash on hand to expand your operations. This time I've managed to get you some emergency funds to keep you going - but this can't happen again.",
+  "effects": [{
+    "type": "cash",
+    "value": 500000
+  }],
+  "conditions": [{
+    "type": "cash",
+    "op": "lt",
+    "val": 0
+  }]
+}, {
+  "subject": "Bonus Investment",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "We did great this quarter! Some other investors are keen to get in on the deal, so I raised another round of funding for us to fund our expansion.",
+  "effects": [{
+    "type": "cash",
+    "value": 50000
+  }],
+  "conditions": [{
+    "type": "board",
+    "op": "ge",
+    "val": 35
+  }]
+}, {
+  "subject": "Further Expansion Opportunities",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "our nearby colonies have allowed us to sustain growth, but even this is not enough. We should look into researching the Alcubierre Drive -- we'll be able to colonize new markets in the distant stars!",
+  "effects": [{
+    "type": "unlocks",
+    "value": {
+      "type": "technologies",
+      "value": "Alcubierre Drive"
+    }
+  }],
+  "conditions": [{
+    "type": "locations",
+    "op": "has",
+    "val": "Mars Colony"
+  }]
+}, {
+  "subject": "Our own state?",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "we've accomplished quite a bit of innovative research, but we could go a lot faster if we were away from ethics boards and other government regulations. you know - we could try establishing our own state offshore, where those regulations can't reach us.",
+  "effects": [{
+    "type": "unlocks",
+    "value": {
+      "type": "locations",
+      "value": "Seasteading State"
+    }
+  }],
+  "conditions": [{
+    "type": "nTechnologies",
+    "op": "gt",
+    "val": 10
+  }]
+}, {
+  "subject": "Climate change = new business opportunity?",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "the earth is not doing so well. people want choice. let's give them that choice. we should start developing space products.",
+  "effects": [{
+    "type": "unlocks",
+    "value": {
+      "type": "productTypes",
+      "value": "Space"
+    }
+  }],
+  "conditions": [{
+    "type": "pollution",
+    "op": "ge",
+    "val": 10000
+  }]
+}, {
+  "subject": "Expansion opportunities",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "We are making money hand-over-fist, and we've already expanded to most of the globe. But we need to keep growing. I bet if we research the Closed Ecologies, we'll be able to terraform nearby planets and develop new market-colonies there!",
+  "effects": [{
+    "type": "unlocks",
+    "value": {
+      "type": "technologies",
+      "value": "Closed Ecologies"
+    }
+  }],
+  "conditions": [{
+    "type": "lifetimeRevenue",
+    "op": "ge",
+    "val": 1000000000
+  }]
+}, {
+  "subject": "One of our ships found aliens!",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "holy shit - one of our convoy ships encountered extraterrestrial life. do you know what this means? an entire untapped market!",
+  "effects": [{
+    "type": "unlocks",
+    "value": {
+      "type": "locations",
+      "value": "Gliese 832c"
+    }
+  }],
+  "conditions": [{
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Interstellar Ship"
+  }]
+}, {
+  "subject": "Government trying to pass regulations",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "The government started discussing regulations to limit our operations. What should we do?",
+  "repeatable": true,
+  "effects": [],
+  "conditions": [{
+    "type": "annualRevenue",
+    "op": "gt",
+    "val": 5000000
+  }],
+  "action": {
+    "name": "Combat regulations",
+    "due": 12,
+    "required": {
+      "marketing": 1000
+    },
+    "failure": {
+      "body": "We weren't able to prevent the regulation -- looks like we'll have to suffer the tax penalties for now.",
+      "effects": [{
+        "type": "taxRate",
+        "value": 0.05
+      }]
+    },
+    "success": {
+      "body": "Fantastic - we pulled some strings and convinced the right people to leave in some exceptions for companies like ours. That regulation won't have any effect on us."
+    }
+  }
+}, {
+  "subject": "Proposed carbon task",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "It looks like there's an upcoming bill enstating a carbon tax that could make things more costly for us. Maybe we should reach out to my friend in DC and pull a few strings?",
+  "effects": [],
+  "conditions": [{
+    "type": "annualRevenue",
+    "op": "gt",
+    "val": 50000000
+  }],
+  "action": {
+    "name": "Combat regulations",
+    "due": 16,
+    "required": {
+      "marketing": 2000
+    },
+    "failure": {
+      "body": "Looks like we weren't able to stop the carbon tax...this will put a dent in our operations...",
+      "effects": [{
+        "type": "taxRate",
+        "value": 0.15
+      }]
+    },
+    "success": {
+      "body": "We managed to get the carbon tax blocked! We shouldn't have any issues with this now."
+    }
+  }
+}, {
+  "subject": "Servers under attack??",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "I just got a report that one of our servers is under attack. It looks like whatever security measures we had before are outdated. We need to take care of this before it gets any worse.",
+  "effects": [],
+  "conditions": [{
+    "type": "verticals",
+    "op": "has",
+    "val": "Information"
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Harden servers",
+    "due": 12,
+    "required": {
+      "engineering": 1000
+    },
+    "failure": {
+      "body": "Shit -- we couldn't harden the servers in time and hackers got through. They just released a big dump of our users' passwords...the media is having a field day.",
+      "effects": [{
+        "type": "outrage",
+        "value": 500
+      }]
+    },
+    "success": {
+      "body": "Our engineers add some extra security -- we can rest easy."
+    }
+  }
+}, {
+ "subject": "Factory suicides",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "There have been a few suicides at one of the factories we use for our hardware. How can we distance ourselves from this?",
+  "effects": [],
+  "conditions": [{
+    "type": "verticals",
+    "op": "has",
+    "val": "Hardware"
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Manage factory condition fallout",
+    "due": 12,
+    "required": {
+      "marketing": 1000
+    },
+    "failure": {
+      "body": "The factory suicide story spun out of our control and now we're taking a huge beating in the press.",
+      "effects": [{
+        "type": "outrage",
+        "value": 500
+      }]
+    },
+    "success": {
+      "body": "We managed to draw more focus to other companies using the same factories, so the heat is off us for the most part. There's still a bit of bad will as a result, but it's not nearly as a bad as it could have been.",
+      "effects": [{
+        "type": "outrage",
+        "value": 10
+      }]
+    }
+  }
+}, {
+ "subject": "Sponsor a learn-to-code initiative?",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "The White House is putting together a campaign to get more kids learning programming in school and they are looking for a partner to help design the program. This could help develop a more talented hiring pool for us.",
+  "effects": [],
+  "conditions": [{
+    "type": "productsLaunched",
+    "op": "gt",
+    "val": 16
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Design coding curriculum",
+    "due": 12,
+    "required": {
+      "design": 1000
+    },
+    "failure": {
+      "body": "We weren't able to develop an effective curriculum...doesn't look like anyone really learned anything."
+    },
+    "success": {
+      "body": "The curriculum was a hit! Kids across the country are learning the joys of web development.",
+      "effects": [{
+        "type": "engineering",
+        "value": 10
+      }]
+    }
+  }
+}, {
+ "subject": "Bus protests",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "A lot of people with too much time on their hands have been going to our bus stops and making a big fuss of things. It's making us look bad and killing employee productivity. Maybe we can design a solution?",
+  "effects": [{
+    "type": "productivity",
+    "value": -10
+  }, {
+    "type": "outrage",
+    "value": 50
+  }],
+  "conditions": [{
+    "type": "perkUpgrades",
+    "op": "has",
+    "val": "Employee Buses"
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Design protest-proof buses",
+    "due": 12,
+    "required": {
+      "design": 1000
+    },
+    "failure": {
+      "body": "Our designers couldn't come up with anything effective. Looks like productivity will have to suffer."
+    },
+    "success": {
+      "body": "Our designers were able to come up with a really clever way to minimize the distraction the protesters cause! Our employees can work on the way to work now!",
+      "effects": [{
+        "type": "productivity",
+        "value": 15
+      }]
+    }
+  }
+}, {
+ "subject": "No compete agreement?",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "I was approached by the CEOs of a few other tech companies - it's just too damn expensive to hire good talent these days. They suggested we coordinate our hiring so none of us are paying more than we should.",
+  "effects": [],
+  "conditions": [{
+    "type": "employees",
+    "op": "gt",
+    "val": 20
+  }],
+  "repeatable": false,
+  "action": {
+    "name": "No compete agreement",
+    "due": 12,
+    "required": {
+      "progress": 1000
+    },
+    "success": {
+      "body": "The no compete agreement's been drafted up and everyone's onboard. This should make hiring less strenous for us!",
+      "effects": [{
+        "type": "wageMultiplier",
+        "value": -0.15
+      }]
+    },
+    "failure": {
+      "body": "Somewhere in the process of sorting out the agreement a reporter got wind of it - people aren't too happy about it...",
+      "effects": [{
+        "type": "outrage",
+        "value": 200
+      }]
+    }
+  }
+}]

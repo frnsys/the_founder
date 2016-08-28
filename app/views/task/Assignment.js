@@ -39,12 +39,12 @@ ${item.task ? `<div class="assigned-task location-task">Assigned: ${item.task.ob
 
 
 class AssignmentView extends CardsList {
-  constructor(player, task, existing) {
+  constructor(player, task) {
     super({
       title: 'Assign Task',
       template: template
     });
-    this.existing = existing || false;
+    this.existing = _.contains(_.pluck(player.company.tasks, 'id'), task.id);
     this.task = task;
     this.player = player;
     this.workers = _.filter(player.company.workers, w => w.task == task.id);
@@ -148,10 +148,13 @@ class AssignmentView extends CardsList {
         case Task.Type.SpecialProject:
           template = Tasks.SpecialProject;
           break;
+        case Task.Type.Event:
+          template = Tasks.Event;
+          break;
     }
     this.taskView = new View({
       tag: 'li',
-      parent: '.tasks .cards',
+      parent: '.assign_task .tasks .cards',
       template: template,
       attrs: attrs
     });

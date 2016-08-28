@@ -7,101 +7,42 @@
     "value": 500000
   }],
   "conditions": [{
-    "type": "cash",
-    "op": "lt",
-    "val": 0
-  }]
-}, {
-  "subject": "Bonus Investment",
-  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
-  "body": "We did great this quarter! Some other investors are keen to get in on the deal, so I raised another round of funding for us to fund our expansion.",
-  "effects": [{
-    "type": "cash",
-    "value": 50000
-  }],
-  "conditions": [{
-    "type": "board",
-    "op": "ge",
-    "val": 35
-  }]
-}, {
-  "subject": "Further Expansion Opportunities",
-  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
-  "body": "our nearby colonies have allowed us to sustain growth, but even this is not enough. We should look into researching the Alcubierre Drive -- we'll be able to colonize new markets in the distant stars!",
-  "effects": [{
-    "type": "unlocks",
-    "value": {
-      "type": "technologies",
-      "value": "Alcubierre Drive"
-    }
-  }],
-  "conditions": [{
-    "type": "locations",
-    "op": "has",
-    "value": "Mars Colony"
-  }]
-}, {
-  "subject": "Our own state?",
-  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
-  "body": "we've accomplished quite a bit of innovative research, but we could go a lot faster if we were away from ethics boards and other government regulations. you know - we could try establishing our own state offshore, where those regulations can't reach us.",
-  "effects": [{
-    "type": "unlocks",
-    "value": {
-      "type": "locations",
-      "value": "Seasteading State"
-    }
-  }],
-  "conditions": [{
-    "type": "nTechnologies",
+    "type": "employees",
     "op": "gt",
-    "value": 10
+    "val": 1
   }]
+
 }, {
-  "subject": "Climate change = new business opportunity?",
+  "subject": "No compete agreement?",
   "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
-  "body": "the earth is not doing so well. people want choice. let's give them that choice. we should start developing space products.",
-  "effects": [{
-    "type": "unlocks",
-    "value": {
-      "type": "productTypes",
-      "value": "Space"
-    }
-  }],
+  "body": "I was approached by the CEOs of a few other tech companies - it's just too damn expensive to hire good talent these days. They suggested we coordinate our hiring so none of us are paying more than we should.",
+  "effects": [],
   "conditions": [{
-    "type": "pollution",
-    "op": "ge",
-    "value": 10000
-  }]
-}, {
-  "subject": "Expansion opportunities",
-  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
-  "body": "We are making money hand-over-fist, and we've already expanded to most of the globe. But we need to keep growing. I bet if we research the Closed Ecologies, we'll be able to terraform nearby planets and develop new market-colonies there!",
-  "effects": [{
-    "type": "unlocks",
-    "value": {
-      "type": "technologies",
-      "value": "Closed Ecologies"
-    }
+    "type": "employees",
+    "op": "gt",
+    "val": 1
   }],
-  "conditions": [{
-    "type": "lifetimeRevenue",
-    "op": "ge",
-    "value": 1000000000
-  }]
-}, {
-  "subject": "One of our ships found aliens!",
-  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
-  "body": "holy shit - one of our convoy ships encountered extraterrestrial life. do you know what this means? an entire untapped market!",
-  "effects": [{
-    "type": "unlocks",
-    "value": {
-      "type": "locations",
-      "value": "Gliese 832c"
+  "repeatable": false,
+  "action": {
+    "name": "No compete agreement",
+    "due": 12,
+    "required": {
+      "skill": "design",
+      "val": 1000
+    },
+    "success": {
+      "body": "The no compete agreement's been drafted up and everyone's onboard. This should make hiring less strenous for us!",
+      "effects": [{
+        "type": "wageMultiplier",
+        "value": -0.15
+      }]
+    },
+    "failure": {
+      "body": "Somewhere in the process of sorting out the agreement a reporter got wind of it - people aren't too happy about it...",
+      "effects": [{
+        "type": "outrage",
+        "value": 200
+      }]
     }
-  }],
-  "conditions": [{
-    "type": "specialProjects",
-    "op": "has",
-    "val": "Interstellar Ship"
-  }]
+  }
 }]

@@ -45,3 +45,35 @@
   .onboarding-location
     width: 100%
     height: auto
+
+.mentor
+  width: 200px
+  position: absolute
+  margin-left: -18em
+  margin-top: -3em
+
+.mentor-message, .event
+  text-align: left
+  line-height: 1.4
+
+.mentor-message
+  font-size: 1.2em
+  padding: 3.5em 2em 3.5em 3em
+  height: 14em
+  em
+    color: #fff
+    background: #3f84fb
+    padding: 0.1em 0.3em
+
+@keyframes pulse
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.02)
+  100%
+    transform: scale(1)
+
+.pulse
+  animation-name: pulse
+  animation-duration: 0.6s
+  animation-iteration-count: infinite

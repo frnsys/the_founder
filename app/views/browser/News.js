@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import util from 'util';
-import Effect from 'game/Effect';
 import View from 'views/View';
 
 const newsArticleTemplate = (data, image) => `
@@ -59,6 +58,7 @@ class NewsView extends View {
     if (data.news != this.news) {
       super.render(data);
     }
+    this.el.find('.clock').text(`${util.enumName(data.month, Enums.Month)}, ${data.year}`);
   }
 }
 

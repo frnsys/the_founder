@@ -2,14 +2,10 @@ import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import Enums from 'app/Enums';
-import Datamap from 'datamaps';
 import Popup from '../Popup';
 import News from './News';
 import CMail from './Mail';
-import CherublistTemplate from './Cherublist';
-import map from 'data/map.json';
-import markets from 'data/markets.json';
-import locations from 'data/locations.json';
+import Cherublist from './Cherublist';
 
 const template = data => `
 <div class="computer">
@@ -32,9 +28,7 @@ const template = data => `
       </div>
   </div>
   <div class="viewport overview">
-    <div class="cherublist site">
-      ${CherublistTemplate(data)}
-    </div>
+    <div class="cherublist site"></div>
     <div class="news site"></div>
     <div class="mail site"></div>
   </div>
@@ -65,34 +59,6 @@ class Browser extends Popup {
     super.postRender();
     var player = this.player;
     this.el.find('.tabbar li:first').addClass('selected');
-
-    var marketPercents = _.object(
-      _.map(_.keys(markets), function(m) {
-        return m.toLowerCase();
-      }),
-      _.map(_.values(markets), function(m) {
-        var locationsForMarket = _.where(locations, {market: m}),
-            ownedLocationsForMarket = _.where(player.company.locations, {market: m}),
-            marketPercent = ownedLocationsForMarket.length/locationsForMarket.length;
-        if (!marketPercent) {
-          return 'rgba(0,0,0,0.1)';
-        }
-        return 'rgba(255,53,53,'+marketPercent+')';
-      })
-    );
-
-    var datamap = new Datamap({
-      element: document.getElementById('map'),
-      fills: _.extend({
-        defaultFill: 'rgba(0,0,0,0.1)'
-      }, marketPercents),
-      data: map, // country fill keys, mapped to continents
-      geographyConfig: {
-        hideAntarctica: false,
-        popupOnHover: false,
-        highlightOnHover: false
-      }
-    });
   }
 
   render() {
@@ -104,13 +70,17 @@ class Browser extends Popup {
 
     this.newsView = new News();
     this.newsView.render(data);
+
+    this.cherublistView = new Cherublist(this.player);
+    this.cherublistView.render(data);
   }
 
   update() {
     var data = this.player.snapshot;
     this.el.find('.clock').text(`${util.enumName(data.month, Enums.Month)}, ${data.year}`);
     this.mailView.update(data);
-    // this.newsView.update(data);
+    this.newsView.update(data);
+    this.cherublistView.update(data);
   }
 }
 

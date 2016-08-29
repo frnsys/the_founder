@@ -80,18 +80,19 @@ class Company {
     _.each(this.workers, w => Worker.updateBurnout(w, self));
   }
 
-  skill(name, workers, locations, scaleByProductivity) {
+  skill(name, workers, locations, scaleByProductivity, ignoreBurnout) {
     // company bonus from workers are applied for each worker
     var self = this,
         player = this.player,
         workers = workers || this.workers,
         locations = locations || this.locations,
-        scaleByProductivity = scaleByProductivity || false;
+        scaleByProductivity = scaleByProductivity || false,
+        ignoreBurnout = ignoreBurnout || false;
     var companyBonusFromWorkers = _.reduce(workers, function(m, w) {
       return m + Worker.companyBonus(w, name);
     }, 0);
     var fromWorkers = Math.max(0, _.reduce(workers, function(m, w) {
-      if (w.burnout > 0) {
+      if (w.burnout > 0 && !ignoreBurnout) {
         return m;
       } else {
         return m + ((Worker[name](w, player) + companyBonusFromWorkers) * (scaleByProductivity ? Worker.productivity(w, player) : 1));

@@ -2,7 +2,6 @@ import _ from 'underscore';
 import Tile from './Tile';
 import Position from './Position';
 
-const debug = false; // TODO move this to part of the proper debugger
 
 const evenAdjacentPositions = [
   new Position(-1, -1), // upper left
@@ -66,7 +65,7 @@ class Board {
       this.grid.push(row);
     }
 
-    if (debug) {
+    if (this.game.debugger) {
       this.texts = [];
     }
 
@@ -151,7 +150,7 @@ class Board {
     this.tileGroup.x = offsetX + this.tileWidth;
     this.tileGroup.y = offsetY - this.tileHeight/2;
 
-    if (debug) {
+    if (this.texts) {
       _.each(this.texts, function(text) {
         self.tileGroup.add(text);
       });
@@ -227,7 +226,7 @@ class Board {
       }
     }
 
-    if (debug) {
+    if (this.texts) {
       var text = this.game.add.text(coord.x, coord.y, pos.col.toString() + "," + pos.row.toString());
       this.texts.push(text);
     }

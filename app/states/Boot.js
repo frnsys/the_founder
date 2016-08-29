@@ -26,6 +26,7 @@ class Boot extends Phaser.State {
 
     if (DEBUG) {
       Debug.setupCompany(Manager.player);
+      Manager.game.debugger = Debug;
     }
 
     var game = Manager.game,

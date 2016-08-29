@@ -61,15 +61,6 @@ function handleTarget(gui, mesh, px, py, pz) {
     mesh.line.geometry.vertices[1].z = lookPoint.z;
     mesh.line.geometry.verticesNeedUpdate = true;
   });
-
-  var actions = {
-    goTo: function() {
-      var employee = _.sample(self.office.employees);
-      // TODO this is probably broken
-      employee.goTo(mesh.target.positions[mesh.index]);
-    }
-  };
-  gui.add(actions, 'goTo');
 }
 
 

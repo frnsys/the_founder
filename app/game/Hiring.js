@@ -1,5 +1,21 @@
+/*
+ * Hiring
+ * - workers are assigned a score based on their aggregate skill level
+ * - recruitment strategies return a random set of workers within a particular range of scores
+ *   - these workers must be "on the market"
+ * - the "Purchase Robots" recruitment strategy returns only robots, the rest return only people
+ * - candidates accept a salary offer with some probability depending on the offer
+ *   - negotiation dialogue options influence this probability
+ *    - what effect dialogue options have depends on the candidate's personality
+ *    - this personality is hidden unless the player's "Worker Insight" is true
+ *    - negotiation dialogue options may require a particular perk upgrade
+ *   - if the offer fails, the candidate goes "off the market" for some number of weeks
+ */
+
 import _ from 'underscore';
+import util from 'util';
 import Worker from './Worker';
+import negotiations from 'data/negotiations.json';
 
 const SCORE_RANGE = 6;
 const BASE_PROB = 0.8;
@@ -61,6 +77,11 @@ const Hiring = {
     } else {
       return 1;
     }
+  },
+  negotiationOptions: function(company) {
+    return _.map(_.filter(negotiations, function(n) {
+      return !n.requiresPerk || util.containsByName(company.perks, n.requiresPerk);
+    }), n => _.clone(n));
   }
 };
 

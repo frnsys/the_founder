@@ -1,3 +1,8 @@
+/*
+ * Agent
+ * - an office entity that can move to targets
+ */
+
 import _ from 'underscore';
 import Loader from './Loader';
 import * as THREE from 'three';

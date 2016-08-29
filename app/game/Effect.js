@@ -1,3 +1,9 @@
+/*
+ * Effect
+ * - applies or removes effects to the player & company
+ * - provides a string representation of an effect
+ */
+
 import _ from 'underscore';
 import util from 'util';
 

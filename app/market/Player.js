@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 class Player {
   constructor(company, human, color) {
     this.human = human;

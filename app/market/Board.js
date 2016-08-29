@@ -1,3 +1,12 @@
+/*
+ * Board
+ * - manages tile placement
+ * - manages tile interaction
+ * - manages tile visualization
+ * - manages piece movement
+ * - board size is a function of player company locations and markets
+ */
+
 import _ from 'underscore';
 import Tile from './Tile';
 import Position from './Position';
@@ -34,8 +43,9 @@ function manhattanDistance(pos1, pos2) {
 
 
 class Board {
-  constructor(nTiles, rows, cols, players, game) {
+  constructor(company, rows, cols, players, game) {
     var self = this;
+    var nTiles = 24 + company.locations.length + 3 * company.markets.length;
     this.tileWidth = 104;
     this.tileHeight = 88;
     this.cols = cols;

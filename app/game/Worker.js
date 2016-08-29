@@ -1,3 +1,21 @@
+/*
+ * Worker
+ * - initializes workers
+ * - computes worker bonuses from their attributes
+ * - computes worker skill values, including bonuses
+ *   - from their own attributes
+ *   - from their company
+ *   - in the case of happiness, other external factors are included
+ * - sets a worker's last tweet
+ * - handles worker growth (gradual/stochastic improvement in skills while hired)
+ * - computes worker min salary
+ * - manages worker burnout risk and status
+ *   - if they are not burntout
+ *     - worker burnout risk gradually increases according to base burnout rate and bonuses
+ *     - rolls for burnout, if it happens, worker is burnout for some weeks
+ *   - otherwise, decrement their burnout
+ */
+
 import _ from 'underscore';
 import Condition from './Condition';
 import thoughts from 'data/thoughts.json';

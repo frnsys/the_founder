@@ -1,3 +1,8 @@
+/*
+ * Competitor
+ * - generates a competing product given a competitor and a player's product
+ */
+
 import _ from 'underscore';
 import Product from './Product';
 

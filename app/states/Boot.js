@@ -1,3 +1,8 @@
+/*
+ * Boot
+ * - initialization state of the game
+ */
+
 import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';

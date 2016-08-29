@@ -1,3 +1,9 @@
+/*
+ * Player
+ * - the central data object of the game
+ * - anything that is to be persisted must be attached to the Player
+ */
+
 import _ from 'underscore';
 import util from 'util';
 import Enums from './Enums';

@@ -1,3 +1,8 @@
+/*
+ * Debug
+ * - sets up a company to test with
+ */
+
 import _ from 'underscore';
 import util from 'util';
 import OfficeDebugger from './Office';
@@ -15,14 +20,8 @@ const Debug = {
     player.unlocked.specialProjects = util.byNames(specialProjects, ['Mars Colony']);
     player.company.locations = util.byNames(locations, ['New York']);
     player.company.cofounder = cofounders[0];
-    player.company.workers.push(player.workers[0]);
-    player.company.workers.push(player.workers[1]);
-    player.company.workers.push(player.workers[2]);
-    player.company.workers.push(player.workers[3]);
-    player.company.workers.push(player.workers[4]);
-    player.company.workers.push(player.workers[5]);
-    player.company.workers[0].salary = 80000;
-    // player.company.workers[0].productivity = 80000;
+    player.company.workers = player.workers.slice(0,5);
+    _.each(player.company.workers, w => w.salary = 40000);
     player.company.discoveredProducts = ['AI.Defense', 'Gadget.Space', 'Entertainment.Space'];
     player.company.productTypes = util.byNames(productTypes, ['Ad', 'AI', 'Gadget', 'Analytics']);
     // player.company.activeProducts = [{

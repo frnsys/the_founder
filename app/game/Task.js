@@ -1,3 +1,34 @@
+/*
+ * Task
+ * - something that employees (includes workers and locations) are assigned to work on over time
+ * - have a required progress, resolve once required progress is completed
+ * - Product
+ *   - is progressed with productivity
+ *   - accumulates design, engineering, and marketing points (scaled by required progress)
+ * - Lobby
+ *   - is progressed with marketing
+ *   - has company-wide effects
+ * - Special Projects
+ *   - is progressed with design, engineering, and marketing
+ *   - has company-wide effects
+ *   - requires discovered products (recipes)
+ * - Research
+ *   - is progressed with engineering and design
+ *     - engineering has a greater influence than design
+ *   - has company-wide effects
+ *   - requires a particular vertical
+ *   - may require other techs
+ * - Promo
+ *   - is progressed with productivity
+ *   - accmulates hype from design and marketing (scaled by required progress)
+ *     - marketing has a greater influence than design
+ * - Event
+ *   - has a fixed countdown (in weeks)
+ *   - the Clock increments the progress accordingly
+ *   - has some skill value that is accumulated
+ * - the scaling for Product and Promo development is so players can't exploit low productivity employees with high skill values (which would lead to higher accumulated points than high productivity high skill value emplyees)
+ */
+
 import _ from 'underscore';
 import Promo from './Promo';
 import Effect from './Effect';
@@ -174,6 +205,7 @@ const Task = {
         company.specialProjects.push(specialProject);
         Effect.applies(specialProject.effects, company.player);
         break;
+
       case Type.Event:
         if (task.obj.skillVal >= task.obj.required.val) {
           if (task.obj.success.effects) {

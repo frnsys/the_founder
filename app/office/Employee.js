@@ -1,3 +1,8 @@
+/*
+ * Employee
+ * - agent representing a company employee
+ */
+
 import _ from 'underscore';
 import Agent from './Agent';
 import Loader from './Loader';

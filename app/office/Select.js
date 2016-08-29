@@ -1,3 +1,8 @@
+/*
+ * SelectUI
+ * - manages selection of in-office entities
+ */
+
 import * as THREE from 'three';
 
 class SelectUI {

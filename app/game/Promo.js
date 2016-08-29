@@ -1,3 +1,12 @@
+/*
+ * Promo (Hype)
+ * - promos increase company hype
+ * - hype decays over time
+ * - outrage affects how fast hype decays
+ *   - it increases with certain factors
+ *   - it decreases with higher forgetting rates
+ */
+
 import _ from 'underscore';
 
 const HYPE_DECAY_RATE = 0.9;

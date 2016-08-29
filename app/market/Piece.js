@@ -1,3 +1,13 @@
+/*
+ * Piece
+ * - the combat units in the Market
+ * - can capture tiles
+ * - can attack other pieces
+ * - have limited number of moves per turn
+ * - have strength/health
+ * - belong to a particular player
+ */
+
 import _ from 'underscore';
 import Product from 'game/Product';
 

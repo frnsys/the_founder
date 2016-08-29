@@ -1,3 +1,9 @@
+/*
+ * Onboarding
+ * - shows onboarding ('Mentor') messages when its associated conditions are satisfied
+ * - if a UI selector is specified, it is highlighted (pulsed), which stops on click
+ */
+
 import $ from 'jquery';
 import _ from 'underscore';
 import Popup from 'views/Popup';

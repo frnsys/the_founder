@@ -1,3 +1,8 @@
+/*
+ * Office Debugger
+ * - renders hidden elements of the office view
+ */
+
 import _ from 'underscore';
 import * as THREE from 'three';
 

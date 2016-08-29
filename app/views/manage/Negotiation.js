@@ -5,8 +5,6 @@ import templ from '../Common';
 import Worker from 'game/Worker';
 import Hiring from 'game/Hiring';
 import Popup from 'views/Popup';
-import negotiations from 'data/negotiations.json';
-
 
 const template = function(data) {
   var result;
@@ -62,9 +60,7 @@ class View extends Popup {
     this.player = player;
     this.worker = worker;
     this.hiringView = hiringView;
-    this.negotiations = _.map(_.filter(negotiations, function(n) {
-      return !n.requiresPerk || util.containsByName(player.company.perks, n.requiresPerk);
-    }), n => _.clone(n));
+    this.negotiations = Hiring.negotiationOptions(player.company);
     this.salaryMods = [];
     this.sampleOptions();
     this.offer = 50000;

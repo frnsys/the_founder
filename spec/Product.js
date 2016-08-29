@@ -59,29 +59,29 @@ describe('Product', function() {
 
   describe('creation', function() {
     it('is created from two product types (good combo)', function() {
-      var product = Product.create(goodCombo, company);
+      var product = Product.create(goodCombo);
       expect(product.recipeName).toEqual('Ad.Analytics');
     });
 
     it('is created from two product types (bad combo)', function() {
-      var product = Product.create(badCombo, company);
+      var product = Product.create(badCombo);
       expect(product.recipeName).toEqual('Default');
     });
 
     it('has a name if a good combo', function() {
-      var product = Product.create(goodCombo, company);
+      var product = Product.create(goodCombo);
       expect(product.name).not.toEqual('Junk');
     });
 
     it('has difficulty aggregate of its product types', function() {
-      var product = Product.create(goodCombo, company);
+      var product = Product.create(goodCombo);
       expect(product.difficulty).toEqual(2);
     });
 
     it('has required progress based on difficulty', function() {
-      var product1 = Product.create(goodCombo, company);
+      var product1 = Product.create(goodCombo);
       goodCombo[0].difficulty = 5;
-      var product2 = Product.create(goodCombo, company);
+      var product2 = Product.create(goodCombo);
       expect(product2.requiredProgress).toBeGreaterThan(product1.requiredProgress);
     });
   });

@@ -1,3 +1,11 @@
+/*
+ * The Board
+ * - sets annual profit target
+ * - has a mood (happiness) which fluctuates according to profit growth
+ *   - mood worsens if the player fails to meet the profit target
+ *   - if the mood is too bad for too long, the player loses
+ */
+
 const DESIRED_GROWTH = 0.12;
 const epsilon = 1e-12;
 const Board = {

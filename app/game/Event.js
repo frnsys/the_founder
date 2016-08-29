@@ -1,3 +1,15 @@
+/*
+ * Event
+ * - only occur when conditions are satisfied
+ * - emails
+ *   - may have effects
+ *   - may have an associated task
+ *   - may be repeatable, scheduled to repeat at some random time later
+ * - news
+ *   - may be repeatable
+ *   - if not enough "real" news is available, filler news is provided
+ */
+
 import doT from 'dot';
 import _ from 'underscore';
 import util from 'util';

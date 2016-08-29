@@ -1,3 +1,9 @@
+/*
+ * The Market
+ * - manages the initialization of The Market minigame (players, pieces, board)
+ * - manages turns, game end, and UI for The Market
+ */
+
 import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';
@@ -72,11 +78,10 @@ class TheMarket extends Phaser.State {
     createPieces(this.humanPlayer, this.product);
     createPieces(this.aiPlayer, competitorProduct);
 
-    var nTiles = 24 + this.player.company.locations.length + 3 * this.player.company.markets.length;
-    this.board = new Board(nTiles, 13, 14, this.players, this.game);
+    this.board = new Board(this.player.company, 13, 14, this.players, this.game);
     this.AI = new AI(this.board, this.aiPlayer);
 
-    // setup income tile descriptions'
+    // setup income tile descriptions
     _.each(this.board.incomeTiles, function(t) {
       t.description = `Capture cost: ${t.baseCost}<br>Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, self.product))} revenue`;
     });

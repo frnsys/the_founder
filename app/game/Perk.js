@@ -1,3 +1,10 @@
+/*
+ * Perk
+ * - upgradable, but may require a certain level of office
+ * - has company-wide effects
+ * - has decorative stats
+ */
+
 import util from 'util';
 import _ from 'underscore';
 

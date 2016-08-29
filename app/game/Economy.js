@@ -1,3 +1,9 @@
+/*
+ * Economy
+ * - affected by economic stability
+ * TODO
+ */
+
 import _ from 'underscore';
 import Enums from 'app/Enums';
 

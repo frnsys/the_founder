@@ -1,3 +1,31 @@
+/*
+ * Company
+ * - pays salaries, rent, and taxes
+ *   - taxes paid vary according to a player variable
+ * - aggregates skills across all employees (incl. locations)
+ *   - burntout workers do not contribute
+ * - has an Office level
+ *   - upgradeable
+ *   - affects employee size limit
+ * - has Locations
+ *   - are purchased
+ *   - have company-wide effects
+ *   - give access to new markets
+ *   - cost rent
+ *   - contribute skills to the company (like an employee; worker bonuses apply)
+ * - has Acquisitions
+ *   - are purchased
+ *   - have company-wide effects
+ *   - disables associated competitors
+ *   - generates revenue
+ * - has Verticals
+ *   - are purchased
+ *   - provides access to new product types and research
+ * - has Product Types
+ *   - are purchased
+ * - also has Perks, Special Projects, Lobbies, and Research (technologies), all of which are paid for
+ */
+
 import util from 'util';
 import _ from 'underscore';
 import Task from './Task';
@@ -264,7 +292,7 @@ class Company {
   }
 
   startProduct(productTypes) {
-    var product = Product.create(productTypes, this);
+    var product = Product.create(productTypes);
     return Task.init('Product', product);
   }
 

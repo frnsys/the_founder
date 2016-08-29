@@ -1,3 +1,10 @@
+/*
+ * Tile
+ * - has a type (Empty, Income, or Influencer)
+ * - Income & Influencer tiles can have an owner/be captured
+ * - Income tiles have an income level
+ */
+
 import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';

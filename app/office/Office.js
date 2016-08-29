@@ -1,3 +1,11 @@
+/*
+ * Office
+ * - the 3D view of the office
+ * - has employees
+ * - has perks (including agents and objekts)
+ * - has non-perk objekts as well (e.g. chairs)
+ */
+
 import $ from 'jquery';
 import _ from 'underscore';
 import * as THREE from 'three';

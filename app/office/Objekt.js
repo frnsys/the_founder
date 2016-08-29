@@ -1,3 +1,11 @@
+/*
+ * Objekt
+ * - a static but interactable object in the office
+ * - has some set of positions
+ *   - each can be occupied by a single agent
+ * - named such to avoid conflict with JS's Object
+ */
+
 import _ from 'underscore';
 import Loader from './Loader';
 

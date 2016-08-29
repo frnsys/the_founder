@@ -28,13 +28,19 @@ class Alert extends View {
 
   postRender() {
     super.postRender();
-    Manager.pause();
+    var state = Manager.game.state.states[Manager.game.state.current];
+    if (_.isFunction(state.pause)) {
+      state.pause();
+    }
     $('.alert-wrapper').show();
   }
 
   postRemove() {
     super.preRemove();
-    Manager.resume();
+    var state = Manager.game.state.states[Manager.game.state.current];
+    if (_.isFunction(state.resume)) {
+      state.resume();
+    }
     $('.alert-wrapper').hide();
   }
 }

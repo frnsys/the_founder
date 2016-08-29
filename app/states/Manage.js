@@ -1,3 +1,8 @@
+/*
+ * Manage
+ * - the main state of the game (office view)
+ */
+
 import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';

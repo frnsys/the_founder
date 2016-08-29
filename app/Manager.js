@@ -1,3 +1,9 @@
+/*
+ * Manager
+ * - handles new games
+ * - handles saving & loading
+ */
+
 import 'pixi';
 import 'p2';
 import _ from 'underscore';
@@ -72,18 +78,6 @@ const Manager = {
       highScore = 0;
     }
     return highScore;
-  },
-  pause: function() {
-    var state = this.game.state.states[this.game.state.current];
-    if (_.isFunction(state.pause)) {
-      state.pause();
-    }
-  },
-  resume: function() {
-    var state = this.game.state.states[this.game.state.current];
-    if (_.isFunction(state.resume)) {
-      state.resume();
-    }
   }
 };
 

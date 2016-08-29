@@ -1,3 +1,8 @@
+/*
+ * Sandbox
+ * - sets up an office with editable objects
+ */
+
 import _ from 'underscore';
 import dat from 'dat-gui';
 import Debug from './Debug';

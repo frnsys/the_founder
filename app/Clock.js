@@ -1,3 +1,15 @@
+/*
+ * Clock
+ * - manages all time in the game (weeks, months, years)
+ * - schedules periodic functions from other modules
+ * - can be paused & resumed
+ * - handles annual reports, death, and checking for a game over
+ *   - game over occurs when the board becomes too unhappy
+ *   - soft "game over" when player dies (after a specific year)
+ *     - their son inherits the company and nothing else changes
+ *     - the Immortal special effect negates this death
+ */
+
 import _ from 'underscore';
 import util from 'util';
 import Task from 'game/Task';

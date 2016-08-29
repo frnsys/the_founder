@@ -1,16 +1,19 @@
+/*
+ * AI
+ * - fairly simple competitor AI
+ * - composed of two components: strategic (high-level tasks) and tactical (low-level actions)
+ * - ultimate goal of the game is to capture as many valuable (income) tiles as possible
+ * - priority of tasks:
+ *   - defend threatened tiles
+ *   - capture tiles
+ */
+
 import _ from 'underscore';
 import Tile from './Tile';
 import Piece from './Piece';
 import Board from './Board';
 import Product from 'game/Product';
 
-/*
- * ultimate goal of the game is to capture as many valuable (income) tiles as possible.
- * priority of tasks:
- * - defend threatened tiles
- * - capture tiles
- * the AI is composed of two components: strategic (high-level tasks) and tactical (low-level actions)
- */
 
 class AI {
   constructor(board, player) {

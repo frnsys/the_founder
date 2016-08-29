@@ -1,3 +1,23 @@
+/*
+ * Product
+ * - created by combining two product types
+ * - some product types combinations correspond to "recipes"; (successes) others are failures
+ * - some recipes have effects which occur upon first discovery
+ * - are developed as a Product Task
+ * - periodically generate revenue
+ *   - revenue decays over time
+ *   - revenue generated depends on
+ *     - market share captured
+ *     - influencers captured
+ *     - product difficulty
+ *     - hype
+ *     - consumer spending multiplier
+ *     - if the product is a new discovery
+ * - are allocated levels to Market qualities (quantity, strength, movement)
+ *   - each requires points from a particular skill (design, engineering, marketing)
+ *   - each requires more points as levels increase (nonlinear)
+ */
+
 import _ from 'underscore';
 import productRecipes from 'data/productRecipes.json';
 
@@ -17,7 +37,7 @@ function targetValue(difficulty) {
 }
 
 const Product = {
-  create: function(productTypes, company) {
+  create: function(productTypes) {
     var recipeName = _.map(
       _.sortBy(productTypes, function(pt) { return pt.name }),
       function(pt) {return pt.name}).join('.');
@@ -43,7 +63,6 @@ const Product = {
       engineering: 0,
       design: 0,
       feature: PRODUCT_FEATURES[recipe.feature],
-      owner: company,
       description: recipe.description,
       combo: _.pluck(productTypes, 'name').join(' + '),
       progress: 0,
@@ -64,6 +83,7 @@ const Product = {
     return p;
   },
 
+  // revenue management
   setRevenue: function(p, marketShares, influencers, player) {
     var hypeMultiplier = (1+player.company.hype/1000),
         influencerMultiplier = 1 + (influencers.length*0.5),
@@ -82,13 +102,15 @@ const Product = {
       newDiscoveryMuliplier: newDiscoveryMuliplier
     }
   },
-
   getRevenue: function(p) {
     var range = p.revenue * 0.1,
         revenue = Math.max(0, _.random(p.revenue - range, p.revenue + range));
     p.revenue *= REVENUE_DECAY;
     p.earnedRevenue += revenue;
     return revenue;
+  },
+  marketShareToRevenue: function(incomeLevel, product) {
+    return Math.pow((incomeLevel + 1), 2) * 1000 * product.difficulty;
   },
 
   // for the product designer
@@ -116,9 +138,6 @@ const Product = {
   samplePoint: function(name, product) {
     var range = this.levels[name][product.levels[name]];
     return _.random(range[0], range[1]);
-  },
-  marketShareToRevenue: function(incomeLevel, product) {
-    return Math.pow((incomeLevel + 1), 2) * 1000 * product.difficulty;
   }
 };
 

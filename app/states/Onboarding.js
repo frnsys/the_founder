@@ -1,3 +1,8 @@
+/*
+ * Onboarding
+ * - manages new company setup
+ */
+
 import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';

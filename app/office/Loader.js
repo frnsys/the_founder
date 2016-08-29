@@ -1,3 +1,8 @@
+/*
+ * Loader
+ * - loads objects, meshes, and textures
+ */
+
 import _ from 'underscore';
 import * as THREE from 'three';
 

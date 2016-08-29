@@ -1,3 +1,8 @@
+/*
+ * Condition
+ * - evaluates whether or not a set of conditions are satisfied
+ */
+
 import util from 'util';
 
 const Condition = {

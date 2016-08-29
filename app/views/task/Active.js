@@ -5,7 +5,7 @@ import Task from 'game/Task';
 import Tasks from './Tasks';
 import templ from '../Common';
 import View from 'views/View';
-import Confirm from 'views/Confirm';
+import Confirm from 'views/alerts/Confirm';
 import CardsList from 'views/CardsList';
 import TaskAssignmentView from './Assignment';
 

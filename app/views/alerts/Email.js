@@ -1,10 +1,10 @@
 import _ from 'underscore';
 import util from 'util';
-import templ from './Common';
+import templ from '../Common';
 import Alert from './Alert';
 import Task from 'game/Task';
-import Tasks from './task/Tasks';
-import TaskAssignmentView from './task/Assignment';
+import Tasks from '../task/Tasks';
+import TaskAssignmentView from '../task/Assignment';
 
 function taskTemplate(data) {
   var task = _.extend({

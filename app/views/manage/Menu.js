@@ -2,7 +2,6 @@ import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import View from 'views/View';
-import Confirm from 'views/Confirm';
 import Employees from './Employees';
 import Locations from './Locations';
 import Acquisitions from './Acquisitions';
@@ -13,6 +12,7 @@ import Verticals from './Verticals';
 import ProductTypes from './ProductTypes';
 import Browser from '../browser/Browser.js';
 import Settings from './Settings';
+import Confirm from 'views/alerts/Confirm';
 
 const menuItems = [
   ['locations', 'Locations'],

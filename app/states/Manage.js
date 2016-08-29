@@ -7,7 +7,7 @@ import Clock from 'app/Clock';
 import Popup from 'views/Popup';
 import HUD from 'views/manage/HUD';
 import Menu from 'views/manage/Menu';
-import Alert from 'views/Alert';
+import Alert from 'views/alerts/Alert';
 import Task from 'game/Task';
 import Product from 'game/Product';
 import Office from 'office/Office';

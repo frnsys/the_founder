@@ -7,12 +7,12 @@ import util from 'util';
 import AI from 'market/AI';
 import Tile from 'market/Tile';
 import Board from 'market/Board';
-import Player from 'market/Player';
-import Confirm from 'views/Confirm';
-import MarketReport from 'views/MarketReport';
-import MarketView from 'views/Market';
-import Product from 'game/Product';
 import Piece from 'market/Piece';
+import Player from 'market/Player';
+import Product from 'game/Product';
+import MarketView from 'views/Market';
+import Confirm from 'views/alerts/Confirm';
+import MarketReport from 'views/alerts/MarketReport';
 
 const MAX_TURNS = 32,
       PIECE_PROB = 0.2;

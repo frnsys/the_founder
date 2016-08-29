@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import _ from 'underscore';
-import View from './View';
+import View from '../View';
 import Manager from 'app/Manager';
 
 const template = data => `

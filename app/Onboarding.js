@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import Popup from 'views/Popup';
-import Mentor from 'views/Mentor';
+import Mentor from 'views/alerts/Mentor';
 import Condition from 'game/Condition';
 
 class Onboarding {

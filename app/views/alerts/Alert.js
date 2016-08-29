@@ -8,7 +8,7 @@ const template = data => `
   ${data.message}
 </div>
 <div class="alert-actions">
-  <button class="ok">Ok</button>
+  <button class="dismiss-alert">Ok</button>
 </div>
 `
 
@@ -20,7 +20,7 @@ class Alert extends View {
       attrs: {class: 'alert'}
     }, params));
     this.registerHandlers({
-      '.ok': function() {
+      '.dismiss-alert': function() {
         this.remove();
       }
     });

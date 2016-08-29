@@ -32,12 +32,7 @@ const template = data => `
 class MarketReport extends Alert {
   constructor() {
     super({
-      template: template,
-      handlers: {
-        '.dismiss-alert': function() {
-          this.remove();
-        }
-      }
+      template: template
     });
   }
 }

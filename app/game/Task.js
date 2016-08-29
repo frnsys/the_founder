@@ -83,7 +83,7 @@ const Task = {
           task.progress = _.reduce(['design', 'marketing', 'engineering'], (m,n) => m + (task.obj[n]/task.obj.required[n]), 0)/3;
           break;
         case Type.Event:
-          // event progress is incremented separately, each week
+          // event progress is incremented separately by the Clock, each week
           task.obj.skillVal += scale(company.skill(task.obj.required.skill, workers, locations));
           break;
     }
@@ -149,8 +149,10 @@ const Task = {
         var hype = task.obj.hype;
         if (Math.random() < Promo.MAJOR_SUCCESS_PROB) {
           hype *= Promo.MAJOR_SUCCESS_MULT;
+          task.obj.success = 'major';
         } else if (Math.random() < Promo.MINOR_SUCCESS_PROB) {
           hype *= Promo.MINOR_SUCCESS_MULT;
+          task.obj.success = 'minor';
         }
         company.hype += hype;
         break;

@@ -7,7 +7,6 @@ import Clock from 'app/Clock';
 import Popup from 'views/Popup';
 import HUD from 'views/manage/HUD';
 import Menu from 'views/manage/Menu';
-import Alert from 'views/alerts/Alert';
 import Task from 'game/Task';
 import Product from 'game/Product';
 import Office from 'office/Office';
@@ -15,6 +14,7 @@ import SelectUI from 'office/Select';
 import ObjectSelectionView from 'views/select/Object';
 import EmployeeSelectionView from 'views/select/Employee';
 import ProductDesignerView from 'views/ProductDesigner';
+import TaskCompleteView from 'views/alerts/TaskComplete';
 
 class Manage extends Phaser.State {
   constructor(game, player) {
@@ -70,8 +70,8 @@ class Manage extends Phaser.State {
 
   finishedTask(task) {
     if (!_.contains([Task.Type.Product, Task.Type.Event], task.type)) {
-      var view = new Alert();
-      view.render({message: `The ${task.obj.name} task finished.`});
+      var view = new TaskCompleteView(task);
+      view.render();
     }
   }
 
@@ -92,7 +92,7 @@ class Manage extends Phaser.State {
     this.office = new Office(this.player.company.office, this.player.company, function() {
       _.each(self.player.company.perks, self.office.addPerk.bind(self.office));
       _.each(self.player.company.workers, self.office.addEmployee.bind(self.office));
-      self.office.incrementObjectStats();
+      self.office.updateObjectStats();
     });
     this.office.render();
     return this.office;

@@ -26,6 +26,7 @@ The following icons are from [paomedia](http://www.iconarchive.com/artist/paomed
 - `assets/company/news.png`
 - `assets/company/time.png`
 - `assets/company/market.png`
+- `assets/company/completed.png`
 
 ---
 

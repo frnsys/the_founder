@@ -78,7 +78,7 @@ class TheMarket extends Phaser.State {
 
     // setup income tile descriptions'
     _.each(this.board.incomeTiles, function(t) {
-      t.description = `Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, self.product))} revenue`;
+      t.description = `Capture cost: ${t.baseCost}<br>Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, self.product))} revenue`;
     });
 
     this.view = new MarketView({

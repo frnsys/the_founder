@@ -218,7 +218,6 @@ class Board {
     tile.position = pos;
 
     if (tile.baseCost) {
-      // TODO color text according to capturer
       tile.text = this.game.add.text(12, this.tileHeight - 24, (tile.baseCost - tile.capturedCost).toString(), {fill: '#ffffff', stroke: '#000000', strokeThickness: 6});
       tile.sprite.addChild(tile.text);
       if (!tile.capturedCost) {

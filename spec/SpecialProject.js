@@ -65,6 +65,16 @@ describe('SpecialProject', function() {
     });
   });
 
+  it('increases progress when developed', function() {
+    company.discoveredProducts = specialProject.requiredProducts;
+    var task = company.startSpecialProject(specialProject);
+    company.startTask(task, company.workers, []);
+    expect(task.progress).toEqual(0);
+    expect(task.requiredProgress).toEqual(1);
+    company.develop();
+    expect(task.progress).toBeGreaterThan(0);
+  });
+
   it('is saved when developed', function() {
     expect(company.specialProjects.length).toEqual(0);
     company.discoveredProducts = specialProject.requiredProducts;

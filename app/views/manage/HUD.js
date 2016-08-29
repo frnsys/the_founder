@@ -26,7 +26,7 @@ const template = data => `
 `
 
 function hudTaskTemplate(task) {
-  var progress = Math.floor((task.progress/task.requiredProgress) * 100), // TODO diff for special projects
+  var progress = Math.floor((task.progress/task.requiredProgress) * 100),
       tip = task.type == Task.Type.Product ? task.obj.combo : task.obj.name;
   return `
     <div class="hud-task" data-tip="${tip}">
@@ -186,7 +186,7 @@ class HUD extends View {
         v.remove();
       } else {
         var task = tasks[id],
-            progress = Math.floor((task.progress/task.requiredProgress) * 100); // TODO diff for special projects
+            progress = Math.floor((task.progress/task.requiredProgress) * 100);
         v.el.find('.progress-radial').attr('class', `progress-radial progress-${progress}`);
       }
       return exists;

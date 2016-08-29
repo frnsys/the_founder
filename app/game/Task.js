@@ -26,7 +26,7 @@ const Task = {
       id: uuid(),
       type: Type[type],
       progress: 0,
-      requiredProgress: obj.requiredProgress,
+      requiredProgress: obj.requiredProgress || 1,
       obj: obj
     };
     return task;
@@ -80,6 +80,7 @@ const Task = {
           task.obj.design += company.skill('design', workers, locations, true);
           task.obj.marketing += company.skill('marketing', workers, locations, true);
           task.obj.engineering += company.skill('engineering', workers, locations, true);
+          task.progress = _.reduce(['design', 'marketing', 'engineering'], (m,n) => m + (task.obj[n]/task.obj.required[n]), 0)/3;
           break;
         case Type.Event:
           // event progress is incremented separately, each week

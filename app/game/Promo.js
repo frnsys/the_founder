@@ -5,7 +5,6 @@ const HYPE_DECAY_RATE = 0.9;
 const Promo = {
   init: function(promo) {
     return _.extend({
-      progress: 0,
       requiredProgress: promo.power * 100,
       hype: 0
     }, promo);

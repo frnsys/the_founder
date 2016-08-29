@@ -108,6 +108,7 @@ const Event = {
         });
       })
     }
+    news = news.reverse();
 
     player.current.news = {
       mainArticle: news.pop(),

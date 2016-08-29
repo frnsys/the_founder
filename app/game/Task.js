@@ -68,7 +68,7 @@ const Task = {
           break;
         case Type.Promo:
           task.progress += company.skill('productivity', workers, locations);
-          task.obj.hype += (scale(company.skill('marketing', workers, locations)) + scale(company.skill('design', workers, locations)/3)) * task.obj.power;
+          task.obj.hype += (scale(company.skill('marketing', workers, locations)) + scale(company.skill('design', workers, locations)/3)) * Math.pow(task.obj.power,2);
           break;
         case Type.Research:
           task.progress += company.skill('engineering', workers, locations) + company.skill('design', workers, locations)/3;

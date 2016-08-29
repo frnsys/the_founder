@@ -16,8 +16,8 @@ var news = [{
 }, {
   "article": {
     "image": "assets/news/foo.jpg",
-    "title": "{{=it.company.name}} foo",
-    "body": "{{=it.company.name}} bar"
+    "title": "{{=it.company.name}} special",
+    "body": "{{=it.company.name}} special"
   },
   "conditions": [{
     "type": "cash",
@@ -39,17 +39,18 @@ var emails = [{
     "val": 0
   }]
 }];
-var expectedEmail = {
-  "subject": "DEFAULTCORP",
-  "from": "mentor@defaultcorp.com",
-  "body": "DEFAULTCORP"
-};
+var expectedEmail = _.clone(emails[0]);
+expectedEmail.subject = "DEFAULTCORP";
+expectedEmail.from = "mentor@defaultcorp.com";
+expectedEmail.body = "DEFAULTCORP";
 var expectedArticles = [{
   "title": "DEFAULTCORP",
-  "body": "DEFAULTCORP"
+  "body": "DEFAULTCORP",
+  "image": "assets/news/foo.jpg",
 }, {
-  "title": "DEFAULTCORP foo",
-  "body": "DEFAULTCORP bar"
+  "title": "DEFAULTCORP special",
+  "body": "DEFAULTCORP special",
+  "image": "assets/news/foo.jpg",
 }];
 
 
@@ -65,44 +66,45 @@ describe('Event', function() {
   });
 
   describe('news', function() {
-    it('only triggers when conditions are satisfied', function() {
+    it('has filler news when no conditions are satisfied', function() {
       expect(player.current.news).toEqual({});
 
       Event.updateNews(player);
-      expect(player.current.news).toEqual({
-        mainArticle: undefined,
-        topArticles: [],
-        articles: []
-      });
 
+      var news = player.current.news;
+      expect(news.mainArticle).not.toBeUndefined();
+      expect(news.topArticles).not.toEqual([]);
+      expect(news.topArticles).not.toBeUndefined();
+      expect(news.articles).not.toEqual([]);
+      expect(news.articles).not.toBeUndefined();
+
+      _.each(expectedArticles, function(exp) {
+        expect(news.mainArticle).not.toEqual(exp);
+        _.each(news.topArticles, a => expect(a).not.toEqual(exp));
+        _.each(news.articles, a => expect(a).not.toEqual(exp));
+      });
+    });
+
+    it('triggers non-filler news when conditions are satisfied', function() {
       player.company.cash = 1000;
       Event.updateNews(player);
-      expect(player.current.news).toEqual({
-        mainArticle: expectedArticles[0],
-        topArticles: [],
-        articles: []
-      });
+      expect(player.current.news.mainArticle).toEqual(expectedArticles[0])
     });
 
     it('prioritizes special articles', function() {
       player.company.cash = 10000;
       Event.updateNews(player);
-      expect(player.current.news).toEqual({
-        mainArticle: expectedArticles[0],
-        topArticles: [expectedArticles[1]],
-        articles: []
-      });
+      expect(player.current.news.mainArticle).toEqual(expectedArticles[1]);
+      expect(player.current.news.topArticles[0]).toEqual(expectedArticles[0]);
     });
 
     it('does not repeat special articles and repeats non-special articles', function() {
       player.company.cash = 10000;
       Event.updateNews(player);
       Event.updateNews(player);
-      expect(player.current.news).toEqual({
-        mainArticle: expectedArticles[0],
-        topArticles: [],
-        articles: []
-      });
+      expect(player.current.news.mainArticle).toEqual(expectedArticles[0]);
+      _.each(news.topArticles, a => expect(a).not.toEqual(expectedArticles[1]));
+      _.each(news.articles, a => expect(a).not.toEqual(expectedArticles[1]));
     });
   });
 

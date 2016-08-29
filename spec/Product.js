@@ -130,63 +130,6 @@ describe('Product', function() {
       createProduct();
       expect(player.spendingMultiplier).toEqual(val);
     });
-
-    it('generates health based on engineering', function() {
-      var product = createProduct(),
-          val = product.health;
-      expect(val).not.toEqual(undefined);
-      company.workers[0].engineering = 1000;
-      product = createProduct();
-      expect(product.health).toBeGreaterThan(val);
-    });
-
-    it('generates movement based on design', function() {
-      var product = createProduct(),
-          val = product.movement;
-      expect(val).not.toEqual(undefined);
-      company.workers[0].design = 1000;
-      product = createProduct();
-      expect(product.movement).toBeGreaterThan(val);
-    });
-
-    it('generates strength based on marketing', function() {
-      var product = createProduct(),
-          val = product.strength;
-      expect(val).not.toEqual(undefined);
-      company.workers[0].marketing = 1000;
-      product = createProduct();
-      expect(product.strength).toBeGreaterThan(val);
-    });
-
-    it('generates stats based on difficulty', function() {
-      _.each(['strength', 'movement', 'health'], function(name) {
-      var product = createProduct(),
-          val = product[name];
-
-        var task = company.startProduct(goodCombo);
-        company.startTask(task, company.workers, []);
-        product = task.obj;
-        product.difficulty = 1000;
-        company.workers[0].productivity = product.requiredProgress;
-        company.develop();
-        expect(product[name]).toBeLessThan(val);
-      });
-    });
-  });
-
-  it('generates stats influenced by main product feature', function() {
-    _.each(['strength', 'movement', 'health'], function(name) {
-      var product = createProduct(),
-          val = product[name];
-
-      var task = company.startProduct(goodCombo);
-      company.startTask(task, company.workers, []);
-      product = task.obj;
-      product[product.feature] = 1000;
-      company.workers[0].productivity = product.requiredProgress;
-      company.develop();
-      expect(product[name]).toBeGreaterThan(val);
-    });
   });
 
   it('creates a competitor version of the product', function() {
@@ -205,6 +148,20 @@ describe('Product', function() {
       expect(p.revenue).toBe(undefined);
       Product.setRevenue(p, marketShares, influencers, player);
       expect(p.revenue).not.toBe(undefined);
+    });
+
+    it('is affected by product difficulty', function() {
+      var p = createProduct(),
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
+      p.difficulty = 1;
+      Product.setRevenue(p, marketShares, influencers, player);
+      var val = p.revenue;
+
+      p = createProduct();
+      p.difficulty = 2;
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeGreaterThan(val);
     });
 
     it('is affected by spending multiplier', function() {

@@ -173,7 +173,6 @@ class Office {
         aspect = width/height,
         D = 1;
 
-    console.log($('main').innerWidth());
     this.renderer = new THREE.WebGLRenderer({
       alpha: true,
       antialias: false,

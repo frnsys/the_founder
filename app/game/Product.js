@@ -64,20 +64,6 @@ const Product = {
     return p;
   },
 
-  createCompetitorProduct: function(p, company) {
-    var p = _.clone(p);
-    _.each(['design', 'engineering', 'marketing'], function(name) {
-      p[name] *= company.skills[name];
-    });
-    // TODO generate dynamically depending on competitor
-    p.levels = {
-      quantity: 2,
-      strength: 2,
-      movement: 2
-    };
-    return p;
-  },
-
   setRevenue: function(p, marketShares, influencers, player) {
     var hypeMultiplier = (1+player.company.hype/1000),
         influencerMultiplier = 1 + (influencers.length*0.5),
@@ -105,9 +91,7 @@ const Product = {
     return revenue;
   },
 
-  // for designing products
-  // TODO these values will need balancing
-  // maybe should depend on the other levels?
+  // for the product designer
   costs: {
     quantity: function(product) {
       return Math.round(Math.pow(product.levels.quantity+1, 2) * Math.sqrt(product.difficulty));

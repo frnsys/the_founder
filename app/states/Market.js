@@ -10,6 +10,7 @@ import Board from 'market/Board';
 import Piece from 'market/Piece';
 import Player from 'market/Player';
 import Product from 'game/Product';
+import Competitor from 'game/Competitor';
 import MarketView from 'views/Market';
 import Confirm from 'views/alerts/Confirm';
 import MarketReport from 'views/alerts/MarketReport';
@@ -60,7 +61,7 @@ class TheMarket extends Phaser.State {
 
     var competitor = _.sample(this.player.competitors);
     console.log('competitor is: ' + competitor.name);
-    var competitorProduct = Product.createCompetitorProduct(this.product, competitor);
+    var competitorProduct = Competitor.createProduct(this.product, competitor);
     this.players = [
       new Player(this.player.company, true, 0x8888ff),
       new Player(competitor, false, 0xff6666)

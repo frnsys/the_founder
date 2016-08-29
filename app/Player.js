@@ -58,20 +58,7 @@ class Player {
       economy: Enums.Economy.Neutral,
       nextEconomy: Enums.Economy.Neutral,
 
-      competitors: _.map(competitors, function(competitor) {
-        competitor = _.clone(competitor);
-        competitor.productTypes = util.byNames(productTypes, competitor.productTypes);
-        competitor.cash = 10000000;
-
-        // TODO generate these manually or scale for difficulty
-        competitor.design = 10;
-        competitor.engineering = 10;
-        competitor.marketing = 10;
-        competitor.productivity = 10;
-
-        return competitor;
-      }),
-
+      competitors: competitors,
       workers: _.map(workers, function(w) {
         return Worker.init(w, false);
       }),

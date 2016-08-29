@@ -132,14 +132,6 @@ describe('Product', function() {
     });
   });
 
-  it('creates a competitor version of the product', function() {
-    var p = createProduct(),
-        cp = Product.createCompetitorProduct(p, competitor);
-    _.each(['design', 'engineering', 'marketing'], function(name) {
-      expect(p[name]).not.toEqual(cp[name]);
-    });
-  });
-
   describe('revenue', function() {
     it('is based on market shares captured', function() {
       var p = createProduct(),
@@ -214,6 +206,21 @@ describe('Product', function() {
       var val = p.revenue;
       Product.getRevenue(p);
       expect(p.revenue).toBeLessThan(val);
+    });
+  });
+
+  describe('skills', function() {
+    it('should be more costly at higher levels', function() {
+      _.each(['quantity', 'strength', 'movement'], function(n) {
+        var p = createProduct(),
+            cost;
+        p.levels[n] = 0;
+        cost = Product.costs[n](p);
+        expect(cost).toBeGreaterThan(0);
+
+        p.levels[n] = 1;
+        expect(Product.costs[n](p)).toBeGreaterThan(cost);
+      });
     });
   });
 });

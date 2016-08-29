@@ -9,7 +9,7 @@ import Tile from 'market/Tile';
 import Board from 'market/Board';
 import Player from 'market/Player';
 import Confirm from 'views/Confirm';
-import Alert from 'views/Alert';
+import MarketReport from 'views/MarketReport';
 import MarketView from 'views/Market';
 import Product from 'game/Product';
 import Piece from 'market/Piece';
@@ -163,16 +163,15 @@ class TheMarket extends Phaser.State {
     var marketShares = _.filter(this.humanPlayer.tiles, t => t instanceof Tile.Income),
         influencers = _.filter(this.humanPlayer.tiles, t => t instanceof Tile.Influencer);
     var results = Product.setRevenue(this.product, marketShares, influencers, this.player);
+    results.marketShare = this.percentMarketShare().human;
+
     this.view.remove();
     this.player.save();
     $('body').css('background-image', 'none');
     $('#market').removeClass('market-active');
 
-    var alert = new Alert();
-    alert.render({
-      message: `We made ${util.formatCurrency(results.revenue)} revenue in the first week (x${results.spendingMultiplier} consumer spending bonus + x${results.hypeMultiplier} hype bonus + x${results.influencerMultiplier} social media influencer bonus).`
-    });
-
+    var report = new MarketReport();
+    report.render(results);
     this.game.state.start('Manage');
   }
 

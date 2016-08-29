@@ -87,10 +87,12 @@ const Product = {
         influencerMultiplier = 1 + (influencers.length*0.5),
         newDiscoveryMuliplier = p.newDiscovery ? NEW_PRODUCT_MULTIPLIER : 1;
     p.earnedRevenue = 0;
-    p.revenue = _.reduce(marketShares, function(m,w) {
+    var baseRevenue = _.reduce(marketShares, function(m,w) {
       return m + (marketShareToRevenue(w.income) * p.difficulty);
-    }, 0) * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier;
+    }, 0)
+    p.revenue = baseRevenue * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier;
     return {
+      baseRevenue: baseRevenue,
       revenue: p.revenue,
       spendingMultiplier: player.spendingMultiplier,
       hypeMultiplier: hypeMultiplier,

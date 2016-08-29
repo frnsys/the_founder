@@ -19,6 +19,16 @@ The license that came with the model has it under a different (non-existent) use
 
 ---
 
+The following icons are from [paomedia](http://www.iconarchive.com/artist/paomedia.html), released in the Public Domain:
+
+- `assets/company/confirm.png`
+- `assets/company/mail.png`
+- `assets/company/news.png`
+- `assets/company/time.png`
+- `assets/company/market.png`
+
+---
+
 For easier serialization, all data that needs to be un/serialized (i.e. loaded/saved) should be kept at the top-level of the `player` (which keeps track of the more general game world state) or `company`. No objects should save a reference to the `player` or `company` except for the `Manager` - references to either of these should be passed in as needed. This is to avoid circular references.
 
 ---

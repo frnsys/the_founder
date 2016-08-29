@@ -7,6 +7,7 @@ import Economy from 'game/Economy';
 import Worker from 'game/Worker';
 import Condition from 'game/Condition';
 import EmailsView from 'views/Email';
+import MarketReport from 'views/MarketReport';
 
 const SECONDS_PER_WEEK = 10 * 30;
 const WEEKS_PER_MONTH = 4;
@@ -48,6 +49,19 @@ class Clock {
       if (this.frames % SECONDS_PER_WEEK === 0) {
         this.player.week++;
         this.weekly();
+
+
+        console.log('rendering');
+        var report = new MarketReport();
+        report.render({
+          baseRevenue: 10000,
+          revenue: 10000000,
+          spendingMultiplier: 1.5,
+          hypeMultiplier: 3.5,
+          influencerMultiplier: 2.5,
+          newDiscoveryMuliplier: 2,
+          marketShare: 20
+        });
 
         if (this.player.week >= WEEKS_PER_MONTH) {
           this.player.week = 0;

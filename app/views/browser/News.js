@@ -1,20 +1,65 @@
-const newsArticleTemplate = data => `
-  <img src="${data.image}">
+import $ from 'jquery';
+import util from 'util';
+import Effect from 'game/Effect';
+import View from 'views/View';
+
+const newsArticleTemplate = (data, image) => `
+  ${image ? `<img src="${data.image}">` : ''}
   <h3>${data.title}</h3>
+  <p>${data.body}</p>
+`;
+
+const otherNewsArticleTemplate = data => `
+  <h3>${data.title}</h3>
+  <img src="${data.image}">
   <p>${data.body}</p>
 `;
 
 const template = data => `
 <div class="site-header">
-  <h1>The Times Journal</h1>
-  <h5>The best of the journalism.</h5>
+  <img src="assets/news/logo.svg">
+  <ul class="news-meta">
+    <li>The best of the journalism.</li>
+    <li class="clock"></li>
+  </ul>
+  <ul class="news-sections">
+    <li>World</li>
+    <li>U.S.</li>
+    <li>Business</li>
+    <li>Tech</li>
+    <li>Science</li>
+    <li>Health</li>
+    <li>Culture</li>
+    <li>Life</li>
+    <li>Opinion</li>
+  </ul>
 </div>
 <div class="site-body">
   <div class="news-header">
-    ${data.news.mainArticle ? `<article class="news-main-article">${newsArticleTemplate(data.news.mainArticle)}</article>` : 'no news today'}
-    ${data.news.topArticles ? `<div class="news-header-right">${data.news.topArticles.map(i => `<article>${newsArticleTemplate(i)}</article>`).join('')}</div>` : ''}
+    <article class="news-main-article">${newsArticleTemplate(data.news.mainArticle, true)}</article>
+    <div class="news-header-right">${data.news.topArticles.map(i => `<article>${newsArticleTemplate(i, false)}</article>`).join('')}</div>
   </div>
-    ${data.news.articles ? `<div class="news-other-articles">${data.news.articles.map(i => `<article>${newsArticleTemplate(i)}</article>`).join('')}</div>` : ''}
+  <div class="news-other-articles">${data.news.articles.map(i => `<article>${otherNewsArticleTemplate(i)}</article>`).join('')}</div>
 </div>`;
 
-export default template;
+class NewsView extends View {
+  constructor() {
+    super({
+      parent: '.news',
+      template: template
+    });
+  }
+
+  render(data) {
+    this.news = data.news;
+    super.render(data);
+  }
+
+  update(data) {
+    if (data.news != this.news) {
+      super.render(data);
+    }
+  }
+}
+
+export default NewsView;

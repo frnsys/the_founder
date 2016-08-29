@@ -4,6 +4,7 @@ import util from 'util';
 import Effect from './Effect';
 import Condition from './Condition';
 
+const MIN_NEWS_ARTICLES = 9;
 const EMAIL_REPEAT_PROB = 0.001;
 const EMAIL_COUNTDOWN_MIN = 32;
 const EMAIL_COUNTDOWN_MAX = 64;
@@ -95,6 +96,18 @@ const Event = {
 
     // apply templates
     news = _.map(news, (n) => template(n, ['title', 'body'], player));
+
+    // add filler news
+    if (news.length < MIN_NEWS_ARTICLES) {
+      _.times(MIN_NEWS_ARTICLES - news.length, function() {
+        // TODO better filler news
+        news.push({
+          'title': 'Special Report: The New Frontier',
+          'body': 'A flood of share debuts is expected to invigorate the listless IPO market after the coming Labor Day holiday.',
+          'image': 'assets/news/neutral.jpg'
+        });
+      })
+    }
 
     player.current.news = {
       mainArticle: news.pop(),

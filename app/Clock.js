@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import util from 'util';
 import Task from 'game/Task';
 import Event from 'game/Event';
 import Board from 'game/Board';
@@ -26,6 +27,9 @@ class Clock {
     this.randomSchedule(company.develop.bind(company));
     this.randomSchedule(company.updateBurnout.bind(company));
     this.randomSchedule(company.growEmployees.bind(company));
+
+    // queue up starting news
+    Event.updateNews(player);
   }
 
   pause() {
@@ -59,7 +63,6 @@ class Clock {
         }
 
         if (this.player.current.emails.length > 0) {
-          console.log(this.player);
           var emailPopup = new EmailsView(
             this.player.current.emails, this.player);
           emailPopup.render();
@@ -121,7 +124,7 @@ class Clock {
       t => Task.tickEvent(t, player.company));
 
     Event.updateEmails(player);
-    // Event.updateNews(player);
+    Event.updateNews(player);
   }
 
   monthly() {
@@ -134,6 +137,16 @@ class Clock {
     this.player.growth = Board.evaluatePerformance(this.player.board, this.player.company.annualProfit) * 100,
     Economy.update(this.player);
     checkDeath(this.player);
+    this.player.emails.current.push(annualReport(this.player));
+  }
+}
+
+function annualReport(player) {
+  var data = player.snapshot;
+  return {
+    'subject': `${data.prevYear} Annual Report`,
+    'from': `investors@${util.slugify(data.name)}.com`,
+    'body': `This year you made ${util.formatCurrency(data.ytdProfit)} in profit, which is ${data.growth}% growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. The Board of Investors are ${data.boardStatus}. This year we want to see profit of at least ${util.formatCurrency(data.profitTarget)}.`
   }
 }
 

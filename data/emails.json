@@ -1,4 +1,17 @@
 [{
+  "subject": "Foo email",
+  "from": "testing",
+  "body": "testing testing testing",
+  "effects": [{
+    "type": "cash",
+    "value": 500000
+  }],
+  "conditions": [{
+    "type": "cash",
+    "op": "gt",
+    "val": 0
+  }]
+}, {
   "subject": "Bailout",
   "from": "mentor@{{=it.companySlug}}.com",
   "body": "Your burn rate is too fast - you need to keep some cash on hand to expand your operations. This time I've managed to get you some emergency funds to keep you going - but this can't happen again.",

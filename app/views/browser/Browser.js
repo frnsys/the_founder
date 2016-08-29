@@ -1,10 +1,12 @@
 import $ from 'jquery';
 import _ from 'underscore';
+import util from 'util';
+import Enums from 'app/Enums';
 import Datamap from 'datamaps';
-import View from '../View';
-import MailTemplate from './Mail';
+import Popup from '../Popup';
+import News from './News';
+import CMail from './Mail';
 import CherublistTemplate from './Cherublist';
-import NewsTemplate from './News';
 import map from 'data/map.json';
 import markets from 'data/markets.json';
 import locations from 'data/locations.json';
@@ -14,59 +16,45 @@ const template = data => `
   <div class="statusbar">
       <div class="statusbar-left">❖ <b>Ultron</b> <span>File</span> <span>Edit</span> <span>Window</span></div>
       <div class="statusbar-right">
-          <img src="assets/computer/volume.svg"> <img src="assets/computer/wifi.svg"> January 1, ${data.year}
+          <img src="assets/computer/volume.svg"> <img src="assets/computer/wifi.svg"> <span class="clock">${util.enumName(data.month, Enums.Month)}, ${data.year}</span>
       </div>
   </div>
   <div class="appbar">
       <ul class="tabbar">
-        ${data.showAnnualReport ? '<li data-site="mail">cMail</li>' : ''}
         <li data-site="cherublist">cherublist</li>
         <li data-site="news">The Times Journal</li>
+        <li data-site="mail">cMail</li>
       </ul>
       <div class="appmenu">
           <span>●</span>
           <span>●</span>
-          <span class="close-popup">●</span>
+          <span>●</span>
       </div>
   </div>
   <div class="viewport overview">
-    ${data.showAnnualReport ? `<div class="mail site">${MailTemplate(data)}</div>` : ''}
     <div class="cherublist site">
       ${CherublistTemplate(data)}
     </div>
-
-    <div class="news site">
-      ${NewsTemplate(data)}
-    </div>
+    <div class="news site"></div>
+    <div class="mail site"></div>
   </div>
 </div>
 `;
 
 
-class Browser extends View {
+class Browser extends Popup {
   constructor(player) {
     super({
+      title: 'Internet',
       template: template,
       handlers: {
-        '.close-popup': function() { this.remove(); },
         '.tabbar li': function(ev) {
-          console.log('tab selected');
           var $el = $(ev.target),
               site = $el.data('site');
           $('.tabbar li').removeClass('selected');
           $el.addClass('selected');
           $('.site').hide();
           $('.'+site).show();
-        },
-        '.inbox li': function(ev) {
-            var $el = $(ev.target),
-                mail = $el.closest('li').data('mail');
-            $('.inbox').hide()
-            $('.email, .email-content[data-mail="'+mail+'"]').show();
-        },
-        '.show-inbox': function() {
-            $('.inbox').show();
-            $('.email, .email-content').hide();
         }
       }
     });
@@ -108,7 +96,21 @@ class Browser extends View {
   }
 
   render() {
-    super.render(this.player.snapshot);
+    var data = this.player.snapshot;
+    super.render(data);
+
+    this.mailView = new CMail();
+    this.mailView.render(data);
+
+    this.newsView = new News();
+    this.newsView.render(data);
+  }
+
+  update() {
+    var data = this.player.snapshot;
+    this.el.find('.clock').text(`${util.enumName(data.month, Enums.Month)}, ${data.year}`);
+    this.mailView.update(data);
+    // this.newsView.update(data);
   }
 }
 

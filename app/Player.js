@@ -161,6 +161,7 @@ class Player {
 
       news: this.current.news,
       emails: this.current.emails,
+      inbox: this.current.inbox,
 
       product: company.product,
       activeProducts: company.activeProducts,

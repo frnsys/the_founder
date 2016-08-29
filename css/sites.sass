@@ -1,9 +1,14 @@
 .computer
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4)
+  font-size: 1.3em
+  width: 65em
+  margin: 0 auto
+  border-radius: 0.4em
+  overflow: hidden
 
 .viewport
   background: #fff
-  height: 420px
+  height: 460px
   overflow-y: scroll
 
 .site
@@ -88,7 +93,6 @@
   padding-left: 2em
 
 .cherublist .grid
-  font-family: "Helvetica", sans-serif
   font-size: 0.8em
   li
     height: auto
@@ -129,55 +133,88 @@
   margin: 0 0 1em 0
 
 .news
-  font-family: 'Georgia', serif
   .site-header
+    width: 760px
     text-align: center
-    padding: 1em
-    h1
-      font-size: 1.4em
-      font-weight: normal
-      text-transform: uppercase
-    h5
-      font-style: italic
-      font-weight: normal
+    padding: 2em 0 0 0
+    margin: 0 auto
+    border-bottom: 1px solid #aaa
+    img
+      width: 19em
+      margin: 0
+  .news-meta
+    font-size: 0.8em
+    color: #777
+    li
+      display: inline-block
+      padding: 0 0.8em 0 0.3em
+      &:first-child
+        border-right: 1px solid #999
   .site-body
+    color: #111
     max-width: 760px
     margin: 0 auto
+    font-family: 'Crimson Text', 'Georgia', serif
+    padding: 1em 0
   img
     width: 100%
     margin-bottom: 0.5em
-  article
-    margin-bottom: 2em
-
-.news-header
-  overflow: hidden
+  h3
+    font-weight: bold
+    font-style: italic
+    font-size: 1.8em
+  p
+    margin-top: 0
+    color: #333
+  .news-sections
+    margin: 1em 0 0 0
+    border-top: 2px solid #222
+    font-size: 0.7em
+    padding: 0.5em 0
+    li
+      display: inline-block
+      margin: 0 0.6em
+      color: #999
 
 .news-main-article
   width: 60%
   float: left
-  padding-right: 2em
+  padding-right: 1em
 
 .news-header-right
   width: 40%
   float: right
   font-size: 0.9em
+  border-left: 1px solid #ccc
+  padding-left: 1em
+  article
+    height: 11.5em
 
 .news-other-articles
+  clear: both
+  border-top: 1px solid #ccc
+  padding: 1em 0 4em 0
+  overflow: hidden
   article
     width: 30%
     float: left
     margin-right: 3%
+    padding-left: 2%
     font-size: 0.8em
-    height: 20em
+    border-left: 1px solid #ccc
+    height: 16em
+    &:nth-child(3n+1)
+      border-left: none
+      padding-left: 0
   h3
-    margin-bottom: 1em
-
-.start-year-prompt
-  text-align: center
-  padding: 4em 0
-  background: #0000ff
-  height: 100%
-  color: #fff
+    font-weight: normal
+    font-style: normal
+  p
+    font-size: 1.1em
+  img
+    float: right
+    margin: 0 0 0.2em 0.3em
+    width: 8em
 
 .mail
   .site-body
@@ -220,6 +257,10 @@
       font-weight: bold
       color: #aaa
   font-size: 0.9em
+
+.mail-sender
+  margin-left: 1em
+  color: #999
 
 .mail-chat-offline
   color: #FB3F3F

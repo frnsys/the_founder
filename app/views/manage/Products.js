@@ -43,10 +43,14 @@ class ProductsView extends CardsList {
         discovered: _.contains(player.company.discoveredProducts, i.name)
       }, i))
     });
+    this.nDiscovered = player.company.discoveredProducts.length;
   }
 
   update() {
-    // TODO
+    // re-render if new products are discovered
+    if (this.player.company.discoveredProducts.length > this.nDiscovered) {
+      this.render();
+    }
   }
 
   createListItem(item) {

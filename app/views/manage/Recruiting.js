@@ -51,6 +51,7 @@ class View extends CardsList {
     super.render({
       items: _.map(this.items, this.processItem.bind(this))
     });
+    this.robots = player.specialEffects['Automation'];
   }
 
   processItem(item) {
@@ -63,10 +64,14 @@ class View extends CardsList {
 
   update() {
     var self = this;
-    // TODO what if robots become available while viewing the popup?
     _.each(_.zip(this.items, this.subviews), function(v) {
       v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
     });
+
+    // if robots become available while this view is open, re-render
+    if (this.player.specialEffects['Automation'] != this.robots){
+      this.render();
+    }
   }
 }
 

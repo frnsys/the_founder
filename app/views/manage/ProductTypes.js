@@ -59,14 +59,20 @@ class ProductTypesView extends CardsList {
     super.render({
       items: _.map(productTypes, this.processItem.bind(this))
     });
+
+    this.nProductTypes = player.company.productTypes.length;
   }
 
   update() {
     var self = this;
-    // TODO what if a product type becomes unlocked by a tech?
     _.each(_.zip(productTypes, this.subviews), function(v) {
       v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
     });
+
+    // re-render if new product types are discovered
+    if (this.player.company.productTypes.length > this.nProductTypes) {
+      this.render();
+    }
   }
 
   processItem(item) {

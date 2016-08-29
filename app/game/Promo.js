@@ -23,4 +23,8 @@ const Promo = {
   }
 };
 
+Promo.MAJOR_SUCCESS_PROB = 0.02;
+Promo.MAJOR_SUCCESS_MULT = 1.2;
+Promo.MINOR_SUCCESS_PROB = 0.02;
+Promo.MINOR_SUCCESS_MULT = 0.8;
 export default Promo;

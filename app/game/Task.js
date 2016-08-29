@@ -146,8 +146,13 @@ const Task = {
         break;
 
       case Type.Promo:
-        // TODO some randomness for failures and big successes?
-        company.hype += task.obj.hype;
+        var hype = task.obj.hype;
+        if (Math.random() < Promo.MAJOR_SUCCESS_PROB) {
+          hype *= Promo.MAJOR_SUCCESS_MULT;
+        } else if (Math.random() < Promo.MINOR_SUCCESS_PROB) {
+          hype *= Promo.MINOR_SUCCESS_MULT;
+        }
+        company.hype += hype;
         break;
 
       case Type.Research:

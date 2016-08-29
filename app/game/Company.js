@@ -104,8 +104,7 @@ class Company {
   }
 
   updateBurnout() {
-    var self = this;
-    _.each(this.workers, w => Worker.updateBurnout(w, self));
+    _.each(this.workers, w => Worker.updateBurnout(w, this.player));
   }
 
   skill(name, workers, locations, scaleByProductivity, ignoreBurnout) {

@@ -134,32 +134,39 @@ describe('Worker', function() {
     it('can burn out if burnout risk > 0', function() {
       w.burnoutRisk = 1;
       expect(w.burnout).toEqual(0);
-      Worker.updateBurnout(w, player.company);
+      Worker.updateBurnout(w, player);
       expect(w.burnout).toBeGreaterThan(0);
     });
 
     it('cannot burn out if burnout risk is 0', function() {
       w.burnoutRisk = 0;
       expect(w.burnout).toEqual(0);
-      Worker.updateBurnout(w, player.company);
+      Worker.updateBurnout(w, player);
       expect(w.burnout).toEqual(0);
     });
 
     it('burnout risk resets after burnout', function() {
       w.burnoutRisk = 1;
-      Worker.updateBurnout(w, player.company);
+      Worker.updateBurnout(w, player);
       expect(w.burnoutRisk).toEqual(0);
     });
 
     it('increases burnout risk', function() {
       w.burnoutRisk = 0;
-      Worker.updateBurnout(w, player.company);
+      Worker.updateBurnout(w, player);
       expect(w.burnoutRisk).toBeGreaterThan(0);
+    });
+
+    it('burnout risk lessens with happiness', function() {
+      w.burnoutRisk = 0;
+      w.happiness = 100000000;
+      Worker.updateBurnout(w, player);
+      expect(w.burnoutRisk).toBe(0);
     });
 
     it('decreases burnout if already burntout', function() {
       w.burnout = 2;
-      Worker.updateBurnout(w, player.company);
+      Worker.updateBurnout(w, player);
       expect(w.burnout).toEqual(1);
     });
 

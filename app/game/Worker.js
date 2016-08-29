@@ -12,6 +12,7 @@
  * - manages worker burnout risk and status
  *   - if they are not burntout
  *     - worker burnout risk gradually increases according to base burnout rate and bonuses
+ *       - burnout risk increase lessens with increased happiness, towards 0
  *     - rolls for burnout, if it happens, worker is burnout for some weeks
  *   - otherwise, decrement their burnout
  */
@@ -145,9 +146,13 @@ const Worker = {
     }
   },
 
-  updateBurnout: function(worker, company) {
+  updateBurnout: function(worker, player) {
+    var company = player.company;
     if (!worker.burnout > 0) {
-      worker.burnoutRisk += company.burnoutRate + this.selfBonus(worker, 'burnoutRate');
+      var inc = (company.burnoutRate + this.selfBonus(worker, 'burnoutRate'))/(Math.sqrt(Worker.happiness(worker, player)));
+      // round to 3 decimal places
+      inc = Math.round(inc*1e3)/1e3;
+      worker.burnoutRisk += inc;
       if (Math.random() < worker.burnoutRisk + 0.01) {
         worker.burnout = _.random(MIN_BURNOUT_DAYS, MAX_BURNOUT_DAYS);
         worker.burnoutRisk = 0;

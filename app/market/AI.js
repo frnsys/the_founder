@@ -225,7 +225,7 @@ Task.Capture.prototype = {
         var target = _.max(potentialTargets, function(target) {
           return attackValue(self.piece, target.piece, self.tile);
         });
-        var attackRange = 1; // TODO ranged attackers?
+        var attackRange = 1;
         movePieceTowards(board, this.piece, target, attackRange);
         if (this.piece.moves > 0 && _.contains(board.tilesInRange(this.piece.tile, attackRange), target)) {
           board.attackPiece(this.piece, target.piece);

@@ -92,8 +92,8 @@ class IncomeTile extends OwnedTile {
         break;
       }
     }
-    this.spriteName = 'income' + this.income.toString() + 'Tile';
-    this.description = ''; // TODO?
+    this.spriteName = `income${this.income}Tile`;
+    this.description = ''; // this is set by the Market state
 
     switch (this.income) {
       case 0:

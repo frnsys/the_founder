@@ -75,6 +75,11 @@ class TheMarket extends Phaser.State {
     this.board = new Board(nTiles, 13, 14, this.players, this.game);
     this.AI = new AI(this.board, this.aiPlayer);
 
+    // setup income tile descriptions'
+    _.each(this.board.incomeTiles, function(t) {
+      t.description = `Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, self.product))} revenue`;
+    });
+
     this.view = new MarketView({
       handlers: {
         '.end-turn': function() {

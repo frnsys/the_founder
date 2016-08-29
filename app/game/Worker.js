@@ -116,11 +116,6 @@ const Worker = {
     return Math.max(0, getSkill(worker, player, 'happiness') * happinessModifier);
   },
 
-  fire: function(worker) {
-    // TODO FIREWORKER FROM CURRENT EMPLOYER
-    worker.salary = 0;
-  },
-
   grow: function(worker) {
     var self = this;
     if (worker.burnout === 0) {
@@ -180,7 +175,7 @@ const Worker = {
       }
       if (t.workerConditions) {
         workerSatisfied = _.every(t.workerConditions, function(c) {
-          return Condition.operators[c.op](Worker.conditions[c.type](worker), c.val);
+          return Condition.operators[c.op](Worker.conditions[c.type](worker, player), c.val);
         });
       }
       return companySatisfied && workerSatisfied;
@@ -190,8 +185,8 @@ const Worker = {
 }
 
 Worker.conditions = {
-  burnoutRisk: (worker) => worker.burnoutRisk,
-  happiness: (worker) => worker.happiness // TODO this should use Worker.happiness
+  burnoutRisk: (worker, player) => worker.burnoutRisk,
+  happiness: (worker, player) => Worker.happiness(worker, player)
 }
 
 export default Worker;

@@ -115,9 +115,7 @@ class Clock {
       }
     });
 
-    // TODO this can probably be combined into one func
-    this.office.resetObjectStats();
-    this.office.incrementObjectStats();
+    this.office.updateObjectStats();
 
     // increment event task progresses
     _.each(

@@ -17,8 +17,7 @@ class View extends CardsList {
         '.fire': function(ev) {
           var idx = this.itemIndex(ev.target),
               sel = player.company.workers[idx];
-          sel.salary = 0;
-          player.company.workers = _.without(player.company.workers, sel);
+          player.company.fireEmployee(sel);
           var subview = this.subviews[idx];
           this.subviews = _.without(this.subviews, subview);
           subview.remove();

@@ -16,6 +16,15 @@ import perkAgents from 'data/office/perkAgents.json';
 
 const CAMERATYPE = 'persp'; // or 'ortho'
 
+// preload transit meshes
+_.each(transit, function(t) {
+  if (t.model) {
+    Loader.loadMesh(t.model.name, function(mesh) {
+      t.mesh = mesh;
+    });
+  }
+});
+
 class Office {
   constructor(level, company, callback) {
     var self = this;
@@ -23,15 +32,6 @@ class Office {
     this.clock = new THREE.Clock();
     this.company = company;
     this.paused = false;
-
-    // TODO these should be preloaded elsewhere, not here
-    _.each(transit, function(t) {
-      if (t.model) {
-        Loader.loadMesh(t.model.name, function(mesh) {
-          t.mesh = mesh;
-        });
-      }
-    });
 
     this.setLevel(level, callback);
   }
@@ -117,24 +117,13 @@ class Office {
     });
   }
 
-  resetObjectStats() {
+  updateObjectStats() {
+    var company = this.company;
     _.each(this.objects, function(obj) {
       obj = obj.object;
       obj.statValues = {};
       _.each(obj.stats, function(v, k) {
-        obj.statValues[k] = 0;
-      });
-    });
-  }
-
-  incrementObjectStats() {
-    var company = this.company;
-    _.each(this.objects, function(obj) {
-      obj = obj.object;
-      obj.statValues = obj.statValues || {};
-      _.each(obj.stats, function(v, k) {
-        var inc = Math.round(_.random(v[0], v[1]) * Math.sqrt(company.workers.length));
-        obj.statValues[k] = (obj.statValues[k] || 0) + _.random(v[0], v[1]);
+        obj.statValues[k] = Math.floor(_.random(v[0], v[1]) * Math.sqrt(company.workers.length));
       });
     });
   }

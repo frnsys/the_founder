@@ -176,6 +176,11 @@ class Company {
     this.workers.push(worker);
   }
 
+  fireEmployee(worker) {
+    worker.salary = 0;
+    this.workers = _.without(this.workers, worker);
+  }
+
   hasPerk(perk) {
     return util.contains(this.perks, perk);
   }

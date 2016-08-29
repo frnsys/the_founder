@@ -16,10 +16,6 @@ function targetValue(difficulty) {
   return Math.exp(difficulty/10);
 }
 
-function marketShareToRevenue(incomeLevel) {
-  return Math.pow((incomeLevel + 1), 2) * 1000;
-}
-
 const Product = {
   create: function(productTypes, company) {
     var recipeName = _.map(
@@ -88,7 +84,7 @@ const Product = {
         newDiscoveryMuliplier = p.newDiscovery ? NEW_PRODUCT_MULTIPLIER : 1;
     p.earnedRevenue = 0;
     var baseRevenue = _.reduce(marketShares, function(m,w) {
-      return m + (marketShareToRevenue(w.income) * p.difficulty);
+      return m + Product.marketShareToRevenue(w.income, p);
     }, 0)
     p.revenue = baseRevenue * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier;
     return {
@@ -136,6 +132,9 @@ const Product = {
   samplePoint: function(name, product) {
     var range = this.levels[name][product.levels[name]];
     return _.random(range[0], range[1]);
+  },
+  marketShareToRevenue: function(incomeLevel, product) {
+    return Math.pow((incomeLevel + 1), 2) * 1000 * product.difficulty;
   }
 };
 

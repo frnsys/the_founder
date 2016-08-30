@@ -48,10 +48,9 @@ class View extends CardsList {
   }
 
   render() {
-    super.render({
-      items: _.map(this.items, this.processItem.bind(this))
-    });
-    this.robots = player.specialEffects['Automation'];
+    this.items = _.map(this.items, this.processItem.bind(this));
+    super.render({items: this.items});
+    this.robots = this.player.specialEffects['Automation'];
   }
 
   processItem(item) {
@@ -65,7 +64,10 @@ class View extends CardsList {
   update() {
     var self = this;
     _.each(_.zip(this.items, this.subviews), function(v) {
-      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+      var newItem = self.processItem(v[0]);
+      if (v[0].afford != newItem.afford || v[0].noAvailableSpace != newItem.noAvailableSpace) {
+        v[1].el.find('button').replaceWith(button(newItem));
+      }
     });
 
     // if robots become available while this view is open, re-render

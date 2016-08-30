@@ -4,7 +4,7 @@ import templ from '../Common';
 import CardsList from 'views/CardsList';
 
 const template = data =>
-  `${data.items.length > 0 ? '<ul class="cards"></ul>' : 'No employees'}`;
+  `${data.items.length > 0 ? '<ul class="cards"></ul>' : '<h1>No employees</h1>'}`;
 
 
 class View extends CardsList {

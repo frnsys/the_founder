@@ -77,7 +77,8 @@ class AssignmentView extends CardsList {
         this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
       },
       '.assign-locations > li': function(ev) {
-        var idx = this.itemIndex(ev.target),
+        // idx + 1 b/c we skip the HQ
+        var idx = this.itemIndex(ev.target) + 1,
             sel = player.company.locations[idx],
             view = this.subviews[player.company.workers.length + idx];
 
@@ -121,7 +122,7 @@ class AssignmentView extends CardsList {
   render() {
     var player = this.player,
         workers = _.map(player.company.workers, w => this.processItem(w, true)),
-        locations = _.map(player.company.locations, l => this.processItem(l, false));
+        locations = _.map(_.rest(player.company.locations), l => this.processItem(l, false));
     super.render({
       task: this.processTask(this.task),
       items: workers.concat(locations)
@@ -164,7 +165,7 @@ class AssignmentView extends CardsList {
   update() {
     var self = this,
         workers = _.map(this.player.company.workers, w => this.processItem(w, true)),
-        locations = _.map(this.player.company.locations, l => this.processItem(l, false));
+        locations = _.map(_.rest(this.player.company.locations), l => this.processItem(l, false));
     _.each(_.zip(workers.concat(locations), this.subviews), function(v) {
       var item = v[0],
           task = '';

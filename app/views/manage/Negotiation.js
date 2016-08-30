@@ -111,6 +111,7 @@ class View extends Popup {
     if (_.isUndefined(this.accepted)) {
       this.worker.offMarketTime = _.random(6,12);
     }
+    this.hiringView.el = undefined; // hacky
     this.hiringView.render();
   }
 

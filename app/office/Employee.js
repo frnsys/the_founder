@@ -10,8 +10,7 @@ import Loader from './Loader';
 var STATE = Agent.STATE,
     TYPES = ['human', 'human2', 'human3',
             'human4', 'human5', 'human6',
-            'human7', 'human7', 'human8',
-            'human9', 'robot'],
+            'human7', 'human8', 'human9', 'robot'],
     CHAT_RADIUS = 0.2,
     MIN_CHAT_RADIUS = 0.1,
     CHAT_PROB = 0.2,
@@ -28,7 +27,11 @@ class Employee extends Agent {
       },
       speed: 1
     }, employee, spawnPos, office);
+    console.log('avatar');
+    console.log(employee.avatar);
     this.workerType = employee.avatar;
+    console.log('texture');
+    console.log(TYPES[this.workerType]);
     this.chatCooldown = CHAT_COOLDOWN;
   }
 

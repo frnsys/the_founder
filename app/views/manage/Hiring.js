@@ -6,7 +6,7 @@ import CardsList from 'views/CardsList';
 import NegotiationView from './Negotiation';
 
 const template = data =>
-  `${data.items.length > 0 ? '<ul class="cards"></ul>' : 'No candidates'}`;
+  `${data.items.length > 0 ? '<ul class="cards"></ul>' : '<h1>No candidates</h1>'}`;
 
 function button(item) {
   if (item.owned) {
@@ -71,7 +71,8 @@ class View extends CardsList {
   render() {
     // re-filter candidates in case some have gone off the market
     var player = this.player;
-    this.candidates = _.filter(this.candidates, c => c.offMarketTime == 0);
+    this.candidates = _.filter(this.candidates, c => c.offMarketTime == 0 && !_.contains(player.company.workers, c));
+    this.subviews = [];
     super.render({
       items: this.candidates
     });

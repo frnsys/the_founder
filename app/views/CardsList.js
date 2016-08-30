@@ -19,7 +19,7 @@ class CardsList extends Popup {
 
   render(data) {
     super.render(data);
-    if (!this.subviews) {
+    if (!this.subviews || this.subviews.length === 0) {
       this.subviews = _.map(data.items, i => this.createListItem(i));
     }
     _.each(_.zip(this.subviews, data.items), function(si) {

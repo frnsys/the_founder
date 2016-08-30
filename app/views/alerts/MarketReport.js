@@ -17,6 +17,7 @@ const template = data => `
     <li>x${data.spendingMultiplier} from consumer spending bonuses</li>
     <li>x${data.hypeMultiplier} from hype</li>
     <li>x${data.influencerMultiplier} from social media influencers</li>
+    <li>x${data.economyMultiplier} from economic health</li>
     ${data.newDiscoveryMuliplier > 1 ? `<li>x${data.newDiscoveryMuliplier} from the new product bonus</li>` : ''}
   </ul>
   <div class="market-report-revenue">

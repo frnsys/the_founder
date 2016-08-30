@@ -1,7 +1,8 @@
 /*
  * Economy
  * - affected by economic stability
- * TODO
+ * - affects min salary (worse the economy, the lower the min salary)
+ * - affects product revenue
  */
 
 import _ from 'underscore';
@@ -59,6 +60,10 @@ const Economy = {
         "body": "Delphi is predicting with 65% certainty that the economy will soon enter into a " + prediction + ". <br /><img src='assets/news/delphi.jpg'>"
       });
     }
+  },
+
+  multiplier: function(economy) {
+    return (economy + 1)/3; // depression => 1/3, recession => 2/3, etc
   }
 }
 

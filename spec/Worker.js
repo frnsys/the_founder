@@ -182,11 +182,11 @@ describe('Worker', function() {
   });
 
   describe('min salary', function() {
-    it('is affected by economic stability', function() {
-      player.economicStability = 1;
+    it('is affected by the economy', function() {
+      player.economy = 1;
       var minSalary = Worker.minSalary(w, player);
 
-      player.economicStability = 2;
+      player.economy = 2;
       expect(Worker.minSalary(w, player)).toBeGreaterThan(minSalary);
     });
 

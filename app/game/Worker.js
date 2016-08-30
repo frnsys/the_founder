@@ -18,6 +18,7 @@
  */
 
 import _ from 'underscore';
+import Economy from './Economy';
 import Condition from './Condition';
 import thoughts from 'data/thoughts.json';
 import attributeBonuses from 'data/workerAttributes.json';
@@ -108,7 +109,7 @@ const Worker = {
 
   minSalary: function(worker, player, modifiers) {
     var modifier = _.reduce(modifiers || [], (m,v) => m * v, 1);
-    return worker.minSalary * player.economicStability * player.wageMultiplier * this.selfBonus(worker, 'minSalary') * modifier;
+    return worker.minSalary * Economy.multiplier(player.economy) * player.wageMultiplier * this.selfBonus(worker, 'minSalary') * modifier;
   },
 
   design: function(worker, player) {

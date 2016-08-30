@@ -133,16 +133,54 @@ describe('Product', function() {
   });
 
   describe('revenue', function() {
-    it('is based on market shares captured', function() {
+    it('is affected by product discovery', function() {
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
           influencers = [];
-      expect(p.revenue).toBe(undefined);
       Product.setRevenue(p, marketShares, influencers, player);
-      expect(p.revenue).not.toBe(undefined);
+      var val = p.revenue;
+
+      p = createProduct();
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeLessThan(val);
+    });
+
+    it('is affected by market shares captured', function() {
+      createProduct(); // to get rid of new product bonus
+      var p = createProduct(),
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
+      Product.setRevenue(p, marketShares, influencers, player);
+      var val = p.revenue;
+
+      p = createProduct();
+      marketShares = [{income: 1}, {income: 2}, {income: 1}],
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeGreaterThan(val);
+    });
+
+    it('is affected by the economy', function() {
+      createProduct(); // to get rid of new product bonus
+      var p = createProduct(),
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
+      player.economy = 2;
+      Product.setRevenue(p, marketShares, influencers, player);
+      var val = p.revenue;
+
+      p = createProduct();
+      player.economy = 3;
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeGreaterThan(val);
+
+      p = createProduct();
+      player.economy = 1;
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeLessThan(val);
     });
 
     it('is affected by product difficulty', function() {
+      createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
           influencers = [];
@@ -157,6 +195,7 @@ describe('Product', function() {
     });
 
     it('is affected by spending multiplier', function() {
+      createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
           influencers = [];
@@ -171,6 +210,7 @@ describe('Product', function() {
     });
 
     it('is affected by company hype', function() {
+      createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
           influencers = [];
@@ -185,6 +225,7 @@ describe('Product', function() {
     });
 
     it('is affected by influencers', function() {
+      createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
           influencers = [];

@@ -12,6 +12,7 @@
  *     - product difficulty
  *     - hype
  *     - consumer spending multiplier
+ *     - the economy
  *     - if the product is a new discovery
  * - are allocated levels to Market qualities (quantity, strength, movement)
  *   - each requires points from a particular skill (design, engineering, marketing)
@@ -19,6 +20,7 @@
  */
 
 import _ from 'underscore';
+import Economy from './Economy';
 import productRecipes from 'data/productRecipes.json';
 
 const PROGRESS_PER_DIFFICULTY = 100;
@@ -87,19 +89,21 @@ const Product = {
   setRevenue: function(p, marketShares, influencers, player) {
     var hypeMultiplier = (1+player.company.hype/1000),
         influencerMultiplier = 1 + (influencers.length*0.5),
-        newDiscoveryMuliplier = p.newDiscovery ? NEW_PRODUCT_MULTIPLIER : 1;
+        newDiscoveryMuliplier = p.newDiscovery ? NEW_PRODUCT_MULTIPLIER : 1,
+        economyMultiplier = Economy.multiplier(player.economy);
     p.earnedRevenue = 0;
     var baseRevenue = _.reduce(marketShares, function(m,w) {
       return m + Product.marketShareToRevenue(w.income, p);
     }, 0)
-    p.revenue = baseRevenue * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier;
+    p.revenue = baseRevenue * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier * economyMultiplier;
     return {
       baseRevenue: baseRevenue,
       revenue: p.revenue,
       spendingMultiplier: player.spendingMultiplier,
       hypeMultiplier: hypeMultiplier,
       influencerMultiplier: influencerMultiplier,
-      newDiscoveryMuliplier: newDiscoveryMuliplier
+      newDiscoveryMuliplier: newDiscoveryMuliplier,
+      economyMultiplier: economyMultiplier
     }
   },
   getRevenue: function(p) {

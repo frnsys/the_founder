@@ -15,6 +15,7 @@ import _ from 'underscore';
 import util from 'util';
 import Effect from './Effect';
 import Condition from './Condition';
+import fillerNews from 'data/newsFiller.json';
 
 const MIN_NEWS_ARTICLES = 9;
 const EMAIL_REPEAT_PROB = 0.001;
@@ -111,14 +112,10 @@ const Event = {
 
     // add filler news
     if (news.length < MIN_NEWS_ARTICLES) {
+      var filler = _.shuffle(fillerNews);
       _.times(MIN_NEWS_ARTICLES - news.length, function() {
-        // TODO better filler news
-        news.push({
-          'title': 'Special Report: The New Frontier',
-          'body': 'A flood of share debuts is expected to invigorate the listless IPO market after the coming Labor Day holiday.',
-          'image': 'assets/news/neutral.jpg'
-        });
-      })
+        news.push(filler.pop());
+      });
     }
     news = news.reverse();
 

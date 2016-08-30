@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import util from 'util';
 import View from 'views/View';
+import Enums from 'app/Enums';
 
 const newsArticleTemplate = (data, image) => `
   ${image ? `<img src="${data.image}">` : ''}

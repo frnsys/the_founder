@@ -14,11 +14,11 @@ amount = 120
 attr_prob = 0.2
 
 # load names
-with open('male_names.txt', 'r') as f:
+with open('data/male_names.txt', 'r') as f:
     male_names = [l.replace('\n', '') for l in f.readlines()]
-with open('female_names.txt', 'r') as f:
+with open('data/female_names.txt', 'r') as f:
     female_names = [l.replace('\n', '') for l in f.readlines()]
-with open('last_names.txt', 'r') as f:
+with open('data/last_names.txt', 'r') as f:
     last_names = [l.replace('\n', '') for l in f.readlines()]
 
 # worker attributes

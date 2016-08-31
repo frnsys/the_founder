@@ -134,7 +134,7 @@
     }
   }
 }, {
-  "subject": "Proposed carbon task",
+  "subject": "Proposed carbon tax",
   "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
   "body": "It looks like there's an upcoming bill enstating a carbon tax that could make things more costly for us. Maybe we should reach out to my friend in DC and pull a few strings?",
   "effects": [],

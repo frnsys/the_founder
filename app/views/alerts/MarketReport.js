@@ -12,7 +12,7 @@ const template = data => `
 <div class="alert-message alert-market-report">
   <img src="assets/company/market.png" class="alert-icon">
   <h1>Market Report</h1>
-  <p>We captured <span class="market-report-share">${data.marketShare}%</span> of the market, representing a base revenue of <span class="market-report-base-revenue">${abbrevCurrency(data.baseRevenue)}</span>.</p>
+  <p>We captured <span class="market-report-share">${data.marketShare.toFixed(2)}%</span> of the market, representing a base revenue of <span class="market-report-base-revenue">${abbrevCurrency(data.baseRevenue)}</span>.</p>
   <ul class="market-report-bonuses">
     <li>x${data.spendingMultiplier} from consumer spending bonuses</li>
     <li>x${data.hypeMultiplier} from hype</li>

@@ -27,11 +27,7 @@ class Employee extends Agent {
       },
       speed: 1
     }, employee, spawnPos, office);
-    console.log('avatar');
-    console.log(employee.avatar);
     this.workerType = employee.avatar;
-    console.log('texture');
-    console.log(TYPES[this.workerType]);
     this.chatCooldown = CHAT_COOLDOWN;
   }
 

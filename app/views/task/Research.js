@@ -54,15 +54,19 @@ class ResearchView extends CardsList {
   }
 
   render() {
+    this.items = _.map(technologies, this.processItem.bind(this));
     super.render({
-      items: _.map(technologies, this.processItem.bind(this))
+      items: this.items
     });
   }
 
   update() {
     var self = this;
-    _.each(_.zip(technologies, this.subviews), function(v) {
-      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+    _.each(_.zip(this.items, this.subviews), function(v) {
+      var item = self.processItem(v[0]);
+      if (!_.isEqual(v[0], item)) {
+        v[1].el.find('button').replaceWith(button(item));
+      }
     });
   }
 

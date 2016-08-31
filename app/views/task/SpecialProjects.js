@@ -5,20 +5,22 @@ import CardsList from 'views/CardsList';
 import TaskAssignmentView from './Assignment';
 import specialProjects from 'data/specialProjects.json';
 
+function button(item) {
+  if (item.in_progress) {
+    return '<button disabled>In Progress</button>';
+  } else if (item.owned) {
+    return '<button disabled>Completed</button>';
+  } else if (item.not_available) {
+    return '<button disabled>Missing prerequisites</button>';
+  } else if (item.afford) {
+    return '<button class="buy">Start</button>';
+  } else {
+    return '<button disabled>Not enough cash</button>';
+  }
+}
+
 function detailTemplate(item) {
   if (item.unlocked) {
-    var button;
-    if (item.in_progress) {
-      button = '<button disabled>In Progress</button>';
-    } else if (item.owned) {
-      button = '<button disabled>Completed</button>';
-    } else if (item.not_available) {
-      button = '<button disabled>Missing prerequisites</button>';
-    } else if (item.afford) {
-      button = '<button class="buy">Start</button>';
-    } else {
-      button = '<button disabled>Not enough cash</button>';
-    }
     return `
       <div class="title">
         <h1>${item.name}</h1>
@@ -28,7 +30,7 @@ function detailTemplate(item) {
       <p>${item.description}</p>
       ${templ.effects(item)}
       ${item.prereqs.length > 0 ? templ.prereqs(item) : ''}
-      ${button}
+      ${button(item)}
     `;
   } else {
     return `
@@ -64,15 +66,19 @@ class View extends CardsList {
   }
 
   render() {
+    this.items = _.map(specialProjects, this.processItem.bind(this));
     super.render({
-      items: _.map(specialProjects, this.processItem.bind(this))
+      items: this.items
     });
   }
 
   update() {
     var self = this;
-    _.each(_.zip(specialProjects, this.subviews), function(v) {
-      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+    _.each(_.zip(this.items, this.subviews), function(v) {
+      var item = self.processItem(v[0]);
+      if (item.unlocked && !_.isEqual(v[0], item)) {
+        v[1].el.find('button').replaceWith(button(item));
+      }
     });
   }
 

@@ -111,12 +111,14 @@ var pieceValue = function(piece, tile) {
 };
 
 var movePieceTowards = function(board, piece, tile, range) {
+  console.log('MOVING towards tile:');
+  console.log(tile);
   var bestPosition;
   if (piece.tile == tile || piece.moves === 0) {
     return;
   }
 
-  var validPositions = board.getValidMoves(piece.tile, piece.moves);
+  var validPositions = board.validMoves(piece.tile, piece.moves);
   if (validPositions.length === 0) {
     return;
   }
@@ -161,7 +163,11 @@ var attackValue = function(attacker, enemy, tile) {
 
   // reducing bigger threats by a lot is more valuable,
   // but we don't want attackers going on suicide missions
-  return (threat + expectedHealth)/expectedThreatAfter;
+  console.log('-----computing attack value');
+  console.log(threat);
+  console.log(expectedHealth);
+  console.log(expectedThreatAfter);
+  return (threat + expectedHealth)/(expectedThreatAfter + 1e-12);
 };
 
 var tileThreats = function(board, tile) {
@@ -225,9 +231,12 @@ Task.Capture.prototype = {
 
       if (potentialTargets.length > 0) {
         ai.log('->attacking enemies the tile');
+        console.log(potentialTargets);
         var target = _.max(potentialTargets, function(target) {
           return attackValue(self.piece, target.piece, self.tile);
         });
+        console.log('-----> target');
+        console.log(target);
         var attackRange = 1;
         movePieceTowards(board, this.piece, target, attackRange);
         if (this.piece.moves > 0 && _.contains(board.tilesInRange(this.piece.tile, attackRange), target)) {

@@ -14,20 +14,24 @@ import Position from './Position';
 
 const evenAdjacentPositions = [
   new Position(-1, -1), // upper left
-  new Position(0, -1), // upper right
-  new Position(-1, 0), // left
-  new Position(1, 0),  // right
-  new Position(-1, 1), // bottom left
-  new Position(0, 1),  // bottom right
+  new Position( 0, -1), // upper right
+  new Position(-1,  0), // left
+  new Position( 1,  0), // right
+  new Position(-1,  1), // bottom left
+  new Position( 0,  1), // bottom right
 ];
 const oddAdjacentPositions = [
-  new Position(0, -1), // upper left
-  new Position(1, -1), // upper right
-  new Position(-1, 0), // left
-  new Position(1, 0),  // right
-  new Position(0, 1), // bottom left
-  new Position(1, 1),  // bottom right
+  new Position( 0, -1), // upper left
+  new Position( 1, -1), // upper right
+  new Position(-1,  0), // left
+  new Position( 1,  0), // right
+  new Position( 0,  1), // bottom left
+  new Position( 1,  1), // bottom right
 ];
+
+const humanMoveHighlightColor = 0xF1FA89;
+const enemyMoveHighlightColor = 0xFA6B6B;
+
 
 // hex grid manhattan distance
 function manhattanDistance(pos1, pos2) {
@@ -51,14 +55,9 @@ class Board {
     this.cols = cols;
     this.rows = rows;
     this.game = game;
-    this.prob = {
-      influencer: 0.01,
-      empty: 0.3
-    };
 
     this.selectedTile = null;
-    this.highlightedTiles = [];
-    this.validMoves = [];
+    this._validMoves = [];
     Tile.onSingleClick.add(this.onSingleClickTile, this);
     Tile.onDoubleClick.add(this.onDoubleClickTile, this);
 
@@ -84,10 +83,10 @@ class Board {
     this.tileGroup = this.game.add.group();
     var occupiedPositions = [this.center];
 
-    this.placeTileAt(this.randomTile(), this.center);
+    this.placeTileAt(Tile.random(), this.center);
     while (occupiedPositions.length < nTiles) {
       var pos = _.sample(this.openPositions(occupiedPositions));
-      this.placeTileAt(this.randomTile(), pos);
+      this.placeTileAt(Tile.random(), pos);
       occupiedPositions.push(pos);
     }
 
@@ -126,9 +125,11 @@ class Board {
     console.log(players);
     _.each(players, function(player) {
       _.each(_.rest(player.pieces), function(p) {
-        // get a random piece that has been placed
-        var piece = _.sample(_.filter(player.pieces, pe => pe.position));
-            pos = _.sample(self.adjacentUnoccupiedTilePositions(piece.position));
+        // get a random unoccupied position adjacent to an already-placed piece
+        var pos = _.chain(player.pieces)
+          .filter(p => p.position)
+          .map(p => self.adjacentUnoccupiedTilePositions(p.position))
+          .flatten().sample().value();
         console.log(pos);
         self.placePieceAt(p, pos);
       });
@@ -167,35 +168,26 @@ class Board {
     }
   }
 
-  get tiles() {
-    return _.compact(_.flatten(this.grid));
-  }
-
   adjacentPositions(pos) {
-    var self = this,
-        adjPositions = pos.row % 2 == 0 ? evenAdjacentPositions : oddAdjacentPositions,
-        adjPos = _.map(adjPositions, function(adj) {
-          return pos.add(adj);
-        });
+    var shifts = pos.row % 2 == 0 ? evenAdjacentPositions : oddAdjacentPositions,
+        adjPos = _.map(shifts, shift => pos.add(shift));
 
     // filter out invalid positions
-    return _.filter(adjPos, function(adj) {
-      return (adj.row >= 0 && adj.row < self.rows && adj.col >= 0 && adj.col < self.cols);
-    });
+    return _.filter(adjPos, adj => this.isValidPosition(adj));
   }
 
+  isValidPosition(pos) {
+    return pos.row >= 0 && pos.row < this.rows && pos.col >= 0 && pos.col < this.cols;
+  }
+
+  // adjacent positions with an unoccupied tile
   adjacentUnoccupiedTilePositions(pos) {
-    var self = this;
-    return _.filter(self.adjacentTilePositions(pos), function(adj) {
-      return !self.grid[adj.row][adj.col].piece;
-    });
+    return _.filter(this.adjacentTilePositions(pos), adj => !this.grid[adj.row][adj.col].piece);
   }
 
+  // adjacent positions with a tile
   adjacentTilePositions(pos) {
-    var self = this;
-    return _.filter(self.adjacentPositions(pos), function(adj) {
-      return self.grid[adj.row][adj.col] !== null;
-    });
+    return _.filter(this.adjacentPositions(pos), adj => this.grid[adj.row][adj.col] !== null);
   }
 
   // get all open positions (i.e. without a tile)
@@ -203,37 +195,15 @@ class Board {
   openPositions(positions) {
     var self = this;
     return _.flatten(_.map(positions, function(pos) {
-      return _.filter(self.adjacentPositions(pos), function(adj) {
-        return self.grid[adj.row][adj.col] == null;
-      });
+      return _.filter(self.adjacentPositions(pos), adj => self.grid[adj.row][adj.col] == null);
     }));
   }
 
   placeTileAt(tile, pos) {
     var coord = this.coordinateForPosition(pos);
-    tile.sprite = this.tileGroup.create(coord.x, coord.y, tile.spriteName);
-    if (tile.owner !== undefined) {
-      tile.sprite.tint = tile.owner.color;
-    }
-    tile.sprite.inputEnabled = true;
-    tile.sprite.events.onInputDown.add(tile.onClick, tile);
-    tile.sprite.events.onInputOver.add(function() {
-      this.game.canvas.style.cursor = "pointer";
-    }, this);
-    tile.sprite.events.onInputOut.add(function() {
-      this.game.canvas.style.cursor = "default";
-    }, this);
-    this.grid[pos.row][pos.col] = tile;
+    tile.render(coord, this.tileGroup, this.game, this.tileHeight);
     this.grid[pos.row][pos.col] = tile;
     tile.position = pos;
-
-    if (tile.baseCost) {
-      tile.text = this.game.add.text(12, this.tileHeight - 24, (tile.baseCost - tile.capturedCost).toString(), {fill: '#ffffff', stroke: '#000000', strokeThickness: 6});
-      tile.sprite.addChild(tile.text);
-      if (!tile.capturedCost) {
-        tile.text.text = '';
-      }
-    }
 
     if (this.texts) {
       var text = this.game.add.text(coord.x, coord.y, pos.col.toString() + "," + pos.row.toString());
@@ -241,7 +211,8 @@ class Board {
     }
   }
 
-  movePieceTo(piece, to) {
+  movePieceTo(piece, to, target, cb) {
+    // pass in `target` if we are moving to attack
     var self = this,
         from = piece.position;
     this.grid[from.row][from.col].piece = null;
@@ -259,11 +230,13 @@ class Board {
       }
       successorPaths = _.compact(_.map(this.adjacentTilePositions(last), function(pos) {
         var tile = self.grid[pos.row][pos.col];
-        // skip explored or occupied positions
-        if (tile.piece || _.findWhere(explored, pos)) {
-          return null;
+        // only consider unexplored positions
+        // or unoccupied positions
+        // or friendly positions
+        // or those occupied by the target, if one is specified
+        if (!_.findWhere(explored, pos) || !tile.piece || tile.piece.owner == piece.owner || tile.piece == target) {
+          return _.union(path, [pos]);
         }
-        return _.union(path, [pos]);
       }));
       fringe = _.sortBy(_.union(fringe, successorPaths), function(p) {
         return p.length + manhattanDistance(_.last(p), to);
@@ -272,12 +245,21 @@ class Board {
 
     // first is the root/from, so skip it
     path = _.rest(path);
-    this.animatePieceAlongPath(piece, path);
+
+    // if a piece is attacking a target,
+    // move it just short of the final position
+    if (target) {
+      console.log('I AM ATTACKING!');
+      path = _.initial(path);
+    }
+
+    _.each(path, p => console.log(p));
+    this.animatePieceAlongPath(piece, path, _.last(path), cb);
   }
 
-  animatePieceAlongPath(piece, path, target) {
+  animatePieceAlongPath(piece, path, target, cb) {
     var self = this,
-        target = target || _.last(path),
+        cb = cb || _.noop,
         pos = path.shift(),
         coord = this.coordinateForPosition(pos);
 
@@ -285,25 +267,18 @@ class Board {
     var tween = this.game.add.tween(piece.sprite).to(coord, 200, Phaser.Easing.Quadratic.InOut, true);
     tween.onComplete.add(function() {
       if (path.length > 0) {
-        self.animatePieceAlongPath(piece, path, target);
+        self.animatePieceAlongPath(piece, path, target, cb);
       } else {
-        piece.sprite.destroy();
         self.placePieceAt(piece, target);
+        cb();
       }
     }, this);
   }
 
   placePieceAt(piece, pos) {
-    var tile = this.grid[pos.row][pos.col];
-    var coord = this.coordinateForPosition(pos);
-    piece.sprite = this.tileGroup.create(coord.x, coord.y, piece.spriteName);
-    if (piece.moves === 0) {
-      piece.exhaust();
-    } else {
-      piece.sprite.tint = piece.owner.color;
-    }
-    piece.text = this.game.add.text(this.tileWidth - 24, this.tileHeight - 24, piece.health.toString(), {fill: '#ffffff', stroke: '#000000', strokeThickness: 6});
-    piece.sprite.addChild(piece.text);
+    var tile = this.grid[pos.row][pos.col],
+        coord = this.coordinateForPosition(pos);
+    piece.render(coord, this.tileGroup, this.game, this.tileHeight, this.tileWidth);
     piece.position = pos;
     piece.tile = tile;
     tile.piece = piece;
@@ -317,58 +292,53 @@ class Board {
     return {x: x, y: y};
   }
 
-  randomTile() {
-    var roll = Math.random(),
-        tile;
-    if (roll <= this.prob.empty) {
-      tile = new Tile.Empty();
-    } else if (roll <= this.prob.empty + this.prob.influencer) {
-      tile = new Tile.Influencer();
-    } else {
-      tile = new Tile.Income();
-    }
-    return tile;
-  }
-
   onSingleClickTile(tile) {
     var self = this;
     this.unhighlightTiles();
-    this.validMoves = [];
+    this._validMoves = [];
 
     // highlight selected tile
-    if (this.selectedTile) {
-      this.selectedTile.sprite.tint += 0x222222;
-    }
     this.selectedTile = tile;
-    this.selectedTile.sprite.tint -= 0x222222;
+    this.selectedTile.sprite.tint -= 0x444444;
 
+    // highlight valid movement tiles
     if (tile.piece) {
-      var moveHighlightColor = 0xF300FF;
-      this.highlightTile(tile, moveHighlightColor);
-      this.validMoves = this.getValidMoves(tile, tile.piece.moves);
-      _.each(this.validMoves, function(pos) {
-        var t = self.grid[pos.row][pos.col],
-            color = (!t.piece || t.piece.owner.human) ? moveHighlightColor : 0xff0000;
-        self.highlightTile(t, color);
+      tile.sprite.tint = tile.piece.owner.human ? humanMoveHighlightColor : enemyMoveHighlightColor;
+      this._validMoves = this.validMoves(tile, tile.piece.moves);
+      _.each(this._validMoves, function(pos) {
+        var t = self.grid[pos.row][pos.col], color;
+        if(tile.piece.owner.human) {
+          color = (!t.piece || t.piece.owner.human) ? humanMoveHighlightColor : enemyMoveHighlightColor;
+        } else {
+          color = enemyMoveHighlightColor;
+        }
+        t.sprite.tint = color;
       });
     }
   }
 
   onDoubleClickTile(tile) {
-    // if a human piece is selected and it's a valid movement position, move there
-    // bleeghghghgh
-    if (this.selectedTile && this.selectedTile.piece && this.selectedTile.piece.owner.human && this.selectedTile.piece.moves > 0
-        && _.any(this.validMoves, function(pos) { return _.isEqual(pos, tile.position); })) {
-          var attacker = this.selectedTile.piece,
-              defender = tile.piece;
-          if (defender && attacker.owner != defender.owner) {
-            this.attackPiece(attacker, defender);
-          } else {
-            this.selectedTile.piece.moves -= manhattanDistance(this.selectedTile.position, tile.position);
-            this.movePieceTo(this.selectedTile.piece, tile.position);
-          }
-          this.selectedTile = null;
-          this.unhighlightTiles();
+    var self = this;
+    var selectedPieceIsValid = this.selectedTile
+      && this.selectedTile.piece
+      && this.selectedTile.piece.owner.human
+      && this.selectedTile.piece.moves > 0;
+    var selectedTileIsValid = _.any(this._validMoves, pos => _.isEqual(pos, tile.position));
+    if (selectedPieceIsValid && selectedTileIsValid) {
+      var attacker = this.selectedTile.piece,
+          defender = tile.piece;
+      this.selectedTile.piece.moves -= manhattanDistance(this.selectedTile.position, tile.position);
+      if (defender && attacker.owner != defender.owner) {
+        console.log('attacking, going to:');
+        console.log(tile.position);
+        this.movePieceTo(this.selectedTile.piece, tile.position, defender, function() {
+          self.attackPiece(attacker, defender);
+        });
+      } else {
+        this.movePieceTo(this.selectedTile.piece, tile.position);
+      }
+      this.selectedTile = null;
+      this.unhighlightTiles();
     }
     else if (_.isFunction(tile.capture) && tile.piece && tile.piece.product && tile.piece.moves > 0) {
       tile.capture(tile.piece);
@@ -377,63 +347,34 @@ class Board {
 
   attackPiece(attacker, defender) {
     attacker.attack(defender);
+    // move to the defender spot if they were destroyed
     if (defender.health <= 0) {
-      defender.destroy();
-      defender.text.text = defender.health.toString();
+      this.movePieceTo(attacker, defender.position);
     }
-    if (attacker.health <= 0) {
-      attacker.destroy();
-    } else {
-      attacker.text.text = attacker.health.toString();
-      // move to the defender spot if they were destroyed
-      if (defender.health <= 0) {
-        this.movePieceTo(attacker, defender.position);
-      }
-    }
-  }
-
-  highlightTile(tile, color) {
-    tile.sprite.tint = color;
-    this.highlightedTiles.push(tile);
   }
 
   unhighlightTiles() {
-    _.each(this.highlightedTiles, function(tile) {
-      if (tile.owner) {
-        tile.sprite.tint = tile.owner.color;
-      } else {
-        tile.sprite.tint = 0xffffff;
-      }
-    });
-    this.highlightedTiles = [];
+    _.each(this.tiles, t => t.resetColor());
   }
 
   tilesInRange(tile, range) {
-    if (range === 0) {
-      return [];
-    }
-
-    var self = this,
-        fringe = [tile.position],
+    var fringe = [tile.position],
         tiles = [];
 
+    console.log('--> tiles in range');
+    console.log('input tile');
+    console.log(tile);
     while (range > 0) {
-      fringe = _.flatten(_.map(fringe, function(pos) {
-        return self.adjacentTilePositions(pos);
-      }));
-      tiles = _.union(tiles, _.map(fringe, function(pos) {
-        return self.grid[pos.row][pos.col];
-      }));
+      console.log(fringe);
+      fringe = _.flatten(_.map(fringe, pos => this.adjacentTilePositions(pos)));
+      tiles = _.union(tiles, _.map(fringe, pos => this.grid[pos.row][pos.col]));
       range--;
     }
+    console.log('done tile in range');
     return tiles;
   }
 
-  getValidMoves(tile, moves) {
-    if (moves === 0) {
-      return [];
-    }
-
+  validMoves(tile, moves) {
     var self = this,
         fringe = [tile.position],
         validPositions = [];
@@ -442,6 +383,7 @@ class Board {
         return _.filter(self.adjacentTilePositions(pos), function(adj) {
           var t = self.grid[adj.row][adj.col];
           if (!t.piece) {
+            validPositions.push(adj);
             return true;
 
           // tiles with enemy pieces are valid, but enemy pieces block,
@@ -451,15 +393,20 @@ class Board {
             return false;
 
           // occupied by a friendly
+          // not a valid move position,
+          // but can be used for the fringe
           } else {
-            return false;
+            return true;
           }
         });
       }));
-      validPositions = _.union(validPositions, fringe);
       moves--;
     }
     return validPositions;
+  }
+
+  get tiles() {
+    return _.compact(_.flatten(this.grid));
   }
 
   get uncapturedTiles() {

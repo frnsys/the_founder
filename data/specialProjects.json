@@ -93,7 +93,7 @@
   {
     "name": "Telomere Therapy",
     "cost": 10000,
-    "description": "Dying is for the poor.",
+    "description": "Dying...isn't that something poor people do?",
     "effects": [
       {
         "type": "specialEffect",

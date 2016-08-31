@@ -36,18 +36,20 @@ class View extends CardsList {
   }
 
   render() {
-    var player = this.player;
+    this.items = _.map(this.player.company.workers, this.processItem.bind(this));
     super.render({
-      items: _.map(player.company.workers, this.processItem.bind(this))
+      items: this.items
     });
   }
 
   update() {
     var self = this;
-    _.each(_.zip(self.player.company.workers, this.subviews), function(v) {
-      var item = self.processItem(v[0]),
-          task = item.task ? `Assigned:<br>${item.task.obj.name}` : '';
-      v[1].el.find('.worker-task').html(task);
+    _.each(_.zip(this.items, this.subviews), function(v) {
+      var item = self.processItem(v[0]);
+      if (!_.isEqual(v[0], item)) {
+        var task = item.task ? `Assigned:<br>${item.task.obj.name}` : '';
+        v[1].el.find('.worker-task').html(task);
+      }
     });
   }
 }

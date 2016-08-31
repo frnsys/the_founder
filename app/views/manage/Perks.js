@@ -66,7 +66,7 @@ class View extends CardsList {
           if (!owned) {
             perk = Perk.init(perk);
           } else {
-            perk = util.byName(this.player.company.perks, perk);
+            perk = util.byName(this.player.company.perks, perk.name);
           }
           if (player.company.buyPerk(perk)) {
             office.addPerk(Perk.current(perk));
@@ -80,8 +80,9 @@ class View extends CardsList {
   }
 
   render() {
+    this.items = _.map(this.availablePerks, this.processItem.bind(this));
     super.render({
-      items: _.map(this.availablePerks, this.processItem.bind(this))
+      items: this.items
     });
   }
 
@@ -89,8 +90,11 @@ class View extends CardsList {
     // dont have to worry about available perks changing,
     // that only happens when the office is upgraded
     var self = this;
-    _.each(_.zip(this.availablePerks, this.subviews), function(v) {
-      v[1].el.find('button').replaceWith(button(self.processItem(v[0])));
+    _.each(_.zip(this.items, this.subviews), function(v) {
+      var item = self.processItem(v[0]);
+      if (!_.isEqual(v[0], item)) {
+        v[1].el.find('button').replaceWith(button(item));
+      }
     });
   }
 

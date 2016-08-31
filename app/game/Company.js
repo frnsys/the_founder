@@ -380,7 +380,7 @@ class Company {
 
   get perkUpgrades() {
     return _.flatten(_.map(this.perks, function(p) {
-      return _.filter(perk.upgrades, function(u, i) {
+      return _.filter(p.upgrades, function(u, i) {
         return i <= p.upgradeLevel;
       });
     }));

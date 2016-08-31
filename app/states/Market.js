@@ -54,12 +54,11 @@ class TheMarket extends Phaser.State {
         self.game.load.image(sprite, 'assets/tiles/'+sprite+'.png');
      });
 
-    this.game.load.image('productPiece', 'assets/products/cube.png');
+    this.game.load.image('productPiece', 'assets/themarket/product.png');
   }
 
   create() {
     $('#market').addClass('market-active');
-    $('body').css('background-image', 'url(assets/themarket/01.jpg)');
 
     var self = this;
     this.totalTurns = MAX_TURNS;
@@ -69,8 +68,8 @@ class TheMarket extends Phaser.State {
     console.log('competitor is: ' + competitor.name);
     var competitorProduct = Competitor.createProduct(this.product, competitor);
     this.players = [
-      new Player(this.player.company, true, 0x8888ff),
-      new Player(competitor, false, 0xff6666)
+      new Player(this.player.company, true, 0x1C1FE8),
+      new Player(competitor, false, 0xF7202F)
     ];
     this.humanPlayer = this.players[0];
     this.aiPlayer = this.players[1];
@@ -161,7 +160,7 @@ class TheMarket extends Phaser.State {
 
   endTurn() {
     this.turnsLeft--;
-    if (this.turnsLeft <= 0 || !this.board.uncapturedTiles || (!this.aiPlayer.pieces || !this.humanPlayer.pieces)) {
+    if (this.turnsLeft <= 0 || this.board.uncapturedTiles.length == 0 || (this.aiPlayer.pieces.length == 0 || this.humanPlayer.pieces.length == 0)) {
       this.endGame();
     } else {
       this.startTurn(this.aiPlayer);
@@ -178,21 +177,17 @@ class TheMarket extends Phaser.State {
 
     this.view.remove();
     this.player.save();
-    $('body').css('background-image', 'none');
     $('#market').removeClass('market-active');
 
+    this.game.state.start('Manage');
     var report = new MarketReport();
     report.render(results);
-    this.game.state.start('Manage');
   }
 
   startTurn(player) {
     var self = this;
     // reset moves
-    _.each(player.pieces, function(piece) {
-      piece.moves = piece.movement;
-      piece.sprite.tint = piece.owner.color;
-    });
+    _.each(player.pieces, p => p.reset());
     this.renderUI(this.board.selectedTile);
   }
 }

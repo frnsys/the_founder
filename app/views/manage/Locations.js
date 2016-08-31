@@ -75,21 +75,23 @@ class MarketView extends View {
     if (!this.subviews) {
       this.subviews = _.map(this.locations, i => this.createListItem(i));
     }
-    var self = this;
-    _.each(_.zip(this.subviews, this.locations), function(si) {
+    this.items = _.map(this.locations, this.processItem.bind(this));
+    _.each(_.zip(this.subviews, this.items), function(si) {
       var subview = si[0],
           item = si[1];
-      subview.render(self.processItem(item));
+      subview.render(item);
     });
   }
 
   update() {
     var self = this;
-    _.each(_.zip(this.locations, this.subviews), function(v) {
-      var item = self.processItem(v[0]),
-          task = item.task ? `Assigned: ${item.task.obj.name}` : '';
-      v[1].el.find('.location-task').html(task);
-      v[1].el.find('button').replaceWith(button(item));
+    _.each(_.zip(this.items, this.subviews), function(v) {
+      var item = self.processItem(v[0]);
+      if (!_.isEqual(v[0], item)) {
+        var task = item.task ? `Assigned: ${item.task.obj.name}` : '';
+        v[1].el.find('.location-task').html(task);
+        v[1].el.find('button').replaceWith(button(item));
+      }
     });
   }
 

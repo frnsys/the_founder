@@ -64,9 +64,9 @@ class View extends CardsList {
   update() {
     var self = this;
     _.each(_.zip(this.items, this.subviews), function(v) {
-      var newItem = self.processItem(v[0]);
-      if (v[0].afford != newItem.afford || v[0].noAvailableSpace != newItem.noAvailableSpace) {
-        v[1].el.find('button').replaceWith(button(newItem));
+      var item = self.processItem(v[0]);
+      if (!_.isEqual(v[0], item)) {
+        v[1].el.find('button').replaceWith(button(item));
       }
     });
 

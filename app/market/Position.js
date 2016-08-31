@@ -1,11 +1,11 @@
 class Position {
-  constructor(col, row) {
-    this.col = col;
+  constructor(row, col) {
     this.row = row;
+    this.col = col;
   }
 
   add(other) {
-    return new Position(this.col + other.col, this.row + other.row);
+    return new Position(this.row + other.row, this.col + other.col);
   }
 }
 

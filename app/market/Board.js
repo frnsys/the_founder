@@ -122,7 +122,6 @@ class Board {
 
     // randomly distribute remaining player pieces
     // nearby their starting positions
-    console.log(players);
     _.each(players, function(player) {
       _.each(_.rest(player.pieces), function(p) {
         // get a random unoccupied position adjacent to an already-placed piece
@@ -130,7 +129,6 @@ class Board {
           .filter(p => p.position)
           .map(p => self.adjacentUnoccupiedTilePositions(p.position))
           .flatten().sample().value();
-        console.log(pos);
         self.placePieceAt(p, pos);
       });
     });
@@ -249,12 +247,12 @@ class Board {
     // if a piece is attacking a target,
     // move it just short of the final position
     if (target) {
-      console.log('I AM ATTACKING!');
       path = _.initial(path);
     }
 
-    _.each(path, p => console.log(p));
-    this.animatePieceAlongPath(piece, path, _.last(path), cb);
+    if (path.length > 0) {
+      this.animatePieceAlongPath(piece, path, _.last(path), cb);
+    }
   }
 
   animatePieceAlongPath(piece, path, target, cb) {
@@ -329,8 +327,6 @@ class Board {
           defender = tile.piece;
       this.selectedTile.piece.moves -= manhattanDistance(this.selectedTile.position, tile.position);
       if (defender && attacker.owner != defender.owner) {
-        console.log('attacking, going to:');
-        console.log(tile.position);
         this.movePieceTo(this.selectedTile.piece, tile.position, defender, function() {
           self.attackPiece(attacker, defender);
         });
@@ -346,6 +342,9 @@ class Board {
   }
 
   attackPiece(attacker, defender) {
+    console.log('~BOARD attack');
+    console.log(attacker);
+    console.log(defender);
     attacker.attack(defender);
     // move to the defender spot if they were destroyed
     if (defender.health <= 0) {
@@ -361,16 +360,13 @@ class Board {
     var fringe = [tile.position],
         tiles = [];
 
-    console.log('--> tiles in range');
-    console.log('input tile');
-    console.log(tile);
+    console.log('TILES IN RANGE');
+    console.log(fringe);
     while (range > 0) {
-      console.log(fringe);
       fringe = _.flatten(_.map(fringe, pos => this.adjacentTilePositions(pos)));
       tiles = _.union(tiles, _.map(fringe, pos => this.grid[pos.row][pos.col]));
       range--;
     }
-    console.log('done tile in range');
     return tiles;
   }
 
@@ -388,7 +384,7 @@ class Board {
 
           // tiles with enemy pieces are valid, but enemy pieces block,
           // so they cannot be used in the fringe
-          } else if (!t.piece.owner.human) {
+          } else if (tile.piece && t.piece.owner != tile.piece.owner) {
             validPositions.push(adj);
             return false;
 

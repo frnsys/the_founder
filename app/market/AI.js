@@ -19,9 +19,10 @@ class AI {
   constructor(board, player) {
     this.board = board;
     this.player = player;
-    this.log = function(msg) {
-      console.log("AI:" + msg);
-    }
+  }
+
+  log(msg) {
+    console.log("AI -> " + msg);
   }
 
   planTasks() {
@@ -37,28 +38,28 @@ class AI {
       _.each(board.tiles, function(tile) {
         var val = tileValue(tile),
             tasks = []
+
         if (tile.owner == self.player) {
           var threatValue = tileThreats(board, tile);
           if (threatValue > 0) {
             tasks.push(new Task.Defend(tile) * threatValue);
           }
-        } else if (tile.owner) {
-          tasks.push(new Task.Capture(tile));
         } else {
           tasks.push(new Task.Capture(tile));
         }
 
         // consider all assignments to each task
         tasks = _.flatten(_.map(tasks, function(task) {
-          return _.compact(_.map(self.player.pieces, function(piece) {
-            // only consider valid assignments
-            if (!task.validPiece || piece instanceof task.validPiece) {
-              return Task.assign(task, piece);
-            }
-            return null;
-          }));
+          return _.chain(self.player.pieces)
+            .filter(p => p.moves > 0)
+            .map(function(piece) {
+              // only consider valid assignments
+              if (!task.validPiece || piece instanceof task.validPiece) {
+                return Task.assign(task, piece);
+              }
+              return null;
+            }).compact().value();
         }));
-
         taskQueue = _.union(taskQueue, tasks);
       });
 
@@ -83,16 +84,26 @@ class AI {
   }
 
   takeTurn() {
-    var self = this,
-        tasks = this.planTasks();
-    console.log(tasks);
-    _.each(tasks, function(task) {
-      task.execute(self, self.board);
-    });
+    this.planAndExecute();
+  }
+
+  planAndExecute() {
+    if (this.haveMoves()) {
+      var tasks = this.planTasks();
+      this.execute(tasks[0]);
+    }
+  }
+
+  execute(task) {
+    task.execute(this, this.board, this,planAndExecute.bind(this));
+  }
+
+  hasMoves() {
+    return _.some(this.player.pieces, p => p.moves > 0);
   }
 }
 
-var tileValue = function(tile) {
+function tileValue(tile) {
   if (tile instanceof Tile.Income) {
     return 3 * tile.income;
   } else if (tile instanceof Tile.Influencer) {
@@ -100,19 +111,17 @@ var tileValue = function(tile) {
   } else {
     return 0;
   }
-};
+}
 
 // value of a piece given a tile
-var pieceValue = function(piece, tile) {
+function pieceValue(piece, tile) {
   // the stronger & closer, the more valuable
   var distanceValue = 1/(Board.manhattanDistance(piece.position, tile.position) + 1e-12),
       healthValue = piece.health;
   return distanceValue * healthValue;
-};
+}
 
-var movePieceTowards = function(board, piece, tile, range) {
-  console.log('MOVING towards tile:');
-  console.log(tile);
+function movePieceTowards(board, piece, tile, range, cb) {
   var bestPosition;
   if (piece.tile == tile || piece.moves === 0) {
     return;
@@ -137,22 +146,19 @@ var movePieceTowards = function(board, piece, tile, range) {
     // find the overlap position closest to the piece
     // TODO although it is possible that the closest overlap position is not the cheapest in terms of moves
     if (overlapPositions.length > 0) {
-      bestPosition = _.min(overlapPositions, function(pos) {
-        return Board.manhattanDistance(pos, piece.position);
-      });
+      bestPosition = _.min(overlapPositions, pos => Board.manhattanDistance(pos, piece.position));
       board.movePieceTo(piece, bestPosition);
       return;
     }
   }
 
   // move closer to the target
-  bestPosition = _.min(validPositions, function(pos) {
-    return Board.manhattanDistance(pos, tile.position);
+  bestPosition = _.min(validPositions, pos => Board.manhattanDistance(pos, tile.position));
+  board.movePieceTo(piece, bestPosition, function() {
   });
-  board.movePieceTo(piece, bestPosition);
-};
+}
 
-var attackValue = function(attacker, enemy, tile) {
+function attackValue(attacker, enemy, tile) {
   var enemy = _.clone(enemy),
       threat = tileThreat(tile, enemy);
 
@@ -163,14 +169,10 @@ var attackValue = function(attacker, enemy, tile) {
 
   // reducing bigger threats by a lot is more valuable,
   // but we don't want attackers going on suicide missions
-  console.log('-----computing attack value');
-  console.log(threat);
-  console.log(expectedHealth);
-  console.log(expectedThreatAfter);
   return (threat + expectedHealth)/(expectedThreatAfter + 1e-12);
-};
+}
 
-var tileThreats = function(board, tile) {
+function tileThreats(board, tile) {
   var nearbyTiles = board.tilesInRange(tile, 3);
   var threat = _.reduce(nearbyTiles, function(t) {
     if (t.piece && t.piece.owner != self.player) {
@@ -179,12 +181,12 @@ var tileThreats = function(board, tile) {
     return 0;
   }, 0);
   return threat;
-};
+}
 
-var tileThreat = function(tile, piece) {
-    // stronger and closer pieces are more threatening
-    return piece.health/Board.manhattanDistance(piece.position, tile.position);
-};
+function tileThreat(tile, piece) {
+  // stronger and closer pieces are more threatening
+  return piece.health/Board.manhattanDistance(piece.position, tile.position);
+}
 
 const Task = {
   Defend: function(tile) {
@@ -204,20 +206,24 @@ const Task = {
     return t;
   }
 };
+
+
+// TODO
+// make this sequential
+
 Task.Capture.prototype = {
-  execute: function(ai, board) {
+  execute: function(ai, board, cb) {
     ai.log('executing capture task');
-    var self = this;
 
     // if the tile has an enemy piece or empty, beeline for the tile
     if (!this.tile.piece || this.tile.piece.owner !== this.piece.owner) {
-      ai.log('->heading to the tile');
+      ai.log('heading to the tile');
       movePieceTowards(board, this.piece, this.tile);
     }
 
     // if on the piece, capture
     if (_.isEqual(this.piece.position, this.tile.position) && this.piece.moves > 0) {
-      ai.log('->capturing the tile');
+      ai.log('capturing the tile');
       this.tile.capture(this.piece);
     }
 
@@ -225,18 +231,11 @@ Task.Capture.prototype = {
     // if an enemy is capturing the tile, they are the highest threat
     if (this.piece.moves > 0) {
       var nearbyTiles = board.tilesInRange(this.tile, 3),
-          potentialTargets = _.filter(nearbyTiles, function(tile) {
-            return tile.piece && tile.piece.owner != self.piece.owner;
-          });
+          potentialTargets = _.filter(nearbyTiles, tile => tile.piece && tile.piece.owner != this.piece.owner);
 
       if (potentialTargets.length > 0) {
-        ai.log('->attacking enemies the tile');
-        console.log(potentialTargets);
-        var target = _.max(potentialTargets, function(target) {
-          return attackValue(self.piece, target.piece, self.tile);
-        });
-        console.log('-----> target');
-        console.log(target);
+        ai.log('attacking enemies in the tile');
+        var target = _.max(potentialTargets, t => attackValue(this.piece, t.piece, this.tile));
         var attackRange = 1;
         movePieceTowards(board, this.piece, target, attackRange);
         if (this.piece.moves > 0 && _.contains(board.tilesInRange(this.piece.tile, attackRange), target)) {
@@ -247,15 +246,14 @@ Task.Capture.prototype = {
 
     // if not in vicinity of tile, move towards
     if (this.piece.moves > 0 && Board.manhattanDistance(this.piece.position, this.tile.position) > 3) {
-      ai.log('->moving to tile vicinity');
+      ai.log('moving to tile vicinity');
       movePieceTowards(board, this.piece, this.tile, 3);
     }
   }
 };
 Task.Defend.prototype = {
   execute: function(ai, board) {
-    ai.log('->defending');
-    var self = this;
+    ai.log('defending');
 
     // if the tile has an enemy piece or empty, beeline for the tile
     if (!this.tile.piece || this.tile.piece.owner !== this.piece.owner) {
@@ -265,14 +263,9 @@ Task.Defend.prototype = {
     // check vicinity of tile for enemies within reach
     if (this.piece.moves > 0) {
       var nearbyTiles = board.tilesInRange(this.tile, 3),
-          potentialTargets = _.filter(nearbyTiles, function(tile) {
-            return tile.piece;
-          });
-
+          potentialTargets = _.filter(nearbyTiles, t => t.piece);
       if (potentialTargets.length > 0) {
-        var target = _.max(potentialTargets, function(target) {
-          return attackValue(self.piece, target, self.tile);
-        });
+        var target = _.max(potentialTargets, t => attackValue(this.piece, t, this.tile));
         movePieceTowards(board, this.piece, target.tile, 1);
         if (this.piece.moves > 0) {
           Board.attack(this.piece, target);

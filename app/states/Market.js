@@ -88,6 +88,7 @@ class TheMarket extends Phaser.State {
     this.view = new MarketView({
       handlers: {
         '.end-turn': function() {
+          console.log(self.humanPlayer.pieces);
           var movesLeft = _.some(self.humanPlayer.pieces, function(piece) {
             return piece.moves > 0;
           });

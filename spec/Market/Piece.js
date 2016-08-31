@@ -32,7 +32,7 @@ describe('Piece', function() {
 
   it('has power is a function of health', function() {
     var power = piece.power;
-    piece.health -= 2;
+    piece.health -= 3;
     expect(piece.power).toBeLessThan(power);
   });
 

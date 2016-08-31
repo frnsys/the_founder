@@ -50,9 +50,6 @@ class Piece {
   }
 
   destroy() {
-    console.log('piece of');
-    console.log(this.owner);
-    console.log('got destroyed');
     this.tile.piece = null;
     this.owner.pieces = _.without(this.owner.pieces, this);
     this.sprite.destroy();

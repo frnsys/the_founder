@@ -23,6 +23,8 @@ const tileProbs = {
 
 class Tile {
   constructor(piece) {
+    this.name = 'Empty tile';
+    this.description = '';
     this.piece = piece;
     this.spriteName = 'emptyTile';
     this.color = 0xaee3ef;
@@ -89,7 +91,7 @@ class OwnedTile extends Tile {
   }
 
   capture(productPiece) {
-    if (productPiece.owner != this.owner) {
+    if (productPiece.owner != this.owner && productPiece.moves > 0) {
       this.capturedCost = this.capturedCost + productPiece.health;
       productPiece.exhaust();
       this.text.text = (this.baseCost - this.capturedCost).toString();

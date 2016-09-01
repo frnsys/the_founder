@@ -60,7 +60,6 @@ class Manage extends Phaser.State {
   }
 
   create() {
-    console.log('CREATING MANAGE STATE');
     var office = this.showOffice();
     this.clock = new Clock(this, this.player, office);
     this.hud = new HUD(this.player);

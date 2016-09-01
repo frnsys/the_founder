@@ -10,7 +10,7 @@ import * as Phaser from 'phaser';
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
-import AI from 'market/AI';
+import AI from 'market/ai/AI';
 import Tile from 'market/Tile';
 import Board from 'market/Board';
 import Piece from 'market/Piece';
@@ -77,7 +77,7 @@ class TheMarket extends Phaser.State {
     createPieces(this.humanPlayer, this.product);
     createPieces(this.aiPlayer, competitorProduct);
 
-    this.board = new Board(this.player.company, 13, 14, this.players, this.game);
+    this.board = new Board(this.player.company, this.players, this.game);
     this.AI = new AI(this.board, this.aiPlayer);
 
     // setup income tile descriptions
@@ -88,7 +88,6 @@ class TheMarket extends Phaser.State {
     this.view = new MarketView({
       handlers: {
         '.end-turn': function() {
-          console.log(self.humanPlayer.pieces);
           var movesLeft = _.some(self.humanPlayer.pieces, function(piece) {
             return piece.moves > 0;
           });
@@ -102,11 +101,11 @@ class TheMarket extends Phaser.State {
         }
       }
     });
-    this.renderUI();
 
     // re-render the UI whenever a tile is selected or captured
     Tile.onSingleClick.add(this.renderUI, this);
     Tile.onCapture.add(this.renderUI, this);
+    this.startTurn(this.humanPlayer);
   }
 
   update() {
@@ -132,6 +131,7 @@ class TheMarket extends Phaser.State {
     }
 
     this.view.render({
+      human: this.currentPlayer.human,
       competitor: this.aiPlayer.company,
       tile: t,
       marketShares: this.percentMarketShare(),
@@ -161,12 +161,13 @@ class TheMarket extends Phaser.State {
 
   endTurn() {
     this.turnsLeft--;
+    this.board.unhighlightTiles();
     if (this.turnsLeft <= 0 || this.board.uncapturedTiles.length == 0 || (this.aiPlayer.pieces.length == 0 || this.humanPlayer.pieces.length == 0)) {
       this.endGame();
     } else {
+      var self = this;
       this.startTurn(this.aiPlayer);
-      this.AI.takeTurn();
-      this.startTurn(this.humanPlayer);
+      this.AI.takeTurn(() => this.startTurn(this.humanPlayer));
     }
   }
 
@@ -186,9 +187,9 @@ class TheMarket extends Phaser.State {
   }
 
   startTurn(player) {
-    var self = this;
     // reset moves
     _.each(player.pieces, p => p.reset());
+    this.currentPlayer = player;
     this.renderUI(this.board.selectedTile);
   }
 }

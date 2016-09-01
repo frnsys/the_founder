@@ -12,13 +12,21 @@ function setTiles(grid, tileMap) {
       if (val > 0) {
         var piece = null;
         if (val === 2) {
-          piece = {owner: 'a'};
+          piece = {
+            owner: 'a',
+            health: 5,
+            position: new Position(i,j)
+          };
         } else if (val === 3) {
-          piece = {owner: 'b'};
+          piece = {
+            owner: 'b',
+            health: 5,
+            position: new Position(i,j)
+          };
         }
         grid.grid[i][j] = {
-          position: new Position(i,j),
-          piece: piece
+          piece: piece,
+          position: new Position(i,j)
         };
       } else {
         grid.grid[i][j] = null;

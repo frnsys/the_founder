@@ -43,12 +43,14 @@ const template = data => `
   </div>
   ${data.tile.name ? tileInfoTemplate(data.tile) : ''}
   ${data.tile.piece ? pieceInfoTemplate(data.tile) : ''}
-  <button class="end-turn">End Turn</button>
+  <button class="end-turn" ${data.human ? '' : 'disabled'}>
+    ${data.human ? 'End Turn' : 'Competitor turn...'}
+  </button>
 </div>
 <h1 class="market-title">The Market</h1>
 <div class="market-share">
-  <div class="human-market-share" style="width:${data.marketShares.human}%">Your market share: ${data.marketShares.human.toFixed(1)}%</div>
-  <div class="ai-market-share" style="width:${data.marketShares.ai}%">${data.competitor.name}'s market share: ${data.marketShares.ai.toFixed(1)}%</div>
+  <div class="human-market-share" style="width:${data.marketShares.human}%"><h1>Your market share: ${data.marketShares.human.toFixed(1)}%</h1></div>
+  <div class="ai-market-share" style="width:${data.marketShares.ai}%"><h1>${data.competitor.name}'s market share: ${data.marketShares.ai.toFixed(1)}%</h1></div>
 </div>
 `;
 

@@ -94,23 +94,15 @@ class Grid {
     return tiles;
   }
 
-  get uncapturedTiles() {
-    return _.filter(this.tiles, function(tile) {
-      return (tile instanceof Tile.Income) && !(tile.owner);
-    });
-  }
-
-  get incomeTiles() {
-    return _.filter(this.tiles, function(tile) {
-      return tile instanceof Tile.Income;
-    });
-  }
 
   findPath(from, to, validPredicate) {
     var self = this,
         fringe = [[from]],
         explored = [],
         path, last, successorPaths;
+    console.log('findpath');
+    console.log(from);
+    console.log(to);
     while (fringe.length > 0) {
       path = fringe.shift();
       last = _.last(path);

@@ -59,6 +59,7 @@ class TheMarket extends Phaser.State {
 
   create() {
     $('#market').show().addClass('market-active');
+    $('body').addClass('market-background');
 
     var self = this;
     this.totalTurns = MAX_TURNS;
@@ -166,9 +167,8 @@ class TheMarket extends Phaser.State {
       this.endGame();
     } else {
       var self = this;
-      // this.startTurn(this.aiPlayer);
-      // this.AI.takeTurn(() => this.startTurn(this.humanPlayer));
-      this.startTurn(this.humanPlayer); //TEMP TODO
+      this.startTurn(this.aiPlayer);
+      this.AI.takeTurn(() => this.startTurn(this.humanPlayer));
     }
   }
 
@@ -177,10 +177,12 @@ class TheMarket extends Phaser.State {
         influencers = _.filter(this.humanPlayer.tiles, t => t instanceof Tile.Influencer);
     var results = Product.setRevenue(this.product, marketShares, influencers, this.player);
     results.marketShare = this.percentMarketShare().human;
+    this.player.company.activeProducts.push(this.product);
 
     this.view.remove();
     this.player.save();
     $('#market').removeClass('market-active');
+    $('body').removeClass('market-background');
 
     this.game.state.start('Manage');
     var report = new MarketReport();

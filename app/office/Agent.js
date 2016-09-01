@@ -91,6 +91,15 @@ class Agent {
     this.action = action;
   }
 
+  remove(office) {
+    this.scheduled = [];
+    this.mixer = null;
+    if (this.usingObject) {
+      this.usingObject.leave(this);
+    }
+    office.scene.remove(this.mesh);
+  }
+
   goTo(targetPosition) {
     var self = this;
     if (this.office.navMeshGroup !== undefined) {
@@ -211,10 +220,12 @@ class Agent {
     var self = this;
     this.setState(obj.state);
     obj.use(self);
+    this.usingObject = obj;
     this.schedule(function() {
       self.currentTarget = null;
       self.doRandom();
       obj.leave(self);
+      self.usingObject = null;
     }, _.random(MIN_ACTIVITY_TIME, MAX_ACTIVITY_TIME));
   }
 

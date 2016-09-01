@@ -8,7 +8,7 @@ const template = data =>
 
 
 class View extends CardsList {
-  constructor(player) {
+  constructor(player, office) {
     super({
       title: 'Employees',
       template: template,
@@ -18,6 +18,7 @@ class View extends CardsList {
           var idx = this.itemIndex(ev.target),
               sel = player.company.workers[idx];
           player.company.fireEmployee(sel);
+          office.removeEmployee(sel);
           var subview = this.subviews[idx];
           this.subviews = _.without(this.subviews, subview);
           subview.remove();

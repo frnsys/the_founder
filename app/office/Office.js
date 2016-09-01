@@ -108,13 +108,22 @@ class Office {
 
   addEmployee(employee) {
     var spawnPoint = _.sample(this.spawnPoints);
-    return new Employee(
+    var employee = new Employee(
       employee,
       {
         x: spawnPoint[0],
         y: this.agent.yOffset,
         z: spawnPoint[1]
       }, this);
+    this.employees.push(employee);
+    return employee;
+  }
+
+  removeEmployee(employee) {
+    var employee = _.find(this.employees, e => e.object.name == employee.name);
+    this.employees = _.without(this.employees, employee);
+    this.agents = _.without(this.agents, employee);
+    employee.remove(this);
   }
 
   transitOptions(agent) {

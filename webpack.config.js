@@ -2,15 +2,14 @@ var path = require('path');
 
 var phaserModule = path.join(__dirname, '/node_modules/phaser/');
 var phaser = path.join(phaserModule, 'build/custom/phaser-split.js'),
-  pixi = path.join(phaserModule, 'build/custom/pixi.js'),
-  p2 = path.join(phaserModule, 'build/custom/p2.js');
+  pixi = path.join(phaserModule, 'build/custom/pixi.js');
 
 module.exports = {
   entry: './main',
   output: {
     filename: 'bundle.js'
   },
-  devtool: 'source-map',
+  devtool: 'cheap-source-map',
   module: {
     loaders: [
       {
@@ -34,18 +33,21 @@ module.exports = {
         test: /\.json$/,
         loaders: ['json']
       },
+      { test: /p2\.js/, loader: 'expose?p2' },
       { test: /pixi\.js/, loader: 'expose?PIXI' },
-      { test: /phaser-split\.js$/, loader: 'expose?Phaser' },
-      { test: /p2\.js/, loader: 'expose?p2' }
+      { test: /phaser-split\.js$/, loaders: [
+        'imports?p2=p2&PIXI=pixi',
+        'expose?Phaser'
+      ]}
     ]
   },
   resolve: {
     extensions: ['', '.js', '.sass'],
     modulesDirectories: ['node_modules'],
     alias: {
-      'phaser': phaser,
       'pixi': pixi,
-      'p2': p2,
+      'phaser': phaser,
+      'p2': path.resolve(__dirname, './node_modules/p2/src/p2.js'),
       'app': path.resolve('./app'),
       'data': path.resolve('./data'),
       'debug': path.resolve('./app/debug'),

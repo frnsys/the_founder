@@ -198,6 +198,28 @@ describe('Worker', function() {
       expect(Worker.minSalary(w, player)).toBeGreaterThan(minSalary);
     });
 
+    it('is affected by number of perks', function() {
+      player.company.perks = [];
+      var minSalary = Worker.minSalary(w, player);
+
+      player.company.perks = [{
+        upgradeLevel: 0
+      }];
+      expect(Worker.minSalary(w, player)).toBeLessThan(minSalary);
+    });
+
+    it('is affected by perk upgradeLevels', function() {
+      player.company.perks = [{
+        upgradeLevel: 0
+      }];
+      var minSalary = Worker.minSalary(w, player);
+
+      player.company.perks = [{
+        upgradeLevel: 1
+      }];
+      expect(Worker.minSalary(w, player)).toBeLessThan(minSalary);
+    });
+
     it('is affected by own bonus', function() {
       var minSalary = Worker.minSalary(w, player);
 

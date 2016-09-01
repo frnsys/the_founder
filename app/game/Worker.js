@@ -9,6 +9,10 @@
  * - sets a worker's last tweet
  * - handles worker growth (gradual/stochastic improvement in skills while hired)
  * - computes worker min salary
+ *   - based on economy
+ *   - wage pressure value
+ *   - number of perks
+ *   - negotiation factors
  * - manages worker burnout risk and status
  *   - if they are not burntout
  *     - worker burnout risk gradually increases according to base burnout rate and bonuses
@@ -23,6 +27,7 @@ import Condition from './Condition';
 import thoughts from 'data/thoughts.json';
 import attributeBonuses from 'data/workerAttributes.json';
 
+const PERK_SALARY_REDUCE_PERCENT = 0.01;
 const GROWTH_PROB = 0.04;
 const BASE_GROWTH_RATE = 0.01;
 const MIN_BURNOUT_DAYS = 3;
@@ -109,7 +114,13 @@ const Worker = {
 
   minSalary: function(worker, player, modifiers) {
     var modifier = _.reduce(modifiers || [], (m,v) => m * v, 1);
-    return worker.minSalary * Economy.multiplier(player.economy) * player.wageMultiplier * this.selfBonus(worker, 'minSalary') * modifier;
+    var perkMultiplier = this.perkSalaryMultiplier(player.company);
+    return worker.minSalary * Economy.multiplier(player.economy) * player.wageMultiplier * this.selfBonus(worker, 'minSalary') * modifier * perkMultiplier;
+  },
+
+  perkSalaryMultiplier: function(company) {
+    var reduction = _.reduce(company.perks, (m,p) => (p.upgradeLevel + 1) * PERK_SALARY_REDUCE_PERCENT, 0);
+    return 1 - reduction;
   },
 
   design: function(worker, player) {

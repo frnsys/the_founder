@@ -31,6 +31,8 @@ const template = function(data) {
       <input type="number" value="${data.offer}" class="offer">
       <button class="make-offer">Make Offer (${(data.offerProb * 100).toFixed(0)}%)</button>
       <div class="negotiation-wage-factors">
+        Minimum salary modifiers:
+        ${data.perkMultiplier ? data.perkMultiplier : ''}
         ${data.economicPressure ? data.economicPressure : ''}
         ${data.wagePressure ? data.wagePressure : ''}
       </div>
@@ -129,7 +131,7 @@ class View extends Popup {
   }
 
   render() {
-    var wagePressure, economicPressure;
+    var wagePressure, economicPressure, perkEffect;
     switch (this.player.economy) {
         case 0:
           economicPressure = 'The economic depression is decreasing the minimum salary';
@@ -146,6 +148,9 @@ class View extends Popup {
       wagePressure = 'Other factors are increasing the minimum salary';
     }
 
+    var perkMultiplier = Worker.perkSalaryMultiplier(this.player.company);
+    perkEffect = `-${((1-perkMultiplier)*100).toFixed(0)}% from perks`;
+
     super.render(_.extend({
       offer: this.offer,
       offerProb: Hiring.acceptOfferProb(this.minSalary, this.offer),
@@ -153,7 +158,8 @@ class View extends Popup {
       result: this.result,
       workerInsight: this.player.specialEffects['Worker Insight'],
       economicPressure: economicPressure,
-      wagePressure: wagePressure
+      wagePressure: wagePressure,
+      perkMultiplier: perkEffect
     }, this.worker));
   }
 }

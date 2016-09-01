@@ -22,31 +22,6 @@ import ProductDesignerView from 'views/ProductDesigner';
 import TaskCompleteView from 'views/alerts/TaskComplete';
 
 
-var testProduct = {
-  name: 'test product',
-  recipeName: 'Bleep.Bloop',
-  difficulty: 2,
-  killsPeople: true,
-  debtsPeople: true,
-  pollutes: true,
-  productTypes: ['Bleep', 'Bloop'],
-  verticals: ['B', 'P'],
-  effects: [],
-  marketing: 10,
-  engineering: 10,
-  design: 10,
-  feature: 1,
-  description: 'for testing purposes. not for individual resale.',
-  combo: 'Bleep + Bloop',
-  progress: 1,
-  requiredProgress: 1,
-  levels: {
-    quantity: 1,
-    strength: 1,
-    movement: 1
-  }
-};
-
 class Manage extends Phaser.State {
   constructor(game, player) {
     super();
@@ -71,12 +46,6 @@ class Manage extends Phaser.State {
 
     Product.onProductLaunch = this.enterTheMarket.bind(this);
     Task.onFinish = this.finishedTask.bind(this);
-
-    // TESTING
-    $('#office, .hud, .menu').hide();
-    $('#market').show();
-    this.game.state.start('Market', true, false, testProduct);
-    // --TESTING
   }
 
   pause() {

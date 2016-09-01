@@ -229,7 +229,6 @@ describe('Grid', function() {
       expect(path).toEqual(expected);
     });
 
-
     it('obeys the validate predicate', function() {
       var tileMap = [
         [0,0,1,1,0],
@@ -249,6 +248,76 @@ describe('Grid', function() {
           ];
       expect(path).toEqual(expected);
     });
+  });
+
+  it('finds the shortest legal path between two tiles', function() {
+    var tileMap = [
+      [0,1,1,0,1],
+       [1,0,1,2,1],
+      [0,1,1,1,1]
+    ];
+    setTiles(grid, tileMap);
+
+    var from = new Position(0,1),
+        to = new Position(1,3),
+        tile = grid.tileAt(to);
+    var piece = {
+      position: from,
+      moves: 3
+    };
+    var path = grid.findLegalPath(piece, tile, t => !t.piece),
+        expected = [
+          new Position(0,2),
+          new Position(1,2)
+        ];
+    expect(path).toEqual(expected);
+  });
+
+  it('finds the shortest legal path between two tiles, as close as possible', function() {
+    var tileMap = [
+      [0,1,1,0,1],
+       [1,0,2,2,1],
+      [0,1,1,1,1]
+    ];
+    setTiles(grid, tileMap);
+
+    var from = new Position(0,1),
+        to = new Position(1,3),
+        tile = grid.tileAt(to);
+    var piece = {
+      position: from,
+      moves: 3
+    };
+    var path = grid.findLegalPath(piece, tile, t => !t.piece),
+        expected = [
+          new Position(0,2)
+        ];
+    expect(path).toEqual(expected);
+  });
+
+  it('will take a longer route if it is unblocked and reachable', function() {
+    var tileMap = [
+      [0,1,1,0,1],
+       [1,1,2,1,1],
+      [0,1,1,1,1]
+    ];
+    setTiles(grid, tileMap);
+
+    var from = new Position(0,1),
+        to = new Position(1,3),
+        tile = grid.tileAt(to);
+    var piece = {
+      position: from,
+      moves: 4
+    };
+    var path = grid.findLegalPath(piece, tile, t => !t.piece),
+        expected = [
+          new Position(1,1),
+          new Position(2,2),
+          new Position(2,3),
+          new Position(1,3)
+        ];
+    expect(path).toEqual(expected);
   });
 
   describe('valid moves', function() {

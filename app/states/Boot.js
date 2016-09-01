@@ -16,6 +16,7 @@ import MainMenu from 'views/MainMenu';
 import Onboarding from 'states/Onboarding';
 
 const DEBUG = true;
+const DEBUG_MARKET = true;
 
 class Boot extends Phaser.State {
   preload() {
@@ -40,14 +41,19 @@ class Boot extends Phaser.State {
     game.state.add('Market', new Market(game, player));
     game.state.add('Onboarding', new Onboarding(game, player));
 
-    this.game.stage.backgroundColor = $('html').css('background-color');
-    $('.background').css('background-image', 'url("assets/office/apartment.jpg")').show();
-    var view = new MainMenu();
-    view.render({
-      savedGame: Manager.hasSave(),
-      newGamePlus: Manager.hasNewGamePlus(),
-      highScore: Manager.highScore()
-    });
+    if (DEBUG_MARKET) {
+      Debug.debugMarket(game);
+
+    } else {
+      this.game.stage.backgroundColor = $('html').css('background-color');
+      $('.background').css('background-image', 'url("assets/office/apartment.jpg")').show();
+      var view = new MainMenu();
+      view.render({
+        savedGame: Manager.hasSave(),
+        newGamePlus: Manager.hasNewGamePlus(),
+        highScore: Manager.highScore()
+      });
+    }
   }
 }
 

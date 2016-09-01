@@ -94,15 +94,58 @@ class Grid {
     return tiles;
   }
 
+  findLegalPath(piece, toTile, validPredicate) {
+    var from = piece.position,
+        to = toTile.position,
+        dist = Grid.manhattanDistance(from, to),
+        withinReach = dist <= piece.moves,
+        unoccupied = !toTile.piece;
+
+    if (_.isEqual(from, to)) {
+      return [];
+    } else if (withinReach && unoccupied) {
+      return this.findPath(from, to, validPredicate);
+    } else {
+      // find all tiles that are within reach
+      // and between the from (start) and to (end) positions
+      // then sort then by closest distance to the to position
+      var tilesWithinReach = _.chain(this.tiles)
+        .map(function(t) {
+          var pos = t.position,
+              startToTile = Grid.manhattanDistance(from, pos),
+              tileToEnd = Grid.manhattanDistance(to, pos),
+              betweenStartAndEnd = startToTile < dist && tileToEnd < dist,
+              withinReach = startToTile < piece.moves;
+
+          if (betweenStartAndEnd && withinReach) {
+            return {
+              startToTile: startToTile,
+              tileToEnd: tileToEnd,
+              length: (startToTile + tileToEnd) * tileToEnd,
+              tile: t,
+              position: t.position
+            }
+          } else {
+            return null;
+          }
+        }).compact().sortBy('length').value();
+
+      // find the tile closest to the to position
+      // that is also unoccupied and return a path to it
+      while (tilesWithinReach.length > 0) {
+        var candidate = tilesWithinReach.shift();
+        if (!candidate.tile.piece) {
+          return this.findPath(from, candidate.tile.position, validPredicate);
+        }
+      }
+    }
+  }
 
   findPath(from, to, validPredicate) {
     var self = this,
         fringe = [[from]],
         explored = [],
         path, last, successorPaths;
-    console.log('findpath');
-    console.log(from);
-    console.log(to);
     while (fringe.length > 0) {
       path = fringe.shift();
       last = _.last(path);

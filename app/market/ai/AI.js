@@ -20,7 +20,7 @@ class AI {
   }
 
   planTasks() {
-    console.log('planning task');
+    // console.log('planning task');
     var assignedTasks = [],
         unassignedTasks = [];
 
@@ -95,7 +95,7 @@ class AI {
   }
 
   execute(task) {
-    console.log('executing task: ' + task.constructor.name);
+    // console.log('executing task: ' + task.constructor.name);
     task.execute(this.board, this.planAndExecute.bind(this));
   }
 }

@@ -58,7 +58,7 @@ class TheMarket extends Phaser.State {
   }
 
   create() {
-    $('#market').addClass('market-active');
+    $('#market').show().addClass('market-active');
 
     var self = this;
     this.totalTurns = MAX_TURNS;
@@ -166,8 +166,9 @@ class TheMarket extends Phaser.State {
       this.endGame();
     } else {
       var self = this;
-      this.startTurn(this.aiPlayer);
-      this.AI.takeTurn(() => this.startTurn(this.humanPlayer));
+      // this.startTurn(this.aiPlayer);
+      // this.AI.takeTurn(() => this.startTurn(this.humanPlayer));
+      this.startTurn(this.humanPlayer); //TEMP TODO
     }
   }
 

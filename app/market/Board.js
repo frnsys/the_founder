@@ -154,47 +154,21 @@ class Board {
     }
   }
 
-  movePieceTo(piece, to, target, cb) {
-    // pass in `target` if we are moving to attack
+  movePieceTowards(piece, toTile, cb) {
     var self = this,
         from = piece.position,
         cb = cb || _.noop;
-    this.grid.tileAt(from).piece = null;
 
     var predicate = function(tile) {
       var unoccupied = !tile.piece,
-          friendly, isTarget;
-      if (tile.piece) {
-        friendly = tile.piece.owner == piece.owner;
-        isTarget = tile.piece == target;
-      }
-
-      // if a target is specified
-      // and we are looking at an adjacent tile
-      // we have to make sure it's unoccupied first.
-      // this is b/c if we are attacking a piece in a tile,
-      // the attacking piece has to stop one tile short of the
-      // target and it shouldn't stop on an already occupied tile
-      if (target && _.contains(this.grid.tilesInRange(to, 1), tile)) {
-        return unoccupied;
-      } else {
-        return unoccupied || friendly || isTarget;
-      }
+          friendly = tile.piece && tile.piece.owner == piece.owner;
+      return unoccupied || friendly;
     }
-    var path = this.grid.findPath(from, to, predicate.bind(this));
+    var path = this.grid.findLegalPath(piece, toTile, predicate.bind(this));
 
-    // if a piece is attacking a target,
-    // move it just short of the final position
-    if (target) {
-      path = _.initial(path);
-    }
-
-    // limit to how many moves the piece has
-    var moves = Math.min(piece.moves, path.length);
-    path = path.slice(0, moves);
-    piece.moves -= moves;
-
-    if (path.length > 0) {
+    if (path && path.length > 0) {
+      piece.moves -= path.length;
+      this.grid.tileAt(from).piece = null;
       this.animatePieceAlongPath(piece, path, _.last(path), cb);
     } else {
       cb();
@@ -276,13 +250,16 @@ class Board {
         var attacker = this.selectedTile.piece,
             defender = tile.piece;
         if (defender && attacker.owner != defender.owner) {
-          this.movePieceTo(this.selectedTile.piece, tile.position, defender, function() {
-            self.attackPiece(attacker, defender);
+          this.movePieceTowards(this.selectedTile.piece, tile, function() {
+            // check we're actually close enough to attack
+            if (attacker.moves > 0 && _.contains(self.grid.tilesInRange(attacker.tile.position, 1), tile)) {
+              self.attackPiece(attacker, defender);
+            }
           });
         } else {
-          this.movePieceTo(this.selectedTile.piece, tile.position);
+          this.movePieceTowards(this.selectedTile.piece, tile);
         }
-      } else if (_.isFunction(tile.capture) && tile.piece && tile.piece.product && tile.piece.moves > 0) {
+      } else if (_.isFunction(tile.capture) && tile.piece == this.selectedTile.piece && tile.piece.product && tile.piece.moves > 0) {
         tile.capture(tile.piece);
       }
     }
@@ -294,7 +271,7 @@ class Board {
     attacker.attack(defender);
     // move to the defender spot if they were destroyed
     if (defender.health <= 0 && attacker.health > 0) {
-      this.movePieceTo(attacker, defender.position);
+      this.movePieceTowards(attacker, this.grid.tileAt(defender.position));
     }
   }
 

@@ -6,6 +6,7 @@
 import _ from 'underscore';
 import dat from 'dat-gui';
 import Debug from './Debug';
+import OfficeDebugger from './Office';
 import Office from 'office/Office';
 import SelectUI from 'office/Select';
 
@@ -68,33 +69,36 @@ function handleTarget(gui, mesh, px, py, pz) {
   });
 }
 
+export default {
+  create: function() {
+    const office = new Office(level, function() {
+      _.each([0,1], function(type) {
+        office.addEmployee(type);
+      });
+      _.each(objectPerks, office.addPerk.bind(office));
+      _.each(agentPerks, office.addPerk.bind(office));
+      Debug.debugOffice(office);
 
-const office = new Office(level, function() {
-  _.each([0,1], function(type) {
-    office.addEmployee(type);
-  });
-  _.each(objectPerks, office.addPerk.bind(office));
-  _.each(agentPerks, office.addPerk.bind(office));
-  Debug.debugOffice(office);
+      var gui;
+      var ui = new SelectUI(office, function(mesh) {
+        if (gui) {
+          gui.destroy();
+        }
+        gui = new dat.GUI();
 
-  var gui;
-  var ui = new SelectUI(office, function(mesh) {
-    if (gui) {
-      gui.destroy();
-    }
-    gui = new dat.GUI();
+        var position = gui.addFolder('position');
+        var px = position.add(mesh.position, 'x').step(stepSize);
+        var py = position.add(mesh.position, 'y').step(stepSize);
+        var pz = position.add(mesh.position, 'z').step(stepSize);
+        position.open();
 
-    var position = gui.addFolder('position');
-    var px = position.add(mesh.position, 'x').step(stepSize);
-    var py = position.add(mesh.position, 'y').step(stepSize);
-    var pz = position.add(mesh.position, 'z').step(stepSize);
-    position.open();
-
-    if (mesh.type === 'target') {
-      handleTarget(gui, mesh, px, py, pz);
-    } else if (mesh.type === 'object' || mesh.type === 'agent') {
-      handleObject(gui, mesh);
-    }
-  });
-});
-office.render();
+        if (mesh.type === 'target') {
+          handleTarget(gui, mesh, px, py, pz);
+        } else if (mesh.type === 'object' || mesh.type === 'agent') {
+          handleObject(gui, mesh);
+        }
+      });
+    });
+    office.render();
+  }
+}

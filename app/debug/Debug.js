@@ -1,6 +1,7 @@
 /*
  * Debug
  * - sets up a company to test with
+ * - other debugging stuff
  */
 
 import _ from 'underscore';
@@ -12,6 +13,33 @@ import cofounders from 'data/cofounders.json';
 import onboarding from 'data/onboarding.json';
 import productTypes from 'data/productTypes.json';
 import specialProjects from 'data/specialProjects.json';
+
+var testProduct = {
+  name: 'test product',
+  recipeName: 'Bleep.Bloop',
+  difficulty: 2,
+  killsPeople: true,
+  debtsPeople: true,
+  pollutes: true,
+  productTypes: ['Bleep', 'Bloop'],
+  verticals: ['B', 'P'],
+  effects: [],
+  marketing: 10,
+  engineering: 10,
+  design: 10,
+  feature: 1,
+  description: 'for testing purposes. not for individual resale.',
+  combo: 'Bleep + Bloop',
+  progress: 1,
+  requiredProgress: 1,
+  levels: {
+    quantity: 1,
+    strength: 1,
+    movement: 1
+  }
+};
+
+
 
 const Debug = {
   setupCompany: function(player) {
@@ -39,6 +67,10 @@ const Debug = {
   debugOffice: function(office) {
     var officeDebugger = new OfficeDebugger(office);
     officeDebugger.debug();
+  },
+
+  debugMarket: function(game) {
+    game.state.start('Market', true, false, testProduct);
   }
 };
 

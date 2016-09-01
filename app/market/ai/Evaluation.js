@@ -29,6 +29,7 @@ const Evaluation = {
 
     // simulate enemy damage
     enemy.health -= attacker.health/2;
+    enemy.health = Math.max(enemy.health, 0);
     var expectedHealth = attacker.health - enemy.health/2,
         expectedThreatAfter = Evaluation.tileThreat(enemy, tile);
 
@@ -39,7 +40,7 @@ const Evaluation = {
 
   tileThreat: function(piece, tile) {
     // stronger and closer pieces are more threatening
-    return piece.health/(Grid.manhattanDistance(piece.position, tile.position) + 1e-12);
+    return Math.max(piece.health/(Grid.manhattanDistance(piece.position, tile.position) + 1e-12), 0);
   },
 
   tileThreats: function(grid, tile, owner) {

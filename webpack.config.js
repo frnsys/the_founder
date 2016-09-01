@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'bundle.js'
   },
-  devtool: 'cheap-source-map',
+  devtool: 'source-map',
   module: {
     loaders: [
       {

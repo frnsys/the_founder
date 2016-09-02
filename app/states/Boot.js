@@ -15,7 +15,7 @@ import Market from 'states/Market';
 import MainMenu from 'views/MainMenu';
 import Onboarding from 'states/Onboarding';
 
-const DEBUG = true;
+const DEBUG = false;
 const DEBUG_MARKET = false;
 
 class Boot extends Phaser.State {
@@ -32,13 +32,12 @@ class Boot extends Phaser.State {
 
     if (DEBUG) {
       Debug.setupCompany(Manager.player);
-      Manager.game.debugger = Debug;
     }
 
     var game = Manager.game,
         player = Manager.player;
-    game.state.add('Manage', new Manage(game, player));
-    game.state.add('Market', new Market(game, player));
+    game.state.add('Manage', new Manage(game, player, DEBUG));
+    game.state.add('Market', new Market(game, player, DEBUG));
     game.state.add('Onboarding', new Onboarding(game, player));
 
     if (DEBUG_MARKET) {
@@ -47,7 +46,7 @@ class Boot extends Phaser.State {
     } else {
       this.game.stage.backgroundColor = $('html').css('background-color');
       $('.background').css('background-image', 'url("assets/office/apartment.jpg")').show();
-      var view = new MainMenu();
+      var view = new MainMenu(DEBUG);
       view.render({
         savedGame: Manager.hasSave(),
         newGamePlus: Manager.hasNewGamePlus(),

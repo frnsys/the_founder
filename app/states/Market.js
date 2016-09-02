@@ -35,10 +35,11 @@ function createPieces(player, product) {
 }
 
 class TheMarket extends Phaser.State {
-  constructor(game, player) {
+  constructor(game, player, debug) {
     super();
     this.game = game;
     this.player = player;
+    this.debug = debug;
   }
 
   init(product) {
@@ -80,6 +81,10 @@ class TheMarket extends Phaser.State {
 
     this.board = new Board(this.player.company, this.players, this.game);
     this.AI = new AI(this.board, this.aiPlayer);
+
+    if (this.debug) {
+      this.board.debug();
+    }
 
     // setup income tile descriptions
     _.each(this.board.incomeTiles, function(t) {

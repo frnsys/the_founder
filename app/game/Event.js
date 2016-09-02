@@ -102,13 +102,13 @@ const Event = {
     player.news = _.difference(player.news, specialNews);
 
     specialNews = _.pluck(specialNews, 'article');
-    news = _.map(news, (n) => _.sample(n.articles));
+    news = _.map(news, n => _.sample(n.articles));
 
     // special news take priority
     news = specialNews.concat(news);
 
     // apply templates
-    news = _.map(news, (n) => template(n, ['title', 'body'], player));
+    news = _.map(news, n => template(n, ['title', 'body'], player));
 
     // add filler news
     if (news.length < MIN_NEWS_ARTICLES) {

@@ -36,20 +36,10 @@ class Board {
     // can't have more tiles than spaces in the grid
     nTiles = Math.min(cols * rows, nTiles);
 
-    if (this.game.debugger) {
-      this.texts = [];
-    }
-
     this.grid = new Grid(rows, cols);
     this.setupTiles(nTiles, rows, cols);
     this.setupPlayers(players);
     this.centerMap();
-
-    if (this.texts) {
-      _.each(this.texts, function(text) {
-        self.tileGroup.add(text);
-      });
-    }
   }
 
   setupTiles(nTiles, rows, cols) {
@@ -147,11 +137,16 @@ class Board {
     tile.render(coord, this.tileGroup, this.game, tileHeight);
     this.grid.setTileAt(pos, tile);
     tile.position = pos;
+  }
 
-    if (this.texts) {
-      var text = this.game.add.text(coord.x, coord.y, pos.col.toString() + "," + pos.row.toString());
-      this.texts.push(text);
-    }
+  debug() {
+    var self = this;
+    _.each(this.tiles, function(t) {
+      var pos = t.position,
+          coord = self.coordinateForPosition(pos),
+          text = self.game.add.text(coord.x, coord.y, pos.col.toString() + "," + pos.row.toString());
+      self.tileGroup.add(text);
+    });
   }
 
   movePieceTowards(piece, toTile, cb) {

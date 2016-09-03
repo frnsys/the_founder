@@ -21,7 +21,9 @@ import ObjectSelectionView from 'views/select/Object';
 import EmployeeSelectionView from 'views/select/Employee';
 import ProductDesignerView from 'views/ProductDesigner';
 import TaskCompleteView from 'views/alerts/TaskComplete';
+import MarketReport from 'views/alerts/MarketReport';
 
+const ONBOARDING_WAIT = 150; // frames
 
 class Manage extends Phaser.State {
   constructor(game, player) {
@@ -38,6 +40,7 @@ class Manage extends Phaser.State {
     var office = this.showOffice();
     this.hud = new HUD(this.player);
     this.menu = new Menu(this.player, office);
+    this.clock = new Clock(this, this.player, office);
     this.selectUI = new SelectUI(office, this.showSelection.bind(this));
     this.menu.render();
     this.hud.render();
@@ -52,13 +55,11 @@ class Manage extends Phaser.State {
     Product.onProductLaunch = this.enterTheMarket.bind(this);
     Task.onFinish = this.finishedTask.bind(this);
 
-
-    // wait a sec
-    var self = this;
-    this.clock = {update: _.noop, pause: _.noop}
-    setTimeout(function(){
-      self.clock = new Clock(self, self.player, office);
-    }, 1000);
+    if (this.marketResults) {
+      var report = new MarketReport();
+      report.render(this.marketResults);
+      this.marketResults = null;
+    }
   }
 
   pause() {
@@ -101,7 +102,12 @@ class Manage extends Phaser.State {
     if (this.selectionView && this.selectedObject) {
       this.selectionView.update(this.selectedObject);
     }
-    this.player.onboarder.resolve();
+
+    // wait a little before checking on onboarding events
+    if (this.clock.frames >= ONBOARDING_WAIT) {
+      this.player.onboarder.resolve();
+    }
+
     if (Popup.current && _.isFunction(Popup.current.update)) {
       Popup.current.update();
     }

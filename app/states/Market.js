@@ -19,7 +19,6 @@ import Product from 'game/Product';
 import Competitor from 'game/Competitor';
 import MarketView from 'views/Market';
 import Confirm from 'views/alerts/Confirm';
-import MarketReport from 'views/alerts/MarketReport';
 
 const MAX_TURNS = 32,
       PIECE_PROB = 0.2;
@@ -183,15 +182,15 @@ class TheMarket extends Phaser.State {
     var results = Product.setRevenue(this.product, marketShares, influencers, this.player);
     results.marketShare = this.percentMarketShare().human;
     this.player.company.activeProducts.push(this.product);
+    this.player.company.productsLaunched++;
 
     this.view.remove();
     this.player.save();
     $('#market').removeClass('market-active');
     $('body').removeClass('market-background');
 
+    this.game.state.states['Manage'].marketResults = results;
     this.game.state.start('Manage');
-    var report = new MarketReport();
-    report.render(results);
   }
 
   startTurn(player) {

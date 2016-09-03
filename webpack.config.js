@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'bundle.js'
   },
-  devtool: 'eval-module-source-map',
+  devtool: 'source-map',
   module: {
     loaders: [
       {

@@ -83,7 +83,7 @@ class Company {
       acquisitions: [],
       discoveredProducts: [],
       activeProducts: [],
-      productsLauched: 0,
+      productsLaunched: 0,
 
       hype: 0,
       outrage: 0,

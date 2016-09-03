@@ -3,6 +3,7 @@ import util from 'util';
 import templ from './Common';
 import View from 'views/View';
 import Effect from 'game/Effect';
+import verticals from 'data/verticals.json';
 import productTypes from 'data/productTypes.json';
 
 function template(data) {
@@ -57,8 +58,6 @@ function template(data) {
       <h4>${data.description}</h4>
       ${body}`;
 }
-
-
 
 class Onboarding extends View {
   constructor(player, stages, onFinish) {
@@ -147,7 +146,7 @@ class Onboarding extends View {
         break;
       case 2:
         stages[stage].selected = selected.name;
-        player.company.verticals = [selected];
+        player.company.verticals = util.byNames(verticals, [selected.name]);
         player.company.productTypes = util.byNames(productTypes, stages[stage]['startingProductTypes'][selected.name]);
         stages[4].options[1] = selected;
         break;

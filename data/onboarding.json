@@ -6,9 +6,10 @@
       "You're just starting out, so you'll work from your apartment for now.",
       "This is the Office view. Here you can manage your company, create products, poke around the office, and more.",
       "Right now it's just your cofounder in the office, but eventually you'll have a buzzing hive of talented employees.",
-      "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one."
+      "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one.",
+      "Click <em class='ui-item'>New Task</em> to get started."
     ],
-    "uiSelector": ".start-product"
+    "uiSelector": ".start-new-task"
   }, {
     "name": "create_product",
     "messages": [
@@ -19,11 +20,23 @@
     ],
     "popup": "Start a Product"
   }, {
+    "name": "assign_task",
+    "messages": [
+      "Creating a Product is a <em class='concept'>Task</em>.",
+      "There are other tasks too, but for now only Products are important.",
+      "You assign employees to tasks by clicking on them. To unassign them, click on them again.",
+      "They contribute <em class='concept'><img src='assets/company/design.png'> Design</em>, <em class='concept'><img src='assets/company/engineering.png'> Engineering</em>, and <em class='concept'><img src='assets/company/marketing.png'> Marketing</em> at a rate according to their <em class='concept'><img src='assets/company/productivity.png'> Productivity</em>.",
+      "Assign your cofounder to the task and let's get going!"
+    ],
+    "popup": "Assign Task"
+  }, {
     "name": "product_development",
     "messages": [
-      "Products take time to develop, depending on the productivity of your employees. Some product types are more difficult than others, requiring longer to finish.",
-      "As your company develops a product, your employees contribute <em class='concept'>Design</em>, <em class='concept'>Engineering</em>, and <em class='concept'>Marketing</em> skills. These affect the final product in different ways.",
-      "We'll see what this means after the product is finished."
+      "Alright, your company is working on its first product!",
+      "Products take time to develop, depending on the productivity of your employees.",
+      "Some product types are more difficult than others, requiring longer to finish.",
+      "You can peek on its progress with the <em class='ui-item'>View Tasks</em> button.",
+      "Let's wait for this product to finish development and prepare to release it to the world."
     ],
     "conditions": [{
       "type": "productDeveloping",
@@ -34,23 +47,23 @@
     "name": "product_finished",
     "messages": [
       "Your product is finished!",
-      "When a product is finished, it is launched into <em class='special'>The Market</em>, where you'll battle a competitor for market share."
+      "In a moment we will release the product to <em class='special'>The Market</em>.",
+      "But first, we need to take the accumulated Design, Engineering, and Marketing points to design the product. That's what the Product Designer here is for.",
+      "These points can power up your product's <em class='concept'>Quantity</em> (how many you release to The Market),",
+      "your product's <em class='concept'>Strength</em> (how powerful they are against competitors and at capturing market share),",
+      "and your product's <em class='concept'>Movement</em> (how quickly they move across The Market).",
+      "This will all make sense in a moment, I promise."
     ],
-    "conditions": [{
-      "type": "productsLaunched",
-      "op": "eq",
-      "val": 1
-    }]
+    "popup": "Product Designer"
   }, {
     "name": "the_market",
     "messages": [
       "Welcome to <em class='special'>The Market</em>! The tiles with dollar signs are different pieces of market share of varying income levels.",
       "Your product's revenue depends on how much market share you can capture from The Market.",
-      "The blue cubes on the map represent your products. They have different stats which are affected by the Design, Engineering, and Marketing skill that went into the product.",
-      "Design influences the number of moves each product has.",
-      "Engineering influences the health each product has.",
-      "Marketing influences the strength each product has.",
+      "The blue spheres on the map represent your products. Their stats are affected by the points you configured in the Product Designer.",
       "Products can capture market share tiles - the speed of capture depends on their strength - and they can fight head-to-head and destroy competitors products.",
+      "You may encounter special <em class='special'>Influencer</em> tiles, noted by an 'i', as well.",
+      "These special social media influencers give you big bonuses to your revenue!",
       "The Market battle ends when there are no more market shares left to capture, if one player is eliminated, or if the turns run out.",
       "Good luck!"
     ],
@@ -65,7 +78,7 @@
       "Let's hire an employee through the <em class='ui-item'>Recruiting</em> button."
     ],
     "conditions": [{
-      "type": "activeProducts",
+      "type": "productsLaunched",
       "op": "eq",
       "val": 1
     }],
@@ -103,7 +116,10 @@
     "name": "employees",
     "messages": [
       "Congratulations on your first employee!",
-      "Employees are the lifeblood of your company. Keep up with them by selecting them in the office or by opening the <em class='ui-item'>Employees</em> menu item."
+      "Employees are the lifeblood of your company. Keep up with them by selecting them in the office or by opening the <em class='ui-item'>Employees</em> menu item.",
+      "Your employees are hard workers. Sometimes they work themselves to the point of exhaustion and <em class='concept'>burn out<em/>.",
+      "An employee that is burnt out rests for a little and is unable to contribute to tasks at that time.",
+      "The <em class='concept'><img src='assets/company/happiness.jpg'> happier</em> you keep your employees, the less likely they are to burn out!"
     ],
     "conditions": [{
       "type": "employees",
@@ -114,14 +130,29 @@
   }, {
     "name": "productTypes",
     "messages": [
-      "You might be feeling a little limited by the product types your company can develop. In the <em class='ui-item'>Product Types</em> menu you can purchase more to work with."
+      "Congratulations on your first product! It will generate revenue for you, but not for long, so you need to keep churning out those products.",
+      "You might be feeling a little limited by the product types your company can develop. In the <em class='ui-item'>Product Types</em> menu you can purchase more to work with.",
+      "Further product types are unlocked in other ways - I'll catch you up on them when you're ready."
     ],
     "conditions": [{
       "type": "productsLaunched",
-      "op": "gt",
-      "val": 1
+      "op": "eq",
+      "val": 2
     }],
     "uiSelector": ".manage-productTypes"
+  }, {
+    "name": "theBoard",
+    "messages": [
+      "Now's a good time to mention your Board of Investors. They've put quite a bit of their own money into your enterprise and expect reliable returns on that investment.",
+      "Every year they require a <em class='concept'>12% growth in profit</em>. They get upset when you fail to meet that goal.",
+      "You can track their mood and your progress towards this year's profit goal at the top of the screen.",
+      "If you fail too much they'll fire you for incompentance. Try not to let that happen."
+    ],
+    "conditions": [{
+      "type": "productsLaunched",
+      "op": "eq",
+      "val": 3
+    }]
   }, {
     "name": "verticals",
     "messages": [
@@ -137,18 +168,22 @@
   }, {
     "name": "specialProject",
     "messages": [
-      "Special projects are expensive undertakings but can lead to massive Market advantages and open up totally new revenue streams.",
-      "Each special project has a few prerequisite products that must be innovated before the special project is available."
+      "<em class='concept'>Special Projects</em> are expensive tasks but can lead to massive Market advantages and open up totally new revenue streams.",
+      "Each special project has a few prerequisite products that must be innovated before the special project is available,",
+      "and their development requires some minimum amount of Design, Engineering, and Marketing points before they are completed."
     ],
     "conditions": [{
       "type": "productsLaunched",
       "op": "gt",
       "val": 12
     }],
-    "uiSelector": ".manage-specialProjects"
+    "uiSelector": ".start-new-task"
   }, {
     "name": "acquisitions",
-    "messages": ["Is another company getting in your way? You could always acquire them."],
+    "messages": [
+      "Is another company getting in your way?",
+      "With <em class='concept'>Acquisitions</em> you can acquire them! It's pricey, but it provides a large and reliable revenue stream for your company."
+    ],
     "conditions": [{
       "type": "annualRevenue",
       "op": "gt",
@@ -157,26 +192,34 @@
     "uiSelector": ".manage-acquisitions"
   }, {
     "name": "lobbying",
-    "messages": ["The government does not have to be an enemy to the Market; it can be a strong ally."],
+    "messages": [
+      "The government does not have to be an enemy to the Market; it can be a strong ally.",
+      "<em class='concept'>Lobbying</em> tasks are long-term projects that take Marketing points and turn them into powerful advantages for you and your company."
+    ],
     "conditions": [{
       "type": "annualRevenue",
       "op": "gt",
       "val": 2000000
     }],
-    "uiSelector": ".manage-lobbying"
+    "uiSelector": ".start-new-task"
   }, {
     "name": "research",
-    "messages": ["To most effectively innovate, you need an Innovation Labs - here is where all your bleeding edge research is carried out."],
+    "messages": [
+      "To most effectively innovate, you need an Innovation Labs!",
+      "We can assign employees to <em class='concept'>Research</em> tasks and discover new technologies which may provide untold advantages or new product types to experiment with.",
+      "Research is developed mostly with the Engineering skill, but the Design skill contributes some too."
+    ],
     "conditions": [{
       "type": "productsLaunched",
       "op": "gt",
       "val": 4
     }],
-    "uiSelector": ".manage-research"
+    "uiSelector": ".start-new-task"
   }, {
     "name": "perks",
     "messages": [
-      "Happy employees are better employees - <em>perks</em> attract and retain the best talent and keep them at the office for longer.",
+      "Happy employees are better employees- they won't burn out as much. <em>Perks</em> lift your employees spirits so they have less down time.",
+      "Perks are also attractive to prospective hires and lower the salary they expect. So stack up on them to get cheaper labor.",
       "Most perks can be upgraded too!"
     ],
     "conditions": [{
@@ -201,28 +244,19 @@
   }, {
     "name": "promo",
     "messages": [
-      "Promos etc"
+      "People should know and feel good about your company and its products. But that won't happen on its own.",
+      "<em class='concept'>Promo campaigns</em> are tasks that will generate <em class='concept'><img src='assets/company/hype.png'> hype</em> for your company.",
+      "The hype generated by a promo campaign depends mostly on the Marketing skill, but Design contributes too.",
+      "Hype can give huge boosts to the revenue a product generates.",
+      "However, people are fickle -- hype fades over time, and fades faster if there's <em class='concept'><img src='assets/company/outrage.png'> outrage</em>.",
+      "Outrage is generated by products which pollute (Hardware), kill people (Defense), generate debt (Finance), and by tax evasion.",
+      "But you can mitigate outrage by building distracting products!"
     ],
     "conditions": [{
       "type": "productsLaunched",
       "op": "ge",
       "val": 6
     }],
-    "uiSelector": ".start-promo"
-  }, {
-    "name": "hype",
-    "messages": [
-      "Hype etc"
-    ]
-  }, {
-    "name": "outrage",
-    "messages": [
-      "Outrage etc"
-    ]
-  }, {
-    "name": "products",
-    "messages": [
-      "Products you've innovated"
-    ]
+    "uiSelector": ".start-new-task"
   }
 ]

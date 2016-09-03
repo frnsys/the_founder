@@ -3,7 +3,7 @@ import Alert from './Alert';
 const template = data => `
 <div class="alert-message alert-mentor">
   <div class="alert-mentor-message">
-    <img src="assets/workers/gifs/0.gif">
+    <img src="assets/workers/gifs/0.gif" class="mentor-avatar">
     ${data.message}
   </div>
   <div class="alert-actions mentor-actions">

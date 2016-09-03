@@ -3,7 +3,9 @@
  * - evaluates whether or not a set of conditions are satisfied
  */
 
+import _ from 'underscore';
 import util from 'util';
+import Task from './Task';
 
 const Condition = {
   operators: {
@@ -48,7 +50,7 @@ const Condition = {
   year: (player) => player.year,
   globalAvgWage: (player) => player.snapshot.globalAvgWage,
   consumerSpending: (player) => player.snapshot.consumerSpending,
-  productDeveloping: (player) => player.company.product,
+  productDeveloping: (player) => _.filter(player.company.tasks, t => t.type == Task.Type.Product).length > 0,
   lifetimeRevenue: (player) => player.company.lifetimeRevenue
 };
 

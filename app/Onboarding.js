@@ -25,8 +25,8 @@ class Onboarding {
         var satisfied = true;
         if (o.conditions) {
           satisfied = _.every(o.conditions, c => Condition.satisfied(c, player));
-        } else if (o.popup & Popup.current) {
-          satisfied = Popup.current.title == o.popup;
+        } else if (o.popup) {
+          satisfied = Popup.current && Popup.current.title == o.popup;
         } else if (o.market) {
           satisfied = manager.game.state.current == 'Market';
         }
@@ -38,14 +38,17 @@ class Onboarding {
         toResolve.finished = true;
         if (toResolve.uiSelector) {
           // update ui
-          if (this.manager.game.state.current.menu) {
-            this.manager.game.state.current.hud.render();
-            this.manager.game.state.current.menu.render();
+          var name = this.manager.game.state.current,
+              current = this.manager.game.state.states[name];
+          if (current.menu) {
+            current.menu.render();
           }
           $(toResolve.uiSelector).addClass('pulse');
         }
+        return true;
       }
     }
+    return false;
   }
 }
 

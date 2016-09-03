@@ -80,9 +80,9 @@ class AI {
   }
 
   takeTurn(onFinishTurn) {
+    this.onFinishTurn = onFinishTurn;
     _.each(this.player.pieces, p => p.done = false);
     this.planAndExecute();
-    this.onFinishTurn = onFinishTurn;
   }
 
   planAndExecute() {

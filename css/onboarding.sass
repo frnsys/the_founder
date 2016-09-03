@@ -72,15 +72,35 @@
   font-size: 1.2em
   padding: 2em 2em 1em 2em
   line-height: 1.4
+  background: #e8e8e8
   em
     color: #fff
     background: #3f84fb
     padding: 0.1em 0.3em
-  img
-    width: 200px
-    position: absolute
-    margin-left: -8em
-    margin-top: -3em
+    border-radius: 0.2em
+    white-space: nowrap
+    display: inline-block
+    margin: 0.05em 0
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2)
+    &.ui-item
+      background: #515f78
+    &.special
+      background: #ff0000
+      background: -moz-linear-gradient(-45deg,  #ff0000 0%, #ffff00 15%, #00ff00 30%, #00ffff 50%, #0000ff 65%, #ff00ff 80%, #ff0000 100%)
+      background: -webkit-linear-gradient(-45deg,  #ff0000 0%,#ffff00 15%,#00ff00 30%,#00ffff 50%,#0000ff 65%,#ff00ff 80%,#ff0000 100%)
+      background: linear-gradient(135deg,  #ff0000 0%,#ffff00 15%,#00ff00 30%,#00ffff 50%,#0000ff 65%,#ff00ff 80%,#ff0000 100%)
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#ff0000',GradientType=1 )
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.4)
+
+.mentor-avatar
+  width: 200px
+  position: absolute
+  margin-left: -8em
+  margin-top: -3em
+
+.concept img
+  width: 18px
+
 .alert-mentor-message
   text-align: left
   height: 8em
@@ -90,7 +110,7 @@
   0%
     transform: scale(1)
   50%
-    transform: scale(1.02)
+    transform: scale(1.1)
   100%
     transform: scale(1)
 
@@ -98,3 +118,8 @@
   animation-name: pulse
   animation-duration: 0.6s
   animation-iteration-count: infinite
+
+.manage-menu li.pulse
+  border-radius: 100%
+  background: rgba(7, 53, 239, 0.5)
+  box-shadow: 0px 0px 12px #0735ef

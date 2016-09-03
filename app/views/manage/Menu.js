@@ -17,7 +17,6 @@ import Confirm from 'views/alerts/Confirm';
 const menuItems = [
   ['locations', 'Locations'],
   ['verticals', 'Verticals'],
-  ['products', 'Products'],
   ['productTypes', 'Product Types'],
   ['acquisitions', 'Acquire'],
   ['recruiting', 'Recruiting'],
@@ -47,6 +46,10 @@ function template(data) {
         return '';
       }
     }).join('')}
+    </li>
+    <li class="manage-products">
+      <img src="assets/manage/products.gif">
+      <div class="tip">Products</div>
     </li>
     <li class="manage-browser">
       <img src="assets/manage/internet.gif">

@@ -44,14 +44,11 @@ class Boot extends Phaser.State {
       Debug.debugMarket(game);
 
     } else {
-      this.game.stage.backgroundColor = $('html').css('background-color');
-      $('.background').css('background-image', 'url("assets/office/apartment.jpg")').show();
-      var view = new MainMenu(DEBUG);
-      view.render({
-        savedGame: Manager.hasSave(),
-        newGamePlus: Manager.hasNewGamePlus(),
-        highScore: Manager.highScore()
-      });
+      // $('.background').css('background-image', 'url("assets/office/apartment.jpg")').show(); // TODO stars?
+      $('.background').show();
+
+      var view = new MainMenu(Manager, DEBUG);
+      view.render();
     }
   }
 }

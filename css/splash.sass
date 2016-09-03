@@ -1,35 +1,81 @@
 .hello
-  margin-top: 4em
+  color: #fff
+  margin-top: 1em
   h1
     font-size: 3em
+    font-weight: normal
   h3
-    font-style: italic
     font-weight: normal
 
 .hello-title
-  width: 50%
-  float: left
+  text-align: center
 
 .main-menu
-  width: 50%
-  float: right
+  text-align: center
+  margin: 2em 0
+  li
+    display: inline-block
   button
     width: 16em
     margin: 0.5em 0
+    border-radius: 0.4em
+    background: #515f78
+    color: #fff
 
 .version
   font-weight: normal
-  color: rgba(0, 0, 0, 0.2)
+  color: rgba(255, 255, 255, 0.2)
   font-style: italic
   font-size: 0.9em
   margin: 0.5em 0
 
 .about
   font-weight: normal
-  color: rgba(0, 0, 0, 0.2)
-  font-style: italic
+  color: rgba(255, 255, 255, 0.2)
   font-size: 0.9em
   margin: 0.5em 0
   a, &:visited
     color: #3F84FB
     text-decoration: none
+
+.high-score
+  text-shadow: 0 0 4px rgba(0,0,0,0.4)
+  margin: 1em 0 0 0
+  font-size: 1.5em
+.high-score-blurb
+  font-style: italic
+  color: rgba(255,255,255,0.7)
+
+// stars css from: <http://codepen.io/saransh/pen/BKJun>
+// n is number of stars required
+@function multiple-box-shadow ($n)
+  $value: '#{random(2000)}px #{random(2000)}px #FFF'
+  @for $i from 2 through $n
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF'
+
+  @return unquote($value)
+
+$shadows-small:  multiple-box-shadow(700)
+$shadows-medium: multiple-box-shadow(200)
+$shadows-big:    multiple-box-shadow(100)
+
+.stars
+  width: 1px
+  height: 1px
+  background: transparent
+  box-shadow: $shadows-small
+
+.background
+  background: #000000
+  background: -moz-linear-gradient(top,  #000000 0%, #090d11 100%)
+  background: -webkit-linear-gradient(top,  #000000 0%,#090d11 100%)
+  background: linear-gradient(to bottom,  #000000 0%,#090d11 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#090d11',GradientType=0 )
+
+.background, .stars, #earth
+  position: fixed
+  z-index: -1
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0

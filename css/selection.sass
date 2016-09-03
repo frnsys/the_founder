@@ -1,13 +1,14 @@
 .selection
   position: absolute
-  left: 0
+  left: 1em
   top: 15vh
-  background: #d7e3f9
   padding: 1em 1.5em
-  color: rgb(52, 99, 129)
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2)
   display: none
   width: 22em
+  border-radius: 0.4em
+  background: #e6e6e6
+  color: #222
 
 .selection-avatar
   width: 80px
@@ -20,13 +21,12 @@
 .selection-body
   clear: both
 
-.selection-stats
-  width: 10em
-  float: left
-
-.selection-stat-value
-  float: right
-  color: #0039ff
+.selection-info
+  font-size: 0.9em
+  .worker-stats li
+    width: 4em
+  .worker-attributes li
+    font-size: 1.1em
 
 .last-thought
   background: #fff
@@ -36,9 +36,11 @@
   h6
     color: #a3b4bf
 
-.employee-attributes
-  margin: 0 0 0 1em
-  float: left
+.employee-burnout
+  padding: 1em 0 0 0
+  font-size: 1em
+  font-weight: normal
+  color: #444
 
 .object-stats
   h5

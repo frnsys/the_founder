@@ -160,6 +160,9 @@ const Worker = {
 
   updateBurnout: function(worker, player) {
     var company = player.company;
+    if (_.contains(worker.attributes, 'Tireless')) {
+      return;
+    }
     if (!worker.burnout > 0) {
       var inc = (company.burnoutRate + this.selfBonus(worker, 'burnoutRate'))/(Math.sqrt(Worker.happiness(worker, player)));
       // round to 3 decimal places
@@ -178,7 +181,7 @@ const Worker = {
     switch(name) {
         case 'minSalary':
           return `${Math.round(Math.abs((1 - val) * 100))}% ${val < 1 ? 'lower' : 'higher'} min. salary`;
-        case 'tireless':
+        case 'noBurnout':
           return 'Never burns out';
         default:
           return `${val > 0 ? '+' : '-'}${Math.abs(val)} to ${name}`;

@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
+import templ from '../Common';
 import Worker from 'game/Worker';
 import View from 'views/View';
 import SelectView from './Select';
@@ -19,16 +20,8 @@ const template = data => `
     <div class="tweet">${data.lastTweet}</div>
   </div>
   <div class="selection-info">
-    <ul class="selection-stats">
-    </ul>
-    <div class="employee-attributes">
-      <h5>Attributes</h5>
-      <ul>
-        ${data.attributes.map(i => `
-          <li data-tip="<ul>${Worker.attributeToStrings(i).map(s => `<li>${s}</li>`).join('')}</ul>">${i}</li>
-        `).join('')}
-      </ul>
-    </div>
+    ${templ.skills(data)}
+    ${templ.attributes(data)}
   </div>
 </div>
 `
@@ -56,13 +49,13 @@ class EmployeeView extends SelectView {
       template: statsTemplate
     });
     this.statsView.render(obj);
-    this.el.find('.employee-attributes').append(`<h5 class="employee-burnout"></h5>`);
+    this.el.find('.selection-info').append(`<h5 class="employee-burnout"></h5>`);
     this.updateBurnout(obj);
     this.updateLastTweet(obj);
   }
 
   updateBurnout(obj) {
-    this.el.find('.employee-attributes .employee-burnout').html(`${obj.burnout > 0 ? 'BURNT OUT' : `Exhaustion: ${Math.round(obj.burnoutRisk * 100)}%`}`);
+    this.el.find('.selection-info .employee-burnout').html(`${obj.burnout > 0 ? 'BURNT OUT' : `Exhaustion: ${Math.round(obj.burnoutRisk * 100)}%`}`);
   }
 
   updateLastTweet(obj) {

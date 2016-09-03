@@ -62,6 +62,7 @@ class MarketView extends View {
   processItem(item) {
     var item = _.clone(item);
     item.task = this.player.company.task(item.task);
+    item.cost *= this.player.costMultiplier * this.player.expansionCostMultiplier;
     return _.extend({
       owned: util.contains(this.player.company.locations, item),
       afford: this.player.company.cash >= item.cost

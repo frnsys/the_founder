@@ -34,7 +34,7 @@ class View extends CardsList {
         '.buy': function(ev) {
           var idx = this.itemIndex(ev.target),
               selected = recruitments[idx];
-          if (player.company.pay(selected.cost)) {
+          if (player.company.pay(selected.cost * player.costMultiplier)) {
             var hiring = new HiringView(player, office, selected);
             hiring.render();
           }
@@ -54,7 +54,9 @@ class View extends CardsList {
   }
 
   processItem(item) {
-    var player = this.player;
+    var player = this.player,
+        item = _.clone(item);
+    item.cost *= this.player.costMultiplier;
     return _.extend({
       afford: player.company.cash >= item.cost,
       noAvailableSpace: player.company.remainingSpace == 0

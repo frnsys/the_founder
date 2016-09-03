@@ -33,7 +33,7 @@ function detailTemplate(item) {
       <div class="next-perk">
         <div class="title">
           <h1>${item.next.name}</h1>
-          <h4 class="cash">${util.formatCurrency(item.next.cost)}</h4>
+          <h4 class="cash">${util.formatCurrency(item.finalCost)}</h4>
         </div>
         <img src="assets/perks/gifs/${util.slugify(item.next.name)}.gif">
         <div class="perk-info">
@@ -110,14 +110,16 @@ class View extends CardsList {
 
     var current = Perk.current(perk),
         next = owned ? Perk.next(perk) : current,
-        hasNext = owned ? Perk.hasNext(perk) : true;
+        hasNext = owned ? Perk.hasNext(perk) : true,
+        cost = next.cost * player.costMultiplier;
     return _.extend({
+      finalCost: cost,
       owned: owned,
       current: current,
       next: next,
       hasNext: hasNext,
       nextAvailable: Perk.isAvailable(next, player.company),
-      afford: hasNext && player.company.cash >= next.cost
+      afford: hasNext && player.company.cash >= cost
     }, item);
   }
 }

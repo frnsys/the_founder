@@ -212,7 +212,8 @@ class Company {
     return util.contains(this.perks, perk);
   }
   buyPerk(perk) {
-    if (this.pay(Perk.next(perk).cost)) {
+    var cost = Perk.next(perk).cost * this.player.costMultiplier;
+    if (this.pay(cost)) {
       if (!this.hasPerk(perk)) {
         this.perks.push(perk);
       } else {
@@ -224,7 +225,8 @@ class Company {
     return false;
   }
   buyAcquisition(acquisition) {
-    if (this.pay(acquisition.cost)) {
+    var cost = acquisition.cost * this.player.costMultiplier;
+    if (this.pay(cost)) {
       this.acquisitions.push(acquisition);
       Effect.applies(acquisition.effects, this.player);
 
@@ -244,7 +246,8 @@ class Company {
     });
   }
   buyVertical(vertical) {
-    if (this.pay(vertical.cost)) {
+    var cost = vertical.cost * this.player.costMultiplier;
+    if (this.pay(cost)) {
       this.verticals.push(vertical);
       return true;
     }
@@ -254,7 +257,8 @@ class Company {
     return util.containsByName(this.verticals, pt.requiredVertical) && util.contains(this.player.unlocked.productTypes, pt);
   }
   buyProductType(pt) {
-    if (this.productTypeIsAvailable(pt) && this.pay(pt.cost)) {
+    var cost = pt.cost * this.player.costMultiplier;
+    if (this.productTypeIsAvailable(pt) && this.pay(cost)) {
       this.productTypes.push(pt);
       return true;
     }
@@ -268,7 +272,8 @@ class Company {
       });
   }
   buyLocation(location) {
-    if (this.pay(location.cost)) {
+    var cost = location.cost * this.player.costMultiplier * this.player.expansionCostMultiplier;
+    if (this.pay(cost)) {
       this.locations.push(location);
       if (!_.contains(this.markets, location.market)) {
         this.markets.push(location.market);
@@ -284,7 +289,8 @@ class Company {
   }
 
   startResearch(tech) {
-    if (this.researchIsAvailable(tech) && this.canAfford(tech.cost)) {
+    var cost = tech.cost * this.player.costMultiplier * this.player.researchCostMultiplier;
+    if (this.researchIsAvailable(tech) && this.canAfford(cost)) {
       return Task.init('Research', tech);
     }
     return false;
@@ -296,7 +302,8 @@ class Company {
   }
 
   startPromo(promo) {
-    if (this.canAfford(promo.cost)) {
+    var cost = promo.cost * this.player.costMultiplier;
+    if (this.canAfford(cost)) {
       promo = Promo.init(promo);
       return Task.init('Promo', promo);
     }
@@ -309,14 +316,16 @@ class Company {
   }
 
   startLobby(lobby) {
-    if (this.canAfford(lobby.cost)) {
+    var cost = lobby.cost * this.player.costMultiplier;
+    if (this.canAfford(cost)) {
       return Task.init('Lobby', _.extend({persuasion:0}, lobby));
     }
     return false;
   }
 
   startSpecialProject(specialProject) {
-    if (this.specialProjectIsAvailable(specialProject) && this.canAfford(specialProject.cost)) {
+    var cost = specialProject.cost * this.player.costMultiplier;
+    if (this.specialProjectIsAvailable(specialProject) && this.canAfford(cost)) {
       return Task.init('SpecialProject', _.extend({
         design: 0,
         marketing: 0,

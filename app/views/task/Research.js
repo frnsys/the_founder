@@ -71,7 +71,9 @@ class ResearchView extends CardsList {
   }
 
   processItem(item) {
-    var player = this.player;
+    var player = this.player,
+        item = _.clone(item);
+    item.cost *= player.costMultiplier * player.researchCostMuliplier;
     return _.extend({
       owned: util.contains(this.player.company.technologies, item),
       afford: player.company.cash >= item.cost,

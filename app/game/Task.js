@@ -172,7 +172,6 @@ const Task = {
           product.newDiscovery = true;
         }
 
-        company.productsLaunched++;
         Product.launch(product, company);
         break;
 

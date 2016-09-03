@@ -56,12 +56,16 @@ class SelectPromoView extends CardsList {
   }
 
   render() {
-    var player = this.player;
     super.render({
-      items: _.map(promos, i => _.extend({
-        afford: player.company.cash >= i.cost
-      }, i))
+      items: _.map(promos, this.processItem.bind(this))
     });
+  }
+
+  processItem(item) {
+    var item = _.clone(item);
+    item.cost *= this.player.costMultiplier;
+    item.afford = this.player.company.cash >= item.cost;
+    return item;
   }
 
   createListItem(item) {

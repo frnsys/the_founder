@@ -56,5 +56,17 @@
         "value": -0.05
       }
     ]
+  },
+  {
+    "name": "Lift Research Bans",
+    "cost": 100000,
+    "requiredProgress": 100000,
+    "description": "Gain exemption from government research regulations",
+    "effects": [
+      {
+        "type": "researchCostMultiplier",
+        "value": -0.1
+      }
+    ]
   }
 ]

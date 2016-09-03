@@ -60,6 +60,7 @@ class Player {
       economicStability: 1,
       taxRate: 1,
       expansionCostMultiplier: 1,
+      researchCostMultiplier: 1,
       costMultiplier: 1,
       economy: Enums.Economy.Neutral,
       nextEconomy: Enums.Economy.Neutral,

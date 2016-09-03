@@ -83,7 +83,9 @@ class View extends CardsList {
   }
 
   processItem(item) {
-    var player = this.player;
+    var player = this.player,
+        item = _.clone(item);
+    item.cost *= this.player.costMultiplier;
     return _.extend({
       owned: util.contains(player.company.specialProjects, item),
       unlocked: util.contains(player.unlocked.specialProjects, item),

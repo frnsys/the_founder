@@ -69,6 +69,9 @@ const Effect = {
   outrage: function(player, value, remove) {
     player.company.workerBonuses.marketing += remove ? -value : value;
   },
+  researchCostMultiplier: function(player, value, remove) {
+    player.researchCostMultiplier += remove ? -value : value;
+  },
   product: function(player, value, remove) {
     var bonuses = player.company.productBonuses,
         vertical = value.vertical,
@@ -109,6 +112,8 @@ const Effect = {
           return valueStr + 'x to your tax rate';
         case 'expansionCostMultiplier':
           return valueStr + 'x to expansion costs';
+        case 'researchCostMultiplier':
+          return valueStr + 'x to research costs';
         case 'costMultiplier':
           return valueStr + 'x to all costs';
         case 'productivity':

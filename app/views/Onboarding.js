@@ -35,6 +35,14 @@ function template(data) {
           <button class="back">Back</button>
           <button class="select" disabled>OK</button>
       </div>`;
+  } else if (data.intro) {
+    body = `
+      <div class="onboarding-intro">
+        ${data.intro}
+      </div>
+      <div class="actions">
+        <button class="select">Got it</button>
+      </div>`;
   } else {
     body = `
       <input type="text" value="${data.selected ? data.selected : 'Happy Corp'}">
@@ -62,20 +70,34 @@ class Onboarding extends View {
       '.select': this.confirmSelect,
       '.back': function() {
         this.stage--;
-        this.render(stages[this.stage]);
+        this.render();
       }
     });
-    this.stage = 0;
+    this.stage = -1;
     this.stages = stages;
     this.player = player;
     this.onFinish = onFinish;
+  }
+
+  render() {
+    if (this.stage < 0) {
+      super.render({
+        name: 'Welcome!',
+        description: 'A note from your Mentor',
+        intro: '<p>Welcome to The Founder! In a moment we\'ll incorporate your new company, but because so few companies succeed (and even fewer make it big) I want to let you know what you\'re getting yourself into.</p><p>I\'ve raised a bit of capital for you to start with, and your investors - a shrewd, wrathful bunch - expect <em>annual profit growth of 12%</em>. Just try to keep them happy ;)</p>'
+      });
+    } else {
+      super.render(this.stages[this.stage]);
+    }
   }
 
   postRender() {
     super.postRender();
     $('.ui').show();
     var el = this.el;
-    if (this.stage === 0) {
+    if (this.stage < 0) {
+      el.find('.select').prop('disabled', false).text('Got it');
+    } else if (this.stage === 0) {
       // enable next button only if a company name is specified
       el.find('input').keypress(function() {
         if ($(this).val() !== '') {
@@ -94,7 +116,7 @@ class Onboarding extends View {
   }
 
   selectOption(ev) {
-    if (this.stage < 4) {
+    if (this.stage < 4 && this.stage > 0) {
       var $el = $(ev.target),
           idx = $el.closest('.onboarding-options > li').index();
       this.stages[this.stage].selected = this.stages[this.stage].options[idx];
@@ -108,7 +130,7 @@ class Onboarding extends View {
     var stage = this.stage,
         stages = this.stages,
         player = this.player,
-        selected = stages[stage].selected;
+        selected = stage >= 0 ? stages[stage].selected : null;
     switch (stage) {
       case 0:
         var name = this.el.find('input').val();
@@ -150,7 +172,7 @@ class Onboarding extends View {
         return;
     }
     this.stage++;
-    this.render(stages[this.stage]);
+    this.render();
   }
 
   postRemove() {

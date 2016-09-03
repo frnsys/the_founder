@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import util from 'util';
 import View from './View';
-import MainMenuScene from '../MainMenu';
+import Splash from '../Splash';
 
 const template = data => `
 <div class="background"></div>
@@ -88,7 +88,7 @@ class MainMenuView extends View {
   postRender() {
     super.postRender();
     $('.ui').show();
-    var scene = new MainMenuScene();
+    var scene = new Splash();
     scene.render();
   }
 

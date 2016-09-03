@@ -55,7 +55,7 @@ class Onboarding extends Phaser.State {
     var view = new OnboardingView(this.player, stages, function() {
       self.game.state.start('Manage');
     });
-    view.render(stages[0]);
+    view.render();
   }
 }
 

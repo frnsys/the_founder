@@ -45,8 +45,6 @@ class Boot extends Phaser.State {
 
     } else {
       // $('.background').css('background-image', 'url("assets/office/apartment.jpg")').show(); // TODO stars?
-      $('.background').show();
-
       var view = new MainMenu(Manager, DEBUG);
       view.render();
     }

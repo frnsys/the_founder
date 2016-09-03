@@ -1,31 +1,55 @@
 [{
   "name": "Beth Poush",
   "avatar": 7,
-  "description": "A very hardworker, and very charismatic.",
+  "description": "A very hard worker and very charismatic",
   "effects": [{
     "type": "marketing",
     "value": 5
   }, {
     "type": "productivity",
     "value": 5
-  }]
+  }],
+  "attributes": [
+    "Tireless"
+  ],
+  "engineering": 5,
+  "marketing": 5,
+  "design": 5,
+  "productivity": 5,
+  "happiness": 10
 }, {
   "name": "Jeffrey Zhou",
   "avatar": 2,
-  "description": "A brilliant product engineer.",
+  "description": "A brilliant product engineer",
   "effects": [{
     "type": "design",
     "value": 5
   }, {
     "type": "engineering",
     "value": 5
-  }]
+  }],
+  "attributes": [
+    "Tireless"
+  ],
+  "engineering": 5,
+  "marketing": 5,
+  "design": 5,
+  "productivity": 5,
+  "happiness": 10
 }, {
   "name": "Mark Stanley",
   "avatar": 8,
-  "description": "Can't do much, but he'll throw in some of his inheritance.",
+  "description": "Can't do much, but he'll throw in some of his inheritance",
   "effects": [{
     "type": "cash",
-    "value": 50000
-  }]
+    "value": 100000
+  }],
+  "attributes": [
+    "Tireless"
+  ],
+  "engineering": 5,
+  "marketing": 5,
+  "design": 5,
+  "productivity": 5,
+  "happiness": 10
 }]

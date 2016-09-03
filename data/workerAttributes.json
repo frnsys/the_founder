@@ -20,6 +20,11 @@
       "burnoutRate": 0.01
     }
   },
+  "Tireless": {
+    "worker": {
+      "noBurnout": true
+    }
+  },
   "Team Player": {
     "company": {
       "productivity": 1

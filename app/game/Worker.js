@@ -178,6 +178,8 @@ const Worker = {
     switch(name) {
         case 'minSalary':
           return `${Math.round(Math.abs((1 - val) * 100))}% ${val < 1 ? 'lower' : 'higher'} min. salary`;
+        case 'tireless':
+          return 'Never burns out';
         default:
           return `${val > 0 ? '+' : '-'}${Math.abs(val)} to ${name}`;
     }
@@ -200,6 +202,11 @@ const Worker = {
   },
 
   updateLastTweet: function(worker, player) {
+    // special tweets for the cofounder
+    if (worker.name == player.company.cofounder.name) {
+      worker.lastTweet = 'Working hard on our company!';
+    }
+
     var candidates = _.filter(thoughts, function(t) {
       var companySatisfied = true,
           workerSatisfied = true;

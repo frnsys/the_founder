@@ -45,7 +45,9 @@ function template(data) {
       </div>`;
   } else {
     body = `
-      <input type="text" value="${data.selected ? data.selected : 'Happy Corp'}">
+      <div class="onboarding-name">
+        <input type="text" value="${data.selected ? data.selected : 'Happy Corp'}">
+      </div>
       <div class="actions">
         <button class="select">Sounds Good</button>
       </div>`;

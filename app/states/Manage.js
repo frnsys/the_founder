@@ -13,6 +13,7 @@ import Popup from 'views/Popup';
 import HUD from 'views/manage/HUD';
 import Menu from 'views/manage/Menu';
 import Task from 'game/Task';
+import Worker from 'game/Worker';
 import Product from 'game/Product';
 import Office from 'office/Office';
 import SelectUI from 'office/Select';
@@ -31,7 +32,6 @@ class Manage extends Phaser.State {
 
   preload() {
     $('.ui').empty();
-    $('.background').hide();
   }
 
   create() {
@@ -43,13 +43,19 @@ class Manage extends Phaser.State {
     this.hud.render();
     $('#office, .hud, .menu').show();
 
+    // new game, hire the cofounder first
+    if (this.player.company.workers.length === 0) {
+      this.player.company.hireEmployee(Worker.init(this.player.company.cofounder), 0);
+      this.player.company.workers[0].title = 'Cofounder';
+    }
+
     Product.onProductLaunch = this.enterTheMarket.bind(this);
     Task.onFinish = this.finishedTask.bind(this);
 
 
     // wait a sec
     var self = this;
-    this.clock = {update: _.noop}
+    this.clock = {update: _.noop, pause: _.noop}
     setTimeout(function(){
       self.clock = new Clock(self, self.player, office);
     }, 1000);

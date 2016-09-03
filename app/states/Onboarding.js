@@ -21,7 +21,6 @@ class Onboarding extends Phaser.State {
   }
 
   create() {
-    $('.background').hide();
     var stages = [{
       name: 'Articles of Incorporation',
       description: 'What will you name your company?',

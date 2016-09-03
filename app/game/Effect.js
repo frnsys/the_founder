@@ -116,11 +116,11 @@ const Effect = {
         case 'happiness':
           return valueStr + ' to employee satisfaction';
         case 'design':
-          return valueStr + ' to employee design skill';
+          return valueStr + ' to employee design skills';
         case 'engineering':
-          return valueStr + ' to employee engineering skill';
+          return valueStr + ' to employee engineering skills';
         case 'marketing':
-          return valueStr + ' to employee marketing skill';
+          return valueStr + ' to employee marketing skills';
         case 'outrage':
           return valueStr + ' outrage';
         case 'cash':

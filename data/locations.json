@@ -34,8 +34,12 @@
   },
   {
     "name": "Boston",
+    "description": "Cutting-edge research labs",
     "cost": 300000,
-    "effects": [],
+    "effects": [{
+      "type": "engineering",
+      "value": 3
+    }],
     "market": "North America",
     "size": 1,
     "skills": {
@@ -160,8 +164,15 @@
   },
   {
     "name": "New York",
+    "description": "The hub of ad tech and design",
     "cost": 300000,
-    "effects": [],
+    "effects": [{
+      "type": "design",
+      "value": 1
+    }, {
+      "type": "marketing",
+      "value": 1
+    }],
     "market": "North America",
     "size": 1,
     "skills": {
@@ -174,8 +185,15 @@
   },
   {
     "name": "San Francisco",
+    "description": "The heart of the tech industry",
     "cost": 300000,
-    "effects": [],
+    "effects": [{
+      "type": "design",
+      "value": 1
+    }, {
+      "type": "engineering",
+      "value": 1
+    }],
     "market": "North America",
     "size": 1,
     "skills": {

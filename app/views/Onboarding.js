@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import util from 'util';
+import templ from './Common';
 import View from 'views/View';
 import Effect from 'game/Effect';
 import productTypes from 'data/productTypes.json';
@@ -10,18 +11,19 @@ function template(data) {
     var options = data.options.map(function(i) {
       var image;
       if (i.market) {
-        image = `<img src="assets/locations/${util.slugify(data.name)}.jpg" class="onboarding-location">`;
+        image = `<img src="assets/locations/${util.slugify(i.name)}.jpg" class="onboarding-location">`;
       } else if (i.avatar) {
-        image = `<img src="assets/workers/gifs/${data.avatar}.gif">`;
+        image = `<img src="assets/workers/gifs/${i.avatar}.gif">`;
       } else {
-        image = `<img src="assets/verticals/${util.slugify(data.name)}.gif">`;
+        image = `<img src="assets/verticals/${util.slugify(i.name)}.gif">`;
       }
       return `
-        <li data-name="${item.name}">
+        <li data-name="${i.name}">
           ${image}
           <div class="onboarding-option-info">
-            <h3>${data.name}</h3>
-            <p>${data.description}</p>
+            <h3>${i.name}</h3>
+            <p>${i.description}</p>
+            ${i.effects && i.effects.length > 0 ? templ.effects(i) : ''}
           </div>
         </li>`;
     }).join('');
@@ -52,10 +54,11 @@ class Onboarding extends View {
   constructor(player, stages, onFinish) {
     super({
       template: template,
+      parent: '.ui',
       attrs: {class: 'onboarding'}
     });
     this.registerHandlers({
-      'li': this.selectOption,
+      '.onboarding-options > li': this.selectOption,
       '.select': this.confirmSelect,
       '.back': function() {
         this.stage--;
@@ -70,6 +73,7 @@ class Onboarding extends View {
 
   postRender() {
     super.postRender();
+    $('.ui').show();
     var el = this.el;
     if (this.stage === 0) {
       // enable next button only if a company name is specified
@@ -83,30 +87,34 @@ class Onboarding extends View {
     } else if (this.stage === 4) {
       // enable confirmation on last stage
       el.find('.select').prop('disabled', false).text('Found ' + this.player.company.name);
-    } else if (this.stages[stage].selected) {
-      $('[data-name="'+stages[stage].selected+'"]').click();
+      el.find('.onboarding-options').addClass('onboarding-options-confirm');
+    } else if (this.stages[this.stage].selected) {
+      $('[data-name="'+stages[this.stage].selected+'"]').click();
     }
   }
 
   selectOption(ev) {
     if (this.stage < 4) {
       var $el = $(ev.target),
-          idx = $el.closest('li').index();
-      selected = this.stages[this.stage].options[idx];
+          idx = $el.closest('.onboarding-options > li').index();
+      this.stages[this.stage].selected = this.stages[this.stage].options[idx];
       this.el.find('.selected').removeClass('selected');
-      $el.closest('li').addClass('selected');
+      $el.closest('.onboarding-options > li').addClass('selected');
       this.el.find('.select').prop('disabled', false);
     }
   }
 
   confirmSelect(ev) {
-    var stages = this.stages,
-        player = this.player;
-    switch (this.stage) {
+    var stage = this.stage,
+        stages = this.stages,
+        player = this.player,
+        selected = stages[stage].selected;
+    switch (stage) {
       case 0:
         var name = this.el.find('input').val();
         stages[stage].selected = name;
         player.company.name = name;
+        stages[4].description = name;
         break;
       case 1:
         stages[stage].selected = selected.name;
@@ -121,15 +129,15 @@ class Onboarding extends View {
         break;
       case 3:
         stages[stage].selected = selected.name;
-        self.player.company.cofounder = selected;
+        player.company.cofounder = selected;
         stages[4].options[2] = selected;
         break;
       case 4:
-        Effect.applies(self.player.company.locations[0].effects, self.player);
-        Effect.applies(self.player.company.cofounder.effects, self.player);
+        Effect.applies(player.company.locations[0].effects, player);
+        Effect.applies(player.company.cofounder.effects, player);
 
         // starting location has no skills since your employees represent it
-        self.player.company.locations[0].skills = {
+        player.company.locations[0].skills = {
           "productivity": 0,
           "happiness": 0,
           "design": 0,
@@ -141,20 +149,14 @@ class Onboarding extends View {
         this.onFinish();
         return;
     }
-    stage++;
-    this.render(stages[stage]);
-  }
-
-  postRender() {
-    super.postRender();
-    $('.ui').show();
+    this.stage++;
+    this.render(stages[this.stage]);
   }
 
   postRemove() {
     super.postRemove();
     $('.ui').hide();
   }
-
 }
 
 export default Onboarding;

@@ -1,5 +1,7 @@
 .onboarding
-  padding: 2em
+  padding: 0 2em 2em 2em
+  max-width: 960px
+  margin: 0 auto
   input
     height: 3em
     font-size: 1.5em
@@ -7,30 +9,37 @@
     padding: 1em
     margin: 6em 0
     width: 100%
-  li
-    cursor: pointer
-
-.back
-  cursor: pointer
-
-.onboarding
   .selected
     background: #29dc6d
     color: #fff
   h4
     font-weight: normal
 
+.back
+  cursor: pointer
+
+
 .onboarding-options
   margin: 2em 0
   overflow: hidden
-  li
+  > li
     width: 32.33%
     float: left
-    height: 18em
+    height: 22em
     margin-right: 1%
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2)
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2)
     font-family: "Fantasque Sans Mono", monospace
     background: #fff
+    cursor: pointer
+    font-size: 0.9em
+  .effects
+    margin: 0
+    font-size: 0.9em
+    padding: 0.6em 0.8em
+
+.onboarding-options-confirm
+  > li
+    cursor: default
 
 .onboarding-option-info
   padding: 1em
@@ -46,24 +55,23 @@
     width: 100%
     height: auto
 
-.mentor
-  width: 200px
-  position: absolute
-  margin-left: -18em
-  margin-top: -3em
-
-.mentor-message, .event
-  text-align: left
-  line-height: 1.4
-
-.mentor-message
+.alert-mentor
   font-size: 1.2em
-  padding: 3.5em 2em 3.5em 3em
-  height: 14em
+  padding: 2em 2em 1em 2em
+  line-height: 1.4
   em
     color: #fff
     background: #3f84fb
     padding: 0.1em 0.3em
+  img
+    width: 200px
+    position: absolute
+    margin-left: -8em
+    margin-top: -3em
+.alert-mentor-message
+  text-align: left
+  height: 8em
+  padding-left: 2em
 
 @keyframes pulse
   0%

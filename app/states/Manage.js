@@ -36,7 +36,6 @@ class Manage extends Phaser.State {
 
   create() {
     var office = this.showOffice();
-    this.clock = new Clock(this, this.player, office);
     this.hud = new HUD(this.player);
     this.menu = new Menu(this.player, office);
     this.selectUI = new SelectUI(office, this.showSelection.bind(this));
@@ -46,6 +45,14 @@ class Manage extends Phaser.State {
 
     Product.onProductLaunch = this.enterTheMarket.bind(this);
     Task.onFinish = this.finishedTask.bind(this);
+
+
+    // wait a sec
+    var self = this;
+    this.clock = {update: _.noop}
+    setTimeout(function(){
+      self.clock = new Clock(self, self.player, office);
+    }, 1000);
   }
 
   pause() {

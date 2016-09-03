@@ -1,13 +1,15 @@
 import Alert from './Alert';
 
 const template = data => `
-<img src="assets/workers/gifs/0.gif" class="mentor">
-<div class="alert-message mentor-message">
-  ${data.message}
-</div>
-<div class="alert-actions mentor-actions">
-  <button class="prev" ${data.prev ? '': 'disabled'}><-</button>
-  <button class="next">-></button>
+<div class="alert-message alert-mentor">
+  <div class="alert-mentor-message">
+    <img src="assets/workers/gifs/0.gif">
+    ${data.message}
+  </div>
+  <div class="alert-actions mentor-actions">
+    <button class="prev" ${data.prev ? '': 'disabled'}><-</button>
+    <button class="next">-></button>
+  </div>
 </div>
 `
 

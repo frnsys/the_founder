@@ -6,6 +6,8 @@
 import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';
+import $ from 'jquery';
+import util from 'util';
 import OnboardingView from 'views/Onboarding';
 import locations from 'data/locations.json';
 import verticals from 'data/verticals.json';
@@ -19,6 +21,7 @@ class Onboarding extends Phaser.State {
   }
 
   create() {
+    $('.background').hide();
     var stages = [{
       name: 'Articles of Incorporation',
       description: 'What will you name your company?',
@@ -27,12 +30,12 @@ class Onboarding extends Phaser.State {
     }, {
       name: 'Location',
       description: 'Where will your company be headquartered?',
-      options: byNames(locations, ['New York', 'Boston', 'San Francisco']),
+      options: util.byNames(locations, ['New York', 'Boston', 'San Francisco']),
       selected: null
     }, {
       name: 'Vertical',
       description: 'What will your company specialize in?',
-      options: byNames(verticals, ['Hardware', 'Information']),
+      options: util.byNames(verticals, ['Hardware', 'Information']),
       startingProductTypes: {
         'Hardware': ['Gadget', 'Mobile'],
         'Information': ['Social Network', 'E-Commerce']
@@ -50,8 +53,9 @@ class Onboarding extends Phaser.State {
 
     var self = this;
     var view = new OnboardingView(this.player, stages, function() {
-        self.game.state.start('Overview');
+      self.game.state.start('Manage');
     });
+    view.render(stages[0]);
   }
 }
 

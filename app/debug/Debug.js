@@ -6,6 +6,7 @@
 
 import _ from 'underscore';
 import util from 'util';
+import Product from 'game/Product';
 import OfficeDebugger from './Office';
 import verticals from 'data/verticals.json';
 import locations from 'data/locations.json';
@@ -54,7 +55,9 @@ const Debug = {
     // _.each(player.company.workers, w => w.salary = 40000);
     // player.company.discoveredProducts = ['AI.Defense', 'Gadget.Space', 'Entertainment.Space'];
     // player.company.productTypes = util.byNames(productTypes, ['Ad', 'AI', 'Gadget', 'Analytics']);
-    player.company.productTypes = util.byNames(productTypes, ['Social Network', 'E-Commerce', 'Ad']);
+    player.company.productTypes = _.map(
+      util.byNames(productTypes, ['Social Network', 'E-Commerce', 'Ad']),
+      pt => Product.initType(pt));
     // player.company.activeProducts = [{
     //   name: 'TEST',
     //   revenue: 1000000,

@@ -1,12 +1,14 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
+import tmpl from 'views/Common';
 import CardsList from 'views/CardsList';
 import TaskAssignmentView from './Assignment';
 
 const detailTemplate = item => `
 <div class="title">
   <h1>${item.name}</h1>
+  ${tmpl.expertise(item)}
 </div>
 <img src="assets/productTypes/${util.slugify(item.name)}.gif">
 `;

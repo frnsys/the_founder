@@ -194,19 +194,23 @@ button.owned
     > li
       padding: 0
       width: 20em
+      height: 20em
+      background: #515f78
+      color: #fff
+      &:hover
+        background: #3f4f6b
     button
       border-radius: 0 0 0.4em 0.4em
       width: 100%
       margin-bottom: -1px
+      position: absolute
+      bottom: 0
+
 
 .start_a_product
   .cards
     > li
       cursor: pointer
-      background: #515f78
-      color: #fff
-      &:hover
-        background: #a4b8fb
 
 .discovered_products
   .cards
@@ -688,7 +692,7 @@ button.owned
   border-radius: 0.4em
   margin: 8em auto 0 auto
   width: 36em
-  height: 30em
+  height: 26em
   position: relative
   .product-designer-combo
     position: absolute
@@ -725,17 +729,6 @@ button.owned
       width: 18px
       margin-top: -4px
       vertical-align: middle
-  .product-point
-    width: 0.7em
-    height: 1.5em
-    display: inline-block
-    background: rgba(0,0,0,0.2)
-    &.filled
-      background: #3f84fb
-  .product-points
-    display: inline-block
-    vertical-align: middle
-    margin-top: -4px
   .product-point-allocator
     margin: 2em 0
     h2
@@ -763,8 +756,45 @@ button.owned
       &:hover
         background: rgba(0, 0, 0, 0.5)
   .actions
-    position: static
+    position: absolute
+    bottom: 0
     margin-top: 1em
     button
       width: 100%
-      border-radius: 0.2em
+      border-radius: 0 0 0.2em 0.2em
+.product-revenue-per-share
+  width: 24em
+  margin: 1em auto
+  padding: 1em
+  background: #515f78
+  border-radius: 0.4em
+  color: #fff
+  font-size: 1.5em
+
+.product-point, .expertise-point
+  width: 0.7em
+  height: 1.5em
+  display: inline-block
+  background: rgba(0,0,0,0.2)
+  &.filled
+    background: #3f84fb
+.product-points
+  display: inline-block
+  vertical-align: middle
+  margin-top: -4px
+
+.expertise-points
+  h3
+    font-weight: normal
+    font-size: 1em
+    display: inline-block
+    color: rgba(255, 255, 255, 0.4)
+.expertise-points ul
+  display: inline-block
+  vertical-align: middle
+.expertise-point
+  width: 0.7em
+  height: 0.8em
+  background: rgba(0,0,0,0.1)
+.expertise-point.filled
+  background: #29dc6d

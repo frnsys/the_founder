@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import _ from 'underscore';
 import util from 'util';
+import tmpl from 'views/Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
 import productTypes from 'data/productTypes.json';
@@ -24,6 +25,7 @@ function detailTemplate(item) {
     return `
       <div class="title">
         <h1>${item.name}</h1>
+        ${item.owned ? `${tmpl.expertise(item)}` : ``}
       </div>
       <img src="assets/productTypes/${util.slugify(item.name)}.gif">
       ${button(item)}`;
@@ -60,7 +62,7 @@ class ProductTypesView extends CardsList {
     super.render({
       items: this.items
     });
-    this.nProductTypes = player.company.productTypes.length;
+    this.nProductTypes = this.player.company.productTypes.length;
   }
 
   update() {
@@ -82,8 +84,12 @@ class ProductTypesView extends CardsList {
     var player = this.player,
         item = _.clone(item);
     item.cost *= this.player.costMultiplier;
+    var owned = util.contains(player.company.productTypes, item);
+    if (owned) {
+      item.expertise = _.findWhere(player.company.productTypes, {name: item.name}).expertise;
+    }
     return _.extend({
-      owned: util.contains(player.company.productTypes, item),
+      owned: owned,
       available: player.company.productTypeIsAvailable(item),
       afford: player.company.cash >= item.cost
     }, item);

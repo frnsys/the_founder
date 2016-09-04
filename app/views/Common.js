@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import util from 'util';
 import Effect from 'game/Effect';
 import Worker from 'game/Worker';
@@ -52,10 +53,25 @@ const workerTemplate = item => `
 </div>
 `
 
+const expertiseTemplate = item => `
+<div class="expertise-points">
+  <h3>Expertise:</h3>
+  <ul>
+    ${_.times(item.expertise, i => `
+      <li class="expertise-point filled"></li>
+    `).join('')}
+    ${_.times(10-item.expertise, i => `
+      <li class="expertise-point"></li>
+    `).join('')}
+  </ul>
+</div>
+`;
+
 export default {
   effects: effectsTemplate,
   attributes: attributesTemplate,
   skills: skillsTemplate,
   prereqs: prereqsTemplate,
-  worker: workerTemplate
+  worker: workerTemplate,
+  expertise: expertiseTemplate
 };

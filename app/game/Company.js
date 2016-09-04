@@ -259,7 +259,7 @@ class Company {
   buyProductType(pt) {
     var cost = pt.cost * this.player.costMultiplier;
     if (this.productTypeIsAvailable(pt) && this.pay(cost)) {
-      this.productTypes.push(pt);
+      this.productTypes.push(Product.initType(pt));
       return true;
     }
     return false;
@@ -299,6 +299,11 @@ class Company {
   startProduct(productTypes) {
     var product = Product.create(productTypes);
     return Task.init('Product', product);
+  }
+
+  finishProduct(product) {
+    this.activeProducts.push(product);
+    this.productsLaunched++;
   }
 
   startPromo(promo) {

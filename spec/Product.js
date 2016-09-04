@@ -2,28 +2,6 @@ import _ from 'underscore';
 import Player from 'app/Player';
 import Product from 'game/Product';
 
-var goodCombo = [{
-  "name": "Ad",
-  "difficulty": 1,
-  "requiredVertical": "Information",
-  "cost": 10000
-}, {
-  "name": "Analytics",
-  "difficulty": 1,
-  "requiredVertical": "Information",
-  "cost": 10000
-}];
-var badCombo = [{
-  "name": "Ad",
-  "difficulty": 1,
-  "requiredVertical": "Information",
-  "cost": 10000
-}, {
-  "name": "AI",
-  "difficulty": 3,
-  "requiredVertical": "Information",
-  "cost": 100000
-}];
 var competitor = {
   "skills": {
     "design": 1.1,
@@ -35,6 +13,7 @@ var competitor = {
 
 describe('Product', function() {
   var player, company, createProduct,
+      goodCombo, badCombo,
       worker = {
         "design": 10,
         "marketing": 10,
@@ -46,6 +25,33 @@ describe('Product', function() {
     player = new Player();
     company = player.company;
     company.workers.push(worker);
+
+    goodCombo = [{
+      "name": "Ad",
+      "difficulty": 1,
+      "requiredVertical": "Information",
+      "cost": 10000,
+      "expertise": 0
+    }, {
+      "name": "Analytics",
+      "difficulty": 1,
+      "requiredVertical": "Information",
+      "cost": 10000,
+      "expertise": 0
+    }];
+    badCombo = [{
+      "name": "Ad",
+      "difficulty": 1,
+      "requiredVertical": "Information",
+      "cost": 10000,
+      "expertise": 0
+    }, {
+      "name": "AI",
+      "difficulty": 3,
+      "requiredVertical": "Information",
+      "cost": 100000,
+      "expertise": 0
+    }];
 
     createProduct = function() {
       var task = company.startProduct(goodCombo);
@@ -130,6 +136,17 @@ describe('Product', function() {
       createProduct();
       expect(player.spendingMultiplier).toEqual(val);
     });
+
+    it('is increments expertise', function() {
+      company.productTypes = goodCombo;
+      _.each(company.productTypes, function(pt) {
+        expect(pt.expertise).toEqual(0);
+      });
+      createProduct();
+      _.each(company.productTypes, function(pt) {
+        expect(pt.expertise).toEqual(1);
+      });
+    });
   });
 
   describe('revenue', function() {
@@ -184,12 +201,27 @@ describe('Product', function() {
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
           influencers = [];
-      p.difficulty = 1;
+      goodCombo[0].difficulty = 1;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
 
+      goodCombo[0].difficulty = 2;
       p = createProduct();
-      p.difficulty = 2;
+      Product.setRevenue(p, marketShares, influencers, player);
+      expect(p.revenue).toBeGreaterThan(val);
+    });
+
+    it('is affected by product expertise', function() {
+      createProduct(); // to get rid of new product bonus
+      var p = createProduct(),
+          marketShares = [{income: 1}, {income: 2}],
+          influencers = [];
+      goodCombo[0].expertise = 0;
+      Product.setRevenue(p, marketShares, influencers, player);
+      var val = p.revenue;
+
+      goodCombo[0].expertise = 1;
+      p = createProduct();
       Product.setRevenue(p, marketShares, influencers, player);
       expect(p.revenue).toBeGreaterThan(val);
     });

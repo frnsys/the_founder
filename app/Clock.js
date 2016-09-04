@@ -20,7 +20,7 @@ import Worker from 'game/Worker';
 import Condition from 'game/Condition';
 import EmailsView from 'views/alerts/Email';
 
-const SECONDS_PER_WEEK = 10 * 30;
+const SECONDS_PER_WEEK = 6 * 30;
 const WEEKS_PER_MONTH = 4;
 
 class Clock {

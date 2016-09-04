@@ -1,8 +1,8 @@
 import _ from 'underscore';
-import Company from 'game/Company';
+import Player from 'app/Player';
 
 describe('SpecialProject', function() {
-  var company, specialProject;
+  var player, company, specialProject;
   beforeEach(function() {
     var worker = {
       "design": 10,
@@ -11,7 +11,8 @@ describe('SpecialProject', function() {
       "productivity": 500,
       "attributes": []
     };
-    company = new Company({cash: 10000});
+    player = new Player({}, {cash:10000});
+    company = player.company;
     company.player.specialEffects = {
       Prescient: false
     };

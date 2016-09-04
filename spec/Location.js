@@ -1,10 +1,11 @@
 import _ from 'underscore';
-import Company from 'game/Company';
+import Player from 'app/Player';
 
 describe('Location', function() {
-  var company, location;
+  var player, company, location;
   beforeEach(function() {
-    company = new Company({cash: 10000});
+    player = new Player({}, {cash:10000});
+    company = player.company;
     location = {
       "name": "Bangalore",
       "cost": 10000,

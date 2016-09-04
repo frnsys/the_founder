@@ -1,10 +1,11 @@
 import _ from 'underscore';
-import Company from 'game/Company';
+import Player from 'app/Player';
 
 describe('Vertical', function() {
-  var company, vertical;
+  var player, company, vertical;
   beforeEach(function() {
-    company = new Company({cash: 10000});
+    player = new Player({}, {cash:100000});
+    company = player.company;
     vertical = {
       "name": "Defense",
       "cost": 1000,

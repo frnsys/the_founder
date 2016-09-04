@@ -862,7 +862,7 @@
       },
       {
         "name": "Pupper",
-        "description": "A nice yapper to inspire the office",
+        "description": "A nice pupper to inspire the office",
         "cost": 20000,
         "requiredOffice": 0,
         "requiredTechs": [],

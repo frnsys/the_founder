@@ -39,6 +39,12 @@ function targetValue(difficulty) {
 }
 
 const Product = {
+  initType: function(pt) {
+    return _.extend({
+      expertise: 0
+    }, pt);
+  },
+
   create: function(productTypes) {
     var recipeName = _.map(
       _.sortBy(productTypes, function(pt) { return pt.name }),
@@ -51,10 +57,15 @@ const Product = {
       return mem + pt.difficulty;
     }, 0);
 
+    var revenueScore = _.reduce(productTypes, function(mem, pt) {
+      return mem + (pt.difficulty * (pt.expertise + 1));
+    }, 0);
+
     return {
       name: _.sample(recipe.names),
       recipeName: recipe.name,
       difficulty: difficulty,
+      revenueScore: revenueScore,
       killsPeople: _.contains(recipe.productTypes, 'Defense'),
       debtsPeople: _.contains(recipe.productTypes, 'Credit'),
       pollutes: _.intersection(recipe.productTypes, ['Gadget', 'Implant', 'Mobile', 'Wearable', 'Robot', 'Defense']).length > 0,
@@ -78,6 +89,16 @@ const Product = {
       strength: 0,
       movement: 0
     };
+
+    if (p.recipeName != 'Default') {
+      // add expertise points
+      _.each(company.productTypes, function(pt) {
+        if (_.contains(p.productTypes, pt.name)) {
+          pt.expertise = Math.min(pt.expertise+1, 11);
+        }
+      });
+    }
+
     if (this.onProductLaunch) {
       this.onProductLaunch(p);
     }
@@ -114,7 +135,7 @@ const Product = {
     return revenue;
   },
   marketShareToRevenue: function(incomeLevel, product) {
-    return Math.pow((incomeLevel + 1), 2) * 1000 * product.difficulty;
+    return Math.pow((incomeLevel + 1), 2) * 1000 * product.revenueScore;
   },
 
   // for the product designer

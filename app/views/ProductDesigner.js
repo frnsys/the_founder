@@ -64,6 +64,9 @@ const template = data => `
     <button class="launch-product">Launch</button>
   </div>
 </div>
+<div class="product-revenue-per-share">
+Revenue per market share: ${util.formatCurrency(data.revenuePerShare)}
+</div>
 `;
 
 class ProductDesigner extends Popup {
@@ -114,7 +117,8 @@ class ProductDesigner extends Popup {
       afford: _.reduce(['quantity', 'strength', 'movement'], function(o, n) {
         o[n] = self.canAfford(n, Product.costs[n](self.product));
         return o;
-      }, {})
+      }, {}),
+      revenuePerShare: Product.marketShareToRevenue(0, this.product)
     }, this.product));
     // hack to hide tooltips after re-render
     // otherwise they hang around b/c the element

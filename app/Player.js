@@ -21,6 +21,7 @@ import technologies from 'data/technologies.json';
 import productTypes from 'data/productTypes.json';
 import onboarding from 'data/onboarding.json';
 
+const STARTING_PROFIT_TARGET = 100000;
 
 class Player {
   constructor(data, companyData) {
@@ -84,7 +85,7 @@ class Player {
 
       // board
       board: {
-        profitTarget: 20000,
+        profitTarget: STARTING_PROFIT_TARGET,
         lastProfit: 0,
         lastProfitTarget: 0,
         happiness: 10

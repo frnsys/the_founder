@@ -3,6 +3,7 @@ import util from 'util';
 import templ from './Common';
 import View from 'views/View';
 import Effect from 'game/Effect';
+import Product from 'game/Product';
 import verticals from 'data/verticals.json';
 import productTypes from 'data/productTypes.json';
 
@@ -147,7 +148,10 @@ class Onboarding extends View {
       case 2:
         stages[stage].selected = selected.name;
         player.company.verticals = util.byNames(verticals, [selected.name]);
-        player.company.productTypes = util.byNames(productTypes, stages[stage]['startingProductTypes'][selected.name]);
+        player.company.productTypes = _.map(
+          util.byNames(productTypes, stages[stage]['startingProductTypes'][selected.name]),
+          pt => Product.initType(pt)
+        );
         stages[4].options[1] = selected;
         break;
       case 3:

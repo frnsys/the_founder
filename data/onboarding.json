@@ -16,6 +16,8 @@
       "<em class='concept'>Products</em> are created by combining two different <em class='concept'>Product Types</em>.",
       "You only have a couple to choose from now, but later you can unlock and purchase more.",
       "Some combinations lead to wildly successful products and some end up in duds. You'll have to <em class='special'>innovate</em> by experimenting with different combinations.",
+      "When you develop a successful product type combination your company's <em class='concept'>Expertise</em> in those product types will increase.",
+      "The more expertise you have with a product type, the more revenue those products will generate.",
       "For now just pick any two and get started."
     ],
     "popup": "Start a Product"

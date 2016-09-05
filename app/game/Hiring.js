@@ -14,11 +14,9 @@
 
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import Worker from './Worker';
 import negotiations from 'data/negotiations.json';
-
-const SCORE_RANGE = 6;
-const BASE_PROB = 0.8;
 
 const Hiring = {
   availableWorkers: function(player, company) {
@@ -34,8 +32,8 @@ const Hiring = {
     var candidates = _.filter(pool, function(worker) {
       var score = self.score(worker),
           targetScore = recruitment.targetScore,
-          prob = BASE_PROB;
-      if (score <= targetScore - SCORE_RANGE || score >= targetScore + SCORE_RANGE) {
+          prob = config.BASE_PROB;
+      if (score <= targetScore - config.SCORE_RANGE || score >= targetScore + config.SCORE_RANGE) {
         prob = 0;
       } else {
         prob -= Math.abs((targetScore - score)/targetScore)/2;
@@ -71,9 +69,9 @@ const Hiring = {
 
     // positive effect, lower salary
     if (effect > 0) {
-      return 0.9;
+      return config.NEGOTIATION_LOWER_SALARY_EFFECT;
     } else if (effect < 0) {
-      return 1.1;
+      return config.NEGOTIATION_HIGHER_SALARY_EFFECT;
     } else {
       return 1;
     }

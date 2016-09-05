@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import config from 'config';
 import Grid from '../Grid';
 import Evaluation from './Evaluation';
 
@@ -72,7 +73,7 @@ class Task {
 class CaptureTask extends Task {
   constructor(tile, grid) {
     super(tile, grid)
-    this.value = Math.pow(10 * Evaluation.tileValue(tile), 2);
+    this.value = config.TASK_VALUES.capture * Math.pow(10 * Evaluation.tileValue(tile), 2);
     // console.log(`Capture value: ${this.value}`);
   }
 
@@ -95,7 +96,7 @@ class DefendTask extends Task {
   constructor(tile, grid, threat) {
     super(tile, grid)
     this.threat = threat;
-    this.value = 4 * Evaluation.tileValue(tile) * threat;
+    this.value = config.TASK_VALUES.defend * Evaluation.tileValue(tile) * threat;
     // console.log(`Defend value: ${this.value}`);
   }
 

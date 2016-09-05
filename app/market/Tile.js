@@ -9,17 +9,12 @@ import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';
 import _ from 'underscore';
+import config from 'config';
 import Piece from './Piece';
 
-const BASE_CAPTURE_COST = 1;
 const onSingleClick = new Phaser.Signal();
 const onDoubleClick = new Phaser.Signal();
 const onCapture = new Phaser.Signal();
-const incomeDistribution = [0.65, 0.2, 0.125, 0.025];
-const tileProbs = {
-  influencer: 0.06,
-  empty: 0.3
-};
 
 class Tile {
   constructor(piece) {
@@ -73,7 +68,7 @@ class OwnedTile extends Tile {
     super(piece);
     this.owner = owner;
 
-    this.baseCost = BASE_CAPTURE_COST;
+    this.baseCost = config.BASE_CAPTURE_COST;
     this.capturedCost = 0;
   }
 
@@ -135,8 +130,8 @@ class IncomeTile extends OwnedTile {
     // randomly set income value of tile
     var roll = Math.random(),
         cuml = 0;
-    for (var i=0; i < incomeDistribution.length; i++) {
-      cuml += incomeDistribution[i];
+    for (var i=0; i < config.INCOME_DISTRIBUTION.length; i++) {
+      cuml += config.INCOME_DISTRIBUTION[i];
       if (roll <= cuml) {
         this.income = i;
         break;
@@ -168,9 +163,9 @@ class IncomeTile extends OwnedTile {
 
 function random() {
   var roll = Math.random();
-  if (roll <= tileProbs.empty) {
+  if (roll <= config.TILE_PROBS.empty) {
     return new Tile();
-  } else if (roll <= tileProbs.empty + tileProbs.influencer) {
+  } else if (roll <= config.TILE_PROBS.empty + config.TILE_PROBS.influencer) {
     return new InfluencerTile();
   } else {
     return new IncomeTile();

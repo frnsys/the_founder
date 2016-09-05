@@ -27,6 +27,7 @@
  */
 
 import util from 'util';
+import config from 'config';
 import _ from 'underscore';
 import Task from './Task';
 import Perk from './Perk';
@@ -36,9 +37,6 @@ import Effect from './Effect';
 import Worker from './Worker';
 import Product from './Product';
 import offices from 'data/offices.json';
-
-const BASE_BURNOUT_RATE = 0.01;
-const BASE_TAX_RATE = 0.3;
 
 class Company {
   constructor(data, player) {
@@ -100,7 +98,7 @@ class Company {
   }
 
   get burnoutRate() {
-    return BASE_BURNOUT_RATE + this.getWorkerBonus('burnoutRate');
+    return config.BASE_BURNOUT_RATE + this.getWorkerBonus('burnoutRate');
   }
 
   updateBurnout() {
@@ -192,7 +190,7 @@ class Company {
     this.pay(this.salaries + this.rent);
   }
   payAnnual() {
-    var expectedTaxes = this.annualRevenue * BASE_TAX_RATE;
+    var expectedTaxes = this.annualRevenue * config.BASE_TAX_RATE;
     this.taxesAvoided += expectedTaxes - this.taxes;
     this.pay(this.taxes);
     this.annualRevenue = 0;

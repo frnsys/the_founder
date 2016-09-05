@@ -1,13 +1,14 @@
 import _ from 'underscore';
+import config from 'config';
 import Tile from '../Tile';
 import Grid from '../Grid';
 
 const Evaluation = {
   tileValue: function(tile) {
     if (tile instanceof Tile.Income) {
-      return 3 * tile.income;
+      return config.TILE_VALUES.income * tile.income;
     } else if (tile instanceof Tile.Influencer) {
-      return 4;
+      return config.TILE_VALUES.influencer;
     } else {
       return 0;
     }

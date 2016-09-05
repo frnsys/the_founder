@@ -22,18 +22,13 @@
  */
 
 import _ from 'underscore';
+import config from 'config';
 import Economy from './Economy';
 import Condition from './Condition';
 import thoughts from 'data/thoughts.json';
 import attributeBonuses from 'data/workerAttributes.json';
 
-const PERK_SALARY_REDUCE_PERCENT = 0.01;
-const GROWTH_PROB = 0.04;
-const BASE_GROWTH_RATE = 0.01;
-const MIN_BURNOUT_DAYS = 3;
-const MAX_BURNOUT_DAYS = 6;
 const MULTIPLY_ATTRIBS = ['minSalary'];
-const BASE_HAPPINESS_MODIFIER = 5;
 
 function sigmoid(v) {
   return 1/(1+Math.exp(-v));
@@ -119,7 +114,7 @@ const Worker = {
   },
 
   perkSalaryMultiplier: function(company) {
-    var reduction = _.reduce(company.perks, (m,p) => (p.upgradeLevel + 1) * PERK_SALARY_REDUCE_PERCENT, 0);
+    var reduction = _.reduce(company.perks, (m,p) => (p.upgradeLevel + 1) * config.PERK_SALARY_REDUCE_PERCENT, 0);
     return 1 - reduction;
   },
 
@@ -138,7 +133,7 @@ const Worker = {
   happiness: function(worker, player) {
     var happinessModifier = 1;
     if (player) {
-      happinessModifier = BASE_HAPPINESS_MODIFIER;
+      happinessModifier = config.BASE_HAPPINESS_MODIFIER;
       happinessModifier -= player.company.deathToll/1000;
       happinessModifier -= player.company.pollution/1000;
       happinessModifier += player.forgettingRate;
@@ -151,8 +146,8 @@ const Worker = {
     var self = this;
     if (worker.burnout === 0) {
       _.each(['design', 'engineering', 'marketing'], function(attr) {
-        if (Math.random() < GROWTH_PROB) {
-          worker[attr] += BASE_GROWTH_RATE + self.selfBonus(worker, attr + '_growth');
+        if (Math.random() < config.GROWTH_PROB) {
+          worker[attr] += config.BASE_GROWTH_RATE + self.selfBonus(worker, attr + '_growth');
         }
       });
     }
@@ -169,7 +164,7 @@ const Worker = {
       inc = Math.round(inc*1e3)/1e3;
       worker.burnoutRisk += inc;
       if (Math.random() < worker.burnoutRisk + 0.01) {
-        worker.burnout = _.random(MIN_BURNOUT_DAYS, MAX_BURNOUT_DAYS);
+        worker.burnout = _.random(config.MIN_BURNOUT_DAYS, config.MAX_BURNOUT_DAYS);
         worker.burnoutRisk = 0;
       }
     } else {

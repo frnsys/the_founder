@@ -8,8 +8,7 @@
  */
 
 import _ from 'underscore';
-
-const HYPE_DECAY_RATE = 0.9;
+import config from 'config';
 
 const Promo = {
   init: function(promo) {
@@ -20,8 +19,8 @@ const Promo = {
   },
 
   decayHype: function(company) {
-    company.hype *= HYPE_DECAY_RATE;
-    company.outrage *= HYPE_DECAY_RATE - (company.player.forgettingRate - 1);
+    company.hype *= config.HYPE_DECAY_RATE;
+    company.outrage *= config.HYPE_DECAY_RATE - (company.player.forgettingRate - 1);
     company.outrage += _.reduce([
       'deathToll', 'pollution', 'debtOwned', 'taxesAvoided'
     ], function(m, v) {

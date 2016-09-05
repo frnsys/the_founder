@@ -12,6 +12,7 @@
 
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import Task from 'game/Task';
 import Event from 'game/Event';
 import Board from 'game/Board';
@@ -19,9 +20,6 @@ import Economy from 'game/Economy';
 import Worker from 'game/Worker';
 import Condition from 'game/Condition';
 import EmailsView from 'views/alerts/Email';
-
-const SECONDS_PER_WEEK = 6 * 30;
-const WEEKS_PER_MONTH = 4;
 
 class Clock {
   constructor(manager, player, office) {
@@ -57,11 +55,11 @@ class Clock {
       this.frames++;
       this.updateScheduled();
 
-      if (this.frames % SECONDS_PER_WEEK === 0) {
+      if (this.frames % config.SECONDS_PER_WEEK === 0) {
         this.player.week++;
         this.weekly();
 
-        if (this.player.week >= WEEKS_PER_MONTH) {
+        if (this.player.week >= config.WEEKS_PER_MONTH) {
           this.player.week = 0;
           this.monthly();
 

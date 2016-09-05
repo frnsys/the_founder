@@ -6,6 +6,7 @@
 
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import Enums from './Enums';
 import Board from 'game/Board';
 import Worker from 'game/Worker';
@@ -21,7 +22,12 @@ import technologies from 'data/technologies.json';
 import productTypes from 'data/productTypes.json';
 import onboarding from 'data/onboarding.json';
 
-const STARTING_PROFIT_TARGET = 100000;
+const lockedLocations = [
+  'Seasteading State',
+  'New Antarctic Colonies',
+  'Gliese 832c',
+  'Mars Colony'
+];
 
 class Player {
   constructor(data, companyData) {
@@ -30,7 +36,7 @@ class Player {
     this.company = new Company(companyData, this);
     _.extend(this, {
       unlocked: {
-        locations: util.byNames(locations, ['New York', 'Boston', 'San Francisco', 'Dubai', 'Bangalore', 'Sydney', 'Tel Aviv']),
+        locations: _.filter(locations, l => !_.contains(lockedLocations, l.name)),
         specialProjects: [],
         productTypes: util.byNames(productTypes, ['Ad', 'Gadget', 'Mobile', 'Social Network', 'E-Commerce'])
       },
@@ -85,7 +91,7 @@ class Player {
 
       // board
       board: {
-        profitTarget: STARTING_PROFIT_TARGET,
+        profitTarget: config.STARTING_PROFIT_TARGET,
         lastProfit: 0,
         lastProfitTarget: 0,
         happiness: 10

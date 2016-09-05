@@ -20,22 +20,14 @@
  */
 
 import _ from 'underscore';
+import config from 'config';
 import Economy from './Economy';
 import productRecipes from 'data/productRecipes.json';
 
-const PROGRESS_PER_DIFFICULTY = 100;
-const MAIN_FEATURE_SCALE = 0.1;
 const PRODUCT_FEATURES = [null, 'design', 'engineering', 'marketing'];
-const REVENUE_DECAY = 0.8;
-const NEW_PRODUCT_MULTIPLIER = 1.5;
-
 
 function requiredProgress(difficulty) {
-  return Math.exp(difficulty/10) * PROGRESS_PER_DIFFICULTY
-}
-
-function targetValue(difficulty) {
-  return Math.exp(difficulty/10);
+  return Math.exp(difficulty/10) * config.PROGRESS_PER_DIFFICULTY
 }
 
 const Product = {
@@ -108,9 +100,9 @@ const Product = {
 
   // revenue management
   setRevenue: function(p, marketShares, influencers, player) {
-    var hypeMultiplier = (1+player.company.hype/1000),
+    var hypeMultiplier = (1+player.company.hype) * config.HYPE_SCALE,
         influencerMultiplier = 1 + (influencers.length*0.5),
-        newDiscoveryMuliplier = p.newDiscovery ? NEW_PRODUCT_MULTIPLIER : 1,
+        newDiscoveryMuliplier = p.newDiscovery ? config.NEW_PRODUCT_MULTIPLIER : 1,
         economyMultiplier = Economy.multiplier(player.economy);
     p.earnedRevenue = 0;
     var baseRevenue = _.reduce(marketShares, function(m,w) {
@@ -130,12 +122,12 @@ const Product = {
   getRevenue: function(p) {
     var range = p.revenue * 0.1,
         revenue = Math.max(0, _.random(p.revenue - range, p.revenue + range));
-    p.revenue *= REVENUE_DECAY;
+    p.revenue *= config.REVENUE_DECAY;
     p.earnedRevenue += revenue;
     return revenue;
   },
   marketShareToRevenue: function(incomeLevel, product) {
-    return Math.pow((incomeLevel + 1), 2) * 1000 * product.revenueScore;
+    return Math.pow((incomeLevel + 1), 2) * config.BASE_REVENUE_PER_SHARE * product.revenueScore;
   },
 
   // for the product designer

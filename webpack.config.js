@@ -52,6 +52,7 @@ module.exports = {
       'data': path.resolve('./data'),
       'debug': path.resolve('./app/debug'),
       'util': path.resolve('./app/util.js'),
+      'config': path.resolve('./app/config.js'),
       'game': path.resolve('./app/game'),
       'views': path.resolve('./app/views'),
       'office': path.resolve('./app/office'),

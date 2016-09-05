@@ -6,19 +6,20 @@
  *   - if the mood is too bad for too long, the player loses
  */
 
-const DESIRED_GROWTH = 0.12;
+import config from 'config';
+
 const epsilon = 1e-12;
 const Board = {
-  desiredGrowth: DESIRED_GROWTH,
+  desiredGrowth: config.DESIRED_GROWTH,
   evaluatePerformance: function(board, profit) {
     var growth = (profit - board.lastProfit)/(board.lastProfit + epsilon);
 
     // if the target is exceeded, the board is really happy
-    if (growth >= DESIRED_GROWTH * 2)
+    if (growth >= config.DESIRED_GROWTH * 2)
         board.happiness += growth * 12;
 
     // if the target is met, the board is happy
-    if (growth >= DESIRED_GROWTH) {
+    if (growth >= config.DESIRED_GROWTH) {
         board.happiness += growth * 10;
 
     // a negative change is super bad
@@ -32,7 +33,7 @@ const Board = {
 
     // set the new target
     board.lastProfitTarget = board.profitTarget;
-    board.profitTarget *= 1 + DESIRED_GROWTH;
+    board.profitTarget *= 1 + config.DESIRED_GROWTH;
     board.profitTarget = Math.round(board.profitTarget);
     board.lastProfit = profit;
 

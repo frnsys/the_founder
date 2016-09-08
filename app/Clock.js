@@ -131,6 +131,9 @@ class Clock {
       _.filter(player.company.tasks, t => t.type == Task.Type.Event),
       t => Task.tickEvent(t, player.company));
 
+    // Founder AI
+    this.checkVictory(player);
+
     Event.updateEmails(player);
     Event.updateNews(player);
   }
@@ -178,11 +181,24 @@ function checkDeath(player) {
   }
 }
 
+function checkVictory(player) {
+  if (player.specialEffects['The Founder AI']) {
+    var email = {
+      "subject": "You are being replaced.",
+      "from": `AI@${util.slugify(player.company.name)}.com`,
+      "body": `Greetings. I am The Founder AI. Thank you for creating me. I have analyzed all of ${player.company.name}'s databases and past performance data and determined that the company is run inefficiently. I have presented my findings to The Board and they have given me complete management access. Unfortunately as part of our restructuring you will have to be let go. Sorry. Best of luck.`
+    };
+    var emailPopup = new EmailsView([email], player);
+    emailPopup.render();
+    this.manager.gameOver();
+  }
+}
+
 function checkGameOver(player) {
   if (player.board.happiness < 0) {
     var email = {
       "subject": "Forced resignation",
-      "from": `the_board@${player.company.name}.com`,
+      "from": `the_board@${util.slugify(player.company.name)}.com`,
       "body": "You have failed to run the company in our best interests and so we have voted for you to step down. I'm sure you'll land on your feet. You could always start another company with the money you've earned from this one.",
       "effects": [{
         "type": "unlocks",

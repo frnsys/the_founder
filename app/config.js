@@ -41,6 +41,7 @@ const config = {
     influencer: 0.06,
     empty: 0.3
   },
+  MAX_TURNS: 10,
 
   // ai
   TILE_VALUES: {

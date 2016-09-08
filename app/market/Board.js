@@ -40,6 +40,8 @@ class Board {
     this.setupTiles(nTiles, rows, cols);
     this.setupPlayers(players);
     this.centerMap();
+
+    this.humanPlayer = _.find(players, p => p.human);
   }
 
   setupTiles(nTiles, rows, cols) {
@@ -149,6 +151,14 @@ class Board {
     });
   }
 
+  checkHumanDone() {
+    var noMoves = _.every(this.humanPlayer.pieces, p => p.moves === 0);
+    var noPieces = this.humanPlayer.pieces.length === 0;
+    if (_.isFunction(this.onHumanDone) && (noMoves || noPieces)) {
+      this.onHumanDone();
+    }
+  }
+
   movePieceTowards(piece, toTile, cb) {
     var self = this,
         from = piece.position,
@@ -212,7 +222,7 @@ class Board {
 
     // highlight selected tile
     this.selectedTile = tile;
-    this.selectedTile.sprite.tint -= 0x444444;
+    this.selectedTile.sprite.tint = humanMoveHighlightColor;
 
     // highlight valid movement tiles
     if (tile.piece) {
@@ -229,6 +239,8 @@ class Board {
       });
     }
   }
+
+
 
   onDoubleClickTile(tile) {
     var self = this;
@@ -249,13 +261,15 @@ class Board {
             // check we're actually close enough to attack
             if (attacker.moves > 0 && _.contains(self.grid.tilesInRange(attacker.tile.position, 1), tile)) {
               self.attackPiece(attacker, defender);
+              self.checkHumanDone();
             }
           });
         } else {
-          this.movePieceTowards(this.selectedTile.piece, tile);
+          this.movePieceTowards(this.selectedTile.piece, tile, this.checkHumanDone.bind(this));
         }
       } else if (_.isFunction(tile.capture) && tile.piece == this.selectedTile.piece && tile.piece.product && tile.piece.moves > 0) {
         tile.capture(tile.piece);
+        this.checkHumanDone();
       }
     }
     this.selectedTile = null;

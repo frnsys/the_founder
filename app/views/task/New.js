@@ -15,6 +15,7 @@ const menuItems = [
 ];
 
 const template = data => `
+<h5>Choose a task:</h5>
 <ul class="new-task">
   <li class="start-product">
     <h1>Product</h1>

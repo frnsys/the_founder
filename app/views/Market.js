@@ -18,15 +18,18 @@ function healthBar(health, maxHealth) {
 
 const pieceInfoTemplate = tile => `
 <div class="piece-info">
-  <span class="${tile.pieceClass}">
+  <h5>Selected Product</h5>
+  <span class="${tile.pieceClass} piece-name">
     ${tile.piece.name ? tile.piece.name : 'Generic Product'}
-  </span> (moves: ${tile.piece.moves})
+  </span>
   <div>Health: ${healthBar(tile.piece.health, tile.piece.maxHealth)} (${tile.piece.health}/${tile.piece.maxHealth})</div>
+  ${tile.piece.moves === 0 ? '<div class="piece-no-moves">No moves left</div>' : `<div>Moves: ${tile.piece.moves}</div>`}
 </div>`;
 
 const tileInfoTemplate = tile => `
 <div class="tile-info">
-  <span class="${tile.tileClass}">${tile.owner ? tile.owner.company.name + ' ' : ''}${tile.name}</span>
+  <h5>Selected Tile</h5>
+  <span class="${tile.tileClass} tile-name">${tile.owner ? tile.owner.company.name + ' ' : ''}${tile.name}</span>
   ${tile.capturing ? `<span>${tile.capturedCost}/${tile.baseCost} captured</span>` : ''}
   ${tile.bonus ? `<span>+${tile.bonus}</span>` : ''}
   <p class="tile-description">${tile.description}</p>
@@ -35,6 +38,7 @@ const tileInfoTemplate = tile => `
 
 const template = data => `
 <div class="market">
+  <div class="turn-notice">${data.human ? 'Your turn' : 'Competitor turn'}</div>
   <div class="player-info">
     <h4 class="turns-left">${data.totalTurns - data.turnsLeft}/${data.totalTurns}</h4>
     <div class="progress-bar">

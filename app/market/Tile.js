@@ -119,7 +119,7 @@ class InfluencerTile extends OwnedTile {
     this.spriteName = 'influencerTile';
     this.color = 0xff98f6;
     this.name = 'Thought Leader';
-    this.description = 'Inspires consumption and influence in surrounding tiles.';
+    this.description = 'Inspires consumption, boosting overall revenue';
   }
 }
 

@@ -4,8 +4,8 @@
     "messages": [
       "Welcome! I'm your incubator mentor. Running a successful startup is not easy, but I'll give you guidance.",
       "You're just starting out, so you'll work from your apartment for now.",
-      "This is the Office view. Here you can manage your company, create products, poke around the office, and more.",
-      "Right now it's just your cofounder in the office, but eventually you'll have a buzzing hive of talented employees.",
+      "This is the Office view. Here you can manage your company, create products, poke around, and more.",
+      "Right now it's just your cofounder in the apartment, but eventually you'll have a buzzing hive of talented employees.",
       "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one.",
       "Click <em class='ui-item'>New Task</em> to get started."
     ],
@@ -24,8 +24,6 @@
   }, {
     "name": "assign_task",
     "messages": [
-      "Creating a Product is a <em class='concept'>Task</em>.",
-      "There are other tasks too, but for now only Products are important.",
       "You assign employees to tasks by clicking on them. To unassign them, click on them again.",
       "They contribute <em class='concept'><img src='assets/company/design.png'> Design</em>, <em class='concept'><img src='assets/company/engineering.png'> Engineering</em>, and <em class='concept'><img src='assets/company/marketing.png'> Marketing</em> at a rate according to their <em class='concept'><img src='assets/company/productivity.png'> Productivity</em>.",
       "Assign your cofounder to the task and let's get going!"
@@ -50,11 +48,10 @@
     "messages": [
       "Your product is finished!",
       "In a moment we will release the product to <em class='special'>The Market</em>.",
-      "But first, we need to take the accumulated Design, Engineering, and Marketing points to design the product. That's what the Product Designer here is for.",
+      "But first, we need to take the accumulated Design, Engineering, and Marketing points to customize the product. That's what the Product Designer here is for.",
       "These points can power up your product's <em class='concept'>Quantity</em> (how many you release to The Market),",
       "your product's <em class='concept'>Strength</em> (how powerful they are against competitors and at capturing market share),",
-      "and your product's <em class='concept'>Movement</em> (how quickly they move across The Market).",
-      "This will all make sense in a moment, I promise."
+      "and your product's <em class='concept'>Movement</em> (how quickly they move across The Market)."
     ],
     "popup": "Product Designer"
   }, {

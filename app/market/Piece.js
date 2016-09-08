@@ -57,7 +57,7 @@ class Piece {
 
   exhaust() {
     this.moves = 0;
-    this.sprite.tint = shadeColor(this.owner.color, -0.5);
+    this.sprite.tint = shadeColor(this.owner.color, 0.5);
   }
 
   reset() {

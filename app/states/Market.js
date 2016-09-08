@@ -10,6 +10,7 @@ import * as Phaser from 'phaser';
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import AI from 'market/ai/AI';
 import Tile from 'market/Tile';
 import Board from 'market/Board';
@@ -19,9 +20,6 @@ import Product from 'game/Product';
 import Competitor from 'game/Competitor';
 import MarketView from 'views/Market';
 import Confirm from 'views/alerts/Confirm';
-
-const MAX_TURNS = 32,
-      PIECE_PROB = 0.2;
 
 function createPieces(player, product) {
   var nPieces = Product.samplePoint('quantity', product);
@@ -62,7 +60,7 @@ class TheMarket extends Phaser.State {
     $('body').addClass('market-background');
 
     var self = this;
-    this.totalTurns = MAX_TURNS;
+    this.totalTurns = config.MAX_TURNS;
     this.turnsLeft = this.totalTurns;
 
     var competitor = _.sample(this.player.competitors);
@@ -81,6 +79,8 @@ class TheMarket extends Phaser.State {
     this.board = new Board(this.player.company, this.players, this.game);
     this.AI = new AI(this.board, this.aiPlayer);
 
+    this.board.onHumanDone = this.endTurn.bind(this);
+
     if (this.debug) {
       this.board.debug();
     }
@@ -93,10 +93,7 @@ class TheMarket extends Phaser.State {
     this.view = new MarketView({
       handlers: {
         '.end-turn': function() {
-          var movesLeft = _.some(self.humanPlayer.pieces, function(piece) {
-            return piece.moves > 0;
-          });
-
+          var movesLeft = _.some(self.humanPlayer.pieces, p => p.moves > 0);
           if (movesLeft) {
             var view = new Confirm(self.endTurn.bind(self));
             view.render('You still have moves remaining, is that ok?');

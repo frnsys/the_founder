@@ -161,15 +161,28 @@ class TheMarket extends Phaser.State {
     return shares;
   }
 
+  shouldEndGame() {
+    return (this.turnsLeft <= 0 || this.board.uncapturedTiles.length == 0 || (this.aiPlayer.pieces.length == 0 || this.humanPlayer.pieces.length == 0));
+  }
+
   endTurn() {
     this.turnsLeft--;
     this.board.unhighlightTiles();
-    if (this.turnsLeft <= 0 || this.board.uncapturedTiles.length == 0 || (this.aiPlayer.pieces.length == 0 || this.humanPlayer.pieces.length == 0)) {
+    if (this.shouldEndGame()) {
       this.endGame();
     } else {
       var self = this;
       this.startTurn(this.aiPlayer);
-      this.AI.takeTurn(() => this.startTurn(this.humanPlayer));
+      this.AI.takeTurn(function() {
+        // add a little delay
+        // otherwise transition is too fast
+        setTimeout(function() {
+          self.startTurn(self.humanPlayer)
+          if (self.shouldEndGame()) {
+            self.endGame();
+          }
+        }, 1200);
+      });
     }
   }
 

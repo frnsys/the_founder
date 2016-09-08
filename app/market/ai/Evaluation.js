@@ -36,12 +36,12 @@ const Evaluation = {
 
     // reducing bigger threats by a lot is more valuable,
     // but we don't want attackers going on suicide missions
-    return (threat + expectedHealth)/(Math.sqrt(expectedThreatAfter) + 1e-12);
+    return (threat + expectedHealth)/(Math.sqrt(expectedThreatAfter) + 1);
   },
 
   tileThreat: function(piece, tile) {
     // stronger and closer pieces are more threatening
-    return Math.max(piece.health/(Grid.manhattanDistance(piece.position, tile.position) + 1e-12), 0);
+    return Math.max(piece.health/(Grid.manhattanDistance(piece.position, tile.position) + 1), 0);
   },
 
   tileThreats: function(grid, tile, owner) {

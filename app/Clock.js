@@ -132,7 +132,7 @@ class Clock {
       t => Task.tickEvent(t, player.company));
 
     // Founder AI
-    this.checkVictory(player);
+    checkVictory(player);
 
     Event.updateEmails(player);
     Event.updateNews(player);
@@ -148,7 +148,7 @@ class Clock {
     this.player.growth = Board.evaluatePerformance(this.player.board, this.player.company.annualProfit) * 100,
     Economy.update(this.player);
     checkDeath(this.player);
-    this.player.emails.current.push(annualReport(this.player));
+    this.player.current.inbox.push(annualReport(this.player));
   }
 }
 

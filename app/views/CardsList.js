@@ -4,7 +4,11 @@ import util from 'util';
 import View from 'views/View';
 import Popup from 'views/Popup';
 
-const template = data => `<ul class="cards"></ul>`;
+const template = data => `
+  <div class="current-cash">
+    <div class="current-cash-value"></div>
+  </div>
+  <ul class="cards"></ul>`;
 
 class CardsList extends Popup {
   constructor(params) {

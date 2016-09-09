@@ -59,6 +59,10 @@ class SelectPromoView extends CardsList {
     super.render({
       items: _.map(promos, this.processItem.bind(this))
     });
+
+    this.el.find('.current-cash-value').text(
+      `Cash: ${util.formatCurrency(this.player.company.cash)}`
+    );
   }
 
   processItem(item) {

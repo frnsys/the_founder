@@ -74,6 +74,10 @@ class ProductTypesView extends CardsList {
       }
     });
 
+    this.el.find('.current-cash-value').text(
+      `Cash: ${util.formatCurrency(this.player.company.cash)}`
+    );
+
     // re-render if new product types are discovered
     if (this.player.company.productTypes.length > this.nProductTypes) {
       this.render();

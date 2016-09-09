@@ -7,7 +7,7 @@ import recruitments from 'data/recruitments.json';
 
 function button(item) {
   if (item.noAvailableSpace) {
-    return '<button disabled>Not enough space</button>';
+    return '<button disabled>Office is full</button>';
   } else if (item.afford) {
     return '<button class="buy">Recruit</button>';
   } else {
@@ -71,6 +71,10 @@ class View extends CardsList {
         v[1].el.find('button').replaceWith(button(item));
       }
     });
+
+    this.el.find('.current-cash-value').text(
+      `Cash: ${util.formatCurrency(this.player.company.cash)}`
+    );
 
     // if robots become available while this view is open, re-render
     if (this.player.specialEffects['Automation'] != this.robots){

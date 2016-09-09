@@ -384,6 +384,7 @@ button.owned
   width: 100%
   background: #212121
   padding: 2em
+  position: relative
 .negotiation-dialogue
   max-width: 680px
   margin: 0 auto
@@ -401,6 +402,7 @@ button.owned
   button
     width: 100%
     border: none
+    border-radius: 0 0 0.4em 0.4em
   h1
     color: #fff
     padding: 1em 0 2em 0
@@ -418,6 +420,7 @@ button.owned
   text-align: center
   padding: 2em
   color: #fff
+  margin: 2em 0
 .negotiation .popup-body
   overflow: hidden
 .worker-insight
@@ -425,6 +428,24 @@ button.owned
 .negotiation-wage-factors
   margin: 1em 0
   color: #7d7d7d
+.negotiation-result
+  position: absolute
+  top: -2em
+  left: 0
+  right: 0
+.negotiation-result-text
+  background: #333
+  color: #fff
+  text-align: center
+  padding: 1em
+  width: 24em
+  margin: 0 auto
+  border-radius: 0.4em
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2)
+.negotiation-good
+  background: #17b051
+.negotiation-bad
+  background: #ff2c2c
 
 .research
   .cards > li
@@ -802,3 +823,21 @@ button.owned
   background: rgba(0,0,0,0.1)
 .expertise-point.filled
   background: #29dc6d
+
+.current-cash
+  position: fixed
+  top: 1em
+  left: 6em
+  right: 6em
+  z-index: 2
+.current-cash-value
+  background: #29dc6d
+  color: #fff
+  padding: 0.2em
+  width: 12em
+  font-size: 1.6em
+  text-align: center
+  border-radius: 0.2em
+  text-shadow: 1px 1px 2px #17b051
+  margin: 0 auto
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1)

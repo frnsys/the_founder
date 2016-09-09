@@ -96,6 +96,10 @@ class View extends CardsList {
         v[1].el.find('button').replaceWith(button(item));
       }
     });
+
+    this.el.find('.current-cash-value').text(
+      `Cash: ${util.formatCurrency(this.player.company.cash)}`
+    );
   }
 
   processItem(item) {

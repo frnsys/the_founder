@@ -15,7 +15,11 @@ function button(item) {
   }
 }
 
-const template = data => `<ul class="cards"></ul>`;
+const template = data => `
+  <div class="current-cash">
+    <div class="current-cash-value"></div>
+  </div>
+  <ul class="cards"></ul>`;
 
 const marketTemplate = item => `
   <ul>
@@ -139,6 +143,10 @@ class LocationsView extends Popup {
 
   update() {
     _.each(this.subviews, sv => sv.update());
+
+    this.el.find('.current-cash-value').text(
+      `Cash: ${util.formatCurrency(this.player.company.cash)}`
+    );
   }
 }
 

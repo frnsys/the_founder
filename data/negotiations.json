@@ -22,23 +22,32 @@
   "text": "We've got opportunities to solve challenging problems.",
   "personalities": {
     "Product-driven": 1,
-    "Eager": -1
+    "Eager": 1,
+    "Cynical": 1,
+    "Social": -1
   }
 }, {
   "text": "We're the hottest company in tech right now.",
   "personalities": {
-    "Narcissist": 1
+    "Narcissist": 1,
+    "Eager": 1,
+    "Cynical": -1,
+    "Social": 1
   }
 }, {
   "text": "Our products are poised to disrupt legacy industries.",
   "personalities": {
-    "Narcissist": 1
+    "Narcissist": 1,
+    "Money-driven": 1,
+    "Product-driven": 1,
+    "Cynical": -1
   }
 }, {
   "text": "We're really focusing on building good products.",
   "personalities": {
     "Product-driven": 1,
-    "Money-driven": 1
+    "Money-driven": 1,
+    "Cynical": 1
   }
 }, {
   "text": "You'll have the chance to work with the most talented people.",
@@ -49,7 +58,8 @@
 }, {
   "text": "Company culture is really important here.",
   "personalities": {
-    "Social": 1
+    "Social": 1,
+    "Eager": 1
   }
 }, {
   "text": "This company is going to be huge.",

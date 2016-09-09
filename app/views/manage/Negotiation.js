@@ -7,7 +7,8 @@ import Hiring from 'game/Hiring';
 import Popup from 'views/Popup';
 
 const template = function(data) {
-  var result;
+  var result, negotiationCls,
+      negotiationEffect = '';
   if (data.result) {
     result = `
       <h1>${data.result}</h1>
@@ -29,7 +30,7 @@ const template = function(data) {
     ${options}
     <div class="negotitation-offer">
       <input type="number" value="${data.offer}" class="offer">
-      <button class="make-offer">Make Offer (${(data.offerProb * 100).toFixed(0)}%)</button>
+      <button class="make-offer">Make Offer (Likelihood they'll accept: ${(data.offerProb * 100).toFixed(0)}%)</button>
       <div class="negotiation-wage-factors">
         Minimum salary modifiers:
         ${data.perkMultiplier ? data.perkMultiplier : ''}
@@ -38,7 +39,19 @@ const template = function(data) {
       </div>
     </div>`;
   }
+
+  if (data.lastNegotiationEffect < 1) {
+    negotiationEffect = 'Nice! Their salary expectation went down';
+    negotiationCls = 'negotiation-good';
+  } else if (data.lastNegotiationEffect > 1) {
+    negotiationEffect = 'Argh! Their salary expectation went up';
+    negotiationCls = 'negotiation-bad';
+  }
+
   return `
+    <div class="current-cash">
+      <div class="current-cash-value"></div>
+    </div>
     <div class="negotiation-employee">
       <img src="/assets/workers/gifs/${data.avatar}.gif">
       <div class="title">
@@ -49,6 +62,10 @@ const template = function(data) {
       ${data.attributes.length > 0 ? templ.attributes(data) : ''}
     </div>
     <div class="negotiation-dialogue-wrapper">
+      ${negotiationEffect ? `
+      <div class="negotiation-result">
+        <div class="negotiation-result-text ${negotiationCls}">${negotiationEffect}</div>
+      </div>` : ''}
       <div class="negotiation-dialogue">
         ${result}
       </div>
@@ -70,11 +87,14 @@ class View extends Popup {
     this.salaryMods = [];
     this.sampleOptions();
     this.offer = 50000;
+    this.lastNegotiationEffect;
     this.registerHandlers({
       '.negotiation-option': function(ev) {
         var idx = parseInt($(ev.target).data('id')),
-            choice = self.options[idx];
-        self.salaryMods.push(Hiring.negotiationEffect(self.worker, choice));
+            choice = self.options[idx],
+            effect = Hiring.negotiationEffect(self.worker, choice);
+        this.lastNegotiationEffect = effect;
+        self.salaryMods.push(effect);
         self.sampleOptions();
         self.render();
       },
@@ -102,7 +122,7 @@ class View extends Popup {
     $('.offer').on('keyup input', function() {
       self.offer = parseInt($(this).val());
       var offerProb = Hiring.acceptOfferProb(self.minSalary, self.offer);
-      $('.make-offer').text(`Make Offer (${(offerProb * 100).toFixed(0)}%)`);
+      $('.make-offer').text(`Make Offer (Likelihood they'll accept: ${(offerProb * 100).toFixed(0)}%)`);
     });
   }
 
@@ -159,8 +179,15 @@ class View extends Popup {
       workerInsight: this.player.specialEffects['Worker Insight'],
       economicPressure: economicPressure,
       wagePressure: wagePressure,
-      perkMultiplier: perkEffect
+      perkMultiplier: perkEffect,
+      lastNegotiationEffect: this.lastNegotiationEffect
     }, this.worker));
+  }
+
+  update() {
+    this.el.find('.current-cash-value').text(
+      `Cash: ${util.formatCurrency(this.player.company.cash)}`
+    );
   }
 }
 

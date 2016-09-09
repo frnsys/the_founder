@@ -12,7 +12,7 @@ function button(item) {
   if (item.owned) {
     return `<button disabled>Hired</button>`;
   } else if (item.noAvailableSpace) {
-    return `<button disabled>Not enough space</button>`;
+    return `<button disabled>Office is full</button>`;
   } else {
     return `<button class="start-negotiation">Negotiate</button>`;
   }

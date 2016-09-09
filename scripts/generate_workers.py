@@ -75,7 +75,7 @@ class Worker():
         self.score = sum([getattr(self, attr) for attr in self.attrs if attr not in ['attributes', 'personality']])
 
         # Calculate the min salary for a given score.
-        self.min_salary = (self.score - 2) * ((self.score % 10) * 1000 + 10000)
+        self.min_salary = (self.score - 2) * ((self.score % 10) * 200 + 5000)
 
         done_attribs = False
         attrib_pool = [a for a in attribs if a not in self.attributes]

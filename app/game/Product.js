@@ -100,7 +100,7 @@ const Product = {
 
   // revenue management
   setRevenue: function(p, marketShares, influencers, player) {
-    var hypeMultiplier = (1+player.company.hype) * config.HYPE_SCALE,
+    var hypeMultiplier = Math.max(1, (1+player.company.hype) * config.HYPE_SCALE),
         influencerMultiplier = 1 + (influencers.length*0.5),
         newDiscoveryMuliplier = p.newDiscovery ? config.NEW_PRODUCT_MULTIPLIER : 1,
         economyMultiplier = Economy.multiplier(player.economy);

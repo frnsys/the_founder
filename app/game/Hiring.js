@@ -56,7 +56,7 @@ const Hiring = {
     if (offer >= minSalary) {
       return 1;
     } else {
-      return 1 - Math.sqrt((minSalary - offer)/minSalary);
+      return 1 - Math.sqrt(Math.sqrt((minSalary - offer)/minSalary));
     }
   },
   acceptOffer: function(minSalary, offer) {

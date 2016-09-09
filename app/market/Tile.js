@@ -37,7 +37,7 @@ class Tile {
           onDoubleClick.dispatch(self);
         }
         self.clicks = 0;
-      }, 200);
+      }, 300);
     }
   }
 

@@ -15,7 +15,7 @@ import Market from 'states/Market';
 import MainMenu from 'views/MainMenu';
 import Onboarding from 'states/Onboarding';
 
-const DEBUG = true;
+const DEBUG = false;
 const DEBUG_MARKET = false;
 
 class Boot extends Phaser.State {

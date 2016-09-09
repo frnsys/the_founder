@@ -280,7 +280,7 @@ class Board {
     attacker.attack(defender);
     // move to the defender spot if they were destroyed
     if (defender.health <= 0 && attacker.health > 0) {
-      this.movePieceTowards(attacker, this.grid.tileAt(defender.position));
+      this.animatePieceAlongPath(attacker, [defender.position], defender.position);
     }
   }
 

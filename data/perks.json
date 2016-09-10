@@ -846,7 +846,7 @@
     "upgrades": [
       {
         "name": "Yapper",
-        "description": "A small yapper to lighten the mood",
+        "description": "A small yapper named Toby to lighten the mood",
         "cost": 10000,
         "requiredOffice": 0,
         "requiredTechs": [],

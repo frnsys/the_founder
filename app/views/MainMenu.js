@@ -2,6 +2,7 @@ import $ from 'jquery';
 import util from 'util';
 import View from './View';
 import Splash from '../Splash';
+import Thanks from './Thanks';
 
 const template = data => `
 <div class="background"></div>
@@ -12,6 +13,7 @@ const template = data => `
     <h1>The Founder</h1>
     <h3>~Disrupt the world~</h3>
     <h4 class="about">A dystopian business simulator by <a href="https://twitter.com/frnsys">Francis Tseng</a></h4>
+    <h4 class="backers-thanks">Thank You to Our Backers!</h4>
     <h4 class="version">Alpha version</h4>
   </div>
   <ul class="main-menu">
@@ -49,6 +51,10 @@ class MainMenuView extends View {
           manager.load();
           manager.game.state.start('Manage');
           this.remove();
+        },
+        '.backers-thanks': function() {
+          var view = new Thanks();
+          view.render();
         }
       }
     });

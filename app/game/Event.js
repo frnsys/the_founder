@@ -16,6 +16,7 @@ import util from 'util';
 import Effect from './Effect';
 import Condition from './Condition';
 import fillerNews from 'data/newsFiller.json';
+import journalists from 'data/journalists.json';
 
 const MIN_NEWS_ARTICLES = 9;
 const EMAIL_REPEAT_PROB = 0.001;
@@ -36,6 +37,7 @@ function template(obj, keys, player) {
   _.each(keys, function(k) {
     result[k] = doT.template(obj[k])(data);
   });
+  result.author = _.sample(journalists);
   return result;
 }
 
@@ -114,7 +116,9 @@ const Event = {
     if (news.length < MIN_NEWS_ARTICLES) {
       var filler = _.shuffle(fillerNews);
       _.times(MIN_NEWS_ARTICLES - news.length, function() {
-        news.push(filler.pop());
+        news.push(_.extend({
+          author: _.sample(journalists)
+        }, filler.pop()));
       });
     }
     news = news.reverse();

@@ -292,6 +292,10 @@ class Board {
     return _.filter(this.grid.tiles, t => t instanceof Tile.Income);
   }
 
+  get influencerTiles() {
+    return _.filter(this.grid.tiles, t => t instanceof Tile.Influencer);
+  }
+
   get uncapturedTiles() {
     return _.filter(this.grid.tiles, t => (t instanceof Tile.Income) && !(t.owner));
   }

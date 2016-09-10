@@ -737,6 +737,19 @@
     ]
   },
   {
+    "name": "Genetics.Space",
+    "description": "Engineering biology to survive in space",
+    "productTypes": [
+      "Genetics",
+      "Space"
+    ],
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Bugsy"
+    ]
+  },
+  {
     "name": "Genetics.Synthetic Organism",
     "productTypes": [
       "Genetics",

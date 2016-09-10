@@ -20,6 +20,9 @@ import Product from 'game/Product';
 import Competitor from 'game/Competitor';
 import MarketView from 'views/Market';
 import Confirm from 'views/alerts/Confirm';
+import socialMediaHandles from 'data/influencers.json'
+
+const socialMediaTitles = ['Thought Leader', 'Social Media Star', 'Internet Sensation', 'Celeb'];
 
 function createPieces(player, product) {
   var nPieces = Product.samplePoint('quantity', product);
@@ -88,6 +91,12 @@ class TheMarket extends Phaser.State {
     // setup income tile descriptions
     _.each(this.board.incomeTiles, function(t) {
       t.description = `Capture cost: ${t.baseCost}<br>Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, self.product))} revenue`;
+    });
+
+    // setup influencer tile names
+    var handles = _.shuffle(socialMediaHandles);
+    _.each(this.board.influencerTiles, function(t) {
+      t.name = `${handles.pop()}<h6>${_.sample(socialMediaTitles)}</h6>`;
     });
 
     this.view = new MarketView({

@@ -6,11 +6,13 @@ import Enums from 'app/Enums';
 const newsArticleTemplate = (data, image) => `
   ${image ? `<img src="${data.image}">` : ''}
   <h3>${data.title}</h3>
+  <h6>${data.author}</h6>
   <p>${data.body}</p>
 `;
 
 const otherNewsArticleTemplate = data => `
   <h3>${data.title}</h3>
+  <h6>${data.author}</h6>
   <img src="${data.image}">
   <p>${data.body}</p>
 `;

@@ -34,6 +34,39 @@ with open('../data/negotiations.json', 'r') as f:
 personalities = list(personalities)
 
 
+backer_employees = [
+    ('Callil', 'design'),
+    ('Fil', 'engineering'),
+    ('Liv Lab', 'design'),
+    ('Iain Taitenbury III', 'marketing'),
+    ('Toby', 'design'),
+    ('Sam Panter', 'design'),
+    ('Esme', 'design'),
+    ('Steve Dave', 'engineering'),
+    ('Tuna Silva', 'design'),
+    ('Julia Kaganskiy', 'marketing'),
+    ('October Jones', 'design'),
+    ('Rrose', 'engineering'),
+    ('Andy Teddymons', 'engineering')
+]
+
+backer_unicorns = [
+    ('Vika', 'design'),
+    ('@aplusplus', 'design'),
+    ('Bees', 'engineering'),
+    ('Dave King', 'design'),
+    ('Trevor Wallace', 'design'),
+    ('Lara', 'design'),
+    ('Aurelia Marvel', 'engineering'),
+    ('Lucas Hanna', 'design'),
+    ('Kasra', 'engineering'),
+    ('Kurt Texter', 'design'),
+    ('Todd Tomorrow', 'design'),
+    ('J.Irena Brown', 'marketing'),
+    ('Jon Gillette', 'engineering')
+]
+
+
 # a skill level just defines a classification of a worker's score.
 # e.g. workers with a score < X are categorized as some kind of worker.
 # the percent defines what percentage of this skill level we want in
@@ -53,23 +86,34 @@ class Worker():
              'attributes',
              'personality']
 
-    def __init__(self):
+    def __init__(self, main_skill=None, highly_skilled=False, name=None):
         for attr in self.attrs:
             setattr(self, attr, max(1, int(random.gauss(mu, sigma))))
 
+        if main_skill is not None:
+            val = getattr(self, main_skill)
+            setattr(self, main_skill, round(val * 1.5))
+        if highly_skilled:
+            for attr in self.attrs:
+                val = getattr(self, attr)
+                setattr(self, attr, val + 5)
+
         self.attributes = []
 
-        # disproporationately male
-        if random.random() < 0.7:
-            first_names = male_names
-            if random.random() < 0.2:
-                self.attributes.append('Privileged')
+        if name is None:
+            # disproporationately male
+            if random.random() < 0.7:
+                first_names = male_names
+                if random.random() < 0.35:
+                    self.attributes.append('Privileged')
+            else:
+                first_names = female_names
+                if random.random() < 0.05:
+                    self.attributes.append('Privileged')
+            self.name = ' '.join([random.choice(first_names),
+                                random.choice(last_names)])
         else:
-            first_names = female_names
-            if random.random() < 0.05:
-                self.attributes.append('Privileged')
-        self.name = ' '.join([random.choice(first_names),
-                              random.choice(last_names)])
+            self.name = name
 
         # The score is just the sum of attribute values.
         self.score = sum([getattr(self, attr) for attr in self.attrs if attr not in ['attributes', 'personality']])
@@ -166,6 +210,10 @@ for level, sl in skill_levels.items():
     qualifying = [w for w in workers if w.score <= sl.score]
     random.shuffle(qualifying)
     final += qualifying[:limit]
+
+# create kickstarter backer employees
+final += [Worker(main_skill=skill, name=name) for name, skill in backer_employees]
+final += [Worker(main_skill=skill, name=name, highly_skilled=True) for name, skill in backer_unicorns]
 
 workers = [w.asJSON() for w in final]
 output = json.dumps(workers, sort_keys=True, indent=2)

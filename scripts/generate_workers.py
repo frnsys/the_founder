@@ -63,7 +63,8 @@ backer_unicorns = [
     ('Kurt Texter', 'design'),
     ('Todd Tomorrow', 'design'),
     ('J.Irena Brown', 'marketing'),
-    ('Jon Gillette', 'engineering')
+    ('Jon Gillette', 'engineering'),
+    ('Kati Elizabeth', 'design')
 ]
 
 
@@ -92,7 +93,7 @@ class Worker():
 
         if main_skill is not None:
             val = getattr(self, main_skill)
-            setattr(self, main_skill, round(val * 1.5))
+            setattr(self, main_skill, val + 6)
         if highly_skilled:
             for attr in self.attrs:
                 val = getattr(self, attr)

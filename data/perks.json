@@ -894,7 +894,7 @@
       },
       {
         "name": "Woofer",
-        "description": "A big woofer to shake it up",
+        "description": "A big woofer named Sardine, but we call her Sally.",
         "cost": 60000,
         "requiredOffice": 1,
         "requiredTechs": [],

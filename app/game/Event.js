@@ -37,11 +37,13 @@ function template(obj, keys, player) {
   _.each(keys, function(k) {
     result[k] = doT.template(obj[k])(data);
   });
-  result.author = _.sample(journalists);
+  result.author = _.sample(Event.journalists);
   return result;
 }
 
 const Event = {
+  journalists: journalists,
+
   satisfied: function(event, player) {
     return _.every(event.conditions, function(condition) {
       return Condition.satisfied(condition, player);
@@ -49,7 +51,9 @@ const Event = {
   },
 
   formatEmail: function(email, player) {
-    return template(email, ['subject', 'from', 'body'], player);
+    var result = template(email, ['subject', 'from', 'body'], player);
+    delete result.author;
+    return result;
   },
 
   updateEmails: function(player) {
@@ -117,7 +121,7 @@ const Event = {
       var filler = _.shuffle(fillerNews);
       _.times(MIN_NEWS_ARTICLES - news.length, function() {
         news.push(_.extend({
-          author: _.sample(journalists)
+          author: _.sample(Event.journalists)
         }, filler.pop()));
       });
     }

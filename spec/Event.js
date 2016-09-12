@@ -2,6 +2,7 @@ import _ from 'underscore';
 import Event from 'game/Event';
 import Player from 'app/Player';
 
+Event.journalists = ['foo'];
 var news = [{
   "articles": [{
     "image": "assets/news/foo.jpg",
@@ -47,10 +48,12 @@ var expectedArticles = [{
   "title": "DEFAULTCORP",
   "body": "DEFAULTCORP",
   "image": "assets/news/foo.jpg",
+  "author": "foo"
 }, {
   "title": "DEFAULTCORP special",
   "body": "DEFAULTCORP special",
   "image": "assets/news/foo.jpg",
+  "author": "foo"
 }];
 
 

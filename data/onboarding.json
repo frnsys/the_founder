@@ -4,9 +4,8 @@
     "messages": [
       "Welcome! I'm your incubator mentor. Running a successful startup is not easy, but I'll give you guidance.",
       "You're just starting out, so you'll work from your apartment for now.",
-      "Right now it's just your cofounder here, but eventually you'll have a buzzing hive of employees.",
-      "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one.",
-      "Click <em class='ui-item'>New Task</em> to get started."
+      "And it's just your cofounder here...but eventually you'll have a buzzing hive of employees.",
+      "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one. Click <em class='ui-item'>New Task</em> to get started."
     ],
     "uiSelector": ".start-new-task"
   }, {
@@ -29,10 +28,8 @@
     "name": "product_development",
     "messages": [
       "Alright, your company is working on its first product!",
-      "Products take time to develop, depending on the productivity of your employees.",
-      "Some product types are more difficult than others, requiring longer to finish.",
-      "You can peek on its progress with the <em class='ui-item'>View Tasks</em> button.",
-      "Let's wait for this product to finish development and prepare to release it to the world."
+      "Products take time to develop, depending on their difficulty and the productivity of your employees.",
+      "Let's give this product a sec to finish and then prepare release it to the world."
     ],
     "conditions": [{
       "type": "productDeveloping",
@@ -43,11 +40,10 @@
     "name": "product_finished",
     "messages": [
       "Your product is finished!",
-      "In a moment we will release the product to <em class='special'>The Market</em>.",
-      "But first, we need to take the accumulated Design, Engineering, and Marketing points to customize the product. That's what the Product Designer here is for.",
-      "These points can power up your product's <em class='concept'>Quantity</em> (how many you release to The Market),",
-      "your product's <em class='concept'>Strength</em> (how powerful they are against competitors and at capturing market share),",
-      "and your product's <em class='concept'>Movement</em> (how quickly they move across The Market)."
+      "Before we can release it to <em class='special'>The Market</em> we need to <em class='concept'>design</em> it.",
+      "That is, we spend product points to power up its performance in <em class='special'>The Market</em>.",
+      "This includes <em class='concept'>Quantity</em> (how many you release to The Market), <em class='concept'>Strength</em> (for fighting enemies and capturing market share), and <em class='concept'>Movement</em> (number of steps per turn).",
+      "But there's not a whole lot you can do now until hire more employees. Just click <em class='ui-item'>Launch</em>."
     ],
     "popup": "Product Designer"
   }, {
@@ -60,17 +56,14 @@
       "<img src='/assets/onboarding/market_capture.gif' class='demo'><em class='ui-item'>Double-click</em> on the product to <em class='concept'>capture</em> the market share tile underneath.",
       "<img src='/assets/onboarding/market_combat.gif' class='demo'>Products can also directly fight and destroy each another.",
       "<img src='/assets/onboarding/market_influencer.png' class='demo'>You may encounter special <em class='special'>Social Media Influencer</em> tiles, noted by an 'i' which give you big revenue bonuses.",
-      "The Market battle ends when there are no more market shares left to capture, if one player is eliminated, or if the turns run out.",
-      "Good luck!"
+      "The Market battle ends when there are no more market shares left to capture, if one player is eliminated, or if the turns run out. Good Luck!"
     ],
     "market": true
   }, {
     "name": "recruiting",
     "messages": [
-      "Now that you're finished with The Market, your product will start generating some revenue.",
-      "The revenue generated depends on some factors, most importantly how much of The Market you were able to capture.",
-      "To capture more of The Market you need to build better products.",
-      "And to build better products, you need the best talent.",
+      "Now your product will start generating revenue based on a few factors such as captured market share.",
+      "To capture more of The Market you need to build better products. And to build better products, you need the best talent.",
       "Let's hire an employee through the <em class='ui-item'>Recruiting</em> button."
     ],
     "conditions": [{
@@ -82,17 +75,17 @@
   }, {
     "name": "recruiting_strategies",
     "messages": [
-      "To recruit employees, you must first select a recruiting strategy.",
-      "Some recruiting strategies are more costly but are more likely to bring the cream of the crop. Others are cheaper but may reveal a diamond in the rough you can shape to be something great.",
-      "Why don't you pick one and see which candidates come through?"
+      "First we need to pick a recruiting strategy. They vary in the quality of candidates you'll find.",
+      "Less skilled candidates aren't always bad - they're cheaper and can grow to become very skilled.",
+      "Let's pick one and see which candidates come through!"
     ],
     "popup": "Recruiting"
   }, {
     "name": "hiring",
     "messages": [
-      "We've got a few candidates lined up. Take a look and see if there are any you like.",
-      "Candidates have different skill levels, typically specializing in one thing. Sometimes you'll find a <em class='special'>Unicorn</em> candidate that excels in everything.",
-      "Some candidates also have special attributes which can confer bonuses to themselves or to all employees at the company. Keep an eye out for these ones.",
+      "Here are our applicants!",
+      "Most candidate specialize in one skill, but sometimes you'll find a <em class='special'>Unicorn</em> who excels at everything.",
+      "Some candidates also have special attributes which give bonuses to themselves or the whole company!",
       "If there's a candidate you like, click <em class='ui-item'>Negotiate</em> to start the hiring process."
     ],
     "popup": "Hiring"
@@ -109,9 +102,9 @@
     "name": "employees",
     "messages": [
       "Congratulations on your first employee!",
-      "Sometimes your employees will <em class='concept'>burn out<em/>.",
-      "A burnt out employee can't work for a little bit. They'll recover though.",
-      "Avoid burning your employees out by keeping them <em class='concept'><img src='assets/company/happiness.png'> happy</em>!"
+      "You can start assigning them to tasks...but note that your employees can <em class='concept'>burn out<em/>.",
+      "A burnt out employee can't work for a little bit. But they'll recover in time.",
+      "Avoid burnout by keeping employees <em class='concept'><img src='assets/company/happiness.png'> happy</em>!"
     ],
     "conditions": [{
       "type": "employees",
@@ -134,10 +127,10 @@
   }, {
     "name": "theBoard",
     "messages": [
-      "Now's a good time to mention your Board of Investors. They've put quite a bit of their own money into your enterprise and expect reliable returns on that investment.",
+      "Now's a good time to mention your Board of Investors.",
       "Every year they require a <em class='concept'>12% growth in profit</em>. They get upset when you fail to meet that goal.",
       "You can track their mood and your progress towards this year's profit goal at the top of the screen.",
-      "If you fail too much they'll fire you for incompentance. Try not to let that happen."
+      "If you fail too much they'll fire you for incompentance. Try not to let that happen!"
     ],
     "conditions": [{
       "type": "productsLaunched",
@@ -148,7 +141,7 @@
     "name": "verticals",
     "messages": [
       "You can access even more product types by expanding into new <em class='concept'>Verticals</em>.",
-      "When you start cross-pollinating across different Verticals, you'll really start to see some <em class='special'>Innovation</em>!"
+      "You'll really start to see some <em class='special'>Innovation</em> when you work across verticals!"
     ],
     "conditions": [{
       "type": "productTypes",
@@ -159,9 +152,9 @@
   }, {
     "name": "specialProject",
     "messages": [
-      "<em class='concept'>Special Projects</em> are expensive tasks but can lead to massive Market advantages and open up totally new revenue streams.",
+      "<em class='concept'>Special Projects</em> are expensive tasks but lead to massive advantages and totally new revenue streams.",
       "Each special project has a few prerequisite products that must be innovated before the special project is available,",
-      "and their development requires some minimum amount of Design, Engineering, and Marketing points before they are completed."
+      "Their development requires some minimum amount of Design, Engineering, and Marketing points before they are completed."
     ],
     "conditions": [{
       "type": "productsLaunched",
@@ -185,7 +178,7 @@
     "name": "lobbying",
     "messages": [
       "The government does not have to be an enemy to the Market; it can be a strong ally.",
-      "<em class='concept'>Lobbying</em> tasks are long-term projects that take Marketing points and turn them into powerful advantages for you and your company."
+      "<em class='concept'>Lobbying</em> tasks are long-term projects that take Marketing points and turn them into powerful advantages."
     ],
     "conditions": [{
       "type": "annualRevenue",
@@ -209,8 +202,8 @@
   }, {
     "name": "perks",
     "messages": [
-      "Happy employees are better employees- they won't burn out as much. <em>Perks</em> lift your employees spirits so they have less down time.",
-      "Perks are also attractive to prospective hires and lower the salary they expect. So stack up on them to get cheaper labor.",
+      "Happy employees burn out less. <em>Perks</em> lift your employees spirits so they take less down time.",
+      "Perks are also attractive to prospective hires, lowering their expected salary.",
       "Most perks can be upgraded too!"
     ],
     "conditions": [{
@@ -224,7 +217,7 @@
     "messages": [
       "In order to keep growing, you'll have to expand to other cities and eventually countries.",
       "Expanding to new locations gives access to new markets, and some places even provide nice bonuses!",
-      "Each new location will act as a remote office that will contribute Design, Engineering, and Marketing to your products."
+      "Each location acts as a remote office and can be assigned tasks like any employee."
     ],
     "conditions": [{
       "type": "productsLaunched",
@@ -237,7 +230,7 @@
     "messages": [
       "People should know and feel good about your company and its products. But that won't happen on its own.",
       "<em class='concept'>Promo campaigns</em> are tasks that will generate <em class='concept'><img src='assets/company/hype.png'> hype</em> for your company.",
-      "The hype generated by a promo campaign depends mostly on the Marketing skill, but Design contributes too.",
+      "The hype generated by a promo campaign depends mostly on Marketing points, but Design contributes too.",
       "Hype can give huge boosts to the revenue a product generates.",
       "However, people are fickle -- hype fades over time, and fades faster if there's <em class='concept'><img src='assets/company/outrage.png'> outrage</em>.",
       "Outrage is generated by products which pollute (Hardware), kill people (Defense), generate debt (Finance), and by tax evasion.",

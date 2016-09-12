@@ -29,7 +29,7 @@ const template = function(data) {
     result = `
     ${options}
     <div class="negotitation-offer">
-      <input type="number" value="${data.offer}" class="offer">
+      <input type="number" value="${data.offer}" class="offer" step="100">
       <button class="make-offer">Make Offer (Likelihood they'll accept: ${(data.offerProb * 100).toFixed(0)}%)</button>
       <div class="negotiation-wage-factors">
         Minimum salary modifiers:

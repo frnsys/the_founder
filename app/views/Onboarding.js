@@ -114,7 +114,7 @@ class Onboarding extends View {
       el.find('.select').prop('disabled', false).text('Found ' + this.player.company.name);
       el.find('.onboarding-options').addClass('onboarding-options-confirm');
     } else if (this.stages[this.stage].selected) {
-      $('[data-name="'+stages[this.stage].selected+'"]').click();
+      $('[data-name="'+this.stages[this.stage].selected+'"]').click();
     }
   }
 

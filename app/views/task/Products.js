@@ -5,10 +5,19 @@ import tmpl from 'views/Common';
 import CardsList from 'views/CardsList';
 import TaskAssignmentView from './Assignment';
 
+const difficulties = [
+  'Very Easy',
+  'Easy',
+  'Moderate',
+  'Hard',
+  'Very Hard'
+];
+
 const detailTemplate = item => `
 <div class="title">
   <h1>${item.name}</h1>
   ${tmpl.expertise(item)}
+  <h5 data-tip="Difficulty">${difficulties[item.difficulty-1]}</h5>
 </div>
 <img src="assets/productTypes/${util.slugify(item.name)}.gif">
 `;

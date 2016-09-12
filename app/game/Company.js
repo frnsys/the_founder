@@ -210,9 +210,11 @@ class Company {
     return util.contains(this.perks, perk);
   }
   buyPerk(perk) {
-    var cost = Perk.next(perk).cost * this.player.costMultiplier;
+    var owned = this.hasPerk(perk);
+    var cost = owned ? Perk.next(perk).cost : Perk.current(perk).cost;
+    cost *= this.player.costMultiplier;
     if (this.pay(cost)) {
-      if (!this.hasPerk(perk)) {
+      if (!owned) {
         this.perks.push(perk);
       } else {
         perk.upgradeLevel++;

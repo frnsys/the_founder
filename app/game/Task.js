@@ -87,7 +87,7 @@ const Task = {
     var workers = this.workersForTask(task, company),
         locations = this.locationsForTask(task, company),
         scale = function(skill) {
-          return skill/task.requiredProgress;
+          return (skill/task.requiredProgress) * 2;
         };
 
     switch (task.type) {

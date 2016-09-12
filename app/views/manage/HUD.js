@@ -14,14 +14,16 @@ const template = data => `
   <div class="hud-cash"></div>
   <div class="hud-active-products"></div>
 </div>
-<div class="hud-center"></div>
+<div class="hud-center">
+  <div class="hud-center-board"></div>
+  <ul class="hud-tasks"></ul>
+</div>
 <div class="hud-right">
   <div class="hud-stats"></div>
   <ul class="hud-actions">
     <li class="start-new-task">New Task</li>
     <li class="view-tasks">View Tasks</li>
   </ul>
-  <ul class="hud-tasks"></ul>
 </div>
 `
 
@@ -129,7 +131,7 @@ class HUD extends View {
           template: timeTemplate
         }),
         new View({
-          parent: '.hud-center',
+          parent: '.hud-center-board',
           template: boardTemplate
         }),
         new View({
@@ -146,6 +148,10 @@ class HUD extends View {
     }
     _.each(this.subviews, view => view.render(data));
     this.statsView.render(data);
+
+    if (!this.player.snapshot.onboarding['intro']) {
+      $('.start-new-task').hide();
+    }
   }
 
   createTaskView(task) {
@@ -191,6 +197,10 @@ class HUD extends View {
       }
       return exists;
     });
+
+    if (this.player.snapshot.onboarding['intro']) {
+      $('.start-new-task').show();
+    }
   }
 }
 

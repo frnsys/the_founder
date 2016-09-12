@@ -25,12 +25,11 @@ import socialMediaHandles from 'data/influencers.json'
 const socialMediaTitles = ['Thought Leader', 'Social Media Star', 'Internet Sensation', 'Celeb'];
 
 function createPieces(player, product) {
-  var nPieces = Product.samplePoint('quantity', product);
+  var nPieces = product.quantity;
 
   return _.times(nPieces, function() {
-    var strength = Product.samplePoint('strength', product),
-        movement = Product.samplePoint('movement', product);
-    return new Piece.Product(player, product, strength, movement);
+    return new Piece.Product(player, product,
+      product.strength, product.movement);
   });
 }
 

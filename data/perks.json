@@ -25,7 +25,7 @@
       {
         "name": "Microbrew Beers",
         "description": "Fancier beers",
-        "cost": 1000,
+        "cost": 10000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -45,7 +45,7 @@
       {
         "name": "Cocktail Lounge",
         "description": "",
-        "cost": 10000,
+        "cost": 100000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -894,7 +894,7 @@
       },
       {
         "name": "Woofer",
-        "description": "A big woofer named Sardine, but we call her Sally.",
+        "description": "Her name is Sardine, but we call her Sally.",
         "cost": 60000,
         "requiredOffice": 1,
         "requiredTechs": [],

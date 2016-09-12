@@ -131,30 +131,29 @@ const Product = {
   },
 
   // for the product designer
+  // some notes:
+  // - the easiest product will have a difficulty of 2 (b/c min difficulty of a type is 1)
+  // - the hardest product will have a difficulty of 10 (b/c max difficulty of a type is 5)
   costs: {
     quantity: function(product) {
-      return Math.round(Math.pow(product.levels.quantity+1, 2) * Math.sqrt(product.difficulty));
+      return 5 * Math.pow(product.difficulty, 2) * Math.pow(3, product.levels.quantity);
     },
     strength: function(product) {
-      return Math.round(Math.pow(product.levels.strength+1, 2) * Math.sqrt(product.difficulty));
+      return 1 * Math.pow(product.difficulty, 2) * Math.pow(3, product.levels.strength);
     },
     movement: function(product) {
-      return Math.round(Math.pow(product.levels.movement+1, 2) * Math.sqrt(product.difficulty));
+      return 3 * Math.pow(product.difficulty, 2) * Math.pow(3, product.levels.movement);
     }
   },
   levels: {
-    quantity: _.map(_.range(1,11), i => [i,i+1]),
-    strength: _.map(_.range(1,11), i => [i,i+1]),
-    movement: _.map(_.range(1,11), i => [i,i+1])
+    quantity: _.range(1,11),
+    strength: _.range(1,11),
+    movement: _.range(1,11)
   },
   requiredSkills: {
     quantity: ['engineering', 'marketing'],
     strength: ['engineering', 'design'],
     movement: ['marketing', 'design']
-  },
-  samplePoint: function(name, product) {
-    var range = this.levels[name][product.levels[name]];
-    return _.random(range[0], range[1]);
   }
 };
 

@@ -6,6 +6,14 @@ import View from 'views/View';
 import CardsList from 'views/CardsList';
 import productTypes from 'data/productTypes.json';
 
+const difficulties = [
+  'Very Easy',
+  'Easy',
+  'Moderate',
+  'Hard',
+  'Very Hard'
+];
+
 function button(item) {
   if (!item.available) {
       return '<button disabled>Locked</button>';
@@ -26,6 +34,7 @@ function detailTemplate(item) {
       <div class="title">
         <h1>${item.name}</h1>
         ${item.owned ? `${tmpl.expertise(item)}` : ``}
+        <h5 data-tip="Difficulty">${difficulties[item.difficulty-1]}</h5>
       </div>
       <img src="assets/productTypes/${util.slugify(item.name)}.gif">
       ${button(item)}`;

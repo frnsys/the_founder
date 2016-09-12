@@ -9,7 +9,7 @@ import Product from 'game/Product';
 function newDiscovery(data) {
   if (data.newDiscovery) {
     return `
-      <h4 class="product-new-discovery">New!</h4>
+      <h4 class="product-new-discovery">Innovative!</h4>
       <div class="product-new-effects">
         ${data.effects.length > 0 ? `This freshly innovated product gives the following bonuses:<br>${templ.effects(data)}` : ''}
       </div>
@@ -29,10 +29,10 @@ const productPoints = (name, data) => `
         <li class="product-point"></li>
       `).join('')}
     </ul>
-    <span class="quantity-stat">${Product.levels[name][data.levels[name]].join('-')}</span>
+    <span class="quantity-stat">${Product.levels[name][data.levels[name]]}</span>
     <div class="product-pointer-control">
       <button data-name="${name}" class="product-point-sub" ${data.levels[name] == 0 ? 'disabled' : ''}>-</button>
-      <button data-name="${name}" class="product-point-add" ${data.levels[name] >= 10 || !data.afford[name] ? 'disabled' : ''} data-tip="Next level: ${data.costs[name]} ${Product.requiredSkills[name].join(' & ')}">+</button>
+      <button data-name="${name}" class="product-point-add ${data.levels[name] >= 10 || !data.afford[name] ? 'disabled' : ''}" data-tip="Next level: ${data.costs[name]} ${Product.requiredSkills[name].join(' & ')}">+</button>
     </div>
   </li>
 `;

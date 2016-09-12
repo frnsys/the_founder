@@ -240,8 +240,6 @@ class Board {
     }
   }
 
-
-
   onDoubleClickTile(tile) {
     var self = this;
     if (!this.selectedTile) {
@@ -280,6 +278,7 @@ class Board {
     attacker.attack(defender);
     // move to the defender spot if they were destroyed
     if (defender.health <= 0 && attacker.health > 0) {
+      this.grid.tileAt(attacker.position).piece = null;
       this.animatePieceAlongPath(attacker, [defender.position], defender.position);
     }
   }

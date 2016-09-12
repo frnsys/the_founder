@@ -97,7 +97,7 @@ const util = {
   },
 
   formatCurrency: function(value) {
-    return '$' + value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+    return '$' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
   },
 
   formatCurrencyAbbrev: function(value) {

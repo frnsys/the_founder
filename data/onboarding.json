@@ -4,8 +4,7 @@
     "messages": [
       "Welcome! I'm your incubator mentor. Running a successful startup is not easy, but I'll give you guidance.",
       "You're just starting out, so you'll work from your apartment for now.",
-      "This is the Office view. Here you can manage your company, create products, poke around, and more.",
-      "Right now it's just your cofounder in the apartment, but eventually you'll have a buzzing hive of talented employees.",
+      "Right now it's just your cofounder here, but eventually you'll have a buzzing hive of employees.",
       "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one.",
       "Click <em class='ui-item'>New Task</em> to get started."
     ],
@@ -14,19 +13,16 @@
     "name": "create_product",
     "messages": [
       "<em class='concept'>Products</em> are created by combining two different <em class='concept'>Product Types</em>.",
-      "You only have a couple to choose from now, but later you can unlock and purchase more.",
-      "Some combinations lead to wildly successful products and some end up in duds. You'll have to <em class='special'>innovate</em> by experimenting with different combinations.",
-      "When you develop a successful product type combination your company's <em class='concept'>Expertise</em> in those product types will increase.",
-      "The more expertise you have with a product type, the more revenue those products will generate.",
-      "For now just pick any two and get started."
+      "Come up with <em class='special'>innovative</em> combinations for bonuses!",
+      "You only have a couple to choose from now, but later you can unlock and purchase more."
     ],
     "popup": "Start a Product"
   }, {
     "name": "assign_task",
     "messages": [
-      "You assign employees to tasks by clicking on them. To unassign them, click on them again.",
-      "They contribute <em class='concept'><img src='assets/company/design.png'> Design</em>, <em class='concept'><img src='assets/company/engineering.png'> Engineering</em>, and <em class='concept'><img src='assets/company/marketing.png'> Marketing</em> at a rate according to their <em class='concept'><img src='assets/company/productivity.png'> Productivity</em>.",
-      "Assign your cofounder to the task and let's get going!"
+      "Now let's assign our cofounder to develop the product. Just click on their card.",
+      "They'll contribute <em class='concept'><img src='assets/company/design.png'> Design</em>, <em class='concept'><img src='assets/company/engineering.png'> Engineering</em>, and <em class='concept'><img src='assets/company/marketing.png'> Marketing</em> points according to their <em class='concept'><img src='assets/company/productivity.png'> Productivity</em>.",
+      "The more points, the more successful the product!"
     ],
     "popup": "Assign Task"
   }, {
@@ -103,23 +99,19 @@
   }, {
     "name": "negotiation",
     "messages": [
-      "Each candidate has some minimum salary they're willing to accept. You won't know what it is, but you can influence it through negotiations.",
-      "Negotiations consist of, for instance, trying to convince the candidate of intangible benefits of the workplace so that they are willing to accept a lower salary.",
-      "Of course, different candidates have different personalities, so they respond to things differently. What may convince one candidate to take a lower salary might cause another to demand more compensation.",
-      "It's up to you to get a feel for what a candidate responds to through this process.",
+      "Candidates expect a certain amount of compensation, but they often can be convinced to take less.",
+      "Depending on the candidate's <em class='concept'>personality</em>, saying certain things may lower their expected salary or increase it.",
       "When you feel ready, you can make an offer.",
-      "If the candidate refuses, you have one more chance to make a different offer.",
-      "Otherwise, the candidate accepts a competing offer and may be off the job market for some time."
+      "If they aren't happy with it, they'll take a job elsewhere. But they'll be available again later."
     ],
     "popup": "Negotiation"
   }, {
     "name": "employees",
     "messages": [
       "Congratulations on your first employee!",
-      "Employees are the lifeblood of your company. Keep up with them by selecting them in the office or by opening the <em class='ui-item'>Employees</em> menu item.",
-      "Your employees are hard workers. Sometimes they work themselves to the point of exhaustion and <em class='concept'>burn out<em/>.",
-      "An employee that is burnt out rests for a little and is unable to contribute to tasks at that time.",
-      "The <em class='concept'><img src='assets/company/happiness.jpg'> happier</em> you keep your employees, the less likely they are to burn out!"
+      "Sometimes your employees will <em class='concept'>burn out<em/>.",
+      "A burnt out employee can't work for a little bit. They'll recover though.",
+      "Avoid burning your employees out by keeping them <em class='concept'><img src='assets/company/happiness.png'> happy</em>!"
     ],
     "conditions": [{
       "type": "employees",
@@ -130,9 +122,8 @@
   }, {
     "name": "productTypes",
     "messages": [
-      "Congratulations on your first product! It will generate revenue for you, but not for long, so you need to keep churning out those products.",
       "You might be feeling a little limited by the product types your company can develop. In the <em class='ui-item'>Product Types</em> menu you can purchase more to work with.",
-      "Further product types are unlocked in other ways - I'll catch you up on them when you're ready."
+      "Further product types are unlocked in other ways!"
     ],
     "conditions": [{
       "type": "productsLaunched",

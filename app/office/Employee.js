@@ -93,6 +93,7 @@ class Employee extends Agent {
     if (this.object.burnout > 0 && !this.burntout) {
       this.showBurntout();
     } else if (this.object.burnout == 0 && this.burntout) {
+      this.mesh.material.materials[0].color.set(0xffffff);
       this.burntout.remove();
       this.burntout = null;
     }
@@ -128,6 +129,7 @@ class Employee extends Agent {
     document.body.appendChild(burntout);
     this.burntout = burntout;
     this.updateBurntoutPosition();
+    this.mesh.material.materials[0].color.set(0x666666);
   }
 
   updateThoughtPosition() {

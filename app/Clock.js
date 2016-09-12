@@ -159,7 +159,7 @@ class Clock {
         developingProducts = _.some(tasks, t => t.type == Task.Type.Product);
 
     _.each(candidates, function(e) {
-      if (Math.random() < 0.01) {
+      if (Math.random() < 0.04) {
         var thoughts = [];
 
         if (!e.task) {

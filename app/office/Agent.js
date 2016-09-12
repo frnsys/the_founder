@@ -172,10 +172,8 @@ class Agent {
     this.mixer.update(delta);
     this.tickScheduled(delta);
 
+    this.tick(delta);
     if (this.path && this.path.length) {
-      var self = this;
-      this.tick(delta);
-
       if (this.moving) {
         this.moveTowardsTarget(delta);
       }
@@ -220,14 +218,19 @@ class Agent {
     var self = this;
     this.setState(obj.state);
     obj.use(self);
+    self.onUse();
     this.usingObject = obj;
     this.schedule(function() {
       self.currentTarget = null;
       self.doRandom();
       obj.leave(self);
+      self.onLeave();
       self.usingObject = null;
     }, _.random(MIN_ACTIVITY_TIME, MAX_ACTIVITY_TIME));
   }
+
+  onUse() {}
+  onLeave() {}
 
   _scheduleNextAction(actions) {
     if (this._scheduledAction) {

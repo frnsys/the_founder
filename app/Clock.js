@@ -37,6 +37,7 @@ class Clock {
     this.randomSchedule(company.develop.bind(company));
     this.randomSchedule(company.updateBurnout.bind(company));
     this.randomSchedule(company.growEmployees.bind(company));
+    this.randomSchedule(this.updateEmployeeThoughts.bind(this));
 
     // queue up starting news
     Event.updateNews(player);
@@ -149,6 +150,60 @@ class Clock {
     Economy.update(this.player);
     checkDeath(this.player);
     this.player.current.inbox.push(annualReport(this.player));
+  }
+
+  updateEmployeeThoughts() {
+    var player = this.player,
+        candidates = _.filter(this.office.employees, e => !e.thought),
+        tasks = this.player.company.tasks,
+        developingProducts = _.some(tasks, t => t.type == Task.Type.Product);
+
+    _.each(candidates, function(e) {
+      if (Math.random() < 0.01) {
+        var thoughts = [];
+
+        if (!e.task) {
+          thoughts = thoughts.concat([
+            "I've got nothing to do",
+            "I'm bored",
+            "What's there to do around here?",
+            "What should I be doing?",
+            "Ho hum"
+          ]);
+        }
+
+        if (!developingProducts) {
+          thoughts = thoughts.concat([
+            "Shouldn't we be making a product?",
+            "Do we have any products in the works?",
+            "Maybe we should develop something",
+            "Are we releasing anything?"
+          ]);
+        }
+
+        if (player.company.outrage > 500) {
+          thoughts = thoughts.concat([
+            "Feels like everyone hates us...",
+            "Are we just making things worse?",
+            "Am I hurting more than helping?",
+            "What am I doing with my life?"
+          ])
+        }
+
+        if (player.company.hype > 1000) {
+          thoughts = thoughts.concat([
+            "People are loving our stuff!",
+            "We're so adored!",
+            "We're getting a lot of press!",
+            "There is so much hype"
+          ]);
+        }
+
+        if (thoughts.length > 0) {
+          e.showThought(_.sample(thoughts));
+        }
+      }
+    });
   }
 }
 

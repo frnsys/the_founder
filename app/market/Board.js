@@ -42,6 +42,8 @@ class Board {
     this.centerMap();
 
     this.humanPlayer = _.find(players, p => p.human);
+
+    this.debug();
   }
 
   setupTiles(nTiles, rows, cols) {
@@ -143,11 +145,12 @@ class Board {
 
   debug() {
     var self = this;
-    _.each(this.tiles, function(t) {
+    _.each(this.grid.tiles, function(t) {
       var pos = t.position,
           coord = self.coordinateForPosition(pos),
-          text = self.game.add.text(coord.x, coord.y, pos.col.toString() + "," + pos.row.toString());
+          text = self.game.add.text(coord.x, coord.y, pos.row.toString() + "," + pos.col.toString());
       self.tileGroup.add(text);
+      console.log('adding');
     });
   }
 

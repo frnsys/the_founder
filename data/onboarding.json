@@ -42,8 +42,8 @@
       "Your product is finished!",
       "Before we can release it to <em class='special'>The Market</em> we need to <em class='concept'>design</em> it.",
       "That is, we spend product points to power up its performance in <em class='special'>The Market</em>.",
-      "This includes <em class='concept'>Quantity</em> (how many you release to The Market), <em class='concept'>Strength</em> (for fighting enemies and capturing market share), and <em class='concept'>Movement</em> (number of steps per turn).",
-      "But there's not a whole lot you can do now until hire more employees. Just click <em class='ui-item'>Launch</em>."
+      "This includes <em class='concept'>Quantity</em> (how many are in The Market), <em class='concept'>Strength</em> (for combat and capturing market shares), and <em class='concept'>Movement</em> (number of steps per turn).",
+      "At this point there might not be much you can do. Just click <em class='ui-item'>Launch</em>."
     ],
     "popup": "Product Designer"
   }, {

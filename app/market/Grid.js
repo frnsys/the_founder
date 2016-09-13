@@ -110,25 +110,8 @@ class Grid {
       // and between the from (start) and to (end) positions
       // then sort then by closest distance to the to position
       var tilesWithinReach = _.chain(this.tiles)
-        .map(function(t) {
-          var pos = t.position,
-              startToTile = Grid.manhattanDistance(from, pos),
-              tileToEnd = Grid.manhattanDistance(to, pos),
-              betweenStartAndEnd = startToTile < dist && tileToEnd < dist,
-              withinReach = startToTile < piece.moves;
-
-          if (betweenStartAndEnd && withinReach) {
-            return {
-              startToTile: startToTile,
-              tileToEnd: tileToEnd,
-              length: (startToTile + tileToEnd) * tileToEnd,
-              tile: t,
-              position: t.position
-            }
-          } else {
-            return null;
-          }
-        }).compact().sortBy('length').value();
+        .map(t => this.getTileWithinReach(t, to, from, dist, piece))
+        .compact().sortBy('length').value();
 
       // find the tile closest to the to position
       // that is also unoccupied and return a path to it
@@ -138,6 +121,26 @@ class Grid {
           return this.findPath(from, candidate.tile.position, validPredicate);
         }
       }
+    }
+  }
+
+  getTileWithinReach(t, to, from, dist, piece) {
+    var pos = t.position,
+        startToTile = Grid.manhattanDistance(from, pos),
+        tileToEnd = Grid.manhattanDistance(to, pos),
+        betweenStartAndEnd = startToTile < dist && tileToEnd < dist,
+        withinReach = startToTile <= piece.moves;
+
+    if (betweenStartAndEnd && withinReach) {
+      return {
+        startToTile: startToTile,
+        tileToEnd: tileToEnd,
+        length: (startToTile + tileToEnd) * tileToEnd,
+        tile: t,
+        position: t.position
+      }
+    } else {
+      return null;
     }
   }
 

@@ -162,7 +162,7 @@ class Clock {
       if (Math.random() < 0.04) {
         var thoughts = [];
 
-        if (!e.task) {
+        if (!e.object.task) {
           thoughts = thoughts.concat([
             "I've got nothing to do",
             "I'm bored",

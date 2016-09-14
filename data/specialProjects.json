@@ -1,7 +1,7 @@
 [
   {
     "name": "Delphi",
-    "cost": 10000,
+    "cost": 10000000,
     "description": "State-of-the-art market prediction algorithms.",
     "effects": [
       {
@@ -18,8 +18,8 @@
   },
   {
     "name": "Cloning Facility",
-    "cost": 10000,
-    "description": "",
+    "cost": 100000000,
+    "description": "The pinnacle of centuries of bioengineering.",
     "effects": [
       {
         "type": "specialEffect",
@@ -35,8 +35,8 @@
   },
   {
     "name": "Interstellar Ship",
-    "cost": 10000,
-    "description": "",
+    "cost": 100000000,
+    "description": "Flying worthy populations to better worlds.",
     "effects": [
       {
         "type": "unlocks",
@@ -55,8 +55,8 @@
   },
   {
     "name": "Mars Colony",
-    "cost": 10000,
-    "description": "Establish the first off-planet colony and develop a brand new market.",
+    "cost": 100000000,
+    "description": "Establish the first off-planet colony--and market.",
     "effects": [
       {
         "type": "unlocks",
@@ -75,8 +75,8 @@
   },
   {
     "name": "Robotics Facility",
-    "cost": 10000,
-    "description": "A robotics facility gives access to new heights of automated labor.",
+    "cost": 100000000,
+    "description": "Usher in the era of automated labor.",
     "effects": [
       {
         "type": "specialEffect",
@@ -92,8 +92,8 @@
   },
   {
     "name": "Telomere Therapy",
-    "cost": 10000,
-    "description": "Dying...isn't that something poor people do?",
+    "cost": 100000000,
+    "description": "The ultimate disruption is the disruption of death.",
     "effects": [
       {
         "type": "specialEffect",
@@ -109,12 +109,12 @@
   },
   {
     "name": "The Founder AI",
-    "cost": 10000,
-    "description": "",
+    "cost": 1000000000000,
+    "description": "The ultimate achievement of business intelligence.",
     "effects": [
       {
         "type": "specialEffect",
-        "value": "Founder AI"
+        "value": "The Founder AI"
       }
     ],
     "requiredProducts": ["AI.Mobile", "AI.Gadget", "Cognitive.Virtual Reality", "AI.Implant", "Analytics.Implant"],

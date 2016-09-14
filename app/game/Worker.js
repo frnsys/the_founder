@@ -29,6 +29,8 @@ import thoughts from 'data/thoughts.json';
 import attributeBonuses from 'data/workerAttributes.json';
 
 const MULTIPLY_ATTRIBS = ['minSalary'];
+const cloneNameRe = /[^#]+/;
+const cloneIdRe = /\d+/;
 
 function sigmoid(v) {
   return 1/(1+Math.exp(-v));
@@ -221,6 +223,32 @@ const Worker = {
       return companySatisfied && workerSatisfied;
     });
     worker.lastTweet = _.sample(candidates).text;
+  },
+
+
+  clone: function(player, employee) {
+    var name = employee.name,
+        originalName = name.match(cloneNameRe)[0].replace(/^\s+|\s+$/g, '');
+
+    // find most recent clone
+    var clones = _.chain(player.workers)
+      .filter(w => w.name.indexOf(originalName) >= 0)
+      .sortBy(w => this.cloneNumber(w.name))
+      .value();
+
+    var latestClone = clones.pop(),
+        clone = _.clone(latestClone);
+    clone.name = `${originalName} #${this.cloneNumber(latestClone.name) + 1}`;
+    return clone;
+  },
+
+  cloneNumber: function(name) {
+    var number = name.match(cloneIdRe);
+    if (number) {
+      return parseInt(number[0])
+    } else {
+      return 1;
+    }
   }
 }
 

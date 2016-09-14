@@ -3,12 +3,17 @@ import util from 'util';
 import Effect from 'game/Effect';
 import Worker from 'game/Worker';
 
-const effectsTemplate = item => `
-<ul class="effects">
-  ${item.effects.map(e => `
-    <li>${Effect.toString(e)}</li>
-  `).join('')}
-</ul>`;
+const effectsTemplate = function(item) {
+  if (item.effects.length > 0) {
+    return `<ul class="effects">
+      ${item.effects.map(e => `
+        <li>${Effect.toString(e)}</li>
+      `).join('')}
+    </ul>`;
+  } else {
+    return '';
+  }
+}
 
 const attributesTemplate = item => `
   <ul class="worker-attributes">
@@ -49,7 +54,10 @@ const workerTemplate = item => `
     ${skillsTemplate(item)}
     ${item.attributes.length > 0 ? attributesTemplate(item) : ''}
   </div>
-  ${item.fireable ? `<button class="fire">Fire</button>` : ''}
+  <div class="worker-actions">
+    ${item.fireable ? `<button class="fire">Fire</button>` : ''}
+    ${item.cloneable ? `<button class="clone" ${item.noAvailableSpace ? 'disabled' : ''}>${item.noAvailableSpace ? 'Office is full' : 'Clone'}</button>` : ''}
+  </div>
 </div>
 `
 

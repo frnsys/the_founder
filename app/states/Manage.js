@@ -127,7 +127,7 @@ class Manage extends Phaser.State {
   showSelection(mesh) {
     var template;
     if (mesh.type === 'employee') {
-      this.selectionView = new EmployeeSelectionView();
+      this.selectionView = new EmployeeSelectionView(this.player.company);
     } else if (_.contains(['agent', 'object'], mesh.type)) {
       this.selectionView = new ObjectSelectionView();
     }

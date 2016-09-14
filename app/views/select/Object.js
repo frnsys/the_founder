@@ -3,8 +3,8 @@ import util from 'util';
 import SelectView from './Select';
 
 const template = data => `
+<img class="selection-avatar object-selection-avatar" src="assets/perks/gifs/${util.slugify(data.name)}.gif">
 <header class="selection-header">
-  <img class="selection-avatar" src="assets/perks/gifs/${util.slugify(data.name)}.gif">
   <div class="selection-name">
     <h2>${data.name}</h2>
   </div>

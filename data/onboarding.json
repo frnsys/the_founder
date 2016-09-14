@@ -92,7 +92,7 @@
   }, {
     "name": "negotiation",
     "messages": [
-      "Candidates expect a certain amount of compensation, but they often can be convinced to take less.",
+      "Candidates expect some minimum compensation, but they often can be convinced to take less.",
       "Depending on the candidate's <em class='concept'>personality</em>, saying certain things may lower their expected salary or increase it.",
       "When you feel ready, you can make an offer.",
       "If they aren't happy with it, they'll take a job elsewhere. But they'll be available again later."
@@ -102,7 +102,7 @@
     "name": "employees",
     "messages": [
       "Congratulations on your first employee!",
-      "You can start assigning them to tasks...but note that your employees can <em class='concept'>burn out<em/>.",
+      "You can start assigning them to tasks...but note that your employees can <em class='concept'><img src='assets/company/burntout.png'> burn out</em>.",
       "A burnt out employee can't work for a little bit. But they'll recover in time.",
       "Avoid burnout by keeping employees <em class='concept'><img src='assets/company/happiness.png'> happy</em>!"
     ],

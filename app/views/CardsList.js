@@ -41,7 +41,7 @@ class CardsList extends Popup {
   createListItem(item) {
     return new View({
       tag: 'li',
-      parent: this.el.find('ul'),
+      parent: this.el.find('.cards'),
       template: this.detailTemplate,
       method: 'append',
     });

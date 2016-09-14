@@ -36,10 +36,11 @@ const statsTemplate = data => `
 `;
 
 class EmployeeView extends SelectView {
-  constructor() {
+  constructor(company) {
     super({
       template: template,
     });
+    this.company = company;
   }
 
   render(obj) {
@@ -49,13 +50,34 @@ class EmployeeView extends SelectView {
       template: statsTemplate
     });
     this.statsView.render(obj);
-    this.el.find('.selection-info').append(`<h5 class="employee-burnout"></h5>`);
+    this.el.find('.selection-info').append(`<h5 class="employee-burnout">Burnt Out</h5>`);
+    this.el.find('.selection-info').append(`<h5 class="employee-current-task"></h5>`);
     this.updateBurnout(obj);
+    this.updateTask(obj);
     this.updateLastTweet(obj);
   }
 
   updateBurnout(obj) {
-    this.el.find('.selection-info .employee-burnout').html(`${obj.burnout > 0 ? 'BURNT OUT' : `Exhaustion: ${Math.round(obj.burnoutRisk * 100)}%`}`);
+    var el = this.el.find('.selection-info .employee-burnout');
+    if (obj.burnout > 0) {
+      el.show();
+    } else {
+      el.hide();
+    }
+  }
+
+  updateTask(obj) {
+    var el = this.el.find('.selection-info .employee-current-task');
+    if (!obj.task) {
+      el.html('Idle');
+    } else {
+      var task = this.company.task(obj.task),
+          name = task.obj.name;
+      if (!_.isUndefined(task.obj.combo)) {
+        name = task.obj.combo;
+      }
+      el.html(`Working on ${name}`);
+    }
   }
 
   updateLastTweet(obj) {
@@ -64,6 +86,7 @@ class EmployeeView extends SelectView {
 
   update(obj) {
     this.updateBurnout(obj);
+    this.updateTask(obj);
     this.statsView.render(obj);
   }
 }

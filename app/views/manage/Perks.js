@@ -115,14 +115,14 @@ class View extends CardsList {
     var current = Perk.current(perk),
         next = owned ? Perk.next(perk) : current,
         hasNext = owned ? Perk.hasNext(perk) : true,
-        cost = next.cost * player.costMultiplier;
+        cost = next ? next.cost * player.costMultiplier : 0;
     return _.extend({
       finalCost: cost,
       owned: owned,
       current: current,
       next: next,
       hasNext: hasNext,
-      nextAvailable: Perk.isAvailable(next, player.company),
+      nextAvailable: next ? Perk.isAvailable(next, player.company) : false,
       afford: hasNext && player.company.cash >= cost
     }, item);
   }

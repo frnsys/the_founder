@@ -21,7 +21,7 @@ const template = data => `
     ${data.newDiscoveryMuliplier > 1 ? `<li>x${data.newDiscoveryMuliplier} from the new product bonus</li>` : ''}
   </ul>
   <div class="market-report-revenue">
-    <h3>First week revenue projections</h3>
+    <h3>Revenue projections</h3>
     <h1>${abbrevCurrency(data.revenue)}</h1>
   </div>
   <div class="alert-actions">

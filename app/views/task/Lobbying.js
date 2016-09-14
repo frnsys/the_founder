@@ -9,7 +9,7 @@ import lobbies from 'data/lobbies.json';
 
 function button(item) {
   if (item.in_progress) {
-    button = '<button disabled>In Progress</button>';
+    return '<button disabled>In Progress</button>';
   } else if (item.owned) {
     return '<button disabled class="owned">Completed</button>';
   } else if (item.afford) {

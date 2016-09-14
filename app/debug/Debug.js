@@ -65,6 +65,7 @@ const Debug = {
     // }];
     player.skipOnboarding();
     player.specialEffects['Worker Insight'] = true;
+    player.specialEffects['Cloneable'] = true;
   },
 
   debugOffice: function(office) {

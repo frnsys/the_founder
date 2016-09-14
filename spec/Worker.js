@@ -24,6 +24,7 @@ describe('Worker', function() {
   beforeEach(function() {
     player = new Player();
     w = Worker.init(worker);
+    player.workers = [w];
   });
 
   it('should be distinct from the worker data', function() {
@@ -228,5 +229,23 @@ describe('Worker', function() {
     });
   });
 
+  describe('cloning', function() {
+    it('can be cloned', function() {
+      var clone = Worker.clone(player, w);
+      expect(clone.name).toEqual(`${w.name} #2`);
+      clone.name = w.name;
+      expect(_.isEqual(clone, w)).toEqual(true);
+    });
+
+    it('properly increments new clones', function() {
+      var clone = Worker.clone(player, w);
+      player.workers.push(clone);
+
+      var clone = Worker.clone(player, w);
+      expect(clone.name).toEqual(`${w.name} #3`);
+      clone.name = w.name;
+      expect(_.isEqual(clone, w)).toEqual(true);
+    });
+  });
 });
 

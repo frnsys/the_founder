@@ -147,6 +147,16 @@ class Employee extends Agent {
       this.burntout.style.left = pos.x + 'px';
     }
   }
+
+  remove(office) {
+    super.remove(office);
+    if (this.burntout) {
+      this.burntout.remove();
+    }
+    if (this.thought) {
+      this.thought.remove();
+    }
+  }
 }
 
 function toXYCoords(pos, camera) {

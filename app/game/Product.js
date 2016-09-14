@@ -121,7 +121,7 @@ const Product = {
   },
   getRevenue: function(p) {
     var range = p.revenue * 0.1,
-        revenue = Math.max(0, _.random(p.revenue - range, p.revenue + range));
+        revenue = Math.max(0, _.random(p.revenue - range, p.revenue + range))/config.REVENUE_WEEK_SCALE;
     p.revenue *= config.REVENUE_DECAY;
     p.earnedRevenue += revenue;
     return revenue;

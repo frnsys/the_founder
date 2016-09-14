@@ -11,7 +11,7 @@ const template = function(data) {
       negotiationEffect = '';
   if (data.result) {
     result = `
-      <h1>${data.result}</h1>
+      <h1 class='offer-result'>${data.result}</h1>
       <button class="return-hiring">Back to candidates</button>`;
   } else {
     var options;

@@ -98,7 +98,11 @@ class Player {
       },
       growth: 0,
 
-      onboarding: onboarding
+      onboarding: onboarding,
+
+      settings: {
+        music: true
+      }
     }, data);
   }
 

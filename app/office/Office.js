@@ -13,7 +13,6 @@ import * as patrol from 'patroljs';
 import Agent from './Agent';
 import Loader from './Loader';
 import Objekt from './Objekt';
-import Orbit from './Orbit';
 import Employee from './Employee';
 import OrbitControls from './Orbit';
 import offices from 'data/offices.json';

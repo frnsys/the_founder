@@ -83,6 +83,7 @@ class Manage extends Phaser.State {
       if (self.selectionView) {
         self.selectionView.remove();
       }
+      $('.employee-thought, .employee-burntout').remove();
       $('#market').show();
       self.game.state.start('Market', true, false, p);
     };

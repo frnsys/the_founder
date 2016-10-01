@@ -43,7 +43,7 @@ class Board {
 
     this.humanPlayer = _.find(players, p => p.human);
 
-    this.debug();
+    //this.debug();
   }
 
   setupTiles(nTiles, rows, cols) {
@@ -150,7 +150,6 @@ class Board {
           coord = self.coordinateForPosition(pos),
           text = self.game.add.text(coord.x, coord.y, pos.row.toString() + "," + pos.col.toString());
       self.tileGroup.add(text);
-      console.log('adding');
     });
   }
 

@@ -99,9 +99,7 @@ class Menu extends View {
             }
             this.remove();
           }, this.remove);
-          view.render({
-            message: 'This upgrade will cost you $' + abbreviateNumber(next.cost, 3) + '. Are you sure?'
-          });
+          view.render('This upgrade will cost you $' + abbreviateNumber(next.cost, 3) + '. Are you sure?');
       }
     });
   }

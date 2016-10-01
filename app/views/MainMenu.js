@@ -8,6 +8,7 @@ const template = data => `
 <div class="background"></div>
 <div class="stars"></div>
 <canvas id="earth"></canvas>
+<div class="mute-menu">Mute music</div>
 <div class="hello">
   <div class="hello-title">
     <h1>The Founder</h1>
@@ -55,6 +56,16 @@ class MainMenuView extends View {
         '.backers-thanks': function() {
           var view = new Thanks();
           view.render();
+        },
+        '.mute-menu': function() {
+          var audio = document.getElementById('music');
+          audio.muted = !audio.muted;
+          manager.player.settings.music = !audio.muted;
+          if (audio.muted) {
+            $('.mute-menu').text('Unmute music');
+          } else {
+            $('.mute-menu').text('Mute music');
+          }
         }
       }
     });

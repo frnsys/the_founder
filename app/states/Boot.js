@@ -15,7 +15,7 @@ import Market from 'states/Market';
 import MainMenu from 'views/MainMenu';
 import Onboarding from 'states/Onboarding';
 
-const DEBUG = true;
+const DEBUG = false;
 const DEBUG_MARKET = false;
 
 class Boot extends Phaser.State {
@@ -44,7 +44,6 @@ class Boot extends Phaser.State {
       Debug.debugMarket(game);
 
     } else {
-      // $('.background').css('background-image', 'url("assets/office/apartment.jpg")').show(); // TODO stars?
       var view = new MainMenu(Manager, DEBUG);
       view.render();
     }

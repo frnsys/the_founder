@@ -32,6 +32,10 @@ class Manage extends Phaser.State {
     this.player = player;
   }
 
+  init(player) {
+    this.player = player || this.player;
+  }
+
   preload() {
     $('.ui').empty();
   }

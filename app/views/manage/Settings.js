@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import _ from 'underscore';
 import Popup from 'views/Popup';
 import Confirm from 'views/alerts/Confirm';
@@ -6,6 +7,7 @@ const template = data => `
   <ul class="settings-options">
     ${!data.onboardingFinished ? '<li class="skip-onboarding">Skip onboarding</li>' : ''}
     <li class="toggle-music">${data.music ? 'Mute' : 'Unmute'} music</li>
+    <li class="save-game">Save game</li>
   </ul>
 `;
 
@@ -31,6 +33,10 @@ class View extends Popup {
         player.settings.music = !player.settings.music;
         audio.muted = !player.settings.music;
         this.render();
+      },
+      '.save-game': function() {
+        player.save();
+        $('.save-game').text('Saved!');
       }
     });
   }

@@ -142,8 +142,6 @@ class Clock {
   monthly() {
     var player = this.player;
     player.company.payMonthly();
-
-    console.log('saving...');
     player.save();
   }
 

@@ -8,7 +8,7 @@ const template = data => `
 <div class="background"></div>
 <div class="stars"></div>
 <canvas id="earth"></canvas>
-<div class="mute-menu">Mute music</div>
+<div class="mute-menu">Unmute music</div>
 <div class="hello">
   <div class="hello-title">
     <h1>The Founder</h1>
@@ -50,7 +50,7 @@ class MainMenuView extends View {
         },
         '.load-game': function() {
           manager.load();
-          manager.game.state.start('Manage');
+          manager.game.state.start('Manage', true, false, manager.player);
           this.remove();
         },
         '.backers-thanks': function() {

@@ -86,16 +86,17 @@ const Task = {
   develop: function(task, company) {
     var workers = this.workersForTask(task, company),
         locations = this.locationsForTask(task, company),
+        progressPerTick = company.skill('productivity', workers, locations),
         scale = function(skill) {
-          return (skill/task.requiredProgress) * 2;
+          return (skill/(task.requiredProgress/progressPerTick))/2;
         };
 
     switch (task.type) {
         case Type.Product:
           task.progress += company.skill('productivity', workers, locations);
-          task.obj.design += scale(company.skill('design', workers, locations));
-          task.obj.marketing += scale(company.skill('marketing', workers, locations));
-          task.obj.engineering += scale(company.skill('engineering', workers, locations));
+          task.obj.design += scale(company.skill('design', workers, locations, true));
+          task.obj.marketing += scale(company.skill('marketing', workers, locations, true));
+          task.obj.engineering += scale(company.skill('engineering', workers, locations, true));
           break;
         case Type.Promo:
           task.progress += company.skill('productivity', workers, locations);

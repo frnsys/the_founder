@@ -4,18 +4,18 @@
   "description": "A very hard worker and very charismatic",
   "effects": [{
     "type": "marketing",
-    "value": 5
+    "value": 1
   }, {
     "type": "productivity",
-    "value": 5
+    "value": 1
   }],
   "attributes": [
     "Tireless"
   ],
-  "engineering": 5,
-  "marketing": 5,
-  "design": 5,
-  "productivity": 5,
+  "engineering": 2,
+  "marketing": 2,
+  "design": 2,
+  "productivity": 2,
   "happiness": 10
 }, {
   "name": "Jeffrey Zhou",
@@ -23,18 +23,18 @@
   "description": "A brilliant product engineer",
   "effects": [{
     "type": "design",
-    "value": 5
+    "value": 1
   }, {
     "type": "engineering",
-    "value": 5
+    "value": 1
   }],
   "attributes": [
     "Tireless"
   ],
-  "engineering": 5,
-  "marketing": 5,
-  "design": 5,
-  "productivity": 5,
+  "engineering": 2,
+  "marketing": 2,
+  "design": 2,
+  "productivity": 2,
   "happiness": 10
 }, {
   "name": "Mark Stanley",
@@ -47,9 +47,9 @@
   "attributes": [
     "Tireless"
   ],
-  "engineering": 5,
-  "marketing": 5,
-  "design": 5,
-  "productivity": 5,
+  "engineering": 1,
+  "marketing": 1,
+  "design": 1,
+  "productivity": 2,
   "happiness": 10
 }]

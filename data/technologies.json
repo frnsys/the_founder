@@ -218,7 +218,13 @@
     "requiredTechs": [
       "Big Data"
     ],
-    "effects": []
+    "effects": [{
+      "type": "unlocks",
+      "value": {
+        "type": "productTypes",
+        "value": "AI"
+      }
+    }]
   },
   {
     "name": "Drones",
@@ -348,7 +354,7 @@
       {
         "type": "unlocks",
         "value": {
-          "type": "productType",
+          "type": "productTypes",
           "value": "Robot"
         }
       },
@@ -620,11 +626,10 @@
     "requiredTechs": [],
     "effects": [
       {
-        "type": "product",
+        "type": "unlocks",
         "value": {
-          "vertical": "Finance",
-          "attribute": "engineering",
-          "value": 1
+          "type": "productTypes",
+          "value": "Blockchain"
         }
       }
     ]

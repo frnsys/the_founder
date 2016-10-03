@@ -38,7 +38,9 @@ class Player {
       unlocked: {
         locations: _.filter(locations, l => !_.contains(lockedLocations, l.name)),
         specialProjects: [],
-        productTypes: util.byNames(productTypes, ['Ad', 'Gadget', 'Mobile', 'Social Network', 'E-Commerce'])
+        productTypes: util.byNames(productTypes, [
+          'Sharing', 'Genetics', 'Ad', 'Entertainment', 'Mobile', 'Celebrity', 'Social Network', 'Credit', 'E-Commerce', 'Defense', 'Sensors', 'Gadget'
+        ])
       },
 
       specialEffects: {

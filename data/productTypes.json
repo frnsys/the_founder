@@ -99,7 +99,7 @@
     "name": "Sensors",
     "difficulty": 1,
     "requiredVertical": "Hardware",
-    "cost": 100000
+    "cost": 50000
   },
   {
     "name": "Sharing",

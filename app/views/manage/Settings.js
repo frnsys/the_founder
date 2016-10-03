@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import Popup from 'views/Popup';
+import Manager from 'app/Manager';
 import Confirm from 'views/alerts/Confirm';
 
 const template = data => `
@@ -24,6 +25,14 @@ class View extends Popup {
         var self = this;
         var view = new Confirm(function() {
           player.skipOnboarding();
+
+         var name = Manager.game.state.current,
+              current = Manager.game.state.states[name];
+
+          if (current.menu) {
+            current.menu.render();
+          }
+
           self.render();
         });
         view.render('You sure you want to skip onboarding?');

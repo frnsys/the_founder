@@ -8,7 +8,7 @@ const template = data => `
 <div class="background"></div>
 <div class="stars"></div>
 <canvas id="earth"></canvas>
-<div class="mute-menu">Unmute music</div>
+<div class="mute-menu"><img src="/assets/icons/volume-off.svg"></div>
 <div class="hello">
   <div class="hello-title">
     <h1>The Founder</h1>
@@ -62,9 +62,9 @@ class MainMenuView extends View {
           audio.muted = !audio.muted;
           manager.player.settings.music = !audio.muted;
           if (audio.muted) {
-            $('.mute-menu').text('Unmute music');
+            $('.mute-menu').html('<img src="/assets/icons/volume-off.svg">');
           } else {
-            $('.mute-menu').text('Mute music');
+            $('.mute-menu').html('<img src="/assets/icons/volume-high.svg">');
           }
         }
       }

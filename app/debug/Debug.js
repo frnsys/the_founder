@@ -25,9 +25,9 @@ var testProduct = {
   productTypes: ['Bleep', 'Bloop'],
   verticals: ['B', 'P'],
   effects: [],
-  marketing: 1,
-  engineering: 1,
-  design: 1,
+  marketing: 40,
+  engineering: 20,
+  design: 40,
   feature: 1,
   description: 'for testing purposes. not for individual resale.',
   combo: 'Bleep + Bloop',
@@ -35,9 +35,10 @@ var testProduct = {
   requiredProgress: 1,
   levels: {
     quantity: 1,
-    strength: 6,
+    strength: 1,
     movement: 1
-  }
+  },
+  revenueScore: 1
 };
 
 

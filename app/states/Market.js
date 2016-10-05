@@ -9,30 +9,12 @@ import 'p2';
 import * as Phaser from 'phaser';
 import $ from 'jquery';
 import _ from 'underscore';
-import util from 'util';
-import config from 'config';
-import AI from 'market/ai/AI';
 import Tile from 'market/Tile';
-import Board from 'market/Board';
-import Piece from 'market/Piece';
-import Player from 'market/Player';
 import Product from 'game/Product';
-import Competitor from 'game/Competitor';
+import Market from 'market/Market';
 import MarketView from 'views/Market';
 import Confirm from 'views/alerts/Confirm';
-import socialMediaHandles from 'data/influencers.json'
 
-const socialMediaTitles = ['Thought Leader', 'Social Media Star', 'Internet Sensation', 'Celeb'];
-
-function createPieces(player, product) {
-  var quantity = Product.levels.quantity[product.levels.quantity],
-      strength = Product.levels.strength[product.levels.strength],
-      movement = Product.levels.movement[product.levels.movement];
-
-  return _.times(quantity, function() {
-    return new Piece.Product(player, product, strength, movement);
-  });
-}
 
 class TheMarket extends Phaser.State {
   constructor(game, player, debug) {
@@ -62,52 +44,19 @@ class TheMarket extends Phaser.State {
     $('#market').show().addClass('market-active');
     $('body').addClass('market-background');
 
-    var self = this;
-    this.totalTurns = config.MAX_TURNS;
-    this.turnsLeft = this.totalTurns;
-
-    var competitor = _.sample(this.player.competitors);
-    console.log('competitor is: ' + competitor.name);
-    var competitorProduct = Competitor.createProduct(this.product, competitor);
-    this.players = [
-      new Player(this.player.company, true, 0x1C1FE8),
-      new Player(competitor, false, 0xF7202F)
-    ];
-    this.humanPlayer = this.players[0];
-    this.aiPlayer = this.players[1];
-
-    createPieces(this.humanPlayer, this.product);
-    createPieces(this.aiPlayer, competitorProduct);
-
-    this.board = new Board(this.player.company, this.players, this.game);
-    this.AI = new AI(this.board, this.aiPlayer);
-
-    this.board.onHumanDone = this.endTurn.bind(this);
-
-    if (this.debug) {
-      this.board.debug();
-    }
-
-    // setup income tile descriptions
-    _.each(this.board.incomeTiles, function(t) {
-      t.description = `Capture cost: ${t.baseCost}<br>Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, self.product))} revenue`;
-    });
-
-    // setup influencer tile names
-    var handles = _.shuffle(socialMediaHandles);
-    _.each(this.board.influencerTiles, function(t) {
-      t.name = `${handles.pop()}<h6>${_.sample(socialMediaTitles)}</h6>`;
-    });
+    var market = new Market(this.product, this.player, this.game, this.debug);
+    this.market = market;
+    this.market.endGame = this.endGame.bind(this);
 
     this.view = new MarketView({
       handlers: {
         '.end-turn': function() {
-          var movesLeft = _.some(self.humanPlayer.pieces, p => p.moves > 0);
+          var movesLeft = _.some(market.humanPlayer.pieces, p => p.moves > 0);
           if (movesLeft) {
-            var view = new Confirm(self.endTurn.bind(self));
+            var view = new Confirm(market.endTurn.bind(market));
             view.render('You still have moves remaining, is that ok?');
           } else {
-            self.endTurn();
+            market.endTurn();
           }
         }
       }
@@ -116,7 +65,11 @@ class TheMarket extends Phaser.State {
     // re-render the UI whenever a tile is selected or captured
     Tile.onSingleClick.add(this.renderUI, this);
     Tile.onCapture.add(this.renderUI, this);
-    this.startTurn(this.humanPlayer);
+    market.onStartTurn = () => {
+      this.renderUI(market.board.selectedTile);
+    };
+    market.startTurn(market.humanPlayer);
+
   }
 
   update() {
@@ -124,8 +77,9 @@ class TheMarket extends Phaser.State {
   }
 
   renderUI(tile) {
+    var market = this.market;
     var t = _.clone(tile) || {};
-    t.owned = t.owner == this.humanPlayer;
+    t.owned = t.owner == market.humanPlayer;
     t.capturing = t.capturedCost > 0;
 
     t.tileClass = 'neutral';
@@ -135,72 +89,34 @@ class TheMarket extends Phaser.State {
       t.tileClass = 'hostile';
     }
     if (t.piece) {
-      t.pieceClass = t.piece.owner == this.humanPlayer ? 'friendly' : 'hostile';
+      t.pieceClass = t.piece.owner == market.humanPlayer ? 'friendly' : 'hostile';
     }
     if (_.isFunction(t.bonus)) {
       t.bonus = t.bonus();
     }
 
     this.view.render({
-      human: this.currentPlayer.human,
-      competitor: this.aiPlayer.company,
+      human: market.currentPlayer.human,
+      competitor: market.aiPlayer.company,
       tile: t,
-      marketShares: this.percentMarketShare(),
-      turnsLeft: this.turnsLeft,
-      totalTurns: this.totalTurns,
-      turnsPercent: (this.totalTurns - this.turnsLeft)/this.totalTurns * 100
+      marketShares: market.percentMarketShare(),
+      turnsLeft: market.turnsLeft,
+      totalTurns: market.totalTurns,
+      turnsPercent: (market.totalTurns - market.turnsLeft)/market.totalTurns * 100
     });
-  }
-
-  percentMarketShare() {
-    var shares = {human: 0, ai: 0},
-        total = 0,
-        self = this;
-    _.each(this.board.incomeTiles, function(tile) {
-      var income = tile.income + 1;
-      total += income;
-      if (tile.owner == self.humanPlayer) {
-        shares.human += income;
-      } else if (tile.owner == self.aiPlayer) {
-        shares.ai += income;
-      }
-    });
-    shares.human = (shares.human/total) * 100;
-    shares.ai = (shares.ai/total) * 100;
-    return shares;
-  }
-
-  shouldEndGame() {
-    return (this.turnsLeft <= 0 || this.board.uncapturedTiles.length == 0 || (this.aiPlayer.pieces.length == 0 || this.humanPlayer.pieces.length == 0));
-  }
-
-  endTurn() {
-    this.turnsLeft--;
-    this.board.unhighlightTiles();
-    if (this.shouldEndGame()) {
-      this.endGame();
-    } else {
-      var self = this;
-      this.startTurn(this.aiPlayer);
-      this.AI.takeTurn(function() {
-        // add a little delay
-        // otherwise transition is too fast
-        setTimeout(function() {
-          self.startTurn(self.humanPlayer)
-          if (self.shouldEndGame()) {
-            self.endGame();
-          }
-        }, 1200);
-      });
-    }
   }
 
   endGame() {
-    var marketShares = _.filter(this.humanPlayer.tiles, t => t instanceof Tile.Income),
-        influencers = _.filter(this.humanPlayer.tiles, t => t instanceof Tile.Influencer);
+    var market = this.market;
+    var marketShares = _.filter(market.humanPlayer.tiles, t => t instanceof Tile.Income),
+        influencers = _.filter(market.humanPlayer.tiles, t => t instanceof Tile.Influencer);
     var results = Product.setRevenue(this.product, marketShares, influencers, this.player);
-    results.marketShare = this.percentMarketShare().human;
+    results.marketShare = market.percentMarketShare().human;
     this.player.company.finishProduct(this.product);
+
+    Tile.onCapture.removeAll();
+    Tile.onSingleClick.removeAll();
+    Tile.onDoubleClick.removeAll();
 
     this.view.remove();
     this.player.save();
@@ -209,13 +125,6 @@ class TheMarket extends Phaser.State {
 
     this.game.state.states['Manage'].marketResults = results;
     this.game.state.start('Manage');
-  }
-
-  startTurn(player) {
-    // reset moves
-    _.each(player.pieces, p => p.reset());
-    this.currentPlayer = player;
-    this.renderUI(this.board.selectedTile);
   }
 }
 

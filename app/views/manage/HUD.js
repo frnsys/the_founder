@@ -1,6 +1,7 @@
 import _ from 'underscore';
 import $ from 'jquery';
 import util from 'util';
+import config from 'config';
 import Enums from 'app/Enums';
 import View from 'views/View';
 import Task from 'game/Task';
@@ -11,6 +12,9 @@ import ActiveTasksView from 'views/task/Active';
 const template = data => `
 <div class="hud-left">
   <h4 class="hud-date"></h4>
+  <div class="hud-time-outer progress-bar-outer">
+    <div class="hud-time-inner progress-bar-inner"></div>
+  </div>
   <div class="hud-cash"></div>
   <div class="hud-active-products"></div>
 </div>
@@ -68,7 +72,7 @@ const timeTemplate = data => `
   ${_.times(data.week + 1, i => `
     <li class="week-on"></li>
   `).join('')}
-  ${_.times(4 - (data.week+1), i => `
+  ${_.times(config.WEEKS_PER_MONTH - (data.week+1), i => `
     <li class="week-off"></li>
   `).join('')}
 </ul>
@@ -174,6 +178,7 @@ class HUD extends View {
     this.statsView.el.find('.marketing-stat').text(util.abbreviateNumber(Math.floor(data.marketing)));
     this.statsView.el.find('.engineering-stat').text(util.abbreviateNumber(Math.floor(data.engineering)));
     this.statsView.el.find('.productivity-stat').text(util.abbreviateNumber(Math.floor(data.productivity)));
+    $('.hud-time-inner').width(`${((data.month + data.week/config.WEEKS_PER_MONTH)/12) * 100}%`);
 
     // remove old task views and add new ones
     var self = this,

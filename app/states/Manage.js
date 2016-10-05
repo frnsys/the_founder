@@ -49,6 +49,7 @@ class Manage extends Phaser.State {
     this.menu.render();
     this.hud.render();
     $('#office, .hud, .menu').show();
+    $('.selection').hide();
 
     // new game, hire the cofounder first
     if (this.player.company.workers.length === 0) {

@@ -184,20 +184,25 @@ class Board {
 
   animatePieceAlongPath(piece, path, target, cb) {
     var self = this,
-        cb = cb || _.noop,
-        pos = path.shift(),
-        coord = this.coordinateForPosition(pos);
+        cb = cb || _.noop;
 
     // animate piece to tile
-    var tween = this.game.add.tween(piece.sprite).to(coord, 200, Phaser.Easing.Quadratic.InOut, true);
-    tween.onComplete.add(function() {
-      if (path.length > 0) {
-        self.animatePieceAlongPath(piece, path, target, cb);
+    var tween;
+    while (path.length > 0) {
+      var pos = path.shift(),
+          coord = this.coordinateForPosition(pos),
+          tween_ = this.game.add.tween(piece.sprite).to(coord, 200, Phaser.Easing.Quadratic.InOut, true);
+      if (!tween) {
+        tween = tween_;
       } else {
-        self.placePieceAt(piece, target);
-        cb();
+        tween = tween.chain(tween_);
       }
+    }
+    tween.onComplete.add(function() {
+      self.placePieceAt(piece, target);
+      cb();
     }, this);
+    tween.start();
   }
 
   placePieceAt(piece, pos) {

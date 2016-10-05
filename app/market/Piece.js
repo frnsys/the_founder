@@ -37,7 +37,7 @@ class Piece {
   get power() {
     // sometimes there is random bonus damage
     var bonus = Math.random() <= 0.05 ? 1 : 0;
-    return Math.min(Math.floor(this.health/2 + bonus, 1));
+    return Math.min(Math.floor(this.health/2 + bonus), 1);
   }
 
   damage(damage) {
@@ -66,16 +66,18 @@ class Piece {
   }
 
   render(coord, group, game, tileHeight, tileWidth) {
-    if (this.sprite) {
-      this.sprite.destroy();
+    if (_.isUndefined(this.sprite)) {
+      this.sprite = group.create(coord.x, coord.y, this.spriteName);
     }
-    this.sprite = group.create(coord.x, coord.y, this.spriteName);
     if (this.moves === 0) {
       this.exhaust();
     } else {
       this.sprite.tint = this.owner.color;
     }
 
+    if (this.text) {
+      this.text.destroy();
+    }
     this.text = game.add.text(
       tileWidth - 24,
       tileHeight - 24,

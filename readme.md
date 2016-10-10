@@ -5,6 +5,12 @@ npm install -d
 npm start
 ```
 
+## build
+
+```
+npm run build
+```
+
 ## testing
 
 ```

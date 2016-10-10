@@ -6,7 +6,7 @@
 import _ from 'underscore';
 import * as THREE from 'three';
 
-const MODELSDIR = '/assets/models/';
+const MODELSDIR = 'assets/models/';
 const meshLoader = new THREE.JSONLoader();
 const objLoader = new THREE.ObjectLoader();
 const texLoader = new THREE.TextureLoader();

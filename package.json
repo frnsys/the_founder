@@ -11,6 +11,7 @@
   "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server --colors --progress --port 8081",
+    "build": "webpack --colors --progress",
     "test": "karma start karma.config.js"
   },
   "dependencies": {

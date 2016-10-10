@@ -53,7 +53,7 @@ const template = function(data) {
       <div class="current-cash-value"></div>
     </div>
     <div class="negotiation-employee">
-      <img src="/assets/workers/gifs/${data.avatar}.gif">
+      <img src="assets/workers/gifs/${data.avatar}.gif">
       <div class="title">
         <h1>${data.name}</h1>
         <p class="subtitle">${data.title}</p>

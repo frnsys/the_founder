@@ -14,10 +14,10 @@ function assignees(item) {
         extras = _.rest(item.workers, take_workers).concat(_.rest(item.locations, take_locations));
     return `<ul class="task-assignees">
       ${_.first(item.workers, take_workers).map(i => `
-        <li data-tip="${i.name}"><img src="/assets/workers/pngs/${i.avatar}.png"></li>
+        <li data-tip="${i.name}"><img src="assets/workers/pngs/${i.avatar}.png"></li>
       `).join('')}
       ${_.first(item.locations, take_locations).map(i => `
-        <li data-tip="${i.name}"><img src="/assets/markets/${util.slugify(i.market)}.png"></li>
+        <li data-tip="${i.name}"><img src="assets/markets/${util.slugify(i.market)}.png"></li>
       `).join('')}
       ${extra_assignees > 0 ? `<span class="task-extra-assignees" data-tip="${extras.map(i => i.name).join('<br>')}"> + ${extra_assignees} more</span>` : ''}
     </ul>`;
@@ -49,19 +49,19 @@ function specialProjectProgress(item) {
     return `
     <ul class="task-progresses">
       <li data-tip="Design">
-        <img src="/assets/company/design.png">
+        <img src="assets/company/design.png">
         <div class="task-progress-outer">
           <div class="task-progress-inner design-progress" style="width:${(item.obj.design/item.obj.required.design)*100}%"></div>
         </div>
       </li>
       <li data-tip="Marketing">
-        <img src="/assets/company/marketing.png">
+        <img src="assets/company/marketing.png">
         <div class="task-progress-outer">
           <div class="task-progress-inner marketing-progress" style="width:${(item.obj.marketing/item.obj.required.marketing)*100}%"></div>
         </div>
       </li>
       <li data-tip="Engineering">
-        <img src="/assets/company/engineering.png">
+        <img src="assets/company/engineering.png">
         <div class="task-progress-outer">
           <div class="task-progress-inner engineering-progress" style="width:${(item.obj.engineering/item.obj.required.engineering)*100}%"></div>
         </div>
@@ -101,9 +101,9 @@ const productTemplate = item => `
   </figure>
   <div class="task-body">
     <ul class="stats">
-      <li data-tip="Design"><img src="/assets/company/design.png"> <span class="design-stat">${Math.floor(item.obj.design)}</span></li>
-      <li data-tip="Marketing"><img src="/assets/company/marketing.png"> <span class="marketing-stat">${Math.floor(item.obj.marketing)}</span></li>
-      <li data-tip="Engineering"><img src="/assets/company/engineering.png"> <span class="engineering-stat">${Math.floor(item.obj.engineering)}</span></li>
+      <li data-tip="Design"><img src="assets/company/design.png"> <span class="design-stat">${Math.floor(item.obj.design)}</span></li>
+      <li data-tip="Marketing"><img src="assets/company/marketing.png"> <span class="marketing-stat">${Math.floor(item.obj.marketing)}</span></li>
+      <li data-tip="Engineering"><img src="assets/company/engineering.png"> <span class="engineering-stat">${Math.floor(item.obj.engineering)}</span></li>
     </ul>
   </div>
   ${progressBar(item)}
@@ -160,13 +160,13 @@ function eventTemplate(item) {
     info = `
       <ul class="task-progresses">
         <li data-tip="Time Remaining">
-          <img src="/assets/company/time.png">
+          <img src="assets/company/time.png">
           <div class="task-progress-outer">
             <div class="task-progress-inner time-progress" style="width:${(item.progress/item.obj.due)*100}%"></div>
           </div>
         </li>
         <li data-tip="Required ${item.obj.required.skill}">
-          <img src="/assets/company/${item.obj.required.skill}.png">
+          <img src="assets/company/${item.obj.required.skill}.png">
           <div class="task-progress-outer">
             <div class="task-progress-inner skill-progress" style="width:${(item.obj.required.val/item.obj.skillVal)*100}%"></div>
           </div>

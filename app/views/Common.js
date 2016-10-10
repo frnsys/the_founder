@@ -25,11 +25,11 @@ const attributesTemplate = item => `
 
 const skillsTemplate = item => `
   <ul class="worker-stats">
-    <li data-tip="Productivity"><img src="/assets/company/productivity.png"> ${util.abbreviateNumber(Math.round(item.productivity), 0)}</li>
-    <li data-tip="Design"><img src="/assets/company/design.png"> ${util.abbreviateNumber(Math.round(item.design), 0)}</li>
-    <li data-tip="Marketing"><img src="/assets/company/marketing.png"> ${util.abbreviateNumber(Math.round(item.marketing), 0)}</li>
-    <li data-tip="Engineering"><img src="/assets/company/engineering.png"> ${util.abbreviateNumber(Math.round(item.engineering), 0)}</li>
-    <li data-tip="Happiness"><img src="/assets/company/happiness.png"> ${util.abbreviateNumber(Math.round(item.happiness), 0)}</li>
+    <li data-tip="Productivity"><img src="assets/company/productivity.png"> ${util.abbreviateNumber(Math.round(item.productivity), 0)}</li>
+    <li data-tip="Design"><img src="assets/company/design.png"> ${util.abbreviateNumber(Math.round(item.design), 0)}</li>
+    <li data-tip="Marketing"><img src="assets/company/marketing.png"> ${util.abbreviateNumber(Math.round(item.marketing), 0)}</li>
+    <li data-tip="Engineering"><img src="assets/company/engineering.png"> ${util.abbreviateNumber(Math.round(item.engineering), 0)}</li>
+    <li data-tip="Happiness"><img src="assets/company/happiness.png"> ${util.abbreviateNumber(Math.round(item.happiness), 0)}</li>
   </ul>
 `;
 
@@ -42,7 +42,7 @@ const prereqsTemplate = item => `
 
 const workerTemplate = item => `
 <div class="worker-avatar">
-  <img src="/assets/workers/gifs/${item.avatar}.gif">
+  <img src="assets/workers/gifs/${item.avatar}.gif">
   <div class="assigned-task worker-task">${item.task ? `Assigned:<br>${item.task.obj.name}` : ''}</div>
 </div>
 <div class="worker-info">

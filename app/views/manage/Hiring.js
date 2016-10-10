@@ -20,7 +20,7 @@ function button(item) {
 
 const detailTemplate = item => `
 <div class="worker-avatar">
-  <img src="/assets/workers/gifs/${item.avatar}.gif">
+  <img src="assets/workers/gifs/${item.avatar}.gif">
 </div>
 <div class="worker-info">
   <div class="worker-title">

@@ -51,9 +51,9 @@ const template = data => `
   ${newDiscovery(data)}
   <ul class="product-skills">
     <li>Product points</li>
-    <li data-tip="Design"><img src="/assets/company/design.png"> <span class="design-stat">${Math.floor(data.design)}</span></li>
-    <li data-tip="Marketing"><img src="/assets/company/marketing.png"> <span class="marketing-stat">${Math.floor(data.marketing)}</span></li>
-    <li data-tip="Engineering"><img src="/assets/company/engineering.png"> <span class="engineering-stat">${Math.floor(data.engineering)}</span></li>
+    <li data-tip="Design"><img src="assets/company/design.png"> <span class="design-stat">${Math.floor(data.design)}</span></li>
+    <li data-tip="Marketing"><img src="assets/company/marketing.png"> <span class="marketing-stat">${Math.floor(data.marketing)}</span></li>
+    <li data-tip="Engineering"><img src="assets/company/engineering.png"> <span class="engineering-stat">${Math.floor(data.engineering)}</span></li>
   </ul>
   <ul class="product-point-allocator">
     ${productPoints('quantity', data)}

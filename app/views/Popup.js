@@ -31,7 +31,6 @@ class Popup extends View {
     super.postRender();
     $('.popups').show();
     Popup.current = this;
-    console.log('popup rendered with title: ' + this.title);
   }
 
   postRemove() {

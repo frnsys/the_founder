@@ -157,7 +157,7 @@ class Company {
   }
   get salaries() {
     return _.reduce(this.workers, function(mem, w) {
-      return mem + w.salary;
+      return mem + Math.round(w.salary/12);
     }, 0);
   }
   get rent() {
@@ -188,11 +188,14 @@ class Company {
   }
   payMonthly() {
     this.pay(this.salaries + this.rent);
+    console.log(`paid salaries: ${this.salaries}`);
+    console.log(`paid rent: ${this.rent}`);
   }
   payAnnual() {
     var expectedTaxes = this.annualRevenue * config.BASE_TAX_RATE;
     this.taxesAvoided += expectedTaxes - this.taxes;
     this.pay(this.taxes);
+    console.log(`paid taxes: ${this.taxes}`);
     this.annualRevenue = 0;
   }
 

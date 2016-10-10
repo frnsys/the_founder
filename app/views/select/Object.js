@@ -14,13 +14,14 @@ const template = data => `
   <div class="object-stats">
     <h5>Weekly Stats</h5>
     <ul>
-      ${_.map(data.statValues, (i, k) => `
-        <li><strong>${k}:</strong> ${i.toLocaleString()}</li>
-      `).join('')}
     </ul>
   </div>
-</div>
-`
+</div>`;
+
+const statsTemplate = data => `
+  ${_.map(data.statValues, (i, k) => `
+    <li><strong>${k}:</strong> ${i.toLocaleString()}</li>
+  `).join('')}`;
 
 class View extends SelectView {
   constructor() {
@@ -30,7 +31,7 @@ class View extends SelectView {
   }
 
   update(obj) {
-    this.render(obj);
+    this.el.find('ul').html(statsTemplate(obj));
   }
 }
 

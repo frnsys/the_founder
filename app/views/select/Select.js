@@ -5,7 +5,7 @@ import View from 'views/View';
 class SelectView extends View {
   constructor(params) {
     super(_.extend({
-      parent: '.selection',
+      parent: '.selection'
     }, params));
   }
 
@@ -17,5 +17,9 @@ class SelectView extends View {
     $('.selection').hide();
   }
 }
+
+$('body').on('click', '.selection', function() {
+  $('.selection').hide();
+});
 
 export default SelectView;

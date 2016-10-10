@@ -26,7 +26,7 @@ const template = data => `
     </ul>
   </div>
   <ul class="inbox">
-    ${data.inbox.reverse().map(i => `
+    ${data.emails.reverse().map(i => `
       <li data-mail="${util.slugify(i.subject)}">
         <span class="mail-subject">${i.subject}</span>
         <span class="mail-sender">${i.from}</span>
@@ -40,7 +40,7 @@ const template = data => `
       <li>Delete</li>
       <li>Reply</li>
     </ul>
-    ${data.inbox.reverse().map(i => `
+    ${data.emails.reverse().map(i => `
       <div class="email-content" data-mail="${util.slugify(i.subject)}">
         <ul class="email-meta">
           <li>${i.subject}</li>
@@ -75,13 +75,13 @@ class CMail extends View {
   }
 
   render(data) {
-    this.nEmails = data.inbox.length;
+    this.nEmails = data.emails.length;
     super.render(data);
   }
 
   update(data) {
     // re-render on new emails
-    if ($('.inbox').is(':visible') && data.inbox.length > this.nEmails) {
+    if ($('.inbox').is(':visible') && data.emails.length > this.nEmails) {
       this.render(data);
     }
   }

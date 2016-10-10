@@ -73,11 +73,12 @@ class Clock {
           }
         }
 
-        if (this.player.current.emails.length > 0) {
+        if (this.player.current.inbox.length > 0) {
           var emailPopup = new EmailsView(
-            this.player.current.emails, this.player);
+            this.player.current.inbox, this.player);
           emailPopup.render();
-          this.player.current.emails = [];
+          this.player.current.emails = this.player.current.emails.concat(this.player.current.inbox);
+          this.player.current.inbox = [];
         }
       }
     }
@@ -213,7 +214,7 @@ function annualReport(player) {
   return {
     'subject': `${data.prevYear} Annual Report`,
     'from': `investors@${util.slugify(data.name)}.com`,
-    'body': `This year you made ${util.formatCurrency(data.ytdProfit)} in profit, which is ${data.growth}% growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. The Board of Investors are ${data.boardStatus}. This year we want to see profit of at least ${util.formatCurrency(data.profitTarget)}.`
+    'body': `This year you made <em>${util.formatCurrency(data.ytdProfit)}</em> in profit, which is <em>${data.growth}%</em> growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. <br /> We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> The Board of Investors are <em>${data.boardStatus}</em>. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`
   }
 }
 

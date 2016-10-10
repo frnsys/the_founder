@@ -87,7 +87,11 @@ class Player {
       emails: emails,
       current: {
         news: {},
+
+        // all emails (archive)
         emails: [],
+
+        // new emails
         inbox: []
       },
 

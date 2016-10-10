@@ -3,7 +3,7 @@ const config = {
   WEEKS_PER_MONTH: 4,
 
   // board
-  STARTING_PROFIT_TARGET: 100000,
+  STARTING_PROFIT_TARGET: 10000,
   DESIRED_GROWTH: 0.12,
 
   // hype

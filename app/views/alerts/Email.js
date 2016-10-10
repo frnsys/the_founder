@@ -40,7 +40,7 @@ function template(data) {
         <div class="email-body">
           ${data.body}
         </div>
-        ${data.effects.length > 0 ? templ.effects(data) : ''}
+        ${data.effects && data.effects.length > 0 ? templ.effects(data) : ''}
       </div>
       <div class="alert-actions ${data.action ? 'has-task' : ''}">
         ${button}

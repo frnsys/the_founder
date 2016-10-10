@@ -84,9 +84,10 @@ class Manage extends Phaser.State {
       postRemove = view.postRemove.bind(view);
     view.postRemove = function() {
       postRemove();
-      $('#office, .hud, .menu').hide();
+      $('#office, .hud, .menu, .selection').hide();
       if (self.selectionView) {
         self.selectionView.remove();
+        self.selectedObject = null;
       }
       $('.employee-thought, .employee-burntout').remove();
       $('#market').show();

@@ -39,7 +39,7 @@ class Player {
         locations: _.filter(locations, l => !_.contains(lockedLocations, l.name)),
         specialProjects: [],
         productTypes: util.byNames(productTypes, [
-          'Sharing', 'Genetics', 'Ad', 'Entertainment', 'Mobile', 'Celebrity', 'Social Network', 'Credit', 'E-Commerce', 'Defense', 'Sensors', 'Gadget'
+          'Sharing', 'Genetics', 'Ad', 'Entertainment', 'Mobile', 'Celebrity', 'Social Network', 'Credit', 'E-Commerce', 'Defense', 'Logistics', 'Gadget'
         ])
       },
 

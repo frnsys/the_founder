@@ -96,8 +96,8 @@
     "cost": 100000
   },
   {
-    "name": "Sensors",
-    "difficulty": 1,
+    "name": "Logistics",
+    "difficulty": 2,
     "requiredVertical": "Hardware",
     "cost": 50000
   },

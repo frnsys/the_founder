@@ -145,6 +145,23 @@
     ]
   },
   {
+    "name": "AI.Logistics",
+    "description": "Automated and optimized logistics",
+    "productTypes": [
+      "AI",
+      "Logistics"
+    ],
+    "effects": [{
+      "type": "costMultiplier",
+      "value": -0.02
+    }],
+    "feature": 0,
+    "names": [
+      "CyberSync",
+      "OptiLogi"
+    ]
+  },
+  {
     "name": "Analytics.Credit",
     "productTypes": [
       "Analytics",
@@ -267,6 +284,22 @@
     ]
   },
   {
+    "name": "Analytics.Logistics",
+    "productTypes": [
+      "Analytics",
+      "Logistics"
+    ],
+    "description": "Supply chain efficiency tools",
+    "effects": [{
+      "type": "costMultiplier",
+      "value": -0.01
+    }],
+    "feature": 0,
+    "names": [
+      "SuperSupply"
+    ]
+  },
+  {
     "name": "Robot.Celebrity",
     "productTypes": [
       "Robot",
@@ -303,6 +336,23 @@
     "feature": 0,
     "names": [
       "RoboWarrior"
+    ]
+  },
+  {
+    "name": "Robot.Logistics",
+    "productTypes": [
+      "Robot",
+      "Logistics"
+    ],
+    "description": "Drone delivery services",
+    "effects": [{
+      "type": "costMultiplier",
+      "value": -0.01
+    }],
+    "feature": 0,
+    "names": [
+      "DroneIt",
+      "DroneDrop"
     ]
   },
   {
@@ -710,6 +760,20 @@
     ]
   },
   {
+    "name": "Gadget.Logistics",
+    "productTypes": [
+      "Gadget",
+      "Logistics"
+    ],
+    "description": "Internet infrastructure for rent",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Internet Web Services",
+      "CloudHoster"
+    ]
+  },
+  {
     "name": "Gadget.Space",
     "productTypes": [
       "Gadget",
@@ -774,6 +838,39 @@
     "feature": 0,
     "names": [
       "yOptics"
+    ]
+  },
+  {
+    "name": "Logistics.Sharing",
+    "productTypes": [
+      "Logistics",
+      "Sharing"
+    ],
+    "description": "Delivery services",
+    "effects": [],
+    "feature": 0,
+    "names": [
+      "Postup",
+      "Marsupial",
+      "DeliverIt",
+      "GoFetch"
+    ]
+  },
+  {
+    "name": "Logistics.Space",
+    "productTypes": [
+      "Logistics",
+      "Space"
+    ],
+    "description": "Orbital logistics network",
+    "effects": [{
+      "type": "costMultiplier",
+      "value": -0.02
+    }],
+    "feature": 0,
+    "names": [
+      "SpaceDrop",
+      "SpaceShipIt"
     ]
   },
   {

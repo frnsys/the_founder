@@ -5,7 +5,8 @@
       "Welcome! I'm your incubator mentor. Running a successful startup is not easy, but I'll give you guidance.",
       "You're just starting out, so you'll work from your apartment for now.",
       "And it's just your cofounder here...but eventually you'll have a buzzing hive of employees.",
-      "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one. Click <em class='ui-item'>New Task</em> to get started."
+      "Every successful company has to have a <em class='concept'>Product</em>, so let's try creating one. Click <em class='ui-item'>New Task</em> to get started.",
+      "(If you want to skip onboarding, you can open the Settings gear below and do so)"
     ],
     "uiSelector": ".start-new-task"
   }, {

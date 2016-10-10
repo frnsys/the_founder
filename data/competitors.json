@@ -33,7 +33,7 @@
       "marketing": 0.8,
       "engineering": 1.5
     },
-    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Gadget"]
+    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Gadget", "Logistics"]
   },
   {
     "name": "FaceSpace",
@@ -105,7 +105,7 @@
       "marketing": 1.4,
       "engineering": 1.1
     },
-    "productTypes": ["Gadget", "Mobile", "Sensor", "Ad", "Implant", "Wearable"]
+    "productTypes": ["Gadget", "Mobile", "Logistics", "Ad", "Implant", "Wearable"]
   },
   {
     "name": "Goldwin Brothers",
@@ -117,7 +117,7 @@
       "marketing": 1.6,
       "engineering": 0.8
     },
-    "productTypes": ["Credit", "Analytics", "AI", "Ad", "Sensors"]
+    "productTypes": ["Credit", "Analytics", "AI", "Ad"]
   },
   {
     "name": "Volta",
@@ -129,7 +129,7 @@
       "marketing": 1.4,
       "engineering": 1.4
     },
-    "productTypes": ["AI", "Gadget", "Defense", "Space", "Sensors"]
+    "productTypes": ["AI", "Gadget", "Defense", "Space", "Logistics"]
   },
   {
     "name": "Dark Industries",

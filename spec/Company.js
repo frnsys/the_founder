@@ -29,6 +29,6 @@ describe('Company', function() {
     company.cash = 1000;
     company.workers.push({salary: 500});
     company.payMonthly();
-    expect(company.cash).toEqual(500);
+    expect(company.cash).toEqual(1000 - Math.round(500/12));
   });
 });

@@ -37,7 +37,7 @@ class Piece {
   get power() {
     // sometimes there is random bonus damage
     var bonus = Math.random() <= 0.05 ? 1 : 0;
-    return Math.min(Math.floor(this.health/2 + bonus), 1);
+    return Math.max(Math.floor(this.health/2 + bonus), 1);
   }
 
   damage(damage) {

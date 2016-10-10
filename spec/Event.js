@@ -114,17 +114,14 @@ describe('Event', function() {
   describe('emails', function() {
     it('only triggers when conditions are satisfied', function() {
       expect(player.current.inbox).toEqual([]);
-      expect(player.current.emails).toEqual([]);
 
       player.company.cash = 1000;
       Event.updateEmails(player);
       expect(player.current.inbox).toEqual([]);
-      expect(player.current.emails).toEqual([]);
 
       player.company.cash = -1000;
       Event.updateEmails(player);
       expect(player.current.inbox).toEqual([expectedEmail]);
-      expect(player.current.emails).toEqual([expectedEmail]);
     });
 
     it('can have effects', function() {
@@ -137,12 +134,10 @@ describe('Event', function() {
       player.company.cash = -1000;
       Event.updateEmails(player);
       expect(player.current.inbox).toEqual([expectedEmail]);
-      expect(player.current.emails).toEqual([expectedEmail]);
 
       player.company.cash = -1000;
       Event.updateEmails(player);
       expect(player.current.inbox).toEqual([]);
-      expect(player.current.emails).toEqual([expectedEmail]);
     });
   });
 });

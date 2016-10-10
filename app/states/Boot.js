@@ -47,6 +47,13 @@ class Boot extends Phaser.State {
       var view = new MainMenu(Manager, DEBUG);
       view.render();
     }
+
+    // CHEAT CODES!!
+    window.cheat = {
+      windfall: function() {
+        player.company.cash += 1000000;
+      }
+    }
   }
 }
 

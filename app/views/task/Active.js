@@ -51,23 +51,35 @@ class ActiveView extends CardsList {
     super.render({
       items: _.map(this.player.company.tasks, this.processItem.bind(this))
     });
-  }
 
-  update() {
+    // tasks might be removed, so we want to explicitly associate subviews with tasks
+    var self = this;
+    this.subviews_tasks = [];
     _.each(_.zip(this.player.company.tasks, this.subviews), function(v) {
       var t = v[0],
           sv = v[1];
-      if (_.contains([Task.Type.Promo, Task.Type.Research, Task.Type.Lobby], t.type)) {
-        sv.el.find('.task-progress-inner').css('width', `${(t.progress/t.requiredProgress)*100}%`);
-      } else if (t.type === Task.Type.Product) {
-        sv.el.find('.task-progress-inner').css('width', `${(t.progress/t.requiredProgress)*100}%`);
-        sv.el.find('.design-stat').text(Math.floor(t.obj.design));
-        sv.el.find('.marketing-stat').text(Math.floor(t.obj.marketing));
-        sv.el.find('.engineering-stat').text(Math.floor(t.obj.engineering));
-      } else if (t.type === Task.Type.SpecialProject) {
-        sv.el.find('.design-progress').css('width', `${(t.obj.design/t.obj.required.design)*100}%`);
-        sv.el.find('.marketing-progress').css('width', `${(t.obj.marketing/t.obj.required.marketing)*100}%`);
-        sv.el.find('.engineering-progress').css('width', `${(t.obj.engineering/t.obj.required.engineering)*100}%`);
+      self.subviews_tasks_map = [sv, t];
+    });
+  }
+
+  update() {
+    var self = this;
+    _.each(this.subviews_tasks_map, function(v) {
+      var t = v[0],
+          sv = v[1];
+      if (t) {
+        if (_.contains([Task.Type.Promo, Task.Type.Research, Task.Type.Lobby], t.type)) {
+          sv.el.find('.task-progress-inner').css('width', `${(t.progress/t.requiredProgress)*100}%`);
+        } else if (t.type === Task.Type.Product) {
+          sv.el.find('.task-progress-inner').css('width', `${(t.progress/t.requiredProgress)*100}%`);
+          sv.el.find('.design-stat').text(Math.floor(t.obj.design));
+          sv.el.find('.marketing-stat').text(Math.floor(t.obj.marketing));
+          sv.el.find('.engineering-stat').text(Math.floor(t.obj.engineering));
+        } else if (t.type === Task.Type.SpecialProject) {
+          sv.el.find('.design-progress').css('width', `${(t.obj.design/t.obj.required.design)*100}%`);
+          sv.el.find('.marketing-progress').css('width', `${(t.obj.marketing/t.obj.required.marketing)*100}%`);
+          sv.el.find('.engineering-progress').css('width', `${(t.obj.engineering/t.obj.required.engineering)*100}%`);
+        }
       }
     });
   }

@@ -12,7 +12,7 @@ import ActiveTasksView from 'views/task/Active';
 const template = data => `
 <div class="hud-left">
   <h4 class="hud-date"></h4>
-  <div class="hud-time-outer progress-bar-outer">
+  <div class="hud-time-outer progress-bar-outer" data-tip="Time left in year">
     <div class="hud-time-inner progress-bar-inner"></div>
   </div>
   <div class="hud-cash"></div>
@@ -68,7 +68,7 @@ ${data.onboarding.outrage ? `<li data-tip="Outrage"><img src="assets/company/out
 
 const timeTemplate = data => `
 <span>${util.enumName(data.month, Enums.Month)}, ${data.year}</span>
-<ul class="weeks">
+<ul class="weeks" data-tip="Weeks in month">
   ${_.times(data.week + 1, i => `
     <li class="week-on"></li>
   `).join('')}

@@ -24,8 +24,9 @@ class TheMarket extends Phaser.State {
     this.debug = debug;
   }
 
-  init(product) {
+  init(product, player) {
     this.product = product;
+    this.player = player || this.player;
   }
 
   preload() {

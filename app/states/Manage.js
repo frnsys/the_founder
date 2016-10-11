@@ -91,7 +91,7 @@ class Manage extends Phaser.State {
       }
       $('.employee-thought, .employee-burntout').remove();
       $('#market').show();
-      self.game.state.start('Market', true, false, p);
+      self.game.state.start('Market', true, false, p, self.player);
     };
     view.render();
   }

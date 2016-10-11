@@ -71,6 +71,8 @@ class Clock {
           } else {
             this.player.month++;
           }
+
+          this.player.save();
         }
 
         if (this.player.current.inbox.length > 0) {
@@ -143,7 +145,6 @@ class Clock {
   monthly() {
     var player = this.player;
     player.company.payMonthly();
-    player.save();
   }
 
   yearly() {

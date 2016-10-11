@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import templ from '../Common';
@@ -47,9 +48,15 @@ class ResearchView extends CardsList {
             this.remove();
             view.render();
           };
+        },
+        '.toggle-filter': function() {
+          this.showAll = !this.showAll;
+          var text = this.showAll ? 'Show Available' : 'Show All';
+          $('.toggle-filter').text(text);
         }
       }
     });
+    this.showAll = true;
     this.player = player;
   }
 
@@ -58,14 +65,24 @@ class ResearchView extends CardsList {
     super.render({
       items: this.items
     });
+
+    // hacky
+    this.el.find('header').append('<div class="toggle-filter">Show Available</div>');
   }
 
   update() {
     var self = this;
     _.each(_.zip(this.items, this.subviews), function(v) {
-      var item = self.processItem(v[0]);
+      var sv = v[1],
+          item = self.processItem(v[0]);
       if (!_.isEqual(v[0], item)) {
         v[1].el.find('button').replaceWith(button(item));
+      }
+
+      if (self.showAll) {
+        sv.el.show();
+      } else if (item.not_available) {
+        sv.el.hide();
       }
     });
 

@@ -6,6 +6,7 @@ import Tasks from './Tasks';
 import templ from '../Common';
 import View from 'views/View';
 import CardsList from 'views/CardsList';
+import Confirm from 'views/alerts/Confirm';
 
 
 function button(task) {
@@ -69,12 +70,20 @@ class AssignmentView extends CardsList {
           this.workers = _.without(this.workers, sel);
           view.attrs.class = view.attrs.class.replace('selected', '');
         } else {
-          this.workers.push(sel);
-          view.attrs.class += ' selected';
+          // if already assigned, confirm
+          if (sel.task) {
+            var confirm = new Confirm(() => {
+              this.workers.push(sel);
+              view.attrs.class += ' selected';
+              this.updateAssignments(sel, view);
+            });
+            confirm.render('This employee is already assigned to a task. Employees can only work on one task at a time...do you want to change their assignment?', 'Re-assign', 'Nevermind');
+          } else {
+            this.workers.push(sel);
+            view.attrs.class += ' selected';
+          }
         }
-        this.el.find('.select').prop('disabled', this.workers.length + this.locations.length == 0);
-        view.render(this.processItem(sel, true));
-        this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
+        this.updateAssignments(sel, view);
       },
       '.assign-locations > li': function(ev) {
         // idx + 1 b/c we skip the HQ
@@ -87,12 +96,19 @@ class AssignmentView extends CardsList {
           this.locations = _.without(this.locations, sel);
           view.attrs.class = view.attrs.class.replace('selected', '');
         } else {
-          this.locations.push(sel);
-          view.attrs.class += ' selected';
+          if (sel.task) {
+            var confirm = new Confirm(() => {
+              this.workers.push(sel);
+              view.attrs.class += ' selected';
+              this.updateAssignments(sel, view);
+            });
+            confirm.render('This location is already assigned to a task. Locations can only work on one task at a time...do you want to change its assignment?', 'Re-assign', 'Nevermind');
+          } else {
+            this.locations.push(sel);
+            view.attrs.class += ' selected';
+          }
         }
-        this.el.find('.select').prop('disabled', this.workers.length + this.locations.length == 0);
-        view.render(this.processItem(sel, false));
-        this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
+        this.updateAssignments(sel, view);
       },
       '.select': function() {
         if (!this.existing) {
@@ -109,6 +125,12 @@ class AssignmentView extends CardsList {
         this.remove();
       }
     });
+  }
+
+  updateAssignments(sel, view) {
+    this.el.find('.select').prop('disabled', this.workers.length + this.locations.length == 0);
+    view.render(this.processItem(sel, true));
+    this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
   }
 
   processItem(item, worker) {

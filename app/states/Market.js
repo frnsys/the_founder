@@ -66,15 +66,34 @@ class TheMarket extends Phaser.State {
     // re-render the UI whenever a tile is selected or captured
     Tile.onSingleClick.add(this.renderUI, this);
     Tile.onCapture.add(this.renderUI, this);
+    Tile.onCapture.add(this.captureNotice, this);
     market.onStartTurn = () => {
       this.renderUI(market.board.selectedTile);
     };
     market.startTurn(market.humanPlayer);
-
   }
 
   update() {
     this.player.onboarder.resolve();
+  }
+
+  captureNotice(tile) {
+    var coord = this.market.board.coordinateForPosition(tile.position),
+        msg = tile instanceof Tile.Income ? `+${(((tile.income + 1)/this.market.totalIncome) * 100).toFixed(2)}% market share` : 'Captured influencer!',
+      text = this.game.add.text(
+        coord.x - 70, coord.y, msg,
+        {fill: '#ffffff', stroke: '#000000', strokeThickness: 2}),
+      tween;
+    this.market.board.tileGroup.add(text);
+    tween = this.game.add.tween(text).to({
+      x: coord.x - 70,
+      y: coord.y - 100,
+      alpha: 0
+    }, 3000, Phaser.Easing.Quadratic.Out, true);
+    tween.onComplete.add(function() {
+      text.destroy();
+    });
+    tween.start();
   }
 
   renderUI(tile) {

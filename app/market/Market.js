@@ -61,6 +61,10 @@ class Market {
     _.each(this.board.influencerTiles, function(t) {
       t.name = `${handles.pop()}<h6>${_.sample(socialMediaTitles)}</h6>`;
     });
+
+    this.totalIncome = _.reduce(this.board.incomeTiles, function(m, tile) {
+      return m + tile.income + 1;
+    }, 0);
   }
 
   percentMarketShare() {
@@ -69,15 +73,14 @@ class Market {
         self = this;
     _.each(this.board.incomeTiles, function(tile) {
       var income = tile.income + 1;
-      total += income;
       if (tile.owner == self.humanPlayer) {
         shares.human += income;
       } else if (tile.owner == self.aiPlayer) {
         shares.ai += income;
       }
     });
-    shares.human = (shares.human/total) * 100;
-    shares.ai = (shares.ai/total) * 100;
+    shares.human = (shares.human/this.totalIncome) * 100;
+    shares.ai = (shares.ai/this.totalIncome) * 100;
     return shares;
   }
 

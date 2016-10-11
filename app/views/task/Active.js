@@ -58,13 +58,13 @@ class ActiveView extends CardsList {
     _.each(_.zip(this.player.company.tasks, this.subviews), function(v) {
       var t = v[0],
           sv = v[1];
-      self.subviews_tasks_map = [sv, t];
+      self.subviews_tasks.push([t, sv]);
     });
   }
 
   update() {
     var self = this;
-    _.each(this.subviews_tasks_map, function(v) {
+    _.each(this.subviews_tasks, function(v) {
       var t = v[0],
           sv = v[1];
       if (t) {

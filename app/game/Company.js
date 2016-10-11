@@ -79,6 +79,7 @@ class Company {
       lobbies: [],
       markets: [],
       acquisitions: [],
+      products: [],
       discoveredProducts: [],
       activeProducts: [],
       productsLaunched: 0,
@@ -188,8 +189,6 @@ class Company {
   }
   payMonthly() {
     this.pay(this.salaries + this.rent);
-    console.log(`paid salaries: ${this.salaries}`);
-    console.log(`paid rent: ${this.rent}`);
   }
   payAnnual() {
     var expectedTaxes = this.annualRevenue * config.BASE_TAX_RATE;
@@ -349,6 +348,7 @@ class Company {
       self.earn(Product.getRevenue(p));
       if (Math.round(p.revenue) <= 10) {
         self.activeProducts = _.without(self.activeProducts, p);
+        self.products.push(p);
       }
     });
   }

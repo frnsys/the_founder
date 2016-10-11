@@ -35,7 +35,6 @@ const locationTemplate = item => `
   <h1><img src="/assets/markets/${util.slugify(item.market)}.png"> ${item.name}</h1>
 </div>
 ${templ.skills(item.skills)}
-${item.effects.length > 0 ? templ.effects(item) : ''}
 ${item.task ? `<div class="assigned-task location-task">Assigned: ${item.task.obj.name}</div>` : ''}`;
 
 
@@ -89,7 +88,7 @@ class AssignmentView extends CardsList {
         // idx + 1 b/c we skip the HQ
         var idx = this.itemIndex(ev.target) + 1,
             sel = player.company.locations[idx],
-            view = this.subviews[player.company.workers.length + idx];
+            view = this.subviews[player.company.workers.length + idx - 1];
 
         var $li = $(ev.target).closest('.card');
         if (_.contains(this.locations, sel)) {

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import templ from '../Common';
@@ -61,6 +62,10 @@ class MarketView extends View {
     this.player = player;
     this.market = market;
     this.locations = locs;
+  }
+
+  itemIndex(target) {
+    return $(target).closest('.market-location').index();
   }
 
   processItem(item) {

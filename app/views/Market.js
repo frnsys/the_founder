@@ -2,6 +2,31 @@ import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import View from 'views/View';
+import Popup from 'views/Popup';
+
+const helpTemplate = data => `
+<div class="market-help-body">
+  <p>The Market is the magical place where your products duke it out with competitors' products for market share.</p>
+  <p><img src='assets/onboarding/market_income.png'>The tiles with dollar signs are different pieces of market share of varying income levels.</p>
+  <p><img src='assets/onboarding/market_share.png'>Your product's revenue depends on how much market share you can <em class='concept'>capture</em> from The Market.</p>
+  <p><img src='assets/onboarding/market_product.png'>The <em class='concept'>blue spheres</em> on the map represent your products. Their <em class='concept'>health</em> and <em class='concept'>movement</em> are influenced by the Product Designer.</p>
+  <p><img src='assets/onboarding/market_movement.gif'><em class='ui-item'>Click</em> on a product to select it, then <em class='ui-item'>double-click</em> on a highlighted tile to move to it.</p>
+  <p><img src='assets/onboarding/market_capture.gif'><em class='ui-item'>Double-click</em> on the product to <em class='concept'>capture</em> the market share tile underneath.</p>
+  <p><img src='assets/onboarding/market_combat.gif'>Products can also directly fight and destroy each another.</p>
+  <p><img src='assets/onboarding/market_influencer.png'>You may encounter special <em class='special'>Social Media Influencer</em> tiles, noted by an 'i' which give you big revenue bonuses.</p>
+  <p>The Market battle ends when there are no more market shares left to capture, if one player is eliminated, or if the turns run out. Good Luck!</p>
+</div>
+`;
+
+class MarketHelpView extends Popup {
+  constructor() {
+    super({
+      title: 'Market Help',
+      template: helpTemplate
+    });
+  }
+}
+
 
 function healthBar(health, maxHealth) {
   var str = '<span class="health">';
@@ -51,7 +76,7 @@ const template = data => `
     ${data.human ? 'End Turn' : 'Competitor turn...'}
   </button>
 </div>
-<h1 class="market-title">The Market</h1>
+<h1 class="market-title">The Market <div class="show-market-help">?</div></h1>
 <div class="market-share">
   <div class="human-market-share" style="width:${data.marketShares.human}%"><h1>Your market share: ${data.marketShares.human.toFixed(1)}%</h1></div>
   <div class="ai-market-share" style="width:${data.marketShares.ai}%"><h1>${data.competitor.name}'s market share: ${data.marketShares.ai.toFixed(1)}%</h1></div>
@@ -64,6 +89,12 @@ class Market extends View {
       parent: '.market-ui',
       template: template
     }, params));
+    this.registerHandlers({
+      '.show-market-help': function() {
+        var view = new MarketHelpView();
+        view.render();
+      }
+    });
   }
 
   postRender() {

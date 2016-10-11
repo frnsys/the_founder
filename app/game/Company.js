@@ -163,7 +163,7 @@ class Company {
   get rent() {
     return _.reduce(this.locations, function(mem, l) {
       return mem + l.cost;
-    }, 0)/1000 * this.player.costMultiplier * 12;
+    }, 0)/1000 * this.player.costMultiplier;
   }
   get taxes() {
     return this.annualRevenue * this.player.taxRate;

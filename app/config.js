@@ -5,6 +5,7 @@ const config = {
   // board
   STARTING_PROFIT_TARGET: 10000,
   DESIRED_GROWTH: 0.12,
+  GRACE_YEARS: 2,
 
   // hype
   HYPE_DECAY_RATE: 0.9,

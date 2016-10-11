@@ -148,7 +148,7 @@ class Clock {
 
   yearly() {
     this.player.company.payAnnual();
-    this.player.growth = Board.evaluatePerformance(this.player.board, this.player.company.annualProfit) * 100,
+    this.player.growth = Board.evaluatePerformance(this.player.board, this.player.company.annualProfit, this.player.year < config.GRACE_YEARS) * 100,
     Economy.update(this.player);
     checkDeath(this.player);
     this.player.current.inbox.push(annualReport(this.player));
@@ -210,11 +210,22 @@ class Clock {
 }
 
 function annualReport(player) {
-  var data = player.snapshot;
+  var data = player.snapshot,
+      graceYearsLeft = config.GRACE_YEARS - data.companyAge,
+      growthMsg;
+
+  if (graceYearsLeft <= 0) {
+    growthMsg = `That's <em>${data.growth}%</em> growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> The Board of Investors are <em>${data.boardStatus}</em>. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`;
+  } else if (graceYearsLeft === 1) {
+    growthMsg = `You only have one year left before the Board starts evaluating your performance!`;
+  } else {
+    growthMsg = `You still have ${graceYearsLeft} years left before the Board starts evaluating your performance.`;
+  }
+
   return {
     'subject': `${data.prevYear} Annual Report`,
     'from': `investors@${util.slugify(data.name)}.com`,
-    'body': `This year you made <em>${util.formatCurrency(data.ytdProfit)}</em> in profit, which is <em>${data.growth}%</em> growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. <br /> We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> The Board of Investors are <em>${data.boardStatus}</em>. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`
+    'body': `This year you made <em>${util.formatCurrency(data.ytdProfit)}</em> in profit.<br /> ${growthMsg}.`
   }
 }
 

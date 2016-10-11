@@ -11,8 +11,13 @@ import config from 'config';
 const epsilon = 1e-12;
 const Board = {
   desiredGrowth: config.DESIRED_GROWTH,
-  evaluatePerformance: function(board, profit) {
+  evaluatePerformance: function(board, profit, graceYear) {
     var growth = (profit - board.lastProfit)/(board.lastProfit + epsilon);
+
+    // ignore board for the grace period
+    if (graceYear) {
+      growth = 0;
+    }
 
     // if the target is exceeded, the board is really happy
     if (growth >= config.DESIRED_GROWTH * 2)
@@ -31,11 +36,13 @@ const Board = {
         board.happiness -= (1-growth) * 10;
     }
 
-    // set the new target
-    board.lastProfitTarget = board.profitTarget;
-    board.profitTarget *= 1 + config.DESIRED_GROWTH;
-    board.profitTarget = Math.round(board.profitTarget);
-    board.lastProfit = profit;
+    if (!graceYear) {
+      // set the new target
+      board.lastProfitTarget = board.profitTarget;
+      board.profitTarget *= 1 + config.DESIRED_GROWTH;
+      board.profitTarget = Math.round(board.profitTarget);
+      board.lastProfit = profit;
+    }
 
     return growth;
   },

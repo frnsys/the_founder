@@ -226,7 +226,7 @@ function annualReport(player) {
   return {
     'subject': `${data.prevYear} Annual Report`,
     'from': `investors@${util.slugify(data.name)}.com`,
-    'body': `This year you made <em>${util.formatCurrency(data.ytdProfit)}</em> in profit.<br /> ${growthMsg}.`
+    'body': `This year you made <em>${util.formatCurrency(data.ytdProfit)}</em> in profit.<br /> ${growthMsg}`
   }
 }
 

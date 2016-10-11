@@ -54,7 +54,7 @@ class TheMarket extends Phaser.State {
           var movesLeft = _.some(market.humanPlayer.pieces, p => p.moves > 0);
           if (movesLeft) {
             var view = new Confirm(market.endTurn.bind(market));
-            view.render('You still have moves remaining, is that ok?');
+            view.render('You still have moves remaining, is that ok?', 'Use moves & end turn', 'Nevermind');
           } else {
             market.endTurn();
           }

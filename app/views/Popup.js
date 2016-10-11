@@ -37,7 +37,6 @@ class Popup extends View {
     super.postRemove();
     $('.popups').hide();
     Popup.current = null;
-    console.log('popup removed with title: ' + this.title);
   }
 }
 

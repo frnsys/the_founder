@@ -5,8 +5,8 @@ const template = data => `
   <img src="assets/company/confirm.png" class="alert-icon">
   <p>${data.message}</p>
   <div class="alert-actions">
-    <button class="no">No</button>
-    <button class="yes">Yes</button>
+    <button class="no">${data.no}</button>
+    <button class="yes">${data.yes}</button>
   </div>
 </div>
 `
@@ -28,8 +28,12 @@ class Confirm extends Alert {
     });
   }
 
-  render(message) {
-    super.render({message: message});
+  render(message, yes, no) {
+    super.render({
+      message: message,
+      yes: yes || 'Yes',
+      no: no || 'No'
+    });
   }
 }
 

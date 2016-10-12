@@ -83,7 +83,7 @@ class TheMarket extends Phaser.State {
         msg = tile instanceof Tile.Income ? `+${(((tile.income + 1)/this.market.totalIncome) * 100).toFixed(2)}% market share` : 'Captured influencer!',
       text = this.game.add.text(
         coord.x - 70, coord.y, msg,
-        {fill: '#ffffff', stroke: '#000000', strokeThickness: 2}),
+        {fill: '#ffffff', stroke: '#000000', strokeThickness: 2, font: 'normal 24pt Work Sans'}),
       tween;
     this.market.board.tileGroup.add(text);
     tween = this.game.add.tween(text).to({

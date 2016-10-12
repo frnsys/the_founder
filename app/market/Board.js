@@ -240,17 +240,21 @@ class Board {
 
     // highlight valid movement tiles
     if (tile.piece) {
-      tile.sprite.tint = tile.piece.owner.human ? humanMoveHighlightColor : enemyMoveHighlightColor;
       this.validMoves = this.grid.validMovePositions(tile, tile.piece.moves);
-      _.each(this.validMoves, function(pos) {
-        var t = self.grid.tileAt(pos), color;
-        if(tile.piece.owner.human) {
-          color = (!t.piece || t.piece.owner.human) ? humanMoveHighlightColor : enemyMoveHighlightColor;
-        } else {
-          color = enemyMoveHighlightColor;
-        }
-        t.sprite.tint = color;
-      });
+
+      // only highlight for enemy pieces
+      if (!tile.piece.owner.human) {
+        tile.sprite.tint = tile.piece.owner.human ? humanMoveHighlightColor : enemyMoveHighlightColor;
+        _.each(this.validMoves, function(pos) {
+          var t = self.grid.tileAt(pos), color;
+          if(tile.piece.owner.human) {
+            color = (!t.piece || t.piece.owner.human) ? humanMoveHighlightColor : enemyMoveHighlightColor;
+          } else {
+            color = enemyMoveHighlightColor;
+          }
+          t.sprite.tint = color;
+        });
+      }
     }
   }
 

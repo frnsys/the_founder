@@ -12,10 +12,6 @@
           {
             "type": "happiness",
             "value": 1
-          },
-          {
-            "type": "productivity",
-            "value": 1
           }
         ],
         "stats": {
@@ -31,10 +27,6 @@
         "effects": [
           {
             "type": "happiness",
-            "value": 2
-          },
-          {
-            "type": "productivity",
             "value": 2
           }
         ],
@@ -52,10 +44,6 @@
           {
             "type": "happiness",
             "value": 10
-          },
-          {
-            "type": "productivity",
-            "value": 8
           }
         ],
         "stats": {
@@ -70,7 +58,7 @@
       {
         "name": "Bike Share",
         "description": "Minimize transit time on our campus",
-        "cost": 10000,
+        "cost": 100000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -80,7 +68,7 @@
           },
           {
             "type": "productivity",
-            "value": 4
+            "value": 1
           }
         ],
         "stats": {
@@ -90,7 +78,7 @@
       {
         "name": "Sugweyz",
         "description": "Move even more quickly around campus",
-        "cost": 20000,
+        "cost": 400000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -100,7 +88,7 @@
           },
           {
             "type": "productivity",
-            "value": 8
+            "value": 2
           }
         ],
         "stats": {
@@ -110,7 +98,7 @@
       {
         "name": "Hovercarts",
         "description": "The smoothest and fastest ride around campus",
-        "cost": 50000,
+        "cost": 1000000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -120,7 +108,7 @@
           },
           {
             "type": "productivity",
-            "value": 14
+            "value": 3
           }
         ],
         "stats": {
@@ -145,7 +133,7 @@
           },
           {
             "type": "productivity",
-            "value": 2
+            "value": 1
           }
         ],
         "stats": {
@@ -165,7 +153,7 @@
           },
           {
             "type": "productivity",
-            "value": 5
+            "value": 1
           }
         ],
         "stats": {
@@ -175,7 +163,7 @@
       {
         "name": "Gourmet Chef",
         "description": "Employees have less a reason to leave",
-        "cost": 25000,
+        "cost": 50000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -185,7 +173,7 @@
           },
           {
             "type": "productivity",
-            "value": 15
+            "value": 2
           }
         ],
         "stats": {
@@ -205,12 +193,8 @@
         "requiredTechs": [],
         "effects": [
           {
-            "type": "happiness",
-            "value": 1
-          },
-          {
             "type": "productivity",
-            "value": 3
+            "value": 1
           }
         ],
         "stats": {
@@ -225,12 +209,8 @@
         "requiredTechs": [],
         "effects": [
           {
-            "type": "happiness",
-            "value": 2
-          },
-          {
             "type": "productivity",
-            "value": 7
+            "value": 2
           }
         ],
         "stats": {
@@ -241,19 +221,15 @@
       {
         "name": "Modafinil",
         "description": "The Airforce-grade stimulant, now powering workers",
-        "cost": 20000,
+        "cost": 100000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Advanced Psychotropics"
         ],
         "effects": [
           {
-            "type": "happiness",
-            "value": 2
-          },
-          {
             "type": "productivity",
-            "value": 16
+            "value": 4
           }
         ],
         "stats": {
@@ -275,10 +251,6 @@
           {
             "type": "happiness",
             "value": 2
-          },
-          {
-            "type": "productivity",
-            "value": 1
           }
         ]
       },
@@ -292,10 +264,6 @@
           {
             "type": "happiness",
             "value": 6
-          },
-          {
-            "type": "productivity",
-            "value": 12
           }
         ]
       }
@@ -317,7 +285,7 @@
           },
           {
             "type": "productivity",
-            "value": 6
+            "value": 1
           }
         ]
       },
@@ -334,7 +302,7 @@
           },
           {
             "type": "productivity",
-            "value": 12
+            "value": 2
           }
         ]
       }
@@ -356,7 +324,7 @@
           },
           {
             "type": "productivity",
-            "value": 8
+            "value": 1
           }
         ],
         "stats": {
@@ -367,7 +335,7 @@
       {
         "name": "Caretaker Automatons",
         "description": "These Caretakers will tend to every one of our employee's needs",
-        "cost": 100000,
+        "cost": 200000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -377,7 +345,7 @@
           },
           {
             "type": "productivity",
-            "value": 24
+            "value": 2
           }
         ],
         "stats": {
@@ -392,7 +360,7 @@
       {
         "name": "Daycare",
         "description": "Employees with children shouldn't have to spend precious time taking care of them",
-        "cost": 25000,
+        "cost": 50000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -402,14 +370,14 @@
           },
           {
             "type": "productivity",
-            "value": 10
+            "value": 1
           }
         ]
       },
       {
         "name": "Egg Freezing",
         "description": "Employees should't have to choose between their career and having children",
-        "cost": 50000,
+        "cost": 80000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -419,7 +387,7 @@
           },
           {
             "type": "productivity",
-            "value": 20
+            "value": 2
           }
         ]
       }
@@ -443,7 +411,7 @@
           },
           {
             "type": "productivity",
-            "value": 3
+            "value": 1
           }
         ],
         "stats": {
@@ -453,7 +421,7 @@
       {
         "name": "Psychic Pacemakers",
         "description": "Peak physical health is not enough, employees should be at their mental best as well",
-        "cost": 35000,
+        "cost": 60000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Integrated Implants"
@@ -465,14 +433,14 @@
           },
           {
             "type": "productivity",
-            "value": 10
+            "value": 2
           }
         ]
       },
       {
         "name": "Neuromorphic Implants",
         "description": "Employees should not be limited by their human minds",
-        "cost": 70000,
+        "cost": 160000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Neuromorphic Chips"
@@ -484,7 +452,7 @@
           },
           {
             "type": "productivity",
-            "value": 40
+            "value": 4
           }
         ]
       }
@@ -503,10 +471,6 @@
           {
             "type": "happiness",
             "value": 2
-          },
-          {
-            "type": "productivity",
-            "value": 1
           }
         ],
         "stats": {
@@ -523,10 +487,6 @@
         "effects": [
           {
             "type": "happiness",
-            "value": 4
-          },
-          {
-            "type": "productivity",
             "value": 4
           }
         ],
@@ -553,7 +513,7 @@
           },
           {
             "type": "productivity",
-            "value": 20
+            "value": 1
           }
         ],
         "stats": {
@@ -565,7 +525,7 @@
       {
         "name": "Gene Therapy Lounges",
         "description": "Complimentary gene reconfigurations so employees can be their best",
-        "cost": 120000,
+        "cost": 1200000,
         "requiredOffice": 2,
         "requiredTechs": [
           "Genetic Engineering"
@@ -577,7 +537,7 @@
           },
           {
             "type": "productivity",
-            "value": 28
+            "value": 4
           }
         ],
         "stats": {
@@ -600,10 +560,6 @@
           {
             "type": "happiness",
             "value": 4
-          },
-          {
-            "type": "productivity",
-            "value": 1
           }
         ],
         "stats": {
@@ -614,7 +570,7 @@
       {
         "name": "VR Experience Veil",
         "description": "With the VREV, employees can feel like they're painting a masterpiece when they're working on a spreadsheet",
-        "cost": 100000,
+        "cost": 200000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Virtual Reality"
@@ -626,7 +582,7 @@
           },
           {
             "type": "productivity",
-            "value": 40
+            "value": 3
           }
         ],
         "stats": {
@@ -649,10 +605,6 @@
           {
             "type": "happiness",
             "value": 2
-          },
-          {
-            "type": "productivity",
-            "value": 3
           }
         ],
         "stats": {
@@ -674,7 +626,7 @@
           },
           {
             "type": "productivity",
-            "value": 24
+            "value": 2
           }
         ],
         "stats": {
@@ -685,7 +637,7 @@
       {
         "name": "Dream Workstations",
         "description": "Dream workstations allow employees to work while they dream",
-        "cost": 150000,
+        "cost": 300000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -695,7 +647,7 @@
           },
           {
             "type": "productivity",
-            "value": 48
+            "value": 4
           }
         ],
         "stats": {
@@ -722,7 +674,7 @@
           },
           {
             "type": "productivity",
-            "value": 4
+            "value": 1
           }
         ],
         "stats": {
@@ -734,7 +686,7 @@
       {
         "name": "Hivemind",
         "description": "Employees can join into a single aggregate consciousness from anywhere for optimal meetings",
-        "cost": 100000,
+        "cost": 1000000,
         "requiredOffice": 1,
         "requiredTechs": [
           "Brain-Computer Interfaces"
@@ -746,7 +698,7 @@
           },
           {
             "type": "productivity",
-            "value": 48
+            "value": 4
           }
         ]
       }
@@ -765,10 +717,6 @@
           {
             "type": "happiness",
             "value": 2
-          },
-          {
-            "type": "productivity",
-            "value": 2
           }
         ],
         "stats": {
@@ -779,7 +727,7 @@
       {
         "name": "Employee Buses",
         "description": "Get employees to work as efficiently and conveniently as possible",
-        "cost": 50000,
+        "cost": 100000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -789,13 +737,13 @@
           },
           {
             "type": "productivity",
-            "value": 8
+            "value": 2
           }
         ],
         "stats": {
           "Protests caused": [0,3],
           "Employees shuttled": [0,1],
-          "Wifi used (GB)": [0,3]
+          "Wifi used (PB)": [0,3]
         }
       }
     ]
@@ -813,17 +761,13 @@
           {
             "type": "happiness",
             "value": 4
-          },
-          {
-            "type": "productivity",
-            "value": 2
           }
         ]
       },
       {
         "name": "Vacation Implants",
         "description": "Implant memories of wonderful vacations without employees using any real time",
-        "cost": 50000,
+        "cost": 100000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Memory Emulation"
@@ -835,7 +779,7 @@
           },
           {
             "type": "productivity",
-            "value": 40
+            "value": 2
           }
         ]
       }

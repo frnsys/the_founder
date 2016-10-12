@@ -65,9 +65,29 @@ class Piece {
     this.sprite.tint = this.owner.color;
   }
 
-  render(coord, group, game, tileHeight, tileWidth) {
+  render(coord, group, game, tileHeight, tileWidth, board) {
     if (_.isUndefined(this.sprite)) {
+      var self = this;
       this.sprite = group.create(coord.x, coord.y, this.spriteName);
+      if (this.owner.human) {
+        this.sprite.inputEnabled = true;
+        this.sprite.input.enableDrag();
+        this.sprite.events.onDragStart.add(function(sprite, pointer) {
+          board.onDragStartPiece(self, pointer);
+        }, board);
+        this.sprite.events.onDragStop.add(function(sprite, pointer) {
+          board.onDragStopPiece(self, pointer);
+        }, board);
+        this.sprite.events.onDragUpdate.add(function(sprite, pointer) {
+          board.onDragUpdatePiece(self, pointer);
+        }, board);
+        this.sprite.events.onInputOver.add(function() {
+          game.canvas.style.cursor = "-webkit-grab";
+        }, this);
+        this.sprite.events.onInputOut.add(function() {
+          game.canvas.style.cursor = "default";
+        }, this);
+      }
     }
     if (this.moves === 0) {
       this.exhaust();

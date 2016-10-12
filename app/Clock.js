@@ -216,7 +216,7 @@ function annualReport(player) {
       growthMsg;
 
   if (graceYearsLeft <= 0) {
-    growthMsg = `That's <em>${data.growth}%</em> growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> The Board of Investors are <em>${data.boardStatus}</em>. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`;
+    growthMsg = `That's <em>${data.growth}%</em> growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> The Board of Investors is <em>${data.boardStatus}</em>. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`;
   } else if (graceYearsLeft === 1) {
     growthMsg = `You only have one year left before the Board starts evaluating your performance!`;
   } else {

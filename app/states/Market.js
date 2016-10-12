@@ -42,6 +42,7 @@ class TheMarket extends Phaser.State {
   }
 
   create() {
+    $('#office').hide();
     $('#market').show().addClass('market-active');
     $('body').addClass('market-background');
 

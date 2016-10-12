@@ -53,9 +53,9 @@
       "<img src='assets/onboarding/market_income.png' class='demo'>Welcome to <em class='special'>The Market</em>! The tiles with dollar signs are different pieces of market share of varying income levels.",
       "<img src='assets/onboarding/market_share.png' class='demo'>Your product's revenue depends on how much market share you can <em class='concept'>capture</em> from The Market.",
       "<img src='assets/onboarding/market_product.png' class='demo'>The <em class='concept'>blue spheres</em> on the map represent your products. Their <em class='concept'>health</em> and <em class='concept'>movement</em> are influenced by the Product Designer.",
-      "<img src='assets/onboarding/market_movement.gif' class='demo'><em class='ui-item'>Click</em> on a product to select it, then <em class='ui-item'>double-click</em> on a highlighted tile to move to it.",
+      "<img src='assets/onboarding/market_movement.gif' class='demo'>To move a product, <em class='ui-item'>drag</em> it and then <em class='ui-item'>drop</em> it onto a highlighted tile.",
       "<img src='assets/onboarding/market_capture.gif' class='demo'><em class='ui-item'>Double-click</em> on the product to <em class='concept'>capture</em> the market share tile underneath.",
-      "<img src='assets/onboarding/market_combat.gif' class='demo'>Products can also directly fight and destroy each another.",
+      "<img src='assets/onboarding/market_combat.gif' class='demo'><em class='ui-item'>Drag</em> a product onto an enemy product to fight and possibly destroy it.",
       "<img src='assets/onboarding/market_influencer.png' class='demo'>You may encounter special <em class='special'>Social Media Influencer</em> tiles, noted by an 'i' which give you big revenue bonuses.",
       "The Market battle ends when there are no more market shares left to capture, if one player is eliminated, or if the turns run out. Good Luck!"
     ],

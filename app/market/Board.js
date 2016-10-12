@@ -17,8 +17,14 @@ const rows = 12;
 const cols = 14;
 const tileWidth = 104;
 const tileHeight = 88;
-const humanMoveHighlightColor = 0xF1FA89;
+const selectedHighlightColor = 0xF1FA89;
+const selectedMoveHighlightColor = 0xca14ab;
+const humanMoveHighlightColor = 0xff6cf9;
 const enemyMoveHighlightColor = 0xFA6B6B;
+
+function euclideanDistance(a, b) {
+  return Math.sqrt(Math.pow((a.x - b.x),2) + Math.pow((a.y - b.y),2));
+}
 
 class Board {
   constructor(company, players, game) {
@@ -30,6 +36,7 @@ class Board {
 
     this.selectedTile = null;
     this.validMoves = [];
+    this.tileTweens = [];
     Tile.onSingleClick.add(this.onSingleClickTile, this);
     Tile.onDoubleClick.add(this.onDoubleClickTile, this);
 
@@ -208,7 +215,7 @@ class Board {
   placePieceAt(piece, pos) {
     var tile = this.grid.tileAt(pos),
         coord = this.coordinateForPosition(pos);
-    piece.render(coord, this.tileGroup, this.game, tileHeight, tileWidth);
+    piece.render(coord, this.tileGroup, this.game, tileHeight, tileWidth, this);
     piece.position = pos;
     piece.tile = tile;
     tile.piece = piece;
@@ -229,7 +236,7 @@ class Board {
 
     // highlight selected tile
     this.selectedTile = tile;
-    this.selectedTile.sprite.tint = humanMoveHighlightColor;
+    this.selectedTile.sprite.tint = selectedHighlightColor;
 
     // highlight valid movement tiles
     if (tile.piece) {
@@ -257,28 +264,108 @@ class Board {
       && this.selectedTile.piece.owner.human
       && this.selectedTile.piece.moves > 0;
     if (selectedPieceIsValid) {
-      var selectedTileIsValid = _.any(this.validMoves, pos => _.isEqual(pos, tile.position));
-      if (selectedTileIsValid && this.selectedTile != tile) {
-        var attacker = this.selectedTile.piece,
-            defender = tile.piece;
-        if (defender && attacker.owner != defender.owner) {
-          this.movePieceTowards(this.selectedTile.piece, tile, function() {
-            // check we're actually close enough to attack
-            if (attacker.moves > 0 && _.contains(self.grid.tilesInRange(attacker.tile.position, 1), tile)) {
-              self.attackPiece(attacker, defender);
-              self.checkHumanDone();
-            }
-          });
-        } else {
-          this.movePieceTowards(this.selectedTile.piece, tile, this.checkHumanDone.bind(this));
-        }
-      } else if (_.isFunction(tile.capture) && tile.piece == this.selectedTile.piece && tile.piece.product && tile.piece.moves > 0) {
+      if (_.isFunction(tile.capture) && tile.piece == this.selectedTile.piece && tile.piece.product && tile.piece.moves > 0) {
         tile.capture(tile.piece);
         this.checkHumanDone();
       }
     }
     this.selectedTile = null;
     this.unhighlightTiles();
+  }
+
+  onDragStartPiece(piece, pointer) {
+    var self = this,
+        tile = piece.tile;
+
+    this.game.canvas.style.cursor = "-webkit-grabbing";
+
+    // hack to click the tile underneath
+    tile.onClick();
+
+    // pulsate possible moves
+    this.validMoves = this.grid.validMovePositions(tile, tile.piece.moves);
+    _.each(this.validMoves, function(pos) {
+      var t = self.grid.tileAt(pos),
+          startTint = t.sprite.tint,
+          blend = {step: 0},
+          colorTween = self.game.add.tween(blend).to({ step: 100 }, 500).yoyo(true).loop(true);
+      t.sprite.targetTint = humanMoveHighlightColor;
+      colorTween.onUpdateCallback(() => {
+          t.sprite.tint = Phaser.Color.interpolateColor(startTint, t.sprite.targetTint, 100, blend.step);
+      });
+      colorTween.start();
+      self.tileTweens.push(colorTween);
+    });
+  }
+
+  onDragUpdatePiece(piece, pointer) {
+    // reset tween highlights of all tiles
+    _.each(this.grid.tiles, t => {
+      t.sprite.targetTint = humanMoveHighlightColor;
+    });
+
+    // change highlight for closest candidate
+    var tile = this.nearestTileToCoordinate({
+      x: piece.sprite.x,
+      y: piece.sprite.y
+    });
+    if (tile) {
+      tile.sprite.targetTint = selectedMoveHighlightColor;
+    }
+  }
+
+  onDragStopPiece(piece, pointer) {
+    _.each(this.tileTweens, t => t.stop());
+    this.tileTweens = [];
+    this.unhighlightTiles();
+    this.game.canvas.style.cursor = "default";
+
+    var nearestTile = this.nearestTileToCoordinate({
+      x: piece.sprite.x,
+      y: piece.sprite.y
+    });
+    if (!nearestTile || nearestTile == piece.tile || !_.any(this.validMoves, p => _.isEqual(p, nearestTile.position))) {
+      var coord = this.coordinateForPosition(piece.tile.position),
+          tween = this.game.add.tween(piece.sprite).to(coord, 200, Phaser.Easing.Quadratic.InOut, true);
+      tween.start();
+    } else {
+      var attacker = piece,
+          defender = nearestTile.piece;
+      if (defender && attacker.owner != defender.owner) {
+        this.movePieceTowards(piece, nearestTile, () => {
+          var coord = this.coordinateForPosition(piece.tile.position),
+              tween = this.game.add.tween(piece.sprite).to(coord, 200, Phaser.Easing.Quadratic.InOut, true);
+          tween.start();
+
+          // check we're actually close enough to attack
+          if (attacker.moves > 0 && _.contains(this.grid.tilesInRange(attacker.tile.position, 1), nearestTile)) {
+            this.attackPiece(attacker, defender);
+            this.checkHumanDone();
+          }
+        });
+      } else {
+        this.movePieceTowards(piece, nearestTile, this.checkHumanDone.bind(this));
+      }
+    }
+  }
+
+  nearestTileToCoordinate(coord) {
+    var self = this;
+    var tgrp = _.chain(this.grid.tiles).map(t => {
+      var coord_ = self.coordinateForPosition(t.position);
+      return {
+        tile: t,
+        dist: euclideanDistance(coord, coord_)
+      }
+    }).filter(t => {
+      return t.dist <= tileWidth;
+    }).min(t => {
+      return t.dist;
+    }).value();
+
+    if (tgrp) {
+      return tgrp.tile;
+    }
   }
 
   attackPiece(attacker, defender) {

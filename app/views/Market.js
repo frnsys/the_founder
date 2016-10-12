@@ -10,9 +10,9 @@ const helpTemplate = data => `
   <p><img src='assets/onboarding/market_income.png'>The tiles with dollar signs are different pieces of market share of varying income levels.</p>
   <p><img src='assets/onboarding/market_share.png'>Your product's revenue depends on how much market share you can <em class='concept'>capture</em> from The Market.</p>
   <p><img src='assets/onboarding/market_product.png'>The <em class='concept'>blue spheres</em> on the map represent your products. Their <em class='concept'>health</em> and <em class='concept'>movement</em> are influenced by the Product Designer.</p>
-  <p><img src='assets/onboarding/market_movement.gif'><em class='ui-item'>Click</em> on a product to select it, then <em class='ui-item'>double-click</em> on a highlighted tile to move to it.</p>
+  <p><img src='assets/onboarding/market_movement.gif'>To move a product, <em class='ui-item'>drag</em> it and then <em class='ui-item'>drop</em> it onto a highlighted tile.</p>
   <p><img src='assets/onboarding/market_capture.gif'><em class='ui-item'>Double-click</em> on the product to <em class='concept'>capture</em> the market share tile underneath.</p>
-  <p><img src='assets/onboarding/market_combat.gif'>Products can also directly fight and destroy each another.</p>
+  <p><img src='assets/onboarding/market_combat.gif'><em class='ui-item'>Drag</em> a product onto an enemy product to fight and possibly destroy it.</p>
   <p><img src='assets/onboarding/market_influencer.png'>You may encounter special <em class='special'>Social Media Influencer</em> tiles, noted by an 'i' which give you big revenue bonuses.</p>
   <p>The Market battle ends when there are no more market shares left to capture, if one player is eliminated, or if the turns run out. Good Luck!</p>
 </div>

@@ -132,7 +132,7 @@
     "val": "Bangalore"
   }
 }, {
-  "name": "Capital Expansion",
+  "name": "Exit Strategy",
   "condition": {
     "type": "locations",
     "op": "has",

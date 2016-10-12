@@ -2,7 +2,7 @@
   {
     "name": "3D Printing",
     "description": "Print endless plastic trinkets",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [],
@@ -11,7 +11,7 @@
   {
     "name": "Advanced Psychotropics",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
@@ -28,7 +28,7 @@
   {
     "name": "Alcubierre Drive",
     "description": "A powerful interstellar space engine which makes it possible to go to the furthest reaches of our galaxy",
-    "cost": 1000,
+    "cost": 10000000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -48,7 +48,7 @@
   {
     "name": "Artificial Gravity",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -59,7 +59,7 @@
   {
     "name": "Atmospheric Manipulation",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "effects": [
@@ -75,7 +75,7 @@
   {
     "name": "Atomic Assembly",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -86,7 +86,7 @@
   {
     "name": "Big Data",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [
@@ -105,7 +105,7 @@
   {
     "name": "Bioprinting",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -116,7 +116,7 @@
   {
     "name": "Brain-Computer Interfaces",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
@@ -133,7 +133,7 @@
   {
     "name": "Cloning",
     "description": "",
-    "cost": 1000,
+    "cost": 1000000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -152,7 +152,7 @@
   {
     "name": "Closed Ecologies",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -173,7 +173,7 @@
   {
     "name": "Cloud Computing",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [],
@@ -182,7 +182,7 @@
   {
     "name": "Computational Cognition",
     "description": "",
-    "cost": 1000,
+    "cost": 1000000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [
@@ -203,7 +203,7 @@
   {
     "name": "Cryonics",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
@@ -212,7 +212,7 @@
   {
     "name": "Deep Learning",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [
@@ -229,7 +229,7 @@
   {
     "name": "Drones",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -250,7 +250,7 @@
   {
     "name": "Dynamic Content Generation",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Entertainment",
     "requiredTechs": [
@@ -270,7 +270,7 @@
   {
     "name": "Enhanced Lasers",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Defense",
     "requiredTechs": [],
@@ -288,7 +288,7 @@
   {
     "name": "Field Manipulation",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Defense",
     "requiredTechs": [
@@ -308,7 +308,7 @@
   {
     "name": "Genetic Engineering",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
@@ -325,7 +325,7 @@
   {
     "name": "Gestural Interfaces",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Entertainment",
     "requiredTechs": [],
@@ -343,7 +343,7 @@
   {
     "name": "Improved Robotics",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -370,7 +370,7 @@
   {
     "name": "In-Vitro Cultivation",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -390,7 +390,7 @@
   {
     "name": "Integrated Implants",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -410,7 +410,7 @@
   {
     "name": "Internet of Things",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -421,7 +421,7 @@
   {
     "name": "Machine Translation",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [
@@ -437,7 +437,7 @@
   {
     "name": "Memory Emulation",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -458,7 +458,7 @@
   {
     "name": "Memory Retrieval",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [
@@ -469,7 +469,7 @@
   {
     "name": "Metamaterials",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -488,7 +488,7 @@
   {
     "name": "Nanorobotics",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -499,7 +499,7 @@
   {
     "name": "Neuromarketing",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Entertainment",
     "requiredTechs": [
@@ -515,7 +515,7 @@
   {
     "name": "Neuromorphic Chips",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -528,7 +528,7 @@
   {
     "name": "Nutritive Engineering",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
@@ -542,7 +542,7 @@
   {
     "name": "Predictive Analytics",
     "description": "With so much data and sophisticated machine learning algorithms, we can start to predict emergent phenomena some time in advance to their actual occurrence",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [
@@ -561,7 +561,7 @@
   {
     "name": "Quantum Computing",
     "description": "",
-    "cost": 1000,
+    "cost": 1000000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -581,7 +581,7 @@
   {
     "name": "Synthetic Biology",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -600,7 +600,7 @@
   {
     "name": "Telomere Restoration",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
@@ -620,7 +620,7 @@
   {
     "name": "The Blockchain",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [],
@@ -637,7 +637,7 @@
   {
     "name": "Virtual Reality",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -656,7 +656,7 @@
   {
     "name": "Volumetric Displays",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
@@ -676,7 +676,7 @@
   {
     "name": "Wearables",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Hardware",
     "requiredTechs": [],
@@ -693,7 +693,7 @@
   {
     "name": "Whole-Brain Emulation",
     "description": "",
-    "cost": 1000,
+    "cost": 100000,
     "requiredProgress": 10000,
     "requiredVertical": "Information",
     "requiredTechs": [

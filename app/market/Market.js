@@ -29,7 +29,7 @@ class Market {
     this.totalTurns = config.MAX_TURNS;
     this.turnsLeft = this.totalTurns;
 
-    var competitor = _.sample(player.competitors);
+    var competitor = _.sample(_.filter(player.competitors, c => !c.disabled));
     var competitorProduct = Competitor.createProduct(product, competitor);
 
     this.players = [

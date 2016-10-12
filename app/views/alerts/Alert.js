@@ -35,6 +35,7 @@ class Alert extends View {
     if (_.isFunction(state.pause)) {
       state.pause();
     }
+    Alert.current = this;
     $('.alert-wrapper').show();
   }
 
@@ -44,8 +45,10 @@ class Alert extends View {
     if (_.isFunction(state.resume)) {
       state.resume();
     }
+    Alert.current = null;
     $('.alert-wrapper').hide();
   }
 }
 
+Alert.current = null;
 export default Alert;

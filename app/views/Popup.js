@@ -3,6 +3,7 @@ import _ from 'underscore';
 import util from 'util';
 import View from './View';
 import Manager from 'app/Manager';
+import Alert from 'views/alerts/Alert';
 
 const template = data => `
 <div class="popup ${util.slugify(data.title)}">
@@ -42,7 +43,10 @@ class Popup extends View {
     $(document).off('keydown');
     $(document).on('keydown', function(e) {
       if (e.which === 27) {  // esc
-        self.remove();
+        // don't remove if an alert is showing
+        if (!Alert.current) {
+          self.remove();
+        }
       }
       e.preventDefault();
     });

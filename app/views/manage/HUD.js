@@ -29,6 +29,8 @@ const template = data => `
     <li class="view-tasks">View Tasks</li>
   </ul>
 </div>
+<div class="hud-challenges">
+</div>
 `
 
 function hudTaskTemplate(task) {

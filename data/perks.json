@@ -5,7 +5,7 @@
       {
         "name": "Office Keg",
         "description": "Some people work better with a buzz",
-        "cost": 5000,
+        "cost": 20000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -21,7 +21,7 @@
       {
         "name": "Microbrew Beers",
         "description": "Fancier beers",
-        "cost": 10000,
+        "cost": 60000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -37,7 +37,7 @@
       {
         "name": "Cocktail Lounge",
         "description": "",
-        "cost": 100000,
+        "cost": 1000000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -58,7 +58,7 @@
       {
         "name": "Bike Share",
         "description": "Minimize transit time on our campus",
-        "cost": 100000,
+        "cost": 1000000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -98,7 +98,7 @@
       {
         "name": "Hovercarts",
         "description": "The smoothest and fastest ride around campus",
-        "cost": 1000000,
+        "cost": 10000000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -123,7 +123,7 @@
       {
         "name": "Snacks",
         "description": "Snacks to keep people energized",
-        "cost": 5000,
+        "cost": 40000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -143,7 +143,7 @@
       {
         "name": "Catering",
         "description": "Eating out is a waste of company time",
-        "cost": 15000,
+        "cost": 150000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -163,7 +163,7 @@
       {
         "name": "Gourmet Chef",
         "description": "Employees have less a reason to leave",
-        "cost": 50000,
+        "cost": 1500000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -188,7 +188,7 @@
       {
         "name": "Coffee",
         "description": "Drink coffee, do stuff faster",
-        "cost": 5000,
+        "cost": 25000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -204,7 +204,7 @@
       {
         "name": "Butter Coffee",
         "description": "Brain-optimized coffee concoction",
-        "cost": 10000,
+        "cost": 60000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -221,7 +221,7 @@
       {
         "name": "Modafinil",
         "description": "The Airforce-grade stimulant, now powering workers",
-        "cost": 100000,
+        "cost": 1000000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Advanced Psychotropics"
@@ -244,7 +244,7 @@
       {
         "name": "Holiday Parties",
         "description": "Organize office parties",
-        "cost": 20000,
+        "cost": 200000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -257,7 +257,7 @@
       {
         "name": "Company Retreats",
         "description": "Oragnize team-building retreats",
-        "cost": 50000,
+        "cost": 500000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -275,7 +275,7 @@
       {
         "name": "Text-a-Therapist",
         "description": "Help employees cope",
-        "cost": 20000,
+        "cost": 200000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -292,7 +292,7 @@
       {
         "name": "Life Coaches",
         "description": "Help employees navigate their careers successfully",
-        "cost": 40000,
+        "cost": 400000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -314,7 +314,7 @@
       {
         "name": "Custodial Staff",
         "description": "They'll do the chores, we'll do the working",
-        "cost": 50000,
+        "cost": 500000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -335,7 +335,7 @@
       {
         "name": "Caretaker Automatons",
         "description": "These Caretakers will tend to every one of our employee's needs",
-        "cost": 200000,
+        "cost": 2000000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -360,7 +360,7 @@
       {
         "name": "Daycare",
         "description": "Employees with children shouldn't have to spend precious time taking care of them",
-        "cost": 50000,
+        "cost": 500000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -377,7 +377,7 @@
       {
         "name": "Egg Freezing",
         "description": "Employees should't have to choose between their career and having children",
-        "cost": 80000,
+        "cost": 800000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -399,7 +399,7 @@
       {
         "name": "Fitness Trackers",
         "description": "Give employees the tool to optimize themselves",
-        "cost": 15000,
+        "cost": 800000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Wearables"
@@ -421,7 +421,7 @@
       {
         "name": "Psychic Pacemakers",
         "description": "Peak physical health is not enough, employees should be at their mental best as well",
-        "cost": 60000,
+        "cost": 1600000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Integrated Implants"
@@ -440,7 +440,7 @@
       {
         "name": "Neuromorphic Implants",
         "description": "Employees should not be limited by their human minds",
-        "cost": 160000,
+        "cost": 15000000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Neuromorphic Chips"
@@ -464,7 +464,7 @@
       {
         "name": "Gym Memberships",
         "description": "Subsidizing gym memberships",
-        "cost": 10000,
+        "cost": 100000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -481,7 +481,7 @@
       {
         "name": "Gym",
         "description": "If gyms are on-site, employees waste less time",
-        "cost": 80000,
+        "cost": 1800000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -503,7 +503,7 @@
       {
         "name": "On-Site Medical Facilities",
         "description": "Employees should always be in their most productive condition",
-        "cost": 80000,
+        "cost": 1000000,
         "requiredOffice": 2,
         "requiredTechs": [],
         "effects": [
@@ -525,7 +525,7 @@
       {
         "name": "Gene Therapy Lounges",
         "description": "Complimentary gene reconfigurations so employees can be their best",
-        "cost": 1200000,
+        "cost": 12000000,
         "requiredOffice": 2,
         "requiredTechs": [
           "Genetic Engineering"
@@ -553,7 +553,7 @@
       {
         "name": "Ping-Pong",
         "description": "Support serendipity",
-        "cost": 10000,
+        "cost": 20000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -570,7 +570,7 @@
       {
         "name": "VR Experience Veil",
         "description": "With the VREV, employees can feel like they're painting a masterpiece when they're working on a spreadsheet",
-        "cost": 200000,
+        "cost": 20000000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Virtual Reality"
@@ -598,7 +598,7 @@
       {
         "name": "Couches",
         "description": "A spot to crash",
-        "cost": 1000,
+        "cost": 5000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -614,7 +614,7 @@
       {
         "name": "Sleep Pods",
         "description": "On-site rejuvenation pods for employees to rest in, cutting down on commuting time",
-        "cost": 100000,
+        "cost": 8000000,
         "requiredOffice": 1,
         "requiredTechs": [
           "Cryonics"
@@ -637,7 +637,7 @@
       {
         "name": "Dream Workstations",
         "description": "Dream workstations allow employees to work while they dream",
-        "cost": 300000,
+        "cost": 40000000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -664,7 +664,7 @@
       {
         "name": "Video Conferencing",
         "description": "Meetings all over the world",
-        "cost": 10000,
+        "cost": 100000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -686,7 +686,7 @@
       {
         "name": "Hivemind",
         "description": "Employees can join into a single aggregate consciousness from anywhere for optimal meetings",
-        "cost": 1000000,
+        "cost": 100000000,
         "requiredOffice": 1,
         "requiredTechs": [
           "Brain-Computer Interfaces"
@@ -710,7 +710,7 @@
       {
         "name": "Transit Stipends",
         "description": "Get to the office with less hassle",
-        "cost": 10000,
+        "cost": 100000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -727,7 +727,7 @@
       {
         "name": "Employee Buses",
         "description": "Get employees to work as efficiently and conveniently as possible",
-        "cost": 100000,
+        "cost": 5000000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -754,7 +754,7 @@
       {
         "name": "Unlimited Vacation",
         "description": "Social norms mean no one will use this",
-        "cost": 5000,
+        "cost": 50000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -767,7 +767,7 @@
       {
         "name": "Vacation Implants",
         "description": "Implant memories of wonderful vacations without employees using any real time",
-        "cost": 100000,
+        "cost": 90000000,
         "requiredOffice": 0,
         "requiredTechs": [
           "Memory Emulation"
@@ -791,7 +791,7 @@
       {
         "name": "Yapper",
         "description": "A small yapper named Toby to lighten the mood",
-        "cost": 10000,
+        "cost": 20000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -807,7 +807,7 @@
       {
         "name": "Pupper",
         "description": "A nice pupper to inspire the office",
-        "cost": 20000,
+        "cost": 60000,
         "requiredOffice": 0,
         "requiredTechs": [],
         "effects": [
@@ -823,7 +823,7 @@
       {
         "name": "Doggo",
         "description": "A cool doggo to liven things up",
-        "cost": 40000,
+        "cost": 120000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [
@@ -839,7 +839,7 @@
       {
         "name": "Woofer",
         "description": "Her name is Sardine, but we call her Sally.",
-        "cost": 60000,
+        "cost": 240000,
         "requiredOffice": 1,
         "requiredTechs": [],
         "effects": [

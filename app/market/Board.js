@@ -260,9 +260,7 @@ class Board {
 
   onDoubleClickTile(tile) {
     var self = this;
-    if (!this.selectedTile) {
-      this.selectedTile = tile;
-    }
+    this.selectedTile = tile;
     var selectedPieceIsValid = this.selectedTile
       && this.selectedTile.piece
       && this.selectedTile.piece.owner.human

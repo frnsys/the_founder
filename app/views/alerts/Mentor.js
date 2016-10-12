@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Alert from './Alert';
 
 const template = data => `
@@ -19,23 +20,31 @@ class MentorView extends Alert {
       template: template,
       handlers: {
         '.next': function() {
-          if (this.idx < this.messages.length - 1) {
-            this.idx++;
-            this.render();
-          } else {
-            this.remove();
-          }
+          this.next();
         },
         '.prev': function() {
-          if (this.idx > 0) {
-            this.idx--;
-            this.render();
-          }
+          this.prev();
         }
       }
     });
     this.idx = 0;
     this.messages = messages;
+  }
+
+  next() {
+    if (this.idx < this.messages.length - 1) {
+      this.idx++;
+      this.render();
+    } else {
+      this.remove();
+    }
+  }
+
+  prev() {
+    if (this.idx > 0) {
+      this.idx--;
+      this.render();
+    }
   }
 
   render() {
@@ -46,13 +55,32 @@ class MentorView extends Alert {
   }
 
   postRender() {
+    var self = this;
     super.postRender();
     MentorView.exists = true;
+
+    // hacky
+    $(document).off('keydown');
+    $(document).on('keydown', function(e) {
+      switch(e.which) {
+        case 37: // left
+          self.prev();
+          break;
+
+        case 39: // right
+          self.next();
+          break;
+
+        default: return;
+      }
+      e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
   }
 
   postRemove() {
     super.postRemove();
     MentorView.exists = false;
+    $(document).off('keydown');
   }
 }
 

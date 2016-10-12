@@ -21,6 +21,7 @@ import competitors from 'data/competitors.json';
 import technologies from 'data/technologies.json';
 import productTypes from 'data/productTypes.json';
 import onboarding from 'data/onboarding.json';
+import challenges from 'data/challenges.json';
 
 const lockedLocations = [
   'Seasteading State',
@@ -106,6 +107,9 @@ class Player {
       growth: 0,
 
       onboarding: onboarding,
+      challenges: _.map(challenges, c => _.extend({
+        finished: false
+      }, c)),
 
       settings: {
         music: true

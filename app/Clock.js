@@ -10,6 +10,7 @@
  *     - the Immortal special effect negates this death
  */
 
+import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import config from 'config';
@@ -56,6 +57,13 @@ class Clock {
       this.frames++;
       this.updateScheduled();
 
+      // check challenges
+      _.each(_.filter(this.player.challenges, c => !c.finished), c => {
+        if (Condition.satisfied(c.condition, this.player)) {
+          c.finished = true;
+        }
+      });
+
       if (this.frames % config.SECONDS_PER_WEEK === 0) {
         this.player.week++;
         this.weekly();
@@ -63,6 +71,8 @@ class Clock {
         if (this.player.week >= config.WEEKS_PER_MONTH) {
           this.player.week = 0;
           this.monthly();
+
+          this.updateChallenge();
 
           if (this.player.month >= 11) {
             this.player.month = 0;
@@ -153,6 +163,16 @@ class Clock {
     Economy.update(this.player);
     checkDeath(this.player);
     this.player.current.inbox.push(annualReport(this.player));
+  }
+
+  updateChallenge() {
+    // sample a random challenge to display
+    var challenge = _.sample(_.filter(this.player.challenges, c => !c.finished));
+    if (challenge) {
+      $('.hud-challenges').html(`<h5>Challenges</h5><h1>${challenge.name}</h1><p>${Condition.toString(challenge.condition)}</p>`)
+    } else {
+      $('.hud-challenges').html('');
+    }
   }
 
   updateEmployeeThoughts() {

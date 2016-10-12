@@ -12,6 +12,7 @@ import Verticals from './Verticals';
 import ProductTypes from './ProductTypes';
 import Browser from '../browser/Browser.js';
 import Accounting from './Accounting';
+import Challenges from './Challenges';
 import Settings from './Settings';
 import Confirm from 'views/alerts/Confirm';
 
@@ -60,6 +61,10 @@ function template(data) {
       <img src="assets/manage/accounting.gif">
       <div class="tip">Accounting</div>
     </li>
+    <li class="manage-challenges">
+      <img src="assets/manage/challenges.gif">
+      <div class="tip">Challenges</div>
+    </li>
     ${office}
     <li class="manage-settings">
       <img src="assets/manage/settings.gif">
@@ -88,6 +93,7 @@ class Menu extends View {
       '.manage-browser': this.showView(Browser),
       '.manage-settings': this.showView(Settings),
       '.manage-accounting': this.showView(Accounting),
+      '.manage-challenges': this.showView(Challenges),
       '.selected': function() {
         // unselect and hide view
         $('.ui').empty();

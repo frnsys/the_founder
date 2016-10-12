@@ -22,6 +22,7 @@ import EmployeeSelectionView from 'views/select/Employee';
 import ProductDesignerView from 'views/ProductDesigner';
 import TaskCompleteView from 'views/alerts/TaskComplete';
 import MarketReport from 'views/alerts/MarketReport';
+import Challenges from 'views/manage/Challenges';
 
 const ONBOARDING_WAIT = 150; // frames
 
@@ -48,6 +49,15 @@ class Manage extends Phaser.State {
     this.selectUI = new SelectUI(office, this.showSelection.bind(this));
     this.menu.render();
     this.hud.render();
+    this.clock.updateChallenge();
+
+    // hacky, show challenges on HUD challenge click
+    $('.hud-challenges').off();
+    $('.hud-challenges').on('click', () => {
+      // sooo hacky
+      $('.manage-challenges').click();
+    });
+
     $('#office, .hud, .menu').show();
     $('.selection').hide();
 

@@ -74,6 +74,12 @@ class ProductTypesView extends CardsList {
     this.nProductTypes = this.player.company.productTypes.length;
   }
 
+  update() {
+    this.el.find('.current-cash-value').text(
+      `Cash: ${util.formatCurrency(this.player.company.cash)}`
+    );
+  }
+
   processItem(item) {
     var player = this.player,
         item = _.clone(item);

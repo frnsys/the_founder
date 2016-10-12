@@ -31,7 +31,10 @@ const Condition = {
   nPerks: (player) => player.company.perks.length,
   perks: (player) => player.company.perks,
   perkUpgrades: (player) => player.company.perkUpgrades,
-  locations: (player) => player.company.locations.length,
+  lobbies: (player) => player.company.lobbies,
+  nLobbies: (player) => player.company.lobbies.length,
+  acquisitions: (player) => player.company.acquisitions,
+  locations: (player) => player.company.locations,
   nLocations: (player) => player.company.locations.length,
   employees: (player) => player.company.workers.length,
   officeLevel: (player) => player.company.office,
@@ -51,7 +54,55 @@ const Condition = {
   globalAvgWage: (player) => player.snapshot.globalAvgWage,
   consumerSpending: (player) => player.snapshot.consumerSpending,
   productDeveloping: (player) => _.filter(player.company.tasks, t => t.type == Task.Type.Product).length > 0,
-  lifetimeRevenue: (player) => player.company.lifetimeRevenue
+  lifetimeRevenue: (player) => player.company.lifetimeRevenue,
+
+  toString: function(cond) {
+    // this doesn't cover all cases, just those used by challenges
+    switch (cond.type) {
+        case 'lobbies':
+          switch (cond.op) {
+            case 'has':
+              return 'Complete the ' + cond.val + ' lobby.';
+          }
+        case 'nLobbies':
+          switch (cond.op) {
+            case 'ge':
+              return 'Complete ' + cond.val + ' lobbies.';
+          }
+        case 'verticals':
+          switch (cond.op) {
+            case 'has':
+              return 'Expand to ' + cond.val + ' vertical.';
+          }
+        case 'specialProjects':
+          switch (cond.op) {
+            case 'has':
+              return 'Complete the ' + cond.val + ' special project.';
+          }
+        case 'nLocations':
+          switch (cond.op) {
+            case 'gt':
+              return 'Expand to a new location.';
+          }
+        case 'locations':
+          switch (cond.op) {
+            case 'has':
+              return 'Expand to the ' + cond.val + ' location.';
+          }
+        case 'acquisitions':
+          switch (cond.op) {
+            case 'has':
+              return 'Acquire ' + cond.val + '.';
+          }
+        case 'annualRevenue':
+          switch (cond.op) {
+            case 'ge':
+              return 'Make at least ' + util.formatCurrencyAbbrev(cond.val) + ' in annual revenue.';
+          }
+        default:
+          return;
+    }
+  }
 };
 
 export default Condition;

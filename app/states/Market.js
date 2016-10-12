@@ -14,6 +14,7 @@ import Product from 'game/Product';
 import Market from 'market/Market';
 import MarketView from 'views/Market';
 import Confirm from 'views/alerts/Confirm';
+import Alert from 'views/alerts/Alert';
 
 
 class TheMarket extends Phaser.State {
@@ -127,25 +128,30 @@ class TheMarket extends Phaser.State {
     });
   }
 
-  endGame() {
-    var market = this.market;
-    var marketShares = _.filter(market.humanPlayer.tiles, t => t instanceof Tile.Income),
-        influencers = _.filter(market.humanPlayer.tiles, t => t instanceof Tile.Influencer);
-    var results = Product.setRevenue(this.product, marketShares, influencers, this.player);
-    results.marketShare = market.percentMarketShare().human;
-    this.player.company.finishProduct(this.product);
+  endGame(reason) {
+    var view = new Alert({
+      onDismiss: () => {
+        var market = this.market;
+        var marketShares = _.filter(market.humanPlayer.tiles, t => t instanceof Tile.Income),
+            influencers = _.filter(market.humanPlayer.tiles, t => t instanceof Tile.Influencer);
+        var results = Product.setRevenue(this.product, marketShares, influencers, this.player);
+        results.marketShare = market.percentMarketShare().human;
+        this.player.company.finishProduct(this.product);
 
-    Tile.onCapture.removeAll();
-    Tile.onSingleClick.removeAll();
-    Tile.onDoubleClick.removeAll();
+        Tile.onCapture.removeAll();
+        Tile.onSingleClick.removeAll();
+        Tile.onDoubleClick.removeAll();
 
-    this.view.remove();
-    this.player.save();
-    $('#market').removeClass('market-active');
-    $('body').removeClass('market-background');
+        this.view.remove();
+        this.player.save();
+        $('#market').removeClass('market-active');
+        $('body').removeClass('market-background');
 
-    this.game.state.states['Manage'].marketResults = results;
-    this.game.state.start('Manage');
+        this.game.state.states['Manage'].marketResults = results;
+        this.game.state.start('Manage');
+      }
+    });
+    view.render({message: reason});
   }
 }
 

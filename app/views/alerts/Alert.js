@@ -5,10 +5,10 @@ import Manager from 'app/Manager';
 
 const template = data => `
 <div class="alert-message">
-  ${data.message}
-</div>
-<div class="alert-actions">
-  <button class="dismiss-alert">Ok</button>
+  <p>${data.message}</p>
+  <div class="alert-actions">
+    <button class="dismiss-alert">Ok</button>
+  </div>
 </div>
 `
 
@@ -22,6 +22,9 @@ class Alert extends View {
     this.registerHandlers({
       '.dismiss-alert': function() {
         this.remove();
+        if (params.onDismiss) {
+          params.onDismiss();
+        }
       }
     });
   }

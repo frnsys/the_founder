@@ -10,12 +10,13 @@ import Product from 'game/Product';
 import Competitor from 'game/Competitor';
 import socialMediaHandles from 'data/influencers.json'
 
+const END_GAME_DELAY = 600;
 const socialMediaTitles = ['Thought Leader', 'Social Media Star', 'Internet Sensation', 'Celeb'];
 
 function createPieces(player, product) {
   var quantity = Product.levels.quantity[product.levels.quantity],
-      strength = Product.levels.strength[product.levels.strength],
-      movement = Product.levels.movement[product.levels.movement];
+    strength = Product.levels.strength[product.levels.strength],
+    movement = Product.levels.movement[product.levels.movement];
 
   return _.times(quantity, function() {
     return new Piece.Product(player, product, strength, movement);
@@ -69,8 +70,8 @@ class Market {
 
   percentMarketShare() {
     var shares = {human: 0, ai: 0},
-        total = 0,
-        self = this;
+      total = 0,
+      self = this;
     _.each(this.board.incomeTiles, function(tile) {
       var income = tile.income + 1;
       if (tile.owner == self.humanPlayer) {
@@ -88,13 +89,30 @@ class Market {
     return (this.turnsLeft <= 0 || this.board.uncapturedTiles.length == 0 || (this.aiPlayer.pieces.length == 0 || this.humanPlayer.pieces.length == 0));
   }
 
+  handleEndGame() {
+    var self = this,
+        reason;
+    if (this.turnsLeft <= 0) {
+      reason = 'Out of turns';
+    } else if (this.board.uncapturedTiles.length == 0) {
+      reason = 'The Market\'s been saturated';
+    } else if (this.aiPlayer.pieces.length == 0) {
+      reason = 'Obliterated the competition';
+    } else if (this.humanPlayer.pieces.length == 0) {
+      reason = 'Obliterated by the competition';
+    }
+    setTimeout(function() {
+      self.endGame(`${reason} - time to leave the Market!`);
+    }, END_GAME_DELAY);
+  }
+
   endTurn() {
+    var self = this;
     this.turnsLeft--;
     this.board.unhighlightTiles();
     if (this.shouldEndGame()) {
-      this.endGame();
+      this.handleEndGame();
     } else {
-      var self = this;
       this.startTurn(this.aiPlayer);
       this.AI.takeTurn(function() {
         // add a little delay
@@ -102,7 +120,7 @@ class Market {
         setTimeout(function() {
           self.startTurn(self.humanPlayer)
           if (self.shouldEndGame()) {
-            self.endGame();
+            self.handleEndGame();
           }
         }, 1200);
       });

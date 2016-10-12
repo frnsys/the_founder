@@ -54,7 +54,12 @@ const Condition = {
   globalAvgWage: (player) => player.snapshot.globalAvgWage,
   consumerSpending: (player) => player.snapshot.consumerSpending,
   productDeveloping: (player) => _.filter(player.company.tasks, t => t.type == Task.Type.Product).length > 0,
-  lifetimeRevenue: (player) => player.company.lifetimeRevenue
+  lifetimeRevenue: (player) => player.company.lifetimeRevenue,
+
+
+  toString: function(condition) {
+    return 'TODO';
+  }
 };
 
 export default Condition;

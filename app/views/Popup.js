@@ -47,8 +47,8 @@ class Popup extends View {
         if (!Alert.current) {
           self.remove();
         }
+        e.preventDefault();
       }
-      e.preventDefault();
     });
   }
 

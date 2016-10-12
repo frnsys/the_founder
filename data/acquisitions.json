@@ -2,92 +2,131 @@
   {
     "name": "The Times Journal",
     "description": "The golden standard of journalism",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 250000000,
+    "revenue": 350000000,
+    "effects": [{
+      "type": "forgettingRate",
+      "value": 0.2
+    }]
   },
   {
     "name": "B&C",
     "description": "Don't worry",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 10000000000,
+    "revenue": 2500000000,
+    "effects": [{
+      "type": "marketing",
+      "value": 10
+    }]
   },
   {
     "name": "Carrot, Inc",
-    "description": "We'll change your life",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "description": "Think not the same",
+    "cost": 500000000000,
+    "revenue": 250000000000,
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.1
+    }]
   },
   {
     "name": "Coralzon",
     "description": "All the products you could want",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 300000000000,
+    "revenue": 110000000000,
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.1
+    }]
   },
   {
     "name": "FaceSpace",
     "description": "The space for your digital face",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 350000000000,
+    "revenue": 25000000000,
+    "effects": [{
+      "type": "expansionCostMultiplier",
+      "value": -0.2
+    }]
   },
   {
     "name": "GenoMe",
     "description": "Biotechnology as unique as you",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 1500000000,
+    "revenue": 200000000,
+    "effects": [{
+      "type": "researchCostMultiplier",
+      "value": -0.2
+    }]
   },
   {
     "name": "HyperReal",
     "description": "Shape your own reality",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 10000000000,
+    "revenue": 16000000000,
+    "effects": [{
+      "type": "forgettingRate",
+      "value": 0.1
+    }]
   },
   {
     "name": "Kougle",
     "description": "Your information at everyone's fingertips",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 500000000000,
+    "revenue": 75000000000,
+    "effects": [{
+      "type": "engineering",
+      "value": 10
+    }]
   },
   {
     "name": "Paladin",
-    "description": "Don't think, we've got it covered",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "description": "Got my eye on you",
+    "cost": 12000000000,
+    "revenue": 2000000000,
+    "effects": [{
+      "type": "productivity",
+      "value": 6
+    }]
   },
   {
     "name": "Praeta Industries",
     "description": "Desire is infinite, and so is our selection",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 10000000000,
+    "revenue": 2500000000,
+    "effects": [{
+      "type": "design",
+      "value": 10
+    }]
   },
   {
     "name": "Goldwin Brothers",
     "description": "Investing in our future",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 240000000000,
+    "revenue": 100000000000,
+    "effects": [{
+      "type": "revenuePerMarketShare",
+      "value": 1000
+    }]
   },
   {
     "name": "Volta",
     "description": "Taking you away",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 50000000000,
+    "revenue": 10000000000,
+    "effects": [{
+      "type": "engineering",
+      "value": 10
+    }]
   },
   {
     "name": "Dark Industries",
     "description": "A thinktank",
-    "cost": 100000,
-    "revenue": 100000,
-    "effects": []
+    "cost": 1000000000000,
+    "revenue": 100000000000,
+    "effects": [{
+      "type": "costMultiplier",
+      "value": -0.1
+    }]
   }
 ]

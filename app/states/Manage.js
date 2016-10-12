@@ -80,7 +80,7 @@ class Manage extends Phaser.State {
   enterTheMarket(p) {
     var self = this;
     this.pause();
-    var view = new ProductDesignerView(p),
+    var view = new ProductDesignerView(p, this.player),
       postRemove = view.postRemove.bind(view);
     view.postRemove = function() {
       postRemove();

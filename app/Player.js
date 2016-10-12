@@ -73,6 +73,7 @@ class Player {
       costMultiplier: 1,
       economy: Enums.Economy.Neutral,
       nextEconomy: Enums.Economy.Neutral,
+      revenuePerMarketShareBonus: 0,
 
       competitors: competitors,
       workers: _.map(workers, function(w) {

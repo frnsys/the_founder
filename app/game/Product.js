@@ -106,7 +106,7 @@ const Product = {
         economyMultiplier = Economy.multiplier(player.economy);
     p.earnedRevenue = 0;
     var baseRevenue = _.reduce(marketShares, function(m,w) {
-      return m + Product.marketShareToRevenue(w.income, p);
+      return m + Product.marketShareToRevenue(w.income, p, player);
     }, 0)
     p.revenue = baseRevenue * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier * economyMultiplier;
     return {
@@ -126,8 +126,8 @@ const Product = {
     p.earnedRevenue += revenue;
     return revenue;
   },
-  marketShareToRevenue: function(incomeLevel, product) {
-    return Math.pow((incomeLevel + 1), 2) * config.BASE_REVENUE_PER_SHARE * product.revenueScore;
+  marketShareToRevenue: function(incomeLevel, product, player) {
+    return Math.pow((incomeLevel + 1), 2) * (config.BASE_REVENUE_PER_SHARE + player.revenuePerMarketShareBonus) * product.revenueScore;
   },
 
   // for the product designer

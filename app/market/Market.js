@@ -53,7 +53,7 @@ class Market {
 
     // setup income tile descriptions
     _.each(this.board.incomeTiles, function(t) {
-      t.description = `Capture cost: ${t.baseCost}<br>Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, product))} revenue`;
+      t.description = `Capture cost: ${t.baseCost}<br>Generates ${util.formatCurrency(Product.marketShareToRevenue(t.income, product, player))} revenue`;
     });
 
     // setup influencer tile names

@@ -72,6 +72,9 @@ const Effect = {
   researchCostMultiplier: function(player, value, remove) {
     player.researchCostMultiplier += remove ? -value : value;
   },
+  revenuePerMarketShare: function(player, value, remove) {
+    player.revenuePerMarketShareBonus += remove ? -value : value;
+  },
   product: function(player, value, remove) {
     var bonuses = player.company.productBonuses,
         vertical = value.vertical,
@@ -130,6 +133,8 @@ const Effect = {
           return valueStr + ' outrage';
         case 'cash':
           return valueStr + ' cash';
+        case 'revenuePerMarketShare':
+          return valueStr + ' revenue per market share';
       }
     } else if (_.isString(effect.value)) {
       switch (effect.type) {

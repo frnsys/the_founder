@@ -70,11 +70,12 @@ Revenue per market share: ${util.formatCurrency(data.revenuePerShare)}
 `;
 
 class ProductDesigner extends Popup {
-  constructor(product) {
+  constructor(product, player) {
     super({
       title: 'Product Designer',
       template: template
     });
+    this.player = player;
     this.product = product;
     this.registerHandlers({
       '.product-point-add': function(ev) {
@@ -118,7 +119,7 @@ class ProductDesigner extends Popup {
         o[n] = self.canAfford(n, Product.costs[n](self.product));
         return o;
       }, {}),
-      revenuePerShare: Product.marketShareToRevenue(0, this.product)
+      revenuePerShare: Product.marketShareToRevenue(0, this.product, this.player)
     }, this.product));
     // hack to hide tooltips after re-render
     // otherwise they hang around b/c the element

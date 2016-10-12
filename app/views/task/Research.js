@@ -56,7 +56,7 @@ class ResearchView extends CardsList {
         }
       }
     });
-    this.showAll = true;
+    this.showAll = false;
     this.player = player;
   }
 
@@ -67,7 +67,7 @@ class ResearchView extends CardsList {
     });
 
     // hacky
-    this.el.find('header').append('<div class="toggle-filter">Show Available</div>');
+    this.el.find('header').append('<div class="toggle-filter">Show All</div>');
   }
 
   update() {

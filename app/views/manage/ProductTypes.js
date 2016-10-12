@@ -74,25 +74,6 @@ class ProductTypesView extends CardsList {
     this.nProductTypes = this.player.company.productTypes.length;
   }
 
-  update() {
-    var self = this;
-    _.each(_.zip(this.items, this.subviews), function(v) {
-      var item = self.processItem(v[0]);
-      if (!_.isEqual(v[0], item)) {
-        v[1].el.find('button').replaceWith(button(item));
-      }
-    });
-
-    this.el.find('.current-cash-value').text(
-      `Cash: ${util.formatCurrency(this.player.company.cash)}`
-    );
-
-    // re-render if new product types are discovered
-    if (this.player.company.productTypes.length > this.nProductTypes) {
-      this.render();
-    }
-  }
-
   processItem(item) {
     var player = this.player,
         item = _.clone(item);

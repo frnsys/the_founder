@@ -34,7 +34,7 @@
     "val": "Worker Visas"
   }
 }, {
-  "name": "Progress",
+  "name": "Trolley Problems",
   "condition": {
     "type": "lobbies",
     "op": "has",
@@ -121,8 +121,8 @@
   "name": "Globalization",
   "condition": {
     "type": "nLocations",
-    "op": "ge",
-    "val": 2
+    "op": "gt",
+    "val": 1
   }
 }, {
   "name": "Outsource",

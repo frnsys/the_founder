@@ -2,6 +2,7 @@ import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import View from './View';
+import Manager from 'app/Manager';
 
 const template = data => `
 <div class="popup ${util.slugify(data.title)}">
@@ -29,12 +30,20 @@ class Popup extends View {
 
   postRender() {
     super.postRender();
+    var state = Manager.game.state.states[Manager.game.state.current];
+    if (_.isFunction(state.pause)) {
+      state.pause();
+    }
     $('.popups').show();
     Popup.current = this;
   }
 
   postRemove() {
     super.postRemove();
+    var state = Manager.game.state.states[Manager.game.state.current];
+    if (_.isFunction(state.resume)) {
+      state.resume();
+    }
     $('.popups').hide();
     Popup.current = null;
   }

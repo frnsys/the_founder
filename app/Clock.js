@@ -56,6 +56,13 @@ class Clock {
       this.frames++;
       this.updateScheduled();
 
+      // check challenges
+      _.each(_.filter(this.player.challenges, c => !c.finished), c => {
+        if (Condition.satisfied(c.condition, this.player)) {
+          c.finished = true;
+        }
+      });
+
       if (this.frames % config.SECONDS_PER_WEEK === 0) {
         this.player.week++;
         this.weekly();

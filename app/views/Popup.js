@@ -30,12 +30,22 @@ class Popup extends View {
 
   postRender() {
     super.postRender();
-    var state = Manager.game.state.states[Manager.game.state.current];
+    var self = this,
+        state = Manager.game.state.states[Manager.game.state.current];
     if (_.isFunction(state.pause)) {
       state.pause();
     }
     $('.popups').show();
     Popup.current = this;
+
+    // hacky
+    $(document).off('keydown');
+    $(document).on('keydown', function(e) {
+      if (e.which === 27) {  // esc
+        self.remove();
+      }
+      e.preventDefault();
+    });
   }
 
   postRemove() {
@@ -46,6 +56,7 @@ class Popup extends View {
     }
     $('.popups').hide();
     Popup.current = null;
+    $(document).off('keydown');
   }
 }
 

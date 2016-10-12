@@ -1,0 +1,190 @@
+[{
+  "title": "Try Democracy",
+  "condition": {
+    "type": "lobbies",
+    "op": "has",
+    "val": "Foreign Intervention"
+  }
+}, {
+  "title": "Hands Off!",
+  "condition": {
+    "type": "lobbies",
+    "op": "has",
+    "val": "Tax Breaks"
+  }
+}, {
+  "title": "No Handouts",
+  "condition": {
+    "type": "lobbies",
+    "op": "has",
+    "val": "Lower Min. Wage"
+  }
+}, {
+  "title": "Guns for Funds",
+  "condition": {
+    "type": "lobbies",
+    "op": "has",
+    "val": "DARPA Grants"
+  }
+}, {
+  "title": "Cheap Labor",
+  "condition": {
+    "type": "lobbies",
+    "op": "has",
+    "val": "Worker Visas"
+  }
+}, {
+  "title": "Progress",
+  "condition": {
+    "type": "lobbies",
+    "op": "has",
+    "val": "Lift Research Bans"
+  }
+}, {
+  "title": "Just Friends",
+  "condition": {
+    "type": "nLobbies",
+    "op": "ge",
+    "val": 6
+  }
+}, {
+  "title": "Lord of War",
+  "condition": {
+    "type": "verticals",
+    "op": "has",
+    "val": "Defense"
+  }
+}, {
+  "title": "Soma",
+  "condition": {
+    "type": "verticals",
+    "op": "has",
+    "val": "Entertainment"
+  }
+}, {
+  "title": "Hack Your Body",
+  "condition": {
+    "type": "verticals",
+    "op": "has",
+    "val": "Biotech"
+  }
+}, {
+  "title": "Risky Clique",
+  "condition": {
+    "type": "verticals",
+    "op": "has",
+    "val": "Finance"
+  }
+}, {
+  "title": "Too Rich to Quit",
+  "condition": {
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Telomere Therapy"
+  }
+}, {
+  "title": "Pigs in Space",
+  "condition": {
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Interstellar Ship"
+  }
+}, {
+  "title": "Fortune Teller",
+  "condition": {
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Delphi"
+  }
+}, {
+  "title": "A New You",
+  "condition": {
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Cloning Facility"
+  }
+}, {
+  "title": "A Better You",
+  "condition": {
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Robotics Facility"
+  }
+}, {
+  "title": "What Climate Change?",
+  "condition": {
+    "type": "specialProjects",
+    "op": "has",
+    "val": "Mars Colony"
+  }
+}, {
+  "title": "Globalization",
+  "condition": {
+    "type": "nLocations",
+    "op": "ge",
+    "val": 2
+  }
+}, {
+  "title": "Outsource",
+  "condition": {
+    "type": "locations",
+    "op": "has",
+    "val": "Bangalore"
+  }
+}, {
+  "title": "Capital Expansion",
+  "condition": {
+    "type": "locations",
+    "op": "has",
+    "val": "Mars Colony"
+  }
+}, {
+  "title": "Don't Tread On Me",
+  "condition": {
+    "type": "locations",
+    "op": "has",
+    "val": "Seasteading State"
+  }
+}, {
+  "title": "A Brave New Market",
+  "condition": {
+    "type": "locations",
+    "op": "has",
+    "val": "Gliese 832c"
+  }
+}, {
+  "title": "It's Warmer Than I Thought",
+  "condition": {
+    "type": "locations",
+    "op": "has",
+    "val": "New Antarctic Colonies"
+  }
+}, {
+  "title": "Buy a Newspaper",
+  "condition": {
+    "type": "acquisitions",
+    "op": "has",
+    "val": "The Times Journal"
+  }
+}, {
+  "title": "Cool Mil",
+  "condition": {
+    "type": "annualrevenue",
+    "op": "ge",
+    "val": 1000000
+  }
+}, {
+  "title": "Unicorn",
+  "condition": {
+    "type": "annualrevenue",
+    "op": "ge",
+    "val": 1000000000
+  }
+}, {
+  "title": "Mecha-Unicorn",
+  "condition": {
+    "type": "annualrevenue",
+    "op": "ge",
+    "val": 1000000000000
+  }
+}]

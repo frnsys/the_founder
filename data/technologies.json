@@ -3,16 +3,23 @@
     "name": "3D Printing",
     "description": "Print endless plastic trinkets",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Hardware",
+        "attribute": "strength",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Advanced Psychotropics",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
     "effects": [
@@ -29,7 +36,7 @@
     "name": "Alcubierre Drive",
     "description": "A powerful interstellar space engine which makes it possible to go to the furthest reaches of our galaxy",
     "cost": 10000000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Metamaterials",
@@ -49,7 +56,7 @@
     "name": "Artificial Gravity",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Field Manipulation"
@@ -60,7 +67,7 @@
     "name": "Atmospheric Manipulation",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "effects": [
       {
@@ -76,7 +83,7 @@
     "name": "Atomic Assembly",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Nanorobotics"
@@ -87,7 +94,7 @@
     "name": "Big Data",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [
       "Cloud Computing"
@@ -106,7 +113,7 @@
     "name": "Bioprinting",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "Synthetic Biology"
@@ -117,7 +124,7 @@
     "name": "Brain-Computer Interfaces",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
     "effects": [
@@ -134,7 +141,7 @@
     "name": "Cloning",
     "description": "",
     "cost": 1000000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "In-Vitro Cultivation"
@@ -153,7 +160,7 @@
     "name": "Closed Ecologies",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "Nutritive Engineering",
@@ -174,7 +181,7 @@
     "name": "Cloud Computing",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [],
     "effects": []
@@ -183,7 +190,7 @@
     "name": "Computational Cognition",
     "description": "",
     "cost": 1000000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [
       "Quantum Computing",
@@ -194,7 +201,7 @@
         "type": "product",
         "value": {
           "vertical": "Information",
-          "attribute": "engineering",
+          "attribute": "strength",
           "value": 1
         }
       }
@@ -204,7 +211,7 @@
     "name": "Cryonics",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
     "effects": []
@@ -213,7 +220,7 @@
     "name": "Deep Learning",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [
       "Big Data"
@@ -230,7 +237,7 @@
     "name": "Drones",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "3D Printing",
@@ -241,7 +248,7 @@
         "type": "product",
         "value": {
           "vertical": "Defense",
-          "attribute": "marketing",
+          "attribute": "quantity",
           "value": 1
         }
       }
@@ -251,7 +258,7 @@
     "name": "Dynamic Content Generation",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Entertainment",
     "requiredTechs": [
       "Predictive Analytics"
@@ -261,7 +268,7 @@
         "type": "product",
         "value": {
           "vertical": "Entertainment",
-          "attribute": "design",
+          "attribute": "quantity",
           "value": 1
         }
       }
@@ -271,7 +278,7 @@
     "name": "Enhanced Lasers",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Defense",
     "requiredTechs": [],
     "effects": [
@@ -279,7 +286,7 @@
         "type": "product",
         "value": {
           "vertical": "Defense",
-          "attribute": "engineering",
+          "attribute": "strength",
           "value": 1
         }
       }
@@ -289,7 +296,7 @@
     "name": "Field Manipulation",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Defense",
     "requiredTechs": [
       "Enhanced Lasers"
@@ -299,7 +306,7 @@
         "type": "product",
         "value": {
           "vertical": "Defense",
-          "attribute": "engineering",
+          "attribute": "strength",
           "value": 1
         }
       }
@@ -309,7 +316,7 @@
     "name": "Genetic Engineering",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
     "effects": [
@@ -326,7 +333,7 @@
     "name": "Gestural Interfaces",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Entertainment",
     "requiredTechs": [],
     "effects": [
@@ -334,7 +341,7 @@
         "type": "product",
         "value": {
           "vertical": "Entertainment",
-          "attribute": "design",
+          "attribute": "strength",
           "value": 1
         }
       }
@@ -344,7 +351,7 @@
     "name": "Improved Robotics",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Metamaterials",
@@ -371,7 +378,7 @@
     "name": "In-Vitro Cultivation",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "Bioprinting"
@@ -381,7 +388,7 @@
         "type": "product",
         "value": {
           "vertical": "Biotech",
-          "attribute": "marketing",
+          "attribute": "quantity",
           "value": 1
         }
       }
@@ -391,7 +398,7 @@
     "name": "Integrated Implants",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "Nanorobotics",
@@ -411,7 +418,7 @@
     "name": "Internet of Things",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Wearables"
@@ -422,7 +429,7 @@
     "name": "Machine Translation",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [
       "Deep Learning"
@@ -438,7 +445,7 @@
     "name": "Memory Emulation",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "Virtual Reality",
@@ -449,7 +456,7 @@
         "type": "product",
         "value": {
           "vertical": "Entertainment",
-          "attribute": "engineering",
+          "attribute": "movement",
           "value": 1
         }
       }
@@ -459,7 +466,7 @@
     "name": "Memory Retrieval",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [
       "Brain-Computer Interfaces"
@@ -470,7 +477,7 @@
     "name": "Metamaterials",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Atomic Assembly"
@@ -489,7 +496,7 @@
     "name": "Nanorobotics",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Drones"
@@ -500,7 +507,7 @@
     "name": "Neuromarketing",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Entertainment",
     "requiredTechs": [
       "Big Data"
@@ -516,7 +523,7 @@
     "name": "Neuromorphic Chips",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Deep Learning",
@@ -529,7 +536,7 @@
     "name": "Nutritive Engineering",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
     "effects": [
@@ -543,7 +550,7 @@
     "name": "Predictive Analytics",
     "description": "With so much data and sophisticated machine learning algorithms, we can start to predict emergent phenomena some time in advance to their actual occurrence",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [
       "Deep Learning"
@@ -562,7 +569,7 @@
     "name": "Quantum Computing",
     "description": "",
     "cost": 1000000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Atomic Assembly"
@@ -572,7 +579,7 @@
         "type": "product",
         "value": {
           "vertical": "Information",
-          "attribute": "engineering",
+          "attribute": "movement",
           "value": 1
         }
       }
@@ -582,7 +589,7 @@
     "name": "Synthetic Biology",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "Genetic Engineering"
@@ -601,7 +608,7 @@
     "name": "Telomere Restoration",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Biotech",
     "requiredTechs": [
       "Genetic Engineering",
@@ -621,7 +628,7 @@
     "name": "The Blockchain",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [],
     "effects": [
@@ -638,7 +645,7 @@
     "name": "Virtual Reality",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Gestural Interfaces"
@@ -657,7 +664,7 @@
     "name": "Volumetric Displays",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [
       "Virtual Reality"
@@ -667,7 +674,7 @@
         "type": "product",
         "value": {
           "vertical": "Entertainment",
-          "attribute": "marketing",
+          "attribute": "strength",
           "value": 1
         }
       }
@@ -677,7 +684,7 @@
     "name": "Wearables",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Hardware",
     "requiredTechs": [],
     "effects": [
@@ -694,7 +701,7 @@
     "name": "Whole-Brain Emulation",
     "description": "",
     "cost": 100000,
-    "requiredProgress": 10000,
+    "requiredProgress": 5000,
     "requiredVertical": "Information",
     "requiredTechs": [
       "Computational Cognition",

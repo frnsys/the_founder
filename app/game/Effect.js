@@ -81,9 +81,13 @@ const Effect = {
         attribute = value.attribute;
     if (!remove) {
       if (!(vertical in bonuses)) {
-        bonuses[vertical] = [];
+        bonuses[vertical] = {};
       }
-      bonuses[vertical][attribute] += value.value;
+      if (!(attribute in bonuses[vertical])) {
+        bonuses[vertical][attribute] = value.value;
+      } else {
+        bonuses[vertical][attribute] += value.value;
+      }
     } else {
       bonuses[vertical][attribute] -= value.value;
     }
@@ -160,7 +164,7 @@ const Effect = {
       switch (effect.type) {
         case 'product':
           var valueStr = effect.value.value > 0 ? '+' + effect.value.value : effect.value.value;
-          return valueStr + ' to ' + effect.value.vertical + ' products';
+          return valueStr + ' to ' + effect.value.vertical + ' products\' ' + effect.value.attribute;
         case 'unlocks':
           return 'Unlocks ' + effect.value.value;
       }

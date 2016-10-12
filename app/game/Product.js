@@ -77,9 +77,9 @@ const Product = {
 
   launch: function(p, company) {
     p.levels = {
-      quantity: 0,
-      strength: 0,
-      movement: 0
+      quantity: Math.min(_.reduce(p.verticals, (m,v) => m + company.getProductBonus('quantity', v), 0), 10),
+      strength: Math.min(_.reduce(p.verticals, (m,v) => m + company.getProductBonus('strength', v), 0), 10),
+      movement: Math.min(_.reduce(p.verticals, (m,v) => m + company.getProductBonus('movement', v), 0), 10)
     };
 
     if (p.recipeName != 'Default') {

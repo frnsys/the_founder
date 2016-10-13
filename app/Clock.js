@@ -196,7 +196,7 @@ class Clock {
           ]);
         }
 
-        if (!developingProducts) {
+        if (!developingProducts && !e.object.task) {
           thoughts = thoughts.concat([
             "Shouldn't we be making a product?",
             "Do we have any products in the works?",

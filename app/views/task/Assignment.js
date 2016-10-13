@@ -218,7 +218,7 @@ class AssignmentView extends CardsList {
     this.taskView.render(this.processTask(task));
 
     // hacky
-    this.el.find('header').append('<div class="task-assign-all-unassigned popup-aux-button">Assign all unassigned</div>');
+    this.el.find('header').append('<div class="task-assign-all-unassigned popup-aux-button">Toggle all unassigned</div>');
   }
 
   processTask(task) {

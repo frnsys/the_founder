@@ -9,7 +9,7 @@ const config = {
 
   // hype
   HYPE_DECAY_RATE: 0.9,
-  HYPE_SCALE: 1/1000,
+  HYPE_SCALE: 1/100,
 
   // product
   PROGRESS_PER_DIFFICULTY: 100,

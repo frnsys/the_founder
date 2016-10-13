@@ -15,7 +15,7 @@ const template = data => `
   <p>We captured <span class="market-report-share">${data.marketShare.toFixed(2)}%</span> of the market, representing a base revenue of <span class="market-report-base-revenue">${abbrevCurrency(data.baseRevenue)}</span>.</p>
   <ul class="market-report-bonuses">
     <li>x${data.spendingMultiplier} from consumer spending bonuses</li>
-    <li>x${data.hypeMultiplier.toFixed(1)} from hype</li>
+    <li>x${data.hypeMultiplier.toFixed(2)} from hype</li>
     <li>x${data.influencerMultiplier} from social media influencers</li>
     <li>x${data.economyMultiplier} from economic health</li>
     ${data.newDiscoveryMuliplier > 1 ? `<li>x${data.newDiscoveryMuliplier} from the new product bonus</li>` : ''}

@@ -37,6 +37,11 @@ const Manager = {
       player: playerData,
       company: companyData
     }));
+    var lifetimeProfit = this.player.company.lifetimeRevenue - this.player.company.lifetimeCosts,
+        highScore = this.highScore();
+    if (lifetimeProfit > highScore) {
+      localStorage.setItem('highScore', lifetimeProfit.toString());
+    }
   },
   load: function() {
     var data = JSON.parse(localStorage.getItem('saveGame'));
@@ -62,7 +67,7 @@ const Manager = {
     var lifetimeProfit = this.player.company.lifetimeRevenue - this.player.company.lifetimeCosts,
         highScore = this.highScore();
     if (lifetimeProfit > highScore) {
-        localStorage.setItem('highScore', lifetimeProfit.toString());
+      localStorage.setItem('highScore', lifetimeProfit.toString());
     }
     localStorage.setItem('newGamePlus', this.player.company.cash.toString());
     this.game.state.start('Boot');
@@ -73,7 +78,7 @@ const Manager = {
   highScore: function() {
     var highScore = localStorage.getItem('highScore');
     if (highScore) {
-      highscore = parseInt(highscore);
+      highScore = parseInt(highScore);
     } else {
       highScore = 0;
     }

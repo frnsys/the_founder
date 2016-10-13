@@ -47,10 +47,10 @@ class AssignmentView extends CardsList {
     this.existing = _.contains(_.pluck(player.company.tasks, 'id'), task.id);
     this.task = task;
     this.player = player;
-    this.workers = _.filter(player.company.workers, w => w.task == task.id);
-    this.locations = _.filter(player.company.locations, l => l.task == task.id);
-    this.preassignedWorkers = this.workers.slice(0);
-    this.preassignedLocations = this.locations.slice(0);
+    this.assignedWorkers = _.filter(player.company.workers, w => w.task == task.id);
+    this.assignedLocations = _.filter(player.company.locations, l => l.task == task.id);
+    this.preassignedWorkers = this.assignedWorkers.slice(0);
+    this.preassignedLocations = this.assignedLocations.slice(0);
     this.registerHandlers({
       '.tabs li': function(ev) {
         var target = $(ev.target).data('tab');
@@ -61,24 +61,24 @@ class AssignmentView extends CardsList {
       },
       '.assign-workers > li': function(ev) {
         var idx = this.itemIndex(ev.target),
-            sel = player.company.workers[idx],
+            sel = player.company.workers[this.assignedWorkers_idx_map[idx]],
             view = this.subviews[idx];
 
         var $li = $(ev.target).closest('.card');
-        if (_.contains(this.workers, sel)) {
-          this.workers = _.without(this.workers, sel);
+        if (_.contains(this.assignedWorkers, sel)) {
+          this.assignedWorkers = _.without(this.assignedWorkers, sel);
           view.attrs.class = view.attrs.class.replace('selected', '');
         } else {
           // if already assigned, confirm
           if (sel.task) {
             var confirm = new Confirm(() => {
-              this.workers.push(sel);
+              this.assignedWorkers.push(sel);
               view.attrs.class += ' selected';
               this.updateAssignments(sel, view);
             });
             confirm.render('This employee is already assigned to a task. Employees can only work on one task at a time...do you want to change their assignment?', 'Re-assign', 'Nevermind');
           } else {
-            this.workers.push(sel);
+            this.assignedWorkers.push(sel);
             view.attrs.class += ' selected';
           }
         }
@@ -87,23 +87,23 @@ class AssignmentView extends CardsList {
       '.assign-locations > li': function(ev) {
         // idx + 1 b/c we skip the HQ
         var idx = this.itemIndex(ev.target) + 1,
-            sel = player.company.locations[idx],
+            sel = player.company.locations[this.assignedLocations_idx_map[idx]],
             view = this.subviews[player.company.workers.length + idx - 1];
 
         var $li = $(ev.target).closest('.card');
-        if (_.contains(this.locations, sel)) {
-          this.locations = _.without(this.locations, sel);
+        if (_.contains(this.assignedLocations, sel)) {
+          this.assignedLocations = _.without(this.assignedLocations, sel);
           view.attrs.class = view.attrs.class.replace('selected', '');
         } else {
           if (sel.task) {
             var confirm = new Confirm(() => {
-              this.workers.push(sel);
+              this.assignedWorkers.push(sel);
               view.attrs.class += ' selected';
               this.updateAssignments(sel, view);
             });
             confirm.render('This location is already assigned to a task. Locations can only work on one task at a time...do you want to change its assignment?', 'Re-assign', 'Nevermind');
           } else {
-            this.locations.push(sel);
+            this.assignedLocations.push(sel);
             view.attrs.class += ' selected';
           }
         }
@@ -114,20 +114,27 @@ class AssignmentView extends CardsList {
           if (task.obj.cost) {
             player.company.pay(task.obj.cost, true);
           }
-          player.company.startTask(task, this.workers, this.locations);
+          player.company.startTask(task, this.assignedWorkers, this.assignedLocations);
         } else {
-          _.each(this.workers, w => Task.assign(task, w));
-          _.each(this.locations, l => Task.assign(task, l));
-          _.each(_.difference(this.preassignedWorkers, this.workers), w => Task.unassign(w));
-          _.each(_.difference(this.preassignedLocations, this.locations), l => Task.unassign(l));
+          _.each(this.assignedWorkers, w => Task.assign(task, w));
+          _.each(this.assignedLocations, l => Task.assign(task, l));
+          _.each(_.difference(this.preassignedWorkers, this.assignedWorkers), w => Task.unassign(w));
+          _.each(_.difference(this.preassignedLocations, this.assignedLocations), l => Task.unassign(l));
         }
         this.remove();
       }
     });
+
+    this.sorted_workers = _.chain(player.company.workers).sortBy(this.sorter.bind(this)).value();
+    this.sorted_locations = _.chain(player.company.locations).rest().sortBy(this.sorter.bind(this)).value();
+
+    // compute a mapping of sorted indices to original indices
+    this.assignedWorkers_idx_map = _.chain(player.company.workers).map((w, i) => ({idx: i, task: w.task})).sortBy(this.sorter.bind(this)).pluck('idx').value();
+    this.assignedLocations_idx_map = _.chain(player.company.locations).rest().map((l, i) => ({idx: i, task: l.task})).sortBy(this.sorter.bind(this)).pluck('idx').value();
   }
 
   updateAssignments(sel, view) {
-    this.el.find('.select').prop('disabled', this.workers.length + this.locations.length == 0);
+    this.el.find('.select').prop('disabled', this.assignedWorkers.length + this.assignedLocations.length == 0);
     view.render(this.processItem(sel, true));
     this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
   }
@@ -140,10 +147,23 @@ class AssignmentView extends CardsList {
     }, item);
   }
 
+  sorter(w, i) {
+    // 1. unassigned workers
+    // 2. workers assigned to this task
+    // 3. workers assigned to another task
+    var idx = 0;
+    if (w.task === this.task.id) {
+      idx = 1;
+    } else if (w.task) {
+      idx = 2;
+    }
+    return (idx*10000) + i;
+  }
+
   render() {
     var player = this.player,
-        workers = _.map(player.company.workers, w => this.processItem(w, true)),
-        locations = _.map(_.rest(player.company.locations), l => this.processItem(l, false));
+        workers = _.map(this.sorted_workers, w => this.processItem(w, true)),
+        locations = _.map(this.sorted_locations, l => this.processItem(l, false));
     super.render({
       task: this.processTask(this.task),
       items: workers.concat(locations)
@@ -183,28 +203,10 @@ class AssignmentView extends CardsList {
     this.taskView.render(this.processTask(task));
   }
 
-  update() {
-    var self = this,
-        workers = _.map(this.player.company.workers, w => this.processItem(w, true)),
-        locations = _.map(_.rest(this.player.company.locations), l => this.processItem(l, false));
-    _.each(_.zip(workers.concat(locations), this.subviews), function(v) {
-      var item = v[0],
-          task = '';
-      if (item.task) {
-        if (item.worker) {
-          task = `Assigned:<br>${item.task.obj.name}`;
-        } else {
-          task = `Assigned: ${item.task.obj.name}`;
-        }
-      }
-      v[1].el.find('.assigned-task').html(task);
-    });
-  }
-
   processTask(task) {
     return _.extend({
-      workers: this.workers,
-      locations: this.locations,
+      workers: this.assignedWorkers,
+      locations: this.assignedLocations,
       hideActions: true,
       hideProgress: true,
       existing: this.existing
@@ -215,7 +217,7 @@ class AssignmentView extends CardsList {
     var template = item.worker ? templ.worker : locationTemplate,
         parent = item.worker ? '.assign-workers' : '.assign-locations',
         cls = '';
-    if (util.contains(this.workers, item) || util.contains(this.locations, item)) {
+    if (util.contains(this.assignedWorkers, item) || util.contains(this.assignedLocations, item)) {
       cls = 'selected';
     }
     return new View({

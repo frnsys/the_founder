@@ -60,8 +60,8 @@ const activeProductTemplate = function(data) {
 };
 
 const statsTemplate = data => `
-<li data-tip="Hype" style="display:${data.onboarding.promo ? 'block' : 'none'};"><img src="assets/company/hype.png"> <span class="hype-stat">${util.abbreviateNumber(Math.floor(data.hype), 0)}</span></li>
-<li data-tip="Outrage" style="display:${data.onboarding.promo ? 'block' : 'none'};"><img src="assets/company/outrage.png"> <span class="outrage-stat">${util.abbreviateNumber(Math.floor(data.outrage), 0)}</span></li>
+<li data-tip="Hype" style="display:${data.onboarding.promo ? 'inline-block' : 'none'};"><img src="assets/company/hype.png"> <span class="hype-stat">${util.abbreviateNumber(Math.floor(data.hype), 0)}</span></li>
+<li data-tip="Outrage" style="display:${data.onboarding.promo ? 'inline-block' : 'none'};"><img src="assets/company/outrage.png"> <span class="outrage-stat">${util.abbreviateNumber(Math.floor(data.outrage), 0)}</span></li>
 <li data-tip="Design"><img src="assets/company/design.png"> <span class="design-stat">${util.abbreviateNumber(data.design, 0)}</span></li>
 <li data-tip="Marketing"><img src="assets/company/marketing.png"> <span class="marketing-stat">${util.abbreviateNumber(data.marketing, 0)}</span></li>
 <li data-tip="Engineering"><img src="assets/company/engineering.png"> <span class="engineering-stat">${util.abbreviateNumber(data.engineering, 0)}</span></li>

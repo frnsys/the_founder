@@ -38,8 +38,7 @@ const Board = {
 
       // set the new target
       board.lastProfitTarget = board.profitTarget;
-      board.profitTarget *= 1 + config.DESIRED_GROWTH;
-      board.profitTarget = Math.round(board.profitTarget);
+      board.profitTarget = Math.round((profit > board.lastProfitTarget ? profit : board.lastProfitTarget) * (1 + config.DESIRED_GROWTH));
       board.lastProfit = profit;
       return growth;
     }

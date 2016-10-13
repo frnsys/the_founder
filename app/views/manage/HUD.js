@@ -60,8 +60,8 @@ const activeProductTemplate = function(data) {
 };
 
 const statsTemplate = data => `
-${data.onboarding.hype ? `<li data-tip="Hype"><img src="assets/company/hype.png"> <span class="hype-stat">${util.abbreviateNumber(Math.floor(data.hype), 0)}</span></li>` : ''}
-${data.onboarding.outrage ? `<li data-tip="Outrage"><img src="assets/company/outrage.png"> <span class="outrage-stat">${util.abbreviateNumber(data.outrage, 0)}</span></li>` : ''}
+<li data-tip="Hype" style="display:${data.onboarding.promo ? 'block' : 'none'};"><img src="assets/company/hype.png"> <span class="hype-stat">${util.abbreviateNumber(Math.floor(data.hype), 0)}</span></li>
+<li data-tip="Outrage" style="display:${data.onboarding.promo ? 'block' : 'none'};"><img src="assets/company/outrage.png"> <span class="outrage-stat">${util.abbreviateNumber(Math.floor(data.outrage), 0)}</span></li>
 <li data-tip="Design"><img src="assets/company/design.png"> <span class="design-stat">${util.abbreviateNumber(data.design, 0)}</span></li>
 <li data-tip="Marketing"><img src="assets/company/marketing.png"> <span class="marketing-stat">${util.abbreviateNumber(data.marketing, 0)}</span></li>
 <li data-tip="Engineering"><img src="assets/company/engineering.png"> <span class="engineering-stat">${util.abbreviateNumber(data.engineering, 0)}</span></li>
@@ -180,6 +180,9 @@ class HUD extends View {
     this.statsView.el.find('.marketing-stat').text(util.abbreviateNumber(Math.floor(data.marketing)));
     this.statsView.el.find('.engineering-stat').text(util.abbreviateNumber(Math.floor(data.engineering)));
     this.statsView.el.find('.productivity-stat').text(util.abbreviateNumber(Math.floor(data.productivity)));
+    if (data.onboarding.promo) {
+      this.statsView.el.find('li').show();
+    }
     $('.hud-time-inner').width(`${((data.month + data.week/config.WEEKS_PER_MONTH)/12) * 100}%`);
 
     // remove old task views and add new ones

@@ -249,7 +249,7 @@ function annualReport(player) {
   return {
     'subject': `${data.prevYear} Annual Report`,
     'from': `investors@${util.slugify(data.name)}.com`,
-    'body': `This year you made <em>${util.formatCurrency(data.ytdProfit)}</em> in profit.<br /> ${growthMsg}`
+    'body': `This year you made <em>${util.formatCurrency(data.ytdProfit)}</em> in profit (and with the tax rate at ${(data.taxRate * 100).toFixed(1)}%, paid ${util.formatCurrencyAbbrev(data.taxes)} in taxes).<br /> ${growthMsg}`
   }
 }
 

@@ -157,6 +157,7 @@ class Player {
       lifetimeRevenue: company.lifetimeRevenue,
       verticals: company.verticals,
 
+      taxRate: this.taxRate * config.BASE_TAX_RATE,
       economy: util.enumName(this.economy, Enums.Economy),
       taxesAvoided: company.taxesAvoided,
       debtOwned: company.debtOwned,

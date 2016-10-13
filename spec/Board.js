@@ -12,28 +12,32 @@ describe('Board', function() {
 
   it('computes growth', function() {
     var profit = 2;
-    var growth = Board.evaluatePerformance(board, profit);
+    var graceYearsLeft = -1;
+    var growth = Board.evaluatePerformance(board, profit, graceYearsLeft);
     expect(growth).toBeCloseTo(1);
   });
 
   it('sets new profit target', function() {
     var profit = 2,
-        profitTarget = board.profitTarget;
-    Board.evaluatePerformance(board, profit);
+        profitTarget = board.profitTarget,
+        graceYearsLeft = -1;
+    Board.evaluatePerformance(board, profit, graceYearsLeft);
     expect(board.profitTarget).toBeGreaterThan(profitTarget);
   });
 
   it('is happier with more growth', function() {
     var happiness = board.happiness,
-        profit = board.lastProfit * (1.1+Board.desiredGrowth);
-    Board.evaluatePerformance(board, profit);
+        profit = board.lastProfit * (1.1+Board.desiredGrowth),
+        graceYearsLeft = -1;
+    Board.evaluatePerformance(board, profit, graceYearsLeft);
     expect(board.happiness).toBeGreaterThan(happiness);
   });
 
   it('is unhappier with less growth', function() {
     var happiness = board.happiness,
-        profit = board.lastProfit * (Board.desiredGrowth/2);
-    Board.evaluatePerformance(board, profit);
+        profit = board.lastProfit * (Board.desiredGrowth/2),
+        graceYearsLeft = -1;
+    Board.evaluatePerformance(board, profit, graceYearsLeft);
     expect(board.happiness).toBeLessThan(happiness);
   });
 });

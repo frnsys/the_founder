@@ -15,7 +15,7 @@ describe('Company', function() {
     company.annualRevenue = 1000;
     player.taxRate = 0.5;
     company.payAnnual();
-    expect(company.cash).toEqual(500);
+    expect(company.cash).toEqual(1000 - (1000 * 0.3 * 0.5));
   });
 
   it('pays rent', function() {

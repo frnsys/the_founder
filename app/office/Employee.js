@@ -101,10 +101,12 @@ class Employee extends Agent {
   }
 
   get abovePosition() {
-    var pos = new THREE.Vector3();
-    pos.setFromMatrixPosition(this.mesh.matrixWorld);
-    pos.y += 1; // a little y offset
-    return toXYCoords(pos, this.office.camera);
+    if (this.mesh) {
+      var pos = new THREE.Vector3();
+      pos.setFromMatrixPosition(this.mesh.matrixWorld);
+      pos.y += 1; // a little y offset
+      return toXYCoords(pos, this.office.camera);
+    }
   }
 
   showThought(text) {
@@ -135,16 +137,20 @@ class Employee extends Agent {
   updateThoughtPosition() {
     if (this.thought) {
       var pos = this.abovePosition;
-      this.thought.style.top = pos.y + 'px';
-      this.thought.style.left = pos.x + 'px';
+      if (pos) {
+        this.thought.style.top = pos.y + 'px';
+        this.thought.style.left = pos.x + 'px';
+      }
     }
   }
 
   updateBurntoutPosition() {
     if (this.burntout) {
       var pos = this.abovePosition;
-      this.burntout.style.top = pos.y + 'px';
-      this.burntout.style.left = pos.x + 'px';
+      if (pos) {
+        this.burntout.style.top = pos.y + 'px';
+        this.burntout.style.left = pos.x + 'px';
+      }
     }
   }
 

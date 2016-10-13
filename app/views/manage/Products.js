@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
 import templ from '../Common';
@@ -44,6 +45,7 @@ class ProductsView extends CardsList {
       }, i))
     });
     this.nDiscovered = player.company.discoveredProducts.length;
+    $('.current-cash').remove();
   }
 
   update() {

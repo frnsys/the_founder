@@ -32,7 +32,7 @@ const template = data => `
   <p>The game isn't well-balanced at the moment. It might be too hard or too easy - please let me know if it's either of these and any suggestions you have on improving the difficulty.</p>
   <p>The game might still be buggy. I've been playtesting myself and the game ~should~ be free of game-breaking bugs, but you never know! If you encounter any, let me know. A detailed account of the last few actions you took and what exactly isn't working will help me fix it quickly.</p>
   <p>I'm also happy to hear more general gameplay/writing/etc suggestions, so please send those as well!</p>
-  <p>You can reach me at f@frnsys.com.</p>
+  <p>You can reach me at f@frnsys.com or <a href="https://twitter.com/frnsys">on Twitter @frnsys</a>.</p>
   <p>Thank you!</p>
   <p class="playtester-close" style="cursor:pointer;color:red;">(click here to close)</p>
 </div>

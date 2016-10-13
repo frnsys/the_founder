@@ -22,7 +22,6 @@ import EmployeeSelectionView from 'views/select/Employee';
 import ProductDesignerView from 'views/ProductDesigner';
 import TaskCompleteView from 'views/alerts/TaskComplete';
 import MarketReport from 'views/alerts/MarketReport';
-import Challenges from 'views/manage/Challenges';
 
 const ONBOARDING_WAIT = 150; // frames
 

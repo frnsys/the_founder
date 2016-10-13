@@ -21,6 +21,7 @@ import Economy from 'game/Economy';
 import Worker from 'game/Worker';
 import Condition from 'game/Condition';
 import EmailsView from 'views/alerts/Email';
+import AchievementView from 'views/Achievement';
 
 class Clock {
   constructor(manager, player, office) {
@@ -61,6 +62,8 @@ class Clock {
       _.each(_.filter(this.player.challenges, c => !c.finished), c => {
         if (Condition.satisfied(c.condition, this.player)) {
           c.finished = true;
+          var view = new AchievementView(c);
+          view.render();
         }
       });
 

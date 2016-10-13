@@ -86,6 +86,7 @@ class Agent {
     action.enabled = true;
     action.play();
     if (this.action) {
+      this.action.play();
       this.action.crossFadeTo(action, ACTION_CROSS_FADE);
     }
     this.action = action;
@@ -171,6 +172,7 @@ class Agent {
   update(delta) {
     this.mixer.update(delta);
     this.tickScheduled(delta);
+    this.action.enabled = true;
 
     this.tick(delta);
     if (this.path && this.path.length) {

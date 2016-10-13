@@ -113,6 +113,9 @@ class Market {
     if (this.shouldEndGame()) {
       this.handleEndGame();
     } else {
+      // exhaust player pieces
+      _.each(this.humanPlayer.pieces, p => p.exhaust());
+
       this.startTurn(this.aiPlayer);
       this.AI.takeTurn(function() {
         // add a little delay

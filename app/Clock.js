@@ -158,11 +158,12 @@ class Clock {
   }
 
   yearly() {
+    var graceYearsLeft = config.GRACE_YEARS - this.player.snapshot.companyAge;
+    this.player.growth = Board.evaluatePerformance(this.player.board, this.player.company.annualProfit, graceYearsLeft) * 100,
+    this.player.current.inbox.push(annualReport(this.player));
     this.player.company.payAnnual();
-    this.player.growth = Board.evaluatePerformance(this.player.board, this.player.company.annualProfit, this.player.year < config.GRACE_YEARS) * 100,
     Economy.update(this.player);
     checkDeath(this.player);
-    this.player.current.inbox.push(annualReport(this.player));
   }
 
   updateChallenge() {
@@ -235,8 +236,10 @@ function annualReport(player) {
       graceYearsLeft = config.GRACE_YEARS - data.companyAge,
       growthMsg;
 
-  if (graceYearsLeft <= 0) {
-    growthMsg = `That's <em>${data.growth}%</em> growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> The Board of Investors is <em>${data.boardStatus}</em>. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`;
+  if (graceYearsLeft === 0) {
+      growthMsg = `We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> This is your first evaluation year so we're happy with whatever, but next year we'll start being more critical. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`;
+  } else if (graceYearsLeft < 0) {
+      growthMsg = `That's <em>${data.growth.toFixed(2)}%</em> growth from last year's profit of ${util.formatCurrency(data.lastProfit)}. We were looking for a profit of at least ${util.formatCurrency(data.lastProfitTarget)}. <br /> The Board of Investors is <em>${data.boardStatus}</em>. <br /> This year we want to see profit of at least <em>${util.formatCurrency(data.profitTarget)}</em>.`;
   } else if (graceYearsLeft === 1) {
     growthMsg = `You only have one year left before the Board starts evaluating your performance!`;
   } else {

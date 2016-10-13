@@ -142,6 +142,8 @@ class Player {
       employees: company.workers.length,
       salaries: company.salaries,
       rent: company.rent,
+      expenditures: company.expenditures,
+      taxes: company.taxes,
       n_locations: company.locations.length,
       locations: company.locations,
       globalCoverage: (company.locations.length/locations.length).toFixed(2),

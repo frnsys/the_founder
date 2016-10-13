@@ -25,10 +25,32 @@ const template = data => `
         <td>${util.formatCurrency(data.salaries + data.rent)}/month</td>
       </tr>
     </table>
+    <table>
+      <tr>
+        <td>Other Expenditures This Year</td>
+        <td>${util.formatCurrency(data.expenditures)}</td>
+      </tr>
+      <tr>
+        <td>Expected Taxes This Year</td>
+        <td>${util.formatCurrency(data.taxes)}</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>YTD Costs</td>
+        <td>${util.formatCurrency(data.ytdCosts)}</td>
+      </tr>
+    </table>
   </div>
   <div class="accounting-income">
     <h3>Revenue Streams</h3>
+    <table class="accounting-products">
+    </table>
     <table>
+      <tr>
+        <td>YTD Revenue</td>
+        <td>${util.formatCurrency(data.ytdRevenue)}</td>
+      </tr>
     </table>
   </div>
 </div>
@@ -58,15 +80,12 @@ class View extends Popup {
 
   render() {
     var player = this.player;
-    super.render({
-      rent: player.company.rent,
-      salaries: player.company.salaries
-    });
-    this.el.find('.accounting-income table').html(productRevenues(this.products));
+    super.render(player.snapshot);
+    this.el.find('.accounting-products').html(productRevenues(this.products));
   }
 
   update() {
-    this.el.find('.accounting-income table').html(productRevenues(this.products));
+    this.el.find('.accounting-products').html(productRevenues(this.products));
   }
 }
 

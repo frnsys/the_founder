@@ -68,6 +68,7 @@ class Company {
       lifetimeCosts: 0,
       annualRevenue: 0,
       annualCosts: 0,
+      expenditures: 0, // non-recurring annual costs
       lastAnnualRevenue: 0,
       lastAnnualCosts: 0,
 
@@ -167,7 +168,7 @@ class Company {
     }, 0)/1000 * this.player.costMultiplier;
   }
   get taxes() {
-    return this.annualRevenue * this.player.taxRate;
+    return this.annualRevenue * this.player.taxRate * config.BASE_TAX_RATE;
   }
 
   canAfford(cost) {
@@ -178,24 +179,36 @@ class Company {
     this.annualRevenue += cash;
     this.lifetimeRevenue += cash;
   }
-  pay(cost, ignoreAfford) {
+  pay(cost, ignoreAfford, notExpenditure) {
     if (this.cash - cost >= 0 || ignoreAfford) {
       this.cash -= cost;
       this.annualCosts += cost;
       this.lifetimeCosts += cost;
+
+      if (!notExpenditure) {
+        this.expenditures += cost;
+      }
       return true;
     }
     return false;
   }
   payMonthly() {
-    this.pay(this.salaries + this.rent);
+    this.pay(this.salaries + this.rent, true, true);
   }
   payAnnual() {
     var expectedTaxes = this.annualRevenue * config.BASE_TAX_RATE;
     this.taxesAvoided += expectedTaxes - this.taxes;
-    this.pay(this.taxes);
-    console.log(`paid taxes: ${this.taxes}`);
+    this.pay(this.taxes, true, true);
+    this.lastAnnualRevenue = this.annualRevenue;
+    this.lastAnnualCosts = this.annualCosts;
     this.annualRevenue = 0;
+    this.annualCosts = 0;
+    this.expenditures = 0;
+  }
+
+  hireEmployee(worker, salary) {
+    this.annualRevenue = 0;
+    this.expenditures = 0;
   }
 
   hireEmployee(worker, salary) {

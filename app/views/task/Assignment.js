@@ -32,7 +32,7 @@ const template = data => `
 
 const locationTemplate = item => `
 <div class="title">
-  <h1><img src="/assets/markets/${util.slugify(item.market)}.png"> ${item.name}</h1>
+  <h1><img src="assets/markets/${util.slugify(item.market)}.png"> ${item.name}</h1>
 </div>
 ${templ.skills(item.skills)}
 ${item.task ? `<div class="assigned-task location-task">Assigned: ${item.task.obj.name}</div>` : ''}`;

@@ -3,6 +3,7 @@ import _ from 'underscore';
 import util from 'util';
 import templ from './Common';
 import View from 'views/View';
+import Mentor from 'views/alerts/Mentor';
 import Effect from 'game/Effect';
 import Product from 'game/Product';
 import verticals from 'data/verticals.json';
@@ -84,13 +85,24 @@ class Onboarding extends View {
 
   render() {
     if (this.stage < 0) {
-      super.render({
-        name: 'Welcome!',
-        description: 'A note from your Mentor',
-        intro: '<p>Welcome to The Founder! In a moment we\'ll incorporate your new company, but because so few companies succeed (and even fewer make it big) I want to let you know what you\'re getting yourself into.</p><p>I\'ve raised a bit of capital for you to start with, and your investors - a shrewd, wrathful bunch - expect <em>annual profit growth of 12%</em>. Just try to keep them happy ;)</p>'
+      var mentor = new Mentor([
+        "Can you believe it's already 2001? The dot-com bubble just burst, but I'm looking forward to the years ahead.",
+        "A few stronger enterprises - <em>Kougle</em>, <em>Coralzon</em>, <em>Carrot Inc.</em>, and others - have managed to survive the bubble.",
+        "But their weakened state and the void left by mass bankruptcy means the business world is ripe for <em class='special'>disruption</em>.",
+        "I have a good feeling about you - so I've given you some starting funds to take advantage of this time and build a powerful company yourself."
+      ], () => {
+        this.stage++;
+        this.render();
       });
+      mentor.render();
     } else {
-      super.render(this.stages[this.stage]);
+      var stage = this.stages[this.stage];
+      if (!stage.mentored) {
+        var mentor = new Mentor(stage.mentor);
+        mentor.render();
+        stage.mentored = true;
+      }
+      super.render(stage);
     }
   }
 
@@ -143,17 +155,17 @@ class Onboarding extends View {
         break;
       case 1:
         stages[stage].selected = selected.name;
-        player.company.locations = [selected];
-        stages[4].options[0] = selected;
-        break;
-      case 2:
-        stages[stage].selected = selected.name;
         player.company.verticals = util.byNames(verticals, [selected.name]);
         player.company.productTypes = _.map(
           util.byNames(productTypes, stages[stage]['startingProductTypes'][selected.name]),
           pt => Product.initType(pt)
         );
         stages[4].options[1] = selected;
+        break;
+      case 2:
+        stages[stage].selected = selected.name;
+        player.company.locations = [selected];
+        stages[4].options[0] = selected;
         break;
       case 3:
         stages[stage].selected = selected.name;

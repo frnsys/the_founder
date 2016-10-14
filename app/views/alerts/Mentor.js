@@ -9,13 +9,13 @@ const template = data => `
   </div>
   <div class="alert-actions mentor-actions">
     <button class="prev" ${data.prev ? '': 'disabled'}><-</button>
-    <button class="next">-></button>
+    <button class="next">${data.last ? 'OK' : '->'}</button>
   </div>
 </div>
 `
 
 class MentorView extends Alert {
-  constructor(messages) {
+  constructor(messages, onFinish) {
     super({
       template: template,
       handlers: {
@@ -30,6 +30,7 @@ class MentorView extends Alert {
     this.idx = 0;
     this.popped = false;
     this.messages = messages;
+    this.onFinish = onFinish;
   }
 
   next() {
@@ -52,7 +53,8 @@ class MentorView extends Alert {
     super.render({
       prev: this.idx > 0,
       message: this.messages[this.idx],
-      popped: this.popped
+      popped: this.popped,
+      last: this.idx + 1 == this.messages.length
     });
     this.popped = true;
   }
@@ -84,6 +86,10 @@ class MentorView extends Alert {
     super.postRemove();
     MentorView.exists = false;
     $(document).off('keydown');
+
+    if (this.onFinish) {
+      this.onFinish();
+    }
   }
 }
 

@@ -72,10 +72,10 @@ class MarketView extends View {
     var item = _.clone(item);
     item.task = this.player.company.task(item.task);
     item.cost *= this.player.costMultiplier * this.player.expansionCostMultiplier;
-    return _.extend({
+    return _.extend(item, {
       owned: util.contains(this.player.company.locations, item),
       afford: this.player.company.cash >= item.cost
-    }, item);
+    });
   }
 
   render() {

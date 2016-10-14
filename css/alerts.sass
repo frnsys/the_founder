@@ -14,7 +14,7 @@
   margin: 8em auto 0 auto
   text-align: center
   width: 26em
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2)
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6)
   background: #fefefe
   border-radius: 0.4em
   padding: 2em 2em 1em 2em
@@ -137,3 +137,17 @@
     font-size: 1.1em
     background: #29dc6d
     border-radius: 0.2em
+
+@keyframes pop
+  0%
+    transform: scale(0)
+  50%
+    transform: scale(1.1)
+
+.alert-pop
+  animation-name: pop
+  animation-duration: 0.3s
+  animation-timing-function: linear
+  animation-iteration-count: 1
+
+

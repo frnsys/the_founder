@@ -7,3 +7,9 @@ Manager.game.state.start('Boot');
 
 var VERSION = 'ALPHA VERSION (0.2.4)';
 document.getElementById('version-notice').innerHTML = VERSION;
+
+
+var muted = localStorage.getItem('muted'),
+    audio = document.getElementById('music');
+muted = muted ? JSON.parse(muted) : false;
+audio.muted = muted;

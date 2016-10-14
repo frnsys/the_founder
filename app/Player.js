@@ -109,11 +109,8 @@ class Player {
       onboarding: onboarding,
       challenges: _.map(challenges, c => _.extend({
         finished: false
-      }, c)),
+      }, c))
 
-      settings: {
-        music: true
-      }
     }, data);
   }
 

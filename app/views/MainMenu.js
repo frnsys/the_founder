@@ -8,7 +8,7 @@ const template = data => `
 <div class="background"></div>
 <div class="stars"></div>
 <canvas id="earth"></canvas>
-<div class="mute-menu"><img src="assets/icons/volume-high.svg"></div>
+<div class="mute-menu"><img src="assets/icons/volume-${data.muted ? 'off' : 'high'}.svg"></div>
 <div class="hello">
   <div class="hello-title">
     <h1>The Founder</h1>
@@ -75,7 +75,7 @@ class MainMenuView extends View {
         '.mute-menu': function() {
           var audio = document.getElementById('music');
           audio.muted = !audio.muted;
-          manager.player.settings.music = !audio.muted;
+          localStorage.setItem('muted', audio.muted);
           if (audio.muted) {
             $('.mute-menu').html('<img src="assets/icons/volume-off.svg">');
           } else {
@@ -109,11 +109,14 @@ class MainMenuView extends View {
       blurb = 'A master of the universe';
     }
 
+
+    var audio = document.getElementById('music');
     super.render({
       savedGame: this.manager.hasSave(),
       newGamePlus: this.manager.hasNewGamePlus(),
       highScore: highScore,
-      highScoreBlurb: blurb
+      highScoreBlurb: blurb,
+      muted: audio.muted
     });
   }
 

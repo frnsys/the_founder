@@ -7,7 +7,7 @@ import Confirm from 'views/alerts/Confirm';
 const template = data => `
   <ul class="settings-options">
     ${!data.onboardingFinished ? '<li class="skip-onboarding">Skip onboarding</li>' : ''}
-    <li class="toggle-music">${data.music ? 'Mute' : 'Unmute'} music</li>
+    <li class="toggle-music">${data.muted ? 'Unmute' : 'Mute'} music</li>
     <li class="save-game">Save game</li>
   </ul>
 `;
@@ -39,8 +39,8 @@ class View extends Popup {
       },
       '.toggle-music': function() {
         var audio = document.getElementById('music');
-        player.settings.music = !player.settings.music;
-        audio.muted = !player.settings.music;
+        audio.muted = !audio.muted;
+        localStorage.setItem('muted', audio.muted);
         this.render();
       },
       '.save-game': function() {
@@ -51,12 +51,15 @@ class View extends Popup {
   }
 
   render() {
-    var player = this.player;
-    super.render(_.extend({
+    var player = this.player,
+        muted = localStorage.getItem('muted');
+    muted = muted ? JSON.parse(muted) : false;
+    super.render({
       onboardingFinished: _.every(player.onboarding, function(v, k) {
         return player.onboarding[k].finished;
-      })
-    }, player.settings));
+      }),
+      muted: muted
+    });
   }
 }
 

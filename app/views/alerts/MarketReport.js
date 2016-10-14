@@ -9,7 +9,7 @@ function abbrevCurrency(amount) {
 }
 
 const template = data => `
-<div class="alert-message alert-market-report">
+<div class="alert-message alert-market-report alert-pop">
   <img src="assets/company/market.png" class="alert-icon">
   <h1>Market Report</h1>
   <p>We captured <span class="market-report-share">${data.marketShare.toFixed(2)}%</span> of the market, representing a base revenue of <span class="market-report-base-revenue">${abbrevCurrency(data.baseRevenue)}</span>.</p>

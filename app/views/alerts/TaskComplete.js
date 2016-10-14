@@ -5,7 +5,7 @@ import Task from 'game/Task';
 import Alert from './Alert';
 
 const basicTemplate = data => `
-<div class="alert-message alert-task-complete alert-task-complete-${util.slugify(util.enumName(data.type, Task.Type))}" ${data.type == Task.Type.Lobby ? `style="background-image:url(${data.img})"`: ''}>
+<div class="alert-message alert-pop alert-task-complete alert-task-complete-${util.slugify(util.enumName(data.type, Task.Type))}" ${data.type == Task.Type.Lobby ? `style="background-image:url(${data.img})"`: ''}>
   <img src="assets/company/completed.png" class="alert-icon">
   <div class="title">
     <h3 class="subtitle">${data.typeName} Complete</h3>

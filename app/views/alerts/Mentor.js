@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Alert from './Alert';
 
 const template = data => `
-<div class="alert-message alert-mentor">
+<div class="alert-message alert-mentor ${data.popped ? '' : 'alert-pop'}">
   <div class="alert-mentor-message">
     <img src="assets/workers/gifs/0.gif" class="mentor-avatar">
     ${data.message}
@@ -28,6 +28,7 @@ class MentorView extends Alert {
       }
     });
     this.idx = 0;
+    this.popped = false;
     this.messages = messages;
   }
 
@@ -50,8 +51,10 @@ class MentorView extends Alert {
   render() {
     super.render({
       prev: this.idx > 0,
-      message: this.messages[this.idx]
+      message: this.messages[this.idx],
+      popped: this.popped
     });
+    this.popped = true;
   }
 
   postRender() {

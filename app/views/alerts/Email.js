@@ -31,7 +31,7 @@ function template(data) {
     `;
   }
   return `
-    <div class="alert-message alert-email">
+    <div class="alert-message alert-email alert-pop">
       <img src="assets/company/mail.png" class="alert-icon">
       <div class="email-content">
         <h3>${data.subject}</h3>

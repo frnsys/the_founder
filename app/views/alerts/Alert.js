@@ -4,7 +4,7 @@ import View from '../View';
 import Manager from 'app/Manager';
 
 const template = data => `
-<div class="alert-message">
+<div class="alert-message alert-pop">
   <p>${data.message}</p>
   <div class="alert-actions">
     <button class="dismiss-alert">Ok</button>

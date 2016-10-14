@@ -1,7 +1,7 @@
 import Alert from './Alert';
 
 const template = data => `
-<div class="alert-message alert-confirm">
+<div class="alert-message alert-confirm alert-pop">
   <img src="assets/company/confirm.png" class="alert-icon">
   <p>${data.message}</p>
   <div class="alert-actions">

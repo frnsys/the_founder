@@ -1,3 +1,26 @@
+# 0.3.0
+
+- decreased base revenue per market share to increase difficulty
+- an option to "delegate" fighting in the Market
+- task assignment views show what skills are important (e.g. Marketing for Lobbying)
+- competitor is shown before entering the Market
+- audio muting setting is now saved in `localStorage`
+- special projects show the prerequisites to unlock
+- product types are sorted by un/locked status
+- successful product recipes just have one name now, and are "versioned" (e.g. yPhone, yPhone 2, etc)
+- better onboarding/intro with the mentor
+- show idle workers & locations in the HUD
+- fixed office upgrading (the button shows up now)
+- message to explain when a perk hits its upgrade limit due to office level
+- some misc UI improvements & fixes
+- sped up time a bit
+- reduced research and lobbying times
+- alerts are animated in
+- added better placeholder music :)
+- the Market
+    - messages when pieces are damaged or destroyed
+    - other misc fixes
+
 # 0.2.4
 
 - various bug fixes

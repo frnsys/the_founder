@@ -43,7 +43,15 @@ function detailTemplate(item) {
         </div>
       </div>
     `);
-  }
+    } else if (item.requiresOfficeUpgrade) {
+      html.push(`
+        <div class="next-perk">
+          <div class="title requires-office-upgrade">
+            <h1>You need a bigger office to upgrade this perk!</h1>
+          </div>
+        </div>
+      `);
+    }
   return html.join('');
 }
 
@@ -123,6 +131,7 @@ class View extends CardsList {
       next: next,
       hasNext: hasNext,
       nextAvailable: next ? Perk.isAvailable(next, player.company) : false,
+      requiresOfficeUpgrade: next && player.company.office < next.requiredOffice,
       afford: hasNext && player.company.cash >= cost
     }, item);
   }

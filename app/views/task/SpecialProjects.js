@@ -29,7 +29,7 @@ function detailTemplate(item) {
       <img src="assets/specialProjects/${util.slugify(item.name)}.gif">
       <p>${item.description}</p>
       ${templ.effects(item)}
-      ${item.prereqs.length > 0 ? templ.prereqs(item) : ''}
+      ${item.prereqs.length > 0 ? templ.prereqs(item, 'Required Products') : ''}
       ${button(item)}
     `;
   } else {
@@ -38,7 +38,10 @@ function detailTemplate(item) {
         <h1>???</h1>
       </div>
       <img src="assets/placeholder.gif">
-      <p class="undiscovered">This special project is yet to be discovered.</p>
+      <div class="undiscovered">
+        <p>This special project is yet to be discovered.</p>
+        ${item.prereqs.length > 0 ? templ.prereqs(item, 'Required Products') : ''}
+      </div>
     `;
   }
 }

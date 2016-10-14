@@ -33,8 +33,8 @@ const skillsTemplate = item => `
   </ul>
 `;
 
-const prereqsTemplate = item => `
-  <div class="prereqs">Requires:
+const prereqsTemplate = (item, requires) => `
+  <div class="prereqs">${requires || 'Requires'}:
     ${item.prereqs.map(i => `
       <span class="prereq ${i.ok ? 'ok' : ''}">${i.name.replace('.','+')}</span>
     `).join('')}</div>

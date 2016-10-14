@@ -11,9 +11,9 @@
     ],
     "requiredProducts": ["Analytics.Credit", "Analytics.Defense", "Analytics.Social Network"],
     "required": {
-      "design": 100000,
-      "engineering": 100000,
-      "marketing": 100000
+      "design": 10000,
+      "engineering": 10000,
+      "marketing": 10000
     }
   },
   {
@@ -28,9 +28,9 @@
     ],
     "requiredProducts": ["Analytics.Genetics", "Genetics.Synthetic Organism", "Genetics.Social Network"],
     "required": {
-      "design": 100000,
-      "engineering": 100000,
-      "marketing": 100000
+      "design": 10000,
+      "engineering": 10000,
+      "marketing": 10000
     }
   },
   {
@@ -48,9 +48,9 @@
     ],
     "requiredProducts": ["Defense.Space", "AI.Robot", "Gadget.Space"],
     "required": {
-      "design": 100000,
-      "engineering": 100000,
-      "marketing": 100000
+      "design": 10000,
+      "engineering": 10000,
+      "marketing": 10000
     }
   },
   {
@@ -68,9 +68,9 @@
     ],
     "requiredProducts": ["Gadget.Space", "Entertainment.Space"],
     "required": {
-      "design": 100000,
-      "engineering": 100000,
-      "marketing": 100000
+      "design": 10000,
+      "engineering": 10000,
+      "marketing": 10000
     }
   },
   {
@@ -85,9 +85,9 @@
     ],
     "requiredProducts": ["AI.Robot", "AI.Gadget", "AI.Mobile"],
     "required": {
-      "design": 100000,
-      "engineering": 100000,
-      "marketing": 100000
+      "design": 10000,
+      "engineering": 10000,
+      "marketing": 10000
     }
   },
   {
@@ -102,9 +102,9 @@
     ],
     "requiredProducts": ["Analytics.Genetics", "Drug.Genetics"],
     "required": {
-      "design": 100000,
-      "engineering": 100000,
-      "marketing": 100000
+      "design": 10000,
+      "engineering": 10000,
+      "marketing": 10000
     }
   },
   {
@@ -119,9 +119,9 @@
     ],
     "requiredProducts": ["AI.Mobile", "AI.Gadget", "Cognitive.Virtual Reality", "AI.Implant", "Analytics.Implant"],
     "required": {
-      "design": 100000,
-      "engineering": 100000,
-      "marketing": 100000
+      "design": 10000,
+      "engineering": 10000,
+      "marketing": 10000
     }
   }
 ]

@@ -431,7 +431,7 @@
     "description": "This combination was a failure.",
     "effects": [],
     "feature": -1,
-    "name": ["Junk"]
+    "productName": "Junk"
   },
   {
     "name": "Defense.Drug",

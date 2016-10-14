@@ -9,7 +9,8 @@
       "marketing": 1.3,
       "engineering": 0.8
     },
-    "productTypes": ["Ad", "Celebrity", "Entertainment", "E-Commerce", "Drug", "Virtual Reality"]
+    "productTypes": ["Ad", "Celebrity", "Entertainment", "E-Commerce", "Drug", "Virtual Reality"],
+    "difficulty": 1
   },
   {
     "name": "Carrot, Inc",
@@ -21,7 +22,8 @@
       "marketing": 1.2,
       "engineering": 1
     },
-    "productTypes": ["E-Commerce", "Virtual Reality", "Gadget", "Mobile", "Wearable"]
+    "productTypes": ["E-Commerce", "Virtual Reality", "Gadget", "Mobile", "Wearable"],
+    "difficulty": 2
   },
   {
     "name": "Coralzon",
@@ -33,7 +35,8 @@
       "marketing": 0.8,
       "engineering": 1.5
     },
-    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Gadget", "Logistics"]
+    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Gadget", "Logistics"],
+    "difficulty": 2
   },
   {
     "name": "FaceSpace",
@@ -45,7 +48,8 @@
       "marketing": 0.9,
       "engineering": 1.1
     },
-    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Ad", "Social Network", "AI"]
+    "productTypes": ["E-Commerce", "Entertainment", "Analytics", "Ad", "Social Network", "AI"],
+    "difficulty": 2
   },
   {
     "name": "GenoMe",
@@ -57,7 +61,8 @@
       "marketing": 1.2,
       "engineering": 1.3
     },
-    "productTypes": ["Genetics", "Synthetic Organism", "Implant", "Drug", "Cognitive"]
+    "productTypes": ["Genetics", "Synthetic Organism", "Implant", "Drug", "Cognitive"],
+    "difficulty": 1
   },
   {
     "name": "HyperReal",
@@ -69,7 +74,8 @@
       "marketing": 1.5,
       "engineering": 1.1
     },
-    "productTypes": ["Virtual Reality", "Entertainment", "Implant", "Drug", "Cognitive"]
+    "productTypes": ["Virtual Reality", "Entertainment", "Implant", "Drug", "Cognitive"],
+    "difficulty": 0
   },
   {
     "name": "Kougle",
@@ -81,7 +87,8 @@
       "marketing": 0.8,
       "engineering": 1.3
     },
-    "productTypes": ["Virtual Reality", "Social Network", "Ad", "Analytics", "AI"]
+    "productTypes": ["Virtual Reality", "Social Network", "Ad", "Analytics", "AI"],
+    "difficulty": 2
   },
   {
     "name": "Paladin",
@@ -93,7 +100,8 @@
       "marketing": 0.6,
       "engineering": 1.8
     },
-    "productTypes": ["Analytics", "Defense", "AI", "Robot", "Space"]
+    "productTypes": ["Analytics", "Defense", "AI", "Robot", "Space"],
+    "difficulty": 1
   },
   {
     "name": "Praeta Industries",
@@ -105,7 +113,8 @@
       "marketing": 1.4,
       "engineering": 1.1
     },
-    "productTypes": ["Gadget", "Mobile", "Logistics", "Ad", "Implant", "Wearable"]
+    "productTypes": ["Gadget", "Mobile", "Logistics", "Ad", "Implant", "Wearable"],
+    "difficulty": 0
   },
   {
     "name": "Goldwin Brothers",
@@ -117,7 +126,8 @@
       "marketing": 1.6,
       "engineering": 0.8
     },
-    "productTypes": ["Credit", "Analytics", "AI", "Ad"]
+    "productTypes": ["Credit", "Analytics", "AI", "Ad"],
+    "difficulty": 0
   },
   {
     "name": "Volta",
@@ -129,7 +139,8 @@
       "marketing": 1.4,
       "engineering": 1.4
     },
-    "productTypes": ["AI", "Gadget", "Defense", "Space", "Logistics"]
+    "productTypes": ["AI", "Gadget", "Defense", "Space", "Logistics"],
+    "difficulty": 1
   },
   {
     "name": "Dark Industries",
@@ -141,7 +152,8 @@
       "marketing": 1.4,
       "engineering": 1.4
     },
-    "productTypes": ["AI", "Sharing", "Drug", "Social Network", "Entertainment"]
+    "productTypes": ["AI", "Sharing", "Drug", "Social Network", "Entertainment"],
+    "difficulty": 3
   },
   {
     "name": "Edale Technologies",
@@ -153,6 +165,7 @@
       "marketing": 1.3,
       "engineering": 1.3
     },
-    "productTypes": ["Cognitive", "Implant", "Space", "Robot", "Analytics"]
+    "productTypes": ["Cognitive", "Implant", "Space", "Robot", "Analytics"],
+    "difficulty": 0
   }
 ]

@@ -19,6 +19,9 @@ const Competitor = {
     var p = _.clone(product);
     _.each(['design', 'engineering', 'marketing'], function(name) {
       p[name] *= competitor.skills[name];
+
+      // max skill values depending on competitor difficulty
+      p[name] = Math.min(p[name], (competitor.difficulty + 1) * 100);
     });
     return this.designProduct(p, competitor);
   },

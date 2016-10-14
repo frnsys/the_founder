@@ -6,6 +6,13 @@ import View from 'views/View';
 import Popup from 'views/Popup';
 import Product from 'game/Product';
 
+const competitorDifficulty = [
+  'Easy',
+  'Moderate',
+  'Hard',
+  'Very Hard'
+];
+
 function newDiscovery(data) {
   if (data.newDiscovery) {
     return `
@@ -65,18 +72,31 @@ const template = data => `
   </div>
 </div>
 <div class="product-revenue-per-share">
-Revenue per market share: ${util.formatCurrency(data.revenuePerShare)}
+  Revenue per market share: ${util.formatCurrency(data.revenuePerShare)}
+</div>
+<div class="product-competitor ${data.competitor.name == 'Dark Industries' ? 'dark_industries' : ''}">
+  <h6>Your Competition</h6>
+  <div class="product-competitor-difficulty" data-tip="Difficulty">${competitorDifficulty[data.competitor.difficulty]}</div>
+  <figure>
+    <img src="assets/competitors/${util.slugify(data.competitor.name)}.svg">
+  </figure>
+  <div class="product-competitor-detail">
+    <h2>${data.competitor.name}</h2>
+    <h5>CEO: <span class="product-competitor-ceo">${data.competitor.founder}</span></h5>
+    <p>${data.competitor.description}</p>
+  </div>
 </div>
 `;
 
 class ProductDesigner extends Popup {
-  constructor(product, player) {
+  constructor(product, competitor, player) {
     super({
       title: 'Product Designer',
       template: template
     });
     this.player = player;
     this.product = product;
+    this.competitor = competitor;
     this.registerHandlers({
       '.product-point-add': function(ev) {
         var name = $(ev.target).data('name'),
@@ -119,7 +139,8 @@ class ProductDesigner extends Popup {
         o[n] = self.canAfford(n, Product.costs[n](self.product));
         return o;
       }, {}),
-      revenuePerShare: Product.marketShareToRevenue(0, this.product, this.player)
+      revenuePerShare: Product.marketShareToRevenue(0, this.product, this.player),
+      competitor: this.competitor
     }, this.product));
     // hack to hide tooltips after re-render
     // otherwise they hang around b/c the element

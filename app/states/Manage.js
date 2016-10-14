@@ -89,7 +89,9 @@ class Manage extends Phaser.State {
   enterTheMarket(p) {
     var self = this;
     this.pause();
-    var view = new ProductDesignerView(p, this.player),
+
+    var competitor = _.sample(_.filter(this.player.competitors, c => !c.disabled));
+    var view = new ProductDesignerView(p, competitor, this.player),
       postRemove = view.postRemove.bind(view);
     view.postRemove = function() {
       postRemove();
@@ -100,7 +102,7 @@ class Manage extends Phaser.State {
       }
       $('.employee-thought, .employee-burntout').remove();
       $('#market').show();
-      self.game.state.start('Market', true, false, p, self.player);
+      self.game.state.start('Market', true, false, p, competitor, self.player);
     };
     view.render();
   }

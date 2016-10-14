@@ -25,8 +25,9 @@ class TheMarket extends Phaser.State {
     this.debug = debug;
   }
 
-  init(product, player) {
+  init(product, competitor, player) {
     this.product = product;
+    this.competitor = competitor;
     this.player = player || this.player;
   }
 
@@ -47,7 +48,7 @@ class TheMarket extends Phaser.State {
     $('#market').show().addClass('market-active');
     $('body').addClass('market-background');
 
-    var market = new Market(this.product, this.player, this.game, this.debug);
+    var market = new Market(this.product, this.player, this.game, this.competitor, this.debug);
     this.market = market;
     this.market.endGame = this.endGame.bind(this);
 

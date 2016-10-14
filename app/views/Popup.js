@@ -36,7 +36,7 @@ class Popup extends View {
     if (_.isFunction(state.pause)) {
       state.pause();
     }
-    $('.popups').show();
+    $('.popups').show().scrollTop(0);
     Popup.current = this;
 
     // hacky

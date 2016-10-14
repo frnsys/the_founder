@@ -18,6 +18,7 @@ function button(task) {
 }
 
 const template = data => `
+<div class="task-skills">${data.skills ? `Important skills: ${data.skills.join(', ')}` : ''}</div>
 <div class="tasks the-task"><ul class="cards"></ul></div>
 <ul class="tabs">
   <li class="selected" data-tab="assign-workers">Employees</li>
@@ -178,11 +179,8 @@ class AssignmentView extends CardsList {
   render() {
     var player = this.player,
         workers = _.map(this.sorted_workers, w => this.processItem(w, true)),
-        locations = _.map(this.sorted_locations, l => this.processItem(l, false));
-    super.render({
-      task: this.processTask(this.task),
-      items: workers.concat(locations)
-    });
+        locations = _.map(this.sorted_locations, l => this.processItem(l, false)),
+        skills;
 
     var task = this.task,
         template = Tasks.Basic,
@@ -192,18 +190,22 @@ class AssignmentView extends CardsList {
     switch(task.type) {
         case Task.Type.Promo:
           task.img = `assets/promos/${util.slugify(task.obj.name)}.png`;
+          skills = ['Marketing', 'Design'];
           break;
         case Task.Type.Research:
           task.img = `assets/techs/${util.slugify(task.obj.name)}.png`;
+          skills = ['Engineering', 'Design'];
           break;
         case Task.Type.Lobby:
           attrs.style = `background-image:url(assets/lobbying/${util.slugify(task.obj.name)}.jpg)`
+          skills = ['Marketing'];
           break;
         case Task.Type.Product:
           template = Tasks.Product;
           break;
         case Task.Type.SpecialProject:
           template = Tasks.SpecialProject;
+          skills = ['Marketing', 'Engineering', 'Design'];
           break;
         case Task.Type.Event:
           template = Tasks.Event;
@@ -214,6 +216,12 @@ class AssignmentView extends CardsList {
       parent: '.assign_task .tasks .cards',
       template: template,
       attrs: attrs
+    });
+
+    super.render({
+      task: this.processTask(this.task),
+      items: workers.concat(locations),
+      skills: skills
     });
     this.taskView.render(this.processTask(task));
 

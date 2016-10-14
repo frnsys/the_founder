@@ -69,6 +69,7 @@ class TheMarket extends Phaser.State {
     Tile.onSingleClick.add(this.renderUI, this);
     Tile.onCapture.add(this.renderUI, this);
     Tile.onCapture.add(this.captureNotice, this);
+    market.board.onCombat = this.combatNotice.bind(this);
     market.onStartTurn = () => {
       this.renderUI(market.board.selectedTile);
     };
@@ -79,23 +80,42 @@ class TheMarket extends Phaser.State {
     this.player.onboarder.resolve();
   }
 
-  captureNotice(tile) {
-    var coord = this.market.board.coordinateForPosition(tile.position),
-        msg = tile instanceof Tile.Income ? `+${(((tile.income + 1)/this.market.totalIncome) * 100).toFixed(2)}% market share` : 'Captured influencer!',
-      text = this.game.add.text(
-        coord.x - 70, coord.y, msg,
-        {fill: '#ffffff', stroke: '#000000', strokeThickness: 2, font: 'normal 24pt Work Sans'}),
-      tween;
+  notice(tile, msg, offset) {
+    var offset = offset || 70,
+        coord = this.market.board.coordinateForPosition(tile.position),
+        text = this.game.add.text(
+          coord.x - offset, coord.y, msg,
+          {fill: '#ffffff', stroke: '#000000', strokeThickness: 2, font: 'bold 24pt Work Sans'}),
+        tween;
     this.market.board.tileGroup.add(text);
     tween = this.game.add.tween(text).to({
-      x: coord.x - 70,
+      x: coord.x - offset,
       y: coord.y - 100,
       alpha: 0
-    }, 3000, Phaser.Easing.Quadratic.Out, true);
+    }, 4000, Phaser.Easing.Quadratic.Out, true);
     tween.onComplete.add(function() {
       text.destroy();
     });
     tween.start();
+  }
+
+  combatNotice(report) {
+    if (report.destroyed.defender) {
+      this.notice(report.tiles.defender, 'Wrecked!', 25);
+    } else if (report.damageTaken.defender) {
+      this.notice(report.tiles.defender, `-${report.damageTaken.defender} health`, 25);
+    }
+
+    if (report.destroyed.attacker) {
+      this.notice(report.tiles.attacker, 'Wrecked!', 25);
+    } else if (report.damageTaken.attacker) {
+      this.notice(report.tiles.attacker, `-${report.damageTaken.attacker} health`, 25);
+    }
+  }
+
+  captureNotice(tile) {
+    var msg = tile instanceof Tile.Income ? `+${(((tile.income + 1)/this.market.totalIncome) * 100).toFixed(2)}% market share` : 'Captured influencer!';
+    this.notice(tile, msg);
   }
 
   renderUI(tile) {

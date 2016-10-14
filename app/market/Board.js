@@ -371,12 +371,28 @@ class Board {
   }
 
   attackPiece(attacker, defender) {
-    attacker.attack(defender);
+    var dmgReport = attacker.attack(defender);
+
     // move to the defender spot if they were destroyed
     if (defender.health <= 0 && attacker.health > 0) {
       this.grid.tileAt(attacker.position).piece = null;
       this.animatePieceAlongPath(attacker, [defender.position], defender.position);
     }
+
+    this.onCombat({
+      destroyed: {
+        defender: defender.health <= 0,
+        attacker: attacker.health <= 0
+      },
+      damageTaken: {
+        defender: dmgReport.attacker,
+        attacker: dmgReport.defender
+      },
+      tiles: {
+        defender: defender.tile,
+        attacker: attacker.tile
+      }
+    });
   }
 
   unhighlightTiles() {

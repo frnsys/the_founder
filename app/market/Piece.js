@@ -24,14 +24,24 @@ class Piece {
   }
 
   attack(other) {
+    var atk = this.power,
+        def;
+
     // attacker has the initiative
-    other.damage(this.power);
+    other.damage(atk);
 
     // defender must still be alive to fight back
     if (other.health > 0) {
-      this.damage(other.power);
+      def = other.power;
+      this.damage(def);
     }
     this.exhaust();
+
+    // return damage dealt by attacker and defender
+    return {
+      attacker: atk,
+      defender: def
+    }
   }
 
   get power() {

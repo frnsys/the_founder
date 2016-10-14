@@ -397,6 +397,18 @@ class Company {
     return _.find(this.tasks, t => t.id == id);
   }
 
+  get idleEmployees() {
+    return _.reduce(this.workers, (m,w) => {
+      return m + (w.task ? 0 : 1);
+    }, 0);
+  }
+
+  get idleLocations() {
+    return _.reduce(this.locations, (m,l) => {
+      return m + (l.task ? 0 : 1);
+    }, -1); // -1 to skip the HQ
+  }
+
   get nextOffice() {
     switch (this.office) {
       case 0:

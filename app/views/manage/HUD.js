@@ -28,6 +28,7 @@ const template = data => `
     <li class="start-new-task">New Task</li>
     <li class="view-tasks">View Tasks</li>
   </ul>
+  <div class="idle-workers"></div>
 </div>
 <div class="hud-challenges">
 </div>
@@ -184,6 +185,18 @@ class HUD extends View {
       this.statsView.el.find('li').show();
     }
     $('.hud-time-inner').width(`${((data.month + data.week/config.WEEKS_PER_MONTH)/12) * 100}%`);
+
+    var idleEmployees = this.player.company.idleEmployees,
+        idleLocations = this.player.company.idleLocations,
+        idleText = [];
+
+    if (idleEmployees > 0) {
+      idleText.push(`${idleEmployees} idle employee${idleEmployees > 1 ? 's' : ''}`);
+    }
+    if (idleLocations > 0) {
+      idleText.push(`${idleLocations} idle location${idleLocations > 1 ? 's' : ''}`);
+    }
+    $('.idle-workers').text(idleText.join(', '));
 
     // remove old task views and add new ones
     var self = this,

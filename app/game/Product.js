@@ -54,7 +54,7 @@ const Product = {
     }, 0);
 
     return {
-      name: _.sample(recipe.names),
+      name: recipe.productName,
       recipeName: recipe.name,
       difficulty: difficulty,
       revenueScore: revenueScore,

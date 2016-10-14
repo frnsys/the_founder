@@ -13,9 +13,7 @@
       }
     ],
     "feature": 1,
-    "names": [
-      "HyperAd"
-    ]
+    "productName": "HyperAd"
   },
   {
     "name": "Ad.Genetics",
@@ -26,9 +24,7 @@
     "description": "Genetics ad profiling network",
     "effects": [],
     "feature": 1,
-    "names": [
-      "GeneAd"
-    ]
+    "productName": "GeneAd"
   },
   {
     "name": "Ad.Implant",
@@ -39,9 +35,7 @@
     "description": "Thrifty consumers can rent out thoughtspace for thought-ads and save on their favorite brands!",
     "effects": [],
     "feature": 2,
-    "names": [
-      "BrainShare"
-    ]
+    "productName": "BrainShare"
   },
   {
     "name": "Ad.Social Network",
@@ -55,10 +49,7 @@
       "value": "Worker Insight"
     }],
     "feature": 0,
-    "names": [
-      "PalHub",
-      "FaceSpace"
-    ]
+    "productName": "PalHub"
   },
   {
     "name": "Ad.Virtual Reality",
@@ -69,9 +60,7 @@
     "description": "VR ad network",
     "effects": [],
     "feature": 0,
-    "names": [
-      "VirtuAd"
-    ]
+    "productName": "VRAd"
   },
   {
     "name": "AI.Robot",
@@ -82,11 +71,7 @@
       "Robot"
     ],
     "feature": 0,
-    "names": [
-      "Servo",
-      "Alfred",
-      "Handy"
-    ]
+    "productName": "Servo"
   },
   {
     "name": "AI.Defense",
@@ -97,10 +82,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "EagleEye",
-      "DefenseWatch"
-    ]
+    "productName": "EagleEye"
   },
   {
     "name": "AI.Gadget",
@@ -111,10 +93,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "DriveIt",
-      "Chaffeur"
-    ]
+    "productName": "DriveIt"
   },
   {
     "name": "AI.Implant",
@@ -125,10 +104,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "Think4Me",
-      "WWID"
-    ]
+    "productName": "Think4Me"
   },
   {
     "name": "AI.Mobile",
@@ -139,10 +115,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "Her&Him",
-      "PhoneFriend"
-    ]
+    "productName": "PhoneFriend"
   },
   {
     "name": "AI.Logistics",
@@ -156,10 +129,7 @@
       "value": -0.02
     }],
     "feature": 0,
-    "names": [
-      "CyberSync",
-      "OptiLogi"
-    ]
+    "productName": "CyberSync"
   },
   {
     "name": "Analytics.Credit",
@@ -170,9 +140,7 @@
     "description": "High-frequency trading algorithms",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Trade2000"
-    ]
+    "productName": "Trade2000"
   },
   {
     "name": "Analytics.Defense",
@@ -183,9 +151,7 @@
     "description": "PreCrime systems",
     "effects": [],
     "feature": 0,
-    "names": [
-      "PreCrime"
-    ]
+    "productName": "PredCrime"
   },
   {
     "name": "Analytics.E-Commerce",
@@ -196,9 +162,7 @@
     "description": "Personalized shopping platform",
     "effects": [],
     "feature": 0,
-    "names": [
-      "BuyMe"
-    ]
+    "productName": "BuyMe"
   },
   {
     "name": "Analytics.Entertainment",
@@ -209,9 +173,7 @@
     "description": "Personalized streaming media services.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Entertainalytics"
-    ]
+    "productName": "Entertainalytics"
   },
   {
     "name": "Analytics.Gadget",
@@ -222,9 +184,7 @@
     "description": "Home automation devices",
     "effects": [],
     "feature": 0,
-    "names": [
-      "SmartHome"
-    ]
+    "productName": "SmartHome"
   },
   {
     "name": "Analytics.Genetics",
@@ -235,9 +195,7 @@
     "description": "Gene therapy treatments",
     "effects": [],
     "feature": 0,
-    "names": [
-      "TheraGene"
-    ]
+    "productName": "TheraGene"
   },
   {
     "name": "Analytics.Implant",
@@ -248,9 +206,7 @@
     "description": "The next level of quantified self - quantified psychological tracking and analysis.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "ThoughtChip"
-    ]
+    "productName": "ThoughtChip"
   },
   {
     "name": "Analytics.Social Network",
@@ -261,10 +217,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "UScore",
-      "WhatImWorth"
-    ]
+    "productName": "WhatImWorth"
   },
   {
     "name": "Analytics.Wearable",
@@ -278,10 +231,7 @@
       "value": "Worker Quant"
     }],
     "feature": 0,
-    "names": [
-      "Wearalytics",
-      "FitNis"
-    ]
+    "productName": "FitNis"
   },
   {
     "name": "Analytics.Logistics",
@@ -295,9 +245,7 @@
       "value": -0.01
     }],
     "feature": 0,
-    "names": [
-      "SuperSupply"
-    ]
+    "productName": "SuperSupply"
   },
   {
     "name": "Robot.Celebrity",
@@ -308,9 +256,7 @@
     "description": "Robo pop star",
     "effects": [],
     "feature": 0,
-    "names": [
-      "RoboPopStar"
-    ]
+    "productName": "Satsune Niku"
   },
   {
     "name": "Robot.Credit",
@@ -321,9 +267,7 @@
     "description": "What do we even need *people* to buy our products for anyways? We can just build robots to work and spend their cash on us.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "BuyBot"
-    ]
+    "productName": "BuyBot"
   },
   {
     "name": "Robot.Defense",
@@ -334,9 +278,7 @@
     "description": "Robotic soldiers and law enforcement",
     "effects": [],
     "feature": 0,
-    "names": [
-      "RoboWarrior"
-    ]
+    "productName": "Spartan"
   },
   {
     "name": "Robot.Logistics",
@@ -350,10 +292,7 @@
       "value": -0.01
     }],
     "feature": 0,
-    "names": [
-      "DroneIt",
-      "DroneDrop"
-    ]
+    "productName": "DroneDrop"
   },
   {
     "name": "Celebrity.Entertainment",
@@ -364,9 +303,7 @@
     "description": "Blockbuster film",
     "effects": [],
     "feature": 0,
-    "names": [
-      "CheesyMovieName"
-    ]
+    "productName": "CheesyMovieName"
   },
   {
     "name": "Celebrity.Genetics",
@@ -377,9 +314,7 @@
     "description": "Licensed genetic sequences from your favorite celebrities, ready to incorporate into your own DNA.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "CelebGenes"
-    ]
+    "productName": "CelebGenes"
   },
   {
     "name": "Celebrity.Synthetic Organism",
@@ -390,9 +325,7 @@
     "description": "Vat-grown celebrities - perfect down to their DNA.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "DNACelebs"
-    ]
+    "productName": "DNACelebs"
   },
   {
     "name": "Celebrity.Virtual Reality",
@@ -403,10 +336,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "Hayuke Minu",
-      "HoloPac"
-    ]
+    "productName": "Hayuke Minu"
   },
   {
     "name": "Cognitive.Drug",
@@ -417,9 +347,7 @@
     "description": "Cognitive emotional control and enhancement drugs",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Xany"
-    ]
+    "productName": "Xany"
   },
   {
     "name": "Cognitive.Entertainment",
@@ -430,9 +358,7 @@
     "description": "Simulated memory experiences",
     "effects": [],
     "feature": 0,
-    "names": [
-      "TotalMemory"
-    ]
+    "productName": "TotalMemory"
   },
   {
     "name": "Cognitive.Social Network",
@@ -443,11 +369,7 @@
       "Social Network"
     ],
     "feature": 0,
-    "names": [
-      "HiveMind",
-      "GroupThink",
-      "MindMeld"
-    ]
+    "productName": "MindMeld"
   },
   {
     "name": "Cognitive.Virtual Reality",
@@ -458,9 +380,7 @@
     "description": "A virtual world for your mind",
     "effects": [],
     "feature": 0,
-    "names": [
-      "MindWorld"
-    ]
+    "productName": "MindWorld"
   },
   {
     "name": "Credit.E-Commerce",
@@ -471,11 +391,7 @@
       "E-Commerce"
     ],
     "feature": 0,
-    "names": [
-      "UberCard",
-      "Pisa",
-      "USA Express"
-    ]
+    "productName": "USA Express"
   },
   {
     "name": "Credit.Implant",
@@ -486,9 +402,7 @@
     "description": "Keep detailed track of risky loaners with these neural loan monitoring devices.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "LoanNeural"
-    ]
+    "productName": "LoanNeural"
   },
   {
     "name": "Credit.Mobile",
@@ -499,12 +413,7 @@
       "Credit",
       "Mobile"
     ],
-    "names": [
-      "PayBack",
-      "Tipper",
-      "CashPal",
-      "Cube"
-    ]
+    "productName": "PayBack"
   },
   {
     "name": "Credit.Social Network",
@@ -515,27 +424,21 @@
       "Social Network"
     ],
     "feature": 0,
-    "names": [
-      "SpareChange",
-      "LendAHand",
-      "GimmeMoney"
-    ]
+    "productName": "SpareChange"
   },
   {
     "name": "Default",
     "description": "This combination was a failure.",
     "effects": [],
     "feature": -1,
-    "names": ["Junk"]
+    "name": ["Junk"]
   },
   {
     "name": "Defense.Drug",
     "description": "Enhancement-performing and aggression drugs for soldiers.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Furinol"
-    ],
+    "productName": "Furinol",
     "productTypes": [
       "Defense",
       "Drug"
@@ -550,9 +453,7 @@
     "description": "The thrill of cinema not enough? Tour conflict zones under the safety of our highly-trained security personnel and get right up to the action!",
     "effects": [],
     "feature": 0,
-    "names": [
-      "WarTour"
-    ]
+    "productName": "WarTour"
   },
   {
     "name": "Defense.Genetics",
@@ -563,9 +464,7 @@
     "description": "Bioweapons with genetic-targeting systems.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "GeneKill"
-    ]
+    "productName": "GeneKill"
   },
   {
     "name": "Defense.Space",
@@ -576,10 +475,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "SpaceStrike",
-      "Zeus"
-    ]
+    "productName": "Zeus"
   },
   {
     "name": "Defense.Synthetic Organism",
@@ -590,10 +486,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "SuperSoldier",
-      "DNArmy"
-    ]
+    "productName": "DNArmy"
   },
   {
     "name": "Defense.Wearable",
@@ -604,11 +497,7 @@
       "Wearable"
     ],
     "feature": 0,
-    "names": [
-      "exMan",
-      "eXo",
-      "Skeltor"
-    ]
+    "productName": "Skeltor"
   },
   {
     "name": "Drug.Entertainment",
@@ -619,9 +508,7 @@
     "description": "Recreational drugs",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Happi"
-    ]
+    "productName": "Happi"
   },
   {
     "name": "Drug.Genetics",
@@ -632,9 +519,7 @@
     "description": "Genetic therapy treatments",
     "effects": [],
     "feature": 0,
-    "names": [
-      "GeneTherapy"
-    ]
+    "productName": "GeneTherapy"
   },
   {
     "name": "Drug.Implant",
@@ -645,9 +530,7 @@
     "description": "Mood pacemakers",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Moody"
-    ]
+    "productName": "Moody"
   },
   {
     "name": "E-Commerce.Entertainment",
@@ -658,10 +541,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "TuneStore",
-      "BuyMeDia"
-    ]
+    "productName": "TuneStore"
   },
   {
     "name": "E-Commerce.Genetics",
@@ -672,9 +552,7 @@
     "description": "Online marketplace for designer babies and other genetics-based products.",
     "effects": [],
     "feature": 0,
-    "names": [
-      "BabyStop"
-    ]
+    "productName": "BabyStop"
   },
   {
     "name": "E-Commerce.Mobile",
@@ -685,10 +563,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "AppShop",
-      "SoftStore"
-    ]
+    "productName": "AppShop"
   },
   {
     "name": "E-Commerce.Social Network",
@@ -699,11 +574,7 @@
       "Social Network"
     ],
     "feature": 0,
-    "names": [
-      "AirShare",
-      "Suber",
-      "HireMe"
-    ]
+    "productName": "AirShare"
   },
   {
     "name": "Entertainment.Mobile",
@@ -714,9 +585,7 @@
     "description": "Tablets",
     "effects": [],
     "feature": 0,
-    "names": [
-      "yPad"
-    ]
+    "productName": "yPad"
   },
   {
     "name": "Entertainment.Social Network",
@@ -727,11 +596,7 @@
       "Social Network"
     ],
     "feature": 0,
-    "names": [
-      "Flixspot",
-      "InstaVids",
-      "StreamIt"
-    ]
+    "productName": "Flixspot"
   },
   {
     "name": "Entertainment.Space",
@@ -742,9 +607,7 @@
     "description": "Space trips",
     "effects": [],
     "feature": 0,
-    "names": [
-      "galactica"
-    ]
+    "productName": "Galactica"
   },
   {
     "name": "Gadget.Mobile",
@@ -755,9 +618,7 @@
     "description": "Smartphones",
     "effects": [],
     "feature": 0,
-    "names": [
-      "yPhone"
-    ]
+    "productName": "yPhone"
   },
   {
     "name": "Gadget.Logistics",
@@ -768,10 +629,7 @@
     "description": "Internet infrastructure for rent",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Internet Web Services",
-      "CloudHoster"
-    ]
+    "productName": "CloudHoster"
   },
   {
     "name": "Gadget.Space",
@@ -782,9 +640,7 @@
     "description": "Satellites",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Sats"
-    ]
+    "productName": "Sats"
   },
   {
     "name": "Genetics.Social Network",
@@ -795,10 +651,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "Genee",
-      "DTFDNA"
-    ]
+    "productName": "DTFDNA"
   },
   {
     "name": "Genetics.Space",
@@ -809,9 +662,7 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "Bugsy"
-    ]
+    "productName": "Bugsy"
   },
   {
     "name": "Genetics.Synthetic Organism",
@@ -822,10 +673,7 @@
     "description": "Genetically-engineered pets",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Pocket Creatures",
-      "DNAnimals"
-    ]
+    "productName": "DNAnimals"
   },
   {
     "name": "Implant.Mobile",
@@ -836,9 +684,7 @@
     "description": "Retinal displays",
     "effects": [],
     "feature": 0,
-    "names": [
-      "yOptics"
-    ]
+    "productName": "yOptics"
   },
   {
     "name": "Logistics.Sharing",
@@ -849,12 +695,7 @@
     "description": "Delivery services",
     "effects": [],
     "feature": 0,
-    "names": [
-      "Postup",
-      "Marsupial",
-      "DeliverIt",
-      "GoFetch"
-    ]
+    "productName": "Marsupial"
   },
   {
     "name": "Logistics.Space",
@@ -868,10 +709,7 @@
       "value": -0.02
     }],
     "feature": 0,
-    "names": [
-      "SpaceDrop",
-      "SpaceShipIt"
-    ]
+    "productName": "SpaceDrop"
   },
   {
     "name": "Mobile.Social Network",
@@ -882,12 +720,7 @@
       "Mobile",
       "Social Network"
     ],
-    "names": [
-      "LetsChat",
-      "SupApp",
-      "FaceTalk",
-      "Blabber"
-    ]
+    "productName": "LetsChat"
   },
   {
     "name": "Mobile.Wearable",
@@ -898,9 +731,7 @@
     "description": "Smartwatches",
     "effects": [],
     "feature": 0,
-    "names": [
-      "yWatch"
-    ]
+    "productName": "yWatch"
   },
   {
     "name": "Social Network.Virtual Reality",
@@ -911,11 +742,7 @@
       "Virtual Reality"
     ],
     "feature": 0,
-    "names": [
-      "Matrix",
-      "OZ",
-      "The Network"
-    ]
+    "productName": "OZ"
   },
   {
     "name": "Virtual Reality.Wearable",
@@ -926,9 +753,6 @@
     ],
     "effects": [],
     "feature": 0,
-    "names": [
-      "VRT",
-      "RetinalVR"
-    ]
+    "productName": "RetinalVR"
   }
 ]

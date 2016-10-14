@@ -84,6 +84,7 @@ class Company {
       discoveredProducts: [],
       activeProducts: [],
       productsLaunched: 0,
+      versions: {},
 
       hype: 0,
       outrage: 0,
@@ -318,6 +319,13 @@ class Company {
 
   finishProduct(product) {
     this.activeProducts.push(product);
+
+    if (!(product.name in this.versions)) {
+      this.versions[product.name] = 1;
+    } else {
+      this.versions[product.name] += 1;
+      product.name = `${product.name} ${this.versions[product.name]}`;
+    }
     this.productsLaunched++;
   }
 

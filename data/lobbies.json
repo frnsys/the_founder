@@ -2,7 +2,7 @@
   {
     "name": "Foreign Intervention",
     "cost": 100000,
-    "requiredProgress": 100000,
+    "requiredProgress": 40000,
     "description": "Have the government lend a helping hand in making sovereign nations more receptive to our presence.",
     "effects": [
       {
@@ -14,7 +14,7 @@
   {
     "name": "Lower Min. Wage",
     "cost": 100000,
-    "requiredProgress": 100000,
+    "requiredProgress": 40000,
     "description": "It's too high as it is.",
     "effects": [
       {
@@ -26,7 +26,7 @@
   {
     "name": "DARPA Grants",
     "cost": 100000,
-    "requiredProgress": 100000,
+    "requiredProgress": 40000,
     "description": "Special funds for special research",
     "effects": [{
       "type": "costMultiplier",
@@ -36,7 +36,7 @@
   {
     "name": "Tax Breaks",
     "cost": 100000,
-    "requiredProgress": 100000,
+    "requiredProgress": 40000,
     "description": "Is a man not entitled to the sweat of his brow?",
     "effects": [
       {
@@ -48,7 +48,7 @@
   {
     "name": "Worker Visas",
     "cost": 100000,
-    "requiredProgress": 100000,
+    "requiredProgress": 40000,
     "description": "Allow more worker visas for companies like ours.",
     "effects": [
       {
@@ -60,7 +60,7 @@
   {
     "name": "Lift Research Bans",
     "cost": 100000,
-    "requiredProgress": 100000,
+    "requiredProgress": 40000,
     "description": "Gain exemption from government research regulations",
     "effects": [
       {

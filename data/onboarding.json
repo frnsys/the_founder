@@ -145,7 +145,7 @@
       "You'll really start to see some <em class='special'>Innovation</em> when you work across verticals!"
     ],
     "conditions": [{
-      "type": "productTypes",
+      "type": "productsLaunched",
       "op": "gt",
       "val": 4
     }],
@@ -160,7 +160,7 @@
     "conditions": [{
       "type": "productsLaunched",
       "op": "gt",
-      "val": 12
+      "val": 8
     }],
     "uiSelector": ".start-new-task"
   }, {
@@ -197,7 +197,7 @@
     "conditions": [{
       "type": "productsLaunched",
       "op": "gt",
-      "val": 4
+      "val": 5
     }],
     "uiSelector": ".start-new-task"
   }, {
@@ -223,7 +223,7 @@
     "conditions": [{
       "type": "productsLaunched",
       "op": "ge",
-      "val": 8
+      "val": 7
     }],
     "uiSelector": ".manage-locations"
   }, {

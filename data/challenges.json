@@ -1,4 +1,18 @@
 [{
+  "name": "Panopticon",
+  "condition": {
+    "type": "officeLevel",
+    "op": "eq",
+    "val": 1
+  }
+}, {
+  "name": "Technodrome",
+  "condition": {
+    "type": "officeLevel",
+    "op": "eq",
+    "val": 2
+  }
+}, {
   "name": "Try Democracy",
   "condition": {
     "type": "lobbies",

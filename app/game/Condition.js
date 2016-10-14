@@ -99,6 +99,13 @@ const Condition = {
             case 'ge':
               return 'Make at least ' + util.formatCurrencyAbbrev(cond.val) + ' in annual revenue.';
           }
+        case 'officeLevel':
+          switch (cond.val) {
+              case 1:
+                return `Upgrade to the open office.`
+              case 2:
+                return `Upgrade to the campus.`
+          }
         default:
           return;
     }

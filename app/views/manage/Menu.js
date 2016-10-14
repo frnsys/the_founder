@@ -15,6 +15,7 @@ import Accounting from './Accounting';
 import Challenges from './Challenges';
 import Settings from './Settings';
 import Confirm from 'views/alerts/Confirm';
+import Alert from 'views/alerts/Alert';
 
 const menuItems = [
   ['locations', 'Locations'],
@@ -100,18 +101,24 @@ class Menu extends View {
         $('.manage-menu .selected').removeClass('selected');
       },
       '.upgrade-office': function() {
-          var next = player.company.nextOffice;
-          var view = new Confirm(function() {
+        var next = player.company.nextOffice,
+            canAfford = player.company.cash >= next.cost,
+            view;
+        if (canAfford) {
+          view = new Confirm(function() {
             if (player.company.upgradeOffice()) {
               office.setLevel(next.level, function() {
                 _.each(player.company.perks, office.addPerk.bind(office));
                 _.each(player.company.workers, office.addEmployee.bind(office));
               });
-              render({nextOffice: player.company.nextOffice});
+              // this.render();
             }
-            this.remove();
-          }, this.remove);
-          view.render('This upgrade will cost you $' + abbreviateNumber(next.cost, 3) + '. Are you sure?');
+          });
+          view.render(`This upgrade will cost you ${util.formatCurrencyAbbrev(next.cost)}. Are you sure?`);
+        } else {
+          view = new Alert();
+          view.render({message: `This upgrade will cost you ${util.formatCurrencyAbbrev(next.cost)}. You can't afford that.`});
+        }
       }
     });
   }
@@ -130,7 +137,7 @@ class Menu extends View {
 
   render() {
     super.render({
-      nextOffice: this.player.nextOffice,
+      nextOffice: this.player.company.nextOffice,
       onboarding: this.player.snapshot.onboarding
     });
   }

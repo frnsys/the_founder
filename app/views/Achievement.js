@@ -26,7 +26,7 @@ class Achievement extends View {
       this.el.fadeOut(800, () => {
         this.remove();
       });
-    }, 4000);
+    }, 8000);
   }
 }
 

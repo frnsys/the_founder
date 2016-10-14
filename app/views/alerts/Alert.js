@@ -14,16 +14,18 @@ const template = data => `
 
 class Alert extends View {
   constructor(params) {
+    var params = params || {};
     super(_.extend({
       parent: '.alert-wrapper',
       template: template,
       attrs: {class: 'alert'}
     }, params));
+    this.onDismiss = params.onDismiss;
     this.registerHandlers({
       '.dismiss-alert': function() {
         this.remove();
-        if (params.onDismiss) {
-          params.onDismiss();
+        if (this.onDismiss) {
+          this.onDismiss();
         }
       }
     });

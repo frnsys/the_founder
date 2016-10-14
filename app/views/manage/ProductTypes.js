@@ -57,19 +57,33 @@ class ProductTypesView extends CardsList {
         '.buy': function(ev) {
           var $el = $(ev.target),
               idx = $el.closest('li').index(),
-              sel = productTypes[idx];
+              sel = productTypes[this.pts_idx_map[idx]];
           player.company.buyProductType(sel);
           this.subviews[idx].render(this.processItem(sel));
         }
       }
     });
     this.player = player;
+    this.sorted_pts = _.chain(productTypes).map(this.processItem.bind(this)).sortBy(this.sorter.bind(this)).value();
+    this.pts_idx_map = _.chain(productTypes)
+      .map(this.processItem.bind(this))
+      .map((pt, i) => ({idx: i, pt: pt, owned: pt.owned, available: pt.available}))
+      .sortBy(this.sorter.bind(this)).pluck('idx').value();
+  }
+
+  sorter(pt, i) {
+    var idx = 2;
+    if (pt.owned) {
+      idx = 0;
+    } else if (pt.available) {
+      idx = 1;
+    }
+    return (idx*10000) + i;
   }
 
   render() {
-    this.items = _.map(productTypes, this.processItem.bind(this));
     super.render({
-      items: this.items
+      items: this.sorted_pts
     });
     this.nProductTypes = this.player.company.productTypes.length;
   }
@@ -88,11 +102,11 @@ class ProductTypesView extends CardsList {
     if (owned) {
       item.expertise = _.findWhere(player.company.productTypes, {name: item.name}).expertise;
     }
-    return _.extend({
+    return _.extend(item, {
       owned: owned,
       available: player.company.productTypeIsAvailable(item),
       afford: player.company.cash >= item.cost
-    }, item);
+    });
   }
 
   createListItem(item) {

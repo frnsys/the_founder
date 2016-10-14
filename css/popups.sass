@@ -768,7 +768,7 @@ button.owned
   color: #fff
   padding: 2em
   border-radius: 0.4em
-  margin: 8em auto 0 auto
+  margin: 4em auto 0 auto
   width: 36em
   min-height: 26em
   position: relative
@@ -843,16 +843,27 @@ button.owned
       width: 100%
       border-radius: 0 0 0.2em 0.2em
 .product-revenue-per-share
-  width: 24em
-  margin: 1em auto
   padding: 1em
-  background: #515f78
-  border-radius: 0.2em
   color: #fff
   font-size: 1.5em
+  position: fixed
+  top: 0
+  width: 100%
+  text-align: center
+.skip-market
+  width: 30em
+  padding: 1em
+  margin: 0.5em auto 0 auto
+  background: #3f84fb
+  color: #162d54
+  font-size: 1.2em
+  border-radius: 0.2em
+  cursor: pointer
+  &:hover
+    background: #1866ec
 .product-competitor
   width: 24em
-  margin: 1em auto
+  margin: 0.5em auto 0 auto
   padding: 1em
   background: #e8e8e8
   border-radius: 0.2em
@@ -867,10 +878,12 @@ button.owned
   p
     font-style: italic
     font-size: 0.9em
+  h2
+    font-size: 1.2em
 .product-competitor-difficulty
   position: absolute
   background: #3f84fb
-  top: -0.4em
+  top: -0.2em
   right: -0.4em
   font-weight: normal
   font-size: 0.8em

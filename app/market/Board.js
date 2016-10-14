@@ -26,10 +26,14 @@ function euclideanDistance(a, b) {
   return Math.sqrt(Math.pow((a.x - b.x),2) + Math.pow((a.y - b.y),2));
 }
 
+function nTiles(company) {
+  return 24 + company.locations.length + 3 * company.markets.length;
+}
+
 class Board {
   constructor(company, players, game) {
     var self = this;
-    var nTiles = 24 + company.locations.length + 3 * company.markets.length;
+    var nTiles = nTiles(company);
     this.cols = cols;
     this.rows = rows;
     this.game = game;
@@ -411,4 +415,6 @@ class Board {
     return _.filter(this.grid.tiles, t => (t instanceof Tile.Income) && !(t.owner));
   }
 }
+
+Board.nTiles = nTiles;
 export default Board;

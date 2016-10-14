@@ -4,7 +4,11 @@ import util from 'util';
 import templ from './Common';
 import View from 'views/View';
 import Popup from 'views/Popup';
+import Tile from 'market/Tile';
+import Board from 'market/Board';
 import Product from 'game/Product';
+import Competitor from 'game/Competitor';
+import MarketReport from 'views/alerts/MarketReport';
 
 const competitorDifficulty = [
   'Easy',
@@ -45,6 +49,9 @@ const productPoints = (name, data) => `
 `;
 
 const template = data => `
+<div class="product-revenue-per-share">
+  Revenue per market share: ${util.formatCurrency(data.revenuePerShare)}
+</div>
 <div class="product-designer-view">
   <div class="title">
     <h1>${data.name}</h1>
@@ -71,9 +78,6 @@ const template = data => `
     <button class="launch-product">Launch</button>
   </div>
 </div>
-<div class="product-revenue-per-share">
-  Revenue per market share: ${util.formatCurrency(data.revenuePerShare)}
-</div>
 <div class="product-competitor ${data.competitor.name == 'Dark Industries' ? 'dark_industries' : ''}">
   <h6>Your Competition</h6>
   <div class="product-competitor-difficulty" data-tip="Difficulty">${competitorDifficulty[data.competitor.difficulty]}</div>
@@ -86,6 +90,9 @@ const template = data => `
     <p>${data.competitor.description}</p>
   </div>
 </div>
+<div class="skip-market">
+  Have an employee do it. (expected market share: ${(data.expectedMarketShare * 100).toFixed(0)}%)
+</div>
 `;
 
 class ProductDesigner extends Popup {
@@ -97,6 +104,15 @@ class ProductDesigner extends Popup {
     this.player = player;
     this.product = product;
     this.competitor = competitor;
+
+    var competitorProduct = Competitor.createProduct(product, competitor);
+    this.expectedMarketShare = _.reduce(['design', 'engineering', 'marketing'], (m, s) => {
+      return m + (product[s]/(product[s] + competitorProduct[s]));
+    }, 0);
+    this.expectedMarketShare /= 3;
+
+
+    var _postRemove = super.postRemove;
     this.registerHandlers({
       '.product-point-add': function(ev) {
         var name = $(ev.target).data('name'),
@@ -119,6 +135,33 @@ class ProductDesigner extends Popup {
         // the Manage state hooks into this view's
         // postRemove method to setup the Market
         this.remove();
+      },
+      '.skip-market': function() {
+        // whooooaaa
+        var nTiles = Board.nTiles(this.player.company),
+            tiles = _.map(_.range(nTiles), () => Tile.random()),
+            incomeTiles = _.filter(tiles, t => t instanceof Tile.Income),
+            influencerTiles = _.filter(tiles, t => t instanceof Tile.Influencer),
+            influencers = _.random(0, influencerTiles.length),
+            totalIncome = _.reduce(incomeTiles, (m, t) => m + t.income + 1, 0),
+            playerMarketShare = Math.min(_.random(
+              this.expectedMarketShare * 0.9 * 100,
+              this.expectedMarketShare * 1.1 * 100), 100)/100,
+            playerIncome = Math.round(playerMarketShare * totalIncome),
+            marketShares = _.map(_.range(playerIncome), () => ({income: 0})), // spoof income tiles
+            results = Product.setRevenue(this.product, marketShares, influencers, this.player);
+
+        results.marketShare = (playerIncome/totalIncome) * 100;
+        this.player.company.finishProduct(this.product);
+
+        // overwrite the postRemove the Manage state set
+        this.postRemove = () => {
+          _postRemove();
+          var report = new MarketReport();
+          report.render(results);
+          this.player.save();
+        };
+        this.remove();
       }
     });
   }
@@ -140,7 +183,8 @@ class ProductDesigner extends Popup {
         return o;
       }, {}),
       revenuePerShare: Product.marketShareToRevenue(0, this.product, this.player),
-      competitor: this.competitor
+      competitor: this.competitor,
+      expectedMarketShare: this.expectedMarketShare
     }, this.product));
     // hack to hide tooltips after re-render
     // otherwise they hang around b/c the element

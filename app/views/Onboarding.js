@@ -163,6 +163,7 @@ class Onboarding extends View {
       case 4:
         Effect.applies(player.company.locations[0].effects, player);
         Effect.applies(player.company.cofounder.effects, player);
+        player.company.markets = [player.company.locations[0].market];
 
         // starting location has no skills since your employees represent it
         player.company.locations[0].skills = {

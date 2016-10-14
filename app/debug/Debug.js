@@ -51,6 +51,7 @@ const Debug = {
     // player.unlocked.specialProjects = util.byNames(specialProjects, ['Mars Colony']);
     player.unlocked.specialProjects = specialProjects;
     player.company.locations = util.byNames(locations, ['New York']);
+    player.company.markets = [player.company.locations[0].market];
     player.company.cofounder = cofounders[0];
     player.company.workers = player.workers.slice(0,3);
     // _.each(player.company.workers, w => w.salary = 40000);

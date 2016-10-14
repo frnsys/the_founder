@@ -34,6 +34,7 @@ const Condition = {
   lobbies: (player) => player.company.lobbies,
   nLobbies: (player) => player.company.lobbies.length,
   acquisitions: (player) => player.company.acquisitions,
+  nMarkets: (player) => player.company.markets.length,
   locations: (player) => player.company.locations,
   nLocations: (player) => player.company.locations.length,
   employees: (player) => player.company.workers.length,
@@ -79,10 +80,10 @@ const Condition = {
             case 'has':
               return 'Complete the ' + cond.val + ' special project.';
           }
-        case 'nLocations':
+        case 'nMarkets':
           switch (cond.op) {
             case 'gt':
-              return 'Expand to a new location.';
+              return 'Expand to a new market.';
           }
         case 'locations':
           switch (cond.op) {

@@ -134,7 +134,7 @@
 }, {
   "name": "Globalization",
   "condition": {
-    "type": "nLocations",
+    "type": "nMarkets",
     "op": "gt",
     "val": 1
   }

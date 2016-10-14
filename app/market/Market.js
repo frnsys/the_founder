@@ -117,16 +117,20 @@ class Market {
       _.each(this.humanPlayer.pieces, p => p.exhaust());
 
       this.startTurn(this.aiPlayer);
-      this.AI.takeTurn(function() {
-        // add a little delay
-        // otherwise transition is too fast
-        setTimeout(function() {
-          self.startTurn(self.humanPlayer)
-          if (self.shouldEndGame()) {
-            self.handleEndGame();
-          }
-        }, 1200);
-      });
+
+      // small delay before AI starts its turn
+      setTimeout(() => {
+        this.AI.takeTurn(function() {
+          // add a little delay
+          // otherwise transition is too fast
+          setTimeout(function() {
+            self.startTurn(self.humanPlayer)
+            if (self.shouldEndGame()) {
+              self.handleEndGame();
+            }
+          }, 800);
+        });
+      }, 600);
     }
   }
 

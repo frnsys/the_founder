@@ -113,8 +113,11 @@ class Market {
     if (this.shouldEndGame()) {
       this.handleEndGame();
     } else {
-      // exhaust player pieces
-      _.each(this.humanPlayer.pieces, p => p.exhaust());
+      // exhaust player pieces & disable drag
+      _.each(this.humanPlayer.pieces, p => {
+        p.exhaust();
+        p.sprite.inputEnabled = false;
+      });
 
       this.startTurn(this.aiPlayer);
 
@@ -137,6 +140,12 @@ class Market {
   startTurn(player) {
     // reset moves
     _.each(player.pieces, p => p.reset());
+
+    // re-enable drag
+    if (player.human) {
+      _.each(this.humanPlayer.pieces, p => p.sprite.inputEnabled = true);
+    }
+
     this.currentPlayer = player;
     this.onStartTurn();
   }

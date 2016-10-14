@@ -27,7 +27,7 @@ const detailTemplate = item => `
     <h4 class="cash">${util.formatCurrency(item.cost)}</h4>
   </div>
   <img src="assets/techs/${util.slugify(item.name)}.png">
-  <h5>Requires the ${item.requiredVertical} vertical</h5>
+  <h5 class="${item.has_vertical ? '': 'missing-vertical'}">Requires the ${item.requiredVertical} vertical</h5>
   ${item.prereqs.length > 0 ? templ.prereqs(item) : ''}
   ${templ.effects(item)}
   ${button(item)}
@@ -107,7 +107,8 @@ class ResearchView extends CardsList {
           name: t,
           ok: util.containsByName(player.company.technologies, t)
         }
-      })
+      }),
+      has_vertical: util.containsByName(this.player.company.verticals, item.requiredVertical)
     }, item);
   }
 }

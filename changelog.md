@@ -1,3 +1,9 @@
+# 0.2.4
+
+- various bug fixes
+- various style tweaks
+- additional office upgrade challenges
+
 # 0.2.3
 
 - show unassigned workers first in task assignment view

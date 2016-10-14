@@ -5,3 +5,4 @@ node_modules
 *.map
 .tags*
 assets/models/renders/*.png
+update

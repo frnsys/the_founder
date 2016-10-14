@@ -8,7 +8,7 @@ const template = data => `
 <div class="background"></div>
 <div class="stars"></div>
 <canvas id="earth"></canvas>
-<div class="mute-menu"><img src="assets/icons/volume-off.svg"></div>
+<div class="mute-menu"><img src="assets/icons/volume-high.svg"></div>
 <div class="hello">
   <div class="hello-title">
     <h1>The Founder</h1>

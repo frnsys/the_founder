@@ -97,9 +97,9 @@ class Market {
     } else if (this.board.uncapturedTiles.length == 0) {
       reason = 'The Market\'s been saturated';
     } else if (this.aiPlayer.pieces.length == 0) {
-      reason = 'Obliterated the competition';
+      reason = 'You obliterated the competition';
     } else if (this.humanPlayer.pieces.length == 0) {
-      reason = 'Obliterated by the competition';
+      reason = 'The competition destroyed you';
     }
     setTimeout(function() {
       self.endGame(`${reason} - time to leave the Market!`);

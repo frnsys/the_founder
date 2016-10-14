@@ -149,7 +149,8 @@ class TheMarket extends Phaser.State {
 
         this.game.state.states['Manage'].marketResults = results;
         this.game.state.start('Manage');
-      }
+      },
+      attrs: { class: 'alert market-ending-alert' }
     });
     view.render({message: reason});
   }

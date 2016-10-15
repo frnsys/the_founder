@@ -95,7 +95,7 @@ class View extends CardsList {
     item.cost *= this.player.costMultiplier;
     return _.extend({
       owned: util.contains(player.company.specialProjects, item),
-      unlocked: util.contains(player.unlocked.specialProjects, item),
+      unlocked: _.contains(player.unlocked.specialProjects, item.name),
       afford: player.company.cash >= item.cost,
       in_progress: _.some(player.company.tasks, function(t) {
         return t.obj.name == item.name;

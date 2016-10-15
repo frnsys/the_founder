@@ -46,10 +46,8 @@ var testProduct = {
 const Debug = {
   setupCompany: function(player) {
     player.company.verticals = util.byNames(verticals, ['Information']);
-    // player.company.verticals = util.byNames(verticals, ['Information', 'Hardware']);
     player.company.cash = 100000
-    // player.unlocked.specialProjects = util.byNames(specialProjects, ['Mars Colony']);
-    player.unlocked.specialProjects = specialProjects;
+    player.unlocked.specialProjects = _.pluck(specialProjects, 'name');
     player.company.locations = util.byNames(locations, ['New York']);
     player.company.markets = [player.company.locations[0].market];
     player.company.cofounder = cofounders[0];

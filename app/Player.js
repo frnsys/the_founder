@@ -37,11 +37,9 @@ class Player {
     this.company = new Company(companyData, this);
     _.extend(this, {
       unlocked: {
-        locations: _.filter(locations, l => !_.contains(lockedLocations, l.name)),
+        locations: _.chain(locations).filter(l => !_.contains(lockedLocations, l.name)).pluck('name').value(),
         specialProjects: [],
-        productTypes: util.byNames(productTypes, [
-          'Sharing', 'Genetics', 'Ad', 'Entertainment', 'Mobile', 'Celebrity', 'Social Network', 'Credit', 'E-Commerce', 'Defense', 'Logistics', 'Gadget'
-        ])
+        productTypes: ['Sharing', 'Genetics', 'Ad', 'Entertainment', 'Mobile', 'Celebrity', 'Social Network', 'Credit', 'E-Commerce', 'Defense', 'Logistics', 'Gadget']
       },
 
       specialEffects: {

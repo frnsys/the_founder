@@ -123,7 +123,7 @@ class LocationsView extends Popup {
       template: template
     });
     this.player = player;
-    this.locations = _.filter(locations, l => util.contains(player.unlocked.locations, l));
+    this.locations = _.filter(locations, l => _.contains(player.unlocked.locations, l.name));
   }
 
   render() {

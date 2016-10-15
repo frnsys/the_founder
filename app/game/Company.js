@@ -270,7 +270,7 @@ class Company {
     return false;
   }
   productTypeIsAvailable(pt) {
-    return util.containsByName(this.verticals, pt.requiredVertical) && util.contains(this.player.unlocked.productTypes, pt);
+    return util.containsByName(this.verticals, pt.requiredVertical) && _.contains(this.player.unlocked.productTypes, pt.name);
   }
   buyProductType(pt) {
     var cost = pt.cost * this.player.costMultiplier;

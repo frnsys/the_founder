@@ -1,7 +1,7 @@
 [
   {
     "name": "Defense",
-    "cost": 1000000,
+    "cost": 500000,
     "description": "The American defense budget is huge and we can get a piece of it."
   },
   {
@@ -11,22 +11,22 @@
   },
   {
     "name": "Entertainment",
-    "cost": 1000000,
+    "cost": 200000,
     "description": "Stay happy"
   },
   {
     "name": "Finance",
-    "cost": 1000000,
+    "cost": 200000,
     "description": "Buying stuff is expensive, people need to borrow money"
   },
   {
     "name": "Hardware",
-    "cost": 1000000,
+    "cost": 100000,
     "description": "Produce widgets, throw them away next year"
   },
   {
     "name": "Information",
-    "cost": 1000000,
+    "cost": 100000,
     "description": "Information is good"
   }
 ]

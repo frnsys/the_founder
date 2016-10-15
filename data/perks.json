@@ -142,7 +142,7 @@
       },
       {
         "name": "Catering",
-        "description": "Eating out is a waste of company time",
+        "description": "Eating out wastes company time",
         "cost": 150000,
         "requiredOffice": 0,
         "requiredTechs": [],

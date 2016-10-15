@@ -1,3 +1,7 @@
+# 0.3.1
+
+- fix for game-breaking Market bug
+
 # 0.3.0
 
 - decreased base revenue per market share to increase difficulty

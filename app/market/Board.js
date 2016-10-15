@@ -33,7 +33,7 @@ function nTiles(company) {
 class Board {
   constructor(company, players, game) {
     var self = this;
-    var nTiles = nTiles(company);
+    var n_tiles = nTiles(company);
     this.cols = cols;
     this.rows = rows;
     this.game = game;
@@ -45,10 +45,10 @@ class Board {
     Tile.onDoubleClick.add(this.onDoubleClickTile, this);
 
     // can't have more tiles than spaces in the grid
-    nTiles = Math.min(cols * rows, nTiles);
+    n_tiles = Math.min(cols * rows, n_tiles);
 
     this.grid = new Grid(rows, cols);
-    this.setupTiles(nTiles, rows, cols);
+    this.setupTiles(n_tiles, rows, cols);
     this.setupPlayers(players);
     this.centerMap();
 
@@ -57,14 +57,14 @@ class Board {
     //this.debug();
   }
 
-  setupTiles(nTiles, rows, cols) {
+  setupTiles(n_tiles, rows, cols) {
     // generate the board
     this.center = new Position(Math.round(rows/2), Math.round(cols/2));
     this.tileGroup = this.game.add.group();
     var tilePositions = [this.center];
     this.placeTileAt(Tile.random(), this.center);
 
-    while (tilePositions.length < nTiles) {
+    while (tilePositions.length < n_tiles) {
       var pos = _.chain(tilePositions)
         .map(p => this.grid.adjacentNoTilePositions(p))
         .flatten().sample().value();

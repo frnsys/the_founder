@@ -75,8 +75,9 @@ const Debug = {
     officeDebugger.debug();
   },
 
-  debugMarket: function(game) {
-    game.state.start('Market', true, false, testProduct);
+  debugMarket: function(game, player) {
+    var competitor = _.sample(player.competitors);
+    game.state.start('Market', true, false, testProduct, competitor, player);
   }
 };
 

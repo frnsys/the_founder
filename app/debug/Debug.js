@@ -35,7 +35,7 @@ var testProduct = {
   requiredProgress: 1,
   levels: {
     quantity: 1,
-    strength: 1,
+    strength: 2,
     movement: 1
   },
   revenueScore: 1

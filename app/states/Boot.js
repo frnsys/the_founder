@@ -41,7 +41,7 @@ class Boot extends Phaser.State {
     game.state.add('Onboarding', new Onboarding(game, player));
 
     if (DEBUG_MARKET) {
-      Debug.debugMarket(game);
+      Debug.debugMarket(game, player);
 
     } else {
       var view = new MainMenu(Manager, DEBUG);

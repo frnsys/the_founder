@@ -14,7 +14,8 @@ describe('Competitor', function() {
         design: 1.1,
         engineering: 1.1,
         marketing: 0.8
-      }
+      },
+      difficulty: 0
     };
   });
 

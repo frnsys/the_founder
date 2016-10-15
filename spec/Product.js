@@ -153,7 +153,7 @@ describe('Product', function() {
     it('is affected by product discovery', function() {
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
 
@@ -166,7 +166,7 @@ describe('Product', function() {
       createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
 
@@ -180,7 +180,7 @@ describe('Product', function() {
       createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       player.economy = 2;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
@@ -200,7 +200,7 @@ describe('Product', function() {
       createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       goodCombo[0].difficulty = 1;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
@@ -215,7 +215,7 @@ describe('Product', function() {
       createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       goodCombo[0].expertise = 0;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
@@ -230,7 +230,7 @@ describe('Product', function() {
       createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       player.spendingMultiplier = 1;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
@@ -245,7 +245,7 @@ describe('Product', function() {
       createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       player.company.hype = 2;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
@@ -260,13 +260,13 @@ describe('Product', function() {
       createProduct(); // to get rid of new product bonus
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       player.company.hype = 2;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
 
       p = createProduct();
-      influencers = [{}, {}];
+      influencers = 2;
       Product.setRevenue(p, marketShares, influencers, player);
       expect(p.revenue).toBeGreaterThan(val);
     });
@@ -274,7 +274,7 @@ describe('Product', function() {
     it('decays over time', function() {
       var p = createProduct(),
           marketShares = [{income: 1}, {income: 2}],
-          influencers = [];
+          influencers = 0;
       Product.setRevenue(p, marketShares, influencers, player);
       var val = p.revenue;
       Product.getRevenue(p);

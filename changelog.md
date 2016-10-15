@@ -1,3 +1,11 @@
+# 0.3.2
+
+- balancing tweaks
+- various UI fixes
+- unlocking system was totally busted, working now
+- outrage was not properly accumulating, fixed
+- added "moral panic" as a new contributor to outrage (caused by bioengineering and entertainment-related products)
+
 # 0.3.1
 
 - fix for game-breaking Market bug

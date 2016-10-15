@@ -81,7 +81,7 @@
     "name": "Genetics",
     "difficulty": 3,
     "requiredVertical": "Biotech",
-    "cost": 100000
+    "cost": 600000
   },
   {
     "name": "Implant",
@@ -117,13 +117,13 @@
     "name": "Space",
     "difficulty": 5,
     "requiredVertical": "Hardware",
-    "cost": 100000
+    "cost": 10000000
   },
   {
     "name": "Synthetic Organism",
     "difficulty": 5,
     "requiredVertical": "Biotech",
-    "cost": 100000
+    "cost": 1000000
   },
   {
     "name": "Virtual Reality",

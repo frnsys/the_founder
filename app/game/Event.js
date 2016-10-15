@@ -30,6 +30,7 @@ function template(obj, keys, player) {
         companySlug: util.slugify(player.company.name),
         taxesAvoided: util.formatCurrencyAbbrev(player.company.taxesAvoided),
         debtOwned: util.formatCurrencyAbbrev(player.company.debtOwned),
+        moralPanic: player.company.moralPanic,
         competitor: _.sample(player.competitors),
         globalAvgWage: util.formatCurrency(player.snapshot.globalAvgWage),
         consumerSpending: player.snapshot.consumerSpending

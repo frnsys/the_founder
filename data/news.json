@@ -66,6 +66,17 @@
   }]
 }, {
   "articles": [{
+    "image": "assets/news/moral_panic.jpg",
+    "title": "Increasing concern over company activites",
+    "body": "{{=it.moralPanic}} consumers have expressed concern over the safety of {{=it.company.name}}'s activities."
+  }],
+  "conditions": [{
+    "type": "moralPanic",
+    "op": "gt",
+    "val": 1000000
+  }]
+}, {
+  "articles": [{
     "image": "assets/news/pollution_severe.jpg",
     "title": "Pollution too high, EPA finds",
     "body": "The EPA reports that {{=it.company.pollution}} metric tons of pollution are due to {{=it.company.name}}'s activities."

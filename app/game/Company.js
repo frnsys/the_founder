@@ -61,6 +61,7 @@ class Company {
 
       deathToll: 0,
       debtOwned: 0,
+      moralPanic: 0,
       taxesAvoided: 0,
       pollution: 0,
 

@@ -10,6 +10,14 @@
 import _ from 'underscore';
 import config from 'config';
 
+const outrageSeverity = {
+  'deathToll': 1.2,
+  'pollution': 1,
+  'debtOwned': 0.8,
+  'taxesAvoided': 0.6,
+  'moralPanic': 0.4
+}
+
 const Promo = {
   init: function(promo) {
     return _.extend({
@@ -22,9 +30,9 @@ const Promo = {
     company.hype *= config.HYPE_DECAY_RATE;
     company.outrage *= config.HYPE_DECAY_RATE - (company.player.forgettingRate - 1);
     company.outrage += _.reduce([
-      'deathToll', 'pollution', 'debtOwned', 'taxesAvoided'
+      'deathToll', 'pollution', 'debtOwned', 'moralPanic', 'taxesAvoided'
     ], function(m, v) {
-      return company[v]/1000;
+      return m + ((company[v]/10000) * outrageSeverity[v]);
     }, 0);
     company.hype -= company.outrage;
     company.hype = Math.max(0, company.hype);

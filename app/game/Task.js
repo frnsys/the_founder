@@ -156,13 +156,16 @@ const Task = {
       case Type.Product:
         var product = task.obj;
         if (product.killsPeople)
-            company.deathToll += _.random(0, 10);
+            company.deathToll += _.random(2000, 10000);
 
         if (product.debtsPeople)
-            company.debtOwned += _.random(0, 10);
+            company.debtOwned += _.random(2000, 10000);
+
+        if (product.moralPanic)
+            company.moralPanic += _.random(2000, 10000);
 
         if (product.pollutes)
-            company.pollution += _.random(0, 10);
+            company.pollution += _.random(2000, 10000);
 
         if (product.recipeName != 'Default' &&
             !_.contains(company.discoveredProducts, product.recipeName)) {

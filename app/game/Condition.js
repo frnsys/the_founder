@@ -47,6 +47,7 @@ const Condition = {
   deathToll: (player) => player.company.deathToll,
   pollution: (player) => player.company.pollution,
   debtOwned: (player) => player.company.debtOwned,
+  moralPanic: (player) => player.company.moralPanic,
   forgettingRate: (player) => player.forgettingRate,
   wageMultiplier: (player) => player.wageMultiplier,
   spendingMultiplier: (player) => player.spendingMultiplier,

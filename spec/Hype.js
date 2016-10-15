@@ -147,6 +147,7 @@ describe('Hype', function() {
       company.pollution = 1000;
       company.debtOwned = 1000;
       company.taxesAvoided = 1000;
+      company.moralPanic = 1000;
       company.decayHype();
       expect(company.outrage).toBeGreaterThan(val);
     });

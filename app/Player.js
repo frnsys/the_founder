@@ -158,6 +158,7 @@ class Player {
       debtOwned: company.debtOwned,
       pollution: company.pollution,
       deathToll: company.deathToll,
+      moralPanic: company.moralPanic,
       globalAvgWage: 7 * this.wageMultiplier,
       consumerSpending: this.spendingMultiplier * 100,
       forgettingRate: this.forgettingRate,

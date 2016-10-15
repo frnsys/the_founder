@@ -9,6 +9,7 @@
 - product types are sorted by un/locked status
 - successful product recipes just have one name now, and are "versioned" (e.g. yPhone, yPhone 2, etc)
 - better onboarding/intro with the mentor
+- different parts of the game are unlocked at a better pace/in a more sensible order
 - show idle workers & locations in the HUD
 - fixed office upgrading (the button shows up now)
 - message to explain when a perk hits its upgrade limit due to office level

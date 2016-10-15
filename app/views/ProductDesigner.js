@@ -90,9 +90,7 @@ const template = data => `
     <p>${data.competitor.description}</p>
   </div>
 </div>
-<div class="skip-market">
-  Have an employee do it. (expected market share: ${(data.expectedMarketShare * 100).toFixed(0)}%)
-</div>
+${data.productsLaunched > 8 ? `<div class="skip-market">Have an employee do it. (expected market share: ${(data.expectedMarketShare * 100).toFixed(0)}%)</div>` : ''}
 `;
 
 class ProductDesigner extends Popup {
@@ -184,6 +182,7 @@ class ProductDesigner extends Popup {
       }, {}),
       revenuePerShare: Product.marketShareToRevenue(0, this.product, this.player),
       competitor: this.competitor,
+      productsLaunched: this.player.company.productsLaunched,
       expectedMarketShare: this.expectedMarketShare
     }, this.product));
     // hack to hide tooltips after re-render

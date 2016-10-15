@@ -88,6 +88,7 @@ class View extends Popup {
     this.sampleOptions();
     this.offer = 50000;
     this.lastNegotiationEffect;
+    this.noResetScroll = true;
     this.registerHandlers({
       '.negotiation-option': function(ev) {
         var idx = parseInt($(ev.target).data('id')),

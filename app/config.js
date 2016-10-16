@@ -8,7 +8,7 @@ const config = {
   GRACE_YEARS: 2,
 
   // hype
-  HYPE_DECAY_RATE: 0.9,
+  HYPE_DECAY_RATE: 0.98,
   HYPE_SCALE: 1/100,
 
   // product

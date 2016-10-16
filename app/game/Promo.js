@@ -32,9 +32,9 @@ const Promo = {
     company.outrage += _.reduce([
       'deathToll', 'pollution', 'debtOwned', 'moralPanic', 'taxesAvoided'
     ], function(m, v) {
-      return m + ((company[v]/10000) * outrageSeverity[v]);
+      return m + ((Math.sqrt(company[v])/100) * outrageSeverity[v]);
     }, 0);
-    company.hype -= company.outrage;
+    company.hype -= Math.sqrt(company.outrage)/10000;
     company.hype = Math.max(0, company.hype);
   }
 };

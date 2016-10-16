@@ -246,6 +246,9 @@ class AssignmentView extends CardsList {
     if (util.contains(this.assignedWorkers, item) || util.contains(this.assignedLocations, item)) {
       cls = 'selected';
     }
+    if (item.task && item.task.id !== this.task.id) {
+      cls += ' already-assigned';
+    }
     return new View({
       tag: 'li',
       parent: parent,

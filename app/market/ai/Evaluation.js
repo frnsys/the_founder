@@ -6,7 +6,7 @@ import Grid from '../Grid';
 const Evaluation = {
   tileValue: function(tile) {
     if (tile instanceof Tile.Income) {
-      return config.TILE_VALUES.income * tile.income;
+      return config.TILE_VALUES.income * (tile.income + 1);
     } else if (tile instanceof Tile.Influencer) {
       return config.TILE_VALUES.influencer;
     } else {

@@ -43,6 +43,8 @@ class Clock {
 
     // queue up starting news
     Event.updateNews(player);
+
+    $('html').attr('class', Board.mood(this.player.board).toLowerCase());
   }
 
   pause() {
@@ -167,6 +169,7 @@ class Clock {
     this.player.company.payAnnual();
     Economy.update(this.player);
     checkDeath(this.player);
+    $('html').attr('class', Board.mood(this.player.board).toLowerCase());
   }
 
   updateChallenge() {

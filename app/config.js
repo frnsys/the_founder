@@ -33,7 +33,7 @@ const config = {
   MAX_BURNOUT_DAYS: 4,
 
   // company
-  BASE_BURNOUT_RATE: 0.001,
+  BASE_BURNOUT_RATE: 0.0002,
   BASE_TAX_RATE: 0.3,
 
   // market

@@ -2,7 +2,7 @@
   {
     "level": 0,
     "cost": 0,
-    "size": 5,
+    "size": 8,
     "name": "apartment",
     "agent": {
       "scale": 1,
@@ -20,7 +20,7 @@
   },
   {
     "level": 1,
-    "cost": 2000000,
+    "cost": 500000,
     "name": "office",
     "size": 20,
     "agent": {
@@ -43,7 +43,7 @@
   },
   {
     "level": 2,
-    "cost": 2000000,
+    "cost": 10000000,
     "size": 40,
     "name": "campus",
     "agent": {

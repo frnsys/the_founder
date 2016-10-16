@@ -2,6 +2,7 @@ import $ from 'jquery';
 import _ from 'underscore';
 import View from '../View';
 import Manager from 'app/Manager';
+import Popup from 'views/Popup';
 
 const template = data => `
 <div class="alert-message alert-pop">
@@ -44,7 +45,7 @@ class Alert extends View {
   postRemove() {
     super.preRemove();
     var state = Manager.game.state.states[Manager.game.state.current];
-    if (_.isFunction(state.resume)) {
+    if (_.isFunction(state.resume) && !Popup.current) {
       state.resume();
     }
     Alert.current = null;

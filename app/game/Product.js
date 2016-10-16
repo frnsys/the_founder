@@ -61,7 +61,7 @@ const Product = {
       killsPeople: _.contains(recipe.productTypes, 'Defense'),
       debtsPeople: _.contains(recipe.productTypes, 'Credit'),
       pollutes: _.intersection(recipe.productTypes, ['Gadget', 'Implant', 'Mobile', 'Wearable', 'Robot', 'Defense', 'E-Commerce', 'Logistics', 'Social Network', 'Space']).length > 0,
-      moralPanic: _.intersection(recipe.productTypes, ['Drug', 'Genetics', 'Synthetic Organism', 'Cognitive', 'Celebrity', 'Entertainment']).length > 0,
+      moralPanic: _.intersection(recipe.productTypes, ['Drug', 'Genetics', 'Synthetic Organism', 'Cognitive']).length > 0,
       productTypes: _.pluck(productTypes, 'name'),
       verticals: _.uniq(_.pluck(productTypes, 'requiredVertical')),
       effects: recipe.effects,

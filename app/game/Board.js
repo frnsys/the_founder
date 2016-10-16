@@ -16,7 +16,7 @@ const Board = {
     if (graceYearsLeft <= 0) {
       var growth = 0;
       if (graceYearsLeft < 0) {
-        growth = (profit - board.lastProfit)/(board.lastProfit + epsilon);
+        growth = (board.lastProfit - profit)/(board.lastProfit + epsilon);
 
         // if the target is exceeded, the board is really happy
         if (growth >= config.DESIRED_GROWTH * 2)

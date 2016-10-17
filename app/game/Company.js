@@ -170,7 +170,7 @@ class Company {
     }, 0)/1000 * this.player.costMultiplier;
   }
   get taxes() {
-    return this.annualRevenue * this.player.taxRate * config.BASE_TAX_RATE;
+    return this.annualProfit * this.player.taxRate * config.BASE_TAX_RATE;
   }
 
   canAfford(cost) {

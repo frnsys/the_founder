@@ -47,6 +47,7 @@ class TheMarket extends Phaser.State {
     $('#office').hide();
     $('#market').show().addClass('market-active');
     $('body').addClass('market-background');
+    $('.employee-burntout').remove();
 
     var market = new Market(this.product, this.player, this.game, this.competitor, this.debug);
     this.market = market;

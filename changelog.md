@@ -1,3 +1,8 @@
+# 0.3.4
+
+- only pay taxes on profit, paying on revenue was brutal lol
+- fix for a bug where the office/clock would not pause while in the Market
+
 # 0.3.3
 
 - fixed conflict alert/popup pausing/unpausing

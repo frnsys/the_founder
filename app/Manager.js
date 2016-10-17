@@ -70,7 +70,9 @@ const Manager = {
       localStorage.setItem('highScore', lifetimeProfit.toString());
     }
     localStorage.setItem('newGamePlus', this.player.company.cash.toString());
-    this.game.state.start('Boot');
+
+    // hack to refresh the game
+    location.reload();
   },
   newGamePlusCash: function() {
     return parseInt(localStorage.getItem('newGamePlus'));

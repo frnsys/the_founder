@@ -25,7 +25,7 @@ describe('Perk', function() {
         "description": "blah",
         "cost": 5000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [{
           "type": "productivity",
           "value": 1
@@ -38,7 +38,7 @@ describe('Perk', function() {
         "description": "blah",
         "cost": 1000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [{
           "type": "productivity",
           "value": 2
@@ -71,7 +71,7 @@ describe('Perk', function() {
   it('checks company office level for upgrade', function() {
     perk = perk.upgrades[0];
     perk.requiredOffice = 3;
-    perk.requiredTechs = [];
+    perk.requiredTech = null;
 
     company.office = 2;
     expect(Perk.isAvailable(perk, company)).toEqual(false);
@@ -82,7 +82,7 @@ describe('Perk', function() {
 
   it('checks company techs for upgrade', function() {
     perk = perk.upgrades[0];
-    perk.requiredTechs = ['Neuromorphic Chips'];
+    perk.requiredTech = 'Neuromorphic Chips';
     perk.requiredOffice = 0;
 
     company.technologies = [];

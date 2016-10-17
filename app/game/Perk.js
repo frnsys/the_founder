@@ -31,9 +31,7 @@ const Perk = {
   isAvailable: function(perk, company) {
     if (company.office < perk.requiredOffice)
       return false;
-    return _.every(perk.requiredTechs, function(tech) {
-      return util.containsByName(company.technologies, tech);
-    });
+    return perk.requiredTech == null || util.containsByName(company.technologies, perk.requiredTech);
   },
   computeStats: function(perk, company) {
     var results = {};

@@ -7,7 +7,7 @@
         "description": "Some people work better with a buzz",
         "cost": 20000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -23,7 +23,7 @@
         "description": "Fancier beers",
         "cost": 60000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -39,7 +39,7 @@
         "description": "",
         "cost": 1000000,
         "requiredOffice": 2,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -60,7 +60,7 @@
         "description": "Minimize transit time on our campus",
         "cost": 1000000,
         "requiredOffice": 2,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -80,7 +80,7 @@
         "description": "Move even more quickly around campus",
         "cost": 400000,
         "requiredOffice": 2,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -100,7 +100,7 @@
         "description": "The smoothest and fastest ride around campus",
         "cost": 10000000,
         "requiredOffice": 2,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -125,7 +125,7 @@
         "description": "Snacks to keep people energized",
         "cost": 40000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -145,7 +145,7 @@
         "description": "Eating out wastes company time",
         "cost": 150000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -165,7 +165,7 @@
         "description": "Employees have less a reason to leave",
         "cost": 1500000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -190,7 +190,7 @@
         "description": "Drink coffee, do stuff faster",
         "cost": 25000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "productivity",
@@ -206,7 +206,7 @@
         "description": "Brain-optimized coffee concoction",
         "cost": 60000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "productivity",
@@ -223,9 +223,7 @@
         "description": "The Airforce-grade stimulant, now powering workers",
         "cost": 1000000,
         "requiredOffice": 0,
-        "requiredTechs": [
-          "Advanced Psychotropics"
-        ],
+        "requiredTech": "Advanced Psychotropics",
         "effects": [
           {
             "type": "productivity",
@@ -246,7 +244,7 @@
         "description": "Organize office parties",
         "cost": 200000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -259,7 +257,7 @@
         "description": "Oragnize team-building retreats",
         "cost": 500000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -277,7 +275,7 @@
         "description": "Help employees cope",
         "cost": 200000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -294,7 +292,7 @@
         "description": "Help employees navigate their careers successfully",
         "cost": 400000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -316,7 +314,7 @@
         "description": "They'll do the chores, we'll do the working",
         "cost": 500000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -337,7 +335,7 @@
         "description": "These Caretakers will tend to every one of our employee's needs",
         "cost": 2000000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -362,7 +360,7 @@
         "description": "Employees with children shouldn't have to spend precious time taking care of them",
         "cost": 500000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -379,7 +377,7 @@
         "description": "Employees should't have to choose between their career and having children",
         "cost": 800000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -401,9 +399,7 @@
         "description": "Give employees the tool to optimize themselves",
         "cost": 800000,
         "requiredOffice": 0,
-        "requiredTechs": [
-          "Wearables"
-        ],
+        "requiredTech": "Wearables",
         "effects": [
           {
             "type": "happiness",
@@ -423,9 +419,7 @@
         "description": "Peak physical health is not enough, employees should be at their mental best as well",
         "cost": 1600000,
         "requiredOffice": 0,
-        "requiredTechs": [
-          "Integrated Implants"
-        ],
+        "requiredTech": "Integrated Implants",
         "effects": [
           {
             "type": "happiness",
@@ -442,9 +436,7 @@
         "description": "Employees should not be limited by their human minds",
         "cost": 15000000,
         "requiredOffice": 0,
-        "requiredTechs": [
-          "Neuromorphic Chips"
-        ],
+        "requiredTech": "Neuromorphic Chips",
         "effects": [
           {
             "type": "happiness",
@@ -466,7 +458,7 @@
         "description": "Subsidizing gym memberships",
         "cost": 100000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -483,7 +475,7 @@
         "description": "If gyms are on-site, employees waste less time",
         "cost": 1800000,
         "requiredOffice": 2,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -505,7 +497,7 @@
         "description": "Employees should always be in their most productive condition",
         "cost": 1000000,
         "requiredOffice": 2,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -527,9 +519,7 @@
         "description": "Complimentary gene reconfigurations so employees can be their best",
         "cost": 12000000,
         "requiredOffice": 2,
-        "requiredTechs": [
-          "Genetic Engineering"
-        ],
+        "requiredTech": "Genetic Engineering",
         "effects": [
           {
             "type": "happiness",
@@ -555,7 +545,7 @@
         "description": "Support serendipity",
         "cost": 20000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -572,9 +562,7 @@
         "description": "With the VREV, employees can feel like they're painting a masterpiece when they're working on a spreadsheet",
         "cost": 20000000,
         "requiredOffice": 0,
-        "requiredTechs": [
-          "Virtual Reality"
-        ],
+        "requiredTech": "Virtual Reality",
         "effects": [
           {
             "type": "happiness",
@@ -600,7 +588,7 @@
         "description": "A spot to crash",
         "cost": 5000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -616,9 +604,7 @@
         "description": "On-site rejuvenation pods for employees to rest in, cutting down on commuting time",
         "cost": 8000000,
         "requiredOffice": 1,
-        "requiredTechs": [
-          "Cryonics"
-        ],
+        "requiredTech": "Cryonics",
         "effects": [
           {
             "type": "happiness",
@@ -639,7 +625,7 @@
         "description": "Dream workstations allow employees to work while they dream",
         "cost": 40000000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -666,7 +652,7 @@
         "description": "Meetings all over the world",
         "cost": 100000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -688,9 +674,7 @@
         "description": "Employees can join into a single aggregate consciousness from anywhere for optimal meetings",
         "cost": 100000000,
         "requiredOffice": 1,
-        "requiredTechs": [
-          "Brain-Computer Interfaces"
-        ],
+        "requiredTech": "Brain-Computer Interfaces",
         "effects": [
           {
             "type": "happiness",
@@ -712,7 +696,7 @@
         "description": "Get to the office with less hassle",
         "cost": 100000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -729,7 +713,7 @@
         "description": "Get employees to work as efficiently and conveniently as possible",
         "cost": 5000000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -756,7 +740,7 @@
         "description": "Social norms mean no one will use this",
         "cost": 50000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -769,9 +753,7 @@
         "description": "Implant memories of wonderful vacations without employees using any real time",
         "cost": 90000000,
         "requiredOffice": 0,
-        "requiredTechs": [
-          "Memory Emulation"
-        ],
+        "requiredTech": "Memory Emulation",
         "effects": [
           {
             "type": "happiness",
@@ -793,7 +775,7 @@
         "description": "A small yapper named Toby",
         "cost": 20000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -809,7 +791,7 @@
         "description": "A nice pupper to inspire the office",
         "cost": 60000,
         "requiredOffice": 0,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -825,7 +807,7 @@
         "description": "A cool doggo to liven things up",
         "cost": 120000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",
@@ -841,7 +823,7 @@
         "description": "Her name is Sardine, but we call her Sally.",
         "cost": 240000,
         "requiredOffice": 1,
-        "requiredTechs": [],
+        "requiredTech": null,
         "effects": [
           {
             "type": "happiness",

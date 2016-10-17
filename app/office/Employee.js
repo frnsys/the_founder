@@ -91,14 +91,20 @@ class Employee extends Agent {
     this.updateThoughtPosition();
 
     // show burntout icon
-    if (this.object.burnout > 0 && !this.burntout) {
+    if (this.object.burnout > 0 && !this.burntoutIcon) {
       this.showBurntout();
-    } else if (this.object.burnout == 0 && this.burntout) {
+    } else if (this.object.burnout == 0 && this.burntoutIcon) {
       this.mesh.material.materials[0].color.set(0xffffff);
-      this.burntout.remove();
-      this.burntout = null;
+      this.burntoutIcon.remove();
     }
     this.updateBurntoutPosition();
+  }
+
+  get burntoutIcon() {
+    var icon = $(`[data-employee="${this.object.name}"`);
+    if (icon.length > 0) {
+      return icon[0];
+    }
   }
 
   get abovePosition() {
@@ -131,7 +137,6 @@ class Employee extends Agent {
     burntout.className = 'employee-burntout';
     burntout.dataset.employee = this.object.name;
     document.body.appendChild(burntout);
-    this.burntout = burntout;
     this.updateBurntoutPosition();
     this.mesh.material.materials[0].color.set(0x666666);
   }
@@ -147,19 +152,19 @@ class Employee extends Agent {
   }
 
   updateBurntoutPosition() {
-    if (this.burntout) {
+    if (this.burntoutIcon) {
       var pos = this.abovePosition;
       if (pos) {
-        this.burntout.style.top = pos.y + 'px';
-        this.burntout.style.left = pos.x + 'px';
+        this.burntoutIcon.style.top = pos.y + 'px';
+        this.burntoutIcon.style.left = pos.x + 'px';
       }
     }
   }
 
   remove(office) {
     super.remove(office);
-    if (this.burntout) {
-      this.burntout.remove();
+    if (this.burntoutIcon) {
+      this.burntoutIcon.remove();
     }
     if (this.thought) {
       this.thought.remove();

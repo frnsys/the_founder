@@ -17,7 +17,7 @@
   "body": "We did great this quarter! Some other investors are keen to get in on the deal, so I raised another round of funding for us to fund our expansion.",
   "effects": [{
     "type": "cash",
-    "value": 50000
+    "value": 500000
   }],
   "conditions": [{
     "type": "board",

@@ -170,7 +170,7 @@ class Company {
     }, 0)/1000 * this.player.costMultiplier;
   }
   get taxes() {
-    return this.annualProfit * this.player.taxRate * config.BASE_TAX_RATE;
+    return Math.max(0, this.annualProfit * this.player.taxRate * config.BASE_TAX_RATE);
   }
 
   canAfford(cost) {
@@ -198,7 +198,7 @@ class Company {
     this.pay(this.salaries + this.rent, true, true);
   }
   payAnnual() {
-    var expectedTaxes = this.annualRevenue * config.BASE_TAX_RATE;
+    var expectedTaxes = Math.max(0, this.annualRevenue * config.BASE_TAX_RATE);
     this.taxesAvoided += expectedTaxes - this.taxes;
     this.pay(this.taxes, true, true);
     this.lastAnnualRevenue = this.annualRevenue;

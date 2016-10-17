@@ -14,33 +14,31 @@ const Board = {
   evaluatePerformance: function(board, profit, graceYearsLeft) {
     // ignore board for the grace period
     if (graceYearsLeft <= 0) {
-      var growth = 0;
+      var attained = 0;
       if (graceYearsLeft < 0) {
-        growth = (board.lastProfit - profit)/(board.lastProfit + epsilon);
+        attained = profit/board.profitTarget;
 
         // if the target is exceeded, the board is really happy
-        if (growth >= config.DESIRED_GROWTH * 2)
-            board.happiness += growth * 12;
+        if (attained >= 1.8)
+            board.happiness += attained * 12;
 
         // if the target is met, the board is happy
-        if (growth >= config.DESIRED_GROWTH) {
-            board.happiness += growth * 10;
+        if (attained >= 1) {
+            board.happiness += attained * 10;
 
         // a negative change is super bad
-        } else if (growth < 0) {
-            board.happiness -= -growth * 20;
+        } else if (attained < 0) {
+            board.happiness -= -attained * 20;
 
-        // otherwise, the growth just becomes a bit more unhappy
+        // otherwise, the board just becomes a bit more unhappy
         } else {
-            board.happiness -= (1-growth) * 10;
+            board.happiness -= (1-attained) * 10;
         }
       }
 
       // set the new target
-      board.lastProfitTarget = board.profitTarget;
-      board.profitTarget = Math.round((profit > board.lastProfitTarget ? profit : board.lastProfitTarget) * (1 + config.DESIRED_GROWTH));
-      board.lastProfit = profit;
-      return growth;
+      board.profitTarget = Math.round(Math.max(profit, board.profitTarget) * (1 + config.DESIRED_GROWTH));
+      return attained;
     }
     return 0;
   },

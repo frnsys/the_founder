@@ -98,11 +98,8 @@ class Player {
       // board
       board: {
         profitTarget: config.STARTING_PROFIT_TARGET,
-        lastProfit: 0,
-        lastProfitTarget: 0,
         happiness: config.BOARD_STARTING_HAPPINESS
       },
-      growth: 0,
 
       onboarding: onboarding,
       challenges: _.map(challenges, c => _.extend({
@@ -124,7 +121,6 @@ class Player {
       profitTargetProgress: company.annualProfit/this.board.profitTarget,
       profitTargetProgressPercent: company.annualProfit/this.board.profitTarget * 100,
       profitTarget: this.board.profitTarget,
-      lastProfitTarget: this.board.lastProfitTarget,
       boardStatus: Board.mood(this.board),
       design: company.skill('design', false, false, false, true),
       marketing: company.skill('marketing', false, false, false, true),

@@ -7,6 +7,9 @@ import TaskAssignmentView from './Assignment';
 import promos from 'data/promos.json';
 
 const template = data => `
+<div class="current-cash">
+  <div class="current-cash-value"></div>
+</div>
 <ul class="cards"></ul>
 <div class="actions">
   <button class="select" disabled>Confirm</button>

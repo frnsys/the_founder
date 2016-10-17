@@ -1,3 +1,8 @@
+# 0.3.5
+
+- nicer perk upgrade UI
+- balancing
+
 # 0.3.4
 
 - only pay taxes on profit, paying on revenue was brutal lol

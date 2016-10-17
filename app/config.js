@@ -1,6 +1,5 @@
 const config = {
-  // SECONDS_PER_WEEK: 6 * 20,
-  SECONDS_PER_WEEK: 10,
+  SECONDS_PER_WEEK: 6 * 20,
   WEEKS_PER_MONTH: 4,
 
   // board

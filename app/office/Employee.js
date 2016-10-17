@@ -3,6 +3,7 @@
  * - agent representing a company employee
  */
 
+import $ from 'jquery';
 import _ from 'underscore';
 import Agent from './Agent';
 import Loader from './Loader';
@@ -128,6 +129,7 @@ class Employee extends Agent {
     var burntout = document.createElement('img');
     burntout.src = 'assets/company/burntout.png';
     burntout.className = 'employee-burntout';
+    burntout.dataset.employee = this.object.name;
     document.body.appendChild(burntout);
     this.burntout = burntout;
     this.updateBurntoutPosition();
@@ -167,8 +169,8 @@ class Employee extends Agent {
 
 function toXYCoords(pos, camera) {
   var vector = pos.clone().project(camera);
-  vector.x = (vector.x + 1)/2 * window.innerWidth;
-  vector.y = -(vector.y - 1)/2 * window.innerHeight;
+  vector.x = (vector.x + 1)/2 * $('main').width();
+  vector.y = -(vector.y - 1)/2 * $('main').height();
   return vector;
 }
 

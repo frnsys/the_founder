@@ -7,55 +7,55 @@
   },
   {
     "name": "Ad Campaign",
-    "cost": 25000,
+    "cost": 35000,
     "description": "Cover every surface of major cities with our messages",
     "power": 2
   },
   {
     "name": "Commercial",
-    "cost": 35000,
+    "cost": 70000,
     "description": "Insert our brand between spats of media and entertainment",
     "power": 3
   },
   {
     "name": "Astroturfing",
-    "cost": 45000,
+    "cost": 110000,
     "description": "Hire a large group to simulate our popularity",
     "power": 4
   },
   {
     "name": "Brand Partnership",
-    "cost": 65000,
+    "cost": 180000,
     "description": "Join forces with another brand and synergize",
     "power": 5
   },
   {
     "name": "Causewashing",
-    "cost": 85000,
+    "cost": 240000,
     "description": "Capitalize on a hot social issue",
     "power": 6
   },
   {
     "name": "Product Placement",
-    "cost": 105000,
+    "cost": 360000,
     "description": "Surreptitiously weave our products and services into popular media",
     "power": 7
   },
   {
     "name": "DENT Talk",
-    "cost": 125000,
+    "cost": 500000,
     "description": "Spread good vibes and inspire the intellectual elite",
     "power": 8
   },
   {
     "name": "Media Event",
-    "cost": 145000,
+    "cost": 1000000,
     "description": "Put on a massive spectacle to dazzle and astound",
     "power": 9
   },
   {
     "name": "Music Festival",
-    "cost": 200000,
+    "cost": 4000000,
     "description": "Unthreateningly align our lifestyle with hip young people",
     "power": 10
   }

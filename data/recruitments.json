@@ -30,21 +30,21 @@
   {
     "name": "Recruiting Firm",
     "description": "Hunt down the best candidates",
-    "cost": 120000,
+    "cost": 200000,
     "targetScore": 24,
     "robots": false
   },
   {
     "name": "Conference",
     "description": "Host a conference to attract the cream of the crop",
-    "cost": 200000,
+    "cost": 1000000,
     "targetScore": 36,
     "robots": false
   },
   {
     "name": "Develop Robots",
     "description": "Buy some automated workers",
-    "cost": 20000,
+    "cost": 100000,
     "targetScore": 36,
     "robots": true
   }

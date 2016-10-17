@@ -160,12 +160,12 @@ const Worker = {
     if (_.contains(worker.attributes, 'Tireless')) {
       return;
     }
-    if (!worker.burnout > 0) {
+    if (!worker.burnout > 0 && worker.task) {
       var inc = (company.burnoutRate + this.selfBonus(worker, 'burnoutRate'))/(Math.sqrt(Worker.happiness(worker, player)));
       // round to 3 decimal places
       inc = Math.round(inc*1e3)/1e3;
       worker.burnoutRisk += inc;
-      if (Math.random() < worker.burnoutRisk + 0.01) {
+      if (Math.random() < (worker.burnoutRisk + 0.01)/2) {
         worker.burnout = _.random(config.MIN_BURNOUT_DAYS, config.MAX_BURNOUT_DAYS);
         worker.burnoutRisk = 0;
       }

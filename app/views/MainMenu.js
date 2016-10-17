@@ -94,18 +94,18 @@ class MainMenuView extends View {
       blurb = 'Time to get to work';
     } else if (highScore < 0) {
       blurb = 'You should be ashamed of yourself';
-    } else if (highScore > 100000) {
-      blurb = 'What is this, a mom & pop shop?';
-    } else if (highScore > 1000000) {
-      blurb = 'Just amateur-level';
-    } else if (highScore > 1000000000) {
-      blurb = 'Welcome to the 3-comma club';
-    } else if (highScore > 10000000000) {
-      blurb = 'You are a unicorn, I like you';
-    } else if (highScore > 100000000000) {
-      blurb = 'A true business genius';
     } else if (highScore > 1000000000000) {
       blurb = 'A master of the universe';
+    } else if (highScore > 100000000000) {
+      blurb = 'A true business genius';
+    } else if (highScore > 10000000000) {
+      blurb = 'You are a unicorn, I like you';
+    } else if (highScore > 1000000000) {
+      blurb = 'Welcome to the 3-comma club';
+    } else if (highScore > 1000000) {
+      blurb = 'Just amateur-level';
+    } else if (highScore > 100000) {
+      blurb = 'What is this, a mom & pop shop?';
     }
 
 

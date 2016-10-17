@@ -51,7 +51,7 @@ const Debug = {
     player.company.locations = util.byNames(locations, ['New York']);
     player.company.markets = [player.company.locations[0].market];
     player.company.cofounder = cofounders[0];
-    player.company.workers = player.workers.slice(0,3);
+    player.company.workers = player.workers.slice(0,5);
     // _.each(player.company.workers, w => w.salary = 40000);
     // player.company.discoveredProducts = ['AI.Defense', 'Gadget.Space', 'Entertainment.Space'];
     // player.company.productTypes = util.byNames(productTypes, ['Ad', 'AI', 'Gadget', 'Analytics']);

@@ -16,7 +16,7 @@ class OfficeDebugger {
   }
 
   debug() {
-    //this.navMesh();
+    this.navMesh();
     _.each(this.office.spawnPoints, this.spawnPoint.bind(this));
     _.each(this.office.objects, this.object.bind(this));
   }

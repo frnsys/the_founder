@@ -22,14 +22,16 @@ import EmployeeSelectionView from 'views/select/Employee';
 import ProductDesignerView from 'views/ProductDesigner';
 import TaskCompleteView from 'views/alerts/TaskComplete';
 import MarketReport from 'views/alerts/MarketReport';
+import Debug from 'debug/Debug';
 
 const ONBOARDING_WAIT = 150; // frames
 
 class Manage extends Phaser.State {
-  constructor(game, player) {
+  constructor(game, player, debug) {
     super();
     this.game = game;
     this.player = player;
+    this.debug = debug;
   }
 
   init(player) {
@@ -137,6 +139,10 @@ class Manage extends Phaser.State {
       _.each(self.player.company.perks, self.office.addPerk.bind(self.office));
       _.each(self.player.company.workers, self.office.addEmployee.bind(self.office));
       self.office.updateObjectStats();
+
+      if (self.debug) {
+        Debug.debugOffice(self.office);
+      }
     });
     this.office.render();
     return this.office;

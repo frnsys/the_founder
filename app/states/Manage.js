@@ -104,6 +104,7 @@ class Manage extends Phaser.State {
       }
       $('.employee-thought, .employee-burntout').remove();
       $('#market').show();
+      self.pause(); // have to re-pause, b/c removing the popup will unpause
       self.game.state.start('Market', true, false, p, competitor, self.player);
     };
     view.render();

@@ -103,9 +103,10 @@ class View extends CardsList {
     // dont have to worry about available perks changing,
     // that only happens when the office is upgraded
     var self = this;
-    _.each(_.zip(this.items, this.subviews), function(v) {
+    _.each(_.zip(this.items, this.subviews), function(v, i) {
       var item = self.processItem(v[0]);
       if (!_.isEqual(v[0], item)) {
+        self.items[i] = item;
         v[1].el.find('button').replaceWith(button(item));
       }
     });

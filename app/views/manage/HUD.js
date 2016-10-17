@@ -197,6 +197,11 @@ class HUD extends View {
       idleText.push(`${idleLocations} idle location${idleLocations > 1 ? 's' : ''}`);
     }
     $('.idle-workers').text(idleText.join(', '));
+    if (idleText.length === 0) {
+      $('.idle-workers').hide();
+    } else {
+      $('.idle-workers').show();
+    }
 
     // remove old task views and add new ones
     var self = this,

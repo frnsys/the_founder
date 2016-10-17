@@ -28,9 +28,9 @@ function detailTemplate(item) {
     html.push('<div class="owned-perk"><h1 class="unowned">You don\'t have this perk yet.</h1></div>');
   }
 
-  if (item.nextAvailable) {
+  if (item.hasNext) {
     html.push(`
-      <div class="next-perk">
+      <div class="next-perk" ${!item.nextAvailable ? 'style="opacity:0.3;"' : ''}>
         <div class="title">
           <h1>${item.next.name}</h1>
           <h4 class="cash">${util.formatCurrency(item.finalCost)}</h4>
@@ -39,26 +39,23 @@ function detailTemplate(item) {
         <div class="perk-info">
           <p>${item.next.description}</p>
           ${templ.effects(item.next)}
-          ${button(item)}
+          ${item.nextAvailable ? button(item) : ''}
         </div>
       </div>
     `);
-    } else if (item.requiresOfficeUpgrade) {
-      html.push(`
-        <div class="next-perk">
+      if (item.requiresOfficeUpgrade) {
+        html.push(`
           <div class="title requires-office-upgrade">
             <h1>You need a bigger office to upgrade this perk!</h1>
           </div>
-        </div>
-      `);
-    } else if (item.requiresTech) {
-      html.push(`
-        <div class="next-perk">
+        `);
+      } else if (item.requiresTech) {
+        html.push(`
           <div class="title requires-office-upgrade">
-            <h1>The next upgarde requires the ${item.next.requiredTech} technology.</h1>
+            <h1>The next upgrade requires the ${item.next.requiredTech} technology.</h1>
           </div>
-        </div>
-      `);
+        `);
+      }
     }
   return html.join('');
 }

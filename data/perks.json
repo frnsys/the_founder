@@ -36,7 +36,7 @@
       },
       {
         "name": "Cocktail Lounge",
-        "description": "",
+        "description": "Place for employees to mingle",
         "cost": 1000000,
         "requiredOffice": 2,
         "requiredTech": null,
@@ -220,7 +220,7 @@
       },
       {
         "name": "Modafinil",
-        "description": "The Airforce-grade stimulant, now powering workers",
+        "description": "Airforce-grade stimulants",
         "cost": 1000000,
         "requiredOffice": 0,
         "requiredTech": "Advanced Psychotropics",
@@ -332,7 +332,7 @@
       },
       {
         "name": "Caretaker Automatons",
-        "description": "These Caretakers will tend to every one of our employee's needs",
+        "description": "Keeping clean without complaint",
         "cost": 2000000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -357,7 +357,7 @@
     "upgrades": [
       {
         "name": "Daycare",
-        "description": "Employees with children shouldn't have to spend precious time taking care of them",
+        "description": "Less time with kids, more time for us",
         "cost": 500000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -374,7 +374,7 @@
       },
       {
         "name": "Egg Freezing",
-        "description": "Employees should't have to choose between their career and having children",
+        "description": "Don't choose between a career and having children",
         "cost": 800000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -416,7 +416,7 @@
       },
       {
         "name": "Psychic Pacemakers",
-        "description": "Peak physical health is not enough, employees should be at their mental best as well",
+        "description": "Optimize employee mental health",
         "cost": 1600000,
         "requiredOffice": 0,
         "requiredTech": "Integrated Implants",
@@ -494,7 +494,7 @@
     "upgrades": [
       {
         "name": "On-Site Medical Facilities",
-        "description": "Employees should always be in their most productive condition",
+        "description": "Keep employees in their most productive condition",
         "cost": 1000000,
         "requiredOffice": 2,
         "requiredTech": null,
@@ -516,7 +516,7 @@
       },
       {
         "name": "Gene Therapy Lounges",
-        "description": "Complimentary gene reconfigurations so employees can be their best",
+        "description": "Complimentary gene reconfigurations",
         "cost": 12000000,
         "requiredOffice": 2,
         "requiredTech": "Genetic Engineering",
@@ -559,7 +559,7 @@
       },
       {
         "name": "VR Experience Veil",
-        "description": "With the VREV, employees can feel like they're painting a masterpiece when they're working on a spreadsheet",
+        "description": "Make a spreadsheet feel like a painting",
         "cost": 20000000,
         "requiredOffice": 0,
         "requiredTech": "Virtual Reality",
@@ -601,7 +601,7 @@
       },
       {
         "name": "Sleep Pods",
-        "description": "On-site rejuvenation pods for employees to rest in, cutting down on commuting time",
+        "description": "Rejuvenation pods for less commuting",
         "cost": 8000000,
         "requiredOffice": 1,
         "requiredTech": "Cryonics",
@@ -622,7 +622,7 @@
       },
       {
         "name": "Dream Workstations",
-        "description": "Dream workstations allow employees to work while they dream",
+        "description": "Employees can work while they dream",
         "cost": 40000000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -671,7 +671,7 @@
       },
       {
         "name": "Hivemind",
-        "description": "Employees can join into a single aggregate consciousness from anywhere for optimal meetings",
+        "description": "Merge employees into a single consciousness",
         "cost": 100000000,
         "requiredOffice": 1,
         "requiredTech": "Brain-Computer Interfaces",
@@ -710,7 +710,7 @@
       },
       {
         "name": "Employee Buses",
-        "description": "Get employees to work as efficiently and conveniently as possible",
+        "description": "Get employees to work as efficiently as possible",
         "cost": 5000000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -750,7 +750,7 @@
       },
       {
         "name": "Vacation Implants",
-        "description": "Implant memories of wonderful vacations without employees using any real time",
+        "description": "Implant memories of wonderful vacations",
         "cost": 90000000,
         "requiredOffice": 0,
         "requiredTech": "Memory Emulation",

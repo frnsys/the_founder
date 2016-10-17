@@ -93,7 +93,7 @@ class View extends CardsList {
     var player = this.player,
         item = _.clone(item);
     item.cost *= this.player.costMultiplier;
-    return _.extend({
+    return _.extend(item, {
       owned: util.contains(player.company.specialProjects, item),
       unlocked: _.contains(player.unlocked.specialProjects, item.name),
       afford: player.company.cash >= item.cost,
@@ -107,7 +107,7 @@ class View extends CardsList {
           ok: util.containsByName(player.company.discoveredProducts, p)
         }
       })
-    }, item);
+    });
   }
 }
 

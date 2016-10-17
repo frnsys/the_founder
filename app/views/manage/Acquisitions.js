@@ -71,10 +71,10 @@ class AcquisitionsView extends CardsList {
     var player = this.player,
         item = _.clone(item);
     item.cost *= this.player.costMultiplier;
-    return _.extend({
+    return _.extend(item, {
       owned: util.contains(player.company.acquisitions, item),
       afford: player.company.cash >= item.cost
-    }, item);
+    });
   }
 
   createListItem(item) {

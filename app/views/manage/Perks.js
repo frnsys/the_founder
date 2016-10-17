@@ -121,6 +121,7 @@ class View extends CardsList {
   processItem(item) {
     var perk,
         player = this.player,
+        item = _.clone(item),
         owned = player.company.hasPerk(item)
     if (!owned) {
       perk = Perk.init(item);
@@ -132,7 +133,7 @@ class View extends CardsList {
         next = owned ? Perk.next(perk) : current,
         hasNext = owned ? Perk.hasNext(perk) : true,
         cost = next ? next.cost * player.costMultiplier : 0;
-    return _.extend({
+    return _.extend(item, {
       finalCost: cost,
       owned: owned,
       current: current,
@@ -142,7 +143,7 @@ class View extends CardsList {
       requiresOfficeUpgrade: next && player.company.office < next.requiredOffice,
       requiresTech: next && next.requiredTech && !util.containsByName(player.company.technologies, next.requiredTech),
       afford: hasNext && player.company.cash >= cost
-    }, item);
+    });
   }
 }
 

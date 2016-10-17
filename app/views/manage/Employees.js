@@ -49,11 +49,11 @@ class View extends CardsList {
   processItem(item) {
     var item = _.clone(item);
     item.task = this.player.company.task(item.task);
-    return _.extend({
+    return _.extend(item, {
       fireable: true,
       cloneable: this.player.specialEffects['Cloneable'],
       noAvailableSpace: this.player.company.remainingSpace == 0
-    }, item);
+    });
   }
 
   render() {

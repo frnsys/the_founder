@@ -57,10 +57,10 @@ class View extends CardsList {
     var player = this.player,
         item = _.clone(item);
     item.cost *= this.player.costMultiplier;
-    return _.extend({
+    return _.extend(item, {
       afford: player.company.cash >= item.cost,
       noAvailableSpace: player.company.remainingSpace == 0
-    }, item);
+    });
   }
 
   update() {

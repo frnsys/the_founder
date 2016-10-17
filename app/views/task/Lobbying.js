@@ -75,13 +75,13 @@ class LobbyingView extends CardsList {
     var player = this.player,
         item = _.clone(item);
     item.cost *= this.player.costMultiplier;
-    return _.extend({
+    return _.extend(item, {
       owned: util.contains(player.company.lobbies, item),
       afford: player.company.cash >= item.cost,
       in_progress: _.some(player.company.tasks, function(t) {
         return t.obj.name == item.name;
       })
-    }, item);
+    });
   }
 
   createListItem(item) {

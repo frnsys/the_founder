@@ -18,7 +18,7 @@ const Competitor = {
     // create a competitor version of a player's product
     var p = _.clone(product);
     _.each(['design', 'engineering', 'marketing'], function(name) {
-      p[name] *= competitor.skills[name];
+      p[name] *= competitor.skills[name] * (1 + competitor.difficulty);
 
       // max skill values depending on competitor difficulty
       p[name] = Math.min(p[name], (competitor.difficulty + 1) * 100);

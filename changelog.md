@@ -1,3 +1,11 @@
+# 0.4.0
+
+- changed how the Board works, should make things simpler
+- product revenue-per-share decreases with each new version (people want new stuff)
+- perk objects were not loading correctly, and so were not showing up in the office...fixed now
+- can toggle completed research in the research view
+- various bug fixes
+
 # 0.3.5
 
 - nicer perk upgrade UI

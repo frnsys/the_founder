@@ -5,7 +5,7 @@ import Manager from 'app/Manager';
 Manager.game.state.add('Boot', new Boot());
 Manager.game.state.start('Boot');
 
-var VERSION = 'ALPHA VERSION (0.3.5)';
+var VERSION = 'ALPHA VERSION (0.4.0)';
 document.getElementById('version-notice').innerHTML = VERSION;
 
 

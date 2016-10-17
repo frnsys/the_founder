@@ -125,11 +125,15 @@ class Agent {
       this.currentTarget = targetPosition;
       this.currentTarget.parent.claim(this);
 
+      if (!this.navMeshGroup) {
+        this.navMeshGroup = patrol.getGroup(this.office.level, this.mesh.position);
+      }
+
       this.path = patrol.findPath(
         this.mesh.position,
         targetPos,
-        this.office.office,
-        patrol.getGroup(this.office.office, this.mesh.position));
+        this.office.level,
+        this.navMeshGroup);
     }
   }
 
@@ -224,10 +228,10 @@ class Agent {
     this.usingObject = obj;
     this.schedule(function() {
       self.currentTarget = null;
-      self.doRandom();
       obj.leave(self);
       self.onLeave();
       self.usingObject = null;
+      self.doRandom();
     }, _.random(MIN_ACTIVITY_TIME, MAX_ACTIVITY_TIME));
   }
 

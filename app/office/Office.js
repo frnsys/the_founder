@@ -74,11 +74,11 @@ class Office {
 
       Loader.loadJSON(self.name + '_navmesh', function(geometry, materials) {
         var zoneNodes = patrol.buildNodes(geometry);
-        patrol.setZoneData(self.office, zoneNodes);
+        patrol.setZoneData(self.level, zoneNodes);
         self.navMesh = geometry;
 
         // each level has only one group, so cache this
-        self.navMeshGroup = patrol.getGroup(self.office, {x:0,y:0,z:0})
+        self.navMeshGroup = patrol.getGroup(self.level, {x:0,y:0,z:0})
 
         if (callback) {
           callback(self);

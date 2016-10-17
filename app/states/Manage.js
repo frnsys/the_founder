@@ -137,7 +137,11 @@ class Manage extends Phaser.State {
   showOffice() {
     var self = this;
     this.office = new Office(this.player.company.office, this.player.company, function() {
-      _.each(self.player.company.perks, self.office.addPerk.bind(self.office));
+      _.each(self.player.company.perks, p => {
+        _.each(_.range(p.upgradeLevel + 1), i => {
+          self.office.addPerk(p.upgrades[i]);
+        });
+      });
       _.each(self.player.company.workers, self.office.addEmployee.bind(self.office));
       self.office.updateObjectStats();
 

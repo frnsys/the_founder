@@ -78,7 +78,7 @@ function getSkill(worker, player, name) {
   if (player && player.company) {
     val += player.company.getWorkerBonus(name);
   }
-  return Math.floor(val);
+  return Math.max(0, Math.floor(val));
 }
 
 const Worker = {

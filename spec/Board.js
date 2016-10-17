@@ -7,18 +7,18 @@ describe('Board', function() {
   beforeEach(function() {
     player = new Player();
     board = player.board;
-    board.lastProfit = 1;
+    board.profitTarget = 2000;
   });
 
-  it('computes growth', function() {
-    var profit = 2;
+  it('computes profit target attainment', function() {
+    var profit = 2000;
     var graceYearsLeft = -1;
-    var growth = Board.evaluatePerformance(board, profit, graceYearsLeft);
-    expect(growth).toBeCloseTo(1);
+    var attainment = Board.evaluatePerformance(board, profit, graceYearsLeft);
+    expect(attainment).toBe(1);
   });
 
   it('sets new profit target', function() {
-    var profit = 2,
+    var profit = 2000,
         profitTarget = board.profitTarget,
         graceYearsLeft = -1;
     Board.evaluatePerformance(board, profit, graceYearsLeft);
@@ -27,7 +27,7 @@ describe('Board', function() {
 
   it('is happier with more growth', function() {
     var happiness = board.happiness,
-        profit = board.lastProfit * (1.1+Board.desiredGrowth),
+        profit = 4000,
         graceYearsLeft = -1;
     Board.evaluatePerformance(board, profit, graceYearsLeft);
     expect(board.happiness).toBeGreaterThan(happiness);
@@ -35,7 +35,7 @@ describe('Board', function() {
 
   it('is unhappier with less growth', function() {
     var happiness = board.happiness,
-        profit = board.lastProfit * (Board.desiredGrowth/2),
+        profit = 1000,
         graceYearsLeft = -1;
     Board.evaluatePerformance(board, profit, graceYearsLeft);
     expect(board.happiness).toBeLessThan(happiness);

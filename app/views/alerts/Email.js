@@ -50,7 +50,7 @@ function template(data) {
 }
 
 class EmailsView extends Alert {
-  constructor(messages, player) {
+  constructor(messages, player, onDismiss) {
     super({
       template: template,
       handlers: {
@@ -60,6 +60,9 @@ class EmailsView extends Alert {
             this.render();
           } else {
             this.remove();
+            if (this.onDismiss) {
+              this.onDismiss();
+            }
           }
         },
         '.assign-email': function() {
@@ -88,6 +91,7 @@ class EmailsView extends Alert {
         company: player.company
       }, m);
     });
+    this.onDismiss = onDismiss;
   }
 
   render() {

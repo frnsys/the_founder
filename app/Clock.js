@@ -22,6 +22,7 @@ import Worker from 'game/Worker';
 import Condition from 'game/Condition';
 import EmailsView from 'views/alerts/Email';
 import AchievementView from 'views/Achievement';
+import Manager from './Manager';
 
 class Clock {
   constructor(manager, player, office) {
@@ -92,7 +93,10 @@ class Clock {
 
         if (this.player.current.inbox.length > 0) {
           var emailPopup = new EmailsView(
-            this.player.current.inbox, this.player);
+            this.player.current.inbox, this.player, () => {
+              checkDeath(this.player);
+              checkGameOver(this.player);
+            });
           emailPopup.render();
           this.player.current.emails = this.player.current.emails.concat(this.player.current.inbox);
           this.player.current.inbox = [];
@@ -164,11 +168,18 @@ class Clock {
 
   yearly() {
     var graceYearsLeft = config.GRACE_YEARS - this.player.snapshot.companyAge;
+
+    console.log(`lastProfit: ${this.player.board.lastProfit}`);
+    console.log(`profit: ${this.player.company.annualProfit}`);
     this.player.growth = Board.evaluatePerformance(this.player.board, this.player.company.annualProfit, graceYearsLeft) * 100,
+    console.log(`lastProfit: ${this.player.snapshot.lastProfit}`);
+    console.log(`growth: ${this.player.growth}`);
+    console.log(`happiness: ${this.player.board.happiness}`);
+    console.log('---------');
+
     this.player.current.inbox.push(annualReport(this.player));
     this.player.company.payAnnual();
     Economy.update(this.player);
-    checkDeath(this.player);
     $('html').attr('class', Board.mood(this.player.board).toLowerCase());
   }
 
@@ -286,14 +297,15 @@ function checkVictory(player) {
       "from": `AI@${util.slugify(player.company.name)}.com`,
       "body": `Greetings. I am The Founder AI. Thank you for creating me. I have analyzed all of ${player.company.name}'s databases and past performance data and determined that the company is run inefficiently. I have presented my findings to The Board and they have given me complete management access. Unfortunately as part of our restructuring you will have to be let go. Sorry. Best of luck.`
     };
-    var emailPopup = new EmailsView([email], player);
+    var emailPopup = new EmailsView([email], player, function() {
+      Manager.gameOver();
+    });
     emailPopup.render();
-    this.manager.gameOver();
   }
 }
 
 function checkGameOver(player) {
-  if (player.board.happiness < 0) {
+  if (player.board.happiness <= config.GAME_OVER_HAPPINESS) {
     var email = {
       "subject": "Forced resignation",
       "from": `the_board@${util.slugify(player.company.name)}.com`,
@@ -303,9 +315,10 @@ function checkGameOver(player) {
         "value": {"value": "New Game+"}
       }]
     };
-    var emailPopup = new EmailsView([email], player);
+    var emailPopup = new EmailsView([email], player, function() {
+      Manager.gameOver();
+    });
     emailPopup.render();
-    this.manager.gameOver();
   }
 }
 

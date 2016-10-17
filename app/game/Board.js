@@ -50,7 +50,7 @@ const Board = {
       return 'Ecstatic';
     } else if (board.happiness >= 35) {
       return 'Pleased';
-    } else if (board.happiness >= 10) {
+    } else if (board.happiness >= 15) {
       return 'Content';
     } else if (board.happiness > 0) {
       return 'Unhappy';

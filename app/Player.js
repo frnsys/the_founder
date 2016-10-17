@@ -100,7 +100,7 @@ class Player {
         profitTarget: config.STARTING_PROFIT_TARGET,
         lastProfit: 0,
         lastProfitTarget: 0,
-        happiness: 10
+        happiness: config.BOARD_STARTING_HAPPINESS
       },
       growth: 0,
 

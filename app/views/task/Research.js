@@ -53,10 +53,16 @@ class ResearchView extends CardsList {
           this.showAll = !this.showAll;
           var text = this.showAll ? 'Show Available' : 'Show All';
           $('.toggle-filter').text(text);
+        },
+        '.toggle-completed': function() {
+          this.showCompleted = !this.showCompleted;
+          var text = this.showCompleted ? 'Hide Completed' : 'Show Completed';
+          $('.toggle-completed').text(text);
         }
       }
     });
     this.showAll = false;
+    this.showCompleted = false;
     this.player = player;
   }
 
@@ -67,7 +73,7 @@ class ResearchView extends CardsList {
     });
 
     // hacky
-    this.el.find('header').append('<div class="toggle-filter">Show All</div>');
+    this.el.find('header').append('<div class="toggle-filter">Show All</div><div class="toggle-completed">Show Completed</div>');
   }
 
   update() {
@@ -83,6 +89,12 @@ class ResearchView extends CardsList {
         sv.el.show();
       } else if (item.not_available) {
         sv.el.hide();
+      }
+
+      if (!self.showCompleted && item.owned) {
+        sv.el.hide();
+      } else if (item.owned) {
+        sv.el.show();
       }
     });
 

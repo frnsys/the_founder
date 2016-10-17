@@ -1,3 +1,27 @@
+# 0.3.3
+
+- fixed conflict alert/popup pausing/unpausing
+- UI improvements
+    - fade already assigned workers a bit
+    - office background color changes depending on the Board's mood
+    - the in-game browser should scale better for larger screens
+    - perks now say which tech is missing, if one is
+- various UI fixes
+- fix for card lists which would not properly update if they could be afforded or not
+- fixed market AI tile evaluation, which was causing the AI to sometimes not do anything
+- balancing
+    - office sizes/upgrade prices
+    - promo (hype/outrage) decay rates
+    - promo hype generation power
+- entertainment products no longer generate outrage
+- fixed game over checking
+- hack to reset the game after a game over
+- fixed Board growth calculation for negative previous profits
+- fixed employee in-office burnout icon/thought placements
+- tweaked how competitor in-Market difficulty scales
+- fix for navmesh ignoring (where employees would walk through desks)
+
+
 # 0.3.2
 
 - balancing tweaks

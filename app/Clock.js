@@ -222,7 +222,7 @@ class Clock {
           ]);
         }
 
-        if (player.company.outrage > 500) {
+        if (player.company.outrage > 1000) {
           thoughts = thoughts.concat([
             "Feels like everyone hates us...",
             "Are we just making things worse?",
@@ -231,7 +231,7 @@ class Clock {
           ])
         }
 
-        if (player.company.hype > 1000) {
+        if (player.company.hype > 4000) {
           thoughts = thoughts.concat([
             "People are loving our stuff!",
             "We're so adored!",

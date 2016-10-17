@@ -320,14 +320,16 @@ class Company {
 
   finishProduct(product) {
     this.activeProducts.push(product);
+    this.productsLaunched++;
+  }
 
+  productVersion(product) {
     if (!(product.name in this.versions)) {
       this.versions[product.name] = 1;
     } else {
       this.versions[product.name] += 1;
-      product.name = `${product.name} ${this.versions[product.name]}`;
     }
-    this.productsLaunched++;
+    return this.versions[product.name];
   }
 
   startPromo(promo) {

@@ -24,6 +24,7 @@ import config from 'config';
 import Economy from './Economy';
 import productRecipes from 'data/productRecipes.json';
 
+const epsilon = 1e-12;
 const PRODUCT_FEATURES = [null, 'design', 'engineering', 'marketing'];
 
 function requiredProgress(difficulty) {
@@ -92,6 +93,11 @@ const Product = {
       });
     }
 
+    p.version = company.productVersion(p);
+    if (p.version > 1) {
+      p.name = `${p.name} ${p.version}`;
+    }
+
     if (this.onProductLaunch) {
       this.onProductLaunch(p);
     }
@@ -127,8 +133,12 @@ const Product = {
     p.earnedRevenue += revenue;
     return revenue;
   },
+  uncreativityDecay: function(p) {
+    // revenue decay due to NOT BEING INNOVATIVE
+    return Math.log(-(p.version - 1)/4+10+epsilon, 10);
+  },
   marketShareToRevenue: function(incomeLevel, product, player) {
-    return Math.pow((incomeLevel + 1), 2) * (config.BASE_REVENUE_PER_SHARE + player.revenuePerMarketShareBonus) * product.revenueScore;
+    return Math.pow((incomeLevel + 1), 2) * (Math.round(config.BASE_REVENUE_PER_SHARE * Product.uncreativityDecay(product)) + player.revenuePerMarketShareBonus) * product.revenueScore;
   },
 
   // for the product designer

@@ -1,3 +1,9 @@
+# 0.4.3
+
+- additional tooltips explaining Quantity, Strength, Movement
+- more balancing tweaks
+- fix for decaying uncreative products (was leading to 0 and NaN revenues)
+
 # 0.4.2
 
 - bumped up the difficulty a bit

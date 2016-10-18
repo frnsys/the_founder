@@ -1,3 +1,13 @@
+# 0.4.4
+
+- fixed employees not properly leaving objects (and thus wandering off the map)
+- properly spread out acquisitions' revenue over the year
+- various fixes for event tasks (UI, effects not applying, etc)
+- fixed a bug where AI pieces would not move. this was because they were afraid of each other (the AI considered its own pieces a threat)
+- fixed a bug where the cost multiplier for an item would recurse, making it impossible to buy things
+- fixed a bug that prevented technologies from being unlocked by events
+- UI fixes/tweaks
+
 # 0.4.3
 
 - additional tooltips explaining Quantity, Strength, Movement

@@ -15,6 +15,7 @@ const template = data => `
     <h3>~Disrupt the world~</h3>
     <h4 class="about">A dystopian business simulator by <a href="https://twitter.com/frnsys">Francis Tseng</a></h4>
     <h4 class="backers-thanks">Thank You to Our Backers!</h4>
+    <h4 class="browser-note">Works best on Chrome/Chromium</h4>
   </div>
   <ul class="main-menu">
     <li><button class="new-game">New Game</button></li>

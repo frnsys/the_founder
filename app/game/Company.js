@@ -284,6 +284,7 @@ class Company {
   researchIsAvailable(tech) {
     var self = this;
     return util.containsByName(this.verticals, tech.requiredVertical) &&
+      _.contains(this.player.unlocked.technologies, tech.name) &&
       _.every(tech.requiredTechs, function(t) {
         return util.containsByName(self.technologies, t);
       });

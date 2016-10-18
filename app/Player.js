@@ -30,6 +30,11 @@ const lockedLocations = [
   'Mars Colony'
 ];
 
+const lockedTechnologies = [
+  'Closed Ecologies',
+  'Alcubierre Drive'
+];
+
 class Player {
   constructor(data, companyData) {
     var data = data || {},
@@ -38,6 +43,7 @@ class Player {
     _.extend(this, {
       unlocked: {
         locations: _.chain(locations).filter(l => !_.contains(lockedLocations, l.name)).pluck('name').value(),
+        technologies: _.chain(technologies).filter(t => !_.contains(lockedTechnologies, t.name)).pluck('name').value(),
         specialProjects: [],
         productTypes: ['Sharing', 'Genetics', 'Ad', 'Entertainment', 'Mobile', 'Celebrity', 'Social Network', 'Credit', 'E-Commerce', 'Defense', 'Logistics', 'Gadget']
       },

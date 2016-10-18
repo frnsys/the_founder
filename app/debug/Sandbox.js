@@ -10,7 +10,6 @@ import OfficeDebugger from './Office';
 import Office from 'office/Office';
 import SelectUI from 'office/Select';
 
-const level = 2;
 const stepSize = 0.01;
 const objectPerks = ['Coffee', 'Butter Coffee', 'Bike Share', 'Employee Buses',
   'Cocktail Lounge', 'Microbrew Beers', 'Medical Facilities', 'Gene Therapy',
@@ -70,7 +69,7 @@ function handleTarget(gui, mesh, px, py, pz) {
 }
 
 export default {
-  create: function() {
+  create: function(level) {
     const office = new Office(level, {}, function() {
       _.each([0,1], function(type) {
         office.addEmployee(type);

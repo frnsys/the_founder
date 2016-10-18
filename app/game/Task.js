@@ -30,6 +30,7 @@
  */
 
 import _ from 'underscore';
+import util from 'util';
 import Promo from './Promo';
 import Effect from './Effect';
 import Product from'./Product';
@@ -212,20 +213,20 @@ const Task = {
       case Type.Event:
         if (task.obj.skillVal >= task.obj.required.val) {
           if (task.obj.success.effects) {
-            Effect.applies(task.obj.success.effects);
+            Effect.applies(task.obj.success.effects, company.player);
           }
-          company.player.current.emails.push({
+          company.player.current.inbox.push({
             'subject': `${task.obj.name} success!`,
-            'from': '{{=it.cofounderSlug}}@{{=it.companySlug}}.com',
+            'from': `${util.slugify(company.cofounder.name)}@${util.slugify(company.name)}.com`,
             'body': task.obj.success.body
           });
         } else {
           if (task.obj.failure.effects) {
-            Effect.applies(task.obj.failure.effects);
+            Effect.applies(task.obj.failure.effects, company.player);
           }
-          company.player.current.emails.push({
+          company.player.current.inbox.push({
             'subject': `${task.obj.name} failed...`,
-            'from': '{{=it.cofounderSlug}}@{{=it.companySlug}}.com',
+            'from': `${util.slugify(company.cofounder.name)}@${util.slugify(company.name)}.com`,
             'body': task.obj.failure.body
           });
         }

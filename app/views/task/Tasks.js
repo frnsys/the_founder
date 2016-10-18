@@ -134,7 +134,7 @@ function eventTemplate(item) {
       info = '';
   if (obj.success && obj.success.effects) {
     success = `
-      <div class="email-task-success">
+      <div class="email-task-success ${obj.failure && obj.failure.effects ? '' : 'email-task-solo'}">
         <h4>Success</h4>
         ${templ.effects(obj.success)}
       </div>
@@ -142,7 +142,7 @@ function eventTemplate(item) {
   }
   if (obj.failure && obj.failure.effects) {
     failure = `
-      <div class="email-task-failure">
+      <div class="email-task-failure ${obj.success && obj.success.effects ? '' : 'email-task-solo'}">
         <h4>Failure</h4>
         ${templ.effects(obj.failure)}
       </div>
@@ -168,7 +168,7 @@ function eventTemplate(item) {
         <li data-tip="Required ${item.obj.required.skill}">
           <img src="assets/company/${item.obj.required.skill}.png">
           <div class="task-progress-outer">
-            <div class="task-progress-inner skill-progress" style="width:${(item.obj.required.val/item.obj.skillVal)*100}%"></div>
+            <div class="task-progress-inner skill-progress" style="width:${Math.min(1, (item.obj.skillVal/item.obj.required.val))*100}%"></div>
           </div>
         </li>
       </ul>`;

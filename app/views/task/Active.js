@@ -106,6 +106,9 @@ class ActiveView extends CardsList {
         case Task.Type.SpecialProject:
           template = Tasks.SpecialProject;
           break;
+        case Task.Type.Event:
+          template = Tasks.Event;
+          break;
     }
 
     return new View({

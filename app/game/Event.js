@@ -85,7 +85,7 @@ const Event = {
 
     // apply templates
     emails = _.map(emails, e => this.formatEmail(e, player));
-    player.current.inbox = emails;
+    player.current.inbox = player.current.inbox.concat(emails);
   },
 
   updateNews: function(player) {

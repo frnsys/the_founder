@@ -86,6 +86,7 @@ class Onboarding extends View {
   render() {
     if (this.stage < 0) {
       var mentor = new Mentor([
+        "Welcome! I'm your incubator mentor. I'll be helping you out here.",
         "Can you believe it's already 2001? The dot-com bubble just burst, but I'm looking forward to the years ahead.",
         "A few stronger enterprises - <em>Kougle</em>, <em>Coralzon</em>, <em>Carrot Inc.</em>, and others - have managed to survive the bubble.",
         "But their weakened state and the void left by mass bankruptcy means the business world is ripe for <em class='special'>disruption</em>.",

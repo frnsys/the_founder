@@ -83,7 +83,10 @@ class ProductTypesView extends CardsList {
 
   render() {
     super.render({
-      items: this.sorted_pts
+      items: _.map(this.sorted_pts, pt => {
+        pt.cost *= this.player.costMultiplier;
+        return pt;
+      })
     });
     this.nProductTypes = this.player.company.productTypes.length;
   }
@@ -97,7 +100,6 @@ class ProductTypesView extends CardsList {
   processItem(item) {
     var player = this.player,
         item = _.clone(item);
-    item.cost *= this.player.costMultiplier;
     var owned = util.contains(player.company.productTypes, item);
     if (owned) {
       item.expertise = _.findWhere(player.company.productTypes, {name: item.name}).expertise;

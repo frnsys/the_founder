@@ -47,7 +47,11 @@ class AcquisitionsView extends CardsList {
   }
 
   render() {
-    this.items = _.map(acquisitions, this.processItem.bind(this));
+    this.items = _.map(acquisitions, a => {
+      var item = this.processItem(a);
+      item.cost *= this.player.costMultiplier;
+      return item;
+    });
     super.render({
       items: this.items
     });
@@ -58,6 +62,7 @@ class AcquisitionsView extends CardsList {
     _.each(_.zip(this.items, this.subviews), function(v, i) {
       var item = self.processItem(v[0]);
       if (!_.isEqual(v[0], item)) {
+        console.log(`updating item: ${item.name}`);
         self.items[i] = item;
         v[1].el.find('button').replaceWith(button(item));
       }
@@ -71,7 +76,6 @@ class AcquisitionsView extends CardsList {
   processItem(item) {
     var player = this.player,
         item = _.clone(item);
-    item.cost *= this.player.costMultiplier;
     return _.extend(item, {
       owned: util.contains(player.company.acquisitions, item),
       afford: player.company.cash >= item.cost

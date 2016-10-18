@@ -48,7 +48,11 @@ class View extends CardsList {
   }
 
   render() {
-    this.items = _.map(this.items, this.processItem.bind(this));
+    this.items = _.map(this.items, i => {
+      var item = this.processItem(i);
+      item.cost *= this.player.costMultiplier;
+      return item;
+    });
     super.render({items: this.items});
     this.robots = this.player.specialEffects['Automation'];
   }
@@ -56,7 +60,6 @@ class View extends CardsList {
   processItem(item) {
     var player = this.player,
         item = _.clone(item);
-    item.cost *= this.player.costMultiplier;
     return _.extend(item, {
       afford: player.company.cash >= item.cost,
       noAvailableSpace: player.company.remainingSpace == 0

@@ -51,7 +51,11 @@ class LobbyingView extends CardsList {
   }
 
   render() {
-    this.items = _.map(lobbies, this.processItem.bind(this));
+    this.items = _.map(lobbies, l => {
+      var item = this.processItem.bind(l);
+      item.cost *= this.player.costMultiplier;
+      return item;
+    });
     super.render({
       items: this.items
     });
@@ -75,7 +79,6 @@ class LobbyingView extends CardsList {
   processItem(item) {
     var player = this.player,
         item = _.clone(item);
-    item.cost *= this.player.costMultiplier;
     return _.extend(item, {
       owned: util.contains(player.company.lobbies, item),
       afford: player.company.cash >= item.cost,

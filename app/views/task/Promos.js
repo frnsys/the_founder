@@ -60,7 +60,11 @@ class SelectPromoView extends CardsList {
 
   render() {
     super.render({
-      items: _.map(promos, this.processItem.bind(this))
+      items: _.map(promos, p => {
+        var item = this.processItem.bind(p);
+        item.cost *= this.player.costMultiplier;
+        return item;
+      })
     });
 
     this.el.find('.current-cash-value').text(
@@ -70,7 +74,6 @@ class SelectPromoView extends CardsList {
 
   processItem(item) {
     var item = _.clone(item);
-    item.cost *= this.player.costMultiplier;
     item.afford = this.player.company.cash >= item.cost;
     return item;
   }

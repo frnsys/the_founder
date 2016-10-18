@@ -52,6 +52,16 @@ class Boot extends Phaser.State {
     window.cheat = {
       windfall: function(amt) {
         player.company.cash += amt || 1000000;
+      },
+      crushit: function(lvl) {
+        var lvl = lvl || 50;
+        _.each(player.company.workers, w => {
+          w.productivity = lvl;
+          w.happiness = lvl;
+          w.engineering = lvl;
+          w.marketing = lvl;
+          w.design = lvl;
+        });
       }
     }
   }

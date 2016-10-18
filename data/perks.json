@@ -335,7 +335,7 @@
         "description": "Keeping clean without complaint",
         "cost": 2000000,
         "requiredOffice": 1,
-        "requiredTech": null,
+        "requiredTech": "Improved Robotics",
         "effects": [
           {
             "type": "happiness",

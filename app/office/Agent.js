@@ -165,7 +165,8 @@ class Agent {
         return obj.vacantPositions;
       }).flatten().value();
     if (availableObjectPositions.length > 0) {
-      this.goTo(_.sample(availableObjectPositions));
+      var toObj = _.sample(availableObjectPositions);
+      this.goTo(toObj);
     }
   }
 
@@ -234,7 +235,7 @@ class Agent {
   leave(obj) {
     if (obj) {
       this.currentTarget = null;
-      obj.leave(self);
+      obj.leave(this);
       this.onLeave();
       this.usingObject = null;
       this.doRandom();

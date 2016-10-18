@@ -159,6 +159,8 @@ class Manage extends Phaser.State {
       this.selectionView = new EmployeeSelectionView(this.player.company);
     } else if (_.contains(['agent', 'object'], mesh.type)) {
       this.selectionView = new ObjectSelectionView();
+    } else {
+      return;
     }
     this.selectedObject = mesh.object;
     this.selectionView.render(mesh.object);

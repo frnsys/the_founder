@@ -378,8 +378,12 @@ class Company {
   }
 
   harvestCompanies() {
+    // random schedule is 24-48 frames b/w harvests, say 36
+    var interval = 36;
+    // so we want the no. of these intervals in a year
+    var intervals = (config.SECONDS_PER_WEEK * config.WEEKS_PER_MONTH * 12)/interval;
     var newRevenue = _.reduce(this.acquisitions, function(mem, c) {
-      return mem + c.revenue/12;
+      return mem + c.revenue/intervals;
     }, 0);
     this.cash += newRevenue;
     this.annualRevenue += newRevenue;

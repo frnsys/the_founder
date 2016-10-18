@@ -2,6 +2,7 @@
 
 - bumped up the difficulty a bit
 - fixed UI bug that was making it impossible to buy some things
+- more informative tooltips
 
 # 0.4.1
 

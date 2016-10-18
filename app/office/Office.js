@@ -96,11 +96,17 @@ class Office {
           spawnPos = {x: spawn[0], y: this.agent.yOffset, z: spawn[1]};
       new Agent(agent, perk, spawnPos, this);
     } else if (perkObjects.hasOwnProperty(name)) {
-      var perkObjs = perkObjects[name][this.level].objects;
+      var perkData = perkObjects[name][this.level],
+          perkObjs = perkData.objects;
       if (perkObjs) {
         _.each(perkObjs, function(obj) {
           self.objects.push(new Objekt(obj, self, perk));
         });
+        if (perkData.replaces) {
+          var toRemove = _.filter(self.objects, o => o.object.name == perkData.replaces);
+          self.objects = _.without(self.objects, toRemove);
+          _.each(toRemove, o => o.remove());
+        }
       }
     }
   }

@@ -289,7 +289,7 @@
       },
       {
         "name": "Life Coaches",
-        "description": "Help employees navigate their careers successfully",
+        "description": "Help employees' careers",
         "cost": 400000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -311,7 +311,7 @@
     "upgrades": [
       {
         "name": "Custodial Staff",
-        "description": "They'll do the chores, we'll do the working",
+        "description": "They do the chores; we don't",
         "cost": 500000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -331,7 +331,7 @@
         }
       },
       {
-        "name": "Caretaker Automatons",
+        "name": "Caretaker Bots",
         "description": "Keeping clean without complaint",
         "cost": 2000000,
         "requiredOffice": 1,
@@ -374,7 +374,7 @@
       },
       {
         "name": "Egg Freezing",
-        "description": "Don't choose between a career and having children",
+        "description": "Have a career and children too",
         "cost": 800000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -396,7 +396,7 @@
     "upgrades": [
       {
         "name": "Fitness Trackers",
-        "description": "Give employees the tool to optimize themselves",
+        "description": "Track and optimize employee health",
         "cost": 800000,
         "requiredOffice": 0,
         "requiredTech": "Wearables",
@@ -415,7 +415,7 @@
         }
       },
       {
-        "name": "Psychic Pacemakers",
+        "name": "Psych-Pacemakers",
         "description": "Optimize employee mental health",
         "cost": 1600000,
         "requiredOffice": 0,
@@ -432,8 +432,8 @@
         ]
       },
       {
-        "name": "Neuromorphic Implants",
-        "description": "Employees should not be limited by their human minds",
+        "name": "Neuro Implants",
+        "description": "Unleash employees' true potential",
         "cost": 15000000,
         "requiredOffice": 0,
         "requiredTech": "Neuromorphic Chips",
@@ -444,7 +444,7 @@
           },
           {
             "type": "productivity",
-            "value": 4
+            "value": 6
           }
         ]
       }
@@ -472,7 +472,7 @@
       },
       {
         "name": "Gym",
-        "description": "If gyms are on-site, employees waste less time",
+        "description": "Keep employees in peak condition",
         "cost": 1800000,
         "requiredOffice": 2,
         "requiredTech": null,
@@ -493,8 +493,8 @@
     "name": "Medical Facilities",
     "upgrades": [
       {
-        "name": "On-Site Medical Facilities",
-        "description": "Keep employees in their most productive condition",
+        "name": "Medical Facilities",
+        "description": "Keep employees in top shape",
         "cost": 1000000,
         "requiredOffice": 2,
         "requiredTech": null,
@@ -515,7 +515,7 @@
         }
       },
       {
-        "name": "Gene Therapy Lounges",
+        "name": "Gene Therapy",
         "description": "Complimentary gene reconfigurations",
         "cost": 12000000,
         "requiredOffice": 2,
@@ -621,7 +621,7 @@
         }
       },
       {
-        "name": "Dream Workstations",
+        "name": "Dream Stations",
         "description": "Employees can work while they dream",
         "cost": 40000000,
         "requiredOffice": 1,
@@ -671,7 +671,7 @@
       },
       {
         "name": "Hivemind",
-        "description": "Merge employees into a single consciousness",
+        "description": "Merge employees' consciousnesses",
         "cost": 100000000,
         "requiredOffice": 1,
         "requiredTech": "Brain-Computer Interfaces",
@@ -710,7 +710,7 @@
       },
       {
         "name": "Employee Buses",
-        "description": "Get employees to work as efficiently as possible",
+        "description": "Efficient, productive transit",
         "cost": 5000000,
         "requiredOffice": 1,
         "requiredTech": null,
@@ -750,7 +750,7 @@
       },
       {
         "name": "Vacation Implants",
-        "description": "Implant memories of wonderful vacations",
+        "description": "Implant memories of wonderful trips",
         "cost": 90000000,
         "requiredOffice": 0,
         "requiredTech": "Memory Emulation",
@@ -820,7 +820,7 @@
       },
       {
         "name": "Woofer",
-        "description": "Her name is Sardine, but we call her Sally.",
+        "description": "Her name's Sardine; we call her Sally",
         "cost": 240000,
         "requiredOffice": 1,
         "requiredTech": null,

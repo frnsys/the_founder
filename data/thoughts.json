@@ -112,6 +112,6 @@
   "companyConditions": [{
     "type": "perkUpgrades",
     "op": "has",
-    "val": "Caretaker Automatons"
+    "val": "Caretaker Bots"
   }]
 }]

@@ -497,6 +497,7 @@
       ]
     },
     {
+      "replaces": "Coffee",
       "objects": [
         {
           "model": {
@@ -983,6 +984,7 @@
     {},
     {},
     {
+      "replaces": "Microbrew Beers",
       "objects": [
         {
           "model": {
@@ -1660,7 +1662,7 @@
     },
     {}
   ],
-  "Dream Workstations": [
+  "Dream Stations": [
     {},
     {
       "objects": [
@@ -1957,10 +1959,11 @@
     },
     {}
   ],
-  "Gene Therapy Lounges": [
+  "Gene Therapy": [
     {},
     {},
     {
+      "replaces": "Medical Facilities",
       "objects": [
         {
           "no_max": true,
@@ -2124,6 +2127,7 @@
       ]
     },
     {
+      "replaces": "Catering",
       "objects": [
         {
           "model": {
@@ -3418,7 +3422,7 @@
     },
     {}
   ],
-  "On-Site Medical Facilities": [
+  "Medical Facilities": [
     {},
     {},
     {

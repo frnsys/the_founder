@@ -13,11 +13,11 @@ import SelectUI from 'office/Select';
 const level = 2;
 const stepSize = 0.01;
 const objectPerks = ['Coffee', 'Butter Coffee', 'Bike Share', 'Employee Buses',
-  'Cocktail Lounge', 'Microbrew Beers', 'On-Site Medical Facilities', 'Gene Therapy Lounges',
+  'Cocktail Lounge', 'Microbrew Beers', 'Medical Facilities', 'Gene Therapy',
   'Office Keg', 'Snacks', 'Catering', 'Gourmet', 'Gym Memberships', 'Holiday Parties',
   'Fitness Trackers', 'Transit Stipends', 'Gym', 'Modafinil', 'Video Conferencing', 'Ping Pong',
-  'Sleep Pods', 'Dream Workstations', 'Couches', 'Sugweyz', 'Hovercarts', 'VR Experience Veil'];
-const agentPerks = ['Custodial Staff', 'Caretaker Automatons', 'Pupper', 'Doggo', 'Woofer', 'Yapper'];
+  'Sleep Pods', 'Dream Stations', 'Couches', 'Sugweyz', 'Hovercarts', 'VR Experience Veil'];
+const agentPerks = ['Custodial Staff', 'Caretaker Bots', 'Pupper', 'Doggo', 'Woofer', 'Yapper'];
 
 
 function handleObject(gui, mesh) {

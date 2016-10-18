@@ -180,6 +180,15 @@ class Objekt {
       cb(mesh);
     });
   }
+
+  remove() {
+    _.each(this.positions, p => {
+      if (p.user) {
+        p.user.leave(this);
+      }
+    });
+    this.office.scene.remove(this.mesh);
+  }
 }
 
 export default Objekt;

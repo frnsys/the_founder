@@ -227,12 +227,18 @@ class Agent {
     self.onUse();
     this.usingObject = obj;
     this.schedule(function() {
-      self.currentTarget = null;
-      obj.leave(self);
-      self.onLeave();
-      self.usingObject = null;
-      self.doRandom();
+      self.leave(obj);
     }, _.random(MIN_ACTIVITY_TIME, MAX_ACTIVITY_TIME));
+  }
+
+  leave(obj) {
+    if (obj) {
+      this.currentTarget = null;
+      obj.leave(self);
+      this.onLeave();
+      this.usingObject = null;
+      this.doRandom();
+    }
   }
 
   onUse() {}

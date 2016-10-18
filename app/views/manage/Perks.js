@@ -43,20 +43,26 @@ function detailTemplate(item) {
         </div>
       </div>
     `);
-      if (item.requiresOfficeUpgrade) {
-        html.push(`
-          <div class="title requires-office-upgrade">
-            <h1>You need a bigger office to upgrade this perk!</h1>
-          </div>
-        `);
-      } else if (item.requiresTech) {
-        html.push(`
-          <div class="title requires-office-upgrade">
-            <h1>The next upgrade requires the ${item.next.requiredTech} technology.</h1>
-          </div>
-        `);
-      }
+    if (item.requiresOfficeUpgrade) {
+      html.push(`
+        <div class="title requires-office-upgrade">
+          <h1>You need a bigger office to upgrade this perk!</h1>
+        </div>
+      `);
+    } else if (item.requiresTech) {
+      html.push(`
+        <div class="title requires-office-upgrade">
+          <h1>The next upgrade requires the ${item.next.requiredTech} technology.</h1>
+        </div>
+      `);
     }
+  } else {
+    html.push(`
+      <div class="title requires-office-upgrade maxed-perk">
+        <h1>This perk is maxed out.</h1>
+      </div>
+    `);
+  }
   return html.join('');
 }
 

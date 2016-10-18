@@ -29,9 +29,15 @@ function newDiscovery(data) {
   return '';
 }
 
+const tooltips = {
+  'quantity': 'How many products are in the Market.',
+  'movement': 'How many moves each product has.',
+  'strength': 'How much health each product has.'
+};
+
 const productPoints = (name, data) => `
   <li>
-    <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
+    <h2 data-tip="${tooltips[name]}">${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
     <ul class="product-points">
       ${_.times(data.levels[name]+1, i => `
         <li class="product-point filled"></li>
@@ -65,9 +71,9 @@ const template = data => `
   ${newDiscovery(data)}
   <ul class="product-skills">
     <li>Product points</li>
-    <li data-tip="Design"><img src="assets/company/design.png"> <span class="design-stat">${Math.floor(data.design)}</span></li>
-    <li data-tip="Marketing"><img src="assets/company/marketing.png"> <span class="marketing-stat">${Math.floor(data.marketing)}</span></li>
-    <li data-tip="Engineering"><img src="assets/company/engineering.png"> <span class="engineering-stat">${Math.floor(data.engineering)}</span></li>
+    <li data-tip="Design (spent on Strength and Movement)"><img src="assets/company/design.png"> <span class="design-stat">${Math.floor(data.design)}</span></li>
+    <li data-tip="Marketing (spent on Quantity and Movement)"><img src="assets/company/marketing.png"> <span class="marketing-stat">${Math.floor(data.marketing)}</span></li>
+    <li data-tip="Engineering (spent on Quantity and Strength)"><img src="assets/company/engineering.png"> <span class="engineering-stat">${Math.floor(data.engineering)}</span></li>
   </ul>
   <ul class="product-point-allocator">
     ${productPoints('quantity', data)}

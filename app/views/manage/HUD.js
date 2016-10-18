@@ -61,12 +61,12 @@ const activeProductTemplate = function(data) {
 };
 
 const statsTemplate = data => `
-<li data-tip="Hype" style="display:${data.onboarding.promo ? 'inline-block' : 'none'};"><img src="assets/company/hype.png"> <span class="hype-stat">${util.abbreviateNumber(Math.floor(data.hype), 0)}</span></li>
-<li data-tip="Outrage" style="display:${data.onboarding.promo ? 'inline-block' : 'none'};"><img src="assets/company/outrage.png"> <span class="outrage-stat">${util.abbreviateNumber(Math.floor(data.outrage), 0)}</span></li>
-<li data-tip="Design"><img src="assets/company/design.png"> <span class="design-stat">${util.abbreviateNumber(data.design, 0)}</span></li>
-<li data-tip="Marketing"><img src="assets/company/marketing.png"> <span class="marketing-stat">${util.abbreviateNumber(data.marketing, 0)}</span></li>
-<li data-tip="Engineering"><img src="assets/company/engineering.png"> <span class="engineering-stat">${util.abbreviateNumber(data.engineering, 0)}</span></li>
-<li data-tip="Productivity"><img src="assets/company/productivity.png"> <span class="productivity-stat">${util.abbreviateNumber(data.productivity, 0)}</span></li>
+<li data-tip="Hype: The public positive vibe about your company. This improves product revenue." style="display:${data.onboarding.promo ? 'inline-block' : 'none'};"><img src="assets/company/hype.png"> <span class="hype-stat">${util.abbreviateNumber(Math.floor(data.hype), 0)}</span></li>
+<li data-tip="Outrage: The public negative vibe about your company. This hurts hype." style="display:${data.onboarding.promo ? 'inline-block' : 'none'};"><img src="assets/company/outrage.png"> <span class="outrage-stat">${util.abbreviateNumber(Math.floor(data.outrage), 0)}</span></li>
+<li data-tip="Design: Good for products, special projects, promos, & research."><img src="assets/company/design.png"> <span class="design-stat">${util.abbreviateNumber(data.design, 0)}</span></li>
+<li data-tip="Marketing: Good for products, special projects, promos, & lobbying."><img src="assets/company/marketing.png"> <span class="marketing-stat">${util.abbreviateNumber(data.marketing, 0)}</span></li>
+<li data-tip="Engineering: Good for products, special projects, & research."><img src="assets/company/engineering.png"> <span class="engineering-stat">${util.abbreviateNumber(data.engineering, 0)}</span></li>
+<li data-tip="Productivity: How fast your employees work."><img src="assets/company/productivity.png"> <span class="productivity-stat">${util.abbreviateNumber(data.productivity, 0)}</span></li>
 `;
 
 const timeTemplate = data => `

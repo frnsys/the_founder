@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import templ from './Common';
 import View from 'views/View';
 import Popup from 'views/Popup';
@@ -96,7 +97,7 @@ const template = data => `
     <p>${data.competitor.description}</p>
   </div>
 </div>
-${data.productsLaunched > 8 ? `<div class="skip-market">Have an employee do it. (expected market share: ${(data.expectedMarketShare * 100).toFixed(0)}%)</div>` : ''}
+${data.productsLaunched >= config.MIN_PRODUCTS_BEFORE_DELEGATE ? `<div class="skip-market">Have an employee do it. (expected market share: ${(data.expectedMarketShare * 100).toFixed(0)}%)</div>` : ''}
 `;
 
 class ProductDesigner extends Popup {

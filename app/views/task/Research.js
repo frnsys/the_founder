@@ -86,15 +86,16 @@ class ResearchView extends CardsList {
         v[1].el.find('button').replaceWith(button(item));
       }
 
-      if (self.showAll) {
+      var visible = sv.el.is(':visible');
+      if (self.showAll && !visible) {
         sv.el.show();
-      } else if (item.not_available) {
+      } else if (item.not_available && visible) {
         sv.el.hide();
       }
 
-      if (!self.showCompleted && item.owned) {
+      if (!self.showCompleted && item.owned && visible) {
         sv.el.hide();
-      } else if (item.owned) {
+      } else if (item.owned && !visible) {
         sv.el.show();
       }
     });

@@ -77,8 +77,8 @@
       },
       {
         "name": "Sugweyz",
-        "description": "Move even more quickly around campus",
-        "cost": 400000,
+        "description": "Move effortlessly around campus",
+        "cost": 4000000,
         "requiredOffice": 2,
         "requiredTech": null,
         "effects": [
@@ -97,7 +97,7 @@
       },
       {
         "name": "Hovercarts",
-        "description": "The smoothest and fastest ride around campus",
+        "description": "The smoothest ride around campus",
         "cost": 10000000,
         "requiredOffice": 2,
         "requiredTech": null,

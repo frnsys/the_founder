@@ -22,7 +22,7 @@
     "level": 1,
     "cost": 500000,
     "name": "office",
-    "size": 20,
+    "size": 16,
     "agent": {
       "scale": 1,
       "yOffset": 0.01
@@ -44,7 +44,7 @@
   {
     "level": 2,
     "cost": 10000000,
-    "size": 40,
+    "size": 24,
     "name": "campus",
     "agent": {
       "scale": 0.25,

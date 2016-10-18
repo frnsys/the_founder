@@ -82,11 +82,12 @@ class ProductTypesView extends CardsList {
   }
 
   render() {
+    this.items = _.map(this.sorted_pts, pt => {
+      pt.cost *= this.player.costMultiplier;
+      return pt;
+    });
     super.render({
-      items: _.map(this.sorted_pts, pt => {
-        pt.cost *= this.player.costMultiplier;
-        return pt;
-      })
+      items: this.items
     });
     this.nProductTypes = this.player.company.productTypes.length;
   }

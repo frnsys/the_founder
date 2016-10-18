@@ -34,7 +34,7 @@ class View extends CardsList {
           var idx = this.itemIndex(ev.target),
               sel = verticals[idx];
           player.company.buyVertical(sel);
-          this.subviews[idx].render(this.processItem(sel));
+          this.subviews[idx].render(this.processItem(this.items[idx]));
         }
       }
     });

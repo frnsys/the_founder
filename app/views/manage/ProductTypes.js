@@ -59,7 +59,7 @@ class ProductTypesView extends CardsList {
               idx = $el.closest('li').index(),
               sel = productTypes[this.pts_idx_map[idx]];
           player.company.buyProductType(sel);
-          this.subviews[idx].render(this.processItem(sel));
+          this.subviews[idx].render(this.processItem(this.items[idx]));
         }
       }
     });

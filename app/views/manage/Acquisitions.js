@@ -39,7 +39,7 @@ class AcquisitionsView extends CardsList {
           var idx = this.itemIndex(ev.target),
               sel = acquisitions[idx];
           player.company.buyAcquisition(sel);
-          this.subviews[idx].render(this.processItem(sel));
+          this.subviews[idx].render(this.processItem(this.items[idx]));
         }
       }
     });
@@ -62,7 +62,6 @@ class AcquisitionsView extends CardsList {
     _.each(_.zip(this.items, this.subviews), function(v, i) {
       var item = self.processItem(v[0]);
       if (!_.isEqual(v[0], item)) {
-        console.log(`updating item: ${item.name}`);
         self.items[i] = item;
         v[1].el.find('button').replaceWith(button(item));
       }

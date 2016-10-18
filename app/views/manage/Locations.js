@@ -55,7 +55,7 @@ class MarketView extends View {
           var idx = this.itemIndex(ev.target) - 1, // adjust b/c first li is actually the market name
               selected = this.locations[idx];
           player.company.buyLocation(selected);
-          this.subviews[idx].render(this.processItem(selected));
+          this.subviews[idx].render(this.processItem(this.items[idx]));
         }
       }
     });

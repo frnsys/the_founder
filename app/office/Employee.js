@@ -18,6 +18,8 @@ var STATE = Agent.STATE,
     CHAT_PROB = 0.2,
     CHAT_COOLDOWN = 10;
 
+const officeYOffset = [1, 1, 0.5];
+
 class Employee extends Agent {
   constructor(employee, spawnPos, office) {
     super({
@@ -111,7 +113,7 @@ class Employee extends Agent {
     if (this.mesh) {
       var pos = new THREE.Vector3();
       pos.setFromMatrixPosition(this.mesh.matrixWorld);
-      pos.y += 1; // a little y offset
+      pos.y += officeYOffset[this.office.level]; // a little y offset
       return toXYCoords(pos, this.office.camera);
     }
   }

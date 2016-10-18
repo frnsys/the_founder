@@ -41,8 +41,8 @@ class Agent {
     if (this.model && this.model.yOffset) {
       y += this.model.yOffset;
     }
-    if (this.transit && this.transit.yOffset) {
-      y += this.transit.yOffset
+    if (this.transit && this.transit.agentYOffset) {
+      y += this.transit.agentYOffset;
     }
     return y;
   }

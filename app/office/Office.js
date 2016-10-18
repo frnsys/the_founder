@@ -126,7 +126,9 @@ class Office {
   }
 
   transitOptions(agent) {
-    var perkNames = _.pluck(this.company.perks, 'name');
+    var perkNames = _.chain(this.company.perks).map(p => {
+      return _.map(_.range(p.upgradeLevel + 1), i => p.upgrades[i]);
+    }).flatten().pluck('name').value();
     return _.filter(transit, function(t) {
       return (!t.requires || _.contains(perkNames, t.requires))
         && _.contains(t.types, agent.type);

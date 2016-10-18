@@ -107,8 +107,13 @@ class Menu extends View {
         if (canAfford) {
           view = new Confirm(function() {
             if (player.company.upgradeOffice()) {
+              $('.employee-thought, .employee-burntout').remove();
               office.setLevel(next.level, function() {
-                _.each(player.company.perks, office.addPerk.bind(office));
+                _.each(player.company.perks, p => {
+                  _.each(_.range(p.upgradeLevel + 1), i => {
+                    office.addPerk(p.upgrades[i]);
+                  });
+                });
                 _.each(player.company.workers, office.addEmployee.bind(office));
               });
               // this.render();

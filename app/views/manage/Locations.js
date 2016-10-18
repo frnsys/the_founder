@@ -85,7 +85,7 @@ class MarketView extends View {
       this.subviews = _.map(this.locations, i => this.createListItem(i));
     }
     this.items = _.map(this.locations, l => {
-      var item = this.processItem.bind(l);
+      var item = this.processItem(l);
       item.cost *= this.player.costMultiplier * this.player.expansionCostMultiplier;
       return item;
     });

@@ -52,7 +52,7 @@ class LobbyingView extends CardsList {
 
   render() {
     this.items = _.map(lobbies, l => {
-      var item = this.processItem.bind(l);
+      var item = this.processItem(l);
       item.cost *= this.player.costMultiplier;
       return item;
     });

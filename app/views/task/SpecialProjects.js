@@ -70,7 +70,7 @@ class View extends CardsList {
 
   render() {
     this.items = _.map(specialProjects, sp => {
-      var item = this.processItem.bind(sp);
+      var item = this.processItem(sp);
       item.cost *= this.player.costMultiplier;
       return item;
     });

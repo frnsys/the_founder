@@ -61,7 +61,7 @@ class SelectPromoView extends CardsList {
   render() {
     super.render({
       items: _.map(promos, p => {
-        var item = this.processItem.bind(p);
+        var item = this.processItem(p);
         item.cost *= this.player.costMultiplier;
         return item;
       })

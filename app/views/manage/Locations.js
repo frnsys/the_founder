@@ -95,9 +95,10 @@ class MarketView extends View {
 
   update() {
     var self = this;
-    _.each(_.zip(this.items, this.subviews), function(v) {
+    _.each(_.zip(this.items, this.subviews), function(v, i) {
       var item = self.processItem(v[0]);
       if (!_.isEqual(v[0], item)) {
+        self.items[i] = item;
         var task = item.task ? `Assigned: ${item.task.obj.name}` : '';
         v[1].el.find('.location-task').html(task);
         v[1].el.find('button').replaceWith(button(item));

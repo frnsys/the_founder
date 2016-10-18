@@ -10,7 +10,7 @@ const template = data =>
 class View extends CardsList {
   constructor(player, office) {
     super({
-      title: 'Employees',
+      title: 'Human Resources',
       template: template,
       detailTemplate: templ.worker,
       handlers: {
@@ -66,9 +66,10 @@ class View extends CardsList {
   update() {
     var noAvailableSpace = this.player.company.remainingSpace == 0;
     var self = this;
-    _.each(_.zip(this.items, this.subviews), function(v) {
+    _.each(_.zip(this.items, this.subviews), function(v, i) {
       var item = self.processItem(v[0]);
       if (!_.isEqual(v[0], item)) {
+        self.items[i] = item;
         var task = item.task ? `Assigned:<br>${item.task.obj.name}` : '';
         v[1].el.find('.worker-task').html(task);
       }

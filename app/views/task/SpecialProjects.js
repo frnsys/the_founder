@@ -77,9 +77,10 @@ class View extends CardsList {
 
   update() {
     var self = this;
-    _.each(_.zip(this.items, this.subviews), function(v) {
+    _.each(_.zip(this.items, this.subviews), function(v, i) {
       var item = self.processItem(v[0]);
       if (item.unlocked && !_.isEqual(v[0], item)) {
+        self.items[i] = item;
         v[1].el.find('button').replaceWith(button(item));
       }
     });

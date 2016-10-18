@@ -1,3 +1,13 @@
+# 0.4.1
+
+- fixed high score messages
+- reduced base revenue per share (to increase difficulty)
+- fixed transit-related stuff
+- improved how employees work in the campus office
+- many perk tweaks
+    - changed names and descriptions to better fit in space
+    - made perk objects able to replace other perk objects
+
 # 0.4.0
 
 - changed how the Board works, should make things simpler

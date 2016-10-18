@@ -1,3 +1,8 @@
+# 0.4.2
+
+- bumped up the difficulty a bit
+- fixed UI bug that was making it impossible to buy some things
+
 # 0.4.1
 
 - fixed high score messages

@@ -56,7 +56,7 @@ const config = {
   },
   TASK_VALUES: {
     capture: 1,
-    defend: 0.1
+    defend: 0.01
   }
 };
 

@@ -54,7 +54,7 @@ class AI {
         tasks = []
 
     if (tile.owner == this.player) {
-      var threatValue = Evaluation.tileThreats(this.grid, tile);
+      var threatValue = Evaluation.tileThreats(this.grid, tile, this.player);
       if (threatValue > 0) {
         tasks.push(new Task.Defend(tile, this.grid, threatValue));
       }

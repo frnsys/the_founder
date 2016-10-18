@@ -135,7 +135,8 @@ const Product = {
   },
   uncreativityDecay: function(p) {
     // revenue decay due to NOT BEING INNOVATIVE
-    return Math.log10((-(p.version - 1)*1.5)+10+epsilon);
+    return Math.max(config.MIN_UNCREATIVITY_DECAY,
+      Math.log10((-(p.version - 1)*1.5)+10+epsilon));
   },
   marketShareToRevenue: function(incomeLevel, product, player) {
     return Math.pow((incomeLevel + 1), 2) * (Math.round(config.BASE_REVENUE_PER_SHARE * Product.uncreativityDecay(product)) + player.revenuePerMarketShareBonus) * product.revenueScore;

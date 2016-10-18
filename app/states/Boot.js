@@ -50,8 +50,8 @@ class Boot extends Phaser.State {
 
     // CHEAT CODES!!
     window.cheat = {
-      windfall: function() {
-        player.company.cash += 1000000;
+      windfall: function(amt) {
+        player.company.cash += amt || 1000000;
       }
     }
   }

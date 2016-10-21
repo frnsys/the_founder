@@ -5,11 +5,11 @@
       "Analytics",
       "Ad"
     ],
-    "description": "Hyper-taragted ad networks",
+    "description": "Hyper-targeted ad networks",
     "effects": [
       {
         "type": "spendingMultiplier",
-        "value": 0.01
+        "value": 0.05
       }
     ],
     "feature": 1,
@@ -22,9 +22,26 @@
       "Genetics"
     ],
     "description": "Genetics ad profiling network",
-    "effects": [],
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.05
+    }],
     "feature": 1,
     "productName": "GeneAd"
+  },
+  {
+    "name": "Ad.Logistics",
+    "productTypes": [
+      "Ad",
+      "Logistics"
+    ],
+    "description": "The most comprehensive ad marketplace",
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.1
+    }],
+    "feature": 1,
+    "productName": "AdNet"
   },
   {
     "name": "Ad.Implant",
@@ -33,7 +50,10 @@
       "Implant"
     ],
     "description": "Thrifty consumers can rent out thoughtspace for thought-ads and save on their favorite brands!",
-    "effects": [],
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.05
+    }],
     "feature": 2,
     "productName": "BrainShare"
   },
@@ -58,7 +78,10 @@
       "Virtual Reality"
     ],
     "description": "VR ad network",
-    "effects": [],
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.1
+    }],
     "feature": 0,
     "productName": "VRAd"
   },
@@ -265,7 +288,10 @@
       "Credit"
     ],
     "description": "What do we even need *people* to buy our products for anyways? We can just build robots to work and spend their cash on us.",
-    "effects": [],
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.1
+    }],
     "feature": 0,
     "productName": "BuyBot"
   },
@@ -385,7 +411,10 @@
   {
     "name": "Credit.E-Commerce",
     "description": "People want to buy stuff, but can't because they don't have money. With our new credit card we can extend them credit so they can keep buying our stuff.",
-    "effects": [],
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.4
+    }],
     "productTypes": [
       "Credit",
       "E-Commerce"
@@ -400,14 +429,20 @@
       "Implant"
     ],
     "description": "Keep detailed track of risky loaners with these neural loan monitoring devices.",
-    "effects": [],
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.1
+    }],
     "feature": 0,
     "productName": "LoanNeural"
   },
   {
     "name": "Credit.Mobile",
-    "description": "We can empower many small businesses and inviduals that need to process payments but don't want to pay credit card companies and their ilk. They can pay us instead.",
-    "effects": [],
+    "description": "Easier payments that go through us.",
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.2
+    }],
     "feature": 0,
     "productTypes": [
       "Credit",
@@ -418,7 +453,10 @@
   {
     "name": "Credit.Social Network",
     "description": "A microfinancing platform makes sure credit is available for everyone.",
-    "effects": [],
+    "effects": [{
+      "type": "spendingMultiplier",
+      "value": 0.2
+    }],
     "productTypes": [
       "Credit",
       "Social Network"

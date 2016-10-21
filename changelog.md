@@ -1,3 +1,9 @@
+# 0.4.5
+
+- balancing tweaks
+- now all technologies have some kind of bonus effect
+- fixed bug where AI pieces would sometimes make illegal moves in the Market
+
 # 0.4.4
 
 - fixed employees not properly leaving objects (and thus wandering off the map)

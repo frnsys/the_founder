@@ -97,7 +97,7 @@ class Grid {
   findLegalPath(piece, toTile, validPredicate) {
     var from = piece.position,
         to = toTile.position,
-        dist = Grid.manhattanDistance(from, to),
+        dist = this.findPath(from, to, validPredicate).length,
         withinReach = dist <= piece.moves,
         unoccupied = !toTile.piece;
 

@@ -136,10 +136,10 @@ const Product = {
   uncreativityDecay: function(p) {
     // revenue decay due to NOT BEING INNOVATIVE
     return Math.max(config.MIN_UNCREATIVITY_DECAY,
-      Math.log10(Math.max(0, (-(p.version - 1)*1.5)+10)+epsilon));
+      Math.log10(Math.max(0, (-(p.version - 1)*config.UNCREATIVITY_DECAY_STRENGTH)+10)+epsilon));
   },
   marketShareToRevenue: function(incomeLevel, product, player) {
-    return Math.pow((incomeLevel + 1), 2) * (Math.round(config.BASE_REVENUE_PER_SHARE * Product.uncreativityDecay(product)) + player.revenuePerMarketShareBonus) * product.revenueScore;
+    return Math.pow((incomeLevel + 1), 2) * (Math.round(config.BASE_REVENUE_PER_SHARE * Product.uncreativityDecay(product)) + player.revenuePerMarketShareBonus) * product.revenueScore * (product.name.includes('Junk') ? 0.5 : 1);
   },
 
   // for the product designer

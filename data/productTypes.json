@@ -3,19 +3,19 @@
     "name": "Ad",
     "difficulty": 1,
     "requiredVertical": "Information",
-    "cost": 10000
+    "cost": 50000
   },
   {
     "name": "AI",
     "difficulty": 3,
     "requiredVertical": "Information",
-    "cost": 100000
+    "cost": 200000
   },
   {
     "name": "Analytics",
     "difficulty": 1,
     "requiredVertical": "Information",
-    "cost": 10000
+    "cost": 50000
   },
   {
     "name": "Robot",
@@ -45,13 +45,13 @@
     "name": "Credit",
     "difficulty": 1,
     "requiredVertical": "Finance",
-    "cost": 10000
+    "cost": 50000
   },
   {
     "name": "Defense",
     "difficulty": 2,
     "requiredVertical": "Defense",
-    "cost": 10000
+    "cost": 80000
   },
   {
     "name": "Drug",
@@ -63,19 +63,19 @@
     "name": "E-Commerce",
     "difficulty": 1,
     "requiredVertical": "Information",
-    "cost": 100000
+    "cost": 50000
   },
   {
     "name": "Entertainment",
     "difficulty": 1,
     "requiredVertical": "Entertainment",
-    "cost": 100000
+    "cost": 50000
   },
   {
     "name": "Gadget",
     "difficulty": 1,
     "requiredVertical": "Hardware",
-    "cost": 100000
+    "cost": 50000
   },
   {
     "name": "Genetics",
@@ -93,7 +93,7 @@
     "name": "Mobile",
     "difficulty": 1,
     "requiredVertical": "Hardware",
-    "cost": 100000
+    "cost": 50000
   },
   {
     "name": "Logistics",
@@ -105,13 +105,13 @@
     "name": "Sharing",
     "difficulty": 1,
     "requiredVertical": "Information",
-    "cost": 100000
+    "cost": 50000
   },
   {
     "name": "Social Network",
     "difficulty": 1,
     "requiredVertical": "Information",
-    "cost": 100000
+    "cost": 50000
   },
   {
     "name": "Space",

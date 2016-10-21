@@ -154,7 +154,7 @@
     "name": "specialProject",
     "messages": [
       "<em class='concept'>Special Projects</em> are expensive tasks but lead to massive advantages and totally new revenue streams.",
-      "Each special project has a few prerequisite products that must be innovated before the special project is available,",
+      "Each special project has a few prerequisite products that must be innovated before the special project is available.",
       "Their development requires some minimum amount of <em class='concept'><img src='assets/company/design.png'> Design</em>, <em class='concept'><img src='assets/company/engineering.png'> Engineering</em>, and <em class='concept'><img src='assets/company/marketing.png'> Marketing</em> points before they are completed."
     ],
     "conditions": [{

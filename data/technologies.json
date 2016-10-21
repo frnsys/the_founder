@@ -61,7 +61,14 @@
     "requiredTechs": [
       "Field Manipulation"
     ],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Hardware",
+        "attribute": "strength",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Atmospheric Manipulation",
@@ -69,6 +76,9 @@
     "cost": 100000,
     "requiredProgress": 1800,
     "requiredVertical": "Hardware",
+    "requiredTechs": [
+      "Field Manipulation"
+    ],
     "effects": [
       {
         "type": "unlocks",
@@ -88,7 +98,10 @@
     "requiredTechs": [
       "Nanorobotics"
     ],
-    "effects": []
+    "effects": [{
+      "type": "costMultiplier",
+      "value": -0.1
+    }]
   },
   {
     "name": "Big Data",
@@ -118,7 +131,14 @@
     "requiredTechs": [
       "Synthetic Biology"
     ],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Biotech",
+        "attribute": "quantity",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Brain-Computer Interfaces",
@@ -184,7 +204,14 @@
     "requiredProgress": 1800,
     "requiredVertical": "Information",
     "requiredTechs": [],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Information",
+        "attribute": "quantity",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Computational Cognition",
@@ -214,7 +241,14 @@
     "requiredProgress": 1800,
     "requiredVertical": "Biotech",
     "requiredTechs": [],
-    "effects": []
+    "effects": [{
+        "type": "product",
+        "value": {
+          "vertical": "Biotech",
+          "attribute": "strength",
+          "value": 1
+        }
+    }]
   },
   {
     "name": "Deep Learning",
@@ -423,7 +457,14 @@
     "requiredTechs": [
       "Wearables"
     ],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Hardware",
+        "attribute": "quantity",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Machine Translation",
@@ -471,7 +512,14 @@
     "requiredTechs": [
       "Brain-Computer Interfaces"
     ],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Entertainment",
+        "attribute": "quantity",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Metamaterials",
@@ -501,7 +549,14 @@
     "requiredTechs": [
       "Drones"
     ],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Hardware",
+        "attribute": "quantity",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Neuromarketing",
@@ -530,7 +585,14 @@
       "Integrated Implants",
       "Brain-Computer Interfaces"
     ],
-    "effects": []
+    "effects": [{
+      "type": "product",
+      "value": {
+        "vertical": "Information",
+        "attribute": "movement",
+        "value": 1
+      }
+    }]
   },
   {
     "name": "Nutritive Engineering",

@@ -139,7 +139,7 @@ const Product = {
       Math.log10(Math.max(0, (-(p.version - 1)*config.UNCREATIVITY_DECAY_STRENGTH)+10)+epsilon));
   },
   marketShareToRevenue: function(incomeLevel, product, player) {
-    return Math.pow((incomeLevel + 1), 2) * (Math.round(config.BASE_REVENUE_PER_SHARE * Product.uncreativityDecay(product)) + player.revenuePerMarketShareBonus) * product.revenueScore * (product.name.includes('Junk') ? 0.5 : 1);
+    return Math.pow((incomeLevel + 1), 2) * (Math.round((config.BASE_REVENUE_PER_SHARE + (config.EXTRA_REVENUE_PER_DIFFICULTY * (product.difficulty-2)))* Product.uncreativityDecay(product)) + player.revenuePerMarketShareBonus) * product.revenueScore * (product.name.includes('Junk') ? 0.5 : 1);
   },
 
   // for the product designer

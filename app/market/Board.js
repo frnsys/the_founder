@@ -338,17 +338,22 @@ class Board {
       var attacker = piece,
           defender = nearestTile.piece;
       if (defender && attacker.owner != defender.owner) {
-        this.movePieceTowards(piece, nearestTile, () => {
-          var coord = this.coordinateForPosition(piece.tile.position),
-              tween = this.game.add.tween(piece.sprite).to(coord, 200, Phaser.Easing.Quadratic.InOut, true);
-          tween.start();
-
-          // check we're actually close enough to attack
-          if (attacker.moves > 0 && _.contains(this.grid.tilesInRange(attacker.tile.position, 1), nearestTile)) {
+        if (_.contains(this.grid.tilesInRange(attacker.tile.position, 1), nearestTile)) {
             this.attackPiece(attacker, defender);
             this.checkHumanDone();
-          }
-        });
+        } else {
+          this.movePieceTowards(piece, nearestTile, () => {
+            var coord = this.coordinateForPosition(piece.tile.position),
+                tween = this.game.add.tween(piece.sprite).to(coord, 200, Phaser.Easing.Quadratic.InOut, true);
+            tween.start();
+
+            // check we're actually close enough to attack
+            if (attacker.moves > 0 && _.contains(this.grid.tilesInRange(attacker.tile.position, 1), nearestTile)) {
+              this.attackPiece(attacker, defender);
+            }
+            this.checkHumanDone();
+          });
+        }
       } else {
         this.movePieceTowards(piece, nearestTile, this.checkHumanDone.bind(this));
       }
@@ -381,6 +386,8 @@ class Board {
     if (defender.health <= 0 && attacker.health > 0) {
       this.grid.tileAt(attacker.position).piece = null;
       this.animatePieceAlongPath(attacker, [defender.position], defender.position);
+    } else {
+      this.animatePieceAlongPath(attacker, [attacker.position], attacker.position);
     }
 
     this.onCombat({

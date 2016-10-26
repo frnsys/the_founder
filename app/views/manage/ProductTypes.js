@@ -15,11 +15,16 @@ const difficulties = [
 ];
 
 function button(item) {
-  if (!item.available) {
+  if (!item.unlocked) {
       return '<button disabled>Locked</button>';
   } else {
     if (item.owned) {
       return '<button class="owned" disabled>Owned</button>';
+
+    // missing required vertical
+    } else if (!item.available) {
+      return `<button disabled>Requires ${item.requiredVertical} vertical</button>`;
+
     } else if (item.afford) {
       return `<button class="buy">${util.formatCurrency(item.cost)}</button>`;
     } else {
@@ -29,7 +34,7 @@ function button(item) {
 }
 
 function detailTemplate(item) {
-  if (item.available) {
+  if (item.unlocked) {
     return `
       <div class="title">
         <h1>${item.name}</h1>
@@ -108,6 +113,7 @@ class ProductTypesView extends CardsList {
     return _.extend(item, {
       owned: owned,
       available: player.company.productTypeIsAvailable(item),
+      unlocked: _.contains(player.unlocked.productTypes, item.name),
       afford: player.company.cash >= item.cost
     });
   }

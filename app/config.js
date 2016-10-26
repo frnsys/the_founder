@@ -59,7 +59,12 @@ const config = {
   TASK_VALUES: {
     capture: 1,
     defend: 0.01
-  }
+  },
+
+  // emails
+  EMAIL_REPEAT_PROB: 0.05,
+  EMAIL_COUNTDOWN_MIN: 16,
+  EMAIL_COUNTDOWN_MAX: 64
 };
 
 export default config;

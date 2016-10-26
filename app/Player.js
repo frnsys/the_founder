@@ -90,7 +90,12 @@ class Player {
 
       // event pools
       news: news,
-      emails: emails,
+      emails: _.map(emails, e => {
+        if (e.repeatable) {
+          e.countdown = _.random(config.EMAIL_COUNTDOWN_MIN, config.EMAIL_COUNTDOWN_MAX);
+        }
+        return e;
+      }),
       current: {
         news: {},
 

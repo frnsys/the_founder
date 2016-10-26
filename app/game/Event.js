@@ -13,15 +13,13 @@
 import doT from 'dot';
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import Effect from './Effect';
 import Condition from './Condition';
 import fillerNews from 'data/newsFiller.json';
 import journalists from 'data/journalists.json';
 
 const MIN_NEWS_ARTICLES = 9;
-const EMAIL_REPEAT_PROB = 0.001;
-const EMAIL_COUNTDOWN_MIN = 32;
-const EMAIL_COUNTDOWN_MAX = 64;
 
 function template(obj, keys, player) {
   var result = _.clone(obj),
@@ -61,8 +59,10 @@ const Event = {
     var emails = _.filter(player.emails, function(email) {
       var satisfied = Event.satisfied(email, player);
       if (email.repeatable) {
-        email.countdown = Math.max(0, email.countdown - 1);
-        return satisfied && email.countdown <= 0 && Math.random <= EMAIL_REPEAT_PROB;
+        if (satisfied) {
+          email.countdown = Math.max(0, email.countdown - 1);
+        }
+        return satisfied && email.countdown <= 0 && Math.random() <= config.EMAIL_REPEAT_PROB;
       } else {
         return satisfied;
       }
@@ -74,7 +74,7 @@ const Event = {
         Effect.applies(email.effects, player);
       }
       if (email.repeatable) {
-        email.countdown = _.random(EMAIL_COUNTDOWN_MIN, EMAIL_COUNTDOWN_MAX);
+        email.countdown = _.random(config.EMAIL_COUNTDOWN_MIN, config.EMAIL_COUNTDOWN_MAX);
       }
     });
 

@@ -1,3 +1,13 @@
+# 0.4.6
+
+- UI fixes
+- unlocked product types that are require a missing vertical now say so
+- the first product develops very quickly, for onboarding purposes
+- some difficulty tweaks (to increase difficulty)
+- fixed event system (many events were broken)
+- added several new events (to increase difficulty, they probably need balancing though)
+- fixed a Market bug where pieces with one movement could not properly attack enemy pieces
+
 # 0.4.5
 
 - balancing tweaks

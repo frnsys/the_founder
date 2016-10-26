@@ -315,7 +315,7 @@ class Company {
   }
 
   startProduct(productTypes) {
-    var product = Product.create(productTypes);
+    var product = Product.create(productTypes, this.productsLaunched === 0);
     return Task.init('Product', product);
   }
 

@@ -38,7 +38,8 @@ const Product = {
     }, pt);
   },
 
-  create: function(productTypes) {
+  create: function(productTypes, firstProduct) {
+    var firstProduct = firstProduct || false;
     var recipeName = _.map(
       _.sortBy(productTypes, function(pt) { return pt.name }),
       function(pt) {return pt.name}).join('.');
@@ -73,7 +74,9 @@ const Product = {
       description: recipe.description,
       combo: _.pluck(productTypes, 'name').join(' + '),
       progress: 0,
-      requiredProgress: requiredProgress(difficulty)
+
+      // first product develops faster for onboarding purposes
+      requiredProgress: requiredProgress(difficulty) / (firstProduct ? 10 : 1)
     };
   },
 

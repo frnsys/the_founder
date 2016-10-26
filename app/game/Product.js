@@ -27,8 +27,8 @@ import productRecipes from 'data/productRecipes.json';
 const epsilon = 1e-12;
 const PRODUCT_FEATURES = [null, 'design', 'engineering', 'marketing'];
 
-function requiredProgress(difficulty) {
-  return Math.exp(difficulty/10) * config.PROGRESS_PER_DIFFICULTY
+function requiredProgress(difficulty, multiplier) {
+  return Math.exp(difficulty/10) * config.PROGRESS_PER_DIFFICULTY * (1 + multiplier);
 }
 
 const Product = {
@@ -38,8 +38,8 @@ const Product = {
     }, pt);
   },
 
-  create: function(productTypes, firstProduct) {
-    var firstProduct = firstProduct || false;
+  create: function(productTypes, company) {
+    var firstProduct = company.productsLaunched === 0;
     var recipeName = _.map(
       _.sortBy(productTypes, function(pt) { return pt.name }),
       function(pt) {return pt.name}).join('.');
@@ -55,6 +55,9 @@ const Product = {
       return mem + (pt.difficulty * (pt.expertise + 1));
     }, 0);
 
+    var verticals = _.uniq(_.pluck(productTypes, 'requiredVertical')),
+        progressMultiplier = _.reduce(verticals, (m,v) => m + company.getProductBonus('development time', v), 0);
+
     return {
       name: recipe.productName,
       recipeName: recipe.name,
@@ -65,7 +68,7 @@ const Product = {
       pollutes: _.intersection(recipe.productTypes, ['Gadget', 'Implant', 'Mobile', 'Wearable', 'Robot', 'Defense', 'E-Commerce', 'Logistics', 'Social Network', 'Space']).length > 0,
       moralPanic: _.intersection(recipe.productTypes, ['Drug', 'Genetics', 'Synthetic Organism', 'Cognitive']).length > 0,
       productTypes: _.pluck(productTypes, 'name'),
-      verticals: _.uniq(_.pluck(productTypes, 'requiredVertical')),
+      verticals: verticals,
       effects: recipe.effects,
       marketing: 0,
       engineering: 0,
@@ -76,7 +79,7 @@ const Product = {
       progress: 0,
 
       // first product develops faster for onboarding purposes
-      requiredProgress: requiredProgress(difficulty) / (firstProduct ? 10 : 1)
+      requiredProgress: requiredProgress(difficulty, progressMultiplier) / (firstProduct ? 10 : 1)
     };
   },
 

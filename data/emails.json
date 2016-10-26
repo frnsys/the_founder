@@ -224,6 +224,35 @@
     }
   }
 }, {
+ "subject": "Patent lawsuit",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "Some patent trolls are trying to sue us. I think we'll be ok, we just need to put some people to the task of fighting them off.",
+  "effects": [],
+  "conditions": [{
+    "type": "productsLaunched",
+    "op": "gt",
+    "val": 24
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Fight patent trolls",
+    "due": 14,
+    "required": {
+      "skill": "marketing",
+      "val": 2000
+    },
+    "failure": {
+      "body": "We lost the patent lawsuit! We have to pay out a massive amount...",
+      "effects": [{
+        "type": "cash",
+        "value": -200000000
+      }]
+    },
+    "success": {
+      "body": "We won the patent lawsuit, so we're safe for now."
+    }
+  }
+}, {
  "subject": "Sponsor a learn-to-code initiative?",
   "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
   "body": "The White House is putting together a campaign to get more kids learning programming in school and they are looking for a partner to help design the program. This could help develop a more talented hiring pool for us.",
@@ -248,7 +277,7 @@
       "body": "The curriculum was a hit! Kids across the country are learning the joys of web development.",
       "effects": [{
         "type": "engineering",
-        "value": 10
+        "value": 4
       }]
     }
   }
@@ -258,7 +287,7 @@
   "body": "A lot of people with too much time on their hands have been going to our bus stops and making a big fuss of things. It's making us look bad and killing employee productivity. Maybe we can design a solution?",
   "effects": [{
     "type": "productivity",
-    "value": -10
+    "value": -5
   }, {
     "type": "outrage",
     "value": 50
@@ -283,12 +312,12 @@
       "body": "Our designers were able to come up with a really clever way to minimize the distraction the protesters cause! Our employees can work on the way to work now!",
       "effects": [{
         "type": "productivity",
-        "value": 15
+        "value": 5
       }]
     }
   }
 }, {
- "subject": "No compete agreement?",
+  "subject": "No compete agreement?",
   "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
   "body": "I was approached by the CEOs of a few other tech companies - it's just too damn expensive to hire good talent these days. They suggested we coordinate our hiring so none of us are paying more than we should.",
   "effects": [],
@@ -320,5 +349,235 @@
       }]
     }
   }
+}, {
+  "subject": "Unsafe biomedical practices",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "The agency that oversees laboratory practices is threatening to revoke our lab licenses after reviewing our operating practices! We need to fight this.",
+  "effects": [{
+    "type": "outrage",
+    "value": 200
+  }],
+  "conditions": [{
+    "type": "productsLaunched",
+    "op": "gt",
+    "val": 24
+  }, {
+    "type": "verticals",
+    "op": "has",
+    "val": "Biotech"
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Lobby to keep labs open",
+    "due": 14,
+    "required": {
+      "skill": "marketing",
+      "val": 2000
+    },
+    "failure": {
+      "body": "We couldn't keep our license. This is going to slow our research and hurt our biotech products.",
+      "effects": [{
+        "type": "researchCostMultiplier",
+        "value": 0.2
+      }, {
+        "type": "product",
+        "value": {
+          "vertical": "Biotech",
+          "attribute": "development time",
+          "value": 1
+        }
+      }]
+    },
+    "success": {
+      "body": "It took some convincing, but we can keep our labs running without issue."
+    }
+  }
+}, {
+  "subject": "Sexism and harassment accusations",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "One of our employees published a post detailing various instances of sexism, harassment, and intimidation at our company. It's too late to handle this internally, but we can do some damage control.",
+  "effects": [{
+    "type": "outrage",
+    "value": 1000
+  }],
+  "conditions": [{
+    "type": "employees",
+    "op": "gt",
+    "val": 8
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Handle scandal fallout",
+    "due": 14,
+    "required": {
+      "skill": "marketing",
+      "val": 2000
+    },
+    "failure": {
+      "body": "This has gotten out of control...I think we made things worse.",
+      "effects": [{
+        "type": "outrage",
+        "value": 2000
+      }]
+    },
+    "success": {
+      "body": "Things seem to be under control for now..."
+    }
+  }
+}, {
+  "subject": "Rare earth mineral shortage",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "Rare earth mineral yields have unexpectedly dropped...there are a few...questionable...suppliers we could switch over to keep production up. It's not like our current sources are that above-board anyways.",
+  "effects": [{
+    "type": "product",
+    "value": {
+      "vertical": "Hardware",
+      "attribute": "development time",
+      "value": 1
+    }
+  }],
+  "conditions": [{
+    "type": "verticals",
+    "op": "has",
+    "val": "Hardware"
+  }, {
+    "type": "productsLaunched",
+    "op": "gt",
+    "val": 26
+  }],
+  "repeatable": false,
+  "action": {
+    "name": "Switch mineral suppliers",
+    "due": 18,
+    "required": {
+      "skill": "engineering",
+      "val": 2000
+    },
+    "failure": {
+      "body": "We didn't successfully switch suppliers, so our hardware production will remain slowed."
+    },
+    "success": {
+      "body": "We switched suppliers, so hardware production should return to previous levels.",
+      "effects": [{
+        "type": "product",
+        "value": {
+          "vertical": "Hardware",
+          "attribute": "development time",
+          "value": -1
+        }
+      }]
+    }
+  }
+}, {
+  "subject": "Server outage due to flooding",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "Some of our datacenters are getting flooded, think it has to do with rising sea levels maybe. Anyways, let's get some people working on switching datacenters to higher-altitude locations.",
+  "effects": [{
+    "type": "product",
+    "value": {
+      "vertical": "Information",
+      "attribute": "development time",
+      "value": 1
+    }
+  }],
+  "conditions": [{
+    "type": "pollution",
+    "op": "ge",
+    "val": 500000
+  }],
+  "repeatable": false,
+  "action": {
+    "name": "Switch datacenters",
+    "due": 18,
+    "required": {
+      "skill": "engineering",
+      "val": 2000
+    },
+    "failure": {
+      "body": "We didn't successfully switch datacenters, so our information product production will remain slowed."
+    },
+    "success": {
+      "body": "We switched suppliers, so information product production should return to previous levels.",
+      "effects": [{
+        "type": "product",
+        "value": {
+          "vertical": "Information",
+          "attribute": "development time",
+          "value": -1
+        }
+      }]
+    }
+  }
+}, {
+  "subject": "Blockchain app hacked",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "One of our DISTRIBUTED AUTONOMOUS ORGANIZATIONS running on the Blockchain got badly hacked and the attacker got away with a bunch of money. In a weird way the program was designed this way but maybe we can recoup some of those losses with a counterattack...",
+  "effects": [{
+    "type": "cash",
+    "value": -10000000
+  }],
+  "conditions": [{
+    "type": "launchedProductTypes",
+    "op": "has",
+    "val": "Blockchain"
+  }, {
+    "type": "productsLaunched",
+    "op": "gt",
+    "val": 32
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Backtrace the hacker",
+    "due": 18,
+    "required": {
+      "skill": "engineering",
+      "val": 4000
+    },
+    "failure": {
+      "body": "We couldn't hack the attacker, so we're stuck with our losses."
+    },
+    "success": {
+      "body": "We managed to counter-hack the attacker! We didn't get back everything we lost, but we got back a good chunk of it.",
+      "effects": [{
+        "type": "cash",
+        "value": 5000000
+      }]
+    }
+  }
+}, {
+  "subject": "Satellite knocked down",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "{{=it.competitor}}'s satellite launch screwed up and knocked one of ours right out of the sky. It's going to cost us to replace it, but maybe if we hammer them in the press we can get them to cover the costs.",
+  "effects": [{
+    "type": "cash",
+    "value": -10000000
+  }],
+  "conditions": [{
+    "type": "launchedProductTypes",
+    "op": "has",
+    "val": "Space"
+  }, {
+    "type": "productsLaunched",
+    "op": "gt",
+    "val": 36
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Smear campaign",
+    "due": 18,
+    "required": {
+      "skill": "marketing",
+      "val": 4000
+    },
+    "failure": {
+      "body": "Our campaign wasn't a success, and they won't cover the costs of our satellite."
+    },
+    "success": {
+      "body": "Our campaign was a success! The pressure has caused them to pay us back for our losses.",
+      "effects": [{
+        "type": "cash",
+        "value": 10000000
+      }]
+    }
+  }
 }]
-

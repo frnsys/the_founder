@@ -163,7 +163,9 @@ const Effect = {
     } else if (_.isObject(effect.value)) {
       switch (effect.type) {
         case 'product':
-          var valueStr = effect.value.value > 0 ? '+' + effect.value.value : effect.value.value;
+          var value = effect.value.value,
+              valueVal = effect.value.attribute === 'development time' ? `${value}x` : value,
+              valueStr = value > 0 ? '+' + valueVal : valueVal;
           return valueStr + ' to ' + effect.value.vertical + ' products\' ' + effect.value.attribute;
         case 'unlocks':
           return 'Unlocks ' + effect.value.value;

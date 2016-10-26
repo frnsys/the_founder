@@ -28,6 +28,8 @@ const Condition = {
   productsLaunched: (player) => player.company.productsLaunched,
   activeProducts: (player) => player.company.activeProducts.length,
   productTypes: (player) => player.company.productTypes.length,
+  launchedProductTypes: (player) => _.chain(player.company.discoveredProducts)
+    .map(recipeName => recipeName.split('.')).flatten().map(pt => ({name: pt})).value(),
   nPerks: (player) => player.company.perks.length,
   perks: (player) => player.company.perks,
   perkUpgrades: (player) => player.company.perkUpgrades,

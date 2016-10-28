@@ -12,6 +12,7 @@ import verticals from 'data/verticals.json';
 import locations from 'data/locations.json';
 import cofounders from 'data/cofounders.json';
 import onboarding from 'data/onboarding.json';
+import technologies from 'data/technologies.json';
 import productTypes from 'data/productTypes.json';
 import specialProjects from 'data/specialProjects.json';
 
@@ -72,6 +73,15 @@ const Debug = {
     player.skipOnboarding();
     player.specialEffects['Worker Insight'] = true;
     player.specialEffects['Cloneable'] = true;
+  },
+
+  unlockAll: function(player) {
+    player.unlocked = {
+      locations: _.pluck(locations, 'name'),
+      technologies: _.pluck(technologies, 'name'),
+      specialProjects: _.pluck(specialProjects, 'name'),
+      productTypes: _.pluck(productTypes, 'name')
+    };
   },
 
   debugOffice: function(office) {

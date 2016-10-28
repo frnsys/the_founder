@@ -64,6 +64,9 @@ class Boot extends Phaser.State {
           w.marketing = lvl;
           w.design = lvl;
         });
+      },
+      opensesame: function() {
+        Debug.unlockAll(player);
       }
     }
   }

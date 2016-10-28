@@ -271,7 +271,7 @@
     "productName": "SuperSupply"
   },
   {
-    "name": "Robot.Celebrity",
+    "name": "Celebrity.Robot",
     "productTypes": [
       "Robot",
       "Celebrity"
@@ -282,7 +282,7 @@
     "productName": "Satsune Niku"
   },
   {
-    "name": "Robot.Credit",
+    "name": "Credit.Robot",
     "productTypes": [
       "Robot",
       "Credit"
@@ -296,7 +296,7 @@
     "productName": "BuyBot"
   },
   {
-    "name": "Robot.Defense",
+    "name": "Defense.Robot",
     "productTypes": [
       "Robot",
       "Defense"
@@ -307,7 +307,7 @@
     "productName": "Spartan"
   },
   {
-    "name": "Robot.Logistics",
+    "name": "Logistics.Robot",
     "productTypes": [
       "Robot",
       "Logistics"

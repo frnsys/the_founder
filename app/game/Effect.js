@@ -168,7 +168,22 @@ const Effect = {
               valueStr = value > 0 ? '+' + valueVal : valueVal;
           return valueStr + ' to ' + effect.value.vertical + ' products\' ' + effect.value.attribute;
         case 'unlocks':
-          return 'Unlocks ' + effect.value.value;
+          var type;
+          switch (effect.value.type) {
+              case 'locations':
+                type = 'location';
+                break;
+              case 'technologies':
+                type = 'research';
+                break;
+              case 'productTypes':
+                type = 'product type';
+                break;
+              case 'specialProjects':
+                type = 'special project';
+                break;
+          }
+          return `Unlocks the "${effect.value.value}" ${type}`;
       }
     }
   }

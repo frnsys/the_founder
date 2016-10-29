@@ -9,11 +9,30 @@ import Tooltip from 'views/Tooltip';
 import NewTaskView from 'views/task/New';
 import ActiveTasksView from 'views/task/Active';
 
+const economyColors = [
+  '#ff2c2c',
+  '#ffab2c',
+  '#aaaaaa',
+  '#29dc6d'
+];
+
+const economyTips = [
+  'The Economy is in shambles. (Depression: severely reduced revenue)',
+  'The Economy is under the weather. (Recession: reduced revenue)',
+  'The Economy is business-as-usual. (Normal)',
+  'The Economy is booming. (Expansion: increased revenue)'
+];
+
 const template = data => `
 <div class="hud-left">
-  <h4 class="hud-date"></h4>
-  <div class="hud-time-outer progress-bar-outer" data-tip="Time left in year">
-    <div class="hud-time-inner progress-bar-inner"></div>
+  <div class="hud-left-top">
+    <div class="hud-time">
+      <h4 class="hud-date"></h4>
+      <div class="hud-time-outer progress-bar-outer" data-tip="Time left in year">
+        <div class="hud-time-inner progress-bar-inner"></div>
+      </div>
+    </div>
+    <div class="hud-economy" data-tip="Economy"></div>
   </div>
   <div class="hud-cash"></div>
   <div class="hud-active-products"></div>
@@ -185,6 +204,8 @@ class HUD extends View {
       this.statsView.el.find('li').show();
     }
     $('.hud-time-inner').width(`${((data.month + data.week/config.WEEKS_PER_MONTH)/12) * 100}%`);
+    $('.hud-economy').css('background', economyColors[player.economy]);
+    $('.hud-economy').data('tip', economyTips[player.economy]);
 
     var idleEmployees = this.player.company.idleEmployees,
         idleLocations = this.player.company.idleLocations,

@@ -6,6 +6,7 @@
  */
 
 import _ from 'underscore';
+import util from 'util';
 import Enums from 'app/Enums';
 
 const Economy = {
@@ -20,7 +21,7 @@ const Economy = {
         economyChangeProbability = 0.1;
         break;
       case Enums.Economy.Neutral:
-        economyChangeProbability = 0.005;
+        economyChangeProbability = 0.1;
         break;
       case Enums.Economy.Expansion:
         economyChangeProbability = 0.16;
@@ -42,7 +43,7 @@ const Economy = {
     if (player.specialEffects["Prescient"]) {
       var prediction;
       if (Math.random() <= 0.65) {
-        prediction = enumName(player.nextEconomy, Enums.Economy).toLowerCase();
+        prediction = util.enumName(player.nextEconomy, Enums.Economy).toLowerCase();
       } else {
         var options = [player.economy];
         if (player.economy > 0) {
@@ -52,11 +53,11 @@ const Economy = {
           options.push(player.economy + 1);
         }
         var nextEconomy = _.sample(options);
-        prediction = enumName(nextEconomy, Enums.Economy).toLowerCase();
+        prediction = util.enumName(nextEconomy, Enums.Economy).toLowerCase();
       }
-      player.current.emails.push({
+      player.current.inbox.push({
         "subject": "[DELPHI] Economic forecast",
-        "from": "DELPHI@{{slug name}}.com",
+        "from": `DELPHI@${util.slugify(player.company.name)}.com`,
         "body": "Delphi is predicting with 65% certainty that the economy will soon enter into a " + prediction + ". <br /><img src='assets/news/delphi.jpg'>"
       });
     }

@@ -31,6 +31,7 @@
 
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import Promo from './Promo';
 import Effect from './Effect';
 import Product from'./Product';
@@ -84,36 +85,49 @@ const Task = {
     return _.filter(company.locations, l => l.task == task.id);
   },
 
+  communicationOverhead: function(n_assignees) {
+    var overhead = (n_assignees * (n_assignees - 1))/2;
+    if (overhead <= 10) { // 5 assignees
+      return 0; // low
+    } else if (overhead <= 40) { // 9 assignees
+      return 1; // moderate
+    } else {
+      return 2; // high
+    }
+  },
+
   develop: function(task, company) {
     var workers = this.workersForTask(task, company),
         locations = this.locationsForTask(task, company),
-        progressPerTick = company.skill('productivity', workers, locations),
+        communicationOverhead = this.communicationOverhead(workers.length + locations.length),
+        communicationMultiplier = config.COMMUNICATION_MULTIPLIERS[communicationOverhead],
+        progressPerTick = company.skill('productivity', workers, locations) * communicationMultiplier,
         scale = function(skill) {
-          return (skill/(task.requiredProgress/progressPerTick))/2;
+          return ((skill/(task.requiredProgress/progressPerTick))/2) * communicationMultiplier;
         };
 
     switch (task.type) {
         case Type.Product:
-          task.progress += company.skill('productivity', workers, locations);
+          task.progress += company.skill('productivity', workers, locations) * communicationMultiplier;
           task.obj.design += scale(company.skill('design', workers, locations, true));
           task.obj.marketing += scale(company.skill('marketing', workers, locations, true));
           task.obj.engineering += scale(company.skill('engineering', workers, locations, true));
           break;
         case Type.Promo:
-          task.progress += company.skill('productivity', workers, locations);
+          task.progress += company.skill('productivity', workers, locations) * communicationMultiplier;
           task.obj.hype += (scale(company.skill('marketing', workers, locations)) + scale(company.skill('design', workers, locations)/3)) * Math.pow(task.obj.power, 3);
           break;
         case Type.Research:
-          task.progress += company.skill('engineering', workers, locations) + company.skill('design', workers, locations)/3;
+          task.progress += (company.skill('engineering', workers, locations) + company.skill('design', workers, locations)/3) * communicationMultiplier;
           break;
         case Type.Lobby:
-          task.progress += company.skill('marketing', workers, locations, true);
+          task.progress += company.skill('marketing', workers, locations, true) * communicationMultiplier;
           break;
         case Type.SpecialProject:
-          task.obj.design += company.skill('design', workers, locations, true);
-          task.obj.marketing += company.skill('marketing', workers, locations, true);
-          task.obj.engineering += company.skill('engineering', workers, locations, true);
-          task.progress = _.reduce(['design', 'marketing', 'engineering'], (m,n) => m + (task.obj[n]/task.obj.required[n]), 0)/3;
+          task.obj.design += company.skill('design', workers, locations, true) * communicationMultiplier;
+          task.obj.marketing += company.skill('marketing', workers, locations, true) * communicationMultiplier;
+          task.obj.engineering += company.skill('engineering', workers, locations, true) * communicationMultiplier;
+          task.progress = (_.reduce(['design', 'marketing', 'engineering'], (m,n) => m + (task.obj[n]/task.obj.required[n]), 0)/3) * communicationMultiplier;
           break;
         case Type.Event:
           // event progress is incremented separately by the Clock, each week

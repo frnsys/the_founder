@@ -1,5 +1,6 @@
 const config = {
   SECONDS_PER_WEEK: 6 * 20,
+  // SECONDS_PER_WEEK: 20,
   WEEKS_PER_MONTH: 4,
 
   // board
@@ -23,6 +24,10 @@ const config = {
   UNCREATIVITY_DECAY_STRENGTH: 1.5,
   MIN_UNCREATIVITY_DECAY: 0.2,
   MIN_PRODUCTS_BEFORE_DELEGATE: 8,
+  // MIN_PRODUCTS_BEFORE_DELEGATE: 0,
+
+  // tasks
+  COMMUNICATION_MULTIPLIERS: [1, 1/2, 1/4],
 
   // hiring
   SCORE_RANGE: 6,

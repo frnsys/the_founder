@@ -8,6 +8,13 @@ import View from 'views/View';
 import CardsList from 'views/CardsList';
 import Confirm from 'views/alerts/Confirm';
 
+const communicationOverheadTerms = ['Low', 'Moderate', 'High'];
+const communicationOverheadColors = ['#17b051', '#e29509', '#ff2c2c']
+const communicationOverheadTips = [
+  'The size of this team has no penalty on their efficiency.',
+  'The size of this team means they will be less efficient.',
+  'The size of this team means they will be much less efficient.'
+];
 
 function button(task) {
   if (!task.existing) {
@@ -104,6 +111,12 @@ class AssignmentView extends CardsList {
     this.el.find('.select').prop('disabled', this.assignedWorkers.length + this.assignedLocations.length == 0);
     view.render(this.processItem(sel, true));
     this.el.find('.task-assignees, .task-no-assignees').replaceWith(Tasks.Assignees(this.processTask(this.task)));
+
+    var overhead = Task.communicationOverhead(this.assignedWorkers.length + this.assignedLocations.length);
+    $('.task-communication-overhead')
+      .data('tip', communicationOverheadTips[overhead])
+      .css('background', communicationOverheadColors[overhead])
+      .text(`Communication overhead: ${communicationOverheadTerms[overhead]}`);
   }
 
   assignWorker(idx) {
@@ -225,8 +238,12 @@ class AssignmentView extends CardsList {
     });
     this.taskView.render(this.processTask(task));
 
+    var overhead = Task.communicationOverhead(this.assignedWorkers.length + this.assignedLocations.length);
+
     // hacky
-    this.el.find('header').append('<div class="task-assign-all-unassigned popup-aux-button">Toggle all unassigned</div>');
+    this.el.find('header').append(`
+      <div class="task-assign-all-unassigned popup-aux-button">Toggle all unassigned</div>
+      <div class="task-communication-overhead" style="background:${communicationOverheadColors[overhead]};" data-tip="${communicationOverheadTips[overhead]}">Communication overhead: ${communicationOverheadTerms[overhead]}</div>`);
   }
 
   processTask(task) {

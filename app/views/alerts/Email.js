@@ -55,17 +55,6 @@ class EmailsView extends Alert {
       template: template,
       parent: '.email-wrapper',
       handlers: {
-        '.dismiss-alert': function() {
-          if (this.idx < this.messages.length - 1) {
-            this.idx++;
-            this.render();
-          } else {
-            this.remove();
-            if (this.onDismiss) {
-              this.onDismiss();
-            }
-          }
-        },
         '.assign-email': function() {
           var task = this.messages[this.idx].task,
               view = new TaskAssignmentView(player, task),
@@ -93,6 +82,19 @@ class EmailsView extends Alert {
       }, m);
     });
     this.onDismiss = onDismiss;
+    this.registerHandlers({
+      '.dismiss-alert': function() {
+        if (this.idx < this.messages.length - 1) {
+          this.idx++;
+          this.render();
+        } else {
+          this.remove();
+          if (this.onDismiss) {
+            this.onDismiss();
+          }
+        }
+      }
+    });
   }
 
   render() {

@@ -67,7 +67,7 @@ const Effect = {
     player.company.workerBonuses.marketing += remove ? -value : value;
   },
   outrage: function(player, value, remove) {
-    player.company.workerBonuses.marketing += remove ? -value : value;
+    player.company.outrage += remove ? -value : value;
   },
   researchCostMultiplier: function(player, value, remove) {
     player.researchCostMultiplier += remove ? -value : value;

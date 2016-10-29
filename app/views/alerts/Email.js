@@ -2,8 +2,10 @@ import _ from 'underscore';
 import util from 'util';
 import templ from '../Common';
 import Alert from './Alert';
+import Confirm from './Confirm';
 import Task from 'game/Task';
 import Tasks from '../task/Tasks';
+import Effect from 'game/Effect';
 import TaskAssignmentView from '../task/Assignment';
 
 function taskTemplate(data) {
@@ -84,17 +86,32 @@ class EmailsView extends Alert {
     this.onDismiss = onDismiss;
     this.registerHandlers({
       '.dismiss-alert': function() {
-        if (this.idx < this.messages.length - 1) {
-          this.idx++;
-          this.render();
+        // if dismissing an email with failure effects,
+        // apply them immediately
+        var msg = this.messages[this.idx];
+        if (msg.task && msg.task.obj.failure.effects) {
+          var confirm = new Confirm(() => {
+            Effect.applies(msg.task.obj.failure.effects, player);
+            this.nextOrClose();
+          });
+          confirm.render('If you dismiss the email, the failure effects will take place. Are you sure?', 'I\'m sure. Dismiss it.', 'Nevermind');
         } else {
-          this.remove();
-          if (this.onDismiss) {
-            this.onDismiss();
-          }
+          this.nextOrClose();
         }
       }
     });
+  }
+
+  nextOrClose() {
+    if (this.idx < this.messages.length - 1) {
+      this.idx++;
+      this.render();
+    } else {
+      this.remove();
+      if (this.onDismiss) {
+        this.onDismiss();
+      }
+    }
   }
 
   render() {

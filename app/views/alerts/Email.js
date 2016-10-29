@@ -53,6 +53,7 @@ class EmailsView extends Alert {
   constructor(messages, player, onDismiss) {
     super({
       template: template,
+      parent: '.email-wrapper',
       handlers: {
         '.dismiss-alert': function() {
           if (this.idx < this.messages.length - 1) {

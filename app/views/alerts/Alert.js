@@ -39,7 +39,7 @@ class Alert extends View {
       state.pause();
     }
     Alert.current = this;
-    $('.alert-wrapper').show();
+    $(this.parent).show();
   }
 
   postRemove() {
@@ -49,7 +49,7 @@ class Alert extends View {
       state.resume();
     }
     Alert.current = null;
-    $('.alert-wrapper').hide();
+    $(this.parent).hide();
   }
 }
 

@@ -177,10 +177,10 @@ class HUD extends View {
     _.each(this.subviews, view => view.render(data));
     this.statsView.el.find('.hype-stat').text(util.abbreviateNumber(Math.floor(data.hype), 0));
     this.statsView.el.find('.outrage-stat').text(util.abbreviateNumber(Math.floor(data.outrage), 0));
-    this.statsView.el.find('.design-stat').text(util.abbreviateNumber(Math.floor(data.design)));
-    this.statsView.el.find('.marketing-stat').text(util.abbreviateNumber(Math.floor(data.marketing)));
-    this.statsView.el.find('.engineering-stat').text(util.abbreviateNumber(Math.floor(data.engineering)));
-    this.statsView.el.find('.productivity-stat').text(util.abbreviateNumber(Math.floor(data.productivity)));
+    this.statsView.el.find('.design-stat').text(util.abbreviateNumber(Math.floor(data.design), 0));
+    this.statsView.el.find('.marketing-stat').text(util.abbreviateNumber(Math.floor(data.marketing), 0));
+    this.statsView.el.find('.engineering-stat').text(util.abbreviateNumber(Math.floor(data.engineering), 0));
+    this.statsView.el.find('.productivity-stat').text(util.abbreviateNumber(Math.floor(data.productivity), 0));
     if (data.onboarding.promo) {
       this.statsView.el.find('li').show();
     }

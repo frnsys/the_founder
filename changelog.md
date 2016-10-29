@@ -1,3 +1,17 @@
+# 0.5.0
+
+- fixes:
+    - fixed some recipe combos not working properly
+    - fixed bug where, after assigning employees to an email task, the popup overlay would stay and the game would be stuck in pause
+    - fixed multiple email messages not properly showing
+    - fixed economy bug, which was causing some games to freeze at year ends
+    - fixed the outrage effect, which was totally wrong
+    - fixed improperly updating stat values in the HUD (would lead to `NaNk`)
+- clearer unlock messages (explains what category the unlocked item falls under, e.g. "product type")
+- dismissing an email that has failure effects will immediately apply those effects
+- added an indicator in the HUD to show the economy's health
+- added "communication overhead" when assigning teams to tasks: as teams grow larger, their overall efficiency suffers
+
 # 0.4.6
 
 - UI fixes

@@ -8,7 +8,7 @@ import Manager from 'app/Manager';
 Manager.game.state.add('Boot', new Boot());
 Manager.game.state.start('Boot');
 
-var VERSION = 'BETA VERSION (0.4.6)';
+var VERSION = 'BETA VERSION (0.5.0)';
 document.getElementById('version-notice').innerHTML = VERSION;
 
 var muted = localStorage.getItem('muted'),

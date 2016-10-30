@@ -20,6 +20,7 @@ import fillerNews from 'data/newsFiller.json';
 import journalists from 'data/journalists.json';
 
 const MIN_NEWS_ARTICLES = 9;
+const FILLER_IMAGES = _.map(_.range(15), i => `assets/news/filler/${i}.jpg`);
 
 function template(obj, keys, player) {
   var result = _.clone(obj),
@@ -90,7 +91,8 @@ const Event = {
 
   updateNews: function(player) {
     var specialNews = [],
-        news = [];
+        news = [],
+        fillerImages = _.shuffle(_.clone(FILLER_IMAGES));
 
     _.each(player.news, function(n) {
       if (Event.satisfied(n, player)) {
@@ -120,7 +122,8 @@ const Event = {
       var filler = _.shuffle(fillerNews);
       _.times(MIN_NEWS_ARTICLES - news.length, function() {
         news.push(_.extend({
-          author: _.sample(Event.journalists)
+          author: _.sample(Event.journalists),
+          image: fillerImages.pop()
         }, filler.pop()));
       });
     }

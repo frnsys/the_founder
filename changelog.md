@@ -1,3 +1,9 @@
+# 0.5.1
+
+- fixed game-breaking UI bug!
+- re-generated news articles, with a somewhat better markov chain approach
+- nicer loading screen
+
 # 0.5.0
 
 - fixes:

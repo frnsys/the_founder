@@ -4,8 +4,23 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>the founder</title>
+
+    <style>
+        #loading {
+            text-align: center;
+            font-size: 2em;
+            padding: 4em;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body>
+    <div id="loading">
+        Loading...<br />
+        <img src="assets/loading.gif">
+    </div>
+
     <main>
         <div class="ui-wrapper">
             <div class="menu"></div>
@@ -25,7 +40,7 @@
         <div class="tooltip"></div>
     </main>
 
-    <div id="version-notice">loading...</div>
+    <div id="version-notice"></div>
 
     <audio loop autoplay muted id="music">
         <source src="assets/music/default.mp3" type="audio/mpeg">

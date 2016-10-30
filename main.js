@@ -1,4 +1,4 @@
-import './css/main.sass';
+// import './css/main.sass';
 import Boot from 'states/Boot';
 import Manager from 'app/Manager';
 
@@ -10,6 +10,9 @@ Manager.game.state.start('Boot');
 
 var VERSION = 'BETA VERSION (0.5.0)';
 document.getElementById('version-notice').innerHTML = VERSION;
+
+var loading = document.getElementById('loading');
+loading.parentNode.removeChild(loading);
 
 var muted = localStorage.getItem('muted'),
     audio = document.getElementById('music');

@@ -204,8 +204,8 @@ class HUD extends View {
       this.statsView.el.find('li').show();
     }
     $('.hud-time-inner').width(`${((data.month + data.week/config.WEEKS_PER_MONTH)/12) * 100}%`);
-    $('.hud-economy').css('background', economyColors[player.economy]);
-    $('.hud-economy').data('tip', economyTips[player.economy]);
+    $('.hud-economy').css('background', economyColors[this.player.economy]);
+    $('.hud-economy').data('tip', economyTips[this.player.economy]);
 
     var idleEmployees = this.player.company.idleEmployees,
         idleLocations = this.player.company.idleLocations,

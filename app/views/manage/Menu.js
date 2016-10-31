@@ -52,7 +52,7 @@ function template(data) {
     </li>
     <li class="manage-products">
       <img src="assets/manage/products.gif">
-      <div class="tip">Products</div>
+      <div class="tip">Discovered Products</div>
     </li>
     <li class="manage-browser">
       <img src="assets/manage/internet.gif">

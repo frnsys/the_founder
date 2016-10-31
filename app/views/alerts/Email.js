@@ -29,7 +29,7 @@ function template(data) {
     var assigned = _.some(data.company.workers, w => w.task == data.task.id) || _.some(data.company.locations, l => l.task == data.task.id);
     button = `
       <button class="assign-email">Assign</button>
-      <button class="dismiss-alert">${assigned ? 'OK' : 'Dismiss'}</button>
+      <button class="dismiss-alert">${assigned ? 'Begin Task' : 'Dismiss'}</button>
     `;
   }
   return `

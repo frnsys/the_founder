@@ -82,7 +82,7 @@ const template = data => `
     ${productPoints('movement', data)}
   </ul>
   <div class="actions">
-    <button class="launch-product">Launch</button>
+    <button class="launch-product">Launch this Product</button>
   </div>
 </div>
 <div class="product-competitor ${data.competitor.name == 'Dark Industries' ? 'dark_industries' : ''}">
@@ -196,6 +196,11 @@ class ProductDesigner extends Popup {
     // otherwise they hang around b/c the element
     // that triggered them disappears
     $('.tooltip').hide();
+  }
+
+  postRender() {
+    super.postRender();
+    $('.close-popup').hide();
   }
 }
 

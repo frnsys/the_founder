@@ -16,5 +16,5 @@ loading.parentNode.removeChild(loading);
 
 var muted = localStorage.getItem('muted'),
     audio = document.getElementById('music');
-muted = muted ? JSON.parse(muted) : false;
+muted = muted ? JSON.parse(muted) : true; // mute by default
 audio.muted = muted;

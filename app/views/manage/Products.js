@@ -31,7 +31,7 @@ function detailTemplate(item) {
 class ProductsView extends CardsList {
   constructor(player) {
     super({
-      title: 'Discovered Products',
+      title: 'Successful Product Combos',
       detailTemplate: detailTemplate
     });
     this.player = player;

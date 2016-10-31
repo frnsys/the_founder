@@ -1,3 +1,7 @@
+# 0.5.2
+
+- fixed bug where event failure outcome would be applied even after assigning employees to the task
+
 # 0.5.1
 
 - fixed game-breaking UI bug!

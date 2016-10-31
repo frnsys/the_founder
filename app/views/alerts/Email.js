@@ -90,11 +90,16 @@ class EmailsView extends Alert {
         // apply them immediately
         var msg = this.messages[this.idx];
         if (msg.task && msg.task.obj.failure.effects) {
-          var confirm = new Confirm(() => {
-            Effect.applies(msg.task.obj.failure.effects, player);
+          var assigned = _.some(player.company.workers, w => w.task == msg.task.id) || _.some(player.company.locations, l => l.task == msg.task.id);
+          if (!assigned) {
+            var confirm = new Confirm(() => {
+              Effect.applies(msg.task.obj.failure.effects, player);
+              this.nextOrClose();
+            });
+            confirm.render('If you dismiss the email, the failure effects will take place. Are you sure?', 'I\'m sure. Dismiss it.', 'Nevermind');
+          } else {
             this.nextOrClose();
-          });
-          confirm.render('If you dismiss the email, the failure effects will take place. Are you sure?', 'I\'m sure. Dismiss it.', 'Nevermind');
+          }
         } else {
           this.nextOrClose();
         }

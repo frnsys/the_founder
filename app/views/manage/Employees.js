@@ -61,6 +61,8 @@ class View extends CardsList {
     super.render({
       items: this.items
     });
+    // hacky
+    this.el.find('header').append('<div class="popup-description">Manage your human assets.</div>');
   }
 
   update() {

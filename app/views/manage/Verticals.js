@@ -50,6 +50,9 @@ class View extends CardsList {
     super.render({
       items: this.items
     });
+
+    // hacky
+    this.el.find('header').append('<div class="popup-description">Verticals expand your purchaseable product types and the technologies you can research.</div>');
   }
 
   update() {

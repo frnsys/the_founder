@@ -55,6 +55,9 @@ class View extends CardsList {
     });
     super.render({items: this.items});
     this.robots = this.player.specialEffects['Automation'];
+
+    // hacky
+    this.el.find('header').append('<div class="popup-description">Recruit new talent to power your company.</div>');
   }
 
   processItem(item) {

@@ -103,6 +103,8 @@ class View extends CardsList {
     super.render({
       items: this.items
     });
+    // hacky
+    this.el.find('header').append('<div class="popup-description">Perks increase productivity and reduce expected salary for new recruits.</div>');
   }
 
   update() {

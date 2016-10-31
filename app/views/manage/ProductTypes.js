@@ -95,6 +95,9 @@ class ProductTypesView extends CardsList {
       items: this.items
     });
     this.nProductTypes = this.player.company.productTypes.length;
+
+    // hacky
+    this.el.find('header').append('<div class="popup-description">Product types are combined to create products - some combos are innovative, others are not.</div>');
   }
 
   update() {

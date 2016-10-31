@@ -46,6 +46,8 @@ class ProductsView extends CardsList {
     });
     this.nDiscovered = player.company.discoveredProducts.length;
     $('.current-cash').remove();
+    // hacky
+    this.el.find('header').append('<div class="popup-description">These are the successful product combos you\'ve innovated.</div>');
   }
 
   update() {

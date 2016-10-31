@@ -148,6 +148,9 @@ class LocationsView extends Popup {
       mv.render();
       return mv;
     });
+
+    // hacky
+    this.el.find('header').append('<div class="popup-description">Locations can provide bonuses and can be assigned to tasks.</div>');
   }
 
   update() {

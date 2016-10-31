@@ -55,6 +55,9 @@ class AcquisitionsView extends CardsList {
     super.render({
       items: this.items
     });
+
+    // hacky
+    this.el.find('header').append('<div class="popup-description">Acquire competitors for bonuses, consistent revenue streams, and to reduce competition.</div>');
   }
 
   update() {

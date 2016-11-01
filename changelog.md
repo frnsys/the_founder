@@ -1,3 +1,9 @@
+# 0.6.0
+
+- totally rehauled the Market onboarding. should be more integrated now
+- descriptions in each menu popup to explain what X is good for (e.g. perks, verticals, etc)
+- many other UI improvements
+
 # 0.5.2
 
 - fixed bug where event failure outcome would be applied even after assigning employees to the task

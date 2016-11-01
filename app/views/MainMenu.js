@@ -107,6 +107,8 @@ class MainMenuView extends View {
       blurb = 'Just amateur-level';
     } else if (highScore > 100000) {
       blurb = 'What is this, a mom & pop shop?';
+    } else {
+      blurb = 'Lemonade stand entrepreneur...';
     }
 
 

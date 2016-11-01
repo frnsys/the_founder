@@ -13,7 +13,7 @@ import Grid from './Grid';
 import Tile from './Tile';
 import Position from './Position';
 
-const rows = 12;
+const rows = 9;
 const cols = 14;
 const tileWidth = 104;
 const tileHeight = 88;
@@ -48,7 +48,7 @@ class Board {
     n_tiles = Math.min(cols * rows, n_tiles);
 
     this.grid = new Grid(rows, cols);
-    this.setupTiles(n_tiles, rows, cols);
+    this.setupTiles(n_tiles, rows, cols, company.player);
     this.setupPlayers(players);
     this.centerMap();
 
@@ -57,18 +57,19 @@ class Board {
     //this.debug();
   }
 
-  setupTiles(n_tiles, rows, cols) {
+  setupTiles(n_tiles, rows, cols, player) {
     // generate the board
     this.center = new Position(Math.round(rows/2), Math.round(cols/2));
     this.tileGroup = this.game.add.group();
-    var tilePositions = [this.center];
-    this.placeTileAt(Tile.random(), this.center);
+    var tilePositions = [this.center],
+        tile = player.seenMarket ? Tile.random() : new Tile.Income();
+    this.placeTileAt(tile, this.center);
 
     while (tilePositions.length < n_tiles) {
       var pos = _.chain(tilePositions)
         .map(p => this.grid.adjacentNoTilePositions(p))
         .flatten().sample().value();
-      this.placeTileAt(Tile.random(), pos);
+      this.placeTileAt(player.seenMarket ? Tile.random() : new Tile.Income(), pos);
       tilePositions.push(pos);
     }
   }
@@ -302,6 +303,8 @@ class Board {
       colorTween.start();
       self.tileTweens.push(colorTween);
     });
+
+    this._onDragStart();
   }
 
   onDragUpdatePiece(piece, pointer) {

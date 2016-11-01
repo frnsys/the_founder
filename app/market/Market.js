@@ -32,6 +32,13 @@ class Market {
 
     var competitorProduct = Competitor.createProduct(product, competitor);
 
+    // weak competitor for first market attempt
+    if (!player.seenMarket) {
+      competitorProduct.levels.strength = 0;
+      competitorProduct.levels.movement = 0;
+      competitorProduct.levels.quantity = 0;
+    }
+
     this.players = [
       new Player(player.company, true, 0x1C1FE8),
       new Player(competitor, false, 0xF7202F)
@@ -125,12 +132,13 @@ class Market {
         this.AI.takeTurn(function() {
           // add a little delay
           // otherwise transition is too fast
+          // longer delay on first market attempt
           setTimeout(function() {
             self.startTurn(self.humanPlayer)
             if (self.shouldEndGame()) {
               self.handleEndGame();
             }
-          }, 800);
+          }, this.player.seenMarket ? 800 : 1400);
         });
       }, 1000);
     }

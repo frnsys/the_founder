@@ -43,6 +43,7 @@ class Boot extends Phaser.State {
     game.state.add('Onboarding', new Onboarding(game, player));
 
     if (DEBUG_MARKET) {
+      player.seenMarket = false;
       Debug.debugMarket(game, player);
 
     } else {

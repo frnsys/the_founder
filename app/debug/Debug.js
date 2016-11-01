@@ -35,9 +35,9 @@ var testProduct = {
   progress: 1,
   requiredProgress: 1,
   levels: {
-    quantity: 1,
+    quantity: 0,
     strength: 2,
-    movement: 1
+    movement: 0
   },
   revenueScore: 1
 };

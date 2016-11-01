@@ -9,7 +9,7 @@ const helpTemplate = data => `
   <p>The Market is the magical place where your products duke it out with competitors' products for market share.</p>
   <p><img src='assets/onboarding/market_income.png'>The tiles with dollar signs are different pieces of market share of varying income levels.</p>
   <p><img src='assets/onboarding/market_share.png'>Your product's revenue depends on how much market share you can <em class='concept'>capture</em> from The Market.</p>
-  <p><img src='assets/onboarding/market_product.png'>The <em class='concept'>blue spheres</em> on the map represent your products. Their <em class='concept'>health</em> and <em class='concept'>movement</em> are influenced by the Product Designer.</p>
+  <p><img src='assets/onboarding/market_product.png'>The <em class='concept'>blue spheres</em> on the map represent your products. Their <em class='concept'>strength</em> and <em class='concept'>movement</em> are influenced by the Product Designer.</p>
   <p><img src='assets/onboarding/market_movement.gif'>To move a product, <em class='ui-item'>drag</em> it and then <em class='ui-item'>drop</em> it onto a highlighted tile.</p>
   <p><img src='assets/onboarding/market_capture.gif'><em class='ui-item'>Double-click</em> on the product to <em class='concept'>capture</em> the market share tile underneath.</p>
   <p><img src='assets/onboarding/market_combat.gif'><em class='ui-item'>Drag</em> a product onto an enemy product to fight and possibly destroy it.</p>
@@ -47,7 +47,7 @@ const pieceInfoTemplate = tile => `
   <span class="${tile.pieceClass} piece-name">
     ${tile.piece.name ? tile.piece.name : 'Generic Product'}
   </span>
-  <div>Health: ${healthBar(tile.piece.health, tile.piece.maxHealth)} (${tile.piece.health}/${tile.piece.maxHealth})</div>
+  <div>Strength: ${healthBar(tile.piece.health, tile.piece.maxHealth)} (${tile.piece.health}/${tile.piece.maxHealth})</div>
   ${tile.piece.moves === 0 ? '<div class="piece-no-moves">No moves left</div>' : `<div>Moves: ${tile.piece.moves}</div>`}
 </div>`;
 
@@ -81,6 +81,7 @@ const template = data => `
   <div class="human-market-share" style="width:${data.marketShares.human}%"><h1>Your market share: ${data.marketShares.human.toFixed(1)}%</h1></div>
   <div class="ai-market-share" style="width:${data.marketShares.ai}%"><h1>${data.competitor.name}'s market share: ${data.marketShares.ai.toFixed(1)}%</h1></div>
 </div>
+<div class="market-tutorial"></div>
 `;
 
 class Market extends View {

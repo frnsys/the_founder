@@ -27,8 +27,6 @@ class Onboarding {
           satisfied = _.every(o.conditions, c => Condition.satisfied(c, player));
         } else if (o.popup) {
           satisfied = Popup.current && Popup.current.title == o.popup;
-        } else if (o.market) {
-          satisfied = manager.game.state.current == 'Market';
         }
         return !o.finished && satisfied;
       });

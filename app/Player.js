@@ -115,7 +115,9 @@ class Player {
       onboarding: onboarding,
       challenges: _.map(challenges, c => _.extend({
         finished: false
-      }, c))
+      }, c)),
+
+      seenMarket: false
 
     }, data);
   }
@@ -200,6 +202,7 @@ class Player {
     this.onboarding = _.each(this.onboarding, function(v, k) {
       onboarding[k].finished = true;
     });
+    this.seenMarket = true;
   }
 }
 

@@ -16,6 +16,19 @@ import MarketView from 'views/Market';
 import Confirm from 'views/alerts/Confirm';
 import Alert from 'views/alerts/Alert';
 
+const ONBOARDING = {
+  welcome: '<img src="assets/onboarding/market_piece.png"><p>Welcome to <em class="special">The Market</em>! This is the magical place where you fight for <em class="special">market share</em>. To start, <em class="ui-item">click</em> one of your products (the blue sphere).</p>',
+  product: '<img src="assets/onboarding/market_product.png"><p>This blue sphere is the product you just launched. Their <em class="concept">moves</em> and <em class="concept">strength</em> depend on the points you chose. <em class="ui-item">Click-and-hold</em> it to pick it up.</p>',
+  movement: '<img src="assets/onboarding/market_movement.gif"><p>To move a product, <em class="ui-item">drag</em> it and then <em class="ui-item">drop</em> it onto a highlighted tile.</p>',
+  capture: '<img src="assets/onboarding/market_capture.gif"><p>It\'s your turn again. <em class="ui-item">Double-click</em> on the product to <em class="concept">capture</em> the <em class="special">market share</em> tile underneath.</p>',
+  tiles: '<img src="assets/onboarding/market_share.png"><p>Congrats! You captured some <em class="special">market share</em>. This will increase your product\'s <em class="concept">revenue</em>.</p>',
+  tiles_more: '<img src="assets/onboarding/market_share.png"><p>It\'s your turn again. Keep capturing more <em class="special">market share</em>!</p>',
+  combat: '<img src="assets/onboarding/market_combat.gif"><p>You might come head-to-head with a competing product. You can <em class="concept">fight</em> it by <em class="ui-item">dragging</em> your product on top of it.</p>',
+  influencers: '<img src="assets/onboarding/market_influencer.png"><p>One last thing: you might encounter <em class="special">influencer</em> tiles. Capture these for big revenue bonuses!</p>',
+  end: '<p>That\'s about it! You have a 10 turns or until you or your competitor is wiped out to capture as much <em class="special">market share</em> as you can. Good luck!</p>'
+};
+
+
 
 class TheMarket extends Phaser.State {
   constructor(game, player, debug) {
@@ -66,19 +79,41 @@ class TheMarket extends Phaser.State {
       }
     });
 
+    this.onboardingMessage = ONBOARDING.welcome;
+
     // re-render the UI whenever a tile is selected or captured
     Tile.onSingleClick.add(this.renderUI, this);
-    Tile.onCapture.add(this.renderUI, this);
+    Tile.onCapture.add(() => {
+      if (this.onboardingMessage === ONBOARDING.capture) {
+        this.onboardingMessage = ONBOARDING.tiles;
+      }
+      this.renderUI();
+    }, this);
     Tile.onCapture.add(this.captureNotice, this);
     market.board.onCombat = this.combatNotice.bind(this);
+    market.board._onDragStart = () => {
+      if (this.onboardingMessage === ONBOARDING.product) {
+        this.onboardingMessage = ONBOARDING.movement;
+      }
+      this.renderUI(market.board.selectedTile);
+    };
     market.onStartTurn = () => {
+      if (market.currentPlayer.human) {
+        if (this.onboardingMessage === ONBOARDING.movement) {
+          this.onboardingMessage = ONBOARDING.capture;
+        } else if (this.onboardingMessage === ONBOARDING.tiles) {
+          this.onboardingMessage = ONBOARDING.tiles_more;
+        } else if (this.onboardingMessage === ONBOARDING.tiles_more) {
+          this.onboardingMessage = ONBOARDING.combat;
+        } else if (this.onboardingMessage === ONBOARDING.combat) {
+          this.onboardingMessage = ONBOARDING.influencers;
+        } else if (this.onboardingMessage === ONBOARDING.influencers) {
+          this.onboardingMessage = ONBOARDING.end;
+        }
+      }
       this.renderUI(market.board.selectedTile);
     };
     market.startTurn(market.humanPlayer);
-  }
-
-  update() {
-    this.player.onboarder.resolve();
   }
 
   notice(tile, msg, offset) {
@@ -138,6 +173,10 @@ class TheMarket extends Phaser.State {
       t.bonus = t.bonus();
     }
 
+    if (t.pieceClass === 'friendly' && this.onboardingMessage === ONBOARDING.welcome) {
+      this.onboardingMessage = ONBOARDING.product;
+    }
+
     this.view.render({
       human: market.currentPlayer.human,
       competitor: market.aiPlayer.company,
@@ -147,6 +186,11 @@ class TheMarket extends Phaser.State {
       totalTurns: market.totalTurns,
       turnsPercent: (market.totalTurns - market.turnsLeft)/market.totalTurns * 100
     });
+
+    if (!this.player.seenMarket) {
+      $('.market-tutorial').html(this.onboardingMessage);
+      $('.market-tutorial').show();
+    }
   }
 
   endGame(reason) {
@@ -174,6 +218,7 @@ class TheMarket extends Phaser.State {
       attrs: { class: 'alert market-ending-alert' }
     });
     view.render({message: reason});
+    this.player.seenMarket = true;
   }
 }
 

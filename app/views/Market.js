@@ -63,7 +63,7 @@ const tileInfoTemplate = tile => `
 
 const template = data => `
 <div class="market">
-  <div class="turn-notice">${data.human ? 'Your turn' : 'Competitor turn'}</div>
+  <div class="turn-notice ${data.human ? 'turn-human' : ''}"><span>${data.human ? 'Your turn' : 'Competitor turn'}</span></div>
   <div class="player-info">
     <h4 class="turns-left">${data.totalTurns - data.turnsLeft}/${data.totalTurns}</h4>
     <div class="progress-bar">

@@ -28,7 +28,7 @@ const epsilon = 1e-12;
 const PRODUCT_FEATURES = [null, 'design', 'engineering', 'marketing'];
 
 function requiredProgress(difficulty, multiplier) {
-  return Math.exp(difficulty/10) * config.PROGRESS_PER_DIFFICULTY * (1 + multiplier);
+  return Math.exp(difficulty/5) * config.PROGRESS_PER_DIFFICULTY * (1 + multiplier);
 }
 
 const Product = {

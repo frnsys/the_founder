@@ -1,6 +1,7 @@
 # 0.6.1
 
 - products take longer to develop (they scale faster with difficulty)
+- email/event tasks end if you complete them ahead of time
 - minor UI tweaks
 
 # 0.6.0

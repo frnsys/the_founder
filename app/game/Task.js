@@ -138,6 +138,8 @@ const Task = {
     var finished = false;
     if (task.type === Type.SpecialProject) {
       finished = _.every(['design', 'marketing', 'engineering'], n => task.obj[n] >= task.obj.required[n]);
+    } else if (task.type === Type.Event) {
+      finished = task.progress >= task.requiredProgress || task.obj.skillVal >= task.obj.required.val;
     } else {
       finished = task.progress >= task.requiredProgress;
     }

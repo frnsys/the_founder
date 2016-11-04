@@ -1,3 +1,8 @@
+# 0.6.1
+
+- products take longer to develop (they scale faster with difficulty)
+- minor UI tweaks
+
 # 0.6.0
 
 - totally rehauled the Market onboarding. should be more integrated now

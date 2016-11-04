@@ -104,7 +104,7 @@ class MainMenuView extends View {
     } else if (highScore > 1000000000) {
       blurb = 'Welcome to the 3-comma club';
     } else if (highScore > 1000000) {
-      blurb = 'Just amateur-level';
+      blurb = 'You can do better';
     } else if (highScore > 100000) {
       blurb = 'What is this, a mom & pop shop?';
     } else {

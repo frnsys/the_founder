@@ -171,6 +171,7 @@ class Player {
       globalAvgWage: 7 * this.wageMultiplier,
       consumerSpending: this.spendingMultiplier * 100,
       forgettingRate: this.forgettingRate,
+      wageMultiplier: this.wageMultiplier,
 
       hasExtraTerra: _.contains(company.markets, 'Extra Terra'),
       hasAlien: _.contains(company.markets, 'Alien'),

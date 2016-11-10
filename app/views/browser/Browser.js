@@ -5,6 +5,7 @@ import Enums from 'app/Enums';
 import Popup from '../Popup';
 import News from './News';
 import CMail from './Mail';
+import Corpwatch from './Corpwatch';
 import Cherublist from './Cherublist';
 
 const template = data => `
@@ -19,6 +20,7 @@ const template = data => `
       <ul class="tabbar">
         <li data-site="cherublist">cherublist</li>
         <li data-site="news">The Times Journal</li>
+        <li data-site="corpwatch">CorpWatch</li>
         <li data-site="mail">cMail</li>
       </ul>
       <div class="appmenu">
@@ -31,6 +33,7 @@ const template = data => `
     <div class="cherublist site"></div>
     <div class="news site"></div>
     <div class="mail site"></div>
+    <div class="corpwatch site"></div>
   </div>
 </div>
 `;
@@ -71,6 +74,9 @@ class Browser extends Popup {
     this.newsView = new News();
     this.newsView.render(data);
 
+    this.corpwatchView = new Corpwatch();
+    this.corpwatchView.render(data);
+
     this.cherublistView = new Cherublist(this.player);
     this.cherublistView.render(data);
   }
@@ -80,6 +86,7 @@ class Browser extends Popup {
     this.el.find('.clock').text(`${util.enumName(data.month, Enums.Month)}, ${data.year}`);
     this.mailView.update(data);
     this.newsView.update(data);
+    this.corpwatchView.update(data);
     this.cherublistView.update(data);
   }
 }

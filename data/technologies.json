@@ -530,15 +530,11 @@
     "requiredTechs": [
       "Atomic Assembly"
     ],
-    "effects": [
-      {
-        "type": "unlocks",
-        "value": {
-          "type": "locations",
-          "value": "Seasteading State"
-        }
-      }
-    ]
+    "effects": [{
+        "vertical": "Hardware",
+        "attribute": "quantity",
+        "value": 1
+    }]
   },
   {
     "name": "Nanorobotics",

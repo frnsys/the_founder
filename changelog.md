@@ -1,3 +1,9 @@
+# 0.6.2
+
+- added CorpWatch site to see all the bad stuff you're doing
+- made Space product type a little easier to unlock
+- fixed Seasteading State unlock condition
+
 # 0.6.1
 
 - products take longer to develop (they scale faster with difficulty)

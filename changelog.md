@@ -1,3 +1,7 @@
+# 0.6.3
+
+- fix for metamaterial research bug
+
 # 0.6.2
 
 - added CorpWatch site to see all the bad stuff you're doing

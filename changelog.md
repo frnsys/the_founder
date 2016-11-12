@@ -1,3 +1,7 @@
+# 0.7.0
+
+- implemented robot worker system
+
 # 0.6.3
 
 - fix for metamaterial research bug

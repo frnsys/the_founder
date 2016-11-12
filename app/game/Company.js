@@ -209,11 +209,6 @@ class Company {
   }
 
   hireEmployee(worker, salary) {
-    this.annualRevenue = 0;
-    this.expenditures = 0;
-  }
-
-  hireEmployee(worker, salary) {
     worker.salary = salary;
     this.workers.push(worker);
   }

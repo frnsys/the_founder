@@ -198,25 +198,39 @@ class Clock {
         var thoughts = [];
 
         if (!e.object.task) {
-          thoughts = thoughts.concat([
-            "I've got nothing to do",
-            "I'm bored",
-            "What's there to do around here?",
-            "What should I be doing?",
-            "Ho hum"
-          ]);
+          if (e.object.robot) {
+            thoughts = thoughts.concat([
+              "Idle...",
+              "Awaiting task..."
+            ]);
+          } else {
+            thoughts = thoughts.concat([
+              "I've got nothing to do",
+              "I'm bored",
+              "What's there to do around here?",
+              "What should I be doing?",
+              "Ho hum"
+            ]);
+          }
         }
 
         if (!developingProducts && !e.object.task) {
-          thoughts = thoughts.concat([
-            "Shouldn't we be making a product?",
-            "Do we have any products in the works?",
-            "Maybe we should develop something",
-            "Are we releasing anything?"
-          ]);
+          if (e.object.robot) {
+            thoughts = thoughts.concat([
+              "Need to develop product...",
+              "Recommend developing product..."
+            ]);
+          } else {
+            thoughts = thoughts.concat([
+              "Shouldn't we be making a product?",
+              "Do we have any products in the works?",
+              "Maybe we should develop something",
+              "Are we releasing anything?"
+            ]);
+          }
         }
 
-        if (player.company.outrage > 1000) {
+        if (player.company.outrage > 1000 && !e.object.robot) {
           thoughts = thoughts.concat([
             "Feels like everyone hates us...",
             "Are we just making things worse?",
@@ -225,7 +239,7 @@ class Clock {
           ])
         }
 
-        if (player.company.hype > 4000) {
+        if (player.company.hype > 4000 && !e.object.robot) {
           thoughts = thoughts.concat([
             "People are loving our stuff!",
             "We're so adored!",

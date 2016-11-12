@@ -157,7 +157,7 @@ const Worker = {
 
   updateBurnout: function(worker, player) {
     var company = player.company;
-    if (_.contains(worker.attributes, 'Tireless')) {
+    if (_.contains(worker.attributes, 'Tireless') || worker.robot) {
       return;
     }
     if (!worker.burnout > 0 && worker.task) {
@@ -221,6 +221,10 @@ const Worker = {
       return companySatisfied && workerSatisfied;
     });
     worker.lastTweet = _.sample(candidates).text;
+
+    if (worker.robot) {
+      worker.lastTweet = 'Operating normally.';
+    }
   },
 
 

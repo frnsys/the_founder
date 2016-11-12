@@ -55,8 +55,8 @@ const workerTemplate = item => `
     ${item.attributes.length > 0 ? attributesTemplate(item) : ''}
   </div>
   <div class="worker-actions">
-    ${item.fireable ? `<button class="fire">Fire</button>` : ''}
-    ${item.cloneable ? `<button class="clone" ${item.noAvailableSpace ? 'disabled' : ''}>${item.noAvailableSpace ? 'Office is full' : 'Clone'}</button>` : ''}
+    ${item.fireable ? `<button class="fire">${item.robot ? 'Decommission' : 'Fire'}</button>` : ''}
+    ${item.cloneable && !item.robot ? `<button class="clone" ${item.noAvailableSpace ? 'disabled' : ''}>${item.noAvailableSpace ? 'Office is full' : 'Clone'}</button>` : ''}
   </div>
 </div>
 `

@@ -13,6 +13,12 @@ function button(item) {
     return `<button disabled>Hired</button>`;
   } else if (item.noAvailableSpace) {
     return `<button disabled>Office is full</button>`;
+  } else if (item.robot) {
+    if (item.afford) {
+      return `<button class="buy-robot">Buy (${util.formatCurrency(item.minSalary)})</button>`;
+    } else {
+      return `<button class="buy-robot" disabled>Not enough cash</button>`;
+    }
   } else {
     return `<button class="start-negotiation">Negotiate</button>`;
   }
@@ -52,7 +58,16 @@ class View extends CardsList {
         var idx = this.itemIndex(ev.target);
         this.negotiationView = new NegotiationView(player, office, this.candidates[idx], this);
         this.remove();
-      }
+      },
+      '.buy-robot': function(ev) {
+        var idx = this.itemIndex(ev.target),
+            worker = this.candidates[idx];
+        if (player.company.pay(worker.minSalary)) {
+          player.company.hireEmployee(worker, 0);
+          office.addEmployee(worker);
+          this.render();
+        }
+      },
     });
   }
 
@@ -74,7 +89,12 @@ class View extends CardsList {
     this.candidates = _.filter(this.candidates, c => c.offMarketTime == 0 && !_.contains(player.company.workers, c));
     this.subviews = [];
     super.render({
-      items: this.candidates
+      items: _.map(this.candidates, c => {
+        if (c.robot) {
+          c.afford = player.company.cash >= c.minSalary;
+        }
+        return c;
+      })
     });
   }
 }

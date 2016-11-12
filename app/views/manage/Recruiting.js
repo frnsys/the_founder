@@ -58,6 +58,10 @@ class View extends CardsList {
 
     // hacky
     this.el.find('header').append('<div class="popup-description">Recruit new talent to power your company.</div>');
+
+    if (this.robots) {
+      this.el.find('.card:last-child').addClass('recruiting-robots');
+    }
   }
 
   processItem(item) {

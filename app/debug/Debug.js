@@ -73,6 +73,7 @@ const Debug = {
     player.skipOnboarding();
     player.specialEffects['Worker Insight'] = true;
     player.specialEffects['Cloneable'] = true;
+    player.specialEffects['Automation'] = true;
   },
 
   unlockAll: function(player) {

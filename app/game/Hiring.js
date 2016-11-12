@@ -18,9 +18,27 @@ import config from 'config';
 import Worker from './Worker';
 import negotiations from 'data/negotiations.json';
 
+const robotWorker = {
+  "attributes": ["Team Player"],
+  "avatar": 9,
+  "design": 8,
+  "engineering": 8,
+  "happiness": 8,
+  "marketing": 8,
+  "minSalary": 500000,
+  "name": "PROletariat X100",
+  "personality": "Product-driven",
+  "productivity": 8,
+  "title": "Autonomous Worker",
+  "robot": true,
+  "offMarketTime": 0,
+  "lastTweet": "Initializing..."
+};
+
 const Hiring = {
   availableWorkers: function(player, company) {
-    return _.filter(player.workers, function(w) {
+    var robots = _.map(_.range(5), () => _.clone(robotWorker));
+    return _.filter(player.workers.concat(robots), function(w) {
       return w.offMarketTime === 0 && (!_.contains(company.workers, w) || w.robot);
     });
   },
@@ -38,6 +56,8 @@ const Hiring = {
       } else {
         prob -= Math.abs((targetScore - score)/targetScore)/2;
       }
+
+      if (recruitment.robots) prob = 1;
       return (worker.robot == recruitment.robots && Math.random() <= prob);
     });
     if (candidates.length >= 2) {

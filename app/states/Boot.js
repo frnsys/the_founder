@@ -68,6 +68,9 @@ class Boot extends Phaser.State {
       },
       opensesame: function() {
         Debug.unlockAll(player);
+      },
+      fucktheplanet: function(n_pollution) {
+        player.company.pollution = n_pollution;
       }
     }
   }

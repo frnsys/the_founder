@@ -71,10 +71,6 @@
     "type": "pollution",
     "op": "ge",
     "val": 2000000
-  }, {
-    "type": "productsLaunched",
-    "op": "gt",
-    "val": 30
   }]
 }, {
   "subject": "Expansion opportunities",

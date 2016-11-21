@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from 'util';
+import config from 'config';
 import Task from 'game/Task';
 import Tasks from './Tasks';
 import templ from '../Common';
@@ -96,6 +97,14 @@ class AssignmentView extends CardsList {
         _.chain(this.sorted_locations).filter(w => !w.task).each((w, i) => {
           this.assignLocation(i);
         }).value();
+      },
+      '.task-toggle-repeat': function(ev) {
+        task.repeat = !task.repeat;
+        if (task.repeat) {
+          $(ev.target).addClass('toggled');
+        } else {
+          $(ev.target).removeClass('toggled');
+        }
       }
     });
 
@@ -193,6 +202,7 @@ class AssignmentView extends CardsList {
     var player = this.player,
         workers = _.map(this.sorted_workers, w => this.processItem(w, true)),
         locations = _.map(this.sorted_locations, l => this.processItem(l, false)),
+        productsLaunched = player.company.productsLaunched,
         skills;
 
     var task = this.task,
@@ -243,6 +253,7 @@ class AssignmentView extends CardsList {
     // hacky
     this.el.find('header').append(`
       <div class="task-assign-all-unassigned popup-aux-button">Toggle all unassigned</div>
+      ${(task.type == Task.Type.Promo || task.type == Task.Type.Product) && productsLaunched >= config.MIN_PRODUCTS_BEFORE_DELEGATE ? `<div class="task-toggle-repeat popup-aux-button" data-tip="This task will repeat until you stop it manually">Repeat this task</div>` : ''}
       <div class="task-communication-overhead" style="background:${communicationOverheadColors[overhead]};" data-tip="${communicationOverheadTips[overhead]}">Communication overhead: ${communicationOverheadTerms[overhead]}</div>`);
   }
 

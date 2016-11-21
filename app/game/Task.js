@@ -56,12 +56,18 @@ function uuid() {
 const Task = {
   init: function(type, obj) {
     var task = {
-      id: uuid(),
       type: Type[type],
-      progress: 0,
-      requiredProgress: obj.requiredProgress || 1,
-      obj: obj
+      obj: obj,
+      repeat: false
     };
+    this.reset(task);
+    return task;
+  },
+
+  reset: function(task) {
+    task.id = uuid();
+    task.progress = 0;
+    task.requiredProgress = task.obj.requiredProgress || 1;
     return task;
   },
 
@@ -115,7 +121,7 @@ const Task = {
           break;
         case Type.Promo:
           task.progress += company.skill('productivity', workers, locations) * communicationMultiplier;
-          task.obj.hype += (scale(company.skill('marketing', workers, locations)) + scale(company.skill('design', workers, locations)/3)) * Math.pow(task.obj.power, 3);
+          task.obj.hype += Math.round((scale(company.skill('marketing', workers, locations)) + scale(company.skill('design', workers, locations)/3)) * Math.pow(task.obj.power, 3) * Math.random() * 2);
           break;
         case Type.Research:
           task.progress += (company.skill('engineering', workers, locations) + company.skill('design', workers, locations)/3) * communicationMultiplier;
@@ -251,6 +257,26 @@ const Task = {
 
     if (_.isFunction(this.onFinish)) {
       this.onFinish(task);
+
+      if (task.repeat) {
+        if (task.obj.cost) {
+          company.pay(task.obj.cost, true);
+        }
+
+        var workers = this.workersForTask(task, company),
+            locations = this.locationsForTask(task, company);
+        task = this.reset(_.clone(task));
+
+        // only products and promos can be repeated
+        if (task.type === Type.Product) {
+          var pts = util.byNames(company.productTypes, task.obj.productTypes);
+          task.obj = Product.create(pts, company);
+        } else if (task.type === Type.Promo) {
+          task.obj = _.clone(task.obj);
+          task.obj.hype = 0;
+        }
+        company.startTask(task, workers, locations);
+      }
     }
   },
 };

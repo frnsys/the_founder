@@ -1,3 +1,13 @@
+# 0.8.0
+
+- tweaked revenue configuration to make things a bit easier
+- introduced a locations/market bonus to revenue to encourage expansion
+- easier space unlock conditions, i hope
+- added a little capture flag icon above your market pieces that can capture the tile
+- some in-market tooltips
+- re-did market share UI to be much more in-your-face
+- product and promo tasks can be repeated indefinitely
+
 # 0.7.0
 
 - implemented robot worker system

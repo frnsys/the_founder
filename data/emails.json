@@ -70,7 +70,11 @@
   "conditions": [{
     "type": "pollution",
     "op": "ge",
-    "val": 2000000
+    "val": 100000
+  }, {
+    "type": "productsLaunched",
+    "op": "ge",
+    "val": 32
   }]
 }, {
   "subject": "Expansion opportunities",

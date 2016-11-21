@@ -54,6 +54,7 @@ class TheMarket extends Phaser.State {
      });
 
     this.game.load.image('productPiece', 'assets/themarket/product.png');
+    this.game.load.image('captureFlag', 'assets/themarket/flag.png');
   }
 
   create() {

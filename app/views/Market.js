@@ -79,7 +79,7 @@ const template = data => `
 <h1 class="market-title">The Market <div class="show-market-help">?</div></h1>
 <div class="market-share">
   <div class="human-market-share" style="width:${data.marketShares.human}%"><h1>Your market share: ${data.marketShares.human.toFixed(1)}%</h1></div>
-  <div class="ai-market-share" style="width:${data.marketShares.ai}%"><h1>${data.competitor.name}'s market share: ${data.marketShares.ai.toFixed(1)}%</h1></div>
+  <div class="ai-market-share" style="width:${data.marketShares.ai}%"><div class="market-share-text-wrapper"><h1>${data.competitor.name}'s market share: ${data.marketShares.ai.toFixed(1)}%</h1></div></div>
 </div>
 <div class="market-tutorial"></div>
 `;

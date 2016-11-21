@@ -4,6 +4,8 @@
 
 #market.market-active
   display: block !important
+  position: relative
+  z-index: 10
 
 .market
   width: 180px
@@ -114,31 +116,42 @@
   top: 0
   left: 0
   right: 0
-  background: rgba(0, 0, 0, 0.2)
+  bottom: 0
   color: #fff
-  height: 1.5em
+  z-index: -2
   h1
-    font-size: 1em
+    font-size: 1.8em
     font-weight: normal
-    position: absolute
+    text-align: center
+    transform-origin: 0 0
+    width: 100vh
 
 .human-market-share
   float: left
   background: #3f84fb
-  height: 1.5em
+  height: 100%
   width: 20%
   padding: 0.1em 0 0 0.4em
   white-space: nowrap
+  h1
+    transform: rotate(-90deg)
+    position: absolute
+    bottom: 0
 
 .ai-market-share
   float: right
   background: #fb3f3f
-  height: 1.5em
+  height: 100%
   width: 20%
   padding: 0.1em 0.4em 0 0
   text-align: right
   white-space: nowrap
   h1
+    transform: rotate(90deg)
+    position: absolute
+    top: 0
+  .market-share-text-wrapper
+    position: absolute
     right: 0.4em
 
 .friendly

@@ -8,6 +8,7 @@
  * - belong to a particular player
  */
 
+import $ from 'jquery';
 import _ from 'underscore';
 import Product from 'game/Product';
 
@@ -68,6 +69,10 @@ class Piece {
   exhaust() {
     this.moves = 0;
     this.sprite.tint = shadeColor(this.owner.color, 0.5);
+
+    if (this.tile.owner === this.owner && this.flag) {
+      this.flag.destroy();
+    }
   }
 
   reset() {
@@ -108,12 +113,36 @@ class Piece {
     if (this.text) {
       this.text.destroy();
     }
+    if (this.flag) {
+      this.flag.destroy();
+    }
     this.text = game.add.text(
       tileWidth - 24,
       tileHeight - 24,
       this.health.toString(),
       {fill: '#ffffff', stroke: '#000000', strokeThickness: 6});
+    this.text.inputEnabled = true;
+    this.text.events.onInputOver.add(function(e) {
+      $('.tooltip').html('Health').show();
+    }, this);
+    this.text.events.onInputOut.add(function() {
+      $('.tooltip').hide();
+    }, this);
     this.sprite.addChild(this.text);
+
+    if (this.owner.human && this.tile.owner !== this.owner) {
+      this.flag = game.add.sprite(tileWidth/2, -14, 'captureFlag');
+      this.flag.width = 28;
+      this.flag.height = 28;
+      this.flag.inputEnabled = true;
+      this.flag.events.onInputOver.add(function(e) {
+        $('.tooltip').html('Double-click to capture this tile').show();
+      }, this);
+      this.flag.events.onInputOut.add(function() {
+        $('.tooltip').hide();
+      }, this);
+      this.sprite.addChild(this.flag);
+    }
   }
 }
 

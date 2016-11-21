@@ -220,9 +220,9 @@ class Board {
   placePieceAt(piece, pos) {
     var tile = this.grid.tileAt(pos),
         coord = this.coordinateForPosition(pos);
-    piece.render(coord, this.tileGroup, this.game, tileHeight, tileWidth, this);
     piece.position = pos;
     piece.tile = tile;
+    piece.render(coord, this.tileGroup, this.game, tileHeight, tileWidth, this);
     tile.piece = piece;
   }
 

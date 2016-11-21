@@ -116,12 +116,14 @@ const Product = {
     var hypeMultiplier = 1 + Math.max(0, Math.sqrt(player.company.hype) * config.HYPE_MULTIPLIER_SCALE),
         influencerMultiplier = 1 + (influencers*0.5),
         newDiscoveryMuliplier = p.newDiscovery ? config.NEW_PRODUCT_MULTIPLIER : 1,
-        economyMultiplier = Economy.multiplier(player.economy);
+        economyMultiplier = Economy.multiplier(player.economy),
+        locationMarketMultiplier = 1 + (player.company.locations.length * config.LOCATION_EXTRA_MULTIPLIER) + (player.company.markets.length * config.MARKET_EXTRA_MULTIPLIER);
+
     p.earnedRevenue = 0;
     var baseRevenue = _.reduce(marketShares, function(m,w) {
       return m + Product.marketShareToRevenue(w.income, p, player);
     }, 0)
-    p.revenue = baseRevenue * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier * economyMultiplier;
+    p.revenue = baseRevenue * player.spendingMultiplier * hypeMultiplier * influencerMultiplier * newDiscoveryMuliplier * economyMultiplier * locationMarketMultiplier;
     return {
       baseRevenue: baseRevenue,
       revenue: p.revenue,
@@ -129,7 +131,8 @@ const Product = {
       hypeMultiplier: hypeMultiplier,
       influencerMultiplier: influencerMultiplier,
       newDiscoveryMuliplier: newDiscoveryMuliplier,
-      economyMultiplier: economyMultiplier
+      economyMultiplier: economyMultiplier,
+      locationMarketMultiplier: locationMarketMultiplier
     }
   },
   getRevenue: function(p) {

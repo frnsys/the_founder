@@ -15,8 +15,9 @@ import Market from 'states/Market';
 import MainMenu from 'views/MainMenu';
 import Onboarding from 'states/Onboarding';
 
-const DEBUG = false;
-const DEBUG_MARKET = false;
+let params = new URLSearchParams(location.search.slice(1));
+let DEBUG = params.get('debug') === 'true';
+let DEBUG_MARKET = params.get('debug_market') === 'true';
 
 class Boot extends Phaser.State {
   preload() {

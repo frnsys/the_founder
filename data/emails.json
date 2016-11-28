@@ -171,7 +171,7 @@
   "body": "I just got a report that one of our servers is under attack. It looks like whatever security measures we had before are outdated. We need to take care of this before it gets any worse.",
   "effects": [],
   "conditions": [{
-    "type": "verticals",
+    "type": "activeVerticals",
     "op": "has",
     "val": "Information"
   }],
@@ -200,7 +200,7 @@
   "body": "There have been a few suicides at one of the factories we use for our hardware. How can we distance ourselves from this?",
   "effects": [],
   "conditions": [{
-    "type": "verticals",
+    "type": "activeVerticals",
     "op": "has",
     "val": "Hardware"
   }],
@@ -362,11 +362,7 @@
     "value": 200
   }],
   "conditions": [{
-    "type": "productsLaunched",
-    "op": "gt",
-    "val": 24
-  }, {
-    "type": "verticals",
+    "type": "activeVerticals",
     "op": "has",
     "val": "Biotech"
   }],
@@ -521,7 +517,7 @@
     "value": -10000000
   }],
   "conditions": [{
-    "type": "launchedProductTypes",
+    "type": "activeProductTypes",
     "op": "has",
     "val": "Blockchain"
   }, {
@@ -557,7 +553,7 @@
     "value": -10000000
   }],
   "conditions": [{
-    "type": "launchedProductTypes",
+    "type": "activeProductTypes",
     "op": "has",
     "val": "Space"
   }, {

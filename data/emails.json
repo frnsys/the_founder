@@ -235,7 +235,8 @@
   "conditions": [{
     "type": "productsLaunched",
     "op": "gt",
-    "val": 24
+    "val": 80
+  }, {
   }],
   "repeatable": true,
   "action": {
@@ -249,13 +250,43 @@
       "body": "We lost the patent lawsuit! We have to pay out a massive amount...",
       "effects": [{
         "type": "cash",
-        "value": -200000000
+        "value": -20000000
       }]
     },
     "success": {
       "body": "We won the patent lawsuit, so we're safe for now."
     }
   }
+}, {
+ "subject": "Patent lawsuit",
+  "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
+  "body": "Some patent trolls are trying to sue us. I think we'll be ok, we just need to put some people to the task of fighting them off.",
+  "effects": [],
+  "conditions": [{
+    "type": "productsLaunched",
+    "op": "gt",
+    "val": 28
+  }],
+  "repeatable": true,
+  "action": {
+    "name": "Fight patent trolls",
+    "due": 20,
+    "required": {
+      "skill": "marketing",
+      "val": 1000
+    },
+    "failure": {
+      "body": "We lost the patent lawsuit! We have to pay out a massive amount...",
+      "effects": [{
+        "type": "cash",
+        "value": -2000000
+      }]
+    },
+    "success": {
+      "body": "We won the patent lawsuit, so we're safe for now."
+    }
+  }
+
 }, {
  "subject": "Sponsor a learn-to-code initiative?",
   "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",

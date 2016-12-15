@@ -28,6 +28,7 @@ const template = data => `
   <div class="alert-actions">
     <button class="dismiss-alert">OK</button>
   </div>
+  <div class="paused-notice">Paused</div>
 </div>
 `
 

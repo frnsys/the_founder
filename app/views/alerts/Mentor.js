@@ -11,6 +11,7 @@ const template = data => `
     <button class="prev" ${data.prev ? '': 'disabled'}>◀</button>
     <button class="next">${data.last ? 'OK' : '▶'}</button>
   </div>
+  <div class="paused-notice">Paused</div>
 </div>
 `
 

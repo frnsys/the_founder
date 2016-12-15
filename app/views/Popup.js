@@ -9,6 +9,7 @@ const template = data => `
 <div class="popup ${util.slugify(data.title)}">
   <header><h1>${data.title}</h1> <span class="close-popup">X</span></header>
   ${data.template}
+  <div class="paused-notice">Paused</div>
 </div>
 `
 

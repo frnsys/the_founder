@@ -48,6 +48,7 @@ function template(data) {
         ${button}
       </div>
     </div>
+    <div class="paused-notice">Paused</div>
     ${data.action ? taskTemplate(data) : ''}`;
 }
 

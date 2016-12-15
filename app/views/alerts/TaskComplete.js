@@ -18,7 +18,9 @@ const basicTemplate = data => `
 </div>
 <div class="alert-actions">
   <button class="dismiss-alert">Ok</button>
-</div>`;
+</div>
+<div class="paused-notice">Paused</div>
+`;
 
 const promoTemplate = data => `
 <div class="alert-message alert-task-complete alert-task-complete-${util.slugify(util.enumName(data.type, Task.Type))}">

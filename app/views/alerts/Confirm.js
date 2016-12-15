@@ -8,6 +8,7 @@ const template = data => `
     <button class="no">${data.no}</button>
     <button class="yes">${data.yes}</button>
   </div>
+  <div class="paused-notice">Paused</div>
 </div>
 `
 

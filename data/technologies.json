@@ -92,7 +92,7 @@
   {
     "name": "Atomic Assembly",
     "description": "",
-    "cost": 200000,
+    "cost": 20000000,
     "requiredProgress": 1800,
     "requiredVertical": "Hardware",
     "requiredTechs": [

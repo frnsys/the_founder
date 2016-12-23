@@ -108,7 +108,7 @@ const Effect = {
       var valueStr = effect.value > 0 ? '+' + effect.value : effect.value;
       switch (effect.type) {
         case 'forgettingRate':
-          return valueStr + ' to how quickly consumers forget your misdeeds by';
+          return valueStr + ' to consumer distractedness';
         case 'spendingMultiplier':
           return valueStr + 'x to consumer spending';
         case 'wageMultiplier':

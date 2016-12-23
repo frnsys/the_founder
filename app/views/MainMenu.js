@@ -24,9 +24,9 @@ const template = data => `
     <li></li>
   <div class="high-score">Highest Profit Achieved: ${data.highScore ? `${util.formatCurrencyAbbrev(data.highScore)}` : '$0'}</div>
   <div class="high-score-blurb">~${data.highScoreBlurb}~</div>
-</div>
+</div>`
 
-<div class="playtester-note" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);color:#fff;padding:4em;">
+const playtesterNote = `<div class="playtester-note" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);color:#fff;padding:4em;">
   <p>Welcome playtesters!</p>
   <p>Thank you for taking the time to test The Founder. Here's how you can help:</p>
   <p>The game isn't well-balanced at the moment. It might be too hard or too easy - please let me know if it's either of these and any suggestions you have on improving the difficulty.</p>
@@ -35,8 +35,7 @@ const template = data => `
   <p>You can reach me at f@frnsys.com or <a href="https://twitter.com/frnsys">on Twitter @frnsys</a>.</p>
   <p>Thank you!</p>
   <p class="playtester-close" style="cursor:pointer;color:red;">(click here to close)</p>
-</div>
-`
+</div>`;
 
 $('body').on('click', '.playtester-close', function() {
   $('.playtester-note').fadeOut();

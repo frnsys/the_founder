@@ -1,3 +1,11 @@
+# 0.8.2
+
+- soundtrack!
+
+# 0.8.1
+
+- balancing
+
 # 0.8.0
 
 - tweaked revenue configuration to make things a bit easier

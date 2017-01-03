@@ -1,3 +1,7 @@
+# 0.8.3
+
+- fix for url param handling
+
 # 0.8.2
 
 - soundtrack!

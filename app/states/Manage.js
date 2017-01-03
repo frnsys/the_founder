@@ -52,6 +52,17 @@ class Manage extends Phaser.State {
     this.hud.render();
     this.clock.updateChallenge();
 
+    var audio = document.getElementById('music');
+    var audio_src = document.getElementById('music-source');
+    audio_src.src = 'assets/music/office_loop.ogg';
+    audio.load();
+    audio.addEventListener('canplaythrough', function() {
+      var muted = localStorage.getItem('muted');
+      muted = muted ? JSON.parse(muted) : true; // mute by default
+      audio.muted = muted;
+      audio.play();
+    }, false);
+
     // hacky, show challenges on HUD challenge click
     $('.hud-challenges').off();
     $('.hud-challenges').on('click', () => {

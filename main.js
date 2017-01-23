@@ -8,7 +8,7 @@ import Manager from 'app/Manager';
 Manager.game.state.add('Boot', new Boot());
 Manager.game.state.start('Boot');
 
-var VERSION = 'BETA VERSION (0.8.3)';
+var VERSION = '1.0.0';
 document.getElementById('version-notice').innerHTML = VERSION;
 
 var loading = document.getElementById('loading');

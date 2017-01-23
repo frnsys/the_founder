@@ -323,6 +323,32 @@ header h1
   z-index: 2
   color: #ff2c2c
 
+.show-about-help
+  display: inline-block
+  background: rgba(0, 0, 0, 0.3)
+  position: fixed
+  right: 2em
+  bottom: 2em
+  padding: 0.2em 0.5em
+  border-radius: 10em
+  font-size: 0.8em
+  opacity: 0.6
+  cursor: pointer
+  color: #fff
+  pointer-events: all
+  &:hover
+    opacity: 1
+
+em.about-game-title
+  background: #a7c7dc
+  color: #fff
+
+.about-help
+  text-align: left
+  margin: 0 0 3em 0
+  a, a:visited
+    color: #515f78
+
 @import "splash"
 @import "sites"
 @import "hud"

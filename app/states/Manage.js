@@ -156,9 +156,9 @@ class Manage extends Phaser.State {
       _.each(self.player.company.workers, self.office.addEmployee.bind(self.office));
       self.office.updateObjectStats();
 
-      if (self.debug) {
-        Debug.debugOffice(self.office);
-      }
+      // if (self.debug) {
+      //   Debug.debugOffice(self.office);
+      // }
     });
     this.office.render();
     return this.office;

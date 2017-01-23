@@ -73,6 +73,10 @@ class Boot extends Phaser.State {
       },
       fucktheplanet: function(n_pollution) {
         player.company.pollution = n_pollution;
+      },
+      timetravel: function(month, year) {
+        player.month = month;
+        player.year = year;
       }
     }
   }

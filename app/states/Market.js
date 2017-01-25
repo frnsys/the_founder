@@ -13,8 +13,10 @@ import Tile from 'market/Tile';
 import Product from 'game/Product';
 import Market from 'market/Market';
 import MarketView from 'views/Market';
+import MarketShareView from 'views/MarketShare';
 import Confirm from 'views/alerts/Confirm';
 import Alert from 'views/alerts/Alert';
+import util from 'util';
 
 const ONBOARDING = {
   welcome: '<img src="assets/onboarding/market_piece.png"><p>Welcome to <em class="special">The Market</em>! This is the magical place where you fight for <em class="special">market share</em>. To start, <em class="ui-item">click</em> one of your products (the blue sphere).</p>',
@@ -62,6 +64,8 @@ class TheMarket extends Phaser.State {
     $('#market').show().addClass('market-active');
     $('body').addClass('market-background');
 
+    util.setAudio('market_loop.ogg');
+
     var market = new Market(this.product, this.player, this.game, this.competitor, this.debug);
     this.market = market;
     this.market.endGame = this.endGame.bind(this);
@@ -79,6 +83,7 @@ class TheMarket extends Phaser.State {
         }
       }
     });
+    this.marketShareView = new MarketShareView();
 
     this.onboardingMessage = ONBOARDING.welcome;
 
@@ -186,6 +191,10 @@ class TheMarket extends Phaser.State {
       turnsLeft: market.turnsLeft,
       totalTurns: market.totalTurns,
       turnsPercent: (market.totalTurns - market.turnsLeft)/market.totalTurns * 100
+    });
+    this.marketShareView.render({
+      competitor: market.aiPlayer.company,
+      marketShares: market.percentMarketShare()
     });
 
     if (!this.player.seenMarket) {

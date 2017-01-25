@@ -23,6 +23,7 @@ import ProductDesignerView from 'views/ProductDesigner';
 import TaskCompleteView from 'views/alerts/TaskComplete';
 import MarketReport from 'views/alerts/MarketReport';
 import Debug from 'debug/Debug';
+import util from 'util';
 
 const ONBOARDING_WAIT = 150; // frames
 
@@ -52,16 +53,7 @@ class Manage extends Phaser.State {
     this.hud.render();
     this.clock.updateChallenge();
 
-    var audio = document.getElementById('music');
-    var audio_src = document.getElementById('music-source');
-    audio_src.src = 'assets/music/office_loop.ogg';
-    audio.load();
-    audio.addEventListener('canplaythrough', function() {
-      var muted = localStorage.getItem('muted');
-      muted = muted ? JSON.parse(muted) : true; // mute by default
-      audio.muted = muted;
-      audio.play();
-    }, false);
+    util.setAudio('office_loop.ogg');
 
     // hacky, show challenges on HUD challenge click
     $('.hud-challenges').off();

@@ -1,6 +1,19 @@
 import _ from 'underscore';
 
 const util = {
+  setAudio: function(track) {
+    var audio = document.getElementById('music');
+    var audio_src = document.getElementById('music-source');
+    audio_src.src = `assets/music/${track}`;
+    audio.load();
+    audio.addEventListener('canplaythrough', function() {
+      var muted = localStorage.getItem('muted');
+      muted = muted ? JSON.parse(muted) : true; // mute by default
+      audio.muted = muted;
+      audio.play();
+    }, false);
+  },
+
   enumName: function(value, enums) {
     return _.invert(enums)[value.toString()];
   },

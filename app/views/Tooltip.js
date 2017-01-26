@@ -22,4 +22,8 @@ document.addEventListener('mousemove', function(e){
     left: (mouse.x + offset.x) - $('body').scrollLeft() + 'px',
     top: (mouse.y + offset.y) + 'px'
   });
+  var tip = $(e.target).closest('[data-tip]');
+  if (tip.length === 0) {
+    $('.tooltip').hide();
+  }
 });

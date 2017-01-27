@@ -1,3 +1,16 @@
+# 1.0.2
+
+- fix for chrome painting/scrolling bug
+- better hiding of tooltips when mousing out (they were getting stuck sometimes)
+- minor style and copy tweaks
+- highlight task button when there are no tasks
+- difficulty tweaks
+
+# 1.0.1
+
+- fix market z-index conflict
+- added last soundtrack song
+
 # 0.8.3
 
 - fix for url param handling

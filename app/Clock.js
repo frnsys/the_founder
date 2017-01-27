@@ -193,6 +193,12 @@ class Clock {
         tasks = this.player.company.tasks,
         developingProducts = _.some(tasks, t => t.type == Task.Type.Product);
 
+    if (tasks.length === 0) {
+      $('.start-new-task').addClass('start-new-task-highlight');
+    } else {
+      $('.start-new-task').removeClass('start-new-task-highlight');
+    }
+
     _.each(candidates, function(e) {
       if (Math.random() < 0.04) {
         var thoughts = [];

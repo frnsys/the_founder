@@ -169,7 +169,7 @@ class Menu extends View {
 $('.show-about-help').on('click', function() {
   var view = new Alert();
   view.render({
-    message: '<div class="about-help"><p><em class="about-game-title">The Founder: A Dystopian Business Simulator</em> is a game about technology, power, and profit. Found a startup and keep your investors happy by growing for as fast and as long as possible.</p><p>It was designed and developed by <a href="https://twitter.com/frnsys">Francis Tseng</a>.</p><p>The soundtrack is by <a href="https://maxoisnuts.bandcamp.com/">Maxo</a>.</p><p>This game works best on Chrome or Chromium.</p></div>'
+    message: '<div class="about-help"><p><em class="about-game-title">The Founder: A Dystopian Business Simulator</em> is a game about technology, power, and profit.</p><p>It was designed and developed by <a href="https://twitter.com/frnsys">Francis Tseng</a>.</p><p>The soundtrack is by <a href="https://maxoisnuts.bandcamp.com/">Maxo</a>.</p><p>This game works best on Chrome or Chromium.</p><p>The <a href="https://github.com/frnsys/the_founder">source code is available here</a>.</p></div>'
   });
 });
 

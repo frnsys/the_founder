@@ -95,9 +95,9 @@ class AI {
   }
 
   execute(task) {
-    // console.log('executing task');
-    // console.log(task);
-    task.execute(this.board, this.planAndExecute.bind(this));
+    if (task) {
+      task.execute(this.board, this.planAndExecute.bind(this));
+    }
   }
 }
 

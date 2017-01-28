@@ -284,6 +284,10 @@ class Board {
     var self = this,
         tile = piece.tile;
 
+    if (!tile.piece) {
+      return;
+    }
+
     this.game.canvas.style.cursor = "-webkit-grabbing";
 
     // hack to click the tile underneath
@@ -320,6 +324,17 @@ class Board {
     });
     if (tile) {
       tile.sprite.targetTint = selectedMoveHighlightColor;
+    }
+
+    // not sure exactly how this happens,
+    // but sometimes the position becomes nan
+    // as a stopgap, reset to the tile's old position
+    // and stop drag
+    if (isNaN(piece.sprite.position.x) || isNaN(piece.sprite.position.y)) {
+      var coord = this.coordinateForPosition(piece.tile.position);
+      piece.sprite.position.x = coord.x;
+      piece.sprite.position.y = coord.y;
+      this.onDragStopPiece(piece, pointer);
     }
   }
 

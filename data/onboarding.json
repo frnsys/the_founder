@@ -108,7 +108,7 @@
     ],
     "conditions": [{
       "type": "productsLaunched",
-      "op": "eq",
+      "op": "ge",
       "val": 2
     }],
     "uiSelector": ".manage-productTypes"

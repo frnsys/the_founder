@@ -236,7 +236,6 @@
     "type": "productsLaunched",
     "op": "gt",
     "val": 80
-  }, {
   }],
   "repeatable": true,
   "action": {

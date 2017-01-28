@@ -118,7 +118,7 @@
       "Now's a good time to mention your Board of Investors.",
       "Every year they require a <em class='concept'>12% growth in profit</em>. They get upset when you fail to meet that goal.",
       "You can track their mood and your progress towards this year's profit goal at the top of the screen.",
-      "If you fail too much they'll fire you for incompentance. Try not to let that happen!"
+      "If you fail too much they'll fire you for incompetence. Try not to let that happen!"
     ],
     "conditions": [{
       "type": "productsLaunched",

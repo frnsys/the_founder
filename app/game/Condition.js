@@ -18,7 +18,11 @@ const Condition = {
     notHas: function(a, b) { return !util.containsByName(a, b); }
   },
   satisfied: function(cond, player) {
-    return this.operators[cond.op](this[cond.type](player), cond.val);
+    if (cond.type && cond.type in this) {
+      return this.operators[cond.op](this[cond.type](player), cond.val);
+    } else {
+      return true;
+    }
   },
 
   hype: (player) => player.company.hype,

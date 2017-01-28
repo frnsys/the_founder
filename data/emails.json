@@ -577,7 +577,7 @@
 }, {
   "subject": "Satellite knocked down",
   "from": "{{=it.cofounderSlug}}@{{=it.companySlug}}.com",
-  "body": "{{=it.competitor}}'s satellite launch screwed up and knocked one of ours right out of the sky. It's going to cost us to replace it, but maybe if we hammer them in the press we can get them to cover the costs.",
+  "body": "{{=it.competitor.name}}'s satellite launch screwed up and knocked one of ours right out of the sky. It's going to cost us to replace it, but maybe if we hammer them in the press we can get them to cover the costs.",
   "effects": [{
     "type": "cash",
     "value": -10000000

@@ -150,7 +150,7 @@ class Player {
       taxes: company.taxes,
       n_locations: company.locations.length,
       locations: company.locations,
-      globalCoverage: (company.locations.length/locations.length).toFixed(2),
+      globalCoverage: ((company.locations.length/locations.length) * 100).toFixed(2),
       n_technologies: company.technologies.length,
       technologies: company.technologies,
       ytdCosts: company.annualCosts,

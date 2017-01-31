@@ -238,8 +238,13 @@ const Worker = {
       .sortBy(w => this.cloneNumber(w.name))
       .value();
 
-    var latestClone = clones.pop(),
-        clone = _.clone(latestClone);
+    var latestClone;
+    if (clones.length > 0) {
+      latestClone = clones.pop();
+    } else {
+      latestClone = employee;
+    }
+    var clone = _.clone(latestClone);
     clone.name = `${originalName} #${this.cloneNumber(latestClone.name) + 1}`;
     return clone;
   },

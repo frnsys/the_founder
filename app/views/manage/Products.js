@@ -6,6 +6,7 @@ import View from 'views/View';
 import CardsList from 'views/CardsList';
 import productRecipes from 'data/productRecipes.json';
 
+var _productRecipes = _.filter(productRecipes, pr => pr.name !== 'Default');
 
 function detailTemplate(item) {
   if (item.discovered) {
@@ -40,7 +41,7 @@ class ProductsView extends CardsList {
   render() {
     var player = this.player;
     super.render({
-      items: _.map(productRecipes, i => _.extend({
+      items: _.map(_productRecipes, i => _.extend({
         discovered: _.contains(player.company.discoveredProducts, i.name)
       }, i))
     });

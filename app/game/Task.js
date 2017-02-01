@@ -35,6 +35,7 @@ import config from 'config';
 import Promo from './Promo';
 import Effect from './Effect';
 import Product from'./Product';
+import $ from 'jquery';
 
 const Type = {
   Product: 0,
@@ -58,7 +59,8 @@ const Task = {
     var task = {
       type: Type[type],
       obj: obj,
-      repeat: false
+      repeat: false,
+      autoComplete: false
     };
     this.reset(task);
     return task;
@@ -276,6 +278,11 @@ const Task = {
           task.obj.hype = 0;
         }
         company.startTask(task, workers, locations);
+      }
+
+      if (task.autoComplete) {
+        $('.skip-market').click();
+        $('.dismiss-alert').click();
       }
     }
   },

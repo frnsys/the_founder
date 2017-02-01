@@ -211,6 +211,7 @@ class TheMarket extends Phaser.State {
             influencers = _.filter(market.humanPlayer.tiles, t => t instanceof Tile.Influencer);
         var results = Product.setRevenue(this.product, marketShares, influencers.length, this.player);
         results.marketShare = market.percentMarketShare().human;
+        this.product.expectedRevenue = results.revenue;
         this.player.company.finishProduct(this.product);
 
         Tile.onCapture.removeAll();

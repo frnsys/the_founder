@@ -157,6 +157,7 @@ class ProductDesigner extends Popup {
             results = Product.setRevenue(this.product, marketShares, influencers, this.player);
 
         results.marketShare = (playerIncome/totalIncome) * 100;
+        this.product.expectedRevenue = results.revenue;
         this.player.company.finishProduct(this.product);
 
         // overwrite the postRemove the Manage state set

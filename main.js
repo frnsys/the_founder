@@ -8,7 +8,7 @@ import Manager from 'app/Manager';
 Manager.game.state.add('Boot', new Boot());
 Manager.game.state.start('Boot');
 
-var VERSION = '1.0.3';
+var VERSION = '1.0.4';
 document.getElementById('version-notice').innerHTML = VERSION;
 
 var loading = document.getElementById('loading');

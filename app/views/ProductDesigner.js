@@ -50,7 +50,7 @@ const productPoints = (name, data) => `
     <span class="quantity-stat">${Product.levels[name][data.levels[name]]}</span>
     <div class="product-pointer-control">
       <button data-name="${name}" class="product-point-sub" ${data.levels[name] == 0 ? 'disabled' : ''}>-</button>
-      <button data-name="${name}" class="product-point-add ${data.levels[name] >= 10 || !data.afford[name] ? 'disabled' : ''}" data-tip="Next level: ${data.costs[name]} ${Product.requiredSkills[name].join(' & ')}">+</button>
+      <button data-name="${name}" class="product-point-add" ${(data.levels[name] >= 9 || !data.afford[name]) ? 'disabled' : ''} data-tip="Next level: ${data.costs[name]} ${Product.requiredSkills[name].join(' & ')}">+</button>
     </div>
   </li>
 `;

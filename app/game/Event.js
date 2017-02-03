@@ -76,6 +76,11 @@ const Event = {
       }
       if (email.repeatable) {
         email.countdown = _.random(config.EMAIL_COUNTDOWN_MIN, config.EMAIL_COUNTDOWN_MAX);
+
+        // too hard for some people. longer delay
+        if (email.subject === 'Patent lawsuit') {
+          email.countdown *= 2;
+        }
       }
     });
 

@@ -105,6 +105,14 @@ class AssignmentView extends CardsList {
         } else {
           $(ev.target).removeClass('toggled');
         }
+      },
+      '.task-toggle-auto-complete': function(ev) {
+        task.autoComplete = !task.autoComplete;
+        if (task.autoComplete) {
+          $(ev.target).addClass('toggled');
+        } else {
+          $(ev.target).removeClass('toggled');
+        }
       }
     });
 
@@ -254,6 +262,7 @@ class AssignmentView extends CardsList {
     this.el.find('header').append(`
       <div class="task-assign-all-unassigned popup-aux-button">Toggle all unassigned</div>
       ${(task.type == Task.Type.Promo || task.type == Task.Type.Product) && productsLaunched >= config.MIN_PRODUCTS_BEFORE_DELEGATE ? `<div class="task-toggle-repeat popup-aux-button" data-tip="This task will repeat until you stop it manually">Repeat this task</div>` : ''}
+      ${(task.type == Task.Type.Promo || task.type == Task.Type.Product) && productsLaunched >= config.MIN_PRODUCTS_BEFORE_DELEGATE ? `<div class="task-toggle-auto-complete popup-aux-button" data-tip="This task will auto complete until you stop it manually">Auto complete this task</div>` : ''}
       <div class="task-communication-overhead" style="background:${communicationOverheadColors[overhead]};" data-tip="${communicationOverheadTips[overhead]}">Communication overhead: ${communicationOverheadTerms[overhead]}</div>`);
   }
 

@@ -2598,10 +2598,10 @@ button.owned {
   margin: 1em 0;
   display: inline-block; }
 
-.task-toggle-repeat {
+.task-toggle-repeat, .task-toggle-auto-complete {
   background: #aaa !important;
   opacity: 0.8; }
-  .task-toggle-repeat.toggled {
+  .task-toggle-repeat.toggled, .task-toggle-auto-complete.toggled {
     background: #17b051 !important;
     opacity: 1; }
 

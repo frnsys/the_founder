@@ -183,7 +183,7 @@
     ],
     "conditions": [{
       "type": "productsLaunched",
-      "op": "eq",
+      "op": "ge",
       "val": 5
     }],
     "uiSelector": ".start-new-task"

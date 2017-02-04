@@ -304,6 +304,8 @@ class Company {
   startResearch(tech) {
     var cost = tech.cost * this.player.costMultiplier * this.player.researchCostMultiplier;
     if (this.researchIsAvailable(tech) && this.canAfford(cost)) {
+      tech = _.clone(tech);
+      tech.cost = cost;
       return Task.init('Research', tech);
     }
     return false;

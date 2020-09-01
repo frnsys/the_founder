@@ -25,7 +25,10 @@ class ActiveView extends CardsList {
             task = this.player.company.tasks[idx],
             view = this.subviews[idx],
             confirm = new Confirm(function() {
-              Task.remove(task, player.company);
+              // Sometimes task is undefined?
+              if (task) {
+                Task.remove(task, player.company);
+              }
               view.remove();
             });
         confirm.render('Are you sure you want to cancel this task? You\'ll lose all progress!');

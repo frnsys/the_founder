@@ -228,7 +228,10 @@ class Agent {
     self.onUse();
     this.usingObject = obj;
     this.schedule(function() {
-      self.leave(obj);
+      // Ensure that this is still the object being used
+      if (self.usingObject == obj) {
+        self.leave(obj);
+      }
     }, _.random(MIN_ACTIVITY_TIME, MAX_ACTIVITY_TIME));
   }
 

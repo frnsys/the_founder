@@ -152,11 +152,17 @@ class Objekt {
         } else if (this.mesh) {
           intdata = pos._cachedAgentData;
           this.office.scene.add(agent.mesh);
-          _.each(['rotation', 'position', 'scale'], function(attr) {
-            if (intdata[attr]) {
-              agent.mesh[attr].set(intdata[attr].x, intdata[attr].y, intdata[attr].z);
-            }
-          });
+
+          // Ensure that cached agent data exists...
+          // may have been deleted if the agent "left"
+          // another objekt earlier. Not totally sure
+          if (intdata) {
+            _.each(['rotation', 'position', 'scale'], function(attr) {
+              if (intdata[attr]) {
+                agent.mesh[attr].set(intdata[attr].x, intdata[attr].y, intdata[attr].z);
+              }
+            });
+          }
           pos._cachedAgentData = null;
         }
 

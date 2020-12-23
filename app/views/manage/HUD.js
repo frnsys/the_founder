@@ -70,7 +70,13 @@ const activeProductTemplate = function(data) {
     return `
       <ul class="active-products">
         ${products.map(i => `
-          <li><span class="active-product-name">${i.name}</span> <span class="cash">${util.formatCurrencyAbbrev(i.earnedRevenue.toFixed(2))}</span></li>
+          <li>
+            <div class="active-product-name">${i.name}</div>
+            <div class="cash">
+              <div>Earned: ${util.formatCurrencyAbbrev(i.earnedRevenue.toFixed(2))}</div>
+              <div>Expected: ${util.formatCurrencyAbbrev(i.expectedRevenue.toFixed(2))}</div>
+            </div>
+          </li>
         `).join('')}
       </ul>
     `;

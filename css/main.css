@@ -185,7 +185,8 @@ header h1 {
 .cash {
   color: #17B051;
   font-family: "Fantasque Sans Mono", monospace;
-  font-weight: normal; }
+  font-weight: normal;
+  margin-left: 1em; }
 
 .popup-body .actions {
   text-align: center;
@@ -962,10 +963,6 @@ em.about-game-title {
 
 .hud-active-products {
   width: 12em; }
-  .hud-active-products .cash {
-    float: right; }
-  .hud-active-products li {
-    clear: both; }
 
 .hud-center-board h3 {
   font-weight: normal; }
